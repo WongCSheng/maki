@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui.cpp">
       <Filter>Source Files\imgui_src</Filter>
     </ClCompile>
@@ -45,11 +42,11 @@
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
       <Filter>Source Files\imgui_src</Filter>
     </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common_headers.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\imgui\imconfig.h">
       <Filter>Header Files\imgui_include</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h">
       <Filter>Header Files\imgui_include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common_headers.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

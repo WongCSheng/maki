@@ -1,4 +1,4 @@
-#include "common_headers.hpp"
+#include <../include/common_headers.hpp>
 
 GLFWwindow * window;
 int main()

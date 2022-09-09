@@ -95,6 +95,9 @@
     <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\glapp.cpp" />
+    <ClCompile Include="src\glhelper.cpp" />
+    <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +111,9 @@
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
     <ClInclude Include="include\common_headers.hpp" />
+    <ClInclude Include="include\glapp.h" />
+    <ClInclude Include="include\glhelper.h" />
+    <ClInclude Include="include\glslshader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

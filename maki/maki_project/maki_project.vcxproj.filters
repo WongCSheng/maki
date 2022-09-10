@@ -24,6 +24,11 @@
     </Filter>
     <Filter Include="Source Files\opengl">
       <UniqueIdentifier>{0305de01-9e65-473b-adfb-f68d093ad862}</UniqueIdentifier>
+    <Filter Include="Header Files\Fmod">
+      <UniqueIdentifier>{024ae368-d479-4bdd-a06c-cf9957f64b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fmod">
+      <UniqueIdentifier>{9a20c970-9089-4d56-9b64-0ecdd322d766}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

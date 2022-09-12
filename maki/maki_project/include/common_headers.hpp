@@ -7,6 +7,46 @@
 
 #include <iostream>
 
+//c++ std
+#include <algorithm>
+#include <cstdlib>
+#include <numeric>
+#include <cassert>
+#include <ctime>
+#include <array>
+#include <list>
+#include <vector>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
+#include <stack>
+#include <span>
+#include <bit>
+#include <memory>
+#include <typeindex>
+#include <scoped_allocator>
+#include <typeindex>
+#include <utility>
+#include <cstdio>
+#include <fstream>
+#include <iomanip>
+#include <ios>
+#include <iostream>
+#include <ostream>
+#include <sstream>
+#include <iterator>
+#include <exception>
+#include <cmath>
+#include <random>
+#include <new>
+#include <chrono>
+#include <string>
+#include <cstring>
+#include <cctype>
+#include <complex>
+#include <iterator>
+
 //graphics
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

@@ -120,6 +120,10 @@
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
+    <ClInclude Include="src\lib\Headers.h" />
+    <ClInclude Include="src\lib\Math.h" />
+    <ClInclude Include="src\lib\Matrix.h" />
+    <ClInclude Include="src\lib\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

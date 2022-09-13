@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -51,7 +51,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # Utility command for test
 
 build CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -63,7 +63,7 @@ build test: phony CMakeFiles\test.util
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -71,15 +71,100 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/CMakeLists.txt
 # =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build glm\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build glm\edit_cache: phony glm\CMakeFiles\edit_cache.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glm_static
+
+
+#############################################
+# Order-only phony target for glm_static
+
+build cmake_object_order_depends_target_glm_static: phony || glm\CMakeFiles\glm_static.dir
+
+build glm\CMakeFiles\glm_static.dir\detail\glm.cpp.obj: CXX_COMPILER__glm_static_Debug ..\..\..\glm\detail\glm.cpp || cmake_object_order_depends_target_glm_static
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\glm\..
+  OBJECT_DIR = glm\CMakeFiles\glm_static.dir
+  OBJECT_FILE_DIR = glm\CMakeFiles\glm_static.dir\detail
+  TARGET_COMPILE_PDB = glm\CMakeFiles\glm_static.dir\glm_static.pdb
+  TARGET_PDB = glm\glm_static.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glm_static
+
+
+#############################################
+# Link the static library glm\glm_static.lib
+
+build glm\glm_static.lib: CXX_STATIC_LIBRARY_LINKER__glm_static_Debug glm\CMakeFiles\glm_static.dir\detail\glm.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = glm\CMakeFiles\glm_static.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = glm\CMakeFiles\glm_static.dir\glm_static.pdb
+  TARGET_FILE = glm\glm_static.lib
+  TARGET_PDB = glm\glm_static.pdb
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target glm_shared
+
+
+#############################################
+# Order-only phony target for glm_shared
+
+build cmake_object_order_depends_target_glm_shared: phony || glm\CMakeFiles\glm_shared.dir
+
+build glm\CMakeFiles\glm_shared.dir\detail\glm.cpp.obj: CXX_COMPILER__glm_shared_Debug ..\..\..\glm\detail\glm.cpp || cmake_object_order_depends_target_glm_shared
+  DEFINES = -Dglm_shared_EXPORTS
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\glm\..
+  OBJECT_DIR = glm\CMakeFiles\glm_shared.dir
+  OBJECT_FILE_DIR = glm\CMakeFiles\glm_shared.dir\detail
+  TARGET_COMPILE_PDB = glm\CMakeFiles\glm_shared.dir\
+  TARGET_PDB = glm\glm_shared.pdb
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target glm_shared
+
+
+#############################################
+# Link the shared library glm\glm_shared.dll
+
+build glm\glm_shared.dll glm\glm_shared.lib: CXX_SHARED_LIBRARY_LINKER__glm_shared_Debug glm\CMakeFiles\glm_shared.dir\detail\glm.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = glm\CMakeFiles\glm_shared.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  RESTAT = 1
+  TARGET_COMPILE_PDB = glm\CMakeFiles\glm_shared.dir\
+  TARGET_FILE = glm\glm_shared.dll
+  TARGET_IMPLIB = glm\glm_shared.lib
+  TARGET_PDB = glm\glm_shared.pdb
 
 
 #############################################
 # Utility command for rebuild_cache
 
 build glm\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -91,27 +176,16 @@ build glm\rebuild_cache: phony glm\CMakeFiles\rebuild_cache.util
 # Utility command for test
 
 build glm\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
 
 build glm\test: phony glm\CMakeFiles\test.util
 
-
-#############################################
-# Utility command for edit_cache
-
-build glm\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\glm && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build glm\edit_cache: phony glm\CMakeFiles\edit_cache.util
-
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/CMakeLists.txt
 # =============================================================================
 
 
@@ -119,7 +193,7 @@ build glm\edit_cache: phony glm\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build test\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -131,7 +205,7 @@ build test\rebuild_cache: phony test\CMakeFiles\rebuild_cache.util
 # Utility command for test
 
 build test\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -143,7 +217,7 @@ build test\test: phony test\CMakeFiles\test.util
 # Utility command for edit_cache
 
 build test\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -151,7 +225,7 @@ build test\edit_cache: phony test\CMakeFiles\edit_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 
@@ -159,7 +233,7 @@ build test\edit_cache: phony test\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build test\bug\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -171,7 +245,7 @@ build test\bug\rebuild_cache: phony test\bug\CMakeFiles\rebuild_cache.util
 # Utility command for test
 
 build test\bug\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -221,7 +295,7 @@ build test\bug\test-bug_ms_vec_static.exe: CXX_EXECUTABLE_LINKER__test-bug_ms_ve
 # Utility command for edit_cache
 
 build test\bug\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\bug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -229,7 +303,7 @@ build test\bug\edit_cache: phony test\bug\CMakeFiles\edit_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -693,7 +767,7 @@ build test\core\test-core_force_cxx03.exe: CXX_EXECUTABLE_LINKER__test-core_forc
 # Utility command for rebuild_cache
 
 build test\core\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -2225,7 +2299,7 @@ build test\core\test-core_setup_message.exe: CXX_EXECUTABLE_LINKER__test-core_se
 # Utility command for test
 
 build test\core\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -2237,7 +2311,7 @@ build test\core\test: phony test\core\CMakeFiles\test.util
 # Utility command for edit_cache
 
 build test\core\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\core && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -2245,7 +2319,7 @@ build test\core\edit_cache: phony test\core\CMakeFiles\edit_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -2785,7 +2859,7 @@ build test\ext\test-ext_matrix_int4x2_sized.exe: CXX_EXECUTABLE_LINKER__test-ext
 # Utility command for edit_cache
 
 build test\ext\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -3632,7 +3706,7 @@ build test\ext\test-ext_scalar_constants.exe: CXX_EXECUTABLE_LINKER__test-ext_sc
 # Utility command for rebuild_cache
 
 build test\ext\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -4138,7 +4212,7 @@ build test\ext\test-ext_vector_uint4_sized.exe: CXX_EXECUTABLE_LINKER__test-ext_
 # Utility command for test
 
 build test\ext\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\ext && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -4223,7 +4297,7 @@ build test\ext\test-ext_vector_ulp.exe: CXX_EXECUTABLE_LINKER__test-ext_vector_u
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -4687,7 +4761,7 @@ build test\gtc\test-gtc_packing.exe: CXX_EXECUTABLE_LINKER__test-gtc_packing_Deb
 # Utility command for rebuild_cache
 
 build test\gtc\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -4813,7 +4887,7 @@ build test\gtc\test-gtc_round.exe: CXX_EXECUTABLE_LINKER__test-gtc_round_Debug t
 # Utility command for test
 
 build test\gtc\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -5015,7 +5089,7 @@ build test\gtc\test-gtc_ulp.exe: CXX_EXECUTABLE_LINKER__test-gtc_ulp_Debug test\
 # Utility command for edit_cache
 
 build test\gtc\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtc && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -5023,7 +5097,7 @@ build test\gtc\edit_cache: phony test\gtc\CMakeFiles\edit_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -6893,7 +6967,7 @@ build test\gtx\test-gtx_quaternion.exe: CXX_EXECUTABLE_LINKER__test-gtx_quaterni
 # Utility command for test
 
 build test\gtx\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -7247,7 +7321,7 @@ build test\gtx\test-gtx_wrap.exe: CXX_EXECUTABLE_LINKER__test-gtx_wrap_Debug tes
 # Utility command for edit_cache
 
 build test\gtx\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -7258,7 +7332,7 @@ build test\gtx\edit_cache: phony test\gtx\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build test\gtx\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\gtx && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -7267,7 +7341,7 @@ build test\gtx\rebuild_cache: phony test\gtx\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Admon/source/repos/maki/maki/lib/glm/test/CMakeLists.txt
+# D:/GAM200/maki/lib/glm/test/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -7351,7 +7425,7 @@ build test\perf\test-perf_matrix_inverse.exe: CXX_EXECUTABLE_LINKER__test-perf_m
 # Utility command for edit_cache
 
 build test\perf\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -7476,7 +7550,7 @@ build test\perf\test-perf_matrix_mul_vector.exe: CXX_EXECUTABLE_LINKER__test-per
 # Utility command for test
 
 build test\perf\CMakeFiles\test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\ctest.exe" --force-new-ctest-process "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -7526,7 +7600,7 @@ build test\perf\test-perf_matrix_transpose.exe: CXX_EXECUTABLE_LINKER__test-perf
 # Utility command for rebuild_cache
 
 build test\perf\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Admon\source\repos\maki\maki\lib\glm -BC:\Users\Admon\source\repos\maki\maki\lib\glm\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D D:\GAM200\maki\lib\glm\out\build\x64-Debug\test\perf && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\GAM200\maki\lib\glm -BD:\GAM200\maki\lib\glm\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -7535,6 +7609,14 @@ build test\perf\rebuild_cache: phony test\perf\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
+
+build glm_shared: phony glm\glm_shared.dll
+
+build glm_shared.dll: phony glm\glm_shared.dll
+
+build glm_static: phony glm\glm_static.lib
+
+build glm_static.lib: phony glm\glm_static.lib
 
 build test-bug_ms_vec_static: phony test\bug\test-bug_ms_vec_static.exe
 
@@ -8294,63 +8376,63 @@ build test-perf_vector_mul_matrix.exe: phony test\perf\test-perf_vector_mul_matr
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug
 
 build all: phony glm\all test\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/glm
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/glm
 
-build glm\all: phony
+build glm\all: phony glm\glm_static.lib glm\glm_shared.dll
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test
 
 build test\all: phony test\bug\all test\core\all test\ext\all test\gtc\all test\gtx\all test\perf\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/bug
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/bug
 
 build test\bug\all: phony test\bug\test-bug_ms_vec_static.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/core
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/core
 
 build test\core\all: phony test\core\test-core_setup_precision.exe test\core\test-core_force_pure.exe test\core\test-core_force_aligned_gentypes.exe test\core\test-core_type_vec3.exe test\core\test-core_force_platform_unknown.exe test\core\test-core_cpp_constexpr.exe test\core\test-core_force_ctor_init.exe test\core\test-core_cpp_defaulted_ctor.exe test\core\test-core_type_vec1.exe test\core\test-core_force_cxx98.exe test\core\test-core_force_cxx_unknown.exe test\core\test-core_force_cxx03.exe test\core\test-core_func_integer_find_lsb.exe test\core\test-core_type_length.exe test\core\test-core_force_arch_unknown.exe test\core\test-core_force_compiler_unknown.exe test\core\test-core_type_mat3x3.exe test\core\test-core_type_ctor.exe test\core\test-core_force_explicit_ctor.exe test\core\test-core_force_inline.exe test\core\test-core_type_mat2x2.exe test\core\test-core_force_unrestricted_gentype.exe test\core\test-core_force_xyzw_only.exe test\core\test-core_force_quat_wxyz.exe test\core\test-core_type_aligned.exe test\core\test-core_func_exponential.exe test\core\test-core_type_mat4x3.exe test\core\test-core_type_int.exe test\core\test-core_type_cast.exe test\core\test-core_type_mat2x3.exe test\core\test-core_type_mat2x4.exe test\core\test-core_type_mat3x2.exe test\core\test-core_type_mat3x4.exe test\core\test-core_type_mat4x2.exe test\core\test-core_type_mat4x4.exe test\core\test-core_type_vec2.exe test\core\test-core_type_vec4.exe test\core\test-core_func_integer_find_msb.exe test\core\test-core_func_common.exe test\core\test-core_func_geometric.exe test\core\test-core_func_integer.exe test\core\test-core_func_noise.exe test\core\test-core_func_integer_bit_count.exe test\core\test-core_func_matrix.exe test\core\test-core_func_packing.exe test\core\test-core_func_trigonometric.exe test\core\test-core_setup_platform_unknown.exe test\core\test-core_func_vector_relational.exe test\core\test-core_func_swizzle.exe test\core\test-core_setup_force_cxx98.exe test\core\test-core_setup_force_size_t_length.exe test\core\test-core_setup_message.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/ext
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/ext
 
 build test\ext\all: phony test\ext\test-ext_matrix_int2x4_sized.exe test\ext\test-ext_vector_int4_sized.exe test\ext\test-ext_quaternion_trigonometric.exe test\ext\test-ext_matrix_relational.exe test\ext\test-ext_matrix_int3x2_sized.exe test\ext\test-ext_matrix_int2x3_sized.exe test\ext\test-ext_matrix_transform.exe test\ext\test-ext_vector_bool1.exe test\ext\test-ext_matrix_common.exe test\ext\test-ext_matrix_int3x3_sized.exe test\ext\test-ext_matrix_int2x2_sized.exe test\ext\test-ext_vector_iec559.exe test\ext\test-ext_matrix_int3x4_sized.exe test\ext\test-ext_matrix_int4x2_sized.exe test\ext\test-ext_quaternion_common.exe test\ext\test-ext_matrix_int4x3_sized.exe test\ext\test-ext_matrix_int4x4_sized.exe test\ext\test-ext_matrix_uint2x2_sized.exe test\ext\test-ext_vec1.exe test\ext\test-ext_matrix_uint2x3_sized.exe test\ext\test-ext_scalar_common.exe test\ext\test-ext_matrix_uint2x4_sized.exe test\ext\test-ext_matrix_uint3x2_sized.exe test\ext\test-ext_vector_integer_sized.exe test\ext\test-ext_matrix_uint3x3_sized.exe test\ext\test-ext_matrix_uint3x4_sized.exe test\ext\test-ext_matrix_uint4x2_sized.exe test\ext\test-ext_quaternion_transform.exe test\ext\test-ext_matrix_uint4x3_sized.exe test\ext\test-ext_matrix_uint4x4_sized.exe test\ext\test-ext_quaternion_exponential.exe test\ext\test-ext_quaternion_geometric.exe test\ext\test-ext_quaternion_relational.exe test\ext\test-ext_quaternion_type.exe test\ext\test-ext_scalar_int_sized.exe test\ext\test-ext_scalar_constants.exe test\ext\test-ext_scalar_integer.exe test\ext\test-ext_scalar_uint_sized.exe test\ext\test-ext_scalar_ulp.exe test\ext\test-ext_scalar_relational.exe test\ext\test-ext_vector_common.exe test\ext\test-ext_vector_int1_sized.exe test\ext\test-ext_vector_uint3_sized.exe test\ext\test-ext_vector_int2_sized.exe test\ext\test-ext_vector_uint2_sized.exe test\ext\test-ext_vector_int3_sized.exe test\ext\test-ext_vector_integer.exe test\ext\test-ext_vector_uint1_sized.exe test\ext\test-ext_vector_uint4_sized.exe test\ext\test-ext_vector_relational.exe test\ext\test-ext_vector_ulp.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/gtc
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/gtc
 
 build test\gtc\all: phony test\gtc\test-gtc_vec1.exe test\gtc\test-gtc_bitfield.exe test\gtc\test-gtc_color_space.exe test\gtc\test-gtc_integer.exe test\gtc\test-gtc_epsilon.exe test\gtc\test-gtc_constants.exe test\gtc\test-gtc_matrix_transform.exe test\gtc\test-gtc_matrix_inverse.exe test\gtc\test-gtc_matrix_access.exe test\gtc\test-gtc_matrix_integer.exe test\gtc\test-gtc_noise.exe test\gtc\test-gtc_packing.exe test\gtc\test-gtc_quaternion.exe test\gtc\test-gtc_random.exe test\gtc\test-gtc_round.exe test\gtc\test-gtc_reciprocal.exe test\gtc\test-gtc_type_aligned.exe test\gtc\test-gtc_type_precision.exe test\gtc\test-gtc_type_ptr.exe test\gtc\test-gtc_ulp.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/gtx
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/gtx
 
 build test\gtx\all: phony test\gtx\test-gtx_normalize_dot.exe test\gtx\test-gtx.exe test\gtx\test-gtx_optimum_pow.exe test\gtx\test-gtx_compatibility.exe test\gtx\test-gtx_scalar_relational.exe test\gtx\test-gtx_io.exe test\gtx\test-gtx_associated_min_max.exe test\gtx\test-gtx_closest_point.exe test\gtx\test-gtx_range.exe test\gtx\test-gtx_euler_angle.exe test\gtx\test-gtx_color_encoding.exe test\gtx\test-gtx_log_base.exe test\gtx\test-gtx_color_space.exe test\gtx\test-gtx_color_space_YCoCg.exe test\gtx\test-gtx_intersect.exe test\gtx\test-gtx_common.exe test\gtx\test-gtx_component_wise.exe test\gtx\test-gtx_spline.exe test\gtx\test-gtx_easing.exe test\gtx\test-gtx_vector_query.exe test\gtx\test-gtx_extend.exe test\gtx\test-gtx_extended_min_max.exe test\gtx\test-gtx_exterior_product.exe test\gtx\test-gtx_fast_exponential.exe test\gtx\test-gtx_fast_square_root.exe test\gtx\test-gtx_fast_trigonometry.exe test\gtx\test-gtx_functions.exe test\gtx\test-gtx_vec_swizzle.exe test\gtx\test-gtx_gradient_paint.exe test\gtx\test-gtx_handed_coordinate_space.exe test\gtx\test-gtx_norm.exe test\gtx\test-gtx_integer.exe test\gtx\test-gtx_load.exe test\gtx\test-gtx_number_precision.exe test\gtx\test-gtx_matrix_factorisation.exe test\gtx\test-gtx_matrix_cross_product.exe test\gtx\test-gtx_matrix_decompose.exe test\gtx\test-gtx_perpendicular.exe test\gtx\test-gtx_matrix_interpolation.exe test\gtx\test-gtx_matrix_major_storage.exe test\gtx\test-gtx_matrix_operation.exe test\gtx\test-gtx_matrix_query.exe test\gtx\test-gtx_matrix_transform_2d.exe test\gtx\test-gtx_vector_angle.exe test\gtx\test-gtx_normal.exe test\gtx\test-gtx_projection.exe test\gtx\test-gtx_orthonormalize.exe test\gtx\test-gtx_polar_coordinates.exe test\gtx\test-gtx_quaternion.exe test\gtx\test-gtx_texture.exe test\gtx\test-gtx_dual_quaternion.exe test\gtx\test-gtx_rotate_normalized_axis.exe test\gtx\test-gtx_rotate_vector.exe test\gtx\test-gtx_scalar_multiplication.exe test\gtx\test-gtx_string_cast.exe test\gtx\test-gtx_type_aligned.exe test\gtx\test-gtx_type_trait.exe test\gtx\test-gtx_wrap.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/perf
+# Folder: D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/perf
 
 build test\perf\all: phony test\perf\test-perf_matrix_div.exe test\perf\test-perf_matrix_inverse.exe test\perf\test-perf_matrix_mul.exe test\perf\test-perf_vector_mul_matrix.exe test\perf\test-perf_matrix_mul_vector.exe test\perf\test-perf_matrix_transpose.exe
 
@@ -8366,14 +8448,14 @@ build test\perf\all: phony test\perf\test-perf_matrix_div.exe test\perf\test-per
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\glm\CMakeLists.txt ..\..\..\test\CMakeLists.txt ..\..\..\test\bug\CMakeLists.txt ..\..\..\test\core\CMakeLists.txt ..\..\..\test\ext\CMakeLists.txt ..\..\..\test\gtc\CMakeLists.txt ..\..\..\test\gtx\CMakeLists.txt ..\..\..\test\perf\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\glm\CMakeLists.txt ..\..\..\test\CMakeLists.txt ..\..\..\test\bug\CMakeLists.txt ..\..\..\test\core\CMakeLists.txt ..\..\..\test\ext\CMakeLists.txt ..\..\..\test\gtc\CMakeLists.txt ..\..\..\test\gtx\CMakeLists.txt ..\..\..\test\perf\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ..\..\..\CMakeLists.txt ..\..\..\glm\CMakeLists.txt ..\..\..\test\CMakeLists.txt ..\..\..\test\bug\CMakeLists.txt ..\..\..\test\core\CMakeLists.txt ..\..\..\test\ext\CMakeLists.txt ..\..\..\test\gtc\CMakeLists.txt ..\..\..\test\gtx\CMakeLists.txt ..\..\..\test\perf\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake: phony
+build ..\..\..\CMakeLists.txt ..\..\..\glm\CMakeLists.txt ..\..\..\test\CMakeLists.txt ..\..\..\test\bug\CMakeLists.txt ..\..\..\test\core\CMakeLists.txt ..\..\..\test\ext\CMakeLists.txt ..\..\..\test\gtc\CMakeLists.txt ..\..\..\test\gtx\CMakeLists.txt ..\..\..\test\perf\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake: phony
 
 
 #############################################

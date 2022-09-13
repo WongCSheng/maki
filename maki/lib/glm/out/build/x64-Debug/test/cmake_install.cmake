@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Admon/source/repos/maki/maki/lib/glm/test
+# Install script for directory: D:/GAM200/maki/lib/glm/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/Admon/Source/Repos/maki/maki/lib/glm/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "D:/GAM200/maki/lib/glm/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,12 +34,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/bug/cmake_install.cmake")
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/core/cmake_install.cmake")
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/ext/cmake_install.cmake")
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/gtc/cmake_install.cmake")
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/gtx/cmake_install.cmake")
-  include("C:/Users/Admon/source/repos/maki/maki/lib/glm/out/build/x64-Debug/test/perf/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/bug/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/core/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/ext/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/gtc/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/gtx/cmake_install.cmake")
+  include("D:/GAM200/maki/lib/glm/out/build/x64-Debug/test/perf/cmake_install.cmake")
 
 endif()
 

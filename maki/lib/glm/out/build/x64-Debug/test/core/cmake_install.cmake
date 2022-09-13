@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Admon/source/repos/maki/maki/lib/glm/test/core
+# Install script for directory: D:/GAM200/maki/lib/glm/test/core
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/Admon/Source/Repos/maki/maki/lib/glm/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "D:/GAM200/maki/lib/glm/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

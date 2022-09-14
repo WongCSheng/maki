@@ -12,10 +12,10 @@ namespace Framework
 	class BaseSerializer
 	{
 	public:
-		///Open the serialization stream from a file.
+		///Open the serialization serializer from a file.
 		virtual bool Open(const std::string& file) = 0;
 
-		///These check if stream still has data.
+		///These check if serializer still has data.
 		//pure virtual functions, overwrite them in derived class
 		virtual bool IsGood() = 0;
 		virtual void ReadInt(int& i) = 0;
@@ -23,35 +23,46 @@ namespace Framework
 		virtual void ReadString(std::string& str) = 0;
 	};
 
-	//Serialization Operators 
-
-
-
-
-	//Serialize the instance of a certain type using opened file stream
+	//Serialization Operators//
+	
+	//Serialize the instance of a certain type using base serializer class or derived class
 	template<typename type>
-	inline void StreamRead(BaseSerializer& stream, type& typeInstance)
+	inline void StreamRead(BaseSerializer& serializer, type& typeInstance)
 	{
-		typeInstance.Serialize(stream);
+		typeInstance.Serialize(serializer);
+
+		//Serialize function comes from the object itself, e.g.
+		/*void GameObject::Serialize(ISerializer& serializer)
+		{
+			StreamRead(serializer, HP);
+			StreamRead(serializer, Speed);
+			StreamRead(serializer, Armor);
+			StreamRead(serializer, SpriteFile);
+		};*/
+
 	}
 
-	//Using opened file stream, read a float value from it
-	inline void StreamRead(BaseSerializer& stream, float& f)
+	//overloaded, float
+	//Using opened file serializer, read a float value from it
+	inline void StreamRead(BaseSerializer& serializer, float& f)
 	{
-		stream.ReadFloat(f);
+		serializer.ReadFloat(f);
 	}
 
-	//Using opened file stream, read an int value from it
-	inline void StreamRead(BaseSerializer& stream, int& i)
+	//overloaded, int
+	//Using opened file serializer, read an int value from it
+	inline void StreamRead(BaseSerializer& serializer, int& i)
 	{
-		stream.ReadInt(i);
+		serializer.ReadInt(i);
 	}
 
-	//Using opened file stream, read a string value from it
-	inline void StreamRead(BaseSerializer& stream, std::string& str)
+	//overloaded, string
+	//Using opened file serializer, read a string value from it
+	inline void StreamRead(BaseSerializer& serializer, std::string& str)
 	{
-		stream.ReadString(str);
+		serializer.ReadString(str);
 	}
-
+	
+	//may need to expand in future (arrays, pointers etc?)
 
 }

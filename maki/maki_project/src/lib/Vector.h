@@ -38,7 +38,8 @@ class gfxVector2
 			this->y = v.y;
 			return *this;
 		}
-
+		/*need operator to access elements???
+		* ------------------------------------------
 		//[] operators, for accessing elements
 		float& operator[](unsigned int i)
 		{
@@ -68,7 +69,7 @@ class gfxVector2
 					return mVec[i];
 				}
 		}
-
+		*/
 		//arithmetic operators
 		friend gfxVector2 operator+(const gfxVector2& l, const gfxVector2& r)
 		{

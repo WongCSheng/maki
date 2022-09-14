@@ -25,7 +25,12 @@ class gfxMatrix3
 {
 	// matrix multiplication
 	friend gfxMatrix3 operator*(const gfxMatrix3& l, const gfxMatrix3& r);
-	friend gfxVector2 operator*(const gfxMatrix3& l, const gfxMatrix3& r);
+	
+	//scalar multiplication
+	friend gfxMatrix3 operator*(float l, const gfxMatrix3& r)
+	{
+		
+	}
 };
 
 #endif // MATRIX_H_

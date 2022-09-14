@@ -1,35 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\lib\imgui\imgui.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_draw.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_tables.cpp" />
-    <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\glapp.cpp" />
-    <ClCompile Include="src\glhelper.cpp" />
-    <ClCompile Include="src\glslshader.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="TextSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glapp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glhelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glslshader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\lib\imgui\imconfig.h" />
-    <ClInclude Include="..\lib\imgui\imgui.h" />
-    <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h" />
-    <ClInclude Include="..\lib\imgui\imgui_internal.h" />
-    <ClInclude Include="..\lib\imgui\imstb_rectpack.h" />
-    <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
-    <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
-    <ClInclude Include="include\common_headers.hpp" />
-    <ClInclude Include="include\glapp.h" />
-    <ClInclude Include="include\glhelper.h" />
-    <ClInclude Include="include\glslshader.h" />
-    <ClInclude Include="src\lib\Matrix.h" />
-    <ClInclude Include="src\lib\Headers.h" />
-    <ClInclude Include="src\lib\Vector.h" />
-    <ClInclude Include="src\lib\Math.h" />
+    <ClInclude Include="TextSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Serializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glapp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glhelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glslshader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common_headers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{a72a1129-f7b1-40a7-bf6b-47bbd7a44503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Serialization">
+      <UniqueIdentifier>{54eb1265-12da-43aa-8089-3698022cc39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{26bec48c-1935-46a1-9ed0-8731d75e57d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9fd62910-cf68-43f8-aed6-27185e5b2a07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

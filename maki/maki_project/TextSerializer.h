@@ -8,11 +8,13 @@ namespace Framework
 	{
 	public:
 		std::ifstream stream;
-		virtual bool Open(const std::string& file);
-		virtual bool IsGood();
-		virtual void ReadInt(int& i);
-		virtual void ReadFloat(float& f);
-		virtual void ReadString(std::string& str);
+
+		//overwrite BaseSerializer pure virtual functions 
+		virtual bool Open(const std::string& file); //open file into stream
+		virtual bool IsGood(); //opening file has given no error flags
+		virtual void ReadInt(int& i); //use to read int value
+		virtual void ReadFloat(float& f); //use to read float value
+		virtual void ReadString(std::string& str); //use to read string value
 	};
 
 }

@@ -12,6 +12,9 @@
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="TextSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -23,9 +26,28 @@
     <ClInclude Include="..\lib\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
-    <ClInclude Include="include\common_headers.hpp" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
+    <ClInclude Include="include\common_headers.hpp">
+      <Filter>GameEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Serializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{a72a1129-f7b1-40a7-bf6b-47bbd7a44503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Serialization">
+      <UniqueIdentifier>{54eb1265-12da-43aa-8089-3698022cc39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Headers">
+      <UniqueIdentifier>{b58321f5-14e1-4ebf-bbd8-0e2bc5b9db94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

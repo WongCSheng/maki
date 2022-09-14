@@ -15,7 +15,8 @@ namespace Framework
 		///Open the serialization stream from a file.
 		virtual bool Open(const std::string& file) = 0;
 
-		///Check if stream still has data.
+		///These check if stream still has data.
+		//pure virtual functions, overwrite them in derived class
 		virtual bool IsGood() = 0;
 		virtual void ReadInt(int& i) = 0;
 		virtual void ReadFloat(float& f) = 0;

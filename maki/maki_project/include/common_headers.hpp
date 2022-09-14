@@ -1,6 +1,8 @@
 /*!*****************************
 * 
-* \brief: add all header files in this common header file so that in all files you will only need to "#include "common_headers.hpp"
+* \brief: add all header files in this common header 
+file so that in all files you will only need to 
+"#include "include/common_headers.hpp"
 * 
 *********************************/
 #pragma once
@@ -55,3 +57,7 @@
 #include <../imgui/imgui_impl_opengl3.h>
 #include <../imgui/imgui.h>
 #include <../imgui/imgui_impl_glfw.h>
+
+//Serializer
+#include "Serializer.h"
+#include "TextSerializer.h"

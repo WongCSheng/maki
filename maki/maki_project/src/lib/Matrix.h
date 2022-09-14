@@ -24,7 +24,10 @@ class gfxMatrix3
 	// a 3x3 matrix class. Because we're doing a 2D game we dont have to do 4x4
 {
 	// matrix multiplication
-	friend gfxMatrix3 operator*(const gfxMatrix3& l, const gfxMatrix3& r);
+	friend gfxMatrix3 operator*(const gfxMatrix3& l, const gfxMatrix3& r)
+	{
+		return l * r;
+	}
 	
 	//scalar multiplication
 	friend gfxMatrix3 operator*(float l, const gfxMatrix3& r)

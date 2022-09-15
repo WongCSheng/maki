@@ -1,42 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f; //player movement speed
-    public Transform movePoint; //point of player move
+    private PlayerMovement controls; //input system, No need do getkeydown as the script, PlayerMovement,
+                                     //auto made by the input system, have all the get input stuff.
 
-    public LayerMask whatStopMovements;
+    [SerializeField]
+    private Tilemap groundTilemap; //get the groud Tilemap
+    [SerializeField]
+    private Tilemap wallTilemap; //get the wall Tilemap
+
+    private void Awake()
+    {
+        controls = new PlayerMovement(); //idk this... bring input system into this script?
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable(); //enable it.
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable(); //disable it.
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        movePoint.parent = null; //movePoint no more parent using script
+        controls.PlayerMovements.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        //movePoint.parent = null; //movePoint no more parent using script
+    }
+
+    private void Move(Vector2 direction)
+    {
+        if (CanMove(direction))
+        {
+            transform.position += (Vector3)direction;
+        }
+    }
+
+    private bool CanMove(Vector2 direction)
+    {
+        Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
+        if (!groundTilemap.HasTile(gridPosition) || wallTilemap.HasTile(gridPosition))
+        {
+            return false;
+        }
+        else { return true; }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)//if player moves,
-        {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) //Mathf.Abs doesnt care of value is postive or negative. It only change the number, thus, it's only checking the value 1f.
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), 0.2f, whatStopMovements)) //draw a cricle to check if there's a colliders on that layermask, if no,
-                { 
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f); 
-                }
-            }
-
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) //Mathf.Abs doesnt care of value is postive or negative. It only change the number, thus, it's only checking the value 1f.
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), 0.2f, whatStopMovements)) //draw a cricle to check if there's a colliders on that layermask, if no,
-                {
-                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                }
-            }
-        }
     }
 }

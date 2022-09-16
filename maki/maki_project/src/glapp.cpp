@@ -20,6 +20,8 @@ to OpenGL implementations.
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
 
+GLApp::GLModel mdl{};
+
 void GLApp::init() {
  
 	// Part 1: clear colorbuffer with RGBA value in glClearColor ...
@@ -28,16 +30,21 @@ void GLApp::init() {
 	// Part 2: use entire window as viewport ...
 	glViewport(0, 0, GLHelper::width, GLHelper::height);
 
+	//mdl.setup_shdrpgm();
+	//mdl.setup_vao();
 }
 
 void GLApp::update() {
-  // empty for now
-
+  //glClearColor(1.f, 0.f, 0.f, 1.f);
 	
 }
 
 void GLApp::draw() {
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	//glDrawElements(GL_TRIANGLES, 1, 1, nullptr);
+
+	glfwSwapBuffers(GLHelper::ptr_window);
 }
 
 void GLApp::cleanup() {

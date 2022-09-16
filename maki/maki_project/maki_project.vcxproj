@@ -58,7 +58,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib\rapidjson;$(SolutionDir)lib\rttr\lib;$(SolutionDir)lib\rapidjson\include\rapidjson;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib\rapidjson;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rapidjson\include\rapidjson;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\theas\Documents\GitHub\maki\maki\lib\glew-2.2.0;C:\Users\theas\Documents\GitHub\maki\maki\lib\Fmod\lib;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rapidjson;$(LibraryPath);$(SolutionDir)lib\rapidjson;$(SolutionDir)lib\rttr;$(SolutionDir)lib\rapidjson;$(SolutionDir)lib\rttr;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rttr;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rapidjson;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rttr\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -72,7 +72,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>rttr_core_d.dll;rttr_core_d.lib;unit_test_base_d.lib;rttr_core_d.exp;unit_test_base_d.exp;rttr_core.dll;rttr_core.lib;unit_test_base.lib;rttr_core.exp;unit_test_base.exp</AdditionalDependencies>
+      <AdditionalDependencies>rttr_core_d.lib;unit_test_base_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\rttr\lib\Debug;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rttr\lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -95,7 +95,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>rttr_core_d.dll;rttr_core_d.lib;unit_test_base_d.lib;rttr_core_d.exp;unit_test_base_d.exp;rttr_core.dll;rttr_core.lib;unit_test_base.lib;rttr_core.exp;unit_test_base.exp</AdditionalDependencies>
+      <AdditionalDependencies>rttr_core.lib;unit_test_base.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\rttr\lib\Debug;C:\Users\auhpr\OneDrive\Desktop\School\GAM\maki\maki\lib\rttr\lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>

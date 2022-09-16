@@ -1,7 +1,9 @@
 #pragma once
+//rttr registration
 #include <rttr/property.h>
 #include <rttr/variant.h>
 #include <rttr/type.h>
+#include <rttr/type>
 #include <fstream>
 #include <filesystem>
 #include <document.h>
@@ -27,7 +29,7 @@ public://variables
 	int health = 0;
 	int damage = 0;
 	//need to declare your rttr macro here in public
-	//RTTR_ENABLE();
+	RTTR_ENABLE();
 private://variables
 	vec3 position;
 

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{93745DD0-0097-4A9E-B7DF-31819524021C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>framework</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Common;$(SolutionDir)/Include/ImageMagick-6;$(SolutionDir)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);$(SolutionDir)/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;glew32.lib;glfw3.lib;opengl32.lib;Winmm.lib;SOIL.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Common;$(SolutionDir)/Include/ImageMagick-6;$(SolutionDir)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);$(SolutionDir)/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;glew32.lib;glfw3.lib;opengl32.lib;Winmm.lib;SOIL.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="BlurBuffer.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraSystem.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Debugger.cpp" />
+    <ClCompile Include="DirectionLight.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FirstPersonCamera.cpp" />
+    <ClCompile Include="GBuffer.cpp" />
+    <ClCompile Include="gl_BackEnd.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LightSystem.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainSystem.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshData.cpp" />
+    <ClCompile Include="MeshF.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="MSAABuffer.cpp" />
+    <ClCompile Include="PingPongFBO.cpp" />
+    <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="PPBuffer.cpp" />
+    <ClCompile Include="RendererSystem.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="Script.cpp" />
+    <ClCompile Include="ShaderStorage.cpp" />
+    <ClCompile Include="Shader\DirLightShader.cpp" />
+    <ClCompile Include="Shader\forwardShader.cpp" />
+    <ClCompile Include="Shader\gaussianBlurShader.cpp" />
+    <ClCompile Include="Shader\GeometryPassShader.cpp" />
+    <ClCompile Include="Shader\hdrShader.cpp" />
+    <ClCompile Include="Shader\nullShader.cpp" />
+    <ClCompile Include="Shader\PointLightShader.cpp" />
+    <ClCompile Include="Shader\ShaderProgram.cpp" />
+    <ClCompile Include="Shader\ShadowShader.cpp" />
+    <ClCompile Include="Shader\SimpleShader.cpp" />
+    <ClCompile Include="Shader\skyBoxShader.cpp" />
+    <ClCompile Include="Shader\SSAOBlurShader.cpp" />
+    <ClCompile Include="Shader\SSAOShader.cpp" />
+    <ClCompile Include="ShadowMapFBO.cpp" />
+    <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="ssaobuffer.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureData.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TransformSystem.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="BlurBuffer.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraSystem.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Debugger.h" />
+    <ClInclude Include="DirectionLight.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="FirstPersonCamera.h" />
+    <ClInclude Include="GBuffer.h" />
+    <ClInclude Include="gl_BackEnd.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="ICallbacks.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="LightSystem.h" />
+    <ClInclude Include="LoadObject.h" />
+    <ClInclude Include="MainSystem.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshData.h" />
+    <ClInclude Include="MeshLoader.h" />
+    <ClInclude Include="MeshF.h" />
+    <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="MSAABuffer.h" />
+    <ClInclude Include="PingPongFBO.h" />
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PPBuffer.h" />
+    <ClInclude Include="RendererSystem.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="Script.h" />
+    <ClInclude Include="script_common.h" />
+    <ClInclude Include="ShaderStorage.h" />
+    <ClInclude Include="Shader\DirLightShader.h" />
+    <ClInclude Include="Shader\forwardShader.h" />
+    <ClInclude Include="Shader\gaussianBlurShader.h" />
+    <ClInclude Include="Shader\GeometryPassShader.h" />
+    <ClInclude Include="Shader\hdrShader.h" />
+    <ClInclude Include="Shader\nullShader.h" />
+    <ClInclude Include="Shader\PointLightShader.h" />
+    <ClInclude Include="Shader\ShaderProgram.h" />
+    <ClInclude Include="Shader\ShadowShader.h" />
+    <ClInclude Include="Shader\SimpleShader.h" />
+    <ClInclude Include="Shader\skyBoxShader.h" />
+    <ClInclude Include="Shader\SSAOBlurShader.h" />
+    <ClInclude Include="Shader\SSAOShader.h" />
+    <ClInclude Include="ShadowMapFBO.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="ssaobuffer.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="system_common.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureData.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="TransformSystem.h" />
+    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\dirLightShader.fs" />
+    <None Include="Shader\dirLightShader.vs" />
+    <None Include="Shader\forwardShader.fs" />
+    <None Include="Shader\forwardShader.vs" />
+    <None Include="Shader\gaussianBlurShader.fs" />
+    <None Include="Shader\gaussianBlurShader.vs" />
+    <None Include="Shader\gPassShader.fs" />
+    <None Include="Shader\gPassShader.vs" />
+    <None Include="Shader\hdrShader.fs" />
+    <None Include="Shader\hdrShader.vs" />
+    <None Include="Shader\nullShader.fs" />
+    <None Include="Shader\nullShader.vs" />
+    <None Include="Shader\pointLightShader.fs" />
+    <None Include="Shader\pointLightShader.vs" />
+    <None Include="Shader\shader.fs" />
+    <None Include="Shader\shader.vs" />
+    <None Include="Shader\shadowShader.fs" />
+    <None Include="Shader\shadowShader.vs" />
+    <None Include="Shader\skyBoxShader.fs" />
+    <None Include="Shader\skyBoxShader.vs" />
+    <None Include="Shader\ssaoBlur.fs" />
+    <None Include="Shader\ssaoBlur.vs" />
+    <None Include="Shader\ssaoShader.fs" />
+    <None Include="Shader\ssaoShader.vs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

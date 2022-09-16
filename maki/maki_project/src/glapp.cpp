@@ -16,6 +16,7 @@ to OpenGL implementations.
 #include <../include/glhelper.h>
 #include <array> //for std::array
 #include <iostream> //for std::cout
+#include "common_headers.h"
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */

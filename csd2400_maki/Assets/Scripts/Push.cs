@@ -5,72 +5,77 @@ using UnityEngine.Tilemaps;
 
 public class Push : MonoBehaviour
 {
-    private Vector2 pushableObjectsCurrentPoint;
-
-    private string playerEnterPoint = "";
+    //private string playerEnterPoint = "";
 
     [SerializeField]
     private Tilemap groundTilemap; //get the groud Tilemap
     [SerializeField]
     private Tilemap wallTilemap; //get the wall Tilemap
 
-    public static bool hitWall;
+    private GameObject[] objectToPush;
 
     // Start is called before the first frame update
     void Start()
     {
-        //objectToPush = GameObject.FindGameObjectsWithTag("PushableObjects"); //Find all the gameobjects with that tag
-
-        pushableObjectsCurrentPoint = transform.position;
-        Debug.Log(pushableObjectsCurrentPoint);
-    
-        //Get player current point. [How to get?] (Done.)
-        //If player current point = PushableObject point (Done.)
-        //Move PushableObject point +/- up down left right depending on player current point [How to use Move only 1 block...]
-        //So if Player current point is (1,0), PushableObject point is (0,0), Means player is on the right.
-        //Player move into (0,0), Move PushableObject point to (-1,0).
-
-        //if hit wall, Use CanMove(Vector2 direction)? Since CanMove() have the if statement to check if there's a wall infront a not...
+        objectToPush = GameObject.FindGameObjectsWithTag("PushableObjects"); //Find all the gameobjects with that tag
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    /* {
+ if (playerEnterPoint == "up")
+           {        
+                   Vector2 up= new Vector2(0,1);
+                   Debug.Log(up);
+                   Move(up);
+                   playerEnterPoint = " ";
+           }
 
-        if (playerEnterPoint == "up")
-        {        
-                Vector2 up= new Vector2(0,1);
-                Debug.Log(up);
-                Move(up);
-                playerEnterPoint = " ";
-        }
 
-       
-    }
-    public void AssignPush()
+       }
+       public void AssignPush()
+       {
+           Debug.Log("test");
+           playerEnterPoint = "up";
+       }*/
+
+    public bool Move(Vector2 direction)
     {
-        Debug.Log("test");
-        playerEnterPoint = "up";
-    }
-    private void Move(Vector2 direction)
-    {
-        if (CanMove(direction)) //move if CanMove == true
+        if (CannnotMove(transform.position, direction)) //move if CanMove == true
         {
-            transform.position += (Vector3)direction;
+            return true;
+        }
+        else
+        {
+            transform.Translate(direction);
+            return false;
         }
     }
 
-    private bool CanMove(Vector2 direction) //direction values is Move function. 
+    private bool CannnotMove(Vector3 position, Vector2 direction) //Yes is reverse. Headache figuring out from youtube. :D
     {
+        Vector2 newpos = new Vector2(position.x, position.y) + direction;
+
+        foreach (var pushableObjects in objectToPush)
+        {
+            if (pushableObjects.transform.position.x == newpos.x && pushableObjects.transform.position.y == newpos.y)
+            {
+                return true;
+            }
+        }
+
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction); //get the grid Position
         if (!groundTilemap.HasTile(gridPosition) || wallTilemap.HasTile(gridPosition)) //check if THERE IS NO tile on ground TM or THERE IS a tile on wall TM.
         {
-            hitWall = true;
-            return false; //STOP RIGHT THERE!
+            return true; //STOP RIGHT THERE!
         }
-        else { hitWall = false; return true; } //Go ahead. Move.
+        else 
+        { 
+            return false; //Pushable object(s) may move.
+        }
     }
-    public void restrictPlayer()
+
+    private void Update()
     {
 
     }

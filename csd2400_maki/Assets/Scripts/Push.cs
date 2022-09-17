@@ -6,21 +6,24 @@ using UnityEngine.Tilemaps;
 public class Push : MonoBehaviour
 {
     private Vector2 pushableObjectsCurrentPoint;
-    private GameObject[] objectToPush;
+
+    private string playerEnterPoint = "";
 
     [SerializeField]
     private Tilemap groundTilemap; //get the groud Tilemap
     [SerializeField]
     private Tilemap wallTilemap; //get the wall Tilemap
 
+    public static bool hitWall;
+
     // Start is called before the first frame update
     void Start()
     {
-        objectToPush = GameObject.FindGameObjectsWithTag("PushableObjects"); //Find all the gameobjects with that tag
+        //objectToPush = GameObject.FindGameObjectsWithTag("PushableObjects"); //Find all the gameobjects with that tag
 
         pushableObjectsCurrentPoint = transform.position;
         Debug.Log(pushableObjectsCurrentPoint);
-
+    
         //Get player current point. [How to get?] (Done.)
         //If player current point = PushableObject point (Done.)
         //Move PushableObject point +/- up down left right depending on player current point [How to use Move only 1 block...]
@@ -33,12 +36,22 @@ public class Push : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerController.playerCurrentPoint == pushableObjectsCurrentPoint)
-        {
-            Move(pushableObjectsCurrentPoint);
-        }
-    }
 
+        if (playerEnterPoint == "up")
+        {        
+                Vector2 up= new Vector2(0,1);
+                Debug.Log(up);
+                Move(up);
+                playerEnterPoint = " ";
+        }
+
+       
+    }
+    public void AssignPush()
+    {
+        Debug.Log("test");
+        playerEnterPoint = "up";
+    }
     private void Move(Vector2 direction)
     {
         if (CanMove(direction)) //move if CanMove == true
@@ -52,8 +65,13 @@ public class Push : MonoBehaviour
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction); //get the grid Position
         if (!groundTilemap.HasTile(gridPosition) || wallTilemap.HasTile(gridPosition)) //check if THERE IS NO tile on ground TM or THERE IS a tile on wall TM.
         {
+            hitWall = true;
             return false; //STOP RIGHT THERE!
         }
-        else { return true; } //Go ahead. Move.
+        else { hitWall = false; return true; } //Go ahead. Move.
+    }
+    public void restrictPlayer()
+    {
+
     }
 }

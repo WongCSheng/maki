@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PushableObjects
+  - Walls
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ pointers to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glhelper.h>
+#include <../../include/glhelper.h>
 #include <iostream>
 
 /*                                                   objects with file scope

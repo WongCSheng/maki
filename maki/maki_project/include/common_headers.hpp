@@ -9,6 +9,7 @@ file so that in all files you will only need to
 
 #include <iostream>
 
+
 //c++ std
 #include <algorithm>
 #include <cstdlib>
@@ -52,6 +53,10 @@ file so that in all files you will only need to
 //graphics
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <../../include/glslshader.h>
+#include <../../include/glapp.h>
+#include <../../include/glhelper.h>
+
 
 //imgui
 #include <../imgui/imgui_impl_opengl3.h>

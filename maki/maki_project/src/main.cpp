@@ -1,4 +1,4 @@
-#include <../include/common_headers.hpp>
+#include <../../include/common_headers.hpp>
 
 //GLFWwindow * window;
 //int main()
@@ -34,8 +34,7 @@
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
-#include <../include/glhelper.h>
-#include <../include/glapp.h>
+#include <../../include/common_headers.hpp>
 #include <iostream>
 
 /*                                                   type declarations

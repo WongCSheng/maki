@@ -12,8 +12,8 @@ to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glapp.h>
-#include <../include/glhelper.h>
+#include <../../include/glapp.h>
+#include <../../include/glhelper.h>
 #include <array> //for std::array
 #include <iostream> //for std::cout
 

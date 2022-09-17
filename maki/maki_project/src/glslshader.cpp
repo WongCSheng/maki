@@ -12,7 +12,7 @@ This file contains definitions of member functions of class GLShader.
 Please see the class declaration for information about these functions.
 
 *//*__________________________________________________________________________*/
-#include <../include/glslshader.h>
+#include <../../include/glslshader.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>

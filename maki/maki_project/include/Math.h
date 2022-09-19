@@ -28,13 +28,6 @@ inline T_ min(const T_& l, const T_& r)
 	return(l < r ? l : r);
 }
 
-//finding the min between 2 elements
-template<typename T_>
-inline T_ min(const T_& l, const T_& r)
-{
-	return(l < r ? l : r);
-}
-
 //finding the max between 2 elements
 template<typename T_>
 inline T_ max(const T_& l, const T_& r)
@@ -52,5 +45,21 @@ inline float deg2rad(float d)
 inline float rad2deg(float r)
 {
 	return (r * RAD_TO_DEG);
+}
+
+//initialize a random number using srand() and time()
+/*The pseudo-random number generator should not be seeded every time we generate a new set of numbers i.e. it should be seeded only once at the beginning of the program, before any calls of rand().
+It is preferred to use the result of a call to time(0) as the seed. The time() function returns the number of seconds since 00:00 hours, Jan 1, 1970 UTC (i.e. the current unix timestamp).
+
+As a result, the value of seed changes with time. So every time we run the program, a new set of random numbers is generated.*/
+inline void rand_generator()
+{
+	srand(static_cast<float>(time(NULL)));
+}
+
+//random int
+inline unsigned IntRand()
+{
+	return rand();
 }
 #endif // !MATH_H_

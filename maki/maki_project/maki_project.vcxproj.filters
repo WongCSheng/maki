@@ -12,6 +12,8 @@
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Matrix.cpp" />
+    <ClCompile Include="C:\Users\Rui\Downloads\Telegram Desktop\3Dframework\Common\Matrix4f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -27,9 +29,9 @@
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
-    <ClInclude Include="src\lib\Matrix.h" />
-    <ClInclude Include="src\lib\Headers.h" />
-    <ClInclude Include="src\lib\Vector.h" />
-    <ClInclude Include="src\lib\Math.h" />
+    <ClInclude Include="include\Matrix.h" />
+    <ClInclude Include="include\Headers.h" />
+    <ClInclude Include="include\Vector.h" />
+    <ClInclude Include="include\Math.h" />
   </ItemGroup>
 </Project>

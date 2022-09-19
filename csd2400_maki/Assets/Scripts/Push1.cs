@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Push1 : MonoBehaviour
-{  //private string playerEnterPoint = "";
+{  
+    private string playerEnterPoint = "";
 
     [SerializeField]
     private Tilemap groundTilemap; //get the groud Tilemap

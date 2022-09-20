@@ -37,6 +37,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextSerializer.h">
@@ -84,6 +85,11 @@
     <ClInclude Include="include\common_headers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\collision.h" />
+    <ClInclude Include="include\Headers.h" />
+    <ClInclude Include="include\Math.h" />
+    <ClInclude Include="include\Matrix.h" />
+    <ClInclude Include="include\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

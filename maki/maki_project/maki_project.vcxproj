@@ -113,6 +113,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="TextSerializer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -125,10 +126,15 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="..\lib\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
+    <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\common_headers.hpp" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
+    <ClInclude Include="include\Headers.h" />
+    <ClInclude Include="include\Math.h" />
+    <ClInclude Include="include\Matrix.h" />
+    <ClInclude Include="include\Vector.h" />
     <ClInclude Include="Serializer.h" />
     <ClInclude Include="TextSerializer.h" />
   </ItemGroup>

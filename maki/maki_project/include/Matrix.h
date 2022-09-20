@@ -31,14 +31,15 @@ class gfxMatrix3
 
 		// set to identity matrix
 		void setIdentity();
+		void swap(float& x, float& y);
 		// flip matrix
 		void Transpose();
 		// set all elements to 0
 		void setZero();
 
-		void getTranspose() const;
+		gfxMatrix3 getTranspose() const;
 
-		void getInverse() const;
+		gfxMatrix3 getInverse() const;
 		
 		//rotate by a certain degree in x/y direction
 		void SetRotation(float degree, float x_Axis, float y_Axis);

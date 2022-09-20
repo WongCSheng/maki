@@ -37,12 +37,12 @@ class gfxMatrix3
 		// set all elements to 0
 		void setZero();
 
-		gfxMatrix3 getTranspose() const;
+		gfxMatrix3 getTranspose(gfxMatrix3 m) const;
 
-		gfxMatrix3 getInverse() const;
+		gfxMatrix3 getInverse() const throw (ZeroDivision);
 		
 		//rotate by a certain degree in x/y direction
-		void SetRotation(float degree, float x_Axis, float y_Axis);
+		void SetRotation(float degree, float x_Axis, float y_Axis) throw (ZeroDivision);
 		//scaling by x/y
 		void SetScale(float sx, float sy);
 		//translate by x/y

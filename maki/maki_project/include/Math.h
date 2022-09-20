@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 @file    Math.h
 @author	 Louis Wang
 
@@ -18,6 +18,7 @@ Maths functions like min max, special value like PI and deg->rad conversions
 const float PI				= 4.0f * std::atan(1.0f);
 const float DEG_TO_RAD		= PI / 180.0f;
 const float RAD_TO_DEG		= 180.0f / PI;
+const float EPSILON			= 0.00000001f; // ϵ for error checking
 
 /*                                                                  functions
 ----------------------------------------------------------------------------- */
@@ -62,4 +63,14 @@ inline unsigned IntRand()
 {
 	return rand();
 }
+
+//additional class for integers dividing by 0
+class ZeroDivision : public std::exception
+{
+public:
+	const char* what()
+	{
+		return "Divide by zero!";
+	}
+};
 #endif // !MATH_H_

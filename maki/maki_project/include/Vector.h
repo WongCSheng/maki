@@ -21,12 +21,8 @@ class gfxVector2
 	public:
 		//constructors & destructors
 		gfxVector2(): x(),y() {};
-		gfxVector2(float arr[2], float x, float y) : x(x), y(y)
+		gfxVector2(float x, float y) : x(x), y(y)
 		{
-			for (int i = 0; i < 2; i++)
-			{
-				mVec[i] = arr[i];
-			}
 		};
 		gfxVector2(const gfxVector2& v) : x(v.x), y(v.y) {};
 		~gfxVector2() { delete[] mVec; };

@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "../include/common_headers.hpp"
 
 Input* Input::instance = 0;
 

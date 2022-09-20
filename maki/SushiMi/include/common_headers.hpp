@@ -59,5 +59,10 @@ file so that in all files you will only need to
 #include <../imgui/imgui_impl_glfw.h>
 
 //Serializer
-#include "../Serializer.h"
-#include "../TextSerializer.h"
+#include "Serializer.h"
+#include "TextSerializer.h"
+
+
+//Input 
+#include "Keys.h"
+#include "Input.h"

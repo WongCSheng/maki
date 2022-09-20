@@ -22,8 +22,9 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{99d36df3-5614-440a-ba5f-d705fcb81386}</ProjectGuid>
-    <RootNamespace>makiproject</RootNamespace>
+    <RootNamespace>SushiMi</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SushiMi</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -194,12 +195,12 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="Input.cpp" />
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="TextSerializer.cpp" />
+    <ClCompile Include="src\TextSerializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -215,10 +216,10 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Keys.h" />
-    <ClInclude Include="Serializer.h" />
-    <ClInclude Include="TextSerializer.h" />
+    <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Keys.h" />
+    <ClInclude Include="include\Serializer.h" />
+    <ClInclude Include="include\TextSerializer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

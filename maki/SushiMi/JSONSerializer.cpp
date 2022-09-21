@@ -1,0 +1,10 @@
+#pragma once
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/reader.h>
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <fstream>
+#include <filesystem>

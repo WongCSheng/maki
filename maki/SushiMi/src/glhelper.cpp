@@ -52,6 +52,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
   GLHelper::height = h;
   GLHelper::title = t;
 
+
   // Part 1
   if (!glfwInit()) {
     std::cout << "GLFW init has failed - abort program!!!" << std::endl;
@@ -238,7 +239,7 @@ relative to the top-left corner of the window client area.
 */
 void GLHelper::mousepos_cb(GLFWwindow *pwin, double xpos, double ypos) {
 #ifdef _DEBUG
-  std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
+  //std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
 #endif
 }
 

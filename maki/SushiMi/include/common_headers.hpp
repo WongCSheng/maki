@@ -49,14 +49,18 @@ file so that in all files you will only need to
 #include <complex>
 #include <iterator>
 
-//graphics
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 //imgui
 #include <../imgui/imgui_impl_opengl3.h>
 #include <../imgui/imgui.h>
 #include <../imgui/imgui_impl_glfw.h>
+
+//graphics
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <../include/glhelper.h>
+#include <../include/glapp.h>
+
+
 
 //Serializer
 #include "Serializer.h"

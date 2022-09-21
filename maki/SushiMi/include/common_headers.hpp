@@ -65,18 +65,22 @@ file so that in all files you will only need to
 //Serializer
 #include <any>
 
-#include <rapidjson/document.h>
-#include <rapidjson/istreamwrapper.h>
-#include <rapidjson/filereadstream.h>
-#include <rapidjson/reader.h>
-#include <rapidjson/prettywriter.h>
-#include <rapidjson/writer.h>
+#include <rapidjson.h>
+#include <istreamwrapper.h>
+#include <filereadstream.h>
+#include <reader.h>
+#include <prettywriter.h>
+#include <writer.h>
+#include <stringbuffer.h>
+#include <document.h>
 
-#include <rttr/type.h>
-#include <rttr/type>
-#include <rttr/property.h>
-#include <rttr/variant.h>
-#include <rttr/registration>
+
+#include <type.h>
+#include <property.h>
+#include <variant_impl.h>
+#include <variant.h>
+#include <registration.h>
+#include <version.h>
 
 #include <fstream>
 #include <filesystem>

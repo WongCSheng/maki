@@ -214,8 +214,8 @@ rapidjson::Value CreateObjectFunction(rapidjson::Document& doc)
 	std::string nam = "some random text 123";
 	std::string dat = "some random text 456";
 
-	name.SetString(nam.c_str(), nam.size(), doc.GetAllocator());
-	data.SetString(dat.c_str(), dat.size(), doc.GetAllocator());
+	name.SetString(nam.c_str(), (rapidjson::SizeType)nam.size(), doc.GetAllocator());
+	data.SetString(dat.c_str(), (rapidjson::SizeType)dat.size(), doc.GetAllocator());
 
 	object.AddMember(name, data, doc.GetAllocator());
 	return object;

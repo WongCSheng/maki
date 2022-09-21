@@ -53,22 +53,15 @@ file so that in all files you will only need to
 //graphics
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <../../include/glslshader.h>
-#include <../../include/glapp.h>
-#include <../../include/glhelper.h>
+#include "../include/glslshader.h"
+#include "../include/glapp.h"
+#include "../include/glhelper.h"
 
 
 //imgui
-#include <../imgui/imgui_impl_opengl3.h>
-#include <../imgui/imgui.h>
-#include <../imgui/imgui_impl_glfw.h>
-
-//graphics
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <../include/glhelper.h>
-#include <../include/glapp.h>
-
+#include "../../lib/imgui/imgui_impl_opengl3.h"
+#include "../../lib/imgui/imgui.h"
+#include "../../lib/imgui/imgui_impl_glfw.h"
 
 
 //Serializer

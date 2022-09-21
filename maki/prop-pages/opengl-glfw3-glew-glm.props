@@ -12,7 +12,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y
-copy "$(SolutionDir)lib\glew\glew32.dll" "$(TargetDir)" /Y</Command>
+;copy "$(SolutionDir)lib\glew\glew32.dll" "$(TargetDir)" /Y</Command>
     </PostBuildEvent>
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>

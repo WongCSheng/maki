@@ -1,5 +1,5 @@
 #pragma once
-#include <../../include/common_headers.hpp>
+#include "../include/common_headers.hpp"
 
 //
 //void WriteToFile(rapidjson::Document& doc, const std::filesystem::path& p)

@@ -63,7 +63,25 @@ file so that in all files you will only need to
 
 
 //Serializer
-#include "JSONSerializer.h"
+#include <any>
+
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/reader.h>
+#include <rapidjson/prettywriter.h>
+#include <rapidjson/writer.h>
+
+#include <rttr/type.h>
+#include <rttr/type>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration>
+
+#include <fstream>
+#include <filesystem>
+#include <iostream>
+
 #include "RTTR.h"
 
 

@@ -22,9 +22,6 @@
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TextSerializer.cpp">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClCompile>
     <ClCompile Include="src\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
@@ -40,11 +37,11 @@
     <ClCompile Include="src\main.cpp">
       <Filter>GameEngine\Main and Common Headers</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Library\src</Filter>
+    <ClCompile Include="src\JSONSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
-    <ClCompile Include="shaderprogram.cpp">
-      <Filter>GameEngine\Graphics</Filter>
+    <ClCompile Include="src\RTTR.cpp">
+      <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,12 +75,6 @@
     <ClInclude Include="include\Input.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\Serializer.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TextSerializer.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
     <ClInclude Include="include\Keys.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
@@ -99,20 +90,11 @@
     <ClInclude Include="include\common_headers.hpp">
       <Filter>GameEngine\Main and Common Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Headers.h">
-      <Filter>Library\Include</Filter>
+    <ClInclude Include="include\JSONSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Library\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Library\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Library\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="shaderprogram.h">
-      <Filter>GameEngine\Graphics</Filter>
+    <ClInclude Include="include\RTTR.h">
+      <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -136,15 +118,6 @@
     </Filter>
     <Filter Include="GameEngine\Main and Common Headers">
       <UniqueIdentifier>{3b111c6a-1c82-4cc4-9196-ce3aaf5f1873}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library">
-      <UniqueIdentifier>{462e49b3-883d-413c-ba6d-909044d2b38f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\Include">
-      <UniqueIdentifier>{dbf8430c-6fbb-4c6f-9cae-f3641d4fb759}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\src">
-      <UniqueIdentifier>{418c2913-497c-46de-8384-b1955ec0bb26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -22,9 +22,6 @@
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TextSerializer.cpp">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClCompile>
     <ClCompile Include="src\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
@@ -39,6 +36,12 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>GameEngine\Main and Common Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JSONSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RTTR.cpp">
+      <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,12 +75,6 @@
     <ClInclude Include="include\Input.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\Serializer.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TextSerializer.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
     <ClInclude Include="include\Keys.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
@@ -92,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="include\common_headers.hpp">
       <Filter>GameEngine\Main and Common Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JSONSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RTTR.h">
+      <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

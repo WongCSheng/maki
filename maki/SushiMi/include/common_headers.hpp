@@ -2,7 +2,7 @@
 * 
 * \brief: add all header files in this common header 
 file so that in all files you will only need to 
-"#include "common_headers.hpp"
+#include <../../include/common_headers.hpp>
 * 
 *********************************/
 #pragma once
@@ -64,8 +64,23 @@ file so that in all files you will only need to
 #include <../imgui/imgui_impl_glfw.h>
 
 //Serializer
-#include "Serializer.h"
-#include "TextSerializer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/reader.h>
+#include <rapidjson/prettywriter.h>
+#include <rapidjson/writer.h>
+#include <rttr/type.h>
+#include <rttr/type>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration>
+#include <fstream>
+#include <filesystem>
+#include <iostream>
+
+#include "RTTR.h"
+#include "JSONSerializer.h"
 
 
 //Input 

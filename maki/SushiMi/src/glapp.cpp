@@ -44,7 +44,7 @@ void GLApp::draw() {
 
 	//glDrawElements(GL_TRIANGLES, 1, 1, nullptr);
 
-	glfwSwapBuffers(GLHelper::ptr_window);
+	//glfwSwapBuffers(GLHelper::ptr_window);
 }
 
 void GLApp::cleanup() {

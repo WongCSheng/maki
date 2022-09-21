@@ -63,6 +63,14 @@ file so that in all files you will only need to
 #include <../imgui/imgui.h>
 #include <../imgui/imgui_impl_glfw.h>
 
+//graphics
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <../include/glhelper.h>
+#include <../include/glapp.h>
+
+
+
 //Serializer
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>

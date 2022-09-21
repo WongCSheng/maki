@@ -1,28 +1,27 @@
 #pragma once
-
 #include <../../include/common_headers.hpp>
 #include "../../include/JSONSerializer.h"
-//
-////another function
-//rapidjson::Value CreateObjectFunction(rapidjson::Document& doc)
-//{
-//	rapidjson::Value object(rapidjson::kObjectType);
-//
-//	rapidjson::Value name;
-//	rapidjson::Value data;
-//
-//	std::string nam = "some random text 123";
-//	std::string dat = "some random text 456";
-//
-//	name.SetString(nam.c_str(), nam.size(), doc.GetAllocator());
-//	data.SetString(dat.c_str(), dat.size(), doc.GetAllocator());
-//
-//	object.AddMember(name, data, doc.GetAllocator());
-//	return object;
-//
-//}
-//
-//rapidjson::Value Serialize(DemoClass& object, rapidjson::Document& doc)
+
+class Serializer
+{
+	//fundamental types
+	virtual void ReadFloat(float&) = 0;
+	virtual void ReadInt(int&) = 0;
+	//virtual void ReadString(string&) = 0;
+
+};
+
+//reading int
+template <typename gameObj>
+rapidjson::Value ReadMember(gameObj object, const char* intValName) {
+	//declare rapidjson value
+	rapidjson::Value DemoObjectValue(rapidjson::kObjectType);
+	rttr::type type = object.get_type();
+	rttr:variant intValue = type.get_property(intValName).get_value(object);
+
+
+}
+//(gameObj object, const char* memberName)
 //{
 //	//0. declare your rapidjson value
 //	rapidjson::Value DemoObjectValue(rapidjson::kObjectType);
@@ -30,7 +29,6 @@
 //	rttr::type type = object.get_type();
 //
 //	//1. Get all the data of the object
-//
 //	rttr::variant health_value = type.get_property("Health").get_value(object);
 //	rttr::variant damage_value = type.get_property("Damage").get_value(object);
 //	rttr::variant position_value = type.get_property("Position").get_value(object);
@@ -47,69 +45,25 @@
 //	vec3 avalue = position_value.get_value<vec3>();
 //	arr.PushBack(avalue.x, doc.GetAllocator());
 //	arr.PushBack(avalue.y, doc.GetAllocator());
-////	arr.PushBack(avalue.z, doc.GetAllocator());
-////
-////	DemoObjectValue.AddMember("Position", arr, doc.GetAllocator());
-////
-////
-////
-////
-////	return DemoObjectValue;
-////}
+//	arr.PushBack(avalue.z, doc.GetAllocator());
+//
+//	DemoObjectValue.AddMember("Position", arr, doc.GetAllocator());
+//
+//
+//
+//
+//	return DemoObjectValue;
+//}
 
-//another function
-rapidjson::Value CreateObjectFunction(rapidjson::Document& doc)
-{
-	rapidjson::Value object(rapidjson::kObjectType);
-
-	rapidjson::Value name;
-	rapidjson::Value data;
-
-	std::string nam = "some random text 123";
-	std::string dat = "some random text 456";
-
-	name.SetString(nam.c_str(), nam.size(), doc.GetAllocator());
-	data.SetString(dat.c_str(), dat.size(), doc.GetAllocator());
-
-	object.AddMember(name, data, doc.GetAllocator());
-	return object;
-
-}
-
-template<class gameObj> //taking in a gameObject to serialize
-rapidjson::Value Serialize(gameObj object, rapidjson::Document& doc)
-{
-	//0. declare your rapidjson value
-	rapidjson::Value DemoObjectValue(rapidjson::kObjectType);
-
-	rttr::type type = object.get_type();
-
-	//1. Get all the data of the object
-	rttr::variant health_value = type.get_property("Health").get_value(object);
-	rttr::variant damage_value = type.get_property("Damage").get_value(object);
-	rttr::variant position_value = type.get_property("Position").get_value(object);
-
-	//shld check if isvalid, if doing dynamically
+//void GameObject::Serialize(ISerializer& stream)
+//{
+//	StreamRead(stream, HP);
+//	StreamRead(stream, Speed);
+//	StreamRead(stream, Armor);
+//	StreamRead(stream, SpriteFile);
+//};
 
 
-
-	//2. write them into the document
-	DemoObjectValue.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
-	DemoObjectValue.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
-
-	rapidjson::Value arr(rapidjson::kArrayType);
-	vec3 avalue = position_value.get_value<vec3>();
-	arr.PushBack(avalue.x, doc.GetAllocator());
-	arr.PushBack(avalue.y, doc.GetAllocator());
-	arr.PushBack(avalue.z, doc.GetAllocator());
-
-	DemoObjectValue.AddMember("Position", arr, doc.GetAllocator());
-
-
-
-
-	return DemoObjectValue;
-}
 ////
 ////void notmain()
 ////{
@@ -194,3 +148,76 @@ rapidjson::Value Serialize(gameObj object, rapidjson::Document& doc)
 //  std::cout << "Demo Position y: " << newDemoClass.GetPosition().y << std::endl;
 //  std::cout << "Demo Position z: " << newDemoClass.GetPosition().z << std::endl;
 //}
+//
+////another function
+//rapidjson::Value CreateObjectFunction(rapidjson::Document& doc)
+//{
+//	rapidjson::Value object(rapidjson::kObjectType);
+//
+//	rapidjson::Value name;
+//	rapidjson::Value data;
+//
+//	std::string nam = "some random text 123";
+//	std::string dat = "some random text 456";
+//
+//	name.SetString(nam.c_str(), nam.size(), doc.GetAllocator());
+//	data.SetString(dat.c_str(), dat.size(), doc.GetAllocator());
+//
+//	object.AddMember(name, data, doc.GetAllocator());
+//	return object;
+//
+//}
+//
+//rapidjson::Value Serialize(DemoClass& object, rapidjson::Document& doc)
+//{
+//	//0. declare your rapidjson value
+//	rapidjson::Value DemoObjectValue(rapidjson::kObjectType);
+//
+//	rttr::type type = object.get_type();
+//
+//	//1. Get all the data of the object
+//
+//	rttr::variant health_value = type.get_property("Health").get_value(object);
+//	rttr::variant damage_value = type.get_property("Damage").get_value(object);
+//	rttr::variant position_value = type.get_property("Position").get_value(object);
+//
+//	//shld check if isvalid, if doing dynamically
+//
+//
+//
+//	//2. write them into the document
+//	DemoObjectValue.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
+//	DemoObjectValue.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
+//
+//	rapidjson::Value arr(rapidjson::kArrayType);
+//	vec3 avalue = position_value.get_value<vec3>();
+//	arr.PushBack(avalue.x, doc.GetAllocator());
+//	arr.PushBack(avalue.y, doc.GetAllocator());
+////	arr.PushBack(avalue.z, doc.GetAllocator());
+////
+////	DemoObjectValue.AddMember("Position", arr, doc.GetAllocator());
+////
+////
+////
+////
+////	return DemoObjectValue;
+////}
+
+//another function
+rapidjson::Value CreateObjectFunction(rapidjson::Document& doc)
+{
+	rapidjson::Value object(rapidjson::kObjectType);
+
+	rapidjson::Value name;
+	rapidjson::Value data;
+
+	std::string nam = "some random text 123";
+	std::string dat = "some random text 456";
+
+	name.SetString(nam.c_str(), nam.size(), doc.GetAllocator());
+	data.SetString(dat.c_str(), dat.size(), doc.GetAllocator());
+
+	object.AddMember(name, data, doc.GetAllocator());
+	return object;
+
+}

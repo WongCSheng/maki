@@ -80,8 +80,8 @@ file so that in all files you will only need to
 
 #include <filesystem>
 #include <fstream>
-#include "RTTR.h"
-#include "JSONSerializer.h"
+//#include "RTTR.h"
+//#include "JSONSerializer.h"
 
 #include <iostream>
 //need to include your rttr file

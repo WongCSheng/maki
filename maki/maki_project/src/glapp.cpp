@@ -13,10 +13,10 @@ to OpenGL implementations.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <../include/glapp.h>
-#include <../include/glhelper.h>
+#include <../graphics/GLHelper.h>
 #include <array> //for std::array
 #include <iostream> //for std::cout
-#include "common_headers.h"
+#include "../include/common_headers.hpp"
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */

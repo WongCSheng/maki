@@ -9,6 +9,7 @@ Has all the headers in one place
 #define HEADERS_H_
 
 #include <cmath> //for all calculations
+#include <algorithm>
 #include <fstream> //for printing out
 #include <limits>
 #include <numeric>

@@ -55,7 +55,7 @@ It is preferred to use the result of a call to time(0) as the seed. The time() f
 As a result, the value of seed changes with time. So every time we run the program, a new set of random numbers is generated.*/
 inline void rand_generator()
 {
-	srand(static_cast<float>(time(NULL)));
+	srand(static_cast<unsigned int>(time(NULL)));
 }
 
 //random int

@@ -95,7 +95,7 @@ gfxMatrix3 gfxMatrix3::getTranspose(gfxMatrix3 m) const
 |								|
 | a[2]		a[5]		a[8]	|
 */
-gfxMatrix3 gfxMatrix3::getInverse() const throw(ZeroDivision)
+gfxMatrix3 gfxMatrix3::getInverse() const
 {
 	gfxMatrix3 inv_matx(*this);
 	//find determinant aqz + brz + cpy - ary - bpz - cqx
@@ -134,24 +134,27 @@ gfxMatrix3 gfxMatrix3::getInverse() const throw(ZeroDivision)
 	
 }
 /*
-| cosO		-sinO		a[6]	|
+| cosO		-sinO		0		|
 |								|
-| sinO		cosO		a[7]	|
+| sinO		cosO		0		|
 |								|
-| a[2]		a[5]		1		|
+| 0			0			1		|
 */
-void gfxMatrix3::SetRotation(float degree, float x_Axis, float y_Axis) throw (ZeroDivision)
+void gfxMatrix3::SetRotation(float degree, float x_Axis, float y_Axis)
 {
-	float magnitude = sqrt(x_Axis * x_Axis + y_Axis * y_Axis);
-	if (abs(magnitude) < EPSILON)
-	{
-		throw ZeroDivision();
-	}
-	float x = x_Axis / magnitude;
-	float y = y_Axis / magnitude;
-	float c = cos(degree * PI / 180);
-	float s = sin(degree * PI / 180);
+	float rad = deg2rad(degree);
+	gfxMatrix3 rot_mat;
+	rot_mat.a[0] = cosf(rad) * x_Axis;
+	rot_mat.a[1] = sinf(rad) * x_Axis;
+	rot_mat.a[2] = 0;
+	rot_mat.a[3] = -sinf(rad) * y_Axis;
+	rot_mat.a[4] = cosf(rad) * y_Axis;
+	rot_mat.a[5] = 0;
+	rot_mat.a[6] = 0;
+	rot_mat.a[7] = 0;
+	rot_mat.a[8] = 1;
 
+	
 }
 
 //set matrix to scaling matrix

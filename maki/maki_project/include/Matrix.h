@@ -14,6 +14,7 @@ Matrix header file for all matrix calculations
 #include "Vector.h"
 #include "Math.h"
 #include "Headers.h"
+#include <glm/glm/fwd.hpp>
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */
@@ -39,10 +40,10 @@ class gfxMatrix3
 
 		gfxMatrix3 getTranspose(gfxMatrix3 m) const;
 
-		gfxMatrix3 getInverse() const throw (ZeroDivision);
+		gfxMatrix3 getInverse() const;
 		
 		//rotate by a certain degree in x/y direction
-		void SetRotation(float degree, float x_Axis, float y_Axis) throw (ZeroDivision);
+		void SetRotation(float degree, float x_Axis, float y_Axis);
 		//scaling by x/y
 		void SetScale(float sx, float sy);
 		//translate by x/y

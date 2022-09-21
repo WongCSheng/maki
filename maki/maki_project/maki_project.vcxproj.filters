@@ -7,9 +7,6 @@
     <ClCompile Include="src\glapp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glhelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\glslshader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,6 +35,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Matrix.cpp" />
+    <ClCompile Include="graphics\GLHelper.cpp" />
+    <ClCompile Include="graphics\shader\ShaderProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextSerializer.h">
@@ -47,9 +46,6 @@
       <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="include\glapp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\glhelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -90,6 +86,8 @@
     <ClInclude Include="include\Math.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Vector.h" />
+    <ClInclude Include="graphics\GLHelper.h" />
+    <ClInclude Include="graphics\shader\ShaderProgram.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

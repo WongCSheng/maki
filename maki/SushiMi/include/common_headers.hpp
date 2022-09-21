@@ -63,8 +63,8 @@ file so that in all files you will only need to
 
 
 //Serializer
-#include "Serializer.h"
-#include "TextSerializer.h"
+#include "JSONSerializer.h"
+#include "RTTR.h"
 
 
 //Input 

@@ -199,8 +199,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\JSONSerializer.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\TextSerializer.cpp" />
+    <ClCompile Include="src\RTTR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -217,9 +218,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\JSONSerializer.h" />
     <ClInclude Include="include\Keys.h" />
-    <ClInclude Include="include\Serializer.h" />
-    <ClInclude Include="include\TextSerializer.h" />
+    <ClInclude Include="include\RTTR.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />

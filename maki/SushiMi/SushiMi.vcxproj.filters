@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\lib\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>GameEngine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glapp.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glhelper.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glslshader.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>GameEngine\Main and Common Headers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input.h">
+      <Filter>GameEngine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Serializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Keys.h">
+      <Filter>GameEngine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glapp.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glhelper.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glslshader.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common_headers.hpp">
+      <Filter>GameEngine\Main and Common Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{a72a1129-f7b1-40a7-bf6b-47bbd7a44503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Serialization">
+      <UniqueIdentifier>{54eb1265-12da-43aa-8089-3698022cc39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{26bec48c-1935-46a1-9ed0-8731d75e57d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9fd62910-cf68-43f8-aed6-27185e5b2a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Input">
+      <UniqueIdentifier>{94596984-6186-4f86-abbd-7ba02b498ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics">
+      <UniqueIdentifier>{a03d3466-fb2d-450f-a990-9a5851239b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Main and Common Headers">
+      <UniqueIdentifier>{3b111c6a-1c82-4cc4-9196-ce3aaf5f1873}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

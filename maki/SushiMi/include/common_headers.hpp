@@ -64,8 +64,30 @@ file so that in all files you will only need to
 #include <../imgui/imgui_impl_glfw.h>
 
 //Serializer
-//#include "Serializer.h"
-//#include "TextSerializer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/ostreamwrapper.h>
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/prettywriter.h>
+#include <rapidjson/reader.h>
+#include <rapidjson/stringbuffer.h>
+#include <iostream>
+
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+
+#include <filesystem>
+#include <fstream>
+#include "RTTR.h"
+#include "JSONSerializer.h"
+
+#include <iostream>
+//need to include your rttr file
+#include <rttr/registration>
+
+
 
 
 //Input 

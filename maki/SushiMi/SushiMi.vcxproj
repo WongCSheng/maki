@@ -54,13 +54,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\Fmod\lib</LibraryPath>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\rttr</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\Fmod\lib</LibraryPath>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\rttr</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -118,8 +118,9 @@
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\JSONSerializer.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\TextSerializer.cpp" />
+    <ClCompile Include="src\RTTR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -136,9 +137,9 @@
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\JSONSerializer.h" />
     <ClInclude Include="include\Keys.h" />
-    <ClInclude Include="include\Serializer.h" />
-    <ClInclude Include="include\TextSerializer.h" />
+    <ClInclude Include="include\RTTR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

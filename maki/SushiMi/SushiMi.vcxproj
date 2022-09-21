@@ -195,6 +195,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="shaderprogram.cpp" />
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
@@ -212,6 +214,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="..\lib\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
+    <ClInclude Include="Headers.h" />
     <ClInclude Include="include\common_headers.hpp" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
@@ -220,6 +223,10 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Keys.h" />
     <ClInclude Include="include\Serializer.h" />
     <ClInclude Include="include\TextSerializer.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="shaderprogram.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />

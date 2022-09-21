@@ -1,6 +1,6 @@
 #pragma once
-#include <../../include/common_headers.hpp>
-#include "../../include/JSONSerializer.h"
+#include "../include/common_headers.hpp"
+#include "../include/JSONSerializer.h"
 
 class Serializer
 {
@@ -17,7 +17,7 @@ rapidjson::Value ReadMember(gameObj object, const char* intValName) {
 	//declare rapidjson value
 	rapidjson::Value DemoObjectValue(rapidjson::kObjectType);
 	rttr::type type = object.get_type();
-	rttr:variant intValue = type.get_property(intValName).get_value(object);
+	rttr::variant intValue = type.get_property(intValName).get_value(object);
 
 
 }

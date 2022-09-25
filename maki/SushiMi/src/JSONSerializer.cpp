@@ -1,6 +1,6 @@
 #pragma once
-#include <../../include/common_headers.hpp>
-#include "../../include/JSONSerializer.h"
+#include <../include/common_headers.hpp>
+#include "../include/JSONSerializer.h"
 
 void SetDocument() { //set a documennt file that will contain all game objects
 	rapidjson::Document doc;

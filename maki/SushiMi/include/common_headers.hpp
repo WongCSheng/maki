@@ -65,7 +65,7 @@ file so that in all files you will only need to
 #include <../include/glapp.h>
 
 //Meths lib
-#include "../vector3.h"
+#include "vector3.h"
 
 //Serializer
 #include <any>

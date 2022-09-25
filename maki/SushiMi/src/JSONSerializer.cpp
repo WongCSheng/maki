@@ -10,6 +10,7 @@ void SetDocument() { //set a documennt file that will contain all game objects
 //to call before serializing any object or child object
 rapidjson::Value MakeJsonVal() {
 	rapidjson::Value object(rapidjson::kObjectType);
+	return object;
 }
 
 //serialise property name and value, to call for every property in game object
@@ -24,9 +25,9 @@ rapidjson::Value Serialize(
 		//find type
 	rttr::type type = object.get_type();
 		//get data from this member
-	rttr:variant c = type.get_property(propertyName).get_value(object);
+	rttr::variant c = type.get_property(propertyName).get_value(object);
 		//add into json value
-	objInfo.AddMember(propertyName, propertyVal.get_value<type>(), targetFile.GetAllocator());
+	objInfo.AddMember(propertyName, objInfo/*propertyVal.get_value<type>()*/, targetFile.GetAllocator());
 
 	return objInfo; //return the json value after property has been added in
 }

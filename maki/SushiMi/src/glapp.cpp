@@ -62,7 +62,7 @@ void GLApp::init() {
 	// and store repo of models of type GLModel in container GLApp::models,
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container GLApp::objects
-	GLApp::init_scene("../scenes/tutorial-4.scn");
+	GLApp::init_scene("../scenes/myscene.scn");
 
 	//Part 4: Initialize camera
 	GLApp::camera2d.init(GLHelper::ptr_window, &GLApp::objects.at("Camera"));
@@ -137,17 +137,17 @@ void GLApp::init_scene(std::string scene_filename)
 			GLApp::GLModel curr_mdl;
 			if (model_name == "circle")
 			{
-				mesh_path = "../meshes/circle.msh";
+				mesh_path = "../mesh/circle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLE_FAN;
 			}
 			else if (model_name == "square")
 			{
-				mesh_path = "../meshes/square.msh";
+				mesh_path = "../mesh/square.msh";
 				curr_mdl.primitive_type = GL_TRIANGLES;
 			}
 			else if (model_name == "triangle")
 			{
-				mesh_path = "../meshes/triangle.msh";
+				mesh_path = "../mesh/triangle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLES;
 			}
 			curr_mdl = curr_mdl.init(mesh_path);
@@ -291,7 +291,7 @@ GLApp::GLModel GLApp::GLModel::init(std::string mesh_filepath)
 	glVertexArrayElementBuffer(vaoid, ebo_hdl);
 
 	result.vaoid = vaoid;
-	result.draw_cnt = idx_vtx.size();
+	result.draw_cnt = (GLuint)idx_vtx.size();
 	return result;
 }
 
@@ -517,7 +517,7 @@ void GLApp::draw()
 {
 	// write title stuffs similar to sample ...
 	std::stringstream ss;
-	ss << "Tutorial 4 | Wang He Tong Louis | ";
+	ss << "SushiMi Engine | ";
 	ss << std::fixed << std::setprecision(2) << " Camera Position: (" << camera2d.pgo->position.x << ", ";
 	ss << camera2d.pgo->position.y << ") | ";
 	ss << std::fixed << std::setprecision(0) << " Orientation: " << camera2d.pgo->orientation.x << " | ";

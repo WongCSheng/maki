@@ -57,7 +57,7 @@ public:
 		gfxVector3 result;
 		result.x = l * r.x;
 		result.y = l * r.y;
-        result.z = l.z * r.z;
+        result.z = l * r.z;
 		return result;
 	}
 	friend gfxVector3 operator*(const gfxVector3& r, float l)

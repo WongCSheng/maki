@@ -1,7 +1,8 @@
 /*!
-@file    glapp.cpp
-@author  pghali@digipen.edu
-@date    10/11/2016
+@file		glapp.cpp
+@author		pghali@digipen.edu
+@co-author  louishetong.wang@digipen.edu
+@date		29/05/2022
 
 This file implements functionality useful and necessary to build OpenGL
 applications including use of external APIs such as GLFW to create a
@@ -12,125 +13,246 @@ to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glapp.h>
-#include <../include/glhelper.h>
-#include <array> //for std::array
-#include <iostream> //for std::cout
+#include "../include/glapp.h"
+#include "../include/glhelper.h"
+#define M_PI									3.14159265358979323846  /* pi */
+
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
 
-GLApp::GLModel mdl{};
+//define vps
+std::vector<GLApp::Viewport> GLApp::vps;
+GLint polyMode = GL_FILL;
+GLboolean f = GL_FALSE;
+// create default engine as source of randomness
+std::random_device rd;
+std::default_random_engine dre(rd()* GL_TIME_ELAPSED);
+GLint box_counter = 0;
+GLint mystery_counter = 0;
+GLboolean first_person_cam = GL_FALSE;
+/*  _________________________________________________________________________ */
+/*! init
+@param none
+@return none
 
+Initialize color, viewports, VAO and create shader program
+*/
 void GLApp::init() {
- 
+	/////////////////////// initialize openGL//////////////////////////////////
 	// Part 1: clear colorbuffer with RGBA value in glClearColor ...
-	glClearColor(0.f, 1.f, 0.f, 1.f);
 
-	// Part 2: use entire window as viewport ...
-	glViewport(0, 0, GLHelper::width, GLHelper::height);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
 
-	//mdl.setup_shdrpgm();
-	//mdl.setup_vao();
+	// part 2: use entire window as viewport
+	GLint w{ GLHelper::width }, h{ GLHelper::height };
+
+	glViewport(0, 0, w, h);
+
+	GLApp::vps.push_back({ 0, 0, 0, 0 });
+	Viewport{ vps[0].x, vps[0].y, vps[0].width, vps[0].height };
+
+	// part 3: parse scene file $(SolutionDir)scenes/tutorial-4.scn
+	// and store repo of models of type GLModel in container GLApp::models,
+	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
+	// and store repo of objects of type GLObject in container GLApp::objects
+	GLApp::init_scene("../scenes/myscene.scn");
+
+	//Part 4: Initialize camera
+	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
+
+	//Part 5: Print OpenGL context and GPU specs
 }
 
-void GLApp::update() {
-  //glClearColor(1.f, 0.f, 0.f, 1.f);
-	
-}
 
-void GLApp::draw() {
-	glClear(GL_COLOR_BUFFER_BIT);
+/*  _________________________________________________________________________ */
+/*! insert_shdrpgm
+@param none
+@return none
 
-	//glDrawElements(GL_TRIANGLES, 1, 1, nullptr);
-
-	//glfwSwapBuffers(GLHelper::ptr_window);
-}
-
-void GLApp::cleanup() {
-  // empty for now
-}
-
-void GLApp::GLModel::setup_vao()
+insert shader program into container GLApp::shdrpgms
+*/
+static void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr)
 {
-	// Define vertex position and color attributes
-	std::array<glm::vec2, 4> pos_vtx{
-	glm::vec2(0.5f, -0.5f), glm::vec2(0.5f, 0.5f),
-	glm::vec2(-0.5f, 0.5f), glm::vec2(-0.5f, -0.5f)
+	std::vector<std::pair<GLenum, std::string>> shdr_files
+	{
+		std::make_pair(GL_VERTEX_SHADER, vtx_shdr),
+		std::make_pair(GL_FRAGMENT_SHADER, frg_shdr)
 	};
-	std::array<glm::vec3, 4> clr_vtx{
-	glm::vec3(1.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f),
-	glm::vec3(0.f, 0.f, 1.f), glm::vec3(1.f, 1.f, 1.f)
-	};
-	// transfer vertex position and color attributes to VBO
-	GLuint vbo_hdl;
-	glCreateBuffers(1, &vbo_hdl);
-	glNamedBufferStorage(vbo_hdl,
-		sizeof(glm::vec2) * pos_vtx.size() + sizeof(glm::vec3) * clr_vtx.size(),
-		nullptr, GL_DYNAMIC_STORAGE_BIT);
-	glNamedBufferSubData(vbo_hdl, 0,
-		sizeof(glm::vec2) * pos_vtx.size(), pos_vtx.data());
-	glNamedBufferSubData(vbo_hdl, sizeof(glm::vec2) * pos_vtx.size(),
-		sizeof(glm::vec3) * clr_vtx.size(), clr_vtx.data());
-	// encapsulate information about contents of VBO and VBO handle
-	// to another object called VAO
-	glCreateVertexArrays(1, &vaoid);
-
-	// for vertex position array, we use vertex attribute index 8
-	// and vertex buffer binding point 3
-	glEnableVertexArrayAttrib(vaoid, 8);
-	glVertexArrayVertexBuffer(vaoid, 3, vbo_hdl, 0, sizeof(glm::vec2));
-	glVertexArrayAttribFormat(vaoid, 8, 2, GL_FLOAT, GL_FALSE, 0);
-	glVertexArrayAttribBinding(vaoid, 8, 3);
-	// for vertex color array, we use vertex attribute index 9
-	// and vertex buffer binding point 4
-	glEnableVertexArrayAttrib(vaoid, 9);
-	glVertexArrayVertexBuffer(vaoid, 4, vbo_hdl,
-		sizeof(glm::vec2) * pos_vtx.size(), sizeof(glm::vec3));
-	glVertexArrayAttribFormat(vaoid, 9, 3, GL_FLOAT, GL_FALSE, 0);
-	glVertexArrayAttribBinding(vaoid, 9, 4);
-
-	//since rectangular model is rendered as two triangles
-	primitive_type = GL_TRIANGLES;
-
-	// represents indices of vertices that will define 2 triangles with
-	// counterclockwise winding
-	std::array<GLushort, 6> idx_vtx{
-	0, 1, 2, // 1st triangle with counterclockwise winding is specified by
-	// vertices in VBOs with indices 0, 1, 2
-	2, 3, 0 // 2nd triangle with counterclockwise winding
-	};
-
-	//count of number of triangles to be rendered based on number of vertices
-	idx_elem_cnt = idx_vtx.size();
-
-	//transfer topology from CPU to GPU
-	GLuint ebo_hdl;
-	glCreateBuffers(1, &ebo_hdl);
-	glNamedBufferStorage(ebo_hdl,
-		sizeof(GLushort) * idx_elem_cnt,
-		reinterpret_cast<GLvoid*>(idx_vtx.data()),
-		GL_DYNAMIC_STORAGE_BIT);
-
-	//configure VAO state to contain the topology data stored in the buffer object
-	glVertexArrayElementBuffer(vaoid, ebo_hdl);
-	//break the VAO binding
-	glBindVertexArray(0);
-}
-
-void GLApp::GLModel::setup_shdrpgm() 
-{
-	std::vector<std::pair<GLenum, std::string>> shdr_files;
-	shdr_files.emplace_back(std::make_pair(
-		GL_VERTEX_SHADER,
-		"../shaders/my-tutorial-1.vert"));
-	shdr_files.emplace_back(std::make_pair(
-		GL_FRAGMENT_SHADER,
-		"../shaders/my-tutorial-1.frag"));
+	ShaderProgram shdr_pgm;
 	shdr_pgm.CompileLinkValidate(shdr_files);
-	if (GL_FALSE == shdr_pgm.IsLinked()) {
-		std::cout << "Unable to compile/link/validate shader programs" << "\n";
+	if (GL_FALSE == shdr_pgm.IsLinked())
+	{
+		std::cout << "Unable to compile/link/validate shader programs\n";
 		std::cout << shdr_pgm.GetLog() << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
+	// add compiled, linked and validated shader program to
+	// std::map container GLApp::shdrpgms
+	ShaderProgram::shdrpgms[shdr_pgm_name] = shdr_pgm;
+}
+/*  _________________________________________________________________________ */
+/*! init_scene
+@param none
+@return none
+
+function to parse scene file
+*/
+void GLApp::init_scene(std::string scene_filename)
+{
+	std::ifstream ifs{ scene_filename, std::ios::in };
+	if (!ifs)
+	{
+		std::cout << "ERROR: Unable to open scene file: " << scene_filename << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	ifs.seekg(0, std::ios::beg);
+
+	std::string line;
+	getline(ifs, line); // first line is count of objects in scene
+	std::istringstream line_sstm{ line };
+	int obj_cnt;
+	line_sstm >> obj_cnt; // read count of objs in scene
+	while (obj_cnt--) // read each object's param
+	{
+		std::string mesh_path;
+		Object currObj;
+		getline(ifs, line); // 1st parameter: model's name
+		std::istringstream line_modelname{ line };
+		std::string model_name;
+		line_modelname >> model_name;
+
+		//find model with the same name
+		std::map<std::string, Model>::iterator mdl_iterator;
+		mdl_iterator = Model::models.find(model_name);
+
+		if (mdl_iterator == Model::models.end())
+		{
+			Model curr_mdl;
+			if (model_name == "circle")
+			{
+				mesh_path = "../meshes/circle.msh";
+				curr_mdl.primitive_type = GL_TRIANGLE_FAN;
+			}
+			else if (model_name == "square")
+			{
+				mesh_path = "../meshes/square.msh";
+				curr_mdl.primitive_type = GL_TRIANGLES;
+			}
+			else if (model_name == "triangle")
+			{
+				mesh_path = "../meshes/triangle.msh";
+				curr_mdl.primitive_type = GL_TRIANGLES;
+			}
+			curr_mdl = curr_mdl.init(mesh_path);
+			Model::models.insert(std::pair<std::string, Model>(model_name, curr_mdl));
+			mdl_iterator = Model::models.find(model_name);
+		}
+		getline(ifs, line); // 2nd parameter: name of game object
+		std::istringstream line_objname{ line };
+		std::string object_name;
+		line_objname >> object_name;
+
+		getline(ifs, line); // 3rd parameter: names of shader program, vertex and fragment shaders for rendering model square
+		std::istringstream line_shdrname{ line };
+		std::string shdr_name, shdr_vert, shdr_frag;
+		line_shdrname >> shdr_name >> shdr_vert >> shdr_frag;
+		std::map<std::string, ShaderProgram>::iterator shdr_iterator;
+		shdr_iterator = ShaderProgram::shdrpgms.find(shdr_name);
+		if (shdr_iterator == ShaderProgram::shdrpgms.end())
+		{
+			insert_shdrpgm(shdr_name, shdr_vert, shdr_frag);
+			shdr_iterator = ShaderProgram::shdrpgms.find(shdr_name);
+		}
+		getline(ifs, line); // 4th parameter: rgb colours used for painting object
+		std::istringstream line_rgb{ line };
+		GLfloat red, green, blue;
+		line_rgb >> red >> green >> blue;
+
+		currObj.color = { red, green, blue };
+
+		getline(ifs, line); // 5th parameter: Scaling factors of object along horizontal and vertices axes, respectively.
+		std::istringstream line_scale{ line };
+		GLfloat scale_x, scale_y;
+		line_scale >> scale_x >> scale_y;
+		currObj.scaling = { scale_x, scale_y };
+
+		getline(ifs, line); // 6th parameter: orientation factors of object: initial angular orientation (where am i looking at start up?)
+		std::istringstream line_orientation{ line };
+		GLfloat orientation_x, orientation_y;
+		line_orientation >> orientation_x >> orientation_y;
+		currObj.orientation = { orientation_x, orientation_y };
+
+		getline(ifs, line); // 7th factor: Obj's position in game world.
+		std::istringstream line_pos{ line };
+		GLfloat pos_x, pos_y;
+		line_pos >> pos_x >> pos_y;
+		currObj.position = { pos_x, pos_y };
+
+		currObj.mdl_ref = mdl_iterator;
+		currObj.shd_ref = shdr_iterator;
+
+		Object::objects.insert(std::pair<std::string, Object>(object_name, currObj));
+
+	}
+
+}
+/*  _________________________________________________________________________ */
+/*! GLApp::update()
+@param
+@return none
+
+Update the camera, then loop through objects and update all objects EXCEPT the camera
+*/
+void GLApp::update()
+{
+	// first, update camera
+	Camera2D::camera2d.update(GLHelper::ptr_window);
+
+	// next, iterate thru each element in container object
+	// for each object of type GLObject, call update function
+	// except for camera
+	for (auto& x : Object::objects)
+	{
+		if (x.first != "Camera")
+		{
+			x.second.update(GLHelper::delta_time);
+		}
+	}
+}
+
+/*  _________________________________________________________________________ */
+/*! GLApp::draw()
+@param
+@return none
+
+Write information onto window title, clear colour buffer, draw everything before rendering camera
+*/
+void GLApp::draw()
+{
+	// write title stuffs similar to sample ...
+	std::stringstream ss;
+	ss << "Tutorial 4 | Wang He Tong Louis | ";
+	ss << std::fixed << std::setprecision(2) << " Camera Position: (" << Camera2D::camera2d.pgo->position.x << ", ";
+	ss << Camera2D::camera2d.pgo->position.y << ") | ";
+	ss << std::fixed << std::setprecision(0) << " Orientation: " << Camera2D::camera2d.pgo->orientation.x << " | ";
+	ss << " Window height: " << Camera2D::camera2d.height << " | ";
+	ss << std::fixed << std::setprecision(2) << GLHelper::fps;
+	glfwSetWindowTitle(GLHelper::ptr_window, ss.str().c_str());
+
+	// clear back buffer as before ...
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	// draw everything before rendering camera
+	for (auto const& x : Object::objects)
+	{
+		if (x.first != "Camera")
+		{
+			x.second.draw();
+		}
+	}
+	Object::objects["Camera"].draw();
+}
+void GLApp::cleanup() {
+	// empty for now
 }

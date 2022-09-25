@@ -99,14 +99,14 @@ public:
 	//dot product between 2 vectors
 	friend float operator*(const gfxVector2& l, const gfxVector2& r)
 	{
-		return (l.x * r.x + l.y * l.y);
+		return (l.x * r.x + l.y * r.y);
 	}
 
 
 	//cross product between 2 vectors
 	friend float operator^(const gfxVector2& l, const gfxVector2& r)
 	{
-		return (l.x * r.x - l.y * l.y);
+		return (l.x * r.x - l.y * r.y);
 	}
 
 	//arithmetic vector operations

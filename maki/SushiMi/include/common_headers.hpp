@@ -11,6 +11,8 @@ file so that in all files you will only need to
 
 //c++ std
 #include <algorithm>
+#include <limits>
+#include <complex>
 #include <cstdlib>
 #include <numeric>
 #include <cassert>
@@ -60,7 +62,8 @@ file so that in all files you will only need to
 #include <../include/glhelper.h>
 #include <../include/glapp.h>
 
-
+//Meths lib
+#include "../vector3.h"
 
 //Serializer
 #include <any>

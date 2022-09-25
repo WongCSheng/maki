@@ -1,52 +1,84 @@
-/* !
-@file    glapp.h
-@author  pghali@digipen.edu
-@date    10/11/2016
+/*!
+@file		glapp.h
+@author		pghali@digipen.edu
+@co-author  louishetong.wang@digipen.edu
+@date		29/05/2022
 
 This file contains the declaration of namespace GLApp that encapsulates the
-functionality required to implement an OpenGL application including 
+functionality required to implement an OpenGL application including
 compiling, linking, and validating shader programs
-setting up geometry and index buffers, 
+setting up geometry and index buffers,
 configuring VAO to present the buffered geometry and index data to
 vertex shaders,
 configuring textures (in later labs),
-configuring cameras (in later labs), 
+configuring cameras (in later labs),
 and transformations (in later labs).
 *//*__________________________________________________________________________*/
 
 /*                                                                      guard
 ----------------------------------------------------------------------------- */
+#include "../include/shaderprogram.h"
+#include "../Camera2D.h"
+#include "../model.h"
+#include "../object.h"
+#include "../include/glhelper.h"
+#include "../include/common_headers.hpp"
 #ifndef GLAPP_H
 #define GLAPP_H
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "glslshader.h"
 
 struct GLApp {
-	// previous existing declarations
+	/*  _________________________________________________________________________ */
+	/*! init
+	@param none
+	@return none
+
+	Initialize color, viewports, VAO and create shader program
+	*/
 	static void init();
+	/*  _________________________________________________________________________ */
+	/*! update
+	@param none
+	@return none
+
+	calculate frame rate, swap buffer and linear interpolate over a certain amount of time for smooth transition
+	*/
 	static void update();
+	/*  _________________________________________________________________________ */
+	/*! draw
+	@param none
+	@return none
+
+	draws the color buffer, the rectangular model from NDC coordinates to viewport, the title bar
+	*/
 	static void draw();
+	/*  _________________________________________________________________________ */
+	/*! cleanup
+	@param none
+	@return none
+
+	empty for now
+	*/
 	static void cleanup();
 
-	
-	// encapsulates state required to render a geometrical model
-	struct GLModel {
-		GLenum primitive_type; // which OpenGL primitive to be rendered?
-		GLSLShader shdr_pgm; // which shader program?
-		GLuint vaoid; // handle to VAO
-		GLuint idx_elem_cnt; // how many elements of primitive of type
-		// primitive_type are to be rendered
-		// member functions defined in glapp.cpp
-		void setup_vao();
-		void setup_shdrpgm();
-		void draw();
+	/*  _________________________________________________________________________ */
+	/*! init_scene
+	@param none
+	@return none
 
+	function to parse scene file
+	*/
+	static void init_scene(std::string);
+	struct Viewport
+	{
+		GLint x, y;
+		GLsizei width, height;
 	};
-	// data member to represent geometric model to be rendered
-	// C++ requires this object to have a definition in glapp.cpp!!!
-	static GLModel mdl;
+	using VPSS = std::vector<std::pair<std::string, std::string>>;
+	// encapsulates geometry - we call this abstraction a model
+	static std::vector<Viewport> vps; // container for viewports
 };
 
 #endif /* GLAPP_H */

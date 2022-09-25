@@ -195,6 +195,10 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Camera2D.cpp" />
+    <ClCompile Include="include\shaderprogram.cpp" />
+    <ClCompile Include="model.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
@@ -202,6 +206,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\JSONSerializer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\RTTR.cpp" />
+    <ClCompile Include="src\shaderprogram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -213,6 +218,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="..\lib\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
+    <ClInclude Include="Camera2D.h" />
     <ClInclude Include="include\common_headers.hpp" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
@@ -221,6 +227,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\JSONSerializer.h" />
     <ClInclude Include="include\Keys.h" />
     <ClInclude Include="include\RTTR.h" />
+    <ClInclude Include="include\shaderprogram.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="object.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />

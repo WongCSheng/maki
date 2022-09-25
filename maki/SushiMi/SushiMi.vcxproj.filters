@@ -43,6 +43,19 @@
     <ClCompile Include="src\RTTR.cpp">
       <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
+    <ClCompile Include="Camera2D.cpp">
+      <Filter>GameEngine\Graphics\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>GameEngine\Graphics\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>GameEngine\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="include\shaderprogram.cpp" />
+    <ClCompile Include="src\shaderprogram.cpp">
+      <Filter>GameEngine\Graphics\Shaderprogram</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -96,6 +109,18 @@
     <ClInclude Include="include\RTTR.h">
       <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
+    <ClInclude Include="Camera2D.h">
+      <Filter>GameEngine\Graphics\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>GameEngine\Graphics\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>GameEngine\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shaderprogram.h">
+      <Filter>GameEngine\Graphics\Shaderprogram</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -118,6 +143,18 @@
     </Filter>
     <Filter Include="GameEngine\Main and Common Headers">
       <UniqueIdentifier>{3b111c6a-1c82-4cc4-9196-ce3aaf5f1873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics\Camera">
+      <UniqueIdentifier>{5376bfff-cbcd-4b58-8858-3e81bab0c9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics\Object">
+      <UniqueIdentifier>{7abd7f5d-6618-48fa-b1ef-5627c1ee5e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics\Model">
+      <UniqueIdentifier>{b7778eec-fc69-4d15-97d5-41995d229609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics\Shaderprogram">
+      <UniqueIdentifier>{e5b31bed-a703-4b10-81e0-84eaaa434d40}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

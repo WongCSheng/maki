@@ -522,7 +522,7 @@ void GLApp::draw()
 	ss << camera2d.pgo->position.y << ") | ";
 	ss << std::fixed << std::setprecision(0) << " Orientation: " << camera2d.pgo->orientation.x << " | ";
 	ss << " Window height: " << GLApp::camera2d.height << " | ";
-	ss << std::fixed << std::setprecision(2) << GLHelper::fps;
+	ss << std::fixed << std::setprecision(2) << "FPS: " << GLHelper::fps;
 	glfwSetWindowTitle(GLHelper::ptr_window, ss.str().c_str());
 
 	// clear back buffer as before ...

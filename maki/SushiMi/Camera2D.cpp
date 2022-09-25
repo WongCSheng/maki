@@ -19,19 +19,22 @@ void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 	right = { cos(pgo->orientation.x / 180.f * static_cast<GLfloat>(PI)), sin(pgo->orientation.x / 180.f * static_cast<GLfloat>(PI)) };
 
 	// at startup, camera must be initialized to free camera
-	view_xform.a[1] = view_xform.a[2] = view_xform.a[3] = view_xform.a[5] = 0;
-	view_xform.a[0] = view_xform.a[4] = view_xform.a[8] = 1;
-	view_xform.a[6] = -pgo->position.x;
-	view_xform.a[1] = -pgo->position.y;
+	view_xform =
+	{
+		{1, 0, 0},
+		{0, 1, 0},
+		{-pgo->position.x, -pgo->position.y, 1}
+	};
 
 	GLfloat cam_W = ar * GLHelper::height;
 	GLfloat cam_H = ar * GLHelper::width;
 	// compute other matrices
-
-	camwin_to_ndc_xform.a[1] = camwin_to_ndc_xform.a[2] = camwin_to_ndc_xform.a[3] = camwin_to_ndc_xform.a[5] = camwin_to_ndc_xform.a[6] = camwin_to_ndc_xform.a[7] = 0;
-	camwin_to_ndc_xform.a[0] = 2 / cam_W;
-	camwin_to_ndc_xform.a[4] = 2 / cam_H;
-	camwin_to_ndc_xform.a[8] = 1;
+	camwin_to_ndc_xform =
+	{
+		{2 / cam_W, 0, 0},
+		{0, 2 / cam_H, 0},
+		{0, 0, 1}
+	};
 	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;
 }
 
@@ -54,26 +57,17 @@ void Camera2D::update(GLFWwindow* pWindow)
 
 	if (first_person_cam == GL_TRUE)
 	{
-		gfxVector2 nrm_up, nrm_right;
-		nrm_right.Normalize(nrm_right, right);
-		nrm_up.Normalize(nrm_up, up);
-
-		view_xform.a[0] = right.x;
-		view_xform.a[1] = up.x;
-		view_xform.a[2] = 0.f;
-		view_xform.a[3] = right.y;
-		view_xform.a[4] = up.y;
-		view_xform.a[5] = 0.f;
-		view_xform.a[6] = (-nrm_right * pgo->position);
-		view_xform.a[7] = (nrm_up * pgo->position);
-		view_xform.a[8] = 1.f;
+		view_xform = { {right.x,up.x,0.f},
+						{right.y,up.y,0.f},
+						{glm::dot(-glm::normalize(right),pgo->position),glm::dot(-glm::normalize(up),pgo->position),1.f}
+		};
 	}
 	else if (first_person_cam == GL_FALSE)
 	{
-		view_xform.a[1] = view_xform.a[2] = view_xform.a[3] = view_xform.a[5] = 0;
-		view_xform.a[0] = view_xform.a[4] = view_xform.a[8] = 1;
-		view_xform.a[6] = -pgo->position.x;
-		view_xform.a[1] = -pgo->position.y;
+		view_xform = { {1.f,0.f,0.f},
+						{0.f,1.f,0.f},
+						{-pgo->position.x,-pgo->position.y,1.f}
+		};
 	}
 	if (left_turn_flag == GL_TRUE)
 	{
@@ -94,9 +88,7 @@ void Camera2D::update(GLFWwindow* pWindow)
 	// update camera's position (if required) 
 	if (move_flag == GL_TRUE)
 	{
-		gfxVector2 nrm_up;
-		nrm_up.Normalize(nrm_up,up);
-		pgo->position += (linear_speed * nrm_up);//displace the camera
+		pgo->position += (linear_speed * glm::normalize(up));//displace the camera
 	}
 
 	// implement camera's zoom effect (if required)
@@ -116,43 +108,33 @@ void Camera2D::update(GLFWwindow* pWindow)
 
 	// compute window-to-NDC transformation matrix
 	// compute other matrices ...
-
-	camwin_to_ndc_xform.a[1] = camwin_to_ndc_xform.a[2] = camwin_to_ndc_xform.a[3] = camwin_to_ndc_xform.a[5] = camwin_to_ndc_xform.a[6] = camwin_to_ndc_xform.a[7] = 0;
-	camwin_to_ndc_xform.a[0] = 2 / (height * ar);
-	camwin_to_ndc_xform.a[4] = 2 / height;
-	camwin_to_ndc_xform.a[8] = 1;
-
+	camwin_to_ndc_xform = { {2.0f / (height * ar),0.f,0.f},
+							{0.f,2.f / height,0.f},
+							{0.f,0.f,1.f}
+	};
 	GLfloat radians = glm::radians(camera2d.pgo->orientation.x);
 
-	gfxMatrix3 scale_mat;
-	scale_mat.a[0] = camera2d.pgo->scaling.x;
-	scale_mat.a[1] = 0;
-	scale_mat.a[2] = 0;
-	scale_mat.a[3] = 0;
-	scale_mat.a[4] = camera2d.pgo->scaling.y;
-	scale_mat.a[5] = 0;
-	scale_mat.a[6] = 0;
-	scale_mat.a[7] = 0;
-	scale_mat.a[8] = 1;
+	glm::mat3 rot_mat
+	{
+			{cos(radians), sin(radians), 0},
+			{-sin(radians), cos(radians), 0},
+			{0, 0, 1}
+	};
 
-	gfxMatrix3 rot_mat;
-	rot_mat.a[0] = cos(radians);
-	rot_mat.a[1] = sin(radians);
-	rot_mat.a[3] = -sin(radians);
-	rot_mat.a[4] = cos(radians);
-	rot_mat.a[2] = rot_mat.a[5] = rot_mat.a[6] = rot_mat.a[7] = rot_mat.a[8] = 0;
+	glm::mat3 scale_mat
+	{
+		{camera2d.pgo->scaling.x, 0, 0},
+		{0, camera2d.pgo->scaling.y, 0},
+		{0, 0, 1}
+	};
 
-	gfxMatrix3 trans_mat;
-	trans_mat.a[0] = 1;
-	trans_mat.a[1] = 0;
-	trans_mat.a[2] = 0;
-	trans_mat.a[3] = 0;
-	trans_mat.a[4] = 1;
-	trans_mat.a[5] = 0;
-	trans_mat.a[6] = camera2d.pgo->position.x;
-	trans_mat.a[7] = camera2d.pgo->position.y;
-	trans_mat.a[0] = 1;
-	gfxMatrix3 model_mtx = trans_mat * rot_mat * scale_mat;
+	glm::mat3 trans_mat
+	{
+		{1, 0, 0},
+		{0, 1, 0},
+		{camera2d.pgo->position.x, camera2d.pgo->position.y, 1}
+	};
+	glm::mat3 model_mtx = trans_mat * rot_mat * scale_mat;
 	camera2d.pgo->mdl_to_ndc_xform = world_to_ndc_xform * model_mtx;
 	// compute world-to-NDC transformation matrix
 	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;

@@ -33,15 +33,15 @@ public:
 	void update(GLFWwindow*);
 
 	Object* pgo; // pointer to game obj that embeds the camera
-	gfxVector2 right, up;
+	glm::vec2 right, up;
 
 	//additional parameters for camera
 	GLint height{ 1000 };
 	GLfloat ar;
 
-	gfxMatrix3 camwin_to_ndc_xform;
-	gfxMatrix3 world_to_ndc_xform;
-	gfxMatrix3 view_xform;
+	glm::mat3 camwin_to_ndc_xform;
+	glm::mat3 world_to_ndc_xform;
+	glm::mat3 view_xform;
 
 	//window parameters
 	GLint min_height{ 500 }, max_height{ 720 };

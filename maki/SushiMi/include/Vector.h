@@ -27,6 +27,7 @@ public:
 	gfxVector2(const gfxVector2& v) : x(v.x), y(v.y) {};
 	~gfxVector2() { delete[] &mVec[2]; };
 
+	gfxVector2 (gfxVector2 &&) = default;
 	//operator = assignment
 	gfxVector2& operator=(const gfxVector2& v)
 	{

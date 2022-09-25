@@ -1,11 +1,15 @@
 #include "model.h"
+#include <glm/glm/fwd.hpp>
+#include <glm/glm/glm.hpp>
+
 
 
 std::map<std::string, Model> Model::models; // singleton
 Model Model::init(std::string mesh_filepath)
 {
-	std::vector<gfxVector2> pos_vtx{};
-	std::vector<GLushort> idx_vtx{};
+
+	std::vector<glm::vec2> pos_vtx;
+	std::vector<GLushort> idx_vtx;
 	GLushort f;
 	GLushort ix, iy, iz;
 	GLfloat x, y;
@@ -62,13 +66,13 @@ Model Model::init(std::string mesh_filepath)
 	}
 	GLuint vbo_hdl;
 	glCreateBuffers(1, &vbo_hdl);
-	glNamedBufferStorage(vbo_hdl, sizeof(gfxVector2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
-	glNamedBufferSubData(vbo_hdl, 0, sizeof(gfxVector2) * pos_vtx.size(), pos_vtx.data());
+	glNamedBufferStorage(vbo_hdl, sizeof(glm::vec2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
+	glNamedBufferSubData(vbo_hdl, 0, sizeof(glm::vec2) * pos_vtx.size(), pos_vtx.data());
 
 	GLuint vaoid;
 	glCreateVertexArrays(1, &vaoid);
 	glEnableVertexArrayAttrib(vaoid, 0);
-	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(gfxVector2));
+	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(glm::vec2));
 	glVertexArrayAttribFormat(vaoid, 0, 2, GL_FLOAT, GL_FALSE, 0);
 	glVertexArrayAttribBinding(vaoid, 0, 0);
 	glBindVertexArray(0);

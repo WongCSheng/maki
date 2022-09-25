@@ -148,9 +148,9 @@ public:
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y);
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z);
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-    void SetUniform(GLchar const* name, gfxVector2 const& val);
-    void SetUniform(GLchar const* name, gfxVector3 const& val);
-    void SetUniform(GLchar const* name, gfxMatrix3 const& val);
+    void SetUniform(GLchar const* name, glm::vec2 const& val);
+    void SetUniform(GLchar const* name, glm::vec3 const& val);
+    void SetUniform(GLchar const* name, glm::mat3 const& val);
 
     // display the list of active vertex attributes used by vertex shader
     void PrintActiveAttribs() const;

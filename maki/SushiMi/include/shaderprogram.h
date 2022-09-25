@@ -9,14 +9,14 @@
 #include <iostream>
 #include "../include/common_headers.hpp"
 
-#include "../Vector.h"
-#include "../Matrix.h"
+#include "../include/Vector.h"
+#include "../include/Matrix.h"
+#include "../include/vector3.h"
 
 class ShaderProgram
 {
 public:
 	ShaderProgram();
-	ShaderProgram(const char* vert_FP, const char* frag_FP);
 	virtual ~ShaderProgram();
 
 	void start_shader();

@@ -2,7 +2,6 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm/fwd.hpp>
 #include "include/common_headers.hpp"
-#include "object.h"
 #include "include/Math.h"
 #ifndef CAMERA2D_H_
 #define CAMERA2D_H_
@@ -28,14 +27,16 @@ public:
 	*/
 	void update(GLFWwindow*);
 
-	Object* pgo{}; // pointer to game obj that embeds the camera
-	gfxVector2 right{}, up{};
+	Object* pgo; // pointer to game obj that embeds the camera
+	gfxVector2 right, up;
 
 	//additional parameters for camera
 	GLint height{ 1000 };
-	GLfloat ar{};
+	GLfloat ar;
 
-	gfxMatrix3 camwin_to_ndc_xform{}, world_to_ndc_xform{}, view_xform{};
+	gfxMatrix3 camwin_to_ndc_xform;
+	gfxMatrix3 world_to_ndc_xform;
+	gfxMatrix3 view_xform;
 
 	//window parameters
 	GLint min_height{ 500 }, max_height{ 720 };

@@ -22,8 +22,23 @@ Matrix header file for all matrix calculations
 /*  _________________________________________________________________________ */
 
 class gfxMatrix3
-	// a 3x3 matrix class. Because we're doing a 2D game we dont have to do 4x4
-	// column major
+/*
+a 3x3 matrix class. Because we're doing a 2D game we dont have to do 4x4
+column major
+
+ 3x3 matrix is col major meaning
+				| a[0][0]	a[0][1]		a[0][2]	|
+				|								|
+				| a[1][0]	a[1][1]		a[1][2]	|
+				|								|
+				| a[2][0]	a[2][1]		a[2][2]	|
+--------------------------------------------------------------------
+				| a[0]		a[3]		a[6]	|
+				|								|
+				| a[1]		a[4]		a[7]	|
+				|								|
+				| a[2]		a[5]		a[8]	|
+*/
 {
 public:
 	gfxMatrix3(float a00 = 0, float a10 = 0, float a20 = 0, float a01 = 0, float a11 = 0, float a21 = 0, float a02 = 0, float a12 = 0, float a22 = 0);

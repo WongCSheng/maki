@@ -27,3 +27,50 @@ void Object::draw() const
 	glBindVertexArray(0);
 	ShaderProgram::shdrpgms[shd_ref->first].stop_shader();
 }
+
+/*  _________________________________________________________________________ */
+/*! GLApp::GLObject::update(GLdouble delta_time)
+@param GLDouble delta_time
+@return none
+
+All the transformation matrix scale,rot, trans and model to ndc transformation.
+*/
+void Object::update(GLdouble delta_time)
+{
+
+	gfxMatrix3 scale_mat;
+	scale_mat.a[0] = scaling.x;
+	scale_mat.a[1] = 0;
+	scale_mat.a[2] = 0;
+	scale_mat.a[3] = 0;
+	scale_mat.a[4] = scaling.y;
+	scale_mat.a[5] = 0;
+	scale_mat.a[6] = 0;
+	scale_mat.a[7] = 0;
+	scale_mat.a[8] = 1;
+
+	orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
+	const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);
+
+	gfxMatrix3 rot_mat;
+	rot_mat.a[0] = cos(radians);
+	rot_mat.a[1] = sin(radians);
+	rot_mat.a[3] = -sin(radians);
+	rot_mat.a[4] = cos(radians);
+	rot_mat.a[2] = rot_mat.a[5] = rot_mat.a[6] = rot_mat.a[7] = rot_mat.a[8] = 0;
+
+	gfxMatrix3 trans_mat;
+	trans_mat.a[0] = 1;
+	trans_mat.a[1] = 0;
+	trans_mat.a[2] = 0;
+	trans_mat.a[3] = 0;
+	trans_mat.a[4] = 1;
+	trans_mat.a[5] = 0;
+	trans_mat.a[6] = position.x;
+	trans_mat.a[7] = position.y;
+	trans_mat.a[0] = 1;
+
+
+	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
+
+}

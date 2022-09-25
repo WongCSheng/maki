@@ -59,6 +59,8 @@ file so that in all files you will only need to
 //graphics
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm/glm.hpp>
+#include <glm/glm/gtc/type_ptr.hpp>
 #include <../include/glhelper.h>
 #include <../include/glapp.h>
 

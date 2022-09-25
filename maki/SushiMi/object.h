@@ -2,7 +2,14 @@
 #ifndef OBEJCT_H_
 #define OBJECT_H_
 
-#include "include/common_headers.hpp"
+#include <../Matrix.h>
+#include <../Vector.h>
+#include <../vector3.h>
+#include <GL/glew.h>
+#include <map>
+#include "include/glslshader.h"
+#include "model.h"
+
 class Object
 {
 public:
@@ -29,7 +36,7 @@ public:
 	// how to draw this instanced model?
 	// since shader programs are contained in a vector, we keep track of
 	// specific shader program using an index into vector container
-	std::map<std::string, ShaderProgram>::iterator shd_ref;
+	std::map<std::string, GLSLShader>::iterator shd_ref;
 
 	
 	gfxVector3 color;

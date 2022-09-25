@@ -63,9 +63,13 @@ file so that in all files you will only need to
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <../include/glhelper.h>
 #include <../include/glapp.h>
-
+#include <../model.h>
+#include <../object.h>
+#include <../Camera2D.h>
 //Meths lib
 #include "vector3.h"
+#include "Vector.h"
+#include "Matrix.h"
 
 //Serializer
 #include <any>

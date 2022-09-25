@@ -1,9 +1,11 @@
 #include "model.h"
 
+
+std::map<std::string, Model> Model::models; // singleton
 Model Model::init(std::string mesh_filepath)
 {
-	std::vector<glm::vec2> pos_vtx;
-	std::vector<GLushort> idx_vtx;
+	std::vector<gfxVector2> pos_vtx{};
+	std::vector<GLushort> idx_vtx{};
 	GLushort f;
 	GLushort ix, iy, iz;
 	GLfloat x, y;

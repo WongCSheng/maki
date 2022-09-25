@@ -179,8 +179,6 @@ static void init() {
 	glfwMakeContextCurrent(GLHelper::ptr_window);
 
 
-
-
 	// Part 3
 	GLApp::init();
 }

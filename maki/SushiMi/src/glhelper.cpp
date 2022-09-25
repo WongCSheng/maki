@@ -14,6 +14,7 @@ pointers to OpenGL implementations.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <../include/glhelper.h>
+#include <../Camera2D.h>
 #include <iostream>
 
 /*                                                   objects with file scope
@@ -207,31 +208,31 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	//for key presses
 	if (GLFW_PRESS == action && key == GLFW_KEY_V)
 	{
-		GLApp::camera2d.camtype_flag = GL_TRUE;
+		Camera2D::camera2d.camtype_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_Z)
 	{
-		GLApp::camera2d.zoom_flag = GL_TRUE;
+		Camera2D::camera2d.zoom_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_H)
 	{
-		GLApp::camera2d.left_turn_flag = GL_TRUE;
+		Camera2D::camera2d.left_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_K)
 	{
-		GLApp::camera2d.right_turn_flag = GL_TRUE;
+		Camera2D::camera2d.right_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_U)
 	{
-		GLApp::camera2d.move_flag = GL_TRUE;
+		Camera2D::camera2d.move_flag = GL_TRUE;
 	}
 	else if (GLFW_RELEASE == action)
 	{
-		GLApp::camera2d.camtype_flag = GL_FALSE;
-		GLApp::camera2d.zoom_flag = GL_FALSE;
-		GLApp::camera2d.left_turn_flag = GL_FALSE;
-		GLApp::camera2d.right_turn_flag = GL_FALSE;
-		GLApp::camera2d.move_flag = GL_FALSE;
+		Camera2D::camera2d.camtype_flag = GL_FALSE;
+		Camera2D::camera2d.zoom_flag = GL_FALSE;
+		Camera2D::camera2d.left_turn_flag = GL_FALSE;
+		Camera2D::camera2d.right_turn_flag = GL_FALSE;
+		Camera2D::camera2d.move_flag = GL_FALSE;
 	}
 
 }

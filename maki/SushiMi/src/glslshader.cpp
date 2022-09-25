@@ -274,7 +274,7 @@ GLSLShader::SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z, GLfl
     }
 }
 
-void GLSLShader::SetUniform(GLchar const* name, glm::vec2 const& val) {
+void GLSLShader::SetUniform(GLchar const* name, gfxVector2 const& val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);
     if (loc >= 0) {
         glUniform2f(loc, val.x, val.y);
@@ -284,7 +284,7 @@ void GLSLShader::SetUniform(GLchar const* name, glm::vec2 const& val) {
     }
 }
 
-void GLSLShader::SetUniform(GLchar const* name, glm::vec3 const& val) {
+void GLSLShader::SetUniform(GLchar const* name, gfxVector3 const& val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);
     if (loc >= 0) {
         glUniform3f(loc, val.x, val.y, val.z);
@@ -294,35 +294,17 @@ void GLSLShader::SetUniform(GLchar const* name, glm::vec3 const& val) {
     }
 }
 
-void GLSLShader::SetUniform(GLchar const* name, glm::vec4 const& val) {
+
+void GLSLShader::SetUniform(GLchar const* name, gfxMatrix3 const& val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);
     if (loc >= 0) {
-        glUniform4f(loc, val.x, val.y, val.z, val.w);
+        glUniformMatrix3fv(loc, 1, GL_FALSE, &val.a[0]);
     }
     else {
         std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
     }
 }
 
-void GLSLShader::SetUniform(GLchar const* name, glm::mat3 const& val) {
-    GLint loc = glGetUniformLocation(pgm_handle, name);
-    if (loc >= 0) {
-        glUniformMatrix3fv(loc, 1, GL_FALSE, &val[0][0]);
-    }
-    else {
-        std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
-    }
-}
-
-void GLSLShader::SetUniform(GLchar const* name, glm::mat4 const& val) {
-    GLint loc = glGetUniformLocation(pgm_handle, name);
-    if (loc >= 0) {
-        glUniformMatrix4fv(loc, 1, GL_FALSE, &val[0][0]);
-    }
-    else {
-        std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
-    }
-}
 
 void GLSLShader::PrintActiveAttribs() const {
 #if 1

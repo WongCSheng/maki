@@ -1,10 +1,15 @@
 #pragma once
-#include <GLFW/glfw3.h>
-#include <glm/glm/fwd.hpp>
-#include "include/common_headers.hpp"
-#include "include/Math.h"
+
 #ifndef CAMERA2D_H_
 #define CAMERA2D_H_
+
+#include <glm/glm/fwd.hpp>
+#include "include/Math.h"
+#include "object.h"
+#include "include/Vector.h"
+#include <glm/glm/trigonometric.hpp>
+#include <GLFW/glfw3.h>
+#include "include/Matrix.h"
 
 class Camera2D
 {

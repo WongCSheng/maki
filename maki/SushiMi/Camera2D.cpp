@@ -1,10 +1,9 @@
 #include "Camera2D.h"
-#include "include/Vector.h"
-#include <glm/glm/trigonometric.hpp>
+#include "include/glhelper.h"
 
 /*global variables*/
 GLboolean first_person_cam = GL_FALSE;
-
+Camera2D Camera2D::camera2d;
 void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 {
 	// assign address of object of type GLApp::GLObject with name "Camera" in objects

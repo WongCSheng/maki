@@ -1,7 +1,7 @@
 /*!
 @file    SushiMi.frag
 @author  louishetong.wang@digipen.edu
-@date    8/06/2022
+@date    19/09/2022
 
 This file implements per-vertex operations to set up the
 vertex shader to read per-vertex data into vertex attributes defined in the vertex shader from

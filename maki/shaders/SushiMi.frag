@@ -1,7 +1,7 @@
 /*!
 @file    SushiMi.frag
 @author  louishetong.wang@digipen.edu
-@date    8/06/2022
+@date    18/09/2022
 
 This file takes in the interpolated colour and determine the corresponding fragment colour.
 The vertex shaders' outputs must correspond to the fragment shaders' inputs: inputs and outputs

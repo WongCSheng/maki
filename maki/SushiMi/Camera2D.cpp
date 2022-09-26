@@ -1,9 +1,33 @@
+/*!
+@file		Camera2D.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
+
+This file implements functionality for the 2D Camera. Main functions include the initialization
+and the updating of the camera's position,rotation and scaling.
+There are a lot of matrices and vectors being used. Was previously using my own created
+vector and matrix library but there were many errors so temporarily using glm's vector and
+matrix library for now. Links to GLHelper for the keypresses like rotation and zooming in.
+*//*__________________________________________________________________________*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
+
 #include "Camera2D.h"
 #include "include/glhelper.h"
+/*--------------------------------------------------------------------------- */
 
 /*global variables*/
 GLboolean first_person_cam = GL_FALSE;
 Camera2D Camera2D::camera2d;
+
+/*  _________________________________________________________________________ */
+/*! Camera2D::init(GLFWwindow* pWindow, GLApp::GLObject* ptr)
+@param GLFWwindow* pWindow, Object* ptr
+@return none
+
+Assign pgo to camera and compute aspect ratio, initialize as free camera.
+*/
 void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 {
 	// assign address of object of type GLApp::GLObject with name "Camera" in objects
@@ -38,10 +62,17 @@ void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;
 }
 
+/*  _________________________________________________________________________ */
+/*! Camera2D::update(GLFWwindow*)
+@param GLFWwindow*
+@return none
+
+Update camera's ratio, orientation, position, up and right vectors, zoom and transformation matrices
+*/
 void Camera2D::update(GLFWwindow* pWindow)
 {
 	ar = (GLfloat)GLHelper::width / (GLfloat)GLHelper::height;
-	// update POV
+	// update POV using keypress
 	if (camtype_flag == GL_TRUE)
 	{
 		if (first_person_cam == GL_FALSE)
@@ -77,7 +108,7 @@ void Camera2D::update(GLFWwindow* pWindow)
 	{
 		pgo->orientation.x -= pgo->orientation.y;
 	}
-	// update camera's up and right vectors (if required)
+	// update camera's up and right vectors
 
 	up = { -sinf(glm::radians(pgo->orientation.x)),
 			cosf(glm::radians(pgo->orientation.x)) };
@@ -85,7 +116,7 @@ void Camera2D::update(GLFWwindow* pWindow)
 	right = { cosf(glm::radians(pgo->orientation.x)),
 				sinf(glm::radians(pgo->orientation.x)) };
 
-	// update camera's position (if required) 
+	// update camera's position
 	if (move_flag == GL_TRUE)
 	{
 		pgo->position += (linear_speed * glm::normalize(up));//displace the camera
@@ -107,7 +138,7 @@ void Camera2D::update(GLFWwindow* pWindow)
 
 
 	// compute window-to-NDC transformation matrix
-	// compute other matrices ...
+	// compute other matrices like rotation,scaling and translation
 	camwin_to_ndc_xform = { {2.0f / (height * ar),0.f,0.f},
 							{0.f,2.f / height,0.f},
 							{0.f,0.f,1.f}

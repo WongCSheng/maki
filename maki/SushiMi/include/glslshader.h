@@ -1,12 +1,7 @@
 /* !
 @file    glslshader.h
-@author  pghali@digipen.edu
-@date    06/11/2016
-
-Note: The contents of this file must not be updated by students. Otherwise,
-something that works for you will not work for me. If you want something to be
-modified, updated, or altered and it is useful for the entire class, please
-speak to me.
+@author  louishetong.wang@digipen.edu
+@date    20/09/2022
 
 This file contains the declaration of class GLSLShader that encapsulates the
 functionality required to load shader source; compile shader source; link
@@ -40,25 +35,13 @@ program object.
 
 /*  _________________________________________________________________________ */
 class GLSLShader
-    /*! GLSLShader class.
-    */
 {
 public:
-    //~GLSLShader() { DeleteShaderProgram(); std::cout << "Deleted Shader Program" << std::endl; }
-    // default ctor required to initialize GLSLShader object to safe state
-    GLSLShader() : pgm_handle(0), is_linked(GL_FALSE) { /* empty by design */ }
+    // default ctor
+    GLSLShader() : pgm_handle(0), is_linked(GL_FALSE) {  }
 
     // This function not only compiles individual shader sources but links
     // multiple shader objects to create an exectuable shader program.
-    // For each shader source, the function requires the full path to the file 
-    // (containing shader source) and the type of shader program (vertex,
-    // fragment, geometry, a tessellation type). This information is combined
-    // as an std::pair object and the multiple pairs are supplied in a
-    // std::vector object.
-    // For each shader file, the function implements the six steps described in T
-    // CompileShaderFromFile(). After the shader objects are created, a call to
-    // Link() will create a shader executable program. This is followed by a call
-    // to Validate() ensuring the program can execute in the current OpenGL state.
     GLboolean CompileLinkValidate(std::vector<std::pair<GLenum, std::string>>);
 
     // This function does the following:
@@ -146,8 +129,6 @@ public:
     void SetUniform(GLchar const* name, GLint val);
     void SetUniform(GLchar const* name, GLfloat val);
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y);
-    void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z);
-    void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     void SetUniform(GLchar const* name, glm::vec2 const& val);
     void SetUniform(GLchar const* name, glm::vec3 const& val);
     void SetUniform(GLchar const* name, glm::mat3 const& val);
@@ -165,9 +146,6 @@ private:
         GEOMETRY_SHADER = GL_GEOMETRY_SHADER,
         TESS_CONTROL_SHADER = GL_TESS_CONTROL_SHADER,
         TESS_EVALUATION_SHADER = GL_TESS_EVALUATION_SHADER,
-        // ignore compute shader for now because it is not connected to
-        // the graphics pipe
-        // COMPUTE_SHADER = GL_COMPUTE_SHADER
     };
 
     GLuint pgm_handle = 0;  // handle to linked shader program object

@@ -1,7 +1,22 @@
+/*!
+@file		object.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
+
+This file implements functionality for the object itself. So once the object is
+created, next step is to draw the object using the shader program and call DrawElements
+to draw the object, then unbind and unuse the shader program.
+*//*__________________________________________________________________________*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include "object.h"
 #include "Camera2D.h"
 #include "include/glapp.h"
+/*--------------------------------------------------------------------------- */
+
 std::map<std::string, Object> Object::objects;
+
 /*  _________________________________________________________________________ */
 /*! Object::draw() const
 @param
@@ -31,7 +46,7 @@ void Object::draw() const
 }
 
 /*  _________________________________________________________________________ */
-/*! GLApp::GLObject::update(GLdouble delta_time)
+/*! Object::update(GLdouble delta_time)
 @param GLDouble delta_time
 @return none
 

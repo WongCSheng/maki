@@ -1,10 +1,32 @@
+/*!
+@file		model.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
+
+This file implements functionality for the Model. There are 3 models currently
+which are circle, square and triangle(The 3 basic shapes for rendering).
+So initialization will read the mesh file path, and from the file's prefix determine
+which type of model it is, the vertices index, position vertices, create the buffers
+with the size of the vertices and store them respectively.
+*//*__________________________________________________________________________*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include "model.h"
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/glm.hpp>
-
+/*--------------------------------------------------------------------------- */
 
 
 std::map<std::string, Model> Model::models; // singleton
+
+/*  _________________________________________________________________________ */
+/*! Model init(std::string)
+@param std::string
+@return Model result
+
+initialize the 3 different types of models by reading from the filepath and storing the data into a model.
+*/
 Model Model::init(std::string mesh_filepath)
 {
 
@@ -22,24 +44,24 @@ Model Model::init(std::string mesh_filepath)
 		exit(EXIT_FAILURE);
 	}
 	ifs.seekg(0, std::ios::beg);
-	while (ifs.peek() != EOF)
+	while (ifs.peek() != EOF) 	// start reading file from here
 	{
 		std::string line;
 		getline(ifs, line);
 		std::istringstream prefix_check{ line };
 		char prefix;
-		prefix_check >> prefix;
+		prefix_check >> prefix;	// check prefix
 		switch (prefix)
 		{
-		case 'n':
+		case 'n':				// n refers to name
 			prefix_check >> model_name;
 			break;
 
-		case 'v':
+		case 'v':				// v refers to vertex
 			prefix_check >> x >> y;
 			pos_vtx.emplace_back(x, y);
 			break;
-		case 'f':
+		case 'f':				// f refers to triangle fan
 			result.primitive_type = GL_TRIANGLE_FAN;
 			if (idx_vtx.size() == 0)
 			{
@@ -54,7 +76,7 @@ Model Model::init(std::string mesh_filepath)
 				idx_vtx.emplace_back(f);
 			}
 			break;
-		case 't':
+		case 't':				// t refers to triangle
 			result.primitive_type = GL_TRIANGLES;
 			prefix_check >> ix >> iy >> iz;
 			idx_vtx.emplace_back(ix);
@@ -64,11 +86,12 @@ Model Model::init(std::string mesh_filepath)
 		}
 
 	}
+	//vbo handler
 	GLuint vbo_hdl;
 	glCreateBuffers(1, &vbo_hdl);
 	glNamedBufferStorage(vbo_hdl, sizeof(glm::vec2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
 	glNamedBufferSubData(vbo_hdl, 0, sizeof(glm::vec2) * pos_vtx.size(), pos_vtx.data());
-
+	//vao handler
 	GLuint vaoid;
 	glCreateVertexArrays(1, &vaoid);
 	glEnableVertexArrayAttrib(vaoid, 0);
@@ -77,6 +100,13 @@ Model Model::init(std::string mesh_filepath)
 	glVertexArrayAttribBinding(vaoid, 0, 0);
 	glBindVertexArray(0);
 
+	//texture position in attribute index 2 and bind to point 5
+	glEnableVertexArrayAttrib(vaoid, 2);
+	glVertexArrayVertexBuffer(vaoid, 5, vbo_hdl,0, sizeof(glm::vec2));
+	glVertexArrayAttribFormat(vaoid, 2, 2, GL_FLOAT, GL_FALSE, 0);
+	glVertexArrayAttribBinding(vaoid, 2, 5);
+
+	//ebo handler
 	GLuint ebo_hdl;
 	glCreateBuffers(1, &ebo_hdl);
 	glNamedBufferStorage(ebo_hdl, sizeof(GLushort) * idx_vtx.size(),

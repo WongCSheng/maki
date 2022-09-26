@@ -1,8 +1,7 @@
 /*!
 @file		glhelper.cpp
-@author		pghali@digipen.edu
-@co-author  louishetong.wang@digipen.edu
-@date		8/06/2022
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
 
 This file implements functionality useful and necessary to build OpenGL
 applications including use of external APIs such as GLFW to create a
@@ -31,22 +30,13 @@ GLFWwindow* GLHelper::ptr_window;
 
 @param GLint width
 @param GLint height
-Dimensions of window requested by program
-
 @param std::string title_str
-String printed to window's title bar
 
 @return bool
 true if OpenGL context and GLEW were successfully initialized.
 false otherwise.
 
-Uses GLFW to create OpenGL context. GLFW's initialization follows from here:
-http://www.glfw.org/docs/latest/quick.html
-a window of size width x height pixels
-and its associated OpenGL context that matches a core profile that is
-compatible with OpenGL 4.5 and doesn't support "old" OpenGL, has 32-bit RGBA,
-double-buffered color buffer, 24-bit depth buffer and 8-bit stencil buffer
-with each buffer of size width x height pixels
+Uses GLFW to create OpenGL context with a window of size width x height pixels.
 */
 bool GLHelper::init(GLint w, GLint h, std::string t) {
 	GLHelper::width = w;
@@ -63,7 +53,6 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	glfwSetErrorCallback(GLHelper::error_cb);
 
 	// Before asking GLFW to create an OpenGL context, we specify the minimum constraints
-	// in that context:
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // major ver 4 (4.x)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5); //minor ver 5 (x.5)
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // show that opengl is forward compatible
@@ -87,7 +76,6 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	glfwSetKeyCallback(GLHelper::ptr_window, GLHelper::key_cb);
 	glfwSetMouseButtonCallback(GLHelper::ptr_window, GLHelper::mousebutton_cb);
 	glfwSetCursorPosCallback(GLHelper::ptr_window, GLHelper::mousepos_cb);
-	glfwSetScrollCallback(GLHelper::ptr_window, GLHelper::mousescroll_cb);
 
 	// this is the default setting ...
 	glfwSetInputMode(GLHelper::ptr_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
@@ -169,9 +157,7 @@ void GLHelper::print_specs()
 
 @return none
 
-For now, there are no resources allocated by the application program.
-The only task is to have GLFW return resources back to the system and
-gracefully terminate.
+GLFW return resources back to the system and terminate.
 */
 void GLHelper::cleanup() {
 	// Part 1
@@ -283,31 +269,6 @@ relative to the top-left corner of the window client area.
 void GLHelper::mousepos_cb(GLFWwindow* pwin, double xpos, double ypos) {
 #ifdef _DEBUG
 	std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
-#endif
-}
-
-/*  _________________________________________________________________________*/
-/*! mousescroll_cb
-
-@param GLFWwindow*
-Handle to window that is receiving event
-
-@param double
-Scroll offset along X-axis
-
-@param double
-Scroll offset along Y-axis
-
-@return none
-
-This function is called when the user scrolls, whether with a mouse wheel or
-touchpad gesture. Although the function receives 2D scroll offsets, a simple
-mouse scroll wheel, being vertical, provides offsets only along the Y-axis.
-*/
-void GLHelper::mousescroll_cb(GLFWwindow* pwin, double xoffset, double yoffset) {
-#ifdef _DEBUG
-	std::cout << "Mouse scroll wheel offset: ("
-		<< xoffset << ", " << yoffset << ")" << std::endl;
 #endif
 }
 

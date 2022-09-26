@@ -1,18 +1,14 @@
 /*!
 @file		glapp.h
-@author		pghali@digipen.edu
-@co-author  louishetong.wang@digipen.edu
-@date		29/05/2022
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
 
 This file contains the declaration of namespace GLApp that encapsulates the
 functionality required to implement an OpenGL application including
 compiling, linking, and validating shader programs
 setting up geometry and index buffers,
 configuring VAO to present the buffered geometry and index data to
-vertex shaders,
-configuring textures (in later labs),
-configuring cameras (in later labs),
-and transformations (in later labs).
+vertex shaders, textures.(Not yet added in as of this version)
 *//*__________________________________________________________________________*/
 
 /*                                                                      guard

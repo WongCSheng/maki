@@ -1,7 +1,6 @@
 /*!
 @file		glapp.cpp
-@author		pghali@digipen.edu
-@co-author  louishetong.wang@digipen.edu
+@author		louishetong.wang@digipen.edu
 @date		29/05/2022
 
 This file implements functionality useful and necessary to build OpenGL
@@ -43,28 +42,25 @@ Object temp;
 Initialize color, viewports, VAO and create shader program
 */
 void GLApp::init() {
-	/////////////////////// initialize openGL//////////////////////////////////
-	// Part 1: clear colorbuffer with RGBA value in glClearColor ...
 
+	// clear colorbuffer with RGBA value in glClearColor
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 
-	// part 2: use entire window as viewport
+	// use entire window as viewport
 	GLint w{ GLHelper::width }, h{ GLHelper::height };
 
 	glViewport(0, 0, w, h);
 
 	GLApp::vps.push_back({ 0, 0, 0, 0 });
 	GLViewport{ vps[0].x, vps[0].y, vps[0].width, vps[0].height };
-	// part 3: parse scene file $(SolutionDir)scenes/tutorial-4.scn
-	// and store repo of models of type GLModel in container GLApp::models,
+	// parse scene file $(SolutionDir)scenes/sushimi.scn
+	// and store repo of models of type GLModel in container Model::models,
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
-	// and store repo of objects of type GLObject in container GLApp::objects
+	// and store repo of objects of type GLObject in container Object::objects
 	GLApp::init_scene("../scenes/myscene.scn");
 
-	//Part 4: Initialize camera
+	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
-
-	//Part 5: Print OpenGL context and GPU specs
 	
 }
 
@@ -76,7 +72,7 @@ void GLApp::init() {
 
 insert shader program into container GLApp::shdrpgms
 */
-static void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr)
+void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr)
 {
 	std::vector<std::pair<GLenum, std::string>> shdr_files
 	{
@@ -182,7 +178,7 @@ void GLApp::init_scene(std::string scene_filename)
 		line_scale >> scale_x >> scale_y;
 		currObj.scaling = { scale_x, scale_y };
 
-		getline(ifs, line); // 6th parameter: orientation factors of object: initial angular orientation (where am i looking at start up?)
+		getline(ifs, line); // 6th parameter: orientation factors of object: initial angular orientation
 		std::istringstream line_orientation{ line };
 		GLfloat orientation_x, orientation_y;
 		line_orientation >> orientation_x >> orientation_y;
@@ -219,7 +215,7 @@ void GLApp::update()
 	Camera2D::camera2d.update(GLHelper::ptr_window);
 
 	// next, iterate thru each element in container object
-	// for each object of type GLObject, call update function
+	// for each object of type Object, call update function
 	// except for camera
 	for (auto& x : Object::objects)
 	{

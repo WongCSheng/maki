@@ -1,8 +1,19 @@
 #pragma once
+/*!
+@file		Camera2D.h
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
 
+This file implements functionality for the 2D Camera. Main functions include the initialization
+and the updating of the camera's position,rotation and scaling.
+There are a lot of matrices and vectors being used. Was previously using my own created
+vector and matrix library but there were many errors so temporarily using glm's vector and
+matrix library for now. Links to GLHelper for the keypresses like rotation and zooming in.
+*//*__________________________________________________________________________*/
 #ifndef CAMERA2D_H_
 #define CAMERA2D_H_
-
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include <glm/glm/fwd.hpp>
 #include "include/Math.h"
 #include "object.h"
@@ -10,13 +21,13 @@
 #include <glm/glm/trigonometric.hpp>
 #include <GLFW/glfw3.h>
 #include "include/Matrix.h"
-
+/*--------------------------------------------------------------------------- */
 class Camera2D
 {
 public:
-	/*  _________________________________________________________________________ */
-	/*! GLApp::Camera2D::init(GLFWwindow* pWindow, GLApp::GLObject* ptr)
-	@param GLFWwindow* pWindow, GLApp::GLObject* ptr
+	/*  _____________________________________________________________________ */
+	/*! Camera2D::init(GLFWwindow* pWindow, Object* ptr)
+	@param GLFWwindow* pWindow, Object* ptr
 	@return none
 
 	Assign pgo to camera and compute aspect ratio, initialize as free camera.
@@ -24,7 +35,7 @@ public:
 	void init(GLFWwindow*, Object* ptr);
 
 	/*  _________________________________________________________________________ */
-	/*! GLApp::Camera2D::update(GLFWwindow*)
+	/*! Camera2D::update(GLFWwindow*)
 	@param GLFWwindow*
 	@return none
 
@@ -32,6 +43,7 @@ public:
 	*/
 	void update(GLFWwindow*);
 
+	/*-----------------------Variables declaration------------------------------------------*/
 	Object* pgo; // pointer to game obj that embeds the camera
 	glm::vec2 right, up;
 

@@ -16,10 +16,15 @@ to draw the object, then unbind and unuse the shader program.
 #include <map>
 #include "include/glslshader.h"
 #include "model.h"
+#include <glm/glm/fwd.hpp>
+#include <glm/glm/trigonometric.hpp>
+#include <GLFW/glfw3.h>
 /*--------------------------------------------------------------------------- */
 class Object
 {
 public:
+
+	void init(GLFWwindow* pWindow, Object* ptr);
 	void draw() const;
 
 	void update(GLdouble delta_time);
@@ -40,7 +45,7 @@ public:
 	// draw the specific model using the specific shader
 	std::map<std::string, GLSLShader>::iterator shd_ref;
 
-	
+	Object* square;
 	glm::vec3 color;
 	glm::mat3 mdl_xform; // model transformation
 

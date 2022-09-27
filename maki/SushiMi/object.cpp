@@ -17,6 +17,11 @@ to draw the object, then unbind and unuse the shader program.
 
 std::map<std::string, Object> Object::objects;
 
+void Object::init(GLFWwindow* pWindow, Object* ptr)
+{
+	square = &Object::objects.at("Square");
+}
+
 /*  _________________________________________________________________________ */
 /*! Object::draw() const
 @param
@@ -54,30 +59,65 @@ All the transformation matrix scale,rot, trans and model to ndc transformation.
 */
 void Object::update(GLdouble delta_time)
 {
-	const glm::mat3 scale_mat
+	for (auto& x : Object::objects)
 	{
-		{scaling.x, 0, 0},
-		{0, scaling.y, 0},
-		{0, 0, 1}
-	};
+		if (x.first == "Square")
+		{
+			const glm::mat3 scale_mat
+			{
+				{5, 0, 0},
+				{0, 5, 0},
+				{0, 0, 1}
+			};
 
-	orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
-	const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);
+			square->orientation.x += square->orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
+			const GLfloat radians = square->orientation.x / 180.f * static_cast<GLfloat>(PI);
 
-	const glm::mat3 rot_mat
-	{
-		{cos(radians), sin(radians), 0},
-		{-sin(radians), cos(radians), 0},
-		{0, 0, 1}
-	};
-	const glm::mat3 trans_mat
-	{
-		{1, 0, 0},
-		{0, 1, 0},
-		{position.x, position.y, 1}
-	};
+			const glm::mat3 rot_mat
+			{
+				{cos(radians), sin(radians), 0},
+				{-sin(radians), cos(radians), 0},
+				{0, 0, 1}
+			};
+			const glm::mat3 trans_mat
+			{
+				{1, 0, 0},
+				{0, 1, 0},
+				{square->position.x, square->position.y, 1}
+			};
 
 
-	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
+			mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
+		}
+		else
+		{
+			const glm::mat3 scale_mat
+			{
+				{scaling.x, 0, 0},
+				{0, scaling.y, 0},
+				{0, 0, 1}
+			};
 
+			orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
+			const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);
+
+			const glm::mat3 rot_mat
+			{
+				{cos(radians), sin(radians), 0},
+				{-sin(radians), cos(radians), 0},
+				{0, 0, 1}
+			};
+			const glm::mat3 trans_mat
+			{
+				{1, 0, 0},
+				{0, 1, 0},
+				{position.x, position.y, 1}
+			};
+
+
+			mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
+
+		}
+	}
+	
 }

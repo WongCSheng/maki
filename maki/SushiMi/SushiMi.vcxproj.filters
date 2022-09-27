@@ -127,5 +127,8 @@
     <None Include="..\shaders\SushiMi.vert">
       <Filter>GameEngine\Graphics</Filter>
     </None>
+    <None Include="jsonFiles\loadtext.json">
+      <Filter>GameEngine\Serialization</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -65,6 +65,7 @@ file so that in all files you will only need to
 //Serializer
 #include <any>
 
+#include <filereadstream.h>
 #include <rapidjson.h>
 #include <istreamwrapper.h>
 #include <filereadstream.h>
@@ -73,6 +74,8 @@ file so that in all files you will only need to
 #include <writer.h>
 #include <stringbuffer.h>
 #include <document.h>
+#include <error/error.h>
+#include <error/en.h>
 
 
 #include <type.h>
@@ -82,11 +85,13 @@ file so that in all files you will only need to
 #include <registration.h>
 #include <version.h>
 
+
 #include <fstream>
 #include <filesystem>
 #include <iostream>
 
-#include "RTTR.h"
+#include "../include/JSONSerializer.h"
+#include "../include/RTTR.h"
 
 
 //Input 

@@ -1,7 +1,60 @@
 #pragma once
-#include <../../include/common_headers.hpp>
-#include "../../include/JSONSerializer.h"
+#include "../include/common_headers.hpp"
 
+//LOADING
+bool Serializer::Deserialize(const std::string& filepath){
+	using namespace rapidjson;
+
+	Document doc;
+	std::ifstream ifs(filepath);
+	IStreamWrapper isw(ifs);
+	
+	ParseResult result = doc.ParseStream(isw);
+	//check if parsing succedded
+	if (!result) {
+	
+		printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
+		return 1;
+	}
+
+	for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)
+	{
+		std::cout << iter->name.GetString() << ":";
+		
+		//std::cout << iter->value.GetInt() << std::endl;
+		if (iter->value.IsInt())
+			std::cout << iter->value.GetInt() << std::endl;
+		else if (iter->value.IsString())
+			std::cout << iter->value.GetString() << std::endl;
+		else if (iter->value.IsDouble())
+			std::cout << iter->value.GetDouble() << std::endl;
+		else if (iter->value.IsFloat())
+			std::cout << iter->value.GetFloat() << std::endl;
+		else if (iter->value.IsBool()) //may want to convert to true or false
+			std::cout << iter->value.GetBool() << std::endl;
+		else if (iter->value.IsNull())
+			std::cout << "null" << std::endl;
+		else if (iter->value.IsArray())
+		{
+			//further go in?for loop?
+		}
+		else if (iter->value.IsObject())
+		{
+			//further go in?for loop?
+		}
+		else
+			std::cout << "Invalid value type!" << std::endl;;
+		
+	}
+	return 0;
+}
+
+
+//SAVING
+//NOT IMPLEMENTED
+
+
+//do before serializing
 void SetDocument() { //set a documennt file that will contain all game objects
 	rapidjson::Document doc;
 	doc.SetObject();
@@ -10,6 +63,7 @@ void SetDocument() { //set a documennt file that will contain all game objects
 //to call before serializing any object or child object
 rapidjson::Value MakeJsonVal() {
 	rapidjson::Value object(rapidjson::kObjectType);
+	return object;
 }
 
 //serialise property name and value, to call for every property in game object
@@ -24,7 +78,7 @@ rapidjson::Value Serialize(
 		//find type
 	rttr::type type = object.get_type();
 		//get data from this member
-	rttr:variant c = type.get_property(propertyName).get_value(object);
+	rttr::variant propertyVal = type.get_property(propertyName).get_value(object);
 		//add into json value
 	objInfo.AddMember(propertyName, propertyVal.get_value<type>(), targetFile.GetAllocator());
 

@@ -1,5 +1,6 @@
 #pragma once
-#include "../include/common_headers.hpp"
+#ifndef RTTR_H
+#define RTTR_H
 
 //struct vec3
 //{
@@ -83,3 +84,4 @@
 //	}
 //
 //}
+#endif

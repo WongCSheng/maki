@@ -16,7 +16,6 @@ SushiMi main file!!
 #include <../include/common_headers.hpp>
 #include <../include/glapp.h>
 
-
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
@@ -183,6 +182,11 @@ static void init() {
 
 	// Part 3
 	GLApp::init();
+
+	//testing deserializing
+	Serializer ser;
+	std::cout << "Result of serializer is : "  << std::endl;
+	ser.Deserialize("jsonFiles/loadtext.json");
 }
 
 /*  _________________________________________________________________________ */

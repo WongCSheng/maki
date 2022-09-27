@@ -1,30 +1,24 @@
 #pragma once
-#include "../include/common_headers.hpp"
 
-void WriteToConsole(rapidjson::Document& doc)
-{
-	rapidjson::StringBuffer sb;
-	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-	writer.SetFormatOptions(rapidjson::PrettyFormatOptions::kFormatSingleLineArray);
+#ifndef JSERIALIZE_H
+#define JSERIALIZE_H
+class Serializer {
 
-	doc.Accept(writer);
-	std::cout << sb.GetString() << std::endl;
-}
+public:
+	//void Serialize (const std::string& filepath);
+
+	bool Deserialize(const std::string& filepath);
 
 
-//
-//void WriteToFile(rapidjson::Document& doc, const std::filesystem::path& p)
+};
+
+//void WriteToConsole(rapidjson::Document& doc)
 //{
-//  //we will be using ostreamwrapper by rapidjson
+//	rapidjson::StringBuffer sb;
+//	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+//	writer.SetFormatOptions(rapidjson::PrettyFormatOptions::kFormatSingleLineArray);
 //
-//
-//
-//
-//
-//
-//
-//
-//
+//	doc.Accept(writer);
+//	std::cout << sb.GetString() << std::endl;
 //}
-//
-//provided function for free
+#endif

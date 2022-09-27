@@ -2,6 +2,24 @@
 
 Input* Input::instance = 0;
 
+
+
+void Input::key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
+{
+	if (key == KEY::KEY_E && action == GLFW_PRESS)
+	{
+		std::cout << "Key E is pressed" << std::endl;
+	
+	}
+	if (action == GLFW_PRESS)
+	{
+		
+		Input::Instance().keys[static_cast<KEY>(key)].operator[](KEY_STATE::KEY_STATE_PRESS) = true;
+		std::cout << "Any key is pressed" << std::endl;
+
+	}
+}
+
 //constructor to load all the keys
 Input::Input()
 {

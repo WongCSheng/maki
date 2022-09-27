@@ -87,7 +87,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 			<< glewGetErrorString(err) << " abort program" << std::endl;
 		return false;
 	}
-	if (GLEW_VERSION_4_5) {
+	if (GLEW_VERSION_4_3) {
 		std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
 		std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
 	}
@@ -191,7 +191,30 @@ This function is called when keyboard buttons are pressed.
 When the ESC key is pressed, the close flag of the window is set.
 */
 void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod) {
-	//for key presses
+	
+	/* for object physics implementation*/
+	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
+	{
+		Object::objects["Object5"].position.x += 50.0f;
+		std::cout << "Physics: Moving a circle object right" << std::endl;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
+	{
+		Object::objects["Object5"].position.x -= 50.0f;
+		std::cout << "Physics: Moving a circle object left" << std::endl;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
+	{
+		Object::objects["Object5"].position.y -= 50.0f;
+		std::cout << "Physics: Moving a circle object down" << std::endl;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
+	{
+		Object::objects["Object5"].position.y += 50.0f;
+		std::cout << "Physics: Moving a circle object up" << std::endl;
+	}
+
+	//for camera physics
 	if (GLFW_PRESS == action && key == GLFW_KEY_V)
 	{
 		Camera2D::camera2d.camtype_flag = GL_TRUE;
@@ -220,6 +243,8 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Camera2D::camera2d.right_turn_flag = GL_FALSE;
 		Camera2D::camera2d.move_flag = GL_FALSE;
 	}
+
+	
 
 }
 
@@ -268,7 +293,7 @@ relative to the top-left corner of the window client area.
 */
 void GLHelper::mousepos_cb(GLFWwindow* pwin, double xpos, double ypos) {
 #ifdef _DEBUG
-	std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
+	//std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
 #endif
 }
 

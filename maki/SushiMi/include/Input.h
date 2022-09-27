@@ -6,6 +6,8 @@
 #include <queue>
 #include "Keys.h"
 
+
+
 class Input
 {
 public:
@@ -22,6 +24,8 @@ public:
 	void Update(const KEY key, const KEY_STATE action);
 	bool GetKey(const KEY key, const KEY_STATE action);
 	bool GetKeyDown(const KEY key);
+	/* added function from GLFW */
+	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 private:
 	Input();

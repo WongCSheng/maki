@@ -1,5 +1,8 @@
 {
-  "name": "john",
-  "age": 30,
-  "car": null
+	"testInt": 123456,
+	"testFloat": "123.4F",
+	"testDouble": 12.345,
+	"testStr": "testing testing",
+	"testBool": false,
+	"testNull": null
 }

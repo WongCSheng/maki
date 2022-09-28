@@ -2,26 +2,23 @@
 #include "../include/common_headers.hpp"
 
 //LOADING
-bool Serializer::Deserialize(const std::string& filepath){
+bool Serializer::DeserializeAndPrintConsole(const std::string& filepath){
 	using namespace rapidjson;
 
 	Document doc;
 	std::ifstream ifs(filepath);
 	IStreamWrapper isw(ifs);
-	
 	ParseResult result = doc.ParseStream(isw);
-	//check if parsing succedded
-	if (!result) {
 	
+	if (!result) { //check if parsing succedded
 		printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
-		return 1;
+		return 0; //failure
 	}
 
 	for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)
 	{
 		std::cout << iter->name.GetString() << ":";
 		
-		//std::cout << iter->value.GetInt() << std::endl;
 		if (iter->value.IsInt())
 			std::cout << iter->value.GetInt() << std::endl;
 		else if (iter->value.IsString())
@@ -30,8 +27,12 @@ bool Serializer::Deserialize(const std::string& filepath){
 			std::cout << iter->value.GetDouble() << std::endl;
 		else if (iter->value.IsFloat())
 			std::cout << iter->value.GetFloat() << std::endl;
-		else if (iter->value.IsBool()) //may want to convert to true or false
-			std::cout << iter->value.GetBool() << std::endl;
+		else if (iter->value.IsBool()) {
+			if (iter->value.GetBool())
+				std::cout << "true" << std::endl;
+			else 
+				std::cout << "false" << std::endl;
+		}
 		else if (iter->value.IsNull())
 			std::cout << "null" << std::endl;
 		else if (iter->value.IsArray())
@@ -42,11 +43,72 @@ bool Serializer::Deserialize(const std::string& filepath){
 		{
 			//further go in?for loop?
 		}
-		else
+		else 
+		{
 			std::cout << "Invalid value type!" << std::endl;;
-		
+			return 0; //fail to parse 
+		}
 	}
-	return 0;
+	return 1; //success
+}
+
+
+// needs to be registered for rttr first
+template<typename gameObject>
+bool Serializer::DeserializeAndSetValues(gameObject& obj, const std::string& filepath) {
+
+	using namespace rapidjson;
+
+	std::string tempStr;
+	Document doc;
+	std::ifstream ifs(filepath);
+	IStreamWrapper isw(ifs);
+	ParseResult result = doc.ParseStream(isw);
+
+	//rttr::type ObjType = obj.get_type();
+
+
+	if (!result) { //check if parsing succedded
+		printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
+		return 0; //failure
+	}
+
+		for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)
+		{
+			tempStr = iter->name.GetString(); //gets json property name
+			//rttr::property propertyType = ObjType.get_property(tempStr); //get the name by type
+
+			
+
+			//if (iter->value.IsInt())
+			//	propertyType.set_value(obj, iter->value.GetInt());
+			//else if (iter->value.IsString())
+			//	propertyType.set_value(obj, iter->value.GetString());
+			//else if (iter->value.IsDouble())
+			//	propertyType.set_value(obj, iter->value.IsDouble());
+			//else if (iter->value.IsFloat())
+			//	propertyType.set_value(obj, iter->value.GetFloat());
+			//else if (iter->value.IsBool()) 
+			//	propertyType.set_value(obj, iter->value.GetBool());
+			//else if (iter->value.IsNull())
+			//	propertyType.set_value(obj, NULL);
+			//else if (iter->value.IsArray())
+			//{
+			//	//further go in?for loop?
+			//}
+			//else if (iter->value.IsObject())
+			//{
+			//	//further go in?for loop?
+			//}
+			//else
+			//{
+			//	std::cout << "Invalid value type!" << std::endl;;
+			//	return 0; //fail to parse 
+			//}
+		}
+	
+	
+	return 1; //success
 }
 
 

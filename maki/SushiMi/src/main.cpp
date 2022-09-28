@@ -185,8 +185,10 @@ static void init() {
 
 	//testing deserializing
 	Serializer ser;
+	TestClass testing;
 	std::cout << "Result of serializer is : "  << std::endl;
-	ser.Deserialize("jsonFiles/loadtext.json");
+	//ser.DeserializeAndSetValues(testing, "jsonFiles/loadtext.json");
+	
 }
 
 /*  _________________________________________________________________________ */

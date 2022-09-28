@@ -77,12 +77,12 @@ file so that in all files you will only need to
 #include <error/error.h>
 #include <error/en.h>
 
-
+//rttr
 #include <type.h>
 #include <property.h>
+#include <registration.h>
 #include <variant_impl.h>
 #include <variant.h>
-#include <registration.h>
 #include <version.h>
 
 

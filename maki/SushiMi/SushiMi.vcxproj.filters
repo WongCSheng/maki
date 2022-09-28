@@ -65,6 +65,9 @@
     <ClCompile Include="src\Timer.cpp">
       <Filter>GameEngine\Timer</Filter>
     </ClCompile>
+    <ClCompile Include="src\AudioEngine.cpp">
+      <Filter>GameEngine\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -149,6 +152,9 @@
     <ClInclude Include="include\Timer.h">
       <Filter>GameEngine\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="include\AudioEngine.h">
+      <Filter>GameEngine\Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -192,6 +198,9 @@
     </Filter>
     <Filter Include="GameEngine\Timer">
       <UniqueIdentifier>{57a9b861-054a-4517-866e-48b281527a44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Audio">
+      <UniqueIdentifier>{0a9b184e-3b1d-46c6-bec6-b5e691aaefc7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

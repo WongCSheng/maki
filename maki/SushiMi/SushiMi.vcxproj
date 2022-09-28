@@ -235,11 +235,11 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\RTTR.h" />
     <ClInclude Include="include\Script.h" />
+    <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="object.h" />
-    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />

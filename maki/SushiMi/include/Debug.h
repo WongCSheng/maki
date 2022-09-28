@@ -1,3 +1,11 @@
+/*!
+@file		Debug.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file currently contains framework for debugging that we will include later.
+*//*__________________________________________________________________________*/
+
 #pragma once
 #include "../include/common_headers.hpp"
 #ifndef DEBUGGER_H

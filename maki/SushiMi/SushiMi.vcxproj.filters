@@ -143,11 +143,11 @@
     <ClInclude Include="include\Debug.h">
       <Filter>GameEngine\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>GameEngine\Timer</Filter>
-    </ClInclude>
     <ClInclude Include="include\Script.h">
       <Filter>GameEngine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Timer.h">
+      <Filter>GameEngine\Timer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\glapp.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glhelper.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glslshader.cpp">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JSONSerializer.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RTTR.cpp">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entity\ECS.cpp">
+      <Filter>GameEngine\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\Core.cpp">
+      <Filter>GameEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Window\Window.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Users\User.cpp">
+      <Filter>Users</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input\Input.cpp">
+      <Filter>GameEngine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Renderer.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\CameraSystem.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Transformer.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Messaging\Messaging.cpp">
+      <Filter>GameEngine\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\SystemFrame.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Object\object.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Camera\Camera2D.cpp">
+      <Filter>GameEngine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh\model.cpp">
+      <Filter>GameEngine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_demo.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_draw.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_glfw.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_tables.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Transform\Transform.cpp">
+      <Filter>GameEngine\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Factory\Factory.cpp">
+      <Filter>GameEngine\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Physics\collision.cpp">
+      <Filter>GameEngine\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Timer\Timer.cpp">
+      <Filter>GameEngine\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger\Debug.cpp">
+      <Filter>Debugger</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\glapp.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glhelper.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glslshader.h">
+      <Filter>GameEngine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JSONSerializer.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RTTR.h">
+      <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entity\ECS.h">
+      <Filter>GameEngine\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Core.h">
+      <Filter>GameEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Window\Window.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Users\User.h">
+      <Filter>Users</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input\Input.h">
+      <Filter>GameEngine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input\Keys.h">
+      <Filter>GameEngine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\SystemFrame.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Renderer.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\CameraSystem.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Transformer.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Messaging\Messaging.h">
+      <Filter>GameEngine\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\object.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Camera\Camera2D.h">
+      <Filter>GameEngine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh\model.h">
+      <Filter>GameEngine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imconfig.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imgui_internal.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_rectpack.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_textedit.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\imgui\imstb_truetype.h">
+      <Filter>GameEngine\UI\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ImGui_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Math_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\STL_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Graphics_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Transform\Transform.h">
+      <Filter>GameEngine\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Factory\Factory.h">
+      <Filter>GameEngine\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\RapidJSON_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Physics\collision.h">
+      <Filter>GameEngine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Timer\Timer.h">
+      <Filter>GameEngine\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger\Debug.h">
+      <Filter>Debugger</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{a72a1129-f7b1-40a7-bf6b-47bbd7a44503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Serialization">
+      <UniqueIdentifier>{54eb1265-12da-43aa-8089-3698022cc39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Input">
+      <UniqueIdentifier>{94596984-6186-4f86-abbd-7ba02b498ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Graphics">
+      <UniqueIdentifier>{a03d3466-fb2d-450f-a990-9a5851239b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Core">
+      <UniqueIdentifier>{57bcac02-779c-4cfe-8147-57a957306be9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Messaging">
+      <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\ECS">
+      <UniqueIdentifier>{b6c5341e-79e2-454e-8e62-ee56d3033e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\UI">
+      <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Users">
+      <UniqueIdentifier>{ad949715-feac-4c16-a62b-7bd34e0b7cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{cb977aa5-ffba-4b16-8801-354450535d2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{00b5f330-e753-466f-90cf-5d7d87e1cef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Mesh">
+      <UniqueIdentifier>{48958ec3-f66d-4168-95d7-9f423cbe1dad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Scene">
+      <UniqueIdentifier>{8d7d6c3e-766b-4a65-846d-70e2cda1e952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Texture">
+      <UniqueIdentifier>{1fea0e2d-2379-427e-81b3-41f6c913e9b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{284b265e-2048-4431-8032-28d66d1d45c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System">
+      <UniqueIdentifier>{5a5043d2-9ef4-4858-9d79-b1150d88f53d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{a7c27876-c6ed-47d2-8a4f-0f08f7e7276a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Camera">
+      <UniqueIdentifier>{40d3d7d6-367b-457c-9178-bd780db52470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{d7af1aed-38a1-45bc-9372-e56cf6b59b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\UI\imgui">
+      <UniqueIdentifier>{efcaa243-5ffe-4124-905b-44d36aea7d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Transform">
+      <UniqueIdentifier>{b8b98637-d907-4d26-82d6-d1dec34540d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Factory">
+      <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Physics">
+      <UniqueIdentifier>{b7791c8c-ef68-42bd-8e73-e89e763be8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Timer">
+      <UniqueIdentifier>{9e02925b-088d-41f8-a125-0ca2355f73c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugger">
+      <UniqueIdentifier>{8a2a5263-9510-4a91-9728-cf360999f289}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\shaders\SushiMi.frag">
+      <Filter>GameEngine\Graphics</Filter>
+    </None>
+    <None Include="..\shaders\SushiMi.vert">
+      <Filter>GameEngine\Graphics</Filter>
+    </None>
+  </ItemGroup>
+</Project>

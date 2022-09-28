@@ -12,9 +12,11 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-
+#include "object.h"
 #include "Camera2D.h"
 #include "include/glhelper.h"
+#include <glm/glm/trigonometric.hpp>
+#include <glm/glm/fwd.hpp>
 /*--------------------------------------------------------------------------- */
 
 /*global variables*/

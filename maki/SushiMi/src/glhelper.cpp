@@ -13,6 +13,7 @@ pointers to OpenGL implementations.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <../include/glhelper.h>
+#include "../object.h"
 #include <../Camera2D.h>
 #include <iostream>
 
@@ -87,7 +88,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 			<< glewGetErrorString(err) << " abort program" << std::endl;
 		return false;
 	}
-	if (GLEW_VERSION_4_3) {
+	if (GLEW_VERSION_4_5) {
 		std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
 		std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
 	}

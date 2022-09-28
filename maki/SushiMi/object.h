@@ -12,10 +12,13 @@ to draw the object, then unbind and unuse the shader program.
 #define OBJECT_H_
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
+#include "include/common_headers.hpp"
+#include "Camera2D.h"
 #include <GL/glew.h>
 #include <map>
 #include "include/glslshader.h"
 #include "model.h"
+#include "include/collision.h"
 /*--------------------------------------------------------------------------- */
 class Object
 {
@@ -29,6 +32,9 @@ public:
 
 	glm::vec2 scaling;		// scaling parameters
 	glm::vec2 position;		// translation vector coordinates
+	gfxVector2 velocity;
+	float dirCurr;
+	Collision::AABB aabb;
 
 	// compute object's model transform matrix using scaling,
 	// rotation, and translation attributes

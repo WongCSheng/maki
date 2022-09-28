@@ -101,3 +101,6 @@ file so that in all files you will only need to
 //Input 
 #include "Keys.h"
 #include "Input.h"
+
+////Collision
+//#include "collision.h"

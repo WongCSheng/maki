@@ -1,4 +1,12 @@
+/*!
+@file    AudioEngine.hpp
+@author	 Aurelia Chong
+
+         Header file for AudioEngine.cpp
+*//*__________________________________________________________________________*/
 #pragma warning(disable:26812)
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -8,10 +16,17 @@
 using namespace std;
 using namespace FMOD;
 
+/*                                                                   zinstances
+----------------------------------------------------------------------------- */
 #define AudioManager _audioManager::Instance()
 
+/*                                                                   Class
+----------------------------------------------------------------------------- */
 class _audioManager
 {
+
+ /*                                                              Private Class
+----------------------------------------------------------------------------- */
 private:
     _audioManager(void);
     ~_audioManager(void);
@@ -22,10 +37,12 @@ private:
     map<string, Sound*> soundDatabase;
     map<string, Sound*> musicDatabase;
     bool isActive = true;
-    
+ 
+
+ /*                                                             Public Class
+ ----------------------------------------------------------------------------- */
 public:
     static _audioManager& Instance(void);
-    //bool succeededOrWarn(const std::string& message, FMOD_RESULT result);
     Channel* GetMusicChannel(void);
     void CleanPlaying(void);
     void PlayClip(string audiClip);
@@ -42,6 +59,8 @@ public:
     Sound* GetSound(string name);
 };
 
+/*                                                             Call back function
+ ----------------------------------------------------------------------------- */
 FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
     FMOD_CHANNELCONTROL_TYPE controlType,
     FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,

@@ -1,34 +1,58 @@
+/*!
+@file    AudioEngine.cpp
+@author	 Aurelia Chong
+
+         Audio engine that manages all audio related functions
+*//*__________________________________________________________________________*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include "AudioEngine.h"
 
+/*                                                                  Constructor
+----------------------------------------------------------------------------- */
 _audioManager::_audioManager(void)
 {
-    // Create the main system object.
+    /*                                                            
+    * Create the main system object.
+    ----------------------------------------------------------------------------- */ 
     System_Create(&fmodSystem);
 
-    // Initialize FMOD.
+    /*
+   *   Initialize FMOD.
+   ----------------------------------------------------------------------------- */
     fmodSystem->init(512, FMOD_INIT_NORMAL, nullptr);
 
-    // Create the channel group.
+    /*
+    *   Create the channel group
+    ----------------------------------------------------------------------------- */
     fmodSystem->createChannelGroup("inGameSoundEffects", &channelGroup);
 
+    /*
+    *   Set music channel group
+    ----------------------------------------------------------------------------- */
     channel->setChannelGroup(channelGroup);
     musicChannel->setChannelGroup(channelGroup);
 
-    // Set a callback on the channel.
+    /*
+    *   Set a callback on the channel.
+    ----------------------------------------------------------------------------- */
     musicChannel->setCallback(&channelGroupCallback);
 
-    // Load sounds here
-    //LoadSound("splash.mp3");
-
-    // Load Music here
-    //LoadMusic("Summer.mp3");
-    //LoadMusic("GhostFinal.mp3");
 }
 
+/*                                                                  Destructor
+----------------------------------------------------------------------------- */
 _audioManager::~_audioManager(void)
 {
 }
 
+/*!				void _audioManager::PlayClip(string clipName)
+@param			string clipName
+@return none
+
+                Plays music clip
+*/
 void _audioManager::PlayClip(string clipName)
 {
     // Create the sound.
@@ -41,6 +65,12 @@ void _audioManager::PlayClip(string clipName)
     fmodSystem->playSound(audioClip, nullptr, false, &channel);
 }
 
+/*!				void _audioManager::PlayMusic(string musicTrack)
+@param			string musicTrack
+@return none
+
+                Plays music track
+*/
 void _audioManager::PlayMusic(string musicTrack)
 {
     // Create the sound.
@@ -54,27 +84,57 @@ void _audioManager::PlayMusic(string musicTrack)
     fmodSystem->playSound(audioClip, nullptr, false, &musicChannel);
 }
 
+/*!				void _audioManager::StopMusic(void)
+@param			void
+@return none
+
+                Stop playing music
+*/
 void _audioManager::StopMusic(void)
 {
-    // Play the sound.
+    // stop play the sound.
     musicChannel->stop();
 }
 
+/*!				void _audioManager::SetAudioVolume(float volume)
+@param			float volume
+@return none
+
+                Set volume for audios
+*/
 void _audioManager::SetAudioVolume(float volume)
 {
     channel->setVolume(volume);
 }
 
+/*!				void _audioManager::SetMusicVolume(float volume)
+@param			float volume
+@return none
+
+                Set volume for music channel
+*/
 void _audioManager::SetMusicVolume(float volume)
 {
     musicChannel->setVolume(volume);
 }
 
+/*!				void _audioManager::Update()
+@param			
+@return none
+
+               update music play
+*/
 void _audioManager::Update()
 {
     fmodSystem->update();
 }
 
+/*!				void _audioManager::CleanPlaying()
+@param
+@return none
+
+               clean up music play
+*/
 void _audioManager::CleanPlaying()
 {
     // Clean up.
@@ -88,6 +148,13 @@ void _audioManager::CleanPlaying()
     fmodSystem->release();
 }
 
+/*!				void _audioManager::LoadSound(string name)
+{
+@param          string name
+@return none
+
+               Load sound into directory
+*/
 void _audioManager::LoadSound(string name)
 {
     string pathString = "./Assets/Sound/" + name + '\0';
@@ -99,6 +166,13 @@ void _audioManager::LoadSound(string name)
     delete[] pathName;
 }
 
+/*!				void _audioManager::LoadMusic(string name)
+{
+@param          string name
+@return none
+
+               Load music into directory
+*/
 void _audioManager::LoadMusic(string name)
 {
     string pathString = "./Assets/Music/" + name + '\0';
@@ -110,24 +184,52 @@ void _audioManager::LoadMusic(string name)
     delete[] pathName;
 }
 
+/*!				void _audioManager::UnloadSound(string name)
+{
+@param          string name
+@return none
+
+               Unload sound into directory
+*/
 void _audioManager::UnloadSound(string name)
 {
     if (isActive && soundDatabase.find(name) != soundDatabase.end())
         soundDatabase[name]->release();
 }
 
+/*!				void _audioManager::UnloadMusic(string name)
+{
+@param          string name
+@return none
+
+               Unload music into directory
+*/
 void _audioManager::UnloadMusic(string name)
 {
     if (isActive && musicDatabase.find(name) != musicDatabase.end())
         musicDatabase[name]->release();
 }
 
+/*!				void _audioManager::Free(void)
+{
+@param          
+@return none
+
+               Free memory space
+*/
 void _audioManager::Free(void)
 {
     fmodSystem->release();
     isActive = false;
 }
 
+/*!				void _audioManager::GetSound(string name)
+{
+@param          string name
+@return none
+
+               get sound 
+*/
 Sound* _audioManager::GetSound(string name)
 {
     auto search = soundDatabase.find(name);
@@ -136,29 +238,26 @@ Sound* _audioManager::GetSound(string name)
     return NULL;
 }
 
-//bool _audioManager::succeededOrWarn(const std::string& message, FMOD_RESULT result)
-//{
-//    if (result != FMOD_OK) {
-//        std::cerr << message << ": " << result << " " << FMOD_ErrorString(result) << std::endl;
-//        return false;
-//    }
-//    return true;
-//}
-
+/*
+   *   Instances
+   ----------------------------------------------------------------------------- */
 _audioManager& _audioManager::Instance(void)
 {
     static _audioManager instance;
     return instance;
 }
 
+/*
+   *   get channel
+   ----------------------------------------------------------------------------- */
 Channel* _audioManager::GetMusicChannel(void)
 {
     return musicChannel;
 }
 
 FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
-    FMOD_CHANNELCONTROL_TYPE controlType, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,
-    void* commandData1, void* commandData2)
+FMOD_CHANNELCONTROL_TYPE controlType, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,
+ void* commandData1, void* commandData2)
 {
     if (controlType == FMOD_CHANNELCONTROL_CHANNEL 
         && AudioManager.GetMusicChannel() == (Channel*)channelControl 

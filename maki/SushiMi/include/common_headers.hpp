@@ -12,6 +12,7 @@ file so that in all files you will only need to
 //c++ std
 #include <algorithm>
 #include <limits>
+#include <thread>
 #include <complex>
 #include <cstdlib>
 #include <numeric>
@@ -107,3 +108,6 @@ file so that in all files you will only need to
 
 ////Collision
 //#include "collision.h"
+
+//Timer
+#include "Timer.h"

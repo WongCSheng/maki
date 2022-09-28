@@ -6,8 +6,9 @@
 bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 
 	using namespace rapidjson;
+	using namespace std;
 	Document doc;
-	std::ifstream ifs(filepath);
+	ifstream ifs(filepath);
 	IStreamWrapper isw(ifs);
 	ParseResult result = doc.ParseStream(isw);
 	bool objectsLeft = true;
@@ -20,30 +21,30 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 	//go through biggest object in file
 	for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)
 	{
-		std::cout << iter->name.GetString() << ":";
+		cout << iter->name.GetString() << ":";
 
 		//immediately print 
 		if (iter->value.IsInt())
-			std::cout << iter->value.GetInt() << std::endl;
+			cout << iter->value.GetInt() << endl;
 
 		else if (iter->value.IsString())
-			std::cout << iter->value.GetString() << std::endl;
+			cout << iter->value.GetString() << endl;
 
 		else if (iter->value.IsDouble())
-			std::cout << iter->value.GetDouble() << std::endl;
+			cout << iter->value.GetDouble() << endl;
 
 		else if (iter->value.IsFloat())
-			std::cout << iter->value.GetFloat() << std::endl;
+			cout << iter->value.GetFloat() << endl;
 
 		else if (iter->value.IsBool()) {
 			if (iter->value.GetBool())
-				std::cout << "true" << std::endl;
+				cout << "true" << endl;
 			else
-				std::cout << "false" << std::endl;
+				cout << "false" << endl;
 		}
 
 		else if (iter->value.IsNull())
-			std::cout << "null" << std::endl;
+			cout << "null" << endl;
 
 		//bigger objects we need to for loop through
 		else if (iter->value.IsArray())
@@ -54,22 +55,22 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 			for (int i = 0; i < arrSize; ++i) {
 
 				if (newArr[i].IsInt())
-					std::cout << newArr[i].GetInt() << std::endl;
+					cout << newArr[i].GetInt() << endl;
 
 				else if (newArr[i].IsString())
-					std::cout << newArr[i].GetString() << std::endl;
+					cout << newArr[i].GetString() << endl;
 
 				else if (newArr[i].IsDouble())
-					std::cout << newArr[i].GetDouble() << std::endl;
+					cout << newArr[i].GetDouble() << endl;
 
 				else if (newArr[i].IsFloat())
-					std::cout << newArr[i].GetFloat() << std::endl;
+					cout << newArr[i].GetFloat() << endl;
 
 				else if (newArr[i].IsBool()) {
 					if (newArr[i].GetBool())
-						std::cout << "true" << std::endl;
+						cout << "true" << endl;
 					else
-						std::cout << "false" << std::endl;
+						cout << "false" << endl;
 				}
 			}
 		}
@@ -79,12 +80,12 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 				objectsLeft = !objectsLeft;
 			}
 			//currently doesnt support;
-			std::cout << "Invalid value type!" << std::endl;
+			cout << "Invalid value type!" << endl;
 			return 0;
 		}
 		else
 		{
-			std::cout << "Invalid value type!" << std::endl;
+			cout << "Invalid value type!" << endl;
 			return 0; //fail to parse 
 		}
 	}

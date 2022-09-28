@@ -14,10 +14,10 @@ public:
 	bool DeserializeObject(gameObject& obj, const std::string& filepath) {
 
 		using namespace rapidjson;
-
-		std::string tempStr;
+		using namespace std;
+		string tempStr;
 		Document doc;
-		std::ifstream ifs(filepath);
+		ifstream ifs(filepath);
 		IStreamWrapper isw(ifs);
 		ParseResult result = doc.ParseStream(isw);
 		//rttr::type ObjType = obj.get_type();
@@ -59,12 +59,12 @@ public:
 			else if (iter->value.IsObject())
 			{
 				//currently don't support
-				std::cout << "Invalid value type!" << std::endl;;
+				cout << "Invalid value type!" << endl;;
 				return 0; //fail to parse 
 			}
 			else
 			{
-				std::cout << "Invalid value type!" << std::endl;;
+				cout << "Invalid value type!" << endl;;
 				return 0; //fail to parse 
 			}
 
@@ -80,13 +80,13 @@ public:
 //debugging after serializing
 template<class gameObject>
 void PrintObjectProperties(gameObject& obj) {
-
-	std::cout << obj.GetInt() << std::endl;
-	std::cout << obj.GetFloat() << std::endl;
-	std::cout << obj.GetDouble() << std::endl;
-	std::cout << obj.GetBool() << std::endl;
-	std::cout << obj.GetNull() << std::endl;
-	std::cout << obj.GetStr() << std::endl;
+	using namespace std;
+	cout << obj.GetInt() << endl;
+	cout << obj.GetFloat() << endl;
+	cout << obj.GetDouble() << endl;
+	cout << obj.GetBool() << endl;
+	cout << obj.GetNull() << endl;
+	cout << obj.GetStr() << std::endl;
 
 }
 

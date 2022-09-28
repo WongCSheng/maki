@@ -35,7 +35,7 @@ public://methods
 public://variables
 	int testInt = 0;
 	float testFloat = 0;
-	float testDouble = 0;
+	double testDouble = 0;
 	bool testBool = 1;
 	int testNull = 2;
 	std::string testStr = "nothing here";

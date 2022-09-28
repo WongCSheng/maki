@@ -56,6 +56,9 @@
       <Filter>GameEngine\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\collision.cpp" />
+    <ClCompile Include="src\Timer.cpp">
+      <Filter>GameEngine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -131,6 +134,9 @@
       <Filter>GameEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="include\collision.h" />
+    <ClInclude Include="Timer.h">
+      <Filter>GameEngine\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

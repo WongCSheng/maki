@@ -82,7 +82,10 @@ file so that in all files you will only need to
 #include <writer.h>
 #include <stringbuffer.h>
 #include <document.h>
-
+#include <stdexcept>               // std::runtime_error
+#include <error/error.h>
+#include <error/en.h>
+#include <stringbuffer.h>
 
 #include <type.h>
 #include <property.h>
@@ -93,9 +96,9 @@ file so that in all files you will only need to
 
 #include <fstream>
 #include <filesystem>
-#include <iostream>
 
 #include "RTTR.h"
+#include "JSONSerializer.h"
 
 
 //Input 

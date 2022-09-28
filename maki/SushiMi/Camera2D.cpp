@@ -32,7 +32,7 @@ Assign pgo to camera and compute aspect ratio, initialize as free camera.
 */
 void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 {
-	// assign address of object of type GLApp::GLObject with name "Camera" in objects
+	// assign address of object of type Object with name "Camera" in objects
 	pgo = &Object::objects.at("Camera");
 
 	// compute camera window's aspect ratio

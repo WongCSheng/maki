@@ -17,6 +17,7 @@ to draw the object, then unbind and unuse the shader program.
 
 std::map<std::string, Object> Object::objects;
 
+
 /*  _________________________________________________________________________ */
 /*! Object::draw() const
 @param
@@ -54,14 +55,35 @@ All the transformation matrix scale,rot, trans and model to ndc transformation.
 */
 void Object::update(GLdouble delta_time)
 {
+	if (scale_up == GL_TRUE)
+	{
+		Object::objects["Object6"].scaling.x++;
+		Object::objects["Object6"].scaling.y++;
+	}
+	else if (scale_down == GL_TRUE)
+	{
+		Object::objects["Object6"].scaling.x--;
+		Object::objects["Object6"].scaling.y--;
+	}
 	const glm::mat3 scale_mat
 	{
 		{scaling.x, 0, 0},
 		{0, scaling.y, 0},
 		{0, 0, 1}
 	};
+	if (rot_left == GL_TRUE)
+	{
+		Object::objects["Object6"].orientation.x += Object::objects["Object6"].orientation.y * 0.2f;
+	}
+	else if (rot_right == GL_TRUE)
+	{
+		Object::objects["Object6"].orientation.x -= Object::objects["Object6"].orientation.y * 0.2f;
+	}
+	else
+	{
+		orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
+	}
 
-	orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
 	const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);
 
 	const glm::mat3 rot_mat
@@ -79,5 +101,5 @@ void Object::update(GLdouble delta_time)
 
 
 	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
-
+	
 }

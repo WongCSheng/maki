@@ -144,7 +144,6 @@ void GLApp::init_scene(std::string scene_filename)
 				mesh_path = "../mesh/triangle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLES;
 			}
-			std::cout << "HERE???";
 			curr_mdl = curr_mdl.init(mesh_path);
 			Model::models.insert(std::pair<std::string, Model>(model_name, curr_mdl));
 			mdl_iterator = Model::models.find(model_name);
@@ -153,7 +152,6 @@ void GLApp::init_scene(std::string scene_filename)
 		std::istringstream line_objname{ line };
 		std::string object_name;
 		line_objname >> object_name;
-		std::cout << "HERE???";
 		getline(ifs, line); // 3rd parameter: names of shader program, vertex and fragment shaders for rendering model square
 		std::istringstream line_shdrname{ line };
 		std::string shdr_name, shdr_vert, shdr_frag;

@@ -97,6 +97,9 @@
     <ClCompile Include="Debugger\Debug.cpp">
       <Filter>Debugger</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioEngine.cpp">
+      <Filter>GameEngine\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\glapp.h">
@@ -225,6 +228,9 @@
     <ClInclude Include="Debugger\Debug.h">
       <Filter>Debugger</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioEngine.h">
+      <Filter>GameEngine\Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -301,6 +307,9 @@
     </Filter>
     <Filter Include="Debugger">
       <UniqueIdentifier>{8a2a5263-9510-4a91-9728-cf360999f289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Audio">
+      <UniqueIdentifier>{2e6368b2-54a2-477c-abba-dff45b2dd489}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

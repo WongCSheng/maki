@@ -217,6 +217,7 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	}
 
 	/* for object6's rotation implementation*/
+	/* the lower right rectangle*/
 	// press J to rotate right faster, press K to rotate left
 	if (GLFW_PRESS == action && key == GLFW_KEY_J)
 	{

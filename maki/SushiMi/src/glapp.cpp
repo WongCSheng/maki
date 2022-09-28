@@ -57,7 +57,7 @@ void GLApp::init() {
 	// and store repo of models of type GLModel in container Model::models,
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container Object::objects
-	GLApp::init_scene("../scenes/myscene.scn");
+	GLApp::init_scene("../scenes/SushiMiscene.scn");
 
 	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));

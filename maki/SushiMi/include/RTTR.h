@@ -1,3 +1,12 @@
+/*!
+@file		RTTR.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file currently contains TestClass that is used to debug json parsing.
+It will be used for rttr registration further on.
+*//*__________________________________________________________________________*/
+
 #pragma once
 #ifndef RTTR_H
 #define RTTR_H

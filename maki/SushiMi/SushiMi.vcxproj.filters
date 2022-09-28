@@ -56,11 +56,14 @@
       <Filter>GameEngine\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\collision.cpp" />
-    <ClCompile Include="src\Timer.cpp">
-      <Filter>GameEngine\Math</Filter>
-    </ClCompile>
     <ClCompile Include="src\Debug.cpp">
       <Filter>GameEngine\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Script.cpp">
+      <Filter>GameEngine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Timer.cpp">
+      <Filter>GameEngine\Timer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,11 +140,14 @@
       <Filter>GameEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="include\collision.h" />
-    <ClInclude Include="Timer.h">
-      <Filter>GameEngine\Math</Filter>
-    </ClInclude>
     <ClInclude Include="include\Debug.h">
       <Filter>GameEngine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>GameEngine\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Script.h">
+      <Filter>GameEngine\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +186,12 @@
     </Filter>
     <Filter Include="GameEngine\Debug">
       <UniqueIdentifier>{da742a41-e40c-4aa2-8cf8-2e76d0da34e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Script">
+      <UniqueIdentifier>{c6625eb6-b9db-4d84-8944-26173b43afab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Timer">
+      <UniqueIdentifier>{57a9b861-054a-4517-866e-48b281527a44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

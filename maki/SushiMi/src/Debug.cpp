@@ -2,6 +2,7 @@
 #include "../include/common_headers.hpp"
 
 Debugger* Debugger::instance = 0;
+
 Debugger::Debugger()
 {
 }

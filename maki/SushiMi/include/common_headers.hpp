@@ -114,3 +114,6 @@ file so that in all files you will only need to
 
 //Debug
 #include "Debug.h"
+
+//Script
+#include "Script.h"

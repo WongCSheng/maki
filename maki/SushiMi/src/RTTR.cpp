@@ -1,3 +1,12 @@
+/*!
+@file		RTTR.cpp
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file contains code that use the rttr library. Currently it contains
+getters and setters for TestClass that is used to debug json parsing.
+*//*__________________________________________________________________________*/
+
 #pragma once
 #include "../include/common_headers.hpp"
 

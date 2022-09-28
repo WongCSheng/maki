@@ -22,7 +22,6 @@ struct Timer {
 
 		float ms = duration.count() * 1000.0f;
 		cout << "Time passed: " << ms << "ms" << endl;
-
 	}
 };
 

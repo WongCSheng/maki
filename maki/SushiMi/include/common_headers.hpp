@@ -111,3 +111,6 @@ file so that in all files you will only need to
 
 //Timer
 #include "Timer.h"
+
+//Debug
+#include "Debug.h"

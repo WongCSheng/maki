@@ -1,10 +1,16 @@
+//******************************************************************************/
 /*!
+\file		main.cpp
+\author 	Thea Sea
+\par    	email: thea.sea@digipen.edu
+\date   	2/8/2022
+\brief		This source file contains the main function to call all other functions and implement the game loop
 
-SushiMi main file!!
-
-*/
-
-;
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ /******************************************************************************/
 
 
 

@@ -10,6 +10,9 @@ SushiMi main file!!
 // Extension loader library's header must be included before GLFW's header!!!
 #include <../include/common_headers.hpp>
 #include <../include/glapp.h>
+#include <crtdbg.h> 
+#include <memory>
+
 
 
 /*                                                   type declarations
@@ -38,6 +41,11 @@ Indicates how the program existed. Normal exit is signaled by a return value of
 Note that the C++ compiler will insert a return 0 statement if one is missing.
 */
 int main() {
+
+	// Enable run-time memory check for debug builds.
+	#if defined(DEBUG) | defined(_DEBUG)
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	#endif
 
 	glfwInit();
 	// Part 1

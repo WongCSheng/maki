@@ -1,9 +1,25 @@
+/*!
+@file    Input.cpp
+@author	 Aurelia Chong
+
+		 Input funcrions checking for input key pressed & allowing users to press on inputs
+*//*__________________________________________________________________________*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include "../include/common_headers.hpp"
 
+/*                                                                   Initialisation
+----------------------------------------------------------------------------- */
 Input* Input::instance = 0;
 
 
+/*!				Input::key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
+@param			GLFWwindow * window, int key, int scancode, int action, int mods
+@return none
 
+				Link input keys to windows to display the outcome
+*/
 void Input::key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
 {
 	if (key == KEY::KEY_E && action == GLFW_PRESS)
@@ -20,10 +36,13 @@ void Input::key_callback(GLFWwindow * window, int key, int scancode, int action,
 	}
 }
 
-//constructor to load all the keys
+/*                                                                 Construnctor
+----------------------------------------------------------------------------- */
 Input::Input()
 {
-	//loop through all keys in ASCII character, set them to default false state(key not pressed)
+	/*  
+	loop through all keys in ASCII character, set them to default false state(key not pressed)
+	----------------------------------------------------------------------------- */
 	for (int i = 32; i <= 122; ++i)
 	{
 		keys[(KEY)(i)][KEY_STATE_RELEASE] = false;
@@ -46,12 +65,20 @@ Input::Input()
 	}
 }
 
-//key destructor
+/*                                                               Key destructor
+----------------------------------------------------------------------------- */
 Input::~Input()
 {
 	keys.clear();
 }
 
+
+/*!				Input::Update(const KEY key, const KEY_STATE action)
+@param			const KEY key, const KEY_STATE action
+@return none
+
+				Update input key pressed&released states
+*/
 void Input::Update(const KEY key, const KEY_STATE action)
 {
 	if (keyqueue.size() > 0)
@@ -72,13 +99,23 @@ void Input::Update(const KEY key, const KEY_STATE action)
 	}
 }
 
-//return true when checking a key is pressed
+/*!				bool Input::GetKey(const KEY key, const KEY_STATE action)
+@param			const KEY key, const KEY_STATE action
+@return			true/false
+
+				return true/false depending on the key state pressed/released
+*/
 bool Input::GetKey(const KEY key, const KEY_STATE action)
 {
 	return keys[key][action];
 }
 
-//check if a key is held down
+/*!				bool Input::GetKeyDown(const KEY key)
+@param			const KEY key
+@return			true/false
+
+				check if a key is held down
+*/
 bool Input::GetKeyDown(const KEY key)
 {
 	if (keys[key][KEY_STATE_PRESS] || keys[key][KEY_STATE_REPEAT])

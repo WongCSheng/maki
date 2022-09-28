@@ -18,7 +18,8 @@ SushiMi main file!!
 #include "../Engine/Core/Core.h"
 #include "../Window/Window.h"
 #include "../Headers/ImGui_Header.h"
-
+#include <memory> 
+#include <crtdbg.h> 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
@@ -45,6 +46,11 @@ Indicates how the program existed. Normal exit is signaled by a return value of
 Note that the C++ compiler will insert a return 0 statement if one is missing.
 */
 int main() {
+
+	// Enable run-time memory check for debug builds.
+	#if defined(DEBUG) | defined(_DEBUG)
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	#endif
 
 	glfwInit();
 	// Part 1

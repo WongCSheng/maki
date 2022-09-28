@@ -1,7 +1,17 @@
+/*!
+@file   Keys.h
+@author	 Aurelia Chong
+
+		 enum of keys, mouse and  kesy states
+*//*__________________________________________________________________________*/
 #pragma once
 #ifndef KEYS_H__
 #define KEYS_H__
 
+
+/*                                                                 
+*   enum for all the keys that might be inputed by the user
+----------------------------------------------------------------------------- */
 enum  KEY
 {
 	KEY_SPACE = 32,
@@ -107,6 +117,9 @@ enum  KEY
 	KEY_UNDEFINED = 999,
 };
 
+/*  
+	Enum for Mouse Clicks
+----------------------------------------------------------------------------- */
 enum  MOUSE
 {
 	MOUSE_BUTTON_LEFT,
@@ -115,6 +128,9 @@ enum  MOUSE
 	MOUSE_UNDEFINED = 999,
 };
 
+/*                                                                 
+*  Enum for key states, whether the key is pressed or released
+----------------------------------------------------------------------------- */
 enum  KEY_STATE
 {
 	KEY_STATE_RELEASE,

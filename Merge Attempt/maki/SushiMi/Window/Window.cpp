@@ -1,3 +1,11 @@
+/*!
+@file		Window.cpp
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file contains functions for class Window that we will use for opening windows.
+*//*__________________________________________________________________________*/
+
 #include "Window.h"
 
 Upfront::Window::Window()
@@ -37,6 +45,10 @@ void Upfront::Window::Win_Init()
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+}
+
+void Upfront::Window::CreateWin()
+{
 }
 
 int Upfront::Window::getWinWidth()

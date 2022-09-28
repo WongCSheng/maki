@@ -24,7 +24,7 @@ json file name
 @return bool
 returns 0 if failed, 1 if success
 
-Takes in a json file and prints contents to console
+Takes in a json file and prints contents to console. If failed, will print error code.
 */
 bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 

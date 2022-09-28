@@ -1,3 +1,11 @@
+/*!
+@file		Window.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file contains class Window that we will use for opening windows..
+*//*__________________________________________________________________________*/
+
 #pragma once
 
 #ifndef WINDOW_H_

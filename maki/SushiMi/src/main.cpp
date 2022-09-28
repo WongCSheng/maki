@@ -4,11 +4,6 @@ SushiMi main file!!
 
 */
 
-;
-
-
-
-
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
@@ -19,6 +14,8 @@ SushiMi main file!!
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
+
+
 
 /*                                                      function declarations
 ----------------------------------------------------------------------------- */
@@ -66,6 +63,22 @@ int main() {
 		// Part 2a
 		update();
 
+		//collision
+		/*for (auto& e1 : Object::objects)
+		{
+			for (auto& e2 : Object::objects)
+			{
+				if (e1.first != e2.first)
+				{
+					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 0)
+					{
+						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					}
+				}
+			}
+		}*/
+
+
 		//imgui
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -84,7 +97,8 @@ int main() {
 		draw();
 	}
 
-	
+	//do not uncomment this first as it overrides physics
+	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 
 	// Part 3
 	cleanup();

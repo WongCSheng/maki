@@ -45,11 +45,16 @@ public:
 	// draw the specific model using the specific shader
 	std::map<std::string, GLSLShader>::iterator shd_ref;
 
-	Object* square;
+	static Object* square;
 	glm::vec3 color;
 	glm::mat3 mdl_xform; // model transformation
 
 	static std::map<std::string, Object> objects; // singleton
+
+	GLboolean rot_right{ GL_FALSE };
+	GLboolean rot_left{ GL_FALSE };
+	GLboolean scale_up{ GL_FALSE };
+	GLboolean scale_down{ GL_FALSE };
 };
 
 #endif // !OBEJCT_H_

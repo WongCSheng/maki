@@ -14,6 +14,7 @@ pointers to OpenGL implementations.
 ----------------------------------------------------------------------------- */
 #include <../include/glhelper.h>
 #include <../Camera2D.h>
+#include <../object.h>
 #include <iostream>
 
 /*                                                   objects with file scope
@@ -214,6 +215,28 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		std::cout << "Physics: Moving a circle object up" << std::endl;
 	}
 
+	/* for object6's rotation implementation*/
+	// press J to rotate right faster, press K to rotate left
+	if (GLFW_PRESS == action && key == GLFW_KEY_J)
+	{
+		Object::objects["Object6"].rot_left = GL_TRUE;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_K)
+	{
+		Object::objects["Object6"].rot_right = GL_TRUE;
+	}
+
+	/* for object6's scaling implementation*/
+	// Press M to scale upm press N to scale down
+	if (GLFW_PRESS == action && key == GLFW_KEY_M)
+	{
+		Object::objects["Object6"].scale_up = GL_TRUE;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_N)
+	{
+		Object::objects["Object6"].scale_down = GL_TRUE;
+	}
+
 	//for camera physics
 	if (GLFW_PRESS == action && key == GLFW_KEY_V)
 	{
@@ -223,15 +246,15 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	{
 		Camera2D::camera2d.zoom_flag = GL_TRUE;
 	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_H)
+	if (GLFW_PRESS == action && key == GLFW_KEY_A)
 	{
 		Camera2D::camera2d.left_turn_flag = GL_TRUE;
 	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_K)
+	if (GLFW_PRESS == action && key == GLFW_KEY_D)
 	{
 		Camera2D::camera2d.right_turn_flag = GL_TRUE;
 	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_U)
+	if (GLFW_PRESS == action && key == GLFW_KEY_W)
 	{
 		Camera2D::camera2d.move_flag = GL_TRUE;
 	}
@@ -242,6 +265,10 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Camera2D::camera2d.left_turn_flag = GL_FALSE;
 		Camera2D::camera2d.right_turn_flag = GL_FALSE;
 		Camera2D::camera2d.move_flag = GL_FALSE;
+		Object::objects["Object6"].rot_left = GL_FALSE;
+		Object::objects["Object6"].rot_right = GL_FALSE;
+		Object::objects["Object6"].scale_up = GL_FALSE;
+		Object::objects["Object6"].scale_down = GL_FALSE;
 	}
 
 	

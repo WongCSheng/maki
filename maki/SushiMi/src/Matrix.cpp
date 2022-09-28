@@ -1,4 +1,18 @@
-#include "../include/Matrix.h"
+//******************************************************************************/
+/*!
+\file		Matrix.cpp
+\author 	Thea Sea
+\par    	email: thea.sea@digipen.edu
+\date   	2/8/2022
+\brief		This source file contains the function definitions for
+			custom matrix functions.
+
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ /******************************************************************************/
+ #include "../include/Matrix.h"
 #include <glm/glm/matrix.hpp>
 
 /*

@@ -1,6 +1,7 @@
 /*!
 @file		glapp.cpp
-@author		louishetong.wang@digipen.edu
+@co-author	louishetong.wang@digipen.edu 
+@co-author	thea@digipen.edu
 @date		29/05/2022
 
 This file implements functionality useful and necessary to build OpenGL

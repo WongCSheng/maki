@@ -88,17 +88,17 @@ Model Model::init(std::string mesh_filepath)
 	}
 	//vbo handler
 	GLuint vbo_hdl;
-	glCreateBuffers(1, &vbo_hdl);
-	glNamedBufferStorage(vbo_hdl, sizeof(glm::vec2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
-	glNamedBufferSubData(vbo_hdl, 0, sizeof(glm::vec2) * pos_vtx.size(), pos_vtx.data());
+	glCreateBuffers(1, &vbo_hdl);	//create buffer object
+	glNamedBufferStorage(vbo_hdl, sizeof(glm::vec2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);	//allocate memory with size of glm::vec2 * size of pos_vtx
+	glNamedBufferSubData(vbo_hdl, 0, sizeof(glm::vec2) * pos_vtx.size(), pos_vtx.data());	//update a subset, meaning the next set of memory data and fill with .data
 	//vao handler
 	GLuint vaoid;
-	glCreateVertexArrays(1, &vaoid);
-	glEnableVertexArrayAttrib(vaoid, 0);
-	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(glm::vec2));
-	glVertexArrayAttribFormat(vaoid, 0, 2, GL_FLOAT, GL_FALSE, 0);
-	glVertexArrayAttribBinding(vaoid, 0, 0);
-	glBindVertexArray(0);
+	glCreateVertexArrays(1, &vaoid);	//create vertex array object
+	glEnableVertexArrayAttrib(vaoid, 0);	//enable/disable attribute array to position 0 in vertex shader.
+	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(glm::vec2));	//bind buffer to vertex buffer bind point(0)
+	glVertexArrayAttribFormat(vaoid, 0, 2, GL_FLOAT, GL_FALSE, 0);	//specify organization of vertex arrays(type of data stored, normalized or not etc)
+	glVertexArrayAttribBinding(vaoid, 0, 0);	//associate vertex attribute and vertex buffer binding for the object. BIND TOGETHER
+	glBindVertexArray(0);	//unbind
 
 	//texture position in attribute index 2 and bind to point 5
 	glEnableVertexArrayAttrib(vaoid, 2);
@@ -106,7 +106,7 @@ Model Model::init(std::string mesh_filepath)
 	glVertexArrayAttribFormat(vaoid, 2, 2, GL_FLOAT, GL_FALSE, 0);
 	glVertexArrayAttribBinding(vaoid, 2, 5);
 
-	//ebo handler
+	//ebo handler: EBO stores indices that openGL uses to decide what vertices to draw TLDR: indexed drawing eg: 0,1,3(1st triangle) 1,2,3(2nd triangle)
 	GLuint ebo_hdl;
 	glCreateBuffers(1, &ebo_hdl);
 	glNamedBufferStorage(ebo_hdl, sizeof(GLushort) * idx_vtx.size(),

@@ -49,7 +49,7 @@ void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 	{
 		{1, 0, 0},
 		{0, 1, 0},
-		{-pgo->position.x, -pgo->position.y, 1}
+		{-pgo->position.x, -pgo->position.y, 1} //negated because translate the view in the opposite direction of where we want cam to move
 	};
 
 	GLfloat cam_W = ar * GLHelper::height;
@@ -57,11 +57,11 @@ void Camera2D::init(GLFWwindow* pWindow, Object* ptr)
 	// compute other matrices
 	camwin_to_ndc_xform =
 	{
-		{2 / cam_W, 0, 0},
+		{2 / cam_W, 0, 0},	// formula 2/W and 2/H
 		{0, 2 / cam_H, 0},
 		{0, 0, 1}
 	};
-	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;
+	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;	// World->View->NDC
 }
 
 /*  _________________________________________________________________________ */

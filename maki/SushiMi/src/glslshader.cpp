@@ -10,17 +10,17 @@ There are many functions to get the location of the
 #include <../include/glslshader.h>
 
 GLint
-GLSLShader::GetUniformLocation(GLchar const* name) {
+GLSLShader::GetUniformLocation(GLchar const* name) {    //return location of uniform variable
     return glGetUniformLocation(pgm_handle, name);
 }
 
 GLboolean
-GLSLShader::FileExists(std::string const& file_name) {
+GLSLShader::FileExists(std::string const& file_name) {  //check if file exists
     std::ifstream infile(file_name); return infile.good();
 }
 
 void
-GLSLShader::DeleteShaderProgram() {
+GLSLShader::DeleteShaderProgram() {                     //delete program handler
     if (pgm_handle > 0) {
         glDeleteProgram(pgm_handle);
     }
@@ -46,13 +46,13 @@ GLSLShader::CompileLinkValidate(std::vector<std::pair<GLenum, std::string>> vec)
 }
 
 GLboolean
-GLSLShader::CompileShaderFromFile(GLenum shader_type, const std::string& file_name) {
-    if (GL_FALSE == FileExists(file_name)) {
+GLSLShader::CompileShaderFromFile(GLenum shader_type, const std::string& file_name) {   //compiles the shader from file
+    if (GL_FALSE == FileExists(file_name)) {                                            //if file not found, return false with err_log
         log_string = "File not found";
         return GL_FALSE;
     }
     if (pgm_handle <= 0) {
-        pgm_handle = glCreateProgram();
+        pgm_handle = glCreateProgram();                                                 //creates a program object if no handle is found
         if (0 == pgm_handle) {
             log_string = "Cannot create program handle";
             return GL_FALSE;
@@ -65,9 +65,9 @@ GLSLShader::CompileShaderFromFile(GLenum shader_type, const std::string& file_na
         return GL_FALSE;
     }
     std::stringstream buffer;
-    buffer << shader_file.rdbuf();
+    buffer << shader_file.rdbuf();                                                     //returns pointer to the object to speed up file operations
     shader_file.close();
-    return CompileShaderFromString(shader_type, buffer.str());
+    return CompileShaderFromString(shader_type, buffer.str());                         //create shader depending on the shader type
 }
 
 GLboolean

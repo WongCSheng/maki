@@ -21,23 +21,75 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/Math_Header.h"
 #include "../include/glhelper.h"
 
-class Collision {
-
-	/**************************************************************************/
+/**************************************************************************/
 	/*!
 	* \brief		structure for the axis bound binding box
 	* \param		none, not a function
 	* \return		none, not a function
 	*/
 	/**************************************************************************/
-	struct AABB
-	{
-		//AEVec2	c; // center
-		//float  r[2]; // holds half width and half height
+struct AABB
+{
+	//AEVec2	c; // center
+	//float  r[2]; // holds half width and half height
 
-		gfxVector2	min;
-		gfxVector2	max;
-	};
+	gfxVector2	min;
+	gfxVector2	max;
+};
+
+/******************************************************************************/
+	/*!
+		Struct for line segment
+	 */
+/******************************************************************************/
+struct LineSegment
+{
+	gfxVector2	m_pt0;
+	gfxVector2	m_pt1;
+	gfxVector2	m_normal;
+};
+
+struct VertexList
+{
+	GLint mpVtxBuffer;
+	int	vtxNum;
+}AEGfxVertexList;
+
+
+struct GameObj
+{
+	unsigned long		type;		// object type
+	VertexList* pMesh;		// This will hold the triangles which will form the shape of the object
+};
+
+typedef struct Mtx33
+{
+	float	m[3][3];
+}Mtx33;
+
+struct GameObjInst
+{
+	GameObj* pObject;	// pointer to the 'original' shape
+	unsigned long		flag;		// bit flag or-ed together
+	float				scale;		// scaling value of the object instance
+	gfxVector2			posCurr;	// object current position
+	gfxVector2			velCurr;	// object current velocity
+	float				dirCurr;	// object current direction
+	AABB				boundingBox;// object bouding box that encapsulates the object
+	Mtx33				transform;	// object transformation matrix: Each frame, 
+	// calculate the object instance's transformation matrix and save it here
+
+//void				(*pfUpdate)(void);
+//void				(*pfDraw)(void);
+};
+
+class Collision {
+public:
+	
+	float g_dt = GLHelper::delta_time;
+
+	Collision() {}
+	~Collision() {}
 
 	/**************************************************************************/
 	/*!
@@ -53,56 +105,7 @@ class Collision {
 	bool CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
 		const AABB& aabb2, const gfxVector2& vel2);
 
-
-
-
-	/******************************************************************************/
-	/*!
-		Struct for line segment
-	 */
-	 /******************************************************************************/
-	struct LineSegment
-	{
-		gfxVector2	m_pt0;
-		gfxVector2	m_pt1;
-		gfxVector2	m_normal;
-	};
-
-	float g_dt = GLHelper::delta_time;
-
-	struct VertexList
-	{
-		GLint mpVtxBuffer;
-		int	vtxNum;
-	}AEGfxVertexList;
-
-
-	struct GameObj
-	{
-		unsigned long		type;		// object type
-		VertexList* pMesh;		// This will hold the triangles which will form the shape of the object
-	};
-
-	typedef struct Mtx33
-	{
-		float	m[3][3];
-	}Mtx33;
-
-	struct GameObjInst
-	{
-		GameObj* pObject;	// pointer to the 'original' shape
-		unsigned long		flag;		// bit flag or-ed together
-		float				scale;		// scaling value of the object instance
-		gfxVector2			posCurr;	// object current position
-		gfxVector2			velCurr;	// object current velocity
-		float				dirCurr;	// object current direction
-		AABB				boundingBox;// object bouding box that encapsulates the object
-		Mtx33				transform;	// object transformation matrix: Each frame, 
-		// calculate the object instance's transformation matrix and save it here
-
-//void				(*pfUpdate)(void);
-//void				(*pfDraw)(void);
-	};
+	
 
 	void BuildLineSegment(LineSegment& lineSegment,								//Line segment reference - input
 		const gfxVector2& pos,									//position - input
@@ -197,6 +200,6 @@ class Collision {
  //	CSD1130::Vec2 &reflectedVectorB,												//Non-Normalized reflected vector of Circle B - output
  //	CSD1130::Vec2 &ptEndB);														//Final position of the circle B after reflection - output
 
-}
+};
 
 #endif // CSD1130_COLLISION_H_

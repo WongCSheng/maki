@@ -90,6 +90,3 @@ std::string TestClass::GetStr()
 {
 	return testStr;
 }
-
-
-//#endif

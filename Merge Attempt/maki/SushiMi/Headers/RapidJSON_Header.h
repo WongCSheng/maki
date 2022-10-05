@@ -22,8 +22,4 @@
 #include <registration.h>
 #include <version.h>
 
-#include <fstream>
-#include <filesystem>
-
-#include "RTTR.h"
-#include "JSONSerializer.h"
+#include "../Engine/Serialiser/RTTR.h"

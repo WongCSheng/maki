@@ -18,7 +18,7 @@ struct Timer {
 	//need to initialize values
 	std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::high_resolution_clock::now();
 	std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<float> duration;
+	std::chrono::duration<float> duration = std::chrono::seconds(0); //need to initialize
 
 	/*  _________________________________________________________________________ */
 	/*! Timer
@@ -40,7 +40,7 @@ struct Timer {
 	*/
 	~Timer() { //call to end timer
 		using namespace std;
-		end = chrono::high_resolution_clock::now();
+		auto end = chrono::high_resolution_clock::now();
 		duration = end - start;
 
 		float ms = duration.count() * 1000.0f;

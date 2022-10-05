@@ -9,7 +9,7 @@ This file currently contains framework for debugging that we will include later.
 #pragma once
 #include "../include/common_headers.hpp"
 
-Debugger* Debugger::instance = 0;
+//Debugger* Debugger::instance = 0;
 
 Debugger::Debugger()
 {

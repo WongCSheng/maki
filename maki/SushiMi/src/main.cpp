@@ -87,6 +87,9 @@ int main() {
 		}*/
 
 
+		// Part 2b
+		draw();
+
 		//imgui
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -100,9 +103,11 @@ int main() {
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+		// Part 2: swap buffers: front <-> back
+		glfwSwapBuffers(GLHelper::ptr_window);
+		glfwPollEvents();
 
-		// Part 2b
-		draw();
+
 	}
 
 	//do not uncomment this first as it overrides physics
@@ -157,9 +162,7 @@ static void draw() {
 	GLApp::draw();
 	
 
-	// Part 2: swap buffers: front <-> back
-	glfwSwapBuffers(GLHelper::ptr_window);
-	glfwPollEvents();
+	
 }
 
 /*  _________________________________________________________________________ */

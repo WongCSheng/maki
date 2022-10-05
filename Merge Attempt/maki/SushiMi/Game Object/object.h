@@ -1,4 +1,3 @@
-#pragma once
 /*!
 @file		object.h
 @author		louishetong.wang@digipen.edu
@@ -8,7 +7,7 @@ This file implements functionality for the object itself. So once the object is
 created, next step is to draw the object using the shader program and call DrawElements
 to draw the object, then unbind and unuse the shader program.
 *//*__________________________________________________________________________*/
-#ifndef OBEJCT_H_
+#ifndef OBJECT_H_
 #define OBJECT_H_
 
 
@@ -28,6 +27,9 @@ class Object
 {
 public:
 
+	Object() {}
+	~Object() {}
+
 	void init(GLFWwindow* pWindow, Object* ptr);
 	void draw() const;
 
@@ -40,7 +42,7 @@ public:
 	glm::vec2 position;		// translation vector coordinates
 	gfxVector2 velocity;
 	float dirCurr;
-	Collision AABB;
+	AABB aabb;
 
 	// compute object's model transform matrix using scaling,
 	// rotation, and translation attributes

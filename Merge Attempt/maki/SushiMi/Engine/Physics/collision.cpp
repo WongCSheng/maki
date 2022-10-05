@@ -18,6 +18,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 
 float g_dt = GLHelper::delta_time;
+
 /**************************************************************************/
 /*!
 * \brief		structure for the axis bound binding box

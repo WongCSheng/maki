@@ -25,6 +25,8 @@ GLdouble GLHelper::fps;
 GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
+
+static std::map<std::string, Object> objects;
 /*  _________________________________________________________________________ */
 /*! init
 

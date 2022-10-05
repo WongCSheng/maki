@@ -12,6 +12,10 @@ to draw the object, then unbind and unuse the shader program.
 
 std::map<std::string, Object> Object::objects;
 
+void Object::init(GLFWwindow* pWindow, Object* ptr)
+{
+}
+
 /*  _________________________________________________________________________ */
 /*! Object::draw() const
 @param

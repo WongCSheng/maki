@@ -92,4 +92,4 @@ std::string TestClass::GetStr()
 }
 
 
-#endif
+//#endif

@@ -12,7 +12,6 @@ to draw the object, then unbind and unuse the shader program.
 
 std::map<std::string, Object> Object::objects;
 
-
 /*  _________________________________________________________________________ */
 /*! Object::draw() const
 @param

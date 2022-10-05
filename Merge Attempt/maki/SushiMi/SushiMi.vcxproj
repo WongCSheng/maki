@@ -205,6 +205,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Mesh\model.cpp" />
     <ClCompile Include="Engine\Messaging\Messaging.cpp" />
     <ClCompile Include="Engine\Physics\collision.cpp" />
+    <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp" />
+    <ClCompile Include="Engine\Serialiser\RTTR.cpp" />
     <ClCompile Include="Engine\System\CameraSystem.cpp" />
     <ClCompile Include="Engine\System\Renderer.cpp" />
     <ClCompile Include="Engine\System\SystemFrame.cpp" />
@@ -215,10 +217,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
     <ClCompile Include="src\glslshader.cpp" />
-    <ClCompile Include="src\JSONSerializer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
-    <ClCompile Include="src\RTTR.cpp" />
     <ClCompile Include="Users\User.cpp" />
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
@@ -243,6 +243,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Mesh\model.h" />
     <ClInclude Include="Engine\Messaging\Messaging.h" />
     <ClInclude Include="Engine\Physics\collision.h" />
+    <ClInclude Include="Engine\Serialiser\JSONSerializer.h" />
+    <ClInclude Include="Engine\Serialiser\RTTR.h" />
     <ClInclude Include="Engine\System\CameraSystem.h" />
     <ClInclude Include="Engine\System\Renderer.h" />
     <ClInclude Include="Engine\System\SystemFrame.h" />
@@ -258,10 +260,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />
-    <ClInclude Include="include\JSONSerializer.h" />
     <ClInclude Include="include\Math.h" />
     <ClInclude Include="include\Matrix.h" />
-    <ClInclude Include="include\RTTR.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="Users\User.h" />

@@ -40,7 +40,7 @@ public:
 	glm::vec2 position;		// translation vector coordinates
 	gfxVector2 velocity;
 	float dirCurr;
-	Collision::AABB aabb;
+	Collision AABB;
 
 	// compute object's model transform matrix using scaling,
 	// rotation, and translation attributes

@@ -1,9 +1,5 @@
-#pragma once
 
-#ifndef RTTR_H_
-#define RTTR_H_
-
-#include "../Headers/STL_Header.h"
+#include "RTTR.h"
 
 //rttr doesnt work yet
 //register your class for rttr here

@@ -19,7 +19,7 @@
     <ClCompile Include="Engine\Core\Core.cpp">
       <Filter>GameEngine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Window\Window.cpp">
+    <ClCompile Include="Window\GameWindow.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Users\User.cpp">
@@ -117,7 +117,7 @@
     <ClInclude Include="Engine\Core\Core.h">
       <Filter>GameEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Window\Window.h">
+    <ClInclude Include="Window\GameWindow.h">
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Users\User.h">

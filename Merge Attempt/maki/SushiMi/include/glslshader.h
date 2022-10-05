@@ -24,8 +24,8 @@ program object.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <glm/glm/glm.hpp>
 #include "../Headers/STL_Header.h"
+#include <glm/glm/glm.hpp>
 #include "../Headers/Math_Header.h"
 #include <GL/glew.h> // for access to OpenGL API declarations 
 

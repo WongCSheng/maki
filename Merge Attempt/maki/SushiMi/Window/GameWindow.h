@@ -8,12 +8,12 @@ This file contains class Window that we will use for opening windows..
 
 #pragma once
 
-#ifndef WINDOW_H_
-#define WINDOW_H_
+#ifndef GAMEWINDOW_H_
+#define GAMEWINDOW_H_
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include "../Headers/STL_Header.h"
+#include <GLFW/glfw3.h>
 #include "../include/glhelper.h"
 
 namespace Upfront

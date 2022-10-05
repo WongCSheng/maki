@@ -22,11 +22,11 @@ and transformations (in later labs).
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
+#include "../Headers/STL_Header.h"
 #include "../include/glslshader.h"
 #include "../include/glhelper.h"
 #include <glm/glm/glm.hpp>
 #include <glm/glm/gtc/type_ptr.hpp>
-#include "../Headers/STL_Header.h"
 #include "../Game Object/object.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"

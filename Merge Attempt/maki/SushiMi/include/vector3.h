@@ -11,7 +11,6 @@ Vector header file for all vector3 calculations
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "../Headers/STL_Header.h"
-#include <iostream>
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */

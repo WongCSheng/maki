@@ -1,7 +1,7 @@
 
 #include "CameraSystem.h"
 #include "../Camera/Camera2D.h"
-#include "../Window/Window.h"
+#include "../Window/GameWindow.h"
 
 Core::CameraSystem::CameraSystem()
 {

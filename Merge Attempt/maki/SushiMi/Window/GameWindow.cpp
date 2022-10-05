@@ -6,7 +6,7 @@
 This file contains functions for class Window that we will use for opening windows.
 *//*__________________________________________________________________________*/
 
-#include "Window.h"
+#include "GameWindow.h"
 
 Upfront::Window::Window()
 {

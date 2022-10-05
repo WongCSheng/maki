@@ -2,9 +2,9 @@
 #define MODEL_H_
 
 #include <GL/glew.h>
+#include "../Headers/STL_Header.h"
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/glm.hpp>
-#include "../Headers/STL_Header.h"
 #include "../Headers/Math_Header.h"
 
 class Model

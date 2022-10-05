@@ -220,7 +220,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="Users\User.cpp" />
-    <ClCompile Include="Window\Window.cpp" />
+    <ClCompile Include="Window\GameWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h" />
@@ -265,7 +265,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="Users\User.h" />
-    <ClInclude Include="Window\Window.h" />
+    <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />

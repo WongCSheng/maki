@@ -22,7 +22,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/STL_Header.h"
 #include "../include/glapp.h"
 #include "../Engine/Core/Core.h"
-#include "../Window/Window.h"
+#include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"
 #include <memory> 
 #include <crtdbg.h> 

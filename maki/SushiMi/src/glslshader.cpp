@@ -30,14 +30,14 @@ GLSLShader::DeleteShaderProgram() {                     //delete program handler
 GLboolean
 GLSLShader::CompileLinkValidate(std::vector<std::pair<GLenum, std::string>> vec) {
     for (auto& elem : vec) {
-        if (GL_FALSE == CompileShaderFromFile(elem.first, elem.second.c_str())) {
+        if (GL_FALSE == CompileShaderFromFile(elem.first, elem.second.c_str())) {       //if not able to compile from file
             return GL_FALSE;
         }
     }
-    if (GL_FALSE == Link()) {
+    if (GL_FALSE == Link()) {                                                           //if not able to link
         return GL_FALSE;
     }
-    if (GL_FALSE == Validate()) {
+    if (GL_FALSE == Validate()) {                                                       //if not able to validate
         return GL_FALSE;
     }
     PrintActiveAttribs();

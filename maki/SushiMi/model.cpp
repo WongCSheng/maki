@@ -115,6 +115,6 @@ Model Model::init(std::string mesh_filepath)
 	glVertexArrayElementBuffer(vaoid, ebo_hdl);
 
 	result.vaoid = vaoid;
-	result.draw_cnt = idx_vtx.size();
+	result.draw_cnt = static_cast<GLuint>(idx_vtx.size());
 	return result;
 }

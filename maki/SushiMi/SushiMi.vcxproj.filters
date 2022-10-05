@@ -68,6 +68,9 @@
     <ClCompile Include="src\AudioEngine.cpp">
       <Filter>GameEngine\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="fonts.cpp">
+      <Filter>GameEngine\Fonts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -155,6 +158,9 @@
     <ClInclude Include="include\AudioEngine.h">
       <Filter>GameEngine\Audio</Filter>
     </ClInclude>
+    <ClInclude Include="fonts.h">
+      <Filter>GameEngine\Fonts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -201,6 +207,9 @@
     </Filter>
     <Filter Include="GameEngine\Audio">
       <UniqueIdentifier>{0a9b184e-3b1d-46c6-bec6-b5e691aaefc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Fonts">
+      <UniqueIdentifier>{8d999472-46aa-4c31-ad98-6bd06eb19152}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

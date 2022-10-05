@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)lib\glfw\include;$(SolutionDir)lib\glew\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib\rapidJSON;$(SolutionDir)lib\rttr;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)lib\glfw\include;$(SolutionDir)lib\glew\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib\rapidJSON;$(SolutionDir)lib\rttr;$(SolutionDir)lib\freetype\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\glfw\;$(SolutionDir)lib\glew\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>

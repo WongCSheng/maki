@@ -15,9 +15,10 @@ to OpenGL implementations.
 ----------------------------------------------------------------------------- */
 #include <../include/glapp.h>
 #include <../include/glhelper.h>
-#include "../object.h"
-#include "../model.h"
-#include "../Camera2D.h"
+#include <../object.h>
+#include <../model.h>
+#include <../Camera2D.h>
+#include <../fonts.h>
 #define M_PI									3.14159265358979323846  /* pi */
 
 
@@ -63,6 +64,9 @@ void GLApp::init() {
 	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 	
+
+	// font testing
+
 }
 
 

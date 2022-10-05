@@ -1,4 +1,3 @@
-#pragma once
 #ifndef RTTR_H_
 #define RTTR_H_
 

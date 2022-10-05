@@ -1,6 +1,4 @@
-#pragma once
-
-#include "../include/JSONSerializer.h"
+#include "JSONSerializer.h"
 
 
 //LOADING

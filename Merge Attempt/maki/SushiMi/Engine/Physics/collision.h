@@ -21,7 +21,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/Math_Header.h"
 #include "../include/glhelper.h"
 
-namespace Collision {
+class Collision {
+
 	/**************************************************************************/
 	/*!
 	* \brief		structure for the axis bound binding box
@@ -65,6 +66,42 @@ namespace Collision {
 		gfxVector2	m_pt0;
 		gfxVector2	m_pt1;
 		gfxVector2	m_normal;
+	};
+
+	float g_dt = GLHelper::delta_time;
+
+	struct VertexList
+	{
+		GLint mpVtxBuffer;
+		int	vtxNum;
+	}AEGfxVertexList;
+
+
+	struct GameObj
+	{
+		unsigned long		type;		// object type
+		VertexList* pMesh;		// This will hold the triangles which will form the shape of the object
+	};
+
+	typedef struct Mtx33
+	{
+		float	m[3][3];
+	}Mtx33;
+
+	struct GameObjInst
+	{
+		GameObj* pObject;	// pointer to the 'original' shape
+		unsigned long		flag;		// bit flag or-ed together
+		float				scale;		// scaling value of the object instance
+		gfxVector2			posCurr;	// object current position
+		gfxVector2			velCurr;	// object current velocity
+		float				dirCurr;	// object current direction
+		AABB				boundingBox;// object bouding box that encapsulates the object
+		Mtx33				transform;	// object transformation matrix: Each frame, 
+		// calculate the object instance's transformation matrix and save it here
+
+//void				(*pfUpdate)(void);
+//void				(*pfDraw)(void);
 	};
 
 	void BuildLineSegment(LineSegment& lineSegment,								//Line segment reference - input

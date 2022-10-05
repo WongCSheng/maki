@@ -4,7 +4,8 @@
 @date    20/09/2022
 
 This file contains definitions of member functions of class GLShader.
-There are many functions to get the location of the 
+There are many functions to get the location of the uniform and linking to
+the pgmhandler
 
 *//*__________________________________________________________________________*/
 #include <../include/glslshader.h>

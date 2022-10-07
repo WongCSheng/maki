@@ -259,9 +259,11 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	if (GLFW_PRESS == action && key == GLFW_KEY_W)
 	{
 		Camera2D::camera2d.move_flag = GL_TRUE;
+		Camera2D::camera2d.decelerate = GL_FALSE;
 	}
 	else if (GLFW_RELEASE == action)
 	{
+		Camera2D::camera2d.decelerate = GL_TRUE;
 		Camera2D::camera2d.camtype_flag = GL_FALSE;
 		Camera2D::camera2d.zoom_flag = GL_FALSE;
 		Camera2D::camera2d.left_turn_flag = GL_FALSE;

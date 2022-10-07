@@ -126,6 +126,20 @@ void Camera2D::update(GLFWwindow* pWindow)
 		linear_speed = velocity * dt;
 		velocity += acceleration * dt;
 		pgo->position += (linear_speed * glm::normalize(up));//displace the camera
+		vel2 = velocity;
+
+	}
+
+	if (decelerate == GL_TRUE) {
+		//simple physics
+
+		linear_speed = (vel2 * dt);
+		vel2 -= 5.0f*(acceleration * dt);
+
+		if (linear_speed > 0) //not reached 0
+			pgo->position += (linear_speed * glm::normalize(up));//displace the camera
+		else
+			decelerate = GL_FALSE;
 
 	}
 

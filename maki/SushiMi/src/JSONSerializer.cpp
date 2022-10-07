@@ -9,13 +9,8 @@ chosen game object.
 
 *//*__________________________________________________________________________*/
 
-
-
 #pragma once
 #include "../include/common_headers.hpp"
-
-//LOADING
-//FUNCTIONAL BUT NOT IMPLEMENTED
 
 /*  _________________________________________________________________________ */
 /*! DeserializeAndPrintConsole
@@ -24,7 +19,7 @@ json file name
 @return bool
 returns 0 if failed, 1 if success
 
-Takes in a json file and prints contents to console. If failed, will print error code.
+Takes in a json file and prints contents to console. If failed, prints error code.
 */
 bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 
@@ -141,6 +136,12 @@ void SetDocument() {
 	using namespace rapidjson;
 	Document doc;
 	doc.SetObject();
+}
+
+template <class gameObj>
+void TrySerialize(gameObj obj) {
+
+
 }
 
 /*  _________________________________________________________________________ */

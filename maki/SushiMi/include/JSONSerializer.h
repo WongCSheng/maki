@@ -105,9 +105,7 @@ public:
 	@gameObject& obj
 	class deserialized into
 	@return none
-
-	use for debugging after serializing
-	*/
+	_________________________________________________________________________ */
 
 template<class gameObject>
 void PrintObjectProperties(gameObject& obj) {
@@ -118,7 +116,6 @@ void PrintObjectProperties(gameObject& obj) {
 	cout << obj.GetBool() << endl;
 	cout << obj.GetNull() << endl;
 	cout << obj.GetStr() << std::endl;
-
 }
 
 

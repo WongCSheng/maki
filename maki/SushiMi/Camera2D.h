@@ -65,6 +65,12 @@ public:
 
 	// camera speed when button U is pressed
 	GLfloat linear_speed{ 2.f };
+
+	GLfloat velocity{ 200.f };
+	GLfloat acceleration{ 200.f };
+
+
+
 	// Keyboard button press flags:
 	GLboolean camtype_flag{ GL_FALSE }; // button V
 	GLboolean zoom_flag{ GL_FALSE }; // button Z

@@ -73,6 +73,7 @@ Update camera's ratio, orientation, position, up and right vectors, zoom and tra
 */
 void Camera2D::update(GLFWwindow* pWindow)
 {
+	GLfloat dt = GLHelper::delta_time;
 	ar = (GLfloat)GLHelper::width / (GLfloat)GLHelper::height;
 	// update POV using keypress
 	if (camtype_flag == GL_TRUE)
@@ -121,7 +122,11 @@ void Camera2D::update(GLFWwindow* pWindow)
 	// update camera's position
 	if (move_flag == GL_TRUE)
 	{
+		//simple physics
+		linear_speed = velocity * dt;
+		velocity += acceleration * dt;
 		pgo->position += (linear_speed * glm::normalize(up));//displace the camera
+
 	}
 
 	// implement camera's zoom effect (if required)
@@ -138,7 +143,7 @@ void Camera2D::update(GLFWwindow* pWindow)
 		height += (height_chg_dir * height_chg_val);
 	}
 
-
+	
 	// compute window-to-NDC transformation matrix
 	// compute other matrices like rotation,scaling and translation
 	camwin_to_ndc_xform = { {2.0f / (height * ar),0.f,0.f},

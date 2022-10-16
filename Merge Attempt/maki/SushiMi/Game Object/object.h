@@ -16,7 +16,6 @@ to draw the object, then unbind and unuse the shader program.
 #include "../include/glslshader.h"
 #include "../Engine/Mesh/model.h"
 #include "../Engine/Camera/Camera2D.h"
-#include "../Engine/Mesh/model.h"
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/trigonometric.hpp>
 #include <GLFW/glfw3.h>
@@ -34,7 +33,7 @@ public:
 
 	void update(GLdouble delta_time);
 
-	glm::vec2 orientation;	// orientation.x is angle_disp and
+	glm::vec2 orientation{};	// orientation.x is angle_disp and
 	// orientation.y is angle_speed both in degrees
 
 	glm::vec2 scaling{};		// scaling parameters

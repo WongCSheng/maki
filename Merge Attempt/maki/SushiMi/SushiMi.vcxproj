@@ -213,6 +213,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Engine\Transform\Transform.cpp" />
+    <ClCompile Include="Game Object\GameObject.cpp" />
     <ClCompile Include="Game Object\object.cpp" />
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
@@ -251,6 +252,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Engine\Transform\Transform.h" />
+    <ClInclude Include="Game Object\GameObject.h" />
     <ClInclude Include="Game Object\object.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />

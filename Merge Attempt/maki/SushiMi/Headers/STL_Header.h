@@ -25,7 +25,7 @@
 	#include <ostream>
 	#include <sstream>
 	#include <cstdio>
-	//Algorith
+	//Algorithm
 	#include <algorithm>
 	#include <iterator>
 	//Window

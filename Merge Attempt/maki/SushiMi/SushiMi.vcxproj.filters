@@ -43,9 +43,6 @@
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\object.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Camera\Camera2D.cpp">
       <Filter>GameEngine\Camera</Filter>
     </ClCompile>
@@ -99,6 +96,12 @@
     </ClCompile>
     <ClCompile Include="Engine\Serialiser\RTTR.cpp">
       <Filter>GameEngine\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Object\object.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Object\GameObject.cpp">
+      <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Serialiser\RTTR.h">
       <Filter>GameEngine\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\GameObject.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

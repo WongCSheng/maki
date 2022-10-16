@@ -17,7 +17,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "collision.h"
 
 
-float g_dt = GLHelper::delta_time;
+double g_dt = GLHelper::delta_time;
 
 /**************************************************************************/
 /*!
@@ -33,8 +33,7 @@ float g_dt = GLHelper::delta_time;
 bool Collision::CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
 	const AABB& aabb2, const gfxVector2& vel2)
 {
-
-
+	
 	/*
 	Implement the collision intersection over here.
 

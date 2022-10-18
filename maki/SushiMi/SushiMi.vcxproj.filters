@@ -71,6 +71,9 @@
     <ClCompile Include="fonts.cpp">
       <Filter>GameEngine\Fonts</Filter>
     </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>GameEngine\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -161,6 +164,9 @@
     <ClInclude Include="fonts.h">
       <Filter>GameEngine\Fonts</Filter>
     </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>GameEngine\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -210,6 +216,9 @@
     </Filter>
     <Filter Include="GameEngine\Fonts">
       <UniqueIdentifier>{8d999472-46aa-4c31-ad98-6bd06eb19152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Physics">
+      <UniqueIdentifier>{4f68c3f6-6fa2-4a08-8633-7bec2582f488}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

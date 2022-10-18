@@ -83,6 +83,12 @@ Model Model::init(std::string mesh_filepath)
 			idx_vtx.emplace_back(iy);
 			idx_vtx.emplace_back(iz);
 			break;
+		case 'l': //linebox for visual display
+			result.primitive_type = GL_LINE;
+			prefix_check >> ix >> iy >> iz;
+			idx_vtx.emplace_back(ix);
+			idx_vtx.emplace_back(iy);
+			idx_vtx.emplace_back(iz);
 		}
 
 	}

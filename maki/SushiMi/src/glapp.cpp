@@ -19,6 +19,7 @@ to OpenGL implementations.
 #include <../model.h>
 #include <../Camera2D.h>
 #include <../fonts.h>
+#include <../Physics.h>
 #define M_PI									3.14159265358979323846  /* pi */
 
 
@@ -60,6 +61,7 @@ void GLApp::init() {
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container Object::objects
 	GLApp::init_scene("../scenes/SushiMiscene.scn");
+
 
 	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
@@ -130,6 +132,8 @@ void GLApp::init_scene(std::string scene_filename)
 		//find model with the same name
 		std::map<std::string, Model>::iterator mdl_iterator;
 		mdl_iterator = Model::models.find(model_name);
+		 
+		bool hasMass = false;
 
 		if (mdl_iterator == Model::models.end())
 		{
@@ -138,6 +142,9 @@ void GLApp::init_scene(std::string scene_filename)
 			{
 				mesh_path = "../mesh/circle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLE_FAN;
+				//hasMass = true;
+				//currObj.status = true; //alive
+
 			}
 			else if (model_name == "square")
 			{
@@ -148,6 +155,11 @@ void GLApp::init_scene(std::string scene_filename)
 			{
 				mesh_path = "../mesh/triangle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLES;
+			}
+			else if (model_name == "linebox")
+			{
+				mesh_path = "../mesh/linebox.msh";
+				curr_mdl.primitive_type = GL_LINE;
 			}
 			curr_mdl = curr_mdl.init(mesh_path);
 			Model::models.insert(std::pair<std::string, Model>(model_name, curr_mdl));
@@ -193,6 +205,22 @@ void GLApp::init_scene(std::string scene_filename)
 		line_pos >> pos_x >> pos_y;
 		currObj.position = { pos_x, pos_y };
 
+		if (hasMass == true)
+		{
+			getline(ifs, line);
+			std::istringstream line_mass{ line }; //getting mass of obj
+			float objMass;	//create mass inst
+			line_mass >> objMass; // convert istream to float
+			currObj.mass = objMass; //assign mass to currObj
+			hasMass = false; // turn off
+		 }
+		/*
+		if (currObj.status == true)
+		{
+			currObj.aabb.min.
+		}
+		*/
+	
 		currObj.mdl_ref = mdl_iterator;
 		currObj.shd_ref = shdr_iterator;
 

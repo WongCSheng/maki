@@ -13,6 +13,7 @@ to draw the object, then unbind and unuse the shader program.
 #include "object.h"
 #include "Camera2D.h"
 #include "include/glapp.h"
+#include "Physics.h"
 /*--------------------------------------------------------------------------- */
 
 std::map<std::string, Object> Object::objects;
@@ -99,6 +100,8 @@ void Object::update(GLdouble delta_time)
 		{position.x, position.y, 1}
 	};
 
+	//apply gravity
+	//Object::objects["Object5"].position += applyGravity(Object::objects["Object5"].mass) * (float)delta_time;
 
 	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
 	

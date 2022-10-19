@@ -39,6 +39,8 @@ public:
 	gfxVector2 velocity{};
 	float dirCurr{};
 	Collision::AABB aabb;
+	bool status{};
+	float mass;
 
 	// compute object's model transform matrix using scaling,
 	// rotation, and translation attributes

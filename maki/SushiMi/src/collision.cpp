@@ -125,6 +125,8 @@ namespace Collision {
 				dLast = aabb1.min.x - aabb2.max.x;
 				tLast = dLast / (vel2.x - vel1.x);
 			}
+
+			
 		}
 		if ((vel2.x - vel1.x) > 0.f) //case 2 & case 3
 		{

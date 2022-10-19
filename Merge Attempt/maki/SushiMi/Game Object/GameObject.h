@@ -22,21 +22,22 @@ namespace Object
 		GameObjectProperty();
 		~GameObjectProperty();
 		
-		Core::Component* ComponentContainer;
+		std::unordered_map<ObjectID,Core::Component*> ComponentContainer;
 
-		unsigned int ID;
+		ObjectID ID;
 
 	public:
 		friend class Core::Component;
 		
 		void Init();
 
-		void Destroy();
+		void AddToDestroyList();
 
-		template<typename T>
-		T* GetComponent(ObjectID ID);
+		Core::Component* GetComponent(ObjectID ID);
 
-		int GetID();
+		ObjectID GetID();
+
+		std::string GetIDName();
 
 		void AddComponent(ObjectID ID,Core::Component* comp);
 

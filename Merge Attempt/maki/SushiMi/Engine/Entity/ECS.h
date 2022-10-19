@@ -17,7 +17,7 @@ namespace Core
 	class Transform;
 	class Material;
 	class Component;
-	class GameObjectProperty;
+	class Object::GameObjectProperty;
 
 	//class Entity
 	//{
@@ -91,25 +91,28 @@ namespace Core
 	class Component
 	{
 	protected:
-		GameObjectProperty* owner;
+		Object::GameObjectProperty* owner;
 		bool active;
 		bool add;	// queue for addition in runtime
 		bool remove;	// queue for remove
 
 	public:
+		friend class Object::GameObjectProperty;
+
 		Component();
 		virtual ~Component();
 
-		friend class Object::GameObjectProperty;
-
 		// Function to initialize the component's owner when it is added to the entity
 		virtual void Init();
-		GameObjectProperty* Owner();
+		Object::GameObjectProperty* GetOwner();
+		void SetOwner(Object::GameObjectProperty* owner);
 
 		bool IsActive();
 		void Activate();
 		void Deactivate();
 		void Remove();	// queue it for deletion
+
+		Object::ObjectID CompID;
 	};
 }
 

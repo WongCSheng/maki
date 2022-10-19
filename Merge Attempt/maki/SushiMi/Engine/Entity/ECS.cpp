@@ -6,6 +6,7 @@ Description: This file contains the function definition for Entities and Compone
 
 #include "ECS.h"
 #include "../Engine/Transform/Transform.h"
+#include "../Game Object/GameObject.h"
 
 //int Core::Entity::entity_count = 0; // Counter for amount of entities created.
 //
@@ -140,38 +141,54 @@ Description: This file contains the function definition for Entities and Compone
 //{
 //}
 
-
-Core::Component::~Component()
+namespace Core
 {
-}
+	Component::Component()
+	{
+		owner = new Object::GameObjectProperty;
+		add = false;
+		active = false;
+		remove = false;
+	}
+	
+	Component::~Component()
+	{
+		delete owner;
+	}
 
-void Core::Component::Init()
-{
-}
+	void Component::Init()
+	{
+	}
 
-Core::GameObjectProperty* Core::Component::Owner()
-{
-	return owner;
-}
+	Object::GameObjectProperty* Component::GetOwner()
+	{
+		return owner;
+	}
 
-bool Core::Component::IsActive()
-{
-	return active;
-}
+	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
+	{
+		owner = NewOwner;
+	}
 
-void Core::Component::Activate()
-{
-	active = true;
-}
+	bool Component::IsActive()
+	{
+		return active;
+	}
 
-void Core::Component::Deactivate()
-{
-	active = false;
-}
+	void Component::Activate()
+	{
+		active = true;
+	}
 
-void Core::Component::Remove()
-{
-	remove = true;
+	void Component::Deactivate()
+	{
+		active = false;
+	}
+
+	void Component::Remove()
+	{
+		remove = true;
+	}
 }
 
 //Core::Core::Component::Component()

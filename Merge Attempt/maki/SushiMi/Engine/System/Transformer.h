@@ -18,7 +18,7 @@ namespace Core
 	public:
 		Transformer();
 		virtual ~Transformer();
-		virtual void RegisterComponents(const std::vector<Entity*>& entities);
+		virtual void RegisterComponents(const Core::Component comp);
 		virtual void Update(const double dt);
 		virtual void CheckForNewComponents(void);
 		void UpdateTransformation(Transform* Transform);

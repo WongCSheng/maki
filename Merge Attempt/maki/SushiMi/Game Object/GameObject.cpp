@@ -8,21 +8,45 @@ namespace Object
 {
 	GameObjectProperty::GameObjectProperty()
 	{
-		ComponentContainer = new Core::Component[1000];
-		ID = 0;
+		ID = ObjectID::None;
 	}
 
 	GameObjectProperty::~GameObjectProperty()
 	{
-		delete[] ComponentContainer;
+		ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
 	}
 
 	void GameObjectProperty::Init()
 	{
-		for (int i = 0; i < 1000; ++i)
+		for (auto& i : ComponentContainer)
 		{
-			ComponentContainer[i].owner = this;
-			ComponentContainer[i].Init();
+			i.second->SetOwner(this);
+			i.second->Init();
 		}
+	}
+
+	void GameObjectProperty::AddToDestroyList()
+	{
+		
+	}
+
+	Core::Component* GameObjectProperty::GetComponent(ObjectID ID)
+	{
+		return ComponentContainer[ID];
+	}
+
+	ObjectID GameObjectProperty::GetID()
+	{
+		return ID;
+	}
+
+	std::string GameObjectProperty::GetIDName()
+	{
+		
+	}
+
+	void AddComponent(ObjectID ID, Core::Component* comp)
+	{
+		
 	}
 }

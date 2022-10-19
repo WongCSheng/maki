@@ -49,7 +49,7 @@ public://variables
 	int testNull = 2;
 	std::string testStr = "nothing here";
 	std::string* testArr = NULL;
-	//RTTR_ENABLE();
+	RTTR_ENABLE();
 
 };
 

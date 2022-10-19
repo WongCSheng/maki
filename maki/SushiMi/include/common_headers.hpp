@@ -87,12 +87,10 @@ file so that in all files you will only need to
 #include <error/en.h>
 #include <stringbuffer.h>
 
-#include <type.h>
-#include <property.h>
-#include <variant_impl.h>
-#include <variant.h>
-#include <registration.h>
-#include <version.h>
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration.h>
 
 #include <fstream>
 #include <filesystem>

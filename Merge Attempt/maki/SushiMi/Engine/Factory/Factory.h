@@ -9,15 +9,15 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
-		unsigned int ObjectID;
+		unsigned int LastObjectID;
 
-		std::unordered_map<Object::ObjectID, Object::GameObjectProperty> ObjectContainer;
+		std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer;
 
 		std::set<Object::GameObjectProperty*> DeleteList;
 
-	public:
+	public:		
 		ObjectFactory();
-		~ObjectFactory();
+		virtual ~ObjectFactory();
 
 		Object::GameObjectProperty* Create(const std::string filename);
 
@@ -27,12 +27,10 @@ namespace Core
 
 		virtual void Update(const double dt);
 
-		virtual void CheckForNewComponents(void);
+		void AddObjects(Object::GameObjectProperty* added, unsigned int i);
 
-		virtual void RegisterComponents(const Core::Component comp);
+		virtual void Init();
 
 		Object::GameObjectProperty* BuildSerialise(const std::string filename);
-					  
-					  
-	};				  
+	};
 }

@@ -5,16 +5,7 @@
 
 namespace Object
 {
-	enum class ObjectID
-	{
-		None = 0,
-		Renderer,
-		transform,
-		camera,
-		physics,
-		GameObject,
-		End
-	};
+	class Core::ObjectFactory;
 	
 	class GameObjectProperty
 	{
@@ -22,24 +13,25 @@ namespace Object
 		GameObjectProperty();
 		~GameObjectProperty();
 		
-		std::unordered_map<ObjectID,Core::Component*> ComponentContainer;
+		std::unordered_map<Core::ComponentID,Core::Component*> ComponentContainer;
 
-		ObjectID ID;
+		std::pair<unsigned int, std::string> ObjectID;
 
 	public:
+		friend class Core::ObjectFactory;
 		friend class Core::Component;
 		
 		void Init();
 
-		void AddToDestroyList();
+		Core::Component* GetComponent(Core::ComponentID ID);
 
-		Core::Component* GetComponent(ObjectID ID);
-
-		ObjectID GetID();
+		unsigned int GetID();
+		void SetID(unsigned int name);
 
 		std::string GetIDName();
+		void SetIDName(std::string name);
 
-		void AddComponent(ObjectID ID,Core::Component* comp);
+		void AddComponent(Core::ComponentID ID, Core::Component* comp);
 
 		void RemoveComponent(Core::Component* comp);
 	};

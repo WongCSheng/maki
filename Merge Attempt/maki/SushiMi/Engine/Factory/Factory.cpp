@@ -23,11 +23,23 @@ namespace Core
 
 	void ObjectFactory::DestroyEverything()
 	{
+		std::unordered_map<unsigned int, Object::GameObjectProperty*>::iterator it = ObjectContainer.begin();
+
+		for (it; it != ObjectContainer.end(); ++it)
+		{
+			delete it->second;
+		}
+
+		ObjectContainer.clear();
+	}
+
+	void ObjectFactory::Update(const double dt)
+	{
 		for (std::set<Object::GameObjectProperty*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
 		{
 			Object::GameObjectProperty* temp = *it;
 
-			std::unordered_map<Object::ObjectID, Object::GameObjectProperty>::iterator Objit = ObjectContainer.find(temp->GetID());
+			std::unordered_map<unsigned int, Object::GameObjectProperty*>::iterator Objit = ObjectContainer.find(temp->GetID());
 
 			ObjectContainer.erase(Objit);
 
@@ -35,5 +47,10 @@ namespace Core
 		}
 
 		DeleteList.clear();
+	}
+
+	void ObjectFactory::AddObjects(Object::GameObjectProperty* added, unsigned int i)
+	{
+		ObjectContainer.insert({ i, added });
 	}
 }

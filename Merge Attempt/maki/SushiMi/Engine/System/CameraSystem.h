@@ -17,9 +17,9 @@ namespace Core
 	public:
 		CameraSystem();
 		virtual ~CameraSystem();
-		virtual void RegisterComponents(const Core::Component comp);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents(void);
+		virtual void Exit();
 
 	private:
 		std::vector<Camera2D*> cameras;

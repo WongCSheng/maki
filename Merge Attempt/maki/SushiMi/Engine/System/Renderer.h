@@ -19,9 +19,9 @@ namespace Core
 	public:
 		Renderer();
 		virtual ~Renderer();
-		virtual void RegisterComponents(const Core::Component comp);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents(void);
+		virtual void Exit();
 
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;

@@ -88,6 +88,17 @@ namespace Core
 	//	bool remove;
 	//};
 
+	enum class ComponentID
+	{
+		None = 0,
+		Renderer,
+		Transform,
+		Camera,
+		Physics,
+		GameObject,
+		End
+	};
+
 	class Component
 	{
 	protected:
@@ -95,6 +106,7 @@ namespace Core
 		bool active;
 		bool add;	// queue for addition in runtime
 		bool remove;	// queue for remove
+		ComponentID ID;
 
 	public:
 		friend class Object::GameObjectProperty;
@@ -111,8 +123,6 @@ namespace Core
 		void Activate();
 		void Deactivate();
 		void Remove();	// queue it for deletion
-
-		Object::ObjectID CompID;
 	};
 }
 

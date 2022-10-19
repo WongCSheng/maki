@@ -52,9 +52,9 @@ class SystemFrame
 public:
 	SystemFrame();
 	virtual ~SystemFrame() = 0;
-	virtual void RegisterComponents(const Core::Component comp) = 0;
+	virtual void Init() = 0;
 	virtual void Update(const double dt) = 0;
-	virtual void CheckForNewComponents(void) = 0;
+	virtual void Exit() = 0;
 };
 
 #endif

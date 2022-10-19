@@ -97,10 +97,10 @@
     <ClCompile Include="Engine\Serialiser\RTTR.cpp">
       <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\object.cpp">
+    <ClCompile Include="Game Object\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\GameObject.cpp">
+    <ClCompile Include="Game Object\object.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,9 +146,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
       <Filter>GameEngine\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="Game Object\object.h">
-      <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Camera\Camera2D.h">
       <Filter>GameEngine\Camera</Filter>
@@ -235,6 +232,9 @@
       <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="Game Object\GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\object.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

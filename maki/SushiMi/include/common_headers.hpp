@@ -31,7 +31,6 @@ file so that in all files you will only need to
 #include <memory>
 #include <typeindex>
 #include <scoped_allocator>
-#include <typeindex>
 #include <utility>
 #include <cstdio>
 #include <fstream>

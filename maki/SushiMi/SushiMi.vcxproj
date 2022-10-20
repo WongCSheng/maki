@@ -199,6 +199,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="fonts.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="src\AudioEngine.cpp" />
+    <ClCompile Include="src\imguiEditor.cpp" />
     <ClCompile Include="src\Script.cpp" />
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="model.cpp" />
@@ -230,6 +231,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Debug.h" />
     <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\common_headers.hpp" />
+    <ClInclude Include="include\imguiEditor.h" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />

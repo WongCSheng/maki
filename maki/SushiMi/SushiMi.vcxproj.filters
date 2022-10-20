@@ -74,6 +74,7 @@
     <ClCompile Include="Physics.cpp">
       <Filter>GameEngine\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="src\imguiEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -167,6 +168,7 @@
     <ClInclude Include="Physics.h">
       <Filter>GameEngine\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="include\imguiEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

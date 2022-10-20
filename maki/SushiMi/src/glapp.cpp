@@ -97,6 +97,7 @@ void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string
 	// add compiled, linked and validated shader program to
 	// std::map container GLApp::shdrpgms
 	GLApp::shdrpgms[shdr_pgm_name] = shdr_pgm;
+
 }
 /*  _________________________________________________________________________ */
 /*! init_scene

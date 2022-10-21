@@ -55,4 +55,9 @@ namespace Object
 	{
 		ComponentContainer.insert({ ID, comp });
 	}
+
+	void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
+	{
+
+	}
 }

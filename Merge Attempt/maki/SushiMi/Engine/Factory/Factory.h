@@ -2,10 +2,15 @@
 
 #include "../Headers/STL_Header.h"
 #include "../Engine/System/SystemFrame.h"
-#include "../Game Object/GameObject.h"
 
 namespace Core
 {
+	//forward declaration
+	namespace Object
+	{
+		class GameObjectProperty;
+	}
+	
 	class ObjectFactory : public SystemFrame
 	{
 	private:
@@ -19,7 +24,7 @@ namespace Core
 		ObjectFactory();
 		virtual ~ObjectFactory();
 
-		Object::GameObjectProperty* Create(const std::string filename);
+		Object::GameObjectProperty* Create();
 
 		void AddtoDestroyList(Object::GameObjectProperty* Obj);
 

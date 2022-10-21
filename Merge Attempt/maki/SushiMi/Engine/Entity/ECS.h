@@ -1,5 +1,3 @@
-#pragma once
-
 /*
 File:		 ECS.h
 Author:		 w.chongsheng@digipen.edu
@@ -12,14 +10,59 @@ Description: Header for ECS.cpp
 #include <string>
 #include <vector>
 
+//Forward Declaration
+namespace Object
+{
+	class GameObjectProperty;
+}
+
 namespace Core
 {
-	class Transform;
-	class Material;
-	class Component;
-	class Object::GameObjectProperty;
 
-	//class Entity
+	enum class ComponentID
+	{
+		None = 0,
+		Renderer,
+		Transform,
+		Camera,
+		Physics,
+		GameObject,
+		End
+	};
+
+	class Component
+	{
+	public:
+		friend class Object::GameObjectProperty;
+
+		Component();
+		virtual ~Component();
+
+		// Function to initialize the component's owner when it is added to the entity
+		virtual void Init();
+		Object::GameObjectProperty* GetOwner();
+		void SetOwner(Object::GameObjectProperty* owner);
+
+		bool IsActive();
+		void Activate();
+		void Deactivate();
+		void Remove();	// queue it for deletion
+
+	protected:
+		Object::GameObjectProperty* owner;
+		bool active;
+		bool add;	// queue for addition in runtime
+		bool remove;	// queue for remove
+		ComponentID ID;
+	};
+
+	class ComponentManager
+	{
+
+	};
+}
+
+//class Entity
 	//{
 	//private:
 	//	int id;
@@ -88,43 +131,11 @@ namespace Core
 	//	bool remove;
 	//};
 
-	enum class ComponentID
-	{
-		None = 0,
-		Renderer,
-		Transform,
-		Camera,
-		Physics,
-		GameObject,
-		End
-	};
 
-	class Component
-	{
-	protected:
-		Object::GameObjectProperty* owner;
-		bool active;
-		bool add;	// queue for addition in runtime
-		bool remove;	// queue for remove
-		ComponentID ID;
 
-	public:
-		friend class Object::GameObjectProperty;
 
-		Component();
-		virtual ~Component();
 
-		// Function to initialize the component's owner when it is added to the entity
-		virtual void Init();
-		Object::GameObjectProperty* GetOwner();
-		void SetOwner(Object::GameObjectProperty* owner);
 
-		bool IsActive();
-		void Activate();
-		void Deactivate();
-		void Remove();	// queue it for deletion
-	};
-}
 
 //#include "../Headers/STL_Header.h"
 //

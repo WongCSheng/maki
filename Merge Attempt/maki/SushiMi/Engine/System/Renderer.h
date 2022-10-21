@@ -14,7 +14,7 @@ namespace Core
 	//Forward Declaration
 	class SystemFrame;
 	
-	class Renderer : public ::SystemFrame
+	class Renderer : public SystemFrame
 	{
 	public:
 		Renderer();

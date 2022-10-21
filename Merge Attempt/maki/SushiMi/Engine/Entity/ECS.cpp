@@ -145,7 +145,7 @@ namespace Core
 {
 	Component::Component()
 	{
-		owner = new Object::GameObjectProperty;
+		owner = new Object::GameObjectProperty();
 		add = false;
 		active = false;
 		remove = false;

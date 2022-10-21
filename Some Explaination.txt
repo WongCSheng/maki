@@ -1,0 +1,10 @@
+Components Understanding
+Each GameObject contains is a an ID for which components it owns. It doesn't actually hold the component itself. That is left to the component manager to do.
+
+Factories are then the managaer for GameObjects.
+
+The Component Manager contains the actual containers that holds each component that is created.
+Components holds the actual data for each objects it is assigned to.
+For example: Boundary, Textures, Transform etc.
+
+Generally Components are suppose to be generally flexible in their types, so adding new components will be easier and more dynamic in the future.

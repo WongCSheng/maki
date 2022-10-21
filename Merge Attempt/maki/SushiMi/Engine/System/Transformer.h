@@ -12,7 +12,7 @@ namespace Core
 {
 	class Transform;
 	
-	class Transformer : public ::SystemFrame
+	class Transformer : public SystemFrame
 	{
 	public:
 		Transformer();

@@ -1,5 +1,6 @@
 
 #include "Factory.h"
+#include "../Game Object/GameObject.h"
 
 namespace Core
 {
@@ -11,8 +12,10 @@ namespace Core
 	{
 	}
 
-	Object::GameObjectProperty* ObjectFactory::Create(const std::string filename)
+	Object::GameObjectProperty* ObjectFactory::Create()
 	{
+		Object::GameObjectProperty* newlycreated = new Object::GameObjectProperty();
+
 		return nullptr;
 	}
 
@@ -52,5 +55,15 @@ namespace Core
 	void ObjectFactory::AddObjects(Object::GameObjectProperty* added, unsigned int i)
 	{
 		ObjectContainer.insert({ i, added });
+	}
+
+	void ObjectFactory::Init()
+	{
+
+	}
+
+	Object::GameObjectProperty* ObjectFactory::BuildSerialise(const std::string filename)
+	{
+		return nullptr;
 	}
 }

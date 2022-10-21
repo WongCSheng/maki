@@ -7,12 +7,13 @@
 #include "SystemFrame.h"
 #include "../Entity/ECS.h"
 
-//Forward Declaration
 
 namespace Core
 {
+	//Forward Declaration
 	class Camera2D;
-	class CameraSystem : public ::SystemFrame
+
+	class CameraSystem : public SystemFrame
 	{
 	public:
 		CameraSystem();

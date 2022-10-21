@@ -1,15 +1,41 @@
+/*!
+@file		JSONSerializer.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
+
+This file contains a Serializer class that can parse json files.
+You can choose to print to console or directly deserialize into your
+chosen game object.
+
+*//*__________________________________________________________________________*/
+
 #pragma once
 
-#include "../Headers/STL_Header.h"
 #include "../Headers/RapidJSON_Header.h"
+#include "../Headers/STL_Header.h"
+
+#ifndef JSERIALIZE_H
+#define JSERIALIZE_H
 
 class Serializer {
 
 public:
 
 	//serialize everything
-	void Serialize(const std::string& filepath);
 	//set value to gameobject if all property names match
+	//void Serialize(const std::string& filepath);
+
+	/*  _________________________________________________________________________ */
+	/*! DeserializeObject
+	@param const std::string& filepath
+	json file
+	@gameObject& obj
+	class to deserialize into
+	@return bool
+	returns 0 if failed, 1 if success
+
+	Takes in a json file uses contents to change obj properties
+	*/
 	template<class gameObject>
 	bool DeserializeObject(gameObject& obj, const std::string& filepath) {
 
@@ -77,7 +103,13 @@ public:
 
 };
 
-//debugging after serializing
+/*  _________________________________________________________________________ */
+	/*! DeserializeObject
+	@gameObject& obj
+	class deserialized into
+	@return none
+	_________________________________________________________________________ */
+
 template<class gameObject>
 void PrintObjectProperties(gameObject& obj) {
 	using namespace std;
@@ -87,5 +119,7 @@ void PrintObjectProperties(gameObject& obj) {
 	cout << obj.GetBool() << endl;
 	cout << obj.GetNull() << endl;
 	cout << obj.GetStr() << std::endl;
-
 }
+
+
+#endif

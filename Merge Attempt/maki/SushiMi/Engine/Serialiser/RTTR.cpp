@@ -1,20 +1,30 @@
+/*!
+@file		RTTR.cpp
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
 
-#include "RTTR.h"
+This file contains code that use the rttr library. Currently it contains
+getters and setters for TestClass that is used to debug json parsing.
+*//*__________________________________________________________________________*/
+
+#pragma once
+#include "../Engine/Serialiser/RTTR.h"
 
 //rttr doesnt work yet
 //register your class for rttr here
-//RTTR_REGISTRATION
-//{
-//	using namespace rttr;
-//registration::class_<TestClass>("TestClass")
-//.property("testInt", &TestClass::testInt)
-//.property("testFloat", &TestClass::testFloat)
-//.property("testDouble", &TestClass::testDouble)
-//.property("testBool", &TestClass::testBool)
-//.property("testNull", &TestClass::testNull)
-//.property("testStr", &TestClass::testStr);
-//
-//}
+
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+registration::class_<TestClass>("TestClass")
+.property("testInt", &TestClass::testInt)
+.property("testFloat", &TestClass::testFloat)
+.property("testDouble", &TestClass::testDouble)
+.property("testBool", &TestClass::testBool)
+.property("testNull", &TestClass::testNull)
+.property("testStr", &TestClass::testStr);
+
+}
 
 
 TestClass::TestClass()

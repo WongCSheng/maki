@@ -37,7 +37,6 @@ file so that in all files you will only need to
 #include <iomanip>
 #include <ios>
 #include <iostream>
-#include <ostream>
 #include <sstream>
 #include <iterator>
 #include <exception>

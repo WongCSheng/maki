@@ -48,7 +48,12 @@ void imguiEditorDraw(void)
 	//ImGui::Checkbox("Sample Checkbox", nullptr);
 	//Object::objects["Object5"].shd_ref;
 	//ImGui::SliderFloat("Size", (float*)Object::objects["Object5"].scale_up, 0.5f, 2.0f);
-	ImGui::SliderFloat("Slider", &Object::objects["Object5"].position.x, -19800.0f, -19900.5f);
+	ImGui::SliderFloat("x-position", &Object::objects["Object5"].position.x, -500.0f, 500.0f);
+	ImGui::SliderFloat("y-position", &Object::objects["Object5"].position.y, -500.0f, 500.0f);
+	ImGui::SliderFloat("R in RGB", &Object::objects["Object5"].color.r, .0f, 1.0f);
+	ImGui::SliderFloat("G in RGB", &Object::objects["Object5"].color.g, .0f, 1.0f);
+	ImGui::SliderFloat("B in RGB", &Object::objects["Object5"].color.b, .0f, 1.0f);
+	//ImGui::SliderFloat("transparency", &Object::objects["Object5"].color., -500.0f, 500.0f);
 	
 
 	ImGui::End();

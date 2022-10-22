@@ -1,12 +1,15 @@
 
 #include "SystemFrame.h"
 
-SystemFrame::SystemFrame()
+namespace Core
 {
+	SystemFrame::SystemFrame()
+	{
 
-}
+	}
 
-SystemFrame::~SystemFrame()
-{
+	SystemFrame::~SystemFrame()
+	{
 
+	}
 }

@@ -86,7 +86,7 @@ void Core::MainSystem::Exit()
 {
 	for (int i = 0; i < systems.size(); ++i)
 	{
-		systems[i]->CheckForNewComponents();
+		systems[i]->Exit();
 	}
 }
 

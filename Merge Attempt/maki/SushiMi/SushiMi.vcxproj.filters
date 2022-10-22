@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\glapp.cpp">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\glhelper.cpp">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\glslshader.cpp">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
@@ -28,15 +19,6 @@
     <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Renderer.cpp">
-      <Filter>GameEngine\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\CameraSystem.cpp">
-      <Filter>GameEngine\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\Transformer.cpp">
-      <Filter>GameEngine\System</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Messaging\Messaging.cpp">
       <Filter>GameEngine\Messaging</Filter>
     </ClCompile>
@@ -44,7 +26,7 @@
       <Filter>GameEngine\System</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Camera\Camera2D.cpp">
-      <Filter>GameEngine\Camera</Filter>
+      <Filter>GameEngine\System\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Mesh\model.cpp">
       <Filter>GameEngine\Mesh</Filter>
@@ -100,20 +82,26 @@
     <ClCompile Include="Game Object\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\object.cpp">
-      <Filter>GameObjects</Filter>
+    <ClCompile Include="Engine\System\CameraSystem.cpp">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Renderer.cpp">
+      <Filter>GameEngine\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glapp.cpp">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glhelper.cpp">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glslshader.cpp">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Transformer.cpp">
+      <Filter>GameEngine\System\Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\glapp.h">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\glhelper.h">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\glslshader.h">
-      <Filter>GameEngine\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Entity\ECS.h">
       <Filter>GameEngine\ECS</Filter>
     </ClInclude>
@@ -135,20 +123,11 @@
     <ClInclude Include="Engine\System\SystemFrame.h">
       <Filter>GameEngine\System</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\Renderer.h">
-      <Filter>GameEngine\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\CameraSystem.h">
-      <Filter>GameEngine\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Transformer.h">
-      <Filter>GameEngine\System</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
       <Filter>GameEngine\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Camera\Camera2D.h">
-      <Filter>GameEngine\Camera</Filter>
+      <Filter>GameEngine\System\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>
@@ -234,8 +213,23 @@
     <ClInclude Include="Game Object\GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Game Object\object.h">
-      <Filter>GameObjects</Filter>
+    <ClInclude Include="Engine\System\CameraSystem.h">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Renderer.h">
+      <Filter>GameEngine\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glapp.h">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glhelper.h">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glslshader.h">
+      <Filter>GameEngine\System\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Transformer.h">
+      <Filter>GameEngine\System\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -247,9 +241,6 @@
     </Filter>
     <Filter Include="GameEngine\Input">
       <UniqueIdentifier>{94596984-6186-4f86-abbd-7ba02b498ec3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Graphics">
-      <UniqueIdentifier>{a03d3466-fb2d-450f-a990-9a5851239b54}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\Core">
       <UniqueIdentifier>{57bcac02-779c-4cfe-8147-57a957306be9}</UniqueIdentifier>
@@ -290,9 +281,6 @@
     <Filter Include="Main">
       <UniqueIdentifier>{a7c27876-c6ed-47d2-8a4f-0f08f7e7276a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Camera">
-      <UniqueIdentifier>{40d3d7d6-367b-457c-9178-bd780db52470}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{d7af1aed-38a1-45bc-9372-e56cf6b59b5b}</UniqueIdentifier>
     </Filter>
@@ -317,13 +305,28 @@
     <Filter Include="GameEngine\Audio">
       <UniqueIdentifier>{2e6368b2-54a2-477c-abba-dff45b2dd489}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\System\Camera">
+      <UniqueIdentifier>{40d3d7d6-367b-457c-9178-bd780db52470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics">
+      <UniqueIdentifier>{a03d3466-fb2d-450f-a990-9a5851239b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics\GL">
+      <UniqueIdentifier>{85656fc2-c6b6-4d3e-b074-f8dee2690dbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics\GL\Frag and Vert">
+      <UniqueIdentifier>{51447aaa-fe7d-46cf-9754-eabbef903616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Transform">
+      <UniqueIdentifier>{0f6498c9-9de6-4372-a296-1116e7a72571}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag">
-      <Filter>GameEngine\Graphics</Filter>
+      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
     <None Include="..\shaders\SushiMi.vert">
-      <Filter>GameEngine\Graphics</Filter>
+      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
   </ItemGroup>
 </Project>

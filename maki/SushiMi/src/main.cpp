@@ -1,8 +1,11 @@
-/*!
+/*******************!
 
 SushiMi main file!!
 
-*/
+Note: to test out any function, put it in each function in the main loop
+eg if you are testing an update function, go into update() and put your function in there
+
+******************/
 
 
 /*                                                                   includes
@@ -58,59 +61,14 @@ int main() {
 		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
 	};
 
-	//imgui 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
-	ImGui_ImplOpenGL3_Init("#version 450");
-
 	// Part 2
 	while (!glfwWindowShouldClose(GLHelper::ptr_window)) {
 		// Part 2a
 		update();
 
-		//collision
-		/*for (auto& e1 : Object::objects)
-		{
-			for (auto& e2 : Object::objects)
-			{
-				if (e1.first != e2.first)
-				{
-					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 0)
-					{
-						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
-					}
-				}
-			}
-		}*/
-
-
 		// Part 2b
 		draw();
-
-		//imgui
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
-
-		ImGui::Begin("I am the ImGui Window!");
-		ImGui::Text("Hi - Thea");
-		ImGui::End();
-
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-		// Part 2: swap buffers: front <-> back
-		glfwSwapBuffers(GLHelper::ptr_window);
-		glfwPollEvents();
-
-
 	}
-
-	//do not uncomment this first as it overrides physics
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 
 	// Part 3
@@ -146,7 +104,20 @@ static void update() {
 	//ImGui::Render();
 	//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	
+	//collision
+	/*for (auto& e1 : Object::objects)
+	{
+		for (auto& e2 : Object::objects)
+		{
+			if (e1.first != e2.first)
+			{
+				if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 0)
+				{
+					std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+				}
+			}
+		}
+	}*/
 }
 
 /*  _________________________________________________________________________ */
@@ -161,7 +132,12 @@ static void draw() {
 	// Part 1
 	GLApp::draw();
 	
+	//imGUI Game Editor
+	imguiEditorDraw();
 
+	// Part 2: swap buffers: front <-> back
+	glfwSwapBuffers(GLHelper::ptr_window);
+	glfwPollEvents();
 	
 }
 
@@ -206,6 +182,8 @@ static void init() {
 
 	// Part 3
 	GLApp::init();
+
+	imguiEditorInit();
 }
 
 /*  _________________________________________________________________________ */

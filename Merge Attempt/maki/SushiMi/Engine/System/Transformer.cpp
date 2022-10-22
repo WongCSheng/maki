@@ -5,7 +5,7 @@
 
 Core::Transformer::Transformer()
 {
-	root = new Entity();
+	//root = new Entity();
 }
 
 
@@ -13,25 +13,25 @@ Core::Transformer::~Transformer()
 {
 }
 
-void Core::Transformer::RegisterComponents(const std::vector<Entity*>& entities)
+void Core::Transformer::Init()
 {
-	for (int i = 0; i < entities.size(); ++i)
-	{
-		Transform* transform = entities[i]->GetComponent<Transform>();
-		if (transform != NULL)
-		{
-			// If entity does not have a parent, add it to the scene root
-			if (transform->parent == NULL)
-			{
-				root->AddChild(entities[i]);
-			}
-		}
-	}
+	//for (int i = 0; i < entities.size(); ++i)
+	//{
+	//	Transform* transform = entities[i]->GetComponent<Transform>();
+	//	if (transform != NULL)
+	//	{
+	//		// If entity does not have a parent, add it to the scene root
+	//		if (transform->parent == NULL)
+	//		{
+	//			root->AddChild(entities[i]);
+	//		}
+	//	}
+	//}
 }
 
 void Core::Transformer::Update(const double dt)
 {
-	UpdateTransformation(root->transform);
+	//UpdateTransformation(root->transform);
 }
 
 void Core::Transformer::UpdateTransformation(Transform* trans)
@@ -74,7 +74,7 @@ void Core::Transformer::UpdateTransformation(Transform* trans)
 	}
 }
 
-void Core::Transformer::CheckForNewComponents(void)
+void Core::Transformer::Exit()
 {
 
 }

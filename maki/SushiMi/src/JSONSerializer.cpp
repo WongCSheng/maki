@@ -125,114 +125,39 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 //SAVING
 //NOT IMPLEMENTED, NOT FULLY FUNCTIONAL
 
-/*  _________________________________________________________________________ */
-/*! SetDocument
-@param none
-@return none
-
-Set a documennt file that will contain all game objects, do before serializing
-*/
-
-void SetDocument() { 
-	using namespace rapidjson;
-	Document doc;
-	doc.SetObject();
-}
-
-template <class gameObj>
-void TrySerialize(gameObj obj) {
 
 
-}
 
-/*  _________________________________________________________________________ */
-/*! MakeJsonVal
-@param none
-@return rapidjson::Value
 
-to call before serializing any object or child object, returns a rapidjson val to insert properties into
-*/
 
-rapidjson::Value MakeJsonVal() {
-	using namespace rapidjson;
-	Value object(rapidjson::kObjectType);
-	return object;
-}
 
 
 /*  _________________________________________________________________________ */
-/*! Serialize
-@param gameObj object
-pass in game object
-@param rapidjson::Value objInfo
-pass in json value to add property to
-@param const char* propertyName
-property name
-@paramrapidjson::Document& targetFile
-to pass in for getallocator()
-@return rapidjson::Value
-returns original rapidjson value but with added property
-//serialise property name and value, to call for every property in game object
+/*! SerializeEntity
+@param rapidjson::Document& doc
+doc to serialize into
+@param Entity entity
+entity to serialize
+@return void
+
+This function serializes a single entity.
 */
 
-template <typename gameObj>
-rapidjson::Value Serialize(
-	gameObj object, 
-	rapidjson::Value objInfo,
-	const char* propertyName,
-	rapidjson::Document& targetFile) 
-{
-	using namespace rttr;
-	//find type
-	type type = object.get_type();
+//static void SerializeEntity(rapidjson::Document& doc, Entity entity) {
+//
+//	rapidjson::Value TestObjectValue(rapidjson::kObjectType);
+//	rttr::type type = entity.get_type();
+//	//if (entity.hascomponentABC)
+//	//1. Get all the data of the object
+//
+//	rttr::variant health_value = type.get_property("Health").get_value(entity);
+//	rttr::variant damage_value = type.get_property("Damage").get_value(entity);
+//	rttr::variant position_value = type.get_property("Position").get_value(entity);
+//
+//	//2. write them into the document
+//	doc.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
+//	doc.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
+//
+//}
 
-	//get data from this member
-	variant propertyVal = type.get_property(propertyName).get_value(object);
-
-	//add into json value
-	objInfo.AddMember(propertyName, propertyVal.get_value<type>(), targetFile.GetAllocator());
-
-	return objInfo; //return the json value after property has been added in
-}
-
-
-/*  _________________________________________________________________________ */
-/*! GetNameForJson
-@param gameObj object 
-class we are serializing
-@param rapidjson::Document targetFile
-for getallocator
-@return rapidjson::Value
-this return value has the copy string
-
-makes a copy string using object.name (pls set a name property) to use as name of object when serialising
-so when desrialising we know what object this is
-*/
-template <typename gameObj>
-rapidjson::Value GetNameForJson(gameObj object, rapidjson::Document targetFile) {
-
-	//makes a copy string using object.name (pls set a name property) to use as name of object when serialising
-	//so when desrialising we know what object this is
-	using namespace std;
-	using namespace rapidjson;
-	string name = object.name;
-	Value tempVal(name.c_str(), name.length(), targetFile.GetAllocator());
-}
-
-/*  _________________________________________________________________________ */
-/*! AddToDoc
-@param gameObj object
-class we're serialising
-@param rapidjson::Document targetFile
-doc we set earlier
-@param rapidjson::Value objInfo
-value we going to insert into file
-@return none
-
-//use when all properties have been added to jsonval
-*/
-template <typename gameObj> 
-void AddToDoc(gameObj object, rapidjson::Document targetFile, rapidjson::Value objInfo) {
-	targetFile.AddMember(GetNameForJson(object, targetFile), objInfo, targetFile.GetAllocator());
-}
 

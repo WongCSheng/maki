@@ -8,6 +8,12 @@ It will be used for rttr registration further on.
 *//*__________________________________________________________________________*/
 
 #pragma once
+
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration.h>
+
 #ifndef RTTR_H
 #define RTTR_H
 
@@ -49,7 +55,7 @@ public://variables
 	int testNull = 2;
 	std::string testStr = "nothing here";
 	std::string* testArr = NULL;
-	//RTTR_ENABLE();
+	RTTR_ENABLE();
 
 };
 

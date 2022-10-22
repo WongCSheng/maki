@@ -58,11 +58,11 @@ Core::MainSystem& Core::MainSystem::Instance()
 	Register Components to each SubSystem.
 */
 
-void Core::MainSystem::RegisterComponents(const std::vector<Core::Entity*>& entities)
+void Core::MainSystem::Init()
 {
 	for (auto& sys : systems)
 	{
-		sys->RegisterComponents(entities);
+		sys->Init();
 	}
 }
 
@@ -72,8 +72,6 @@ void Core::MainSystem::RegisterComponents(const std::vector<Core::Entity*>& enti
 
 void Core::MainSystem::Update(const double dt)
 {
-	CheckForNewComponents();
-
 	for (int i = 0; i < systems.size(); ++i)
 	{
 		systems[i]->Update(dt);
@@ -84,7 +82,7 @@ void Core::MainSystem::Update(const double dt)
 	Checks for new Components in each SubSystem.
 */
 
-void Core::MainSystem::CheckForNewComponents(void)
+void Core::MainSystem::Exit()
 {
 	for (int i = 0; i < systems.size(); ++i)
 	{

@@ -1,7 +1,20 @@
-#ifndef RTTR_H_
-#define RTTR_H_
+/*!
+@file		RTTR.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
 
-#include "../Headers/STL_Header.h"
+This file currently contains TestClass that is used to debug json parsing.
+It will be used for rttr registration further on.
+*//*__________________________________________________________________________*/
+
+#pragma once
+#ifndef RTTR_H
+#define RTTR_H
+
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration.h>
 
 class TestClass
 {
@@ -41,7 +54,7 @@ public://variables
 	int testNull = 2;
 	std::string testStr = "nothing here";
 	std::string* testArr = NULL;
-	//RTTR_ENABLE();
+	RTTR_ENABLE();
 
 };
 

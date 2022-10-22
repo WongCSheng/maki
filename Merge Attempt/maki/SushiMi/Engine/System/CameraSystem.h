@@ -7,19 +7,20 @@
 #include "SystemFrame.h"
 #include "../Entity/ECS.h"
 
-//Forward Declaration
 
 namespace Core
 {
+	//Forward Declaration
 	class Camera2D;
-	class CameraSystem : public ::SystemFrame
+
+	class CameraSystem : public SystemFrame
 	{
 	public:
 		CameraSystem();
 		virtual ~CameraSystem();
-		virtual void RegisterComponents(const std::vector<Entity*>& entities);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents(void);
+		virtual void Exit();
 
 	private:
 		std::vector<Camera2D*> cameras;

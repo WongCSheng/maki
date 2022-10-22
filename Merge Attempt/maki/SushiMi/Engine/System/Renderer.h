@@ -14,14 +14,14 @@ namespace Core
 	//Forward Declaration
 	class SystemFrame;
 	
-	class Renderer : public ::SystemFrame
+	class Renderer : public SystemFrame
 	{
 	public:
 		Renderer();
 		virtual ~Renderer();
-		virtual void RegisterComponents(const std::vector<Entity*>& entities);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents(void);
+		virtual void Exit();
 
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;

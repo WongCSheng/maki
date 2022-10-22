@@ -18,7 +18,7 @@ Description: Header for Core.cpp
 
 namespace Core
 {
-	class MainSystem : public ::SystemFrame
+	class MainSystem : public SystemFrame
 	{
 	private:
 		MainSystem();
@@ -31,9 +31,9 @@ namespace Core
 	public:
 		static MainSystem& Instance();
 
-		virtual void RegisterComponents(const std::vector<Core::Entity*>& entities);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents();
+		virtual void Exit();
 
 		Renderer* renderer;
 		Transformer* transformer;

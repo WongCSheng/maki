@@ -12,18 +12,18 @@ getters and setters for TestClass that is used to debug json parsing.
 
 //rttr doesnt work yet
 //register your class for rttr here
-//RTTR_REGISTRATION
-//{
-//	using namespace rttr;
-//registration::class_<TestClass>("TestClass")
-//.property("testInt", &TestClass::testInt)
-//.property("testFloat", &TestClass::testFloat)
-//.property("testDouble", &TestClass::testDouble)
-//.property("testBool", &TestClass::testBool)
-//.property("testNull", &TestClass::testNull)
-//.property("testStr", &TestClass::testStr);
-//
-//}
+RTTR_REGISTRATION
+{
+	using namespace rttr;
+registration::class_<TestClass>("TestClass")
+.property("testInt", &TestClass::testInt)
+.property("testFloat", &TestClass::testFloat)
+.property("testDouble", &TestClass::testDouble)
+.property("testBool", &TestClass::testBool)
+.property("testNull", &TestClass::testNull)
+.property("testStr", &TestClass::testStr);
+
+}
 
 
 TestClass::TestClass()

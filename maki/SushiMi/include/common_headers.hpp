@@ -31,14 +31,12 @@ file so that in all files you will only need to
 #include <memory>
 #include <typeindex>
 #include <scoped_allocator>
-#include <typeindex>
 #include <utility>
 #include <cstdio>
 #include <fstream>
 #include <iomanip>
 #include <ios>
 #include <iostream>
-#include <ostream>
 #include <sstream>
 #include <iterator>
 #include <exception>
@@ -56,6 +54,7 @@ file so that in all files you will only need to
 #include <../imgui/imgui_impl_opengl3.h>
 #include <../imgui/imgui.h>
 #include <../imgui/imgui_impl_glfw.h>
+#include "imguiEditor.h"
 
 //graphics
 #include <GL/glew.h>
@@ -88,12 +87,10 @@ file so that in all files you will only need to
 #include <error/en.h>
 #include <stringbuffer.h>
 
-#include <type.h>
-#include <property.h>
-#include <variant_impl.h>
-#include <variant.h>
-#include <registration.h>
-#include <version.h>
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration.h>
 
 #include <fstream>
 #include <filesystem>

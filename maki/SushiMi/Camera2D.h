@@ -78,7 +78,7 @@ public:
 	GLboolean zoom_flag{ GL_FALSE }; // button Z
 	GLboolean left_turn_flag{ GL_FALSE }; // button H
 	GLboolean right_turn_flag{ GL_FALSE }; // button K
-	GLboolean move_flag{ GL_FALSE }; // button U
+	GLboolean move_flag{ GL_FALSE }; // button W
 	static Camera2D camera2d;
 
 };

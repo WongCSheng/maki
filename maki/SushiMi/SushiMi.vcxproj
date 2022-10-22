@@ -131,12 +131,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>imgui;Fmod;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmodL_vc.lib;$(SolutionDir)lib\rttr\lib\Debug\rttr_core_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -199,6 +199,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="fonts.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="src\AudioEngine.cpp" />
+    <ClCompile Include="src\imguiEditor.cpp" />
     <ClCompile Include="src\Script.cpp" />
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="model.cpp" />
@@ -230,6 +231,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Debug.h" />
     <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\common_headers.hpp" />
+    <ClInclude Include="include\imguiEditor.h" />
     <ClInclude Include="include\glapp.h" />
     <ClInclude Include="include\glhelper.h" />
     <ClInclude Include="include\glslshader.h" />

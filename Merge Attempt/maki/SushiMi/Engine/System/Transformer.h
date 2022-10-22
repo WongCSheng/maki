@@ -10,23 +10,21 @@
 
 namespace Core
 {
-	class Entity;
 	class Transform;
 	
-	class Transformer : public ::SystemFrame
+	class Transformer : public SystemFrame
 	{
 	public:
 		Transformer();
 		virtual ~Transformer();
-		virtual void RegisterComponents(const std::vector<Entity*>& entities);
+		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void CheckForNewComponents(void);
+		virtual void Exit();
 		void UpdateTransformation(Transform* Transform);
 
 	private:
 		void RemoveFromTree(Transform* transform);
 		std::vector<Transform*> transforms;
-		Entity* root;
 	};
 }
 

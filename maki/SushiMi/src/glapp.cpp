@@ -143,6 +143,7 @@ void GLApp::init_scene(std::string scene_filename)
 			{
 				mesh_path = "../mesh/circle.msh";
 				curr_mdl.primitive_type = GL_TRIANGLE_FAN;
+				currObj.mass = 10.0f;
 				//hasMass = true;
 				//currObj.status = true; //alive
 
@@ -205,7 +206,9 @@ void GLApp::init_scene(std::string scene_filename)
 		GLfloat pos_x, pos_y;
 		line_pos >> pos_x >> pos_y;
 		currObj.position = { pos_x, pos_y };
+		currObj.initialPos = { currObj.position };			//stores initial position for distance calculation
 
+		//apply physics 
 		if (hasMass == true)
 		{
 			getline(ifs, line);

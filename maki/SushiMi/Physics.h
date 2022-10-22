@@ -1,2 +1,3 @@
 #pragma once
-glm::vec2 applyGravity(float mass);
+float applyAccel(float mass);
+float applyDecel(float mass);

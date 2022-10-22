@@ -35,6 +35,7 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 		printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
 		return 0; //failure
 	}
+	assert("JSON parse error: %s (%zu)\n",!result);
 
 	//go through biggest object in file
 	for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)

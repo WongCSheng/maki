@@ -11,6 +11,11 @@ It will be used for rttr registration further on.
 #ifndef RTTR_H
 #define RTTR_H
 
+#include <rttr/type.h>
+#include <rttr/property.h>
+#include <rttr/variant.h>
+#include <rttr/registration.h>
+
 class TestClass
 {
 public://methods

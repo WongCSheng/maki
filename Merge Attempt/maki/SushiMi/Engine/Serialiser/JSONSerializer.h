@@ -13,6 +13,7 @@ chosen game object.
 
 #include "../Headers/RapidJSON_Header.h"
 #include "../Headers/STL_Header.h"
+#include "../Game Object/GameObject.h"
 
 #ifndef JSERIALIZE_H
 #define JSERIALIZE_H

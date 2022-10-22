@@ -15,11 +15,6 @@
 #include <error/en.h>
 #include <stringbuffer.h>
 
-#include <rttr/type.h>
-#include <rttr/property.h>
-#include <rttr/variant.h>
-#include <rttr/registration.h>
-
 #include <fstream>
 #include <filesystem>
 

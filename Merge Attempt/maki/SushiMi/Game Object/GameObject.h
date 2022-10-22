@@ -11,12 +11,12 @@ namespace Core
 		class GameObjectProperty
 		{
 		public:
-			friend class Core::ObjectFactory;
-			friend class Core::Component;
+			friend class ObjectFactory;
+			friend class Component;
 
 			void Init();
 
-			Core::Component* GetComponent(Core::ComponentID ID);
+			Component* GetComponent(ComponentID ID);
 
 			unsigned int GetID();
 			void SetID(unsigned int name);
@@ -24,17 +24,17 @@ namespace Core
 			std::string GetIDName();
 			void SetIDName(std::string name);
 
-			void AddComponent(Core::ComponentID ID, Core::Component* comp);
+			void AddComponent(ComponentID ID, Component* comp);
 
-			void RemoveComponent(Core::ComponentID ID);
+			void RemoveComponent(ComponentID ID);
 
 		private:
 			GameObjectProperty();
 			~GameObjectProperty();
 
-			std::unordered_map<Core::ComponentID, Core::Component*> ComponentContainer;
+			std::unordered_map<ComponentID, Component*> ComponentContainer;
 
-			std::pair<unsigned int, std::string> ObjectID;
+			std::pair<unsigned int, std::string> ObjectID; //Unsigned int is the component tags, String is the name of the object
 		};
 	}
 }

@@ -10,24 +10,21 @@ Description: Header for ECS.cpp
 #include <string>
 #include <vector>
 
-//Forward Declaration
-namespace Object
-{
-	class GameObjectProperty;
-}
-
 namespace Core
 {
-
+	//Forward Declaration
+	namespace Object
+	{
+		class GameObjectProperty;
+	}
+	
 	enum class ComponentID
 	{
-		None = 0,
-		Renderer,
-		Transform,
-		Camera,
-		Physics,
-		GameObject,
-		End
+		None = 0b0000'0000,
+		Renderer = 0b0000'0010,
+		Transform = 0b0000'0100,
+		Camera = 0b0000'1000,
+		Physics = 0b0001'0000,
 	};
 
 	class Component

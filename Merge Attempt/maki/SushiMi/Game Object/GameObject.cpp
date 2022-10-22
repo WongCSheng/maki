@@ -4,60 +4,63 @@ GameObject.cpp
 
 #include "GameObject.h"
 
-namespace Object
+namespace Core
 {
-	GameObjectProperty::GameObjectProperty()
+	namespace Object
 	{
-		ObjectID.first = 0;
-		ObjectID.second = "Nothing";
-	}
-
-	GameObjectProperty::~GameObjectProperty()
-	{
-		ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
-	}
-
-	void GameObjectProperty::Init()
-	{
-		for (auto i : ComponentContainer)
+		GameObjectProperty::GameObjectProperty()
 		{
-			i.second->SetOwner(this);
-			i.second->Init();
+			ObjectID.first = 0;
+			ObjectID.second = "Nothing";
 		}
-	}
 
-	Core::Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
-	{
-		return ComponentContainer[ID];
-	}
+		GameObjectProperty::~GameObjectProperty()
+		{
+			ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
+		}
 
-	unsigned int GameObjectProperty::GetID()
-	{
-		return ObjectID.first;
-	}
+		void GameObjectProperty::Init()
+		{
+			for (auto i : ComponentContainer)
+			{
+				i.second->SetOwner(this);
+				i.second->Init();
+			}
+		}
 
-	void GameObjectProperty::SetID(unsigned int name)
-	{
-		ObjectID.first = name;
-	}
+		Core::Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
+		{
+			return ComponentContainer[ID];
+		}
 
-	std::string GameObjectProperty::GetIDName()
-	{
-		return ObjectID.second;
-	}
+		unsigned int GameObjectProperty::GetID()
+		{
+			return ObjectID.first;
+		}
 
-	void GameObjectProperty::SetIDName(std::string name)
-	{
-		ObjectID.second = name;
-	}
+		void GameObjectProperty::SetID(unsigned int name)
+		{
+			ObjectID.first = name;
+		}
 
-	void GameObjectProperty::AddComponent(Core::ComponentID ID, Core::Component* comp)
-	{
-		ComponentContainer.insert({ ID, comp });
-	}
+		std::string GameObjectProperty::GetIDName()
+		{
+			return ObjectID.second;
+		}
 
-	void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
-	{
+		void GameObjectProperty::SetIDName(std::string name)
+		{
+			ObjectID.second = name;
+		}
 
+		void GameObjectProperty::AddComponent(Core::ComponentID ID, Core::Component* comp)
+		{
+			ComponentContainer.insert({ ID, comp });
+		}
+
+		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
+		{
+
+		}
 	}
 }

@@ -27,7 +27,6 @@ and transformations (in later labs).
 #include "../include/glhelper.h"
 #include <glm/glm/glm.hpp>
 #include <glm/glm/gtc/type_ptr.hpp>
-#include "../Game Object/object.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"
 

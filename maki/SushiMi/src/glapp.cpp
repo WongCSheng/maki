@@ -208,7 +208,15 @@ void GLApp::init_scene(std::string scene_filename)
 		currObj.position = { pos_x, pos_y };
 		currObj.initialPos = { currObj.position };			//stores initial position for distance calculation
 
-		//apply physics 
+			/* construct AABB box */
+		  currObj.aabb.min.x = currObj.position.x - (currObj.scaling.x / 2); //calculating bottom left min.x
+		  currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y / 2); //calculating bottom left min.y
+		  currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x / 2); //calculating top right max.x
+		  currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y / 2); //calculating top right max.y
+		  std::cout << "current object name: " << object_name << "Min " << currObj.aabb.min.x << " " << currObj.aabb.min.y << std::endl;
+		  std::cout << "current object name: " << object_name << "Max " << currObj.aabb.max.x << " " << currObj.aabb.max.y << std::endl;
+		  std::cout << "Object position(x,y) " << currObj.position.x << " "<< currObj.position.y << std::endl;
+			  //apply physics 
 		if (hasMass == true)
 		{
 			getline(ifs, line);
@@ -259,6 +267,8 @@ void GLApp::update()
 			x.second.update(GLHelper::delta_time);
 		}
 	}
+
+
 }
 
 /*  _________________________________________________________________________ */

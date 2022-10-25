@@ -213,6 +213,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="src\RTTR.cpp" />
+    <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +243,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\RTTR.h" />
     <ClInclude Include="include\Script.h" />
+    <ClInclude Include="include\texture.h" />
     <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
@@ -250,6 +252,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Physics.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\shaders\Texture.frag" />
+    <None Include="..\shaders\Texture.vert" />
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
   </ItemGroup>

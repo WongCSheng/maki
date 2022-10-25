@@ -48,6 +48,11 @@ inline float rad2deg(float r)
 	return (r * RAD_TO_DEG);
 }
 
+inline double increment(double r)
+{
+	return r++;
+}
+
 //initialize a random number using srand() and time()
 /*The pseudo-random number generator should not be seeded every time we generate a new set of numbers i.e. it should be seeded only once at the beginning of the program, before any calls of rand().
 It is preferred to use the result of a call to time(0) as the seed. The time() function returns the number of seconds since 00:00 hours, Jan 1, 1970 UTC (i.e. the current unix timestamp).

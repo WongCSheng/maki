@@ -124,3 +124,30 @@ Model Model::init(std::string mesh_filepath)
 	result.draw_cnt = static_cast<GLuint>(idx_vtx.size());
 	return result;
 }
+
+GLuint Model::setup_texobj(std::string pathname)
+{
+	GLuint width{ 256 }, height{ 256 }, bytes_per_texel{ 4 };
+
+	std::ifstream is;
+	//open solution with ios::binary or ios::in
+	is.open(pathname, std::ios::binary | std::ios::in);
+	// create new heapy memory pointed by ptr_texels with size of bytes
+	char* ptr_texels = new char[width * height * bytes_per_texel];
+	is.read(ptr_texels, (static_cast<std::streamsize>(width) * height) * bytes_per_texel);
+
+	GLuint texobj_hdl;
+	// define and initialize a handle to texture object that will
+	// encapsulate two-dimensional textures
+	glCreateTextures(GL_TEXTURE_2D, 1, &texobj_hdl);
+	// allocate GPU storage for texture image data loaded from file
+	glTextureStorage2D(texobj_hdl, 1, GL_RGBA8, width, height);
+	// copy image data from client memory to GPU texture buffer memory
+	glTextureSubImage2D(texobj_hdl, 0, 0, 0, width, height,
+		GL_RGBA, GL_UNSIGNED_BYTE, ptr_texels);
+	// client memory not required since image is buffered in GPU memory
+	delete[] ptr_texels;
+	// nothing more to do - return handle to texture object
+	is.close();
+	return texobj_hdl;
+}

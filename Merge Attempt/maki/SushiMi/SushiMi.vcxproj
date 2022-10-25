@@ -198,8 +198,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Debugger\Debug.cpp" />
     <ClCompile Include="Engine\Audio\AudioEngine.cpp" />
     <ClCompile Include="Engine\Camera\Camera2D.cpp" />
+    <ClCompile Include="Engine\Components\Component.cpp" />
+    <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Core\Core.cpp" />
-    <ClCompile Include="Engine\Entity\ECS.cpp" />
     <ClCompile Include="Engine\Factory\Factory.cpp" />
     <ClCompile Include="Engine\Input\Input.cpp" />
     <ClCompile Include="Engine\Mesh\model.cpp" />
@@ -212,7 +213,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\SystemFrame.cpp" />
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
-    <ClCompile Include="Engine\Transform\Transform.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
     <ClCompile Include="src\glapp.cpp" />
     <ClCompile Include="src\glhelper.cpp" />
@@ -235,8 +235,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Debugger\Debug.h" />
     <ClInclude Include="Engine\Audio\AudioEngine.h" />
     <ClInclude Include="Engine\Camera\Camera2D.h" />
+    <ClInclude Include="Engine\Components\Component.h" />
+    <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
-    <ClInclude Include="Engine\Entity\ECS.h" />
     <ClInclude Include="Engine\Factory\Factory.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\Input\Keys.h" />
@@ -250,7 +251,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\SystemFrame.h" />
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
-    <ClInclude Include="Engine\Transform\Transform.h" />
     <ClInclude Include="Game Object\GameObject.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />

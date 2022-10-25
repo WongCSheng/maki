@@ -5,7 +5,7 @@
 
 #include "../Headers/STL_Header.h"
 #include "SystemFrame.h"
-#include "../Entity/ECS.h"
+#include "../Components/Component.h"
 
 
 namespace Core

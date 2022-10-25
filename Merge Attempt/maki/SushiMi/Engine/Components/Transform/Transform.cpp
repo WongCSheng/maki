@@ -1,12 +1,14 @@
 
-#include "Transform.h"
 
-Core::Transform::Transform() :
-	localscale(1, 1),
-	forward(DEFAULTFORWARD),
-	parent(NULL)
+#include "Transform.h"
+#include "../Engine/Components/Component.h"
+#include "../Engine/System/Transformer.h"
+
+Core::Transform::Transform()
 {
+	//root = new Entity();
 }
+
 
 Core::Transform::~Transform()
 {
@@ -14,7 +16,7 @@ Core::Transform::~Transform()
 
 const gfxMatrix3& Core::Transform::TransformMat(void)
 {
-	return Top;
+
 }
 
 void Core::Transform::Set(gfxVector2 position, gfxVector2 scale, gfxMatrix3 rotation)
@@ -61,5 +63,5 @@ void Core::Transform::Scale(float scale)
 
 const gfxVector2& Core::Transform::Forward()
 {
-	return forward;
+
 }

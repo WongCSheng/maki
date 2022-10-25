@@ -1,11 +1,10 @@
 /*
-File:		 ECS.h
+File:		 Component.h
 Author:		 w.chongsheng@digipen.edu
 Description: Header for ECS.cpp
 */
 
-#ifndef ECS_HPP_
-#define ECS_HPP_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -36,7 +35,8 @@ namespace Core
 		virtual ~Component();
 
 		// Function to initialize the component's owner when it is added to the entity
-		virtual void Init();
+		virtual void Init() = 0;
+		virtual void Serialise(const std::string name) = 0;
 		Object::GameObjectProperty* GetOwner();
 		void SetOwner(Object::GameObjectProperty* owner);
 
@@ -197,5 +197,3 @@ namespace Core
 //
 //	};
 //}
-
-#endif

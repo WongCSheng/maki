@@ -4,11 +4,56 @@ Author:		 w.chongsheng@digipen.edu
 Description: This file contains the function definition for Entities and Components
 */
 
-#include "ECS.h"
-#include "../Engine/Transform/Transform.h"
+#include "Component.h"
+#include "../Engine/Components/Transform/Transform.h"
 #include "../Game Object/GameObject.h"
 
-//int Core::Entity::entity_count = 0; // Counter for amount of entities created.
+namespace Core
+{
+	Component::Component()
+	{
+		owner = new Object::GameObjectProperty();
+		add = false;
+		active = false;
+		remove = false;
+	}
+	
+	Component::~Component()
+	{
+		delete owner;
+	}
+
+	Object::GameObjectProperty* Component::GetOwner()
+	{
+		return owner;
+	}
+
+	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
+	{
+		owner = NewOwner;
+	}
+
+	bool Component::IsActive()
+	{
+		return active;
+	}
+
+	void Component::Activate()
+	{
+		active = true;
+	}
+
+	void Component::Deactivate()
+	{
+		active = false;
+	}
+
+	void Component::Remove()
+	{
+		remove = true;
+	}
+
+	//int Core::Entity::entity_count = 0; // Counter for amount of entities created.
 //
 ///*
 //	Constructor for a Entity.
@@ -140,53 +185,4 @@ Description: This file contains the function definition for Entities and Compone
 //	remove(false)
 //{
 //}
-
-namespace Core
-{
-	Component::Component()
-	{
-		owner = new Object::GameObjectProperty();
-		add = false;
-		active = false;
-		remove = false;
-	}
-	
-	Component::~Component()
-	{
-		delete owner;
-	}
-
-	void Component::Init()
-	{
-	}
-
-	Object::GameObjectProperty* Component::GetOwner()
-	{
-		return owner;
-	}
-
-	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
-	{
-		owner = NewOwner;
-	}
-
-	bool Component::IsActive()
-	{
-		return active;
-	}
-
-	void Component::Activate()
-	{
-		active = true;
-	}
-
-	void Component::Deactivate()
-	{
-		active = false;
-	}
-
-	void Component::Remove()
-	{
-		remove = true;
-	}
 }

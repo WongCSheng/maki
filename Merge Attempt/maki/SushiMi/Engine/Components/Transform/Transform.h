@@ -1,24 +1,18 @@
-#pragma once
-
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-#include "../Entity/ECS.h"
+#include "../Component.h"
 #include "../Headers/Math_Header.h"
 #include <vector>
 
-#define DEFAULTFORWARD gfxVector2(1.f, 0.f)
-
 namespace Core
 {
+
 	class Transform : public Component
 	{
-		friend class Entity;
-		friend class Transformer;
-
 	public:
 		Transform();
-		virtual ~Transform();
+		~Transform();
 
 		const gfxMatrix3& TransformMat();
 		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3());
@@ -41,14 +35,9 @@ namespace Core
 		gfxVector2 worldscale;
 
 	private:
-		gfxMatrix3 Top;
 		gfxVector2 forward;
 
 		gfxMatrix3 T, R, S;
-
-		Transform* parent;
-		
-		std::vector<Transform*> children;
 	};
 }
 

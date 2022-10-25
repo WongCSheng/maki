@@ -25,7 +25,7 @@ namespace Core
 
 
 //#include "../Headers/STL_Header.h"
-//#include "../Entity/ECS.h"
+//#include "../Components/ECS.h"
 //
 ////Forward Declaration
 //class Component;

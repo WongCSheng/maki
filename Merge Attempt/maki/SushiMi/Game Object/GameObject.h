@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Headers/STL_Header.h"
-#include "../Engine/Entity/ECS.h"
+#include "../Engine/Components/Component.h"
 #include "../Engine/Factory/Factory.h"
 
 namespace Core

@@ -1,13 +1,10 @@
 
+
 #include "Transformer.h"
-#include "../Engine/Entity/ECS.h"
-#include "../Engine/Transform/Transform.h"
 
 Core::Transformer::Transformer()
 {
-	//root = new Entity();
 }
-
 
 Core::Transformer::~Transformer()
 {
@@ -31,7 +28,17 @@ void Core::Transformer::Init()
 
 void Core::Transformer::Update(const double dt)
 {
-	//UpdateTransformation(root->transform);
+	UpdateTransformation(owner->transform);
+}
+
+void Core::Transformer::Exit()
+{
+
+}
+
+void Core::Transformer::Serialise(const std::string name)
+{
+
 }
 
 void Core::Transformer::UpdateTransformation(Transform* trans)
@@ -79,7 +86,7 @@ void Core::Transformer::Exit()
 
 }
 
-void Core::Transformer::RemoveFromTree(Transform* transform)
+void Core::Transformer::RemoveFromTree(std::vector<Transform*> transform)
 {
 	for (int i = 0; i < transform->children.size(); ++i)
 	{

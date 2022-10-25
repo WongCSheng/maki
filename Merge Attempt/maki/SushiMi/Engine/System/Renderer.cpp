@@ -26,7 +26,7 @@ void Core::Renderer::Update(const double dt)
 	
 }
 
-void Core::Renderer::Exit()
+void Core::Renderer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer)
 {
 
 }

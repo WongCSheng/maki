@@ -8,7 +8,7 @@
 namespace Core
 {
 
-	class Transform : public Component
+	class Transform : public Object::GameObject
 	{
 	public:
 		Transform();
@@ -38,6 +38,8 @@ namespace Core
 		gfxVector2 forward;
 
 		gfxMatrix3 T, R, S;
+
+		Object::GameObjectProperty* owner;
 	};
 }
 

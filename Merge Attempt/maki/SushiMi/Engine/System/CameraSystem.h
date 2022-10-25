@@ -20,7 +20,7 @@ namespace Core
 		virtual ~CameraSystem();
 		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void Exit();
+		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer);
 
 	private:
 		std::vector<Camera2D*> cameras;

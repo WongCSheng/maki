@@ -16,10 +16,10 @@ namespace Core
 	{
 	public:
 		SystemFrame();
-		virtual ~SystemFrame() = 0;
+		virtual ~SystemFrame();
 		virtual void Init() = 0;
 		virtual void Update(const double dt) = 0;
-		virtual void Exit() = 0;
+		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer) = 0;
 	};
 }
 

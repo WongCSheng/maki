@@ -20,7 +20,6 @@ namespace Core
 	
 	class Transformer : public SystemFrame
 	{
-		friend class Entity;
 		friend class Transformer;
 
 	public:
@@ -29,7 +28,7 @@ namespace Core
 
 		void Init();
 		void Update(const double dt);
-		void Exit();
+		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer);
 		void Serialise(const std::string name);
 		void UpdateTransformation(Transform* Transform);
 
@@ -52,9 +51,9 @@ namespace Core
 		GLboolean scale_down{ GL_FALSE };
 
 	private:
-		std::vector<Transform*> Transforms;
+		std::unordered_map<Object::GameObjectProperty*, Transform*> Transforms;
 
-		Object::GameObjectProperty* owner;
+		
 	};
 }
 

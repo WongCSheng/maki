@@ -36,5 +36,21 @@ namespace Core
 
 			std::pair<unsigned int, std::string> ObjectID; //Unsigned int is the component tags, String is the name of the object
 		};
+
+		class GameObject
+		{
+		private:
+			GameObjectProperty* characteristics;
+
+		protected:
+			virtual ~GameObject();
+
+		public:
+			GameObject();
+
+			virtual void Init() {};
+
+			GameObjectProperty* GetObjectProperties();
+		};
 	}
 }

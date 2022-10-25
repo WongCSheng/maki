@@ -28,12 +28,17 @@ void Core::Transformer::Init()
 
 void Core::Transformer::Update(const double dt)
 {
-	UpdateTransformation(owner->transform);
+	std::unordered_map<Object::GameObjectProperty*, Transform*>::iterator it = Transforms.begin();
+
+	for (it; it != Transforms.end(); ++it)
+	{
+		UpdateTransformation(it->second);
+	}
 }
 
-void Core::Transformer::Exit()
+void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer)
 {
-
+	
 }
 
 void Core::Transformer::Serialise(const std::string name)
@@ -43,56 +48,10 @@ void Core::Transformer::Serialise(const std::string name)
 
 void Core::Transformer::UpdateTransformation(Transform* trans)
 {
-	Transform* t = trans;
-
-	if (trans->remove)
-	{
-		RemoveFromTree(t);
-	}
-	else
-	{
-		if (t->parent != NULL)
-		{
-			t->worldposition = t->localposition + t->parent->worldposition;
-			t->worldrotation = t->localrotation * t->parent->worldrotation;
-			t->worldscale.x = t->localscale.x * t->parent->worldscale.x;
-			t->worldscale.y = t->localscale.y * t->parent->worldscale.y;
-			//t->worldscale.z = t->localscale.z * t->parent->worldscale.z;
-		}
-		else
-		{
-			t->worldposition = t->localposition;
-			t->worldrotation = t->localrotation;
-			t->worldscale = t->localscale;
-		}
-
-		/*t->T.SetToTranslation(t->worldposition.x, t->worldposition.y, t->worldposition.z  );
-		t->R = t->worldrotation.convertTomat4();
-		t->S.SetToScale(t->worldscale.x, t->worldscale.y, t->worldscale.z);*/
-
-		t->Top = t->T * t->R * t->S;
-
-		//t->forward = (t->localrotation * DEFAULTFORWARD);
-
-		for (int i = 0; i < trans->children.size(); ++i)
-		{
-			UpdateTransformation(trans->children[i]);
-		}
-	}
+	
 }
 
-void Core::Transformer::Exit()
+void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer)
 {
 
-}
-
-void Core::Transformer::RemoveFromTree(std::vector<Transform*> transform)
-{
-	for (int i = 0; i < transform->children.size(); ++i)
-	{
-		RemoveFromTree(transform->children[i]);
-	}
-	transform->parent->children.clear();
-	delete transform;
-	transform = NULL;
 }

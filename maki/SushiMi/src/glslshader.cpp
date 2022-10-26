@@ -268,11 +268,23 @@ void GLSLShader::SetUniform(GLchar const* name, glm::vec3 const& val) {
     }
 }
 
+
 //Specify the value of a uniform variable for the current program object(mat3)
 void GLSLShader::SetUniform(GLchar const* name, glm::mat3 const& val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);
     if (loc >= 0) {
         glUniformMatrix3fv(loc, 1, GL_FALSE, &val[0][0]);
+    }
+    else {
+        std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
+    }
+}
+
+//Specify the value of a uniform variable for the current program object(vec4)
+void GLSLShader::SetUniform(GLchar const* name, glm::vec4 const& val) {
+    GLint loc = glGetUniformLocation(pgm_handle, name);
+    if (loc >= 0) {
+        glUniform4f(loc, val.x, val.y, val.z, val.w);
     }
     else {
         std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;

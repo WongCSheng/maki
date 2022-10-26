@@ -133,6 +133,8 @@ public:
     void SetUniform(GLchar const* name, glm::vec3 const& val);
     void SetUniform(GLchar const* name, glm::mat3 const& val);
 
+    void SetUniform(GLchar const* name, glm::vec4 const& val);
+
     // display the list of active vertex attributes used by vertex shader
     void PrintActiveAttribs() const;
 

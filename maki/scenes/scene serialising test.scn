@@ -1,0 +1,7 @@
+modelname objname shader colour scale orientation pos
+4
+square Object1  shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 1.0 0.0 0.0   200.0 150.0   0.0 -17.5  -200 -200 
+triangle Camera shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 0.0 0.0 0.0		 50.0 100.0 	30.0 2.0      0 0
+circle Object5 shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 1.0 0.0 1.0 100.0 100.0 0.0 0.0       200 200
+square  Object6 shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 1.0 0.4 0.5 400.0 150.0 0.0  -22.5       200 -200
+

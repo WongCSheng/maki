@@ -8,6 +8,9 @@ namespace Core
 {
 	namespace Object
 	{
+		/*
+		Characteristics of a Game Object.
+		*/
 		class GameObjectProperty
 		{
 		public:
@@ -37,6 +40,10 @@ namespace Core
 			std::pair<unsigned int, std::string> ObjectID; //Unsigned int is the component tags, String is the name of the object
 		};
 
+
+		/*
+		Game Object itself
+		*/
 		class GameObject
 		{
 		private:

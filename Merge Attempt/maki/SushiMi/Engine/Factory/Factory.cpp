@@ -12,21 +12,21 @@ namespace Core
 	{
 	}
 
-	Object::GameObjectProperty* ObjectFactory::Create()
+	Object::GameObject* ObjectFactory::Create()
 	{
-		Object::GameObjectProperty* newlycreated = new Object::GameObjectProperty();
+		Object::GameObject* newlycreated = new Object::GameObject();
 
 		return nullptr;
 	}
 
-	void ObjectFactory::AddtoDestroyList(Object::GameObjectProperty* Obj)
+	void ObjectFactory::AddtoDestroyList(Object::GameObject* Obj)
 	{
 		DeleteList.insert(Obj);
 	}
 
 	void ObjectFactory::DestroyEverything()
 	{
-		std::unordered_map<unsigned int, Object::GameObjectProperty*>::iterator it = ObjectContainer.begin();
+		std::unordered_map<unsigned int, Object::GameObject*>::iterator it = ObjectContainer.begin();
 
 		for (it; it != ObjectContainer.end(); ++it)
 		{
@@ -38,11 +38,11 @@ namespace Core
 
 	void ObjectFactory::Update(const double dt)
 	{
-		for (std::set<Object::GameObjectProperty*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
+		for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
 		{
-			Object::GameObjectProperty* temp = *it;
+			Object::GameObject* temp = *it;
 
-			std::unordered_map<unsigned int, Object::GameObjectProperty*>::iterator Objit = ObjectContainer.find(temp->GetID());
+			std::unordered_map<unsigned int, Object::GameObject*>::iterator Objit = ObjectContainer.find(temp->GetID());
 
 			ObjectContainer.erase(Objit);
 
@@ -52,7 +52,7 @@ namespace Core
 		DeleteList.clear();
 	}
 
-	void ObjectFactory::AddObjects(Object::GameObjectProperty* added, unsigned int i)
+	void ObjectFactory::AddObjects(Object::GameObject* added, unsigned int i)
 	{
 		ObjectContainer.insert({ i, added });
 	}
@@ -62,7 +62,7 @@ namespace Core
 
 	}
 
-	Object::GameObjectProperty* ObjectFactory::BuildSerialise(const std::string filename)
+	Object::GameObject* ObjectFactory::BuildSerialise(const std::string filename)
 	{
 		return nullptr;
 	}

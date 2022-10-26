@@ -28,7 +28,7 @@ namespace Core
 
 		void Init();
 		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer);
+		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
 		void Serialise(const std::string name);
 		void UpdateTransformation(Transform* Transform);
 

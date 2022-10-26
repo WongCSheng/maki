@@ -55,9 +55,6 @@
     <ClCompile Include="Engine\Factory\Factory.cpp">
       <Filter>GameEngine\Factory</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Physics\collision.cpp">
-      <Filter>GameEngine\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Timer\Timer.cpp">
       <Filter>GameEngine\Timer</Filter>
     </ClCompile>
@@ -99,6 +96,18 @@
     </ClCompile>
     <ClCompile Include="Engine\Components\Component.cpp">
       <Filter>GameEngine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\PhysicSystem.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Editors\LevelEditor.cpp">
+      <Filter>Editors</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\collision.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\Physics.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +195,6 @@
     <ClInclude Include="Headers\RapidJSON_Header.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Physics\collision.h">
-      <Filter>GameEngine\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Timer\Timer.h">
       <Filter>GameEngine\Timer</Filter>
     </ClInclude>
@@ -230,6 +236,18 @@
     </ClInclude>
     <ClInclude Include="Engine\Components\Component.h">
       <Filter>GameEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\PhysicsSystem.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Editors\LevelEditor.h">
+      <Filter>Editors</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\collision.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\Physics.h">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,9 +305,6 @@
     <Filter Include="GameEngine\Factory">
       <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Physics">
-      <UniqueIdentifier>{b7791c8c-ef68-42bd-8e73-e89e763be8f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine\Timer">
       <UniqueIdentifier>{9e02925b-088d-41f8-a125-0ca2355f73c4}</UniqueIdentifier>
     </Filter>
@@ -316,6 +331,12 @@
     </Filter>
     <Filter Include="GameEngine\Component">
       <UniqueIdentifier>{b6c5341e-79e2-454e-8e62-ee56d3033e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Physics">
+      <UniqueIdentifier>{b7791c8c-ef68-42bd-8e73-e89e763be8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editors">
+      <UniqueIdentifier>{b1b830e5-324c-4118-82dc-098127ed8a37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

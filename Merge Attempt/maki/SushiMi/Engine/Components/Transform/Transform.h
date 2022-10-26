@@ -8,7 +8,7 @@
 namespace Core
 {
 
-	class Transform : public Object::GameObject
+	class Transform : public Component
 	{
 	public:
 		Transform();
@@ -25,7 +25,7 @@ namespace Core
 		void Rotate(gfxMatrix3 rotate);
 		void Scale(float scale);
 
-		const gfxVector2& Forward();
+		const gfxVector2& Forward(const double dt);
 
 		gfxVector2 localposition;
 		gfxMatrix3 localrotation;

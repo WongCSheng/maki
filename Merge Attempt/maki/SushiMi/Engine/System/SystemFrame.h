@@ -19,7 +19,7 @@ namespace Core
 		virtual ~SystemFrame();
 		virtual void Init() = 0;
 		virtual void Update(const double dt) = 0;
-		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer) = 0;
+		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer) = 0;
 	};
 }
 

@@ -55,6 +55,7 @@ namespace Core
 
 	class ComponentManager
 	{
+	private:
 
 	};
 }

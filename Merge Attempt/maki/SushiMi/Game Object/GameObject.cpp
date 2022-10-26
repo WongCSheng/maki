@@ -72,6 +72,11 @@ namespace Core
 		{
 		}
 
+		void GameObject::Init()
+		{
+			characteristics = new GameObjectProperty();
+		}
+
 		GameObjectProperty* GameObject::GetObjectProperties()
 		{
 			return characteristics;

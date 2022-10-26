@@ -12,7 +12,7 @@ namespace Core
 {
 	Component::Component()
 	{
-		owner = new Object::GameObjectProperty();
+		owner = new Object::GameObject();
 		add = false;
 		active = false;
 		remove = false;
@@ -20,15 +20,15 @@ namespace Core
 	
 	Component::~Component()
 	{
-		delete owner;
+		//delete owner;
 	}
 
-	Object::GameObjectProperty* Component::GetOwner()
+	Object::GameObject* Component::GetOwner()
 	{
 		return owner;
 	}
 
-	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
+	void Component::SetOwner(Object::GameObject* NewOwner)
 	{
 		owner = NewOwner;
 	}

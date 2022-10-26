@@ -15,7 +15,7 @@ namespace Core
 		{
 		public:
 			friend class ObjectFactory;
-			friend class Component;
+			friend class GameObject;
 
 			void Init();
 
@@ -55,7 +55,7 @@ namespace Core
 		public:
 			GameObject();
 
-			virtual void Init() {};
+			virtual void Init();
 
 			GameObjectProperty* GetObjectProperties();
 		};

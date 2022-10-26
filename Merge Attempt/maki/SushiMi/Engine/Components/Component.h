@@ -29,16 +29,14 @@ namespace Core
 	class Component
 	{
 	public:
-		friend class Object::GameObjectProperty;
-
 		Component();
 		virtual ~Component();
 
 		// Function to initialize the component's owner when it is added to the entity
 		virtual void Init() = 0;
 		virtual void Serialise(const std::string name) = 0;
-		Object::GameObjectProperty* GetOwner();
-		void SetOwner(Object::GameObjectProperty* owner);
+		Object::GameObject* GetOwner();
+		void SetOwner(Object::GameObject* owner);
 
 		bool IsActive();
 		void Activate();
@@ -46,7 +44,7 @@ namespace Core
 		void Remove();	// queue it for deletion
 
 	protected:
-		Object::GameObjectProperty* owner;
+		Object::GameObject* owner;
 		bool active;
 		bool add;	// queue for addition in runtime
 		bool remove;	// queue for remove
@@ -55,8 +53,11 @@ namespace Core
 
 	class ComponentManager
 	{
-	private:
+	public:
+		ComponentManager() {};
+		~ComponentManager() {};
 
+		std::unordered_map<ComponentID, Component*> ComponentContainer;
 	};
 }
 

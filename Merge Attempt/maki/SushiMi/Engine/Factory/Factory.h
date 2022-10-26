@@ -16,26 +16,26 @@ namespace Core
 	private:
 		unsigned int LastObjectID;
 
-		std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer;
+		std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer;
 
-		std::set<Object::GameObjectProperty*> DeleteList;
+		std::set<Object::GameObject*> DeleteList;
 
 	public:		
 		ObjectFactory();
 		virtual ~ObjectFactory();
 
-		Object::GameObjectProperty* Create();
+		Object::GameObject* Create();
 
-		void AddtoDestroyList(Object::GameObjectProperty* Obj);
+		void AddtoDestroyList(Object::GameObject* Obj);
 
 		void DestroyEverything();
 
 		virtual void Update(const double dt);
 
-		void AddObjects(Object::GameObjectProperty* added, unsigned int i);
+		void AddObjects(Object::GameObject* added, unsigned int i);
 
 		virtual void Init();
 
-		Object::GameObjectProperty* BuildSerialise(const std::string filename);
+		Object::GameObject* BuildSerialise(const std::string filename);
 	};
 }

@@ -61,7 +61,7 @@ void Core::Transform::Scale(float scale)
 	this->localscale *= scale;
 }
 
-const gfxVector2& Core::Transform::Forward()
+const gfxVector2& Core::Transform::Forward(const double dt)
 {
-
+	return forward;
 }

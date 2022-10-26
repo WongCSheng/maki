@@ -36,7 +36,7 @@ void Core::Transformer::Update(const double dt)
 	}
 }
 
-void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer)
+void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
 {
 	
 }
@@ -51,7 +51,7 @@ void Core::Transformer::UpdateTransformation(Transform* trans)
 	
 }
 
-void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObjectProperty*> ObjectContainer)
+void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
 {
 
 }

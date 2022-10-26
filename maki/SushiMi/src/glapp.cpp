@@ -357,8 +357,7 @@ void GLApp::init_scene(std::string scene_filename)
 			GLfloat pos_y { std::stof(ObjVector[i + 13]) };
 			currObj.position = { pos_x, pos_y };
 
-			GLfloat pos_x, pos_y;
-			line_pos >> pos_x >> pos_y;
+	
 			currObj.position = { pos_x, pos_y };
 			currObj.initialPos = { currObj.position };			//stores initial position for distance calculation
 

@@ -16,16 +16,16 @@ namespace Core
 	{
 	public:
 		SystemFrame();
-		virtual ~SystemFrame() = 0;
+		virtual ~SystemFrame();
 		virtual void Init() = 0;
 		virtual void Update(const double dt) = 0;
-		virtual void Exit() = 0;
+		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer) = 0;
 	};
 }
 
 
 //#include "../Headers/STL_Header.h"
-//#include "../Entity/ECS.h"
+//#include "../Components/ECS.h"
 //
 ////Forward Declaration
 //class Component;

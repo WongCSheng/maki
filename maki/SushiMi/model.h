@@ -37,6 +37,7 @@ public:
 	GLuint primitive_cnt{}; // access the number of OGL pimitives contained in an instance of Model
 							// primitive_type are to be rendered
 	static std::map<std::string, Model> models; // singleton
+	GLuint setup_texobj(std::string pathname);
 };
 
 #endif // !MODEL_H_

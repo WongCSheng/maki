@@ -36,11 +36,14 @@ public:
 
 	glm::vec2 scaling{};		// scaling parameters
 	glm::vec2 position{};		// translation vector coordinates
+	glm::vec2 initialPos{};		//initial position
 	gfxVector2 velocity{};
 	float dirCurr{};
 	Collision::AABB aabb;
 	bool status{};
-	float mass;
+	float mass;						//mass inst for accelerations
+	 
+
 
 	// compute object's model transform matrix using scaling,
 	// rotation, and translation attributes

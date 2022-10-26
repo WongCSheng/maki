@@ -1,13 +1,16 @@
 #pragma once
 
 #include "../Headers/STL_Header.h"
-#include "../Engine/Entity/ECS.h"
+#include "../Engine/Components/Component.h"
 #include "../Engine/Factory/Factory.h"
 
 namespace Core
 {
 	namespace Object
 	{
+		/*
+		Characteristics of a Game Object.
+		*/
 		class GameObjectProperty
 		{
 		public:
@@ -35,6 +38,26 @@ namespace Core
 			std::unordered_map<ComponentID, Component*> ComponentContainer;
 
 			std::pair<unsigned int, std::string> ObjectID; //Unsigned int is the component tags, String is the name of the object
+		};
+
+
+		/*
+		Game Object itself
+		*/
+		class GameObject
+		{
+		private:
+			GameObjectProperty* characteristics;
+
+		protected:
+			virtual ~GameObject();
+
+		public:
+			GameObject();
+
+			virtual void Init() {};
+
+			GameObjectProperty* GetObjectProperties();
 		};
 	}
 }

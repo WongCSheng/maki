@@ -20,6 +20,7 @@ to OpenGL implementations.
 #include <../Camera2D.h>
 #include <../fonts.h>
 #include <../Physics.h>
+#include <../fonts.h>
 #define M_PI									3.14159265358979323846  /* pi */
 
 
@@ -37,6 +38,7 @@ GLint box_counter = 0;
 GLint mystery_counter = 0;
 std::map<std::string, GLSLShader>		GLApp::shdrpgms;
 Object temp;
+GLSLShader shdr_pgm;
 /*  _________________________________________________________________________ */
 /*! init
 @param none
@@ -65,7 +67,8 @@ void GLApp::init() {
 
 	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
-	
+
+	Font::init();
 
 	// font testing
 
@@ -79,14 +82,13 @@ void GLApp::init() {
 
 insert shader program into container GLApp::shdrpgms
 */
-void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr)
+void GLApp::insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr)
 {
 	std::vector<std::pair<GLenum, std::string>> shdr_files
 	{
 		std::make_pair(GL_VERTEX_SHADER, vtx_shdr),
 		std::make_pair(GL_FRAGMENT_SHADER, frg_shdr)
 	};
-	GLSLShader shdr_pgm;
 	shdr_pgm.CompileLinkValidate(shdr_files);
 	if (GL_FALSE == shdr_pgm.IsLinked())
 	{
@@ -355,6 +357,30 @@ void GLApp::init_scene(std::string scene_filename)
 			GLfloat pos_y { std::stof(ObjVector[i + 13]) };
 			currObj.position = { pos_x, pos_y };
 
+			GLfloat pos_x, pos_y;
+			line_pos >> pos_x >> pos_y;
+			currObj.position = { pos_x, pos_y };
+			currObj.initialPos = { currObj.position };			//stores initial position for distance calculation
+
+				/* construct AABB box */
+			currObj.aabb.min.x = currObj.position.x - (currObj.scaling.x / 2); //calculating bottom left min.x
+			currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y / 2); //calculating bottom left min.y
+			currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x / 2); //calculating top right max.x
+			currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y / 2); //calculating top right max.y
+			std::cout << "current object name: " << object_name << "Min " << currObj.aabb.min.x << " " << currObj.aabb.min.y << std::endl;
+			std::cout << "current object name: " << object_name << "Max " << currObj.aabb.max.x << " " << currObj.aabb.max.y << std::endl;
+			std::cout << "Object position(x,y) " << currObj.position.x << " "<< currObj.position.y << std::endl;
+				//apply physics 
+			if (hasMass == true)
+			{
+				getline(ifs, line);
+				std::istringstream line_mass{ line }; //getting mass of obj
+				float objMass;	//create mass inst
+				line_mass >> objMass; // convert istream to float
+				currObj.mass = objMass; //assign mass to currObj
+				hasMass = false; // turn off
+			}
+
 			currObj.mdl_ref = mdl_iterator;
 			currObj.shd_ref = shdr_iterator;
 
@@ -496,6 +522,8 @@ void GLApp::update()
 			x.second.update(GLHelper::delta_time);
 		}
 	}
+
+
 }
 
 /*  _________________________________________________________________________ */
@@ -529,6 +557,8 @@ void GLApp::draw()
 		}
 	}
 	Object::objects["Camera"].draw();
+
+	Font::RenderText(GLApp::shdrpgms["shdrpgm"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
 }
 
 

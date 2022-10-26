@@ -62,5 +62,19 @@ namespace Core
 		{
 
 		}
+
+		GameObject::GameObject()
+		{
+			characteristics = nullptr;
+		}
+
+		GameObject::~GameObject()
+		{
+		}
+
+		GameObjectProperty* GameObject::GetObjectProperties()
+		{
+			return characteristics;
+		}
 	}
 }

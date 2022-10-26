@@ -75,6 +75,9 @@
       <Filter>GameEngine\Math\Physics</Filter>
     </ClCompile>
     <ClCompile Include="src\imguiEditor.cpp" />
+    <ClCompile Include="src\texture.cpp">
+      <Filter>GameEngine\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -169,6 +172,9 @@
       <Filter>GameEngine\Math\Physics</Filter>
     </ClInclude>
     <ClInclude Include="include\imguiEditor.h" />
+    <ClInclude Include="include\texture.h">
+      <Filter>GameEngine\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -222,13 +228,25 @@
     <Filter Include="GameEngine\Math\Physics">
       <UniqueIdentifier>{4f68c3f6-6fa2-4a08-8633-7bec2582f488}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Shaders">
+      <UniqueIdentifier>{834b740f-e5d2-4820-b8f3-8a5130a59d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Texture">
+      <UniqueIdentifier>{ba0d36aa-96e0-4851-82bc-af24c88843bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\shaders\SushiMi.frag">
-      <Filter>GameEngine\Graphics</Filter>
-    </None>
     <None Include="..\shaders\SushiMi.vert">
-      <Filter>GameEngine\Graphics</Filter>
+      <Filter>GameEngine\Shaders</Filter>
+    </None>
+    <None Include="..\shaders\SushiMi.frag">
+      <Filter>GameEngine\Shaders</Filter>
+    </None>
+    <None Include="..\shaders\Texture.frag">
+      <Filter>GameEngine\Shaders</Filter>
+    </None>
+    <None Include="..\shaders\Texture.vert">
+      <Filter>GameEngine\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

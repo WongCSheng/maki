@@ -4,9 +4,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Entity\ECS.cpp">
-      <Filter>GameEngine\ECS</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Core\Core.cpp">
       <Filter>GameEngine\Core</Filter>
     </ClCompile>
@@ -52,17 +49,11 @@
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
       <Filter>GameEngine\UI\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Transform\Transform.cpp">
-      <Filter>GameEngine\Transform</Filter>
-    </ClCompile>
     <ClCompile Include="src\Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Factory\Factory.cpp">
       <Filter>GameEngine\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Physics\collision.cpp">
-      <Filter>GameEngine\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Timer\Timer.cpp">
       <Filter>GameEngine\Timer</Filter>
@@ -100,11 +91,26 @@
     <ClCompile Include="Engine\System\Transformer.cpp">
       <Filter>GameEngine\System\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Components\Transform\Transform.cpp">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Component.cpp">
+      <Filter>GameEngine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\PhysicSystem.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Editors\LevelEditor.cpp">
+      <Filter>Editors</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\collision.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\Physics.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Entity\ECS.h">
-      <Filter>GameEngine\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Core\Core.h">
       <Filter>GameEngine\Core</Filter>
     </ClInclude>
@@ -183,17 +189,11 @@
     <ClInclude Include="Headers\Graphics_Header.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Transform\Transform.h">
-      <Filter>GameEngine\Transform</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Factory\Factory.h">
       <Filter>GameEngine\Factory</Filter>
     </ClInclude>
     <ClInclude Include="Headers\RapidJSON_Header.h">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Physics\collision.h">
-      <Filter>GameEngine\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Timer\Timer.h">
       <Filter>GameEngine\Timer</Filter>
@@ -231,6 +231,24 @@
     <ClInclude Include="Engine\System\Transformer.h">
       <Filter>GameEngine\System\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Components\Transform\Transform.h">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Component.h">
+      <Filter>GameEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\PhysicsSystem.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Editors\LevelEditor.h">
+      <Filter>Editors</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\collision.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\Physics.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -247,9 +265,6 @@
     </Filter>
     <Filter Include="GameEngine\Messaging">
       <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\ECS">
-      <UniqueIdentifier>{b6c5341e-79e2-454e-8e62-ee56d3033e46}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\UI">
       <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
@@ -287,14 +302,8 @@
     <Filter Include="GameEngine\UI\imgui">
       <UniqueIdentifier>{efcaa243-5ffe-4124-905b-44d36aea7d67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Transform">
-      <UniqueIdentifier>{b8b98637-d907-4d26-82d6-d1dec34540d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine\Factory">
       <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Physics">
-      <UniqueIdentifier>{b7791c8c-ef68-42bd-8e73-e89e763be8f0}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\Timer">
       <UniqueIdentifier>{9e02925b-088d-41f8-a125-0ca2355f73c4}</UniqueIdentifier>
@@ -319,6 +328,15 @@
     </Filter>
     <Filter Include="GameEngine\System\Transform">
       <UniqueIdentifier>{0f6498c9-9de6-4372-a296-1116e7a72571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Component">
+      <UniqueIdentifier>{b6c5341e-79e2-454e-8e62-ee56d3033e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Physics">
+      <UniqueIdentifier>{b7791c8c-ef68-42bd-8e73-e89e763be8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editors">
+      <UniqueIdentifier>{b1b830e5-324c-4118-82dc-098127ed8a37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

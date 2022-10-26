@@ -113,6 +113,13 @@ public:
         this->z /= i;
 		return *this;
 	}
+	gfxVector3& operator++()
+	{
+		this->x++;
+		this->y++;
+		this->z++;
+		return *this;
+	}
 
 	//arithmetic negation
 	gfxVector3 operator-(void)

@@ -4,11 +4,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <IncludePath>$(SolutionDir)lib\glfw\include;$(SolutionDir)lib\glew\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib\rapidJSON;$(SolutionDir)lib\rttr;$(SolutionDir)lib\freetype\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\glfw\;$(SolutionDir)lib\glew\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\glfw\;$(SolutionDir)lib\glew\;$(SolutionDir)lib\freetype\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y

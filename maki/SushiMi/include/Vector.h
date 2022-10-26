@@ -123,6 +123,13 @@ public:
 		this->y -= v.y;
 		return *this;
 	}
+	gfxVector2& operator++()
+	{
+		this->x++;
+		this->y++;
+		return *this;
+	}
+
 
 	//arithmetic scalar operations
 	gfxVector2& operator*=(float i)

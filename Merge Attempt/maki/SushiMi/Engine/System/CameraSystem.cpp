@@ -37,7 +37,7 @@ void Core::CameraSystem::Update(const double dt)
 	}*/
 }
 
-void Core::CameraSystem::Exit()
+void Core::CameraSystem::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
 {
 
 }

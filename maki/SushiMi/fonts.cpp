@@ -29,7 +29,7 @@ int Font::init()
 	}
 	FT_Face face;	//load font as a face
     
-	if (FT_New_Face(ft, "amiri-regular.tff", 0, &face))	//try to load arial font here
+	if (FT_New_Face(ft, "../amiri-regular.ttf", 0, &face))	//try to load arial font here
 	{
 		std::cout << "ERROR: Arial not found!" << std::endl;
 		return -1;

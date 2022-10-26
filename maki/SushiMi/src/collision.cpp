@@ -17,7 +17,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../include/collision.h"
 
 namespace Collision {
-	float g_dt = GLHelper::delta_time;
+	float g_dt = static_cast<float>(GLHelper::delta_time);
 
 	struct VertexList
 	{

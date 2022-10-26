@@ -97,6 +97,7 @@ file so that in all files you will only need to
 
 #include "RTTR.h"
 #include "JSONSerializer.h"
+#include "graphicsSerializer.h"
 
 
 //Input 

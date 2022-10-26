@@ -85,51 +85,36 @@ void sceneInitializer(std::string scene_filename)
 			//2nd param: Given Object Name
 			std::string object_name{ ObjVector[i + 1] };
 
-			//3rd param: shader program name
-			std::string shdr_name{ ObjVector[i + 2] };
+			
+			//3rd param: R of RGB
+			GLfloat red{ std::stof(ObjVector[i + 2]) };
 
-			//4th param: vert shader path
-			std::string shdr_vert{ ObjVector[i + 3] };
+			//4th param: G of RGB
+			GLfloat green{ std::stof(ObjVector[i + 3]) };
 
-			//5th param: frag shader path
-			std::string shdr_frag{ ObjVector[i + 4] };
-
-			std::map<std::string, GLSLShader>::iterator shdr_iterator;
-			shdr_iterator = GLApp::shdrpgms.find(shdr_name);
-			if (shdr_iterator == GLApp::shdrpgms.end())
-			{
-				GLApp::insert_shdrpgm(shdr_name, shdr_vert, shdr_frag);
-				shdr_iterator = GLApp::shdrpgms.find(shdr_name);
-			}
-			//6th param: R of RGB
-			GLfloat red{ std::stof(ObjVector[i + 5]) };
-
-			//7th param: G of RGB
-			GLfloat green{ std::stof(ObjVector[i + 6]) };
-
-			//8th param: B of RGB
-			GLfloat blue{ std::stof(ObjVector[i + 7]) };
+			//5th param: B of RGB
+			GLfloat blue{ std::stof(ObjVector[i + 4]) };
 			currObj.color = { red, green, blue };
 
-			//9th param: x scale
-			GLfloat scale_x{ std::stof(ObjVector[i + 8]) };
+			//6th param: x scale
+			GLfloat scale_x{ std::stof(ObjVector[i + 5]) };
 
-			//10th param: y scale
-			GLfloat scale_y{ std::stof(ObjVector[i + 9]) };
+			//7th param: y scale
+			GLfloat scale_y{ std::stof(ObjVector[i + 6]) };
 			currObj.scaling = { scale_x, scale_y };
 
-			//11th param: x_orientation
-			GLfloat orientation_x{ std::stof(ObjVector[i + 10]) };
+			//8th param: x_orientation
+			GLfloat orientation_x{ std::stof(ObjVector[i + 7]) };
 
-			//12th param: y_orientation
-			GLfloat orientation_y{ std::stof(ObjVector[i + 11]) };
+			//9th param: y_orientation
+			GLfloat orientation_y{ std::stof(ObjVector[i + 8]) };
 			currObj.orientation = { orientation_x, orientation_y };
 
-			//13th x pos
-			GLfloat pos_x{ std::stof(ObjVector[i + 12]) };
+			//10th x pos
+			GLfloat pos_x{ std::stof(ObjVector[i + 9]) };
 
-			//14th y pos
-			GLfloat pos_y{ std::stof(ObjVector[i + 13]) };
+			//11th y pos
+			GLfloat pos_y{ std::stof(ObjVector[i + 10]) };
 			currObj.position = { pos_x, pos_y };
 
 
@@ -142,6 +127,22 @@ void sceneInitializer(std::string scene_filename)
 			currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x / 2); //calculating top right max.x
 			currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y / 2); //calculating top right max.y
 
+			//12th param: shader program name
+			std::string shdr_name{ ObjVector[i + 11] };
+
+			//13th param: vert shader path
+			std::string shdr_vert{ ObjVector[i + 12] };
+
+			//14th param: frag shader path
+			std::string shdr_frag{ ObjVector[i + 13] };
+
+			std::map<std::string, GLSLShader>::iterator shdr_iterator;
+			shdr_iterator = GLApp::shdrpgms.find(shdr_name);
+			if (shdr_iterator == GLApp::shdrpgms.end())
+			{
+				GLApp::insert_shdrpgm(shdr_name, shdr_vert, shdr_frag);
+				shdr_iterator = GLApp::shdrpgms.find(shdr_name);
+			}
 			//std::cout << "current object name: " << object_name << "Min " << currObj.aabb.min.x << " " << currObj.aabb.min.y << std::endl;
 			//std::cout << "current object name: " << object_name << "Max " << currObj.aabb.max.x << " " << currObj.aabb.max.y << std::endl;
 			//std::cout << "Object position(x,y) " << currObj.position.x << " " << currObj.position.y << std::endl;

@@ -55,7 +55,6 @@
     <ClCompile Include="src\Matrix.cpp">
       <Filter>GameEngine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\collision.cpp" />
     <ClCompile Include="src\Debug.cpp">
       <Filter>GameEngine\Debug</Filter>
     </ClCompile>
@@ -79,6 +78,9 @@
       <Filter>GameEngine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="src\graphicsSerializer.cpp" />
+    <ClCompile Include="src\collision.cpp">
+      <Filter>GameEngine\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -153,7 +155,6 @@
     <ClInclude Include="include\vector3.h">
       <Filter>GameEngine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\Debug.h">
       <Filter>GameEngine\Debug</Filter>
     </ClInclude>
@@ -177,6 +178,9 @@
       <Filter>GameEngine\Texture</Filter>
     </ClInclude>
     <ClInclude Include="include\graphicsSerializer.h" />
+    <ClInclude Include="include\collision.h">
+      <Filter>GameEngine\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -235,6 +239,9 @@
     </Filter>
     <Filter Include="GameEngine\Texture">
       <UniqueIdentifier>{ba0d36aa-96e0-4851-82bc-af24c88843bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Collision">
+      <UniqueIdentifier>{0711b7f9-9eb8-4aa3-9095-5c261e75ac4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -38,6 +38,19 @@ namespace Collision {
 
 	/**************************************************************************/
 	/*!
+	* \brief		structure for the axis bound binding box (circle_rec)
+	* \param		none, not a function
+	* \return		none, not a function
+	*/
+	/**************************************************************************/
+	struct OBB
+	{
+		gfxVector2 center; //center of circle
+		float radius;		//circle radius
+	};
+
+	/**************************************************************************/
+	/*!
 	* \brief		structure for the axis bound binding box
 	* \param		aabb1 - the first rectangle to checked for collision with the second rectangle
 	* \param		aabb2 - the second rectangle to checked for collision with the first rectangle
@@ -51,7 +64,7 @@ namespace Collision {
 		const AABB& aabb2, const gfxVector2& vel2);
 
 
-
+	bool CollisionIntersection_CircleRect(OBB& circle, AABB& aabb);
 
 	/******************************************************************************/
 	/*!

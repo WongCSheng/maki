@@ -122,10 +122,19 @@ void sceneInitializer(std::string scene_filename)
 			currObj.initialPos = { currObj.position };			//stores initial position for distance calculation
 
 				/* construct AABB box */
-			currObj.aabb.min.x = currObj.position.x - (currObj.scaling.x / 2); //calculating bottom left min.x
-			currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y / 2); //calculating bottom left min.y
-			currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x / 2); //calculating top right max.x
-			currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y / 2); //calculating top right max.y
+			if (model_name == "square")
+			{
+				currObj.aabb.min.x = currObj.position.x - (currObj.scaling.x / 2); //calculating bottom left min.x
+				currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y / 2); //calculating bottom left min.y
+				currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x / 2); //calculating top right max.x
+				currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y / 2); //calculating top right max.y
+			}
+			else if (model_name == "circle")
+			{
+
+			}
+			
+			
 
 			//12th param: shader program name
 			std::string shdr_name{ ObjVector[i + 11] };

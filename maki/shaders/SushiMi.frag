@@ -23,6 +23,7 @@ rendered by an object has the same color
 //layout(location=0) in vec3 vColor;
 uniform vec3 uColor;
 layout (location=0) out vec4 fFragColor;
+
 void main() {
 //fFragColor = vec4(vColor, 1.0);
 fFragColor = vec4(uColor, 1.0);

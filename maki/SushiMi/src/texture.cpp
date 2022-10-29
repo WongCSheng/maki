@@ -27,6 +27,7 @@ void Texture::generateTexture()
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	}
 	else
 	{
@@ -49,9 +50,23 @@ void Texture::drawTexture()
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 	GLApp::insert_shdrpgm("texture", "../shaders/Texture.vert", "../shaders/Texture.frag");
+	/*
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
+	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
+	*/
+	glBindTextureUnit(6, texture);
 	glUseProgram(GLApp::shdrpgms["texture"].GetHandle());
+	GLint utex = glGetUniformLocation(GLApp::shdrpgms["texture"].GetHandle(), "ourTexture");
+	if (utex >= 0)
+	{
+		glUniform1ui(utex, texture);
+	}
+	else
+	{
+		std::cout << "Uniform variable doesn't exist!!!\n";
+		std::exit(EXIT_FAILURE);
+	}
 	GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
 	glBindVertexArray(VAO);		// could it be this???
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays

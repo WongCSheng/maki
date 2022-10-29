@@ -4,4 +4,4 @@ square 		Object1  	1.0 0.0 0.0   	200.0 150.0		0.0 -17.5  		-200 -200 		shdrpgm 
 triangle 	Camera 		0.0 0.0 0.0	50.0 100.0 		30.0 2.0   		0 0 			shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 circle 		Object5 	1.0 0.0 1.0 	100.0 100.0 		0.0 0.0    		200 200			shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 	
 square  	Object6 	1.0 0.4 0.5 	400.0 150.0 		0.0 -22.5  		200 -200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
-square		Texture		1.0 0.0 0.0	400.0 200.0		0.0 0.0			0 0			shdrpgm ../shaders/Texture.vert ../shaders/Texture.frag
+square		Texture		1.0 0.0 0.0	400.0 200.0		0.0 0.0			0 0			texture ../shaders/Texture.vert ../shaders/Texture.frag

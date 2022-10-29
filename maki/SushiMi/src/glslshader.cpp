@@ -227,6 +227,16 @@ void GLSLShader::SetUniform(GLchar const* name, GLint val) {
         std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
     }
 }
+//Specify the value of a uniform variable for the current program object(GLuint)
+void GLSLShader::SetUniform(GLchar const* name, GLuint val) {
+    GLint loc = glGetUniformLocation(pgm_handle, name);
+    if (loc >= 0) {
+        glUniform1ui(loc, val);
+    }
+    else {
+        std::cout << "Uniform variable " << name << " doesn't exist" << std::endl;
+    }
+}
 //Specify the value of a uniform variable for the current program object(float)
 void GLSLShader::SetUniform(GLchar const* name, GLfloat val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);

@@ -1,14 +1,13 @@
 #version 450 core
 
-layout (location=8) in vec2 vTexCoord;
+layout (location=0) out vec4 FragColor;
+  
+layout (location=0) in vec3 ourColor;
+layout (location=8) in vec2 TexCoord;
 
-layout (location=0) out vec4 fFragColor;
+uniform sampler2D ourTexture;
 
-
-uniform sampler2D uTex2d;
-
-void main () 
+void main()
 {
-    fFragColor = texture(uTex2d, vTexCoord);
-   
+    FragColor = texture(ourTexture, TexCoord);
 }

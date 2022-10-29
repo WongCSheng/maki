@@ -14,6 +14,7 @@
 /*  _________________________________________________________________________ */
 
 unsigned int VAO, VBO;
+
 std::map<char, Font::Character> Font::Characters{};
 int Font::init()
 {

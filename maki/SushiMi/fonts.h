@@ -28,6 +28,9 @@ public:
 	static std::map<char, Character> Characters;	// Singleton
 	static int init();
 	static void RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color);
+
 };
+
+extern unsigned int VAO, VBO;
 
 #endif // !FONT_H_

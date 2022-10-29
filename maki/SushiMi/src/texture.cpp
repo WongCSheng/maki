@@ -8,74 +8,53 @@ This file implements functionality for the texture creation and implementation
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-/*
+#include "../include/common_headers.hpp"
 #include "../include/texture.h"
-#include "../src/glslshader.cpp"
-*/
+#include "../include/glapp.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include <../stb-master/stb_image.h>
+#include "../fonts.h"
 
 /*--------------------------------------------------------------------------- */
-/*
-GLuint texobj{};
-GLSLShader shdr_pgm;
-void Texture::init()
+GLuint texture;
+int width, height, nrChannels;
+void Texture::generateTexture()
 {
-	texobj = setup_texture("../textures/doge.jpg");
-}
-
-GLuint Texture::setup_texture(std::string path)
-{
-	GLuint width{ 256 }, height{ 256 }, bytes_per_texel{ 4 };
-
-	std::ifstream is;
-	//open solution with ios::binary or ios::in
-	is.open(path, std::ios::binary | std::ios::in);
-	// create new heapy memory pointed by ptr_texels with size of bytes
-	char* ptr_texels = new char[width * height * bytes_per_texel];
-	is.read(ptr_texels, (static_cast<std::streamsize>(width) * height) * bytes_per_texel);
-
-	GLuint texobj_hdl;
-	// define and initialize a handle to texture object that will
-	// encapsulate two-dimensional textures
-	glCreateTextures(GL_TEXTURE_2D, 1, &texobj_hdl);
-	// allocate GPU storage for texture image data loaded from file
-	glTextureStorage2D(texobj_hdl, 1, GL_RGBA8, width, height);
-	// copy image data from client memory to GPU texture buffer memory
-	glTextureSubImage2D(texobj_hdl, 0, 0, 0, width, height,
-		GL_RGBA, GL_UNSIGNED_BYTE, ptr_texels);
-	// client memory not required since image is buffered in GPU memory
-	delete[] ptr_texels;
-	// nothing more to do - return handle to texture object
-	is.close();
-	return texobj_hdl;
-}
-
-GLuint Texture::setup_shdrpgm()
-{
-	std::vector<std::pair<GLenum, std::string>> shdr_files;
-	shdr_files.emplace_back(std::make_pair(
-		GL_VERTEX_SHADER,
-		"../shaders/Texture.vert"));
-	shdr_files.emplace_back(std::make_pair(
-		GL_FRAGMENT_SHADER,
-		"../shaders/Texture.frag"));
-	
-	shdr_pgm.CompileLinkValidate(shdr_files);
-	if (GL_FALSE == shdr_pgm.IsLinked()) {
-		std::cout << "Unable to compile/link/validate shader programs" << "\n";
-		std::cout << shdr_pgm.GetLog() << std::endl;
-		std::exit(EXIT_FAILURE);
+	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
 	}
+	else
+	{
+		std::cout << " Failed to load texture" << std::endl;
+	}
+
+	stbi_image_free(data);
 }
 
-void Texture::draw()
+void Texture::drawTexture()
 {
-	glBindTextureUnit(6, texobj);	// bind texture obj to use texture image unit 6
-	glTextureParameteri(texobj, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTextureParameteri(texobj, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-	glUseProgram(shdr_pgm.GetHandle());
-	// tell fragment shader sampler uTex2d will use texture image unit 6
-	GLuint tex_loc = glGetUniformLocation(shdr_pgm.GetHandle(), "uTex2d");
-	glUniform1i(tex_loc, 6);
+	GLApp::shdrpgms["texture"].Use();
+	float vertices[] = {
+		// positions          // colors           // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+	};
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+	GLApp::insert_shdrpgm("texture", "../shaders/Texture.vert", "../shaders/Texture.frag");
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUseProgram(GLApp::shdrpgms["texture"].GetHandle());
+	GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
+	glBindVertexArray(VAO);		// could it be this???
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
+	glBindVertexArray(0);
+	GLApp::shdrpgms["texture"].UnUse();
 }
-*/

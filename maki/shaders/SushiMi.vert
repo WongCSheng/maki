@@ -1,5 +1,5 @@
 /*!
-@file    SushiMi.frag
+@file    SushiMi.vert
 @author  louishetong.wang@digipen.edu
 @date    19/09/2022
 

@@ -135,7 +135,7 @@ void sceneInitializer(std::string scene_filename)
 
 			//14th param: frag shader path
 			std::string shdr_frag{ ObjVector[i + 13] };
-
+			
 			std::map<std::string, GLSLShader>::iterator shdr_iterator;
 			shdr_iterator = GLApp::shdrpgms.find(shdr_name);
 			if (shdr_iterator == GLApp::shdrpgms.end())
@@ -143,6 +143,8 @@ void sceneInitializer(std::string scene_filename)
 				GLApp::insert_shdrpgm(shdr_name, shdr_vert, shdr_frag);
 				shdr_iterator = GLApp::shdrpgms.find(shdr_name);
 			}
+			
+			// GLApp::insert_shdrpgm(shdr_name, shdr_vert, shdr_frag);
 			//std::cout << "current object name: " << object_name << "Min " << currObj.aabb.min.x << " " << currObj.aabb.min.y << std::endl;
 			//std::cout << "current object name: " << object_name << "Max " << currObj.aabb.max.x << " " << currObj.aabb.max.y << std::endl;
 			//std::cout << "Object position(x,y) " << currObj.position.x << " " << currObj.position.y << std::endl;
@@ -159,7 +161,7 @@ void sceneInitializer(std::string scene_filename)
 
 			currObj.mdl_ref = mdl_iterator;
 			currObj.shd_ref = shdr_iterator;
-
+			//currObj.shd_ref = GLApp::shdrpgms.find(shdr_name);
 			Object::objects.insert(std::pair<std::string, Object>(object_name, currObj));
 		}
 	}

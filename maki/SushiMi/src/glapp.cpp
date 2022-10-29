@@ -70,6 +70,7 @@ void GLApp::init() {
 
 	Font::init();
 	Texture::generateTexture();
+	Texture::drawTexture();
 
 	// font testing
 
@@ -100,7 +101,6 @@ void GLApp::insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std:
 	// add compiled, linked and validated shader program to
 	// std::map container GLApp::shdrpgms
 	GLApp::shdrpgms[shdr_pgm_name] = shdr_pgm;
-
 }
 
 
@@ -162,8 +162,7 @@ void GLApp::draw()
 	}
 	Object::objects["Camera"].draw();
 
-	Font::RenderText(GLApp::shdrpgms["shdrpgm"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
-	Texture::drawTexture();
+	//Font::RenderText(GLApp::shdrpgms["font"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
 }
 
 

@@ -39,35 +39,18 @@ void Texture::generateTexture()
 
 void Texture::drawTexture()
 {
+	glBindTextureUnit(6, texture);
 	GLApp::shdrpgms["texture"].Use();
-	float vertices[] = {
-		// positions          // colors           // texture coords
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-	};
+	GLApp::shdrpgms["texture"].SetUniform("ourTexture", 6);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-	GLApp::insert_shdrpgm("texture", "../shaders/Texture.vert", "../shaders/Texture.frag");
 	/*
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
+	GLint utexture = glGetUniformLocation(GLApp::shdrpgms["shdrpgm"].GetHandle(), "ourTexture");
 	*/
-	glBindTextureUnit(6, texture);
-	glUseProgram(GLApp::shdrpgms["texture"].GetHandle());
-	GLint utex = glGetUniformLocation(GLApp::shdrpgms["texture"].GetHandle(), "ourTexture");
-	if (utex >= 0)
-	{
-		glUniform1ui(utex, texture);
-	}
-	else
-	{
-		std::cout << "Uniform variable doesn't exist!!!\n";
-		std::exit(EXIT_FAILURE);
-	}
-	GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
+	
 	glBindVertexArray(VAO);		// could it be this???
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
 	glBindVertexArray(0);

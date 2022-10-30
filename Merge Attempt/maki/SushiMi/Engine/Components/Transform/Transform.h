@@ -7,7 +7,6 @@
 
 namespace Core
 {
-
 	class Transform : public Component
 	{
 	public:

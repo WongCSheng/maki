@@ -15,5 +15,11 @@ namespace Core
 	public:
 		PhysicSystem();
 		virtual ~PhysicSystem();
+
+		void Init();
+
+		void Update(const double dt);
+
+		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
 	};
 }

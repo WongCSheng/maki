@@ -9,9 +9,15 @@ THe body frame which all system types takes from*/
 
 // Component System
 #include <vector>
+#include <unordered_map>
 
 namespace Core
 {
+	namespace Object
+	{
+		class GameObject;
+	}
+	
 	class SystemFrame
 	{
 	public:

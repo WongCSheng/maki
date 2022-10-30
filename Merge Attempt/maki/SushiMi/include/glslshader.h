@@ -25,9 +25,9 @@ program object.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "../Headers/STL_Header.h"
+#include <GL/glew.h> // for access to OpenGL API declarations 
 #include <glm/glm/glm.hpp>
 #include "../Headers/Math_Header.h"
-#include <GL/glew.h> // for access to OpenGL API declarations 
 
 /*  _________________________________________________________________________ */
 class GLSLShader

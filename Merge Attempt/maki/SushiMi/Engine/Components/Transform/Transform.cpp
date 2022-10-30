@@ -6,7 +6,6 @@
 
 Core::Transform::Transform()
 {
-	//root = new Entity();
 }
 
 
@@ -16,7 +15,7 @@ Core::Transform::~Transform()
 
 const gfxMatrix3& Core::Transform::TransformMat(void)
 {
-
+	return T * R * S;
 }
 
 void Core::Transform::Set(gfxVector2 position, gfxVector2 scale, gfxMatrix3 rotation)

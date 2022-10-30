@@ -109,6 +109,9 @@
     <ClCompile Include="Engine\Components\Physics\Physics.cpp">
       <Filter>GameEngine\System\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
+      <Filter>GameEngine\System\LinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -249,6 +252,9 @@
     <ClInclude Include="Engine\Components\Physics\Physics.h">
       <Filter>GameEngine\System\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\Linked List\LinkedList.h">
+      <Filter>GameEngine\System\LinkedList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -337,6 +343,9 @@
     </Filter>
     <Filter Include="Editors">
       <UniqueIdentifier>{b1b830e5-324c-4118-82dc-098127ed8a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\LinkedList">
+      <UniqueIdentifier>{0dae68f0-29b9-4c74-9569-c5411c28d956}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

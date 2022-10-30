@@ -10,9 +10,10 @@ Description: This file contains the function definition for Entities and Compone
 
 namespace Core
 {
+	
 	Component::Component()
 	{
-		owner = new Object::GameObject();
+		owner = new Object::GameObjectProperty();
 		add = false;
 		active = false;
 		remove = false;
@@ -23,12 +24,12 @@ namespace Core
 		//delete owner;
 	}
 
-	Object::GameObject* Component::GetOwner()
+	Object::GameObjectProperty* Component::GetOwner()
 	{
 		return owner;
 	}
 
-	void Component::SetOwner(Object::GameObject* NewOwner)
+	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
 	{
 		owner = NewOwner;
 	}

@@ -11,14 +11,14 @@ It will be used for rttr registration further on.
 #ifndef RTTR_H
 #define RTTR_H
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 #include <rttr/type.h>
 #include <rttr/property.h>
 #include <rttr/variant.h>
 #include <rttr/registration.h>
-=======
+//=======
 #include <string>
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 
 class TestClass
 {

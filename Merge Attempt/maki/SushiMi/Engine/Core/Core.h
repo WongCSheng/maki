@@ -9,10 +9,11 @@ Description: Header for Core.cpp
 #ifndef CORE_H_
 #define CORE_H_
 
-#include "../Engine/System/SystemFrame.h"
-#include "../Engine//System/Renderer.h"
-#include "../Engine/System/Transformer.h"
-#include "../Engine/System//CameraSystem.h"
+#include "../System/SystemFrame.h"
+#include "..//System/Renderer.h"
+#include "../System/Transformer.h"
+#include "../System//CameraSystem.h"
+#include "../System/PhysicsSystem.h"
 
 #include <vector>
 
@@ -38,6 +39,7 @@ namespace Core
 		Renderer* renderer;
 		Transformer* transformer;
 		CameraSystem* cameraSystem;
+		PhysicSystem* physicssystem;
 	};
 }
 

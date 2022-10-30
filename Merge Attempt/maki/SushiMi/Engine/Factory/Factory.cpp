@@ -42,7 +42,7 @@ namespace Core
 		{
 			Object::GameObject* temp = *it;
 
-			std::unordered_map<unsigned int, Object::GameObject*>::iterator Objit = ObjectContainer.find(temp->GetID());
+			std::unordered_map<unsigned int, Object::GameObject*>::iterator Objit = ObjectContainer.find(temp->GetObjectProperties()->GetID());
 
 			ObjectContainer.erase(Objit);
 

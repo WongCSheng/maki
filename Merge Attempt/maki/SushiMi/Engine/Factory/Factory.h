@@ -8,7 +8,7 @@ namespace Core
 	//forward declaration
 	namespace Object
 	{
-		class GameObjectProperty;
+		class GameObject;
 	}
 	
 	class ObjectFactory : public SystemFrame

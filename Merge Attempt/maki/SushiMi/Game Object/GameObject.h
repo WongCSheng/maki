@@ -3,6 +3,7 @@
 #include "../Headers/STL_Header.h"
 #include "../Engine/Components/Component.h"
 #include "../Engine/Factory/Factory.h"
+#include "../Engine/System/Linked List/LinkedList.h"
 
 namespace Core
 {
@@ -14,7 +15,7 @@ namespace Core
 		class GameObjectProperty
 		{
 		public:
-			friend class ObjectFactory;
+			friend class Component;
 			friend class GameObject;
 
 			void Init();
@@ -53,6 +54,10 @@ namespace Core
 			virtual ~GameObject();
 
 		public:
+			friend class ObjectFactory;
+			
+			LinkedList<Component*> HeadOfList;
+			
 			GameObject();
 
 			virtual void Init();

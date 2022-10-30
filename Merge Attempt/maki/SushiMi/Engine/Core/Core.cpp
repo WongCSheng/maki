@@ -22,6 +22,9 @@ Core::MainSystem::MainSystem()
 
 	transformer = new Transformer();
 	systems.push_back(transformer);
+
+	physicssystem = new PhysicSystem();
+	systems.push_back(physicssystem);
 }
 
 /*
@@ -86,7 +89,7 @@ void Core::MainSystem::RegisterComponent(std::unordered_map<unsigned int, Object
 {
 	for (int i = 0; i < systems.size(); ++i)
 	{
-		systems[i]->RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
+		systems[i]->RegisterComponent(ObjectContainer);
 	}
 }
 

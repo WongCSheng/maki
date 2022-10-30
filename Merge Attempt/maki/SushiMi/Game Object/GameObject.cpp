@@ -8,6 +8,7 @@ namespace Core
 {
 	namespace Object
 	{
+		//Game Object Properties
 		GameObjectProperty::GameObjectProperty()
 		{
 			ObjectID.first = 0;
@@ -28,7 +29,7 @@ namespace Core
 			}
 		}
 
-		Core::Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
+		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
 		{
 			return ComponentContainer[ID];
 		}
@@ -60,12 +61,13 @@ namespace Core
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
 		{
-
+			
 		}
 
+		//Game Object
 		GameObject::GameObject()
 		{
-			characteristics = nullptr;
+			characteristics = new GameObjectProperty();
 		}
 
 		GameObject::~GameObject()
@@ -74,7 +76,7 @@ namespace Core
 
 		void GameObject::Init()
 		{
-			characteristics = new GameObjectProperty();
+			
 		}
 
 		GameObjectProperty* GameObject::GetObjectProperties()

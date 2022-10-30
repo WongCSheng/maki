@@ -50,8 +50,3 @@ void Core::Transformer::UpdateTransformation(Transform* trans)
 {
 	
 }
-
-void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
-{
-
-}

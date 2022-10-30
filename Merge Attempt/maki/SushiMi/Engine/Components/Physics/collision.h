@@ -20,6 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/STL_Header.h"
 #include "../Headers/Math_Header.h"
 #include "../include/glhelper.h"
+#include "../Component.h"
 
 namespace Core
 {
@@ -90,7 +91,7 @@ namespace Core
 
 	public:
 
-		float g_dt = GLHelper::delta_time;
+		double g_dt = GLHelper::delta_time;
 
 		Collision() {}
 		~Collision() {}

@@ -19,9 +19,9 @@ namespace Core
 	public:
 		Renderer();
 		virtual ~Renderer();
-		virtual void Init();
-		virtual void Update(const double dt);
-		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
 
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;

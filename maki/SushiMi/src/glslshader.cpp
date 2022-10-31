@@ -29,11 +29,17 @@ GLSLShader::DeleteShaderProgram() {                     //delete program handler
 
 GLboolean
 GLSLShader::CompileLinkValidate(std::vector<std::pair<GLenum, std::string>> vec) {
+    pgm_handle = glCreateProgram();                                                 //creates a program object if no handle is found
+    if (0 == pgm_handle) {//pgm_handle <= 0
+        log_string = "Cannot create program handle";
+        return GL_FALSE;
+    }
     for (auto& elem : vec) {
         if (GL_FALSE == CompileShaderFromFile(elem.first, elem.second.c_str())) {       //if not able to compile from file
             return GL_FALSE;
         }
     }
+    is_linked = false;
     if (GL_FALSE == Link()) {                                                           //if not able to link
         return GL_FALSE;
     }
@@ -52,13 +58,13 @@ GLSLShader::CompileShaderFromFile(GLenum shader_type, const std::string& file_na
         log_string = "File not found";
         return GL_FALSE;
     }
-    if (pgm_handle <= 0) {
-        pgm_handle = glCreateProgram();                                                 //creates a program object if no handle is found
-        if (0 == pgm_handle) {
-            log_string = "Cannot create program handle";
-            return GL_FALSE;
-        }
-    }
+    //if (pgm_handle <= 0) {
+        //pgm_handle = glCreateProgram();                                                 //creates a program object if no handle is found
+        //if (0 == pgm_handle) {
+        //    log_string = "Cannot create program handle";
+        //    return GL_FALSE;
+        //}
+    //}
 
     std::ifstream shader_file(file_name, std::ifstream::in);
     if (!shader_file) {
@@ -74,13 +80,13 @@ GLSLShader::CompileShaderFromFile(GLenum shader_type, const std::string& file_na
 GLboolean
 GLSLShader::CompileShaderFromString(GLenum shader_type,
     const std::string& shader_src) {
-    if (pgm_handle <= 0) {
-        pgm_handle = glCreateProgram();
-        if (0 == pgm_handle) {
-            log_string = "Cannot create program handle";
-            return GL_FALSE;
-        }
-    }
+    //if (pgm_handle <= 0) {
+    //    pgm_handle = glCreateProgram();
+    //    if (0 == pgm_handle) {
+    //        log_string = "Cannot create program handle";
+    //        return GL_FALSE;
+    //    }
+    //}
 
     GLuint shader_handle = 0;
     switch (shader_type) {

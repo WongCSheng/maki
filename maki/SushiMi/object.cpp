@@ -30,22 +30,46 @@ unbind VAO and unload shader program
 */
 void Object::draw() const
 {
-	// load shader program
-	GLApp::shdrpgms[shd_ref->first].Use();
+	if (GLApp::shdrpgms[shd_ref->first].GetHandle() == 0)
+	{
+		// load shader program
+		GLApp::shdrpgms[shd_ref->first].Use();
 
-	// bind VAO of object's model
-	glBindVertexArray(Model::models[mdl_ref->first].vaoid);
+		// bind VAO of object's model
+		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
 
-	GLApp::shdrpgms[shd_ref->first].SetUniform("uColor", color);
+		GLApp::shdrpgms[shd_ref->first].SetUniform("uColor", color);
 
-	// copy model to ndc matrix to uModelToNDC
-	GLApp::shdrpgms[shd_ref->first].SetUniform("uModel_to_NDC", mdl_to_ndc_xform);
+		// copy model to ndc matrix to uModelToNDC
+		GLApp::shdrpgms[shd_ref->first].SetUniform("uModel_to_NDC", mdl_to_ndc_xform);
 
-	// call glDrawElements with appropriate arguments
-	glDrawElements(Model::models[mdl_ref->first].primitive_type, Model::models[mdl_ref->first].draw_cnt, GL_UNSIGNED_SHORT, NULL);
+		// call glDrawElements with appropriate arguments
+		glDrawElements(Model::models[mdl_ref->first].primitive_type, Model::models[mdl_ref->first].draw_cnt, GL_UNSIGNED_SHORT, NULL);
 
-	glBindVertexArray(0);
-	GLApp::shdrpgms[shd_ref->first].UnUse();
+		glBindVertexArray(0);
+		GLApp::shdrpgms[shd_ref->first].UnUse();
+	}
+	else if (GLApp::shdrpgms[shd_ref->first].GetHandle() == 1)
+	{
+		// load shader program
+		GLApp::shdrpgms[shd_ref->first].Use();
+
+		// bind VAO of object's model
+		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
+
+		GLApp::shdrpgms[shd_ref->first].SetUniform("uColor", color);
+
+		// copy model to ndc matrix to uModelToNDC
+		GLApp::shdrpgms[shd_ref->first].SetUniform("uModel_to_NDC", mdl_to_ndc_xform);
+
+		// call glDrawElements with appropriate arguments
+		glDrawElements(Model::models[mdl_ref->first].primitive_type, Model::models[mdl_ref->first].draw_cnt, GL_UNSIGNED_SHORT, NULL);
+
+		glBindVertexArray(0);
+		GLApp::shdrpgms[shd_ref->first].UnUse();
+	}
+
+
 }
 
 /*  _________________________________________________________________________ */

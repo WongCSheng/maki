@@ -91,6 +91,9 @@ void GLApp::insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std:
 		std::make_pair(GL_VERTEX_SHADER, vtx_shdr),
 		std::make_pair(GL_FRAGMENT_SHADER, frg_shdr)
 	};
+	// add compiled, linked and validated shader program to
+	// std::map container GLApp::shdrpgms
+	GLApp::shdrpgms.emplace(shdr_pgm_name, shdr_pgm);
 	shdr_pgm.CompileLinkValidate(shdr_files);
 	if (GL_FALSE == shdr_pgm.IsLinked())
 	{
@@ -98,9 +101,7 @@ void GLApp::insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std:
 		std::cout << shdr_pgm.GetLog() << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
-	// add compiled, linked and validated shader program to
-	// std::map container GLApp::shdrpgms
-	GLApp::shdrpgms[shdr_pgm_name] = shdr_pgm;
+	std::cout << GLApp::shdrpgms[shdr_pgm_name].GetHandle() << "," << shdr_pgm_name << std::endl;
 }
 
 

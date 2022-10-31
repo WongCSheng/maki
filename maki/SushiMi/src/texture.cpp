@@ -22,7 +22,6 @@ void Texture::generateTexture()
 {
 	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
 	glGenTextures(1, &texture);
-	glActiveTexture(GL_TEXTURE0); // activate the texture unit first before binding texture
 	glBindTexture(GL_TEXTURE_2D, texture);
 	if (data)
 	{
@@ -40,9 +39,8 @@ void Texture::generateTexture()
 
 void Texture::drawTexture()
 {
-	glBindTextureUnit(6, texture);
 	GLApp::shdrpgms["texture"].Use();
-	GLApp::shdrpgms["texture"].SetUniform("ourTexture", 6);
+	//GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 	/*
@@ -51,6 +49,10 @@ void Texture::drawTexture()
 	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
 	GLint utexture = glGetUniformLocation(GLApp::shdrpgms["shdrpgm"].GetHandle(), "ourTexture");
 	*/
+	
+	glBindVertexArray(VAO);		// could it be this???
+
+	glBindTextureUnit(GL_TEXTURE_2D, texture);
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
 	glBindVertexArray(0);
 	GLApp::shdrpgms["texture"].UnUse();

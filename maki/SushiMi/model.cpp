@@ -15,6 +15,7 @@ with the size of the vertices and store them respectively.
 #include "model.h"
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/glm.hpp>
+
 /*--------------------------------------------------------------------------- */
 
 
@@ -111,6 +112,12 @@ Model Model::init(std::string mesh_filepath)
 	glVertexArrayVertexBuffer(vaoid, 5, vbo_hdl,0, sizeof(glm::vec2));
 	glVertexArrayAttribFormat(vaoid, 2, 2, GL_FLOAT, GL_FALSE, 0);
 	glVertexArrayAttribBinding(vaoid, 2, 5);
+
+	//colour position in attribute index 1 and bind to point 4
+	glEnableVertexArrayAttrib(vaoid, 1);
+	glVertexArrayVertexBuffer(vaoid, 4, vbo_hdl, 0, sizeof(glm::vec2));
+	glVertexArrayAttribFormat(vaoid, 1, 3, GL_FLOAT, GL_FALSE, 0);
+	glVertexArrayAttribBinding(vaoid, 1, 4);
 
 	//ebo handler: EBO stores indices that openGL uses to decide what vertices to draw TLDR: indexed drawing eg: 0,1,3(1st triangle) 1,2,3(2nd triangle)
 	GLuint ebo_hdl;

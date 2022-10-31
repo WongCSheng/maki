@@ -9,7 +9,7 @@ the pgmhandler
 
 *//*__________________________________________________________________________*/
 #include <../include/glslshader.h>
-
+#include <iomanip>
 GLint
 GLSLShader::GetUniformLocation(GLchar const* name) {    //return location of uniform variable
     return glGetUniformLocation(pgm_handle, name);
@@ -29,11 +29,16 @@ GLSLShader::DeleteShaderProgram() {                     //delete program handler
 
 GLboolean
 GLSLShader::CompileLinkValidate(std::vector<std::pair<GLenum, std::string>> vec) {
+
     pgm_handle = glCreateProgram();                                                 //creates a program object if no handle is found
     if (0 == pgm_handle) {//pgm_handle <= 0
+        //std::cout <<"Program error: " << std::hex << x << std::endl;
         log_string = "Cannot create program handle";
         return GL_FALSE;
     }
+
+    std::cout << "Program created " << vec[0].second << "[ " << pgm_handle << "]\n";
+    m_name = vec[0].second;
     for (auto& elem : vec) {
         if (GL_FALSE == CompileShaderFromFile(elem.first, elem.second.c_str())) {       //if not able to compile from file
             return GL_FALSE;
@@ -226,6 +231,7 @@ void GLSLShader::SetUniform(GLchar const* name, GLboolean val) {
 //Specify the value of a uniform variable for the current program object(int)
 void GLSLShader::SetUniform(GLchar const* name, GLint val) {
     GLint loc = glGetUniformLocation(pgm_handle, name);
+    std::cout << "getting unifrom location for " << m_name << "@ " << loc << std::endl;
     if (loc >= 0) {
         glUniform1i(loc, val);
     }

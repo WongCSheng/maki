@@ -62,6 +62,7 @@ void GLApp::init() {
 	// and store repo of models of type GLModel in container Model::models,
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container Object::objects
+	std::cout << "curr" << std::filesystem::current_path() << std::endl;
 	sceneInitializer("../scenes/graphics_scene.txt");
 
 
@@ -93,12 +94,11 @@ void GLApp::insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std:
 	};
 	// add compiled, linked and validated shader program to
 	// std::map container GLApp::shdrpgms
-	GLApp::shdrpgms.emplace(shdr_pgm_name, shdr_pgm);
-	shdr_pgm.CompileLinkValidate(shdr_files);
-	if (GL_FALSE == shdr_pgm.IsLinked())
+	GLApp::shdrpgms[shdr_pgm_name].CompileLinkValidate(shdr_files);
+	if (GL_FALSE == GLApp::shdrpgms[shdr_pgm_name].IsLinked())
 	{
 		std::cout << "Unable to compile/link/validate shader programs\n";
-		std::cout << shdr_pgm.GetLog() << std::endl;
+		std::cout << GLApp::shdrpgms[shdr_pgm_name].GetLog() << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
 	std::cout << GLApp::shdrpgms[shdr_pgm_name].GetHandle() << "," << shdr_pgm_name << std::endl;

@@ -22,6 +22,7 @@ void Texture::generateTexture()
 {
 	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
 	glGenTextures(1, &texture);
+	glActiveTexture(GL_TEXTURE0); // activate the texture unit first before binding texture
 	glBindTexture(GL_TEXTURE_2D, texture);
 	if (data)
 	{
@@ -50,8 +51,6 @@ void Texture::drawTexture()
 	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
 	GLint utexture = glGetUniformLocation(GLApp::shdrpgms["shdrpgm"].GetHandle(), "ourTexture");
 	*/
-	
-	glBindVertexArray(VAO);		// could it be this???
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
 	glBindVertexArray(0);
 	GLApp::shdrpgms["texture"].UnUse();

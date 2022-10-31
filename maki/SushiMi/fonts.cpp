@@ -104,7 +104,7 @@ int Font::init()
 }
 
 void Font::setup_shdrpgm()
-{
+{/*
     std::string vs_source =
         "#version 450 core                             \n"
         "layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>;  \n"
@@ -138,6 +138,7 @@ void Font::setup_shdrpgm()
         std::cout << GLApp::shdrpgms["shdrpgm"].GetLog() << "\n";
         std::exit(EXIT_FAILURE);
     }
+    */
 }
 
 void Font::RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color)

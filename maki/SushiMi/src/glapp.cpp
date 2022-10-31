@@ -127,7 +127,7 @@ void GLApp::update()
 			x.second.update(GLHelper::delta_time);
 		}
 	}
-
+	
 
 }
 

@@ -94,26 +94,32 @@ static void update() {
 	// Part 2
 	GLHelper::update_time(1.0);
 
-	/*
-	//collision
-	for (auto& e1 : Object::objects)
+	
+	//collision that isnt working
+	/*for (auto& e1 : Object::objects)
 	{
-		for (auto& e2 : Object::objects)
+		if (e1.first == "Bami")
 		{
-			if (e1.first != e2.first)
+			for (auto& e2 : Object::objects)
 			{
-				if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 0)
+				if (e1.first != e2.first)
 				{
-					std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					e1.second.update(GLHelper::delta_time);
+					e2.second.update(GLHelper::delta_time);
+					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 1)
+					{
+						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					}
+					else
+						std::cout << "No collision detected" << std::endl;
 				}
-				else
-					std::cout << "No collision detected" << std::endl;
 			}
 		}
-	}
-	*/
-
-
+		else
+			break;
+	}*/
+	
+	
 	// Part 3
 	GLApp::update();
 

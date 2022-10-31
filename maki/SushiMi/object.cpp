@@ -81,22 +81,29 @@ All the transformation matrix scale,rot, trans and model to ndc transformation.
 */
 void Object::update(GLdouble delta_time)
 {
-	
+	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
 	{
-		for (auto& e2 : Object::objects)
+		if (e1.first == "Bami")
 		{
-			if (e1.first != e2.first)
+			for (auto& e2 : Object::objects)
 			{
-				if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 1)
+				if (e1.first != e2.first)
 				{
-					//Please uncomment this when testing collision
-					//std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 1)
+					{
+						//Please uncomment this when testing collision
+						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					}
+					std::cout << "No collision detected" << std::endl;
 				}
-				//std::cout << "No collision detected" << std::endl;
 			}
 		}
+		else
+			break;
+		
 	}
+
 
 	//updating aabb box for object collision
 	for (auto& e1 : Object::objects)

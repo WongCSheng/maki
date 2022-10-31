@@ -54,12 +54,6 @@ int main() {
 	// Part 1
 	init();
 
-	GLfloat vertices[] =
-	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
-	};
 
 	// Part 2
 	while (!glfwWindowShouldClose(GLHelper::ptr_window)) {

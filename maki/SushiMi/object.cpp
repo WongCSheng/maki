@@ -30,9 +30,10 @@ unbind VAO and unload shader program
 */
 void Object::draw() const
 {
-
+	if (GLApp::shdrpgms[shd_ref->first].GetHandle() == 1)
+	{
 		// load shader program
-		GLApp::shdrpgms[shd_ref->first].Use();
+		GLApp::shdrpgms[shd_ref->first].Use();		// this will load the objects
 
 		// bind VAO of object's model
 		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
@@ -47,6 +48,23 @@ void Object::draw() const
 
 		glBindVertexArray(0);
 		GLApp::shdrpgms[shd_ref->first].UnUse();
+	
+	}
+	else
+	{
+		// load shader program
+		GLApp::shdrpgms[shd_ref->first].Use();		// this will load 4
+		
+
+		// bind VAO of object's model
+		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
+		// call glDrawElements with appropriate arguments
+		glDrawElements(Model::models[mdl_ref->first].primitive_type, Model::models[mdl_ref->first].draw_cnt, GL_UNSIGNED_SHORT, NULL);
+
+		glBindVertexArray(0);
+		GLApp::shdrpgms[shd_ref->first].UnUse();
+	}
+
 
 
 }

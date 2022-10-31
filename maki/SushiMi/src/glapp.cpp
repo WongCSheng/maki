@@ -71,7 +71,7 @@ void GLApp::init() {
 
 	Font::init();
 	Texture::generateTexture();
-	Texture::drawTexture();
+	//Texture::drawTexture();  // wont be needed anymore
 
 	// font testing
 

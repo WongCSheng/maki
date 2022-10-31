@@ -161,8 +161,8 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 static void init() {
-	// Part 1
-	if (!GLHelper::init(1152, 864, "Maki Game Engine")) {
+	// Part 1: set window size
+	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
 		std::cout << "Unable to create OpenGL context" << std::endl;
 		std::exit(EXIT_FAILURE);
 	}

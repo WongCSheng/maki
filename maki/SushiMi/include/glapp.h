@@ -72,7 +72,7 @@ struct GLApp {
 
 	function to parse scene file
 	*/
-	static void init_scene(std::string);
+	//static void init_scene(std::string);
 	struct GLViewport
 	{
 		GLint x, y;

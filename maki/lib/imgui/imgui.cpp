@@ -13386,7 +13386,7 @@ void ImGui::ShowDebugLogWindow(bool* p_open)
     ImGuiContext& g = *GImGui;
     if (!(g.NextWindowData.Flags & ImGuiNextWindowDataFlags_HasSize))
         SetNextWindowSize(ImVec2(0.0f, GetFontSize() * 12.0f), ImGuiCond_FirstUseEver);
-    if (!Begin("Dear ImGui Debug Log", p_open) || GetCurrentWindow()->BeginCount > 1)
+    if (!Begin("SushiMi ImGui Debug Log", p_open) || GetCurrentWindow()->BeginCount > 1)
     {
         End();
         return;

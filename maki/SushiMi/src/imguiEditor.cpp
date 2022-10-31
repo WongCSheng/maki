@@ -39,6 +39,8 @@ void imguiEditorDraw(void)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
+	ImGui::ShowDemoWindow();
+	ImGui::ShowDebugLogWindow();
 
 	//if (drawTriangle)
 		/*glDrawArrays(GL_TRIANGLES, 0, 3);*/

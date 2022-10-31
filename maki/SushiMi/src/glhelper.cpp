@@ -197,22 +197,22 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
 	{
-		Object::objects["Object5"].position.x += 50.0f;
+		Object::objects["BaMi"].position.x += 50.0f;
 		std::cout << "Physics: Moving a circle object right" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
 	{
-		Object::objects["Object5"].position.x -= 50.0f;
+		Object::objects["BaMi"].position.x -= 50.0f;
 		std::cout << "Physics: Moving a circle object left" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
 	{
-		Object::objects["Object5"].position.y -= 50.0f;
+		Object::objects["BaMi"].position.y -= 50.0f;
 		std::cout << "Physics: Moving a circle object down" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
 	{
-		Object::objects["Object5"].position.y += 50.0f;
+		Object::objects["BaMi"].position.y += 50.0f;
 		std::cout << "Physics: Moving a circle object up" << std::endl;
 	}
 
@@ -260,10 +260,14 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	{
 		Camera2D::camera2d.move_flag = GL_TRUE;
 		Camera2D::camera2d.decelerate = GL_FALSE;
+		if (GLFW_RELEASE == action)
+		{
+			Camera2D::camera2d.decelerate = GL_TRUE;
+		}
 	}
+	
 	else if (GLFW_RELEASE == action)
 	{
-		Camera2D::camera2d.decelerate = GL_TRUE;
 		Camera2D::camera2d.camtype_flag = GL_FALSE;
 		Camera2D::camera2d.zoom_flag = GL_FALSE;
 		Camera2D::camera2d.left_turn_flag = GL_FALSE;

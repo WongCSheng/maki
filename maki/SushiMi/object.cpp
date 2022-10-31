@@ -66,7 +66,8 @@ void Object::update(GLdouble delta_time)
 			{
 				if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 1)
 				{
-					std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					//Please uncomment this when testing collision
+					//std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
 				}
 				//std::cout << "No collision detected" << std::endl;
 			}

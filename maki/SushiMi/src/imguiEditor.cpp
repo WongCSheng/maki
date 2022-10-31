@@ -45,13 +45,13 @@ void imguiEditorDraw(void)
 	//if (drawTriangle)
 		/*glDrawArrays(GL_TRIANGLES, 0, 3);*/
 
-	ImGui::Begin("I am the ImGui Window!");
-	ImGui::Text("Hi - Thea");
+	ImGui::Begin("Object Editor - Imgui Window");
+	ImGui::Text("Click to Select Object Colour");
 	//ImGui::Checkbox("Sample Checkbox", nullptr);
 	//Object::objects["Object5"].shd_ref;
 	//ImGui::SliderFloat("Size", (float*)Object::objects["Object5"].scale_up, 0.5f, 2.0f);
-	ImGui::SliderFloat("x-position", &Object::objects["Object5"].position.x, -500.0f, 500.0f);
-	ImGui::SliderFloat("y-position", &Object::objects["Object5"].position.y, -500.0f, 500.0f);
+	ImGui::SliderFloat("x-position", &Object::objects["BaMi"].position.x, -500.0f, 500.0f);
+	ImGui::SliderFloat("y-position", &Object::objects["BaMi"].position.y, -500.0f, 500.0f);
 
 	//rgb slider test
 	/*ImGui::SliderFloat("R in RGB", &Object::objects["Object5"].color.r, .0f, 1.0f);
@@ -62,7 +62,7 @@ void imguiEditorDraw(void)
 	//ImGui::SliderFloat("transparency", &Object::objects["Object5"].color., -500.0f, 500.0f);
 	//array to store RGBA values
 
-	float *arr[3] = { &Object::objects["Object5"].color.r, &Object::objects["Object5"].color.g, &Object::objects["Object5"].color.b/*, Object::objects["Object5"].color.a*/ };
+	float *arr[3] = { &Object::objects["BaMi"].color.r, &Object::objects["BaMi"].color.g, &Object::objects["BaMi"].color.b/*, Object::objects["Object5"].color.a*/ };
 
 	//RGB colour selection
 	ImGui::ColorEdit3("Color", *arr);

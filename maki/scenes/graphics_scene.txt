@@ -1,7 +1,42 @@
-modelname 	objname 	colour 		scale 			orientation 		pos 			shader
-5
-square 		Object1  	1.0 0.0 0.0   	200.0 150.0		0.0 -17.5  		-200 -200 		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
-triangle 	Camera 		0.0 0.0 0.0	50.0 100.0 		30.0 2.0   		0 0 			shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
-circle 		Object5 	1.0 0.0 1.0 	100.0 100.0 		0.0 0.0    		200 200			shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 	
-square  	Object6 	1.0 0.4 0.5 	400.0 150.0 		0.0 -22.5  		200 -200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
-square		Texture		1.0 0.0 0.0	400.0 200.0		0.0 0.0			0 0			texture ../shaders/Texture.vert ../shaders/Texture.frag
+modelname 	objname 	colour 			scale 			orientation 		pos 			shader
+40
+triangle 	Camera 		0.0 0.0 0.0		50.0 100.0 		30.0 2.0   		0 0 		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Object6 	1.0 0.4 0.5 	200.0 70.0 		0.0 -22.5  		550 300		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square		Texture		1.0 0.0 0.0		300.0 150.0		0.0 0.0			550 0				texture ../shaders/Texture.vert ../shaders/Texture.frag
+square  	Wall1-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-25 450		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall1-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		25 450		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall2-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		75 400		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall2-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		125 400		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall2-3 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-75 400		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall2-4 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-125 400		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall3-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-175 350		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall3-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		175 350		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall4-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-225 300		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall4-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		225 300		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall5-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-225 250		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall5-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		225 250		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall6-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-275 200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall6-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		275 200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall7-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-325 150		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall7-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		325 150		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall8-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-325 150		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall8-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		325 150		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall9-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-325 100		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall9-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		325 100		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall10-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-325 50		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall10-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		325 50		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall10-3 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-225 50		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall10-4 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		225 50		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-275 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-225 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-3 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-175 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-4 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-125 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-5 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-75 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-6 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-25 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-7 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		25 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-8 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		75 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-9 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		125 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-10 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		175 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-11 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		225 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+square  	Wall11-12 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		275 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+circle 		BaMi 		1.0 0.0 1.0 	25.0 25.0 		0.0 0.0    		25 200			shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 	

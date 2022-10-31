@@ -16,7 +16,7 @@ This file implements functionality for the texture creation and implementation
 #include "../fonts.h"
 
 /*--------------------------------------------------------------------------- */
-GLuint texture;
+unsigned int texture;
 int width, height, nrChannels;
 void Texture::generateTexture()
 {
@@ -39,6 +39,22 @@ void Texture::generateTexture()
 
 void Texture::drawTexture()
 {
+	float vertices[] = {
+		// positions          // colors           // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+	};
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+	unsigned int VBO;
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	unsigned int VAO;
+	glGenVertexArrays(1, &VAO);
+
 	GLApp::shdrpgms["texture"].Use();
 	//GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));

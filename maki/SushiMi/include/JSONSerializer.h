@@ -98,6 +98,8 @@ public:
 	//use these when debugging
 	bool DeserializeAndPrintConsole(const std::string& filepath);
 
+	static void SerializeEntity(rapidjson::Document& doc, Object& entity);
+
 };
 
 /*  _________________________________________________________________________ */

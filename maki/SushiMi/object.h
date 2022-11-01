@@ -1,6 +1,7 @@
 /*!
 @file		object.h
 @author		louishetong.wang@digipen.edu
+@co-author	p.tzechengjennifer@digipen.edu
 @date		20/09/2022
 
 This file implements functionality for the object itself. So once the object is
@@ -13,6 +14,7 @@ to draw the object, then unbind and unuse the shader program.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "include/common_headers.hpp"
+#include <rttr/type>
 #include "Camera2D.h"
 #include <GL/glew.h>
 #include <map>
@@ -26,7 +28,7 @@ to draw the object, then unbind and unuse the shader program.
 class Object
 {
 public:
-
+	
 	void draw() const;
 
 	void update(GLdouble delta_time);
@@ -61,10 +63,15 @@ public:
 
 	static std::map<std::string, Object> objects; // singleton
 
+	//testing color based animation
+	GLboolean anim_rainbow{ GL_TRUE }; 
+	int rainbowCount = 0;
+
 	GLboolean rot_right{ GL_FALSE };
 	GLboolean rot_left{ GL_FALSE };
 	GLboolean scale_up{ GL_FALSE };
 	GLboolean scale_down{ GL_FALSE };
+	RTTR_ENABLE();
 };
 
 #endif // !OBEJCT_H_

@@ -143,21 +143,21 @@ entity to serialize
 This function serializes a single entity.
 */
 
-//static void SerializeEntity(rapidjson::Document& doc, Entity entity) {
-//
-//	rapidjson::Value TestObjectValue(rapidjson::kObjectType);
-//	rttr::type type = entity.get_type();
-//	//if (entity.hascomponentABC)
-//	//1. Get all the data of the object
-//
-//	rttr::variant health_value = type.get_property("Health").get_value(entity);
-//	rttr::variant damage_value = type.get_property("Damage").get_value(entity);
-//	rttr::variant position_value = type.get_property("Position").get_value(entity);
-//
-//	//2. write them into the document
-//	doc.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
-//	doc.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
-//
-//}
+static void SerializeEntity(rapidjson::Document& doc, Object& entity) {
+
+	//rapidjson::Value TestObjectValue(rapidjson::kObjectType);
+	//rttr::type type = entity.get_type();
+	////if (entity.hascomponentABC)
+	////1. Get all the data of the object
+
+	//rttr::variant health_value = type.get_property("Health").get_value(entity);
+	//rttr::variant damage_value = type.get_property("Damage").get_value(entity);
+	//rttr::variant position_value = type.get_property("Position").get_value(entity);
+
+	////2. write them into the document
+	//doc.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
+	//doc.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
+
+}
 
 

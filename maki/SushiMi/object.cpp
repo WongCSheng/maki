@@ -2,6 +2,7 @@
 @file		object.cpp
 @author		louishetong.wang@digipen.edu
 @co-author	fei.x@digiprn.edu
+			p.tzechengjennifer@digipen.edu
 @date		20/09/2022
 
 This file implements functionality for the object itself. So once the object is
@@ -139,6 +140,28 @@ void Object::update(GLdouble delta_time)
 	else
 	{
 		orientation.x += orientation.y * static_cast<GLfloat>(GLHelper::delta_time);
+	}
+
+	// color animation
+	if (anim_rainbow) { 
+		if (rainbowCount == 100)
+			Object::objects["anim"].color = { 148, 0, 211 };
+		else if (rainbowCount == 200)
+			Object::objects["anim"].color = { 75, 0, 130 };
+		else if (rainbowCount == 300)
+			Object::objects["anim"].color = { 0, 0, 255 };
+		else if (rainbowCount == 400)
+			Object::objects["anim"].color = { 0, 255, 0 };
+		else if (rainbowCount == 500)
+			Object::objects["anim"].color = { 255, 255, 0 };
+		else if (rainbowCount == 600)
+			Object::objects["anim"].color = { 255, 127, 0 };
+		else if (rainbowCount == 700) {
+
+			Object::objects["anim"].color = { 255, 0 , 0 };
+			rainbowCount = 0;
+		}
+		rainbowCount++;
 	}
 
 	const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);

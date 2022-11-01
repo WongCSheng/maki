@@ -1,5 +1,5 @@
 modelname 	objname 	colour 			scale 			orientation 		pos 			shader
-56	
+57	
 triangle 	Camera 		0.0 0.0 0.0		50.0 100.0 		30.0 2.0   		0 0 		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 square  	ZRect	 	0.0 0.0 0.0 	200.0 70.0 		0.0 -22.5  		550 300		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 square  	Wall1-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-25 450		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
@@ -56,3 +56,4 @@ square  	Wall11-11 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		225 0		shdrpgm ../shader
 square  	Wall11-12 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		275 0		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 circle 		temp 		0.0 0.0 1.0 	25.0 25.0 		0.0 0.0    		25 200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 
 square		Texture		1.0 0.0 0.0		1.0 1.0			0.0 0.0			550 0		texture ../shaders/Texture.vert ../shaders/Texture.frag
+circle 		anim 		0.0 0.0 1.0 	25.0 25.0 		0.0 0.0    		200 200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag 

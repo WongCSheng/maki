@@ -81,7 +81,7 @@ void Object::update(GLdouble delta_time)
 	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
 	{
-		if (e1.first == "Bami")
+		if (e1.first == "temp")
 		{
 			for (auto& e2 : Object::objects)
 			{
@@ -114,13 +114,13 @@ void Object::update(GLdouble delta_time)
 	
 	if (scale_up == GL_TRUE)
 	{
-		Object::objects["Object6"].scaling.x++;
-		Object::objects["Object6"].scaling.y++;
+		Object::objects["temp"].scaling.x++;
+		Object::objects["temp"].scaling.y++;
 	}
 	else if (scale_down == GL_TRUE)
 	{
-		Object::objects["Object6"].scaling.x--;
-		Object::objects["Object6"].scaling.y--;
+		Object::objects["temp"].scaling.x--;
+		Object::objects["temp"].scaling.y--;
 	}
 	const glm::mat3 scale_mat
 	{
@@ -130,11 +130,11 @@ void Object::update(GLdouble delta_time)
 	};
 	if (rot_left == GL_TRUE)
 	{
-		Object::objects["Object6"].orientation.x += Object::objects["Object6"].orientation.y * 0.2f;
+		Object::objects["ZRect"].orientation.x += Object::objects["ZRect"].orientation.y * 0.2f;
 	}
 	else if (rot_right == GL_TRUE)
 	{
-		Object::objects["Object6"].orientation.x -= Object::objects["Object6"].orientation.y * 0.2f;
+		Object::objects["ZRect"].orientation.x -= Object::objects["ZRect"].orientation.y * 0.2f;
 	}
 	else
 	{

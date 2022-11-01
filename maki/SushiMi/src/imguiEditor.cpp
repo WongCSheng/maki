@@ -17,6 +17,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 #include "..\include\imguiEditor.h"
 
+std::vector<const char*> objectString;
 
 void imguiEditorInit(void)
 {
@@ -26,14 +27,23 @@ void imguiEditorInit(void)
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
+	/*for (auto&e1 : Object::objects)
+	{
+		std::string s(e1.first);
+		const char* s2 = s.c_str();
+		objectString.push_back(s2);
 
-	
+	}
+	for(int i = 0; i < objectString.size(); ++i)
+		std::cout << objectString[i] << std::endl;*/
 
 }
 
 void imguiEditorDraw(void)
 {
 	//bool drawTriangle = true;
+	
+
 
 	//drawTriangle = true;
 	ImGui_ImplOpenGL3_NewFrame();
@@ -41,17 +51,20 @@ void imguiEditorDraw(void)
 	ImGui::NewFrame();
 	ImGui::ShowDemoWindow();
 	ImGui::ShowDebugLogWindow();
+	
 
 	//if (drawTriangle)
 		/*glDrawArrays(GL_TRIANGLES, 0, 3);*/
 
 	ImGui::Begin("Object Editor - Imgui Window");
-	ImGui::Text("Click to Select Object Colour");
+	ImGui::Text("Click to Select Object");
+	
+	//ImGui::Text(objectString);
 	//ImGui::Checkbox("Sample Checkbox", nullptr);
 	//Object::objects["Object5"].shd_ref;
 	//ImGui::SliderFloat("Size", (float*)Object::objects["Object5"].scale_up, 0.5f, 2.0f);
-	ImGui::SliderFloat("x-position", &Object::objects["BaMi"].position.x, -500.0f, 500.0f);
-	ImGui::SliderFloat("y-position", &Object::objects["BaMi"].position.y, -500.0f, 500.0f);
+	ImGui::SliderFloat("x-position", &Object::objects["temp"].position.x, -500.0f, 500.0f);
+	ImGui::SliderFloat("y-position", &Object::objects["temp"].position.y, -500.0f, 500.0f);
 
 	//rgb slider test
 	/*ImGui::SliderFloat("R in RGB", &Object::objects["Object5"].color.r, .0f, 1.0f);
@@ -62,7 +75,7 @@ void imguiEditorDraw(void)
 	//ImGui::SliderFloat("transparency", &Object::objects["Object5"].color., -500.0f, 500.0f);
 	//array to store RGBA values
 
-	float *arr[3] = { &Object::objects["BaMi"].color.r, &Object::objects["BaMi"].color.g, &Object::objects["BaMi"].color.b/*, Object::objects["Object5"].color.a*/ };
+	float *arr[3] = { &Object::objects["temp"].color.r, &Object::objects["temp"].color.g, &Object::objects["temp"].color.b/*, Object::objects["Object5"].color.a*/ };
 
 	//RGB colour selection
 	ImGui::ColorEdit3("Color", *arr);

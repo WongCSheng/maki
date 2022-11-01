@@ -54,15 +54,8 @@ void sceneInitializer(std::string scene_filename)
 			if (mdl_iterator == Model::models.end())
 			{
 				Model curr_mdl;
-				if (model_name == "circle")
-				{
-					mesh_path = "../mesh/circle.msh";
-					curr_mdl.primitive_type = GL_TRIANGLE_FAN;
-					//hasMass = true;
-					//currObj.status = true; //alive
-
-				}
-				else if (model_name == "square")
+				
+				if (model_name == "square")
 				{
 					mesh_path = "../mesh/square.msh";
 					curr_mdl.primitive_type = GL_TRIANGLES;
@@ -76,6 +69,14 @@ void sceneInitializer(std::string scene_filename)
 				{
 					mesh_path = "../mesh/linebox.msh";
 					curr_mdl.primitive_type = GL_LINE;
+				}
+				else if (model_name == "circle")
+				{
+					mesh_path = "../mesh/circle.msh";
+					curr_mdl.primitive_type = GL_TRIANGLE_FAN;
+					//hasMass = true;
+					//currObj.status = true; //alive
+
 				}
 				curr_mdl = curr_mdl.init(mesh_path);
 				Model::models.insert(std::pair<std::string, Model>(model_name, curr_mdl));
@@ -131,7 +132,10 @@ void sceneInitializer(std::string scene_filename)
 			}
 			else if (model_name == "circle")
 			{
-
+				currObj.aabb.min.x = currObj.position.x - (currObj.scaling.x); //calculating bottom left min.x
+				currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y); //calculating bottom left min.y
+				currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x); //calculating top right max.x
+				currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y); //calculating top right max.y
 			}
 			
 			

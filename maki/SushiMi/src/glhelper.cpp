@@ -197,46 +197,46 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
 	{
-		Object::objects["BaMi"].position.x += 50.0f;
-		std::cout << "Physics: Moving a circle object right" << std::endl;
+		Object::objects["temp"].position.x += 50.0f;
+		std::cout << "Physics: Moving player right" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
 	{
-		Object::objects["BaMi"].position.x -= 50.0f;
-		std::cout << "Physics: Moving a circle object left" << std::endl;
+		Object::objects["temp"].position.x -= 50.0f;
+		std::cout << "Physics: Moving a player left" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
 	{
-		Object::objects["BaMi"].position.y -= 50.0f;
+		Object::objects["temp"].position.y -= 50.0f;
 		std::cout << "Physics: Moving a circle object down" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
 	{
-		Object::objects["BaMi"].position.y += 50.0f;
+		Object::objects["temp"].position.y += 50.0f;
 		std::cout << "Physics: Moving a circle object up" << std::endl;
 	}
 
-	/* for object6's rotation implementation*/
+	/* for Rect's rotation implementation*/
 	/* the lower right rectangle*/
 	// press J to rotate right faster, press K to rotate left
 	if (GLFW_PRESS == action && key == GLFW_KEY_J)
 	{
-		Object::objects["Object6"].rot_left = GL_TRUE;
+		Object::objects["ZRect"].rot_left = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_K)
 	{
-		Object::objects["Object6"].rot_right = GL_TRUE;
+		Object::objects["ZRect"].rot_right = GL_TRUE;
 	}
 
 	/* for object6's scaling implementation*/
 	// Press M to scale upm press N to scale down
 	if (GLFW_PRESS == action && key == GLFW_KEY_M)
 	{
-		Object::objects["Object6"].scale_up = GL_TRUE;
+		Object::objects["ZRect"].scale_up = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_N)
 	{
-		Object::objects["Object6"].scale_down = GL_TRUE;
+		Object::objects["ZRect"].scale_down = GL_TRUE;
 	}
 
 	//for camera physics
@@ -273,10 +273,10 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Camera2D::camera2d.left_turn_flag = GL_FALSE;
 		Camera2D::camera2d.right_turn_flag = GL_FALSE;
 		Camera2D::camera2d.move_flag = GL_FALSE;
-		Object::objects["Object6"].rot_left = GL_FALSE;
-		Object::objects["Object6"].rot_right = GL_FALSE;
-		Object::objects["Object6"].scale_up = GL_FALSE;
-		Object::objects["Object6"].scale_down = GL_FALSE;
+		Object::objects["ZRect"].rot_left = GL_FALSE;
+		Object::objects["ZRect"].rot_right = GL_FALSE;
+		Object::objects["ZRect"].scale_up = GL_FALSE;
+		Object::objects["ZRect"].scale_down = GL_FALSE;
 	}
 
 	

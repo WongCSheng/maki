@@ -1,7 +1,7 @@
 /*!************************************
 \file		graphicsSerializer.cpp
 \author		thea.sea, thea.sea@digipen.edu (for graphics object serializing)
-\co-author	aurelia.chong (15%)
+\co-author	aurelia.chong (for AABB calculations)
 \brief		function to initialize the graphics scene from a .txt file
 **************************************/
 #include "../include/common_headers.hpp"

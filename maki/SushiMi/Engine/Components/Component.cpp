@@ -1,8 +1,16 @@
-/*
-File:		 ECS.cpp
-Author:		 w.chongsheng@digipen.edu
-Description: This file contains the function definition for Entities and Components
-*/
+//******************************************************************************/
+/*!
+\file		Component.cpp
+\author 	Wong Chong Sheng
+\email    	w.chongsheng@digipen.edu
+\date   	25/10/2022
+\brief		Component class.
+
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ //******************************************************************************/
 
 #include "Component.h"
 #include "../Engine/Components/Transform/Transform.h"

@@ -86,7 +86,6 @@ void sceneInitializer(std::string scene_filename)
 
 			//2nd param: Given Object Name
 			std::string object_name{ ObjVector[i + 1] };
-
 			
 			//3rd param: R of RGB
 			GLfloat red{ std::stof(ObjVector[i + 2]) };
@@ -137,8 +136,7 @@ void sceneInitializer(std::string scene_filename)
 				currObj.aabb.min.y = currObj.position.y - (currObj.scaling.y); //calculating bottom left min.y
 				currObj.aabb.max.x = currObj.position.x + (currObj.scaling.x); //calculating top right max.x
 				currObj.aabb.max.y = currObj.position.y + (currObj.scaling.y); //calculating top right max.y
-			}
-			
+			}			
 			
 
 			//12th param: shader program name
@@ -176,7 +174,7 @@ void sceneInitializer(std::string scene_filename)
 			currObj.mdl_ref = mdl_iterator;
 			currObj.shd_ref = shdr_iterator;
 			//currObj.shd_ref = GLApp::shdrpgms.find(shdr_name);
-			Object::objects.insert(std::pair<std::string, Object>(object_name, currObj));
+			Object::objects.insert({ object_name, currObj });
 		}
 	}
 }

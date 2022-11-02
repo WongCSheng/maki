@@ -92,13 +92,15 @@ void Object::update(GLdouble delta_time)
 	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
 	{
+		std::cout << e1.first << std::endl;
+		
 		if (e1.first == "temp")
 		{
 			for (auto& e2 : Object::objects)
 			{
 				if (e1.first != e2.first)
 				{
-					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 1)
+					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity))
 					{
 						//Please uncomment this when testing collision
 						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
@@ -107,8 +109,8 @@ void Object::update(GLdouble delta_time)
 				}
 			}
 		}
-		else
-			break;
+		/*else
+			break;*/
 
 	}
 

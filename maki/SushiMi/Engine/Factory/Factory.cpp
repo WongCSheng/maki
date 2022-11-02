@@ -1,3 +1,16 @@
+//******************************************************************************/
+/*!
+\file		Factory.cpp
+\author 	Wong Chong Sheng
+\email    	w.chongsheng@digipen.edu
+\date   	25/10/2022
+\brief		Factory for managing GameObjects.
+
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ //******************************************************************************/
 
 #include "Factory.h"
 #include "../Game Object/GameObject.h"

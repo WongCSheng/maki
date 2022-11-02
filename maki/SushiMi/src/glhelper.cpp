@@ -16,6 +16,7 @@ pointers to OpenGL implementations.
 #include "../object.h"
 #include <../Camera2D.h>
 #include <iostream>
+#include <../include/AudioEngine.h>
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
@@ -236,21 +237,25 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	{
 		Object::objects["temp"].position.x += 50.0f;
 		std::cout << "Physics: Moving player right" << std::endl;
+		AudioManager.PlayClip("WalkSFX.wav");
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
 	{
 		Object::objects["temp"].position.x -= 50.0f;
 		std::cout << "Physics: Moving a player left" << std::endl;
+		AudioManager.PlayClip("WalkSFX.wav");
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
 	{
 		Object::objects["temp"].position.y -= 50.0f;
 		std::cout << "Physics: Moving a circle object down" << std::endl;
+		AudioManager.PlayClip("WalkSFX.wav");
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
 	{
 		Object::objects["temp"].position.y += 50.0f;
 		std::cout << "Physics: Moving a circle object up" << std::endl;
+		AudioManager.PlayClip("WalkSFX.wav");
 	}
 
 	/* for Rect's rotation implementation*/
@@ -312,8 +317,8 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Object::objects["anim"].anim_rainbow = GL_FALSE;
 		Object::objects["anim"].anim_bw = GL_TRUE;
 	}
-	//for cloning circle
-	if (GLFW_PRESS == action && key == GLFW_KEY_3) {
+	//for cloning circle (doesnt work fully)
+	if (GLFW_PRESS == action && key == GLFW_KEY_TAB) {
 		Clone(100,100);
 	}
 	

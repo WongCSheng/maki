@@ -15,6 +15,7 @@ eg if you are testing an update function, go into update() and put your function
 #include <../include/glapp.h>
 #include <crtdbg.h> 
 #include <memory>
+#include <../include/AudioEngine.h>
 
 
 
@@ -215,6 +216,12 @@ static void init() {
 
 	imguiEditorInit();
 
+	//load audio files
+	AudioManager.LoadMusic("BGM.wav");
+	AudioManager.LoadSound("WalkSFX.wav");
+	//play bgm
+	AudioManager.PlayMusic("BGM.wav");
+	
 	//test serialize
 	/*using namespace rapidjson;
 	using namespace std;
@@ -248,6 +255,10 @@ void cleanup() {
 	// Part 2
 	GLHelper::cleanup();
 	
+	//unload music
+	AudioManager.UnloadMusic("BGM.wav");
+	AudioManager.UnloadMusic("WalkSFX.wav");
+
 	////imgui
 	//Shutdown
 	ImGui_ImplOpenGL3_Shutdown();

@@ -162,7 +162,7 @@ void _audioManager::CleanPlaying()
 */
 void _audioManager::LoadSound(string name)
 {
-    string pathString = "./Assets/Sound/" + name + '\0';
+    string pathString = "../assets/Audio/" + name + '\0';
     char* pathName = new char[pathString.length() + 1];
     copy(pathString.begin(), pathString.end(), pathName);
     Sound* sound = 0;
@@ -180,7 +180,7 @@ void _audioManager::LoadSound(string name)
 */
 void _audioManager::LoadMusic(string name)
 {
-    string pathString = "./Assets/Music/" + name + '\0';
+    string pathString = "../assets/Audio/" + name + '\0';
     char* pathName = new char[pathString.length() + 1];
     copy(pathString.begin(), pathString.end(), pathName);
     Sound* music = 0;

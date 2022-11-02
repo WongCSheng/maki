@@ -1,33 +1,34 @@
 /*!
 @file		glapp.h
-@author		louishetong.wang@digipen.edu
-@date		20/09/2022
+@author		pghali@digipen.edu
+@co-author  louishetong.wang@digipen.edu
+@date		29/05/2022
 
 This file contains the declaration of namespace GLApp that encapsulates the
 functionality required to implement an OpenGL application including
 compiling, linking, and validating shader programs
 setting up geometry and index buffers,
 configuring VAO to present the buffered geometry and index data to
-vertex shaders, textures.(Not yet added in as of this version)
+vertex shaders,
+configuring textures (in later labs),
+configuring cameras (in later labs),
+and transformations (in later labs).
 *//*__________________________________________________________________________*/
 
 /*                                                                      guard
 ----------------------------------------------------------------------------- */
-#include "../include/glslshader.h"
-#include "../include/glhelper.h"
-#include <glm/glm/glm.hpp>
-#include <glm/glm/gtc/type_ptr.hpp>
-#include <array>
-#include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <list>
-#include <random>
 #ifndef GLAPP_H
 #define GLAPP_H
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
+#include "../Headers/STL_Header.h"
+#include "../include/glslshader.h"
+#include "../include/glhelper.h"
+#include <glm/glm/glm.hpp>
+#include <glm/glm/gtc/type_ptr.hpp>
+#include "../Engine/Camera/Camera2D.h"
+#include "../Engine/Mesh/model.h"
 
 struct GLApp {
 	/*  _________________________________________________________________________ */
@@ -63,8 +64,6 @@ struct GLApp {
 	*/
 	static void cleanup();
 
-	static void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr);
-
 	/*  _________________________________________________________________________ */
 	/*! init_scene
 	@param none
@@ -84,6 +83,5 @@ struct GLApp {
 
 
 };
-
 
 #endif /* GLAPP_H */

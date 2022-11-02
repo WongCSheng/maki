@@ -1,7 +1,12 @@
 /* !
 @file    glslshader.h
-@author  louishetong.wang@digipen.edu
-@date    20/09/2022
+@author  pghali@digipen.edu
+@date    06/11/2016
+
+Note: The contents of this file must not be updated by students. Otherwise,
+something that works for you will not work for me. If you want something to be
+modified, updated, or altered and it is useful for the entire class, please
+speak to me.
 
 This file contains the declaration of class GLSLShader that encapsulates the
 functionality required to load shader source; compile shader source; link
@@ -19,29 +24,32 @@ program object.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
+#include "../Headers/STL_Header.h"
 #include <GL/glew.h> // for access to OpenGL API declarations 
 #include <glm/glm/glm.hpp>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <cstdlib>
-#include <string>
-#include <vector>
-#include <map>
-#include "Vector.h"
-#include "Matrix.h"
-#include "vector3.h"
+#include "../Headers/Math_Header.h"
 
 /*  _________________________________________________________________________ */
 class GLSLShader
+    /*! GLSLShader class.
+    */
 {
 public:
-    // default ctor
-    GLSLShader() : pgm_handle(0), is_linked(GL_FALSE) {  }
+    //~GLSLShader() { DeleteShaderProgram(); std::cout << "Deleted Shader Program" << std::endl; }
+    // default ctor required to initialize GLSLShader object to safe state
+    GLSLShader() : pgm_handle(0), is_linked(GL_FALSE) { /* empty by design */ }
 
     // This function not only compiles individual shader sources but links
     // multiple shader objects to create an exectuable shader program.
+    // For each shader source, the function requires the full path to the file 
+    // (containing shader source) and the type of shader program (vertex,
+    // fragment, geometry, a tessellation type). This information is combined
+    // as an std::pair object and the multiple pairs are supplied in a
+    // std::vector object.
+    // For each shader file, the function implements the six steps described in T
+    // CompileShaderFromFile(). After the shader objects are created, a call to
+    // Link() will create a shader executable program. This is followed by a call
+    // to Validate() ensuring the program can execute in the current OpenGL state.
     GLboolean CompileLinkValidate(std::vector<std::pair<GLenum, std::string>>);
 
     // This function does the following:
@@ -127,14 +135,13 @@ public:
     // variables of different types for the current program object
     void SetUniform(GLchar const* name, GLboolean val);
     void SetUniform(GLchar const* name, GLint val);
-    void SetUniform(GLchar const* name, GLuint val);
     void SetUniform(GLchar const* name, GLfloat val);
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y);
+    void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z);
+    void SetUniform(GLchar const* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     void SetUniform(GLchar const* name, glm::vec2 const& val);
     void SetUniform(GLchar const* name, glm::vec3 const& val);
     void SetUniform(GLchar const* name, glm::mat3 const& val);
-
-    void SetUniform(GLchar const* name, glm::vec4 const& val);
 
     // display the list of active vertex attributes used by vertex shader
     void PrintActiveAttribs() const;
@@ -145,7 +152,13 @@ public:
 private:
     enum ShaderType {
         VERTEX_SHADER = GL_VERTEX_SHADER,
-        FRAGMENT_SHADER = GL_FRAGMENT_SHADER
+        FRAGMENT_SHADER = GL_FRAGMENT_SHADER,
+        GEOMETRY_SHADER = GL_GEOMETRY_SHADER,
+        TESS_CONTROL_SHADER = GL_TESS_CONTROL_SHADER,
+        TESS_EVALUATION_SHADER = GL_TESS_EVALUATION_SHADER,
+        // ignore compute shader for now because it is not connected to
+        // the graphics pipe
+        // COMPUTE_SHADER = GL_COMPUTE_SHADER
     };
 
     GLuint pgm_handle = 0;  // handle to linked shader program object

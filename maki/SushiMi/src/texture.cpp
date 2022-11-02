@@ -24,12 +24,15 @@ void Texture::generateTexture()
 	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
+	glGenVertexArrays(1, &VAO);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
 	else
 	{
@@ -51,14 +54,20 @@ void Texture::drawTexture()
 	};
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-	unsigned int VBO;
+
+	//colour position in attribute index 1 and bind to point 4
+	glEnableVertexArrayAttrib(VAO, 0);
+	glVertexArrayVertexBuffer(VAO, 4, VBO, 0, sizeof(glm::vec2));
+	glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
+	glVertexArrayAttribBinding(VAO, 0, 4);
+
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
+	
 
 	GLApp::shdrpgms["texture"].Use();
+	glActiveTexture(GL_TEXTURE0);
 	//GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
@@ -74,5 +83,6 @@ void Texture::drawTexture()
 	glBindTextureUnit(GL_TEXTURE_2D, texture);
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
 	glBindVertexArray(0);
+
 	GLApp::shdrpgms["texture"].UnUse();
 }

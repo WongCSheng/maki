@@ -69,7 +69,7 @@ void GLApp::init() {
 	// Initialize camera here
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 
-	Font::init();
+	//Font::init();
 	Texture::generateTexture();
 	//Texture::drawTexture();  // wont be needed anymore
 

@@ -27,7 +27,6 @@ public:
 	};
 	static std::map<char, Character> Characters;	// Singleton
 	static int init();
-	static void setup_shdrpgm();
 	static void RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color);
 
 };

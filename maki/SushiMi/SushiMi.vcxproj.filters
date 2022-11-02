@@ -81,6 +81,36 @@
     <ClCompile Include="src\collision.cpp">
       <Filter>GameEngine\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Components\Component.cpp">
+      <Filter>GameEngine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Transform\Transform.cpp">
+      <Filter>GameEngine\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Object\GameObject.cpp">
+      <Filter>GameEngine\Graphics\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Factory\Factory.cpp">
+      <Filter>GameEngine\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Transformer.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\SystemFrame.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
+      <Filter>GameEngine\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\Core.cpp">
+      <Filter>GameEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Renderer.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\CameraSystem.cpp">
+      <Filter>GameEngine\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -181,6 +211,39 @@
     <ClInclude Include="include\collision.h">
       <Filter>GameEngine\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\STL_Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Component.h">
+      <Filter>GameEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Transform\Transform.h">
+      <Filter>GameEngine\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\GameObject.h">
+      <Filter>GameEngine\Graphics\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Factory\Factory.h">
+      <Filter>GameEngine\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Transformer.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\SystemFrame.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Linked List\LinkedList.h">
+      <Filter>GameEngine\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Core.h">
+      <Filter>GameEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Renderer.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\CameraSystem.h">
+      <Filter>GameEngine\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -242,6 +305,24 @@
     </Filter>
     <Filter Include="GameEngine\Collision">
       <UniqueIdentifier>{0711b7f9-9eb8-4aa3-9095-5c261e75ac4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Component">
+      <UniqueIdentifier>{7f9e4ed8-c0c4-48ad-82a5-5ace48765416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Factory">
+      <UniqueIdentifier>{1d8cc5bb-2478-4a27-9db8-2054d9fc58a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Component\Transform">
+      <UniqueIdentifier>{046cbef8-1fa6-4d75-ae1e-18d6711c4844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System">
+      <UniqueIdentifier>{dbdebb6c-0c81-40d1-821d-d3b7fde31249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\LinkedList">
+      <UniqueIdentifier>{64bcac75-7af3-4cc1-a197-e53310e767cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Core">
+      <UniqueIdentifier>{f99923e3-d01c-4a30-86cb-3ebd7916fee2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -122,6 +122,8 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 
 
 
+
+
 //SAVING
 //NOT IMPLEMENTED, NOT FULLY FUNCTIONAL
 
@@ -140,24 +142,39 @@ doc to serialize into
 entity to serialize
 @return void
 
-This function serializes a single entity.
+This function serializes a single object.
 */
 
-static void SerializeEntity(rapidjson::Document& doc, Object& entity) {
 
-	//rapidjson::Value TestObjectValue(rapidjson::kObjectType);
-	//rttr::type type = entity.get_type();
+rapidjson::Value Serializer::SerializeObjects(const std::string& filepath, std::map<std::string, Object> objMap) {
+
+	using namespace rapidjson;
+	using namespace std;
+	string tempStr;
+	Document doc;
+	ifstream ifs(filepath);
+	IStreamWrapper isw(ifs);
+
+	rapidjson::Value TestObjectValue(rapidjson::kObjectType);
+	for (auto& [name, obj] : objMap)
+	{
+		std::cout << "name of obj" << name << std::endl;
+		rttr::type type = obj.get_type();
+		rttr::variant rainbowCount_val = type.get_property("rainbowCount").get_value(obj);
+		rttr::variant orientation_val = type.get_property("orientation").get_value(obj);
+		//TestObjectValue.AddMember("orientation", orientation_val.get_value<glm::vec2>(), doc.GetAllocator());
+		TestObjectValue.AddMember("rainbowCount", rainbowCount_val.get_value<int>(), doc.GetAllocator());
+	}
 	////if (entity.hascomponentABC)
 	////1. Get all the data of the object
 
-	//rttr::variant health_value = type.get_property("Health").get_value(entity);
 	//rttr::variant damage_value = type.get_property("Damage").get_value(entity);
 	//rttr::variant position_value = type.get_property("Position").get_value(entity);
 
 	////2. write them into the document
-	//doc.AddMember("Health", health_value.get_value<int>(), doc.GetAllocator());
 	//doc.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
 
+	return TestObjectValue;
 }
 
 

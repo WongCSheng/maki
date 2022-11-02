@@ -55,7 +55,6 @@ public:
 			tempStr = iter->name.GetString(); //gets json property name
 			//rttr::property propertyType = ObjType.get_property(tempStr); //get the name by type
 
-
 			if (iter->value.IsInt())
 				obj.SetInt(iter->value.GetInt());
 
@@ -98,7 +97,7 @@ public:
 	//use these when debugging
 	bool DeserializeAndPrintConsole(const std::string& filepath);
 
-	static void SerializeEntity(rapidjson::Document& doc, Object& entity);
+	static rapidjson::Value SerializeObjects(const std::string& filepath, std::map<std::string, Object> objMap);
 
 };
 

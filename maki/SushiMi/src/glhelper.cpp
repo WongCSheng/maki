@@ -265,6 +265,16 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 			Camera2D::camera2d.decelerate = GL_TRUE;
 		}
 	}
+
+	//for circle animation
+	if (GLFW_PRESS == action && key == GLFW_KEY_1) {
+		Object::objects["anim"].anim_rainbow = GL_TRUE;
+		Object::objects["anim"].anim_bw = GL_FALSE;
+	}
+	if (GLFW_PRESS == action && key == GLFW_KEY_2) {
+		Object::objects["anim"].anim_rainbow = GL_FALSE;
+		Object::objects["anim"].anim_bw = GL_TRUE;
+	}
 	
 	else if (GLFW_RELEASE == action)
 	{

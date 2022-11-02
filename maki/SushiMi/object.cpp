@@ -49,13 +49,13 @@ void Object::draw() const
 
 		glBindVertexArray(0);
 		GLApp::shdrpgms[shd_ref->first].UnUse();
-	
+
 	}
 	else
 	{
 		// load shader program
 		GLApp::shdrpgms[shd_ref->first].Use();		// this will load 4
-		
+
 
 		// bind VAO of object's model
 		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
@@ -79,6 +79,11 @@ All the transformation matrix scale,rot, trans and model to ndc transformation.
 */
 void Object::update(GLdouble delta_time)
 {
+	//count time for animation
+	double curr_time = glfwGetTime();
+	static double prev_time = curr_time;
+	static double start_time = glfwGetTime();
+
 	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
 	{
@@ -99,7 +104,7 @@ void Object::update(GLdouble delta_time)
 		}
 		else
 			break;
-		
+
 	}
 
 
@@ -112,7 +117,7 @@ void Object::update(GLdouble delta_time)
 		e1.second.aabb.max.y = e1.second.position.y + (e1.second.scaling.y / 2); //calculating top right max.y
 
 	}
-	
+
 	if (scale_up == GL_TRUE)
 	{
 		Object::objects["temp"].scaling.x++;
@@ -143,25 +148,43 @@ void Object::update(GLdouble delta_time)
 	}
 
 	// color animation
-	if (anim_rainbow) { 
-		if (rainbowCount == 100)
+	if (anim_rainbow) {
+		rainbowCount = curr_time - start_time;
+		if (rainbowCount < .25)
 			Object::objects["anim"].color = { 148, 0, 211 };
-		else if (rainbowCount == 200)
+		else if (rainbowCount < .5)
 			Object::objects["anim"].color = { 75, 0, 130 };
-		else if (rainbowCount == 300)
+		else if (rainbowCount < .75)
 			Object::objects["anim"].color = { 0, 0, 255 };
-		else if (rainbowCount == 400)
+		else if (rainbowCount < 1)
 			Object::objects["anim"].color = { 0, 255, 0 };
-		else if (rainbowCount == 500)
+		else if (rainbowCount < 1.25)
 			Object::objects["anim"].color = { 255, 255, 0 };
-		else if (rainbowCount == 600)
+		else if (rainbowCount < 1.5)
 			Object::objects["anim"].color = { 255, 127, 0 };
-		else if (rainbowCount == 700) {
-
+		else if (rainbowCount < 1.75)
 			Object::objects["anim"].color = { 255, 0 , 0 };
-			rainbowCount = 0;
+		else {
+			prev_time = glfwGetTime();
+			curr_time = glfwGetTime();
+			prev_time = curr_time;
+			start_time = glfwGetTime();
 		}
-		rainbowCount++;
+	}
+
+	if (anim_bw) {
+		bwCount = curr_time - start_time;
+		if (bwCount < .5)
+			Object::objects["anim"].color = { 0, 0, 0 };
+		else if (bwCount < 1)
+			Object::objects["anim"].color = { 255, 255 , 255 };
+		else {
+			prev_time = glfwGetTime();
+			curr_time = glfwGetTime();
+			prev_time = curr_time;
+			start_time = glfwGetTime();
+		}
+
 	}
 
 	const GLfloat radians = orientation.x / 180.f * static_cast<GLfloat>(PI);
@@ -178,9 +201,9 @@ void Object::update(GLdouble delta_time)
 		{0, 1, 0},
 		{position.x, position.y, 1}
 	};
-	
+
 	//updatePosition(Object::objects["Object5"]);
-	
+
 	//apply acceleration
 	// Updating the velocity and position according to acceleration is done by using the following:
 	// step1: v1 = a*t + v0        //This is done when the UP or DOWN key is pressed 
@@ -206,9 +229,9 @@ void Object::update(GLdouble delta_time)
 	//													 prePos.y;					//step2	.y
 	//
 	//glm::vec2 displacement = Object::objects["Object5"].position - Object::objects["Object5"].initialPos;
-	
-	
+
+
 
 	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
-	
+
 }

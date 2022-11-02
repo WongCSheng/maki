@@ -214,6 +214,21 @@ static void init() {
 	GLApp::init();
 
 	imguiEditorInit();
+
+	//test serialize
+	using namespace rapidjson;
+	using namespace std;
+
+	Document doc;
+	doc.SetObject();
+
+	rapidjson::Value temp(rapidjson::kObjectType);
+	Serializer serializing;
+	temp = serializing.SerializeObjects("../testObject.json", Object::objects);
+	doc.AddMember("TestClass", temp, doc.GetAllocator());
+
+
+
 }
 
 /*  _________________________________________________________________________ */
@@ -226,6 +241,7 @@ to system.
 Return graphics memory claimed through
 */
 void cleanup() {
+	
 	// Part 1
 	GLApp::cleanup();
 

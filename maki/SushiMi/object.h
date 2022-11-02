@@ -3,7 +3,7 @@
 @author		louishetong.wang@digipen.edu
 @co-author 	Aurelia Chong
 \par		email: fei.x@digipen.edu
-@co-author	p.tzechengjennifer@digipen.edu
+@co-author	p.tzechengjennifer@digipen.edu (10%)
 @date		20/09/2022
 
 This file implements functionality for the object itself. So once the object is

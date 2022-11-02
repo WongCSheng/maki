@@ -6,4 +6,11 @@
 **************************************/
 #pragma once
 
-void sceneInitializer(std::string scene_filename);
+class Scene
+{
+public:
+	static void sceneInitializer(std::string scene_filename);
+	static std::vector<std::string> ObjVector;
+	static std::vector<const char*> objectString;
+	
+};

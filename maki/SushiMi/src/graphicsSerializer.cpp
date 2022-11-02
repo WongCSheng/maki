@@ -5,8 +5,9 @@
 \brief		function to initialize the graphics scene from a .txt file
 **************************************/
 #include "../include/common_headers.hpp"
+std::vector<std::string> Scene::ObjVector;
 
-void sceneInitializer(std::string scene_filename)
+void Scene::sceneInitializer(std::string scene_filename)
 {
 	std::ifstream ifs{ scene_filename, std::ios::in };
 	if (!ifs)
@@ -24,7 +25,7 @@ void sceneInitializer(std::string scene_filename)
 	int obj_cnt;
 	line_sstm >> obj_cnt; // read count of objs in scene
 
-	std::vector<std::string> ObjVector;
+
 	while (obj_cnt--) // read each object's param, each newline is an obj
 	{
 		std::string mesh_path;
@@ -38,12 +39,12 @@ void sceneInitializer(std::string scene_filename)
 		while (line_sstm >> word) //make every string a parameter
 		{
 			//std::cout << word << std::endl; // 1st eg: takes "square"
-			ObjVector.push_back(word);
+			Scene::ObjVector.push_back(word);
 		}
-		for (int i = 0; i < ObjVector.size(); i += 14)
+		for (int i = 0; i < Scene::ObjVector.size(); i += 14)
 		{
 			//1st param: name of model
-			std::istringstream line_modelname{ ObjVector[i] };
+			std::istringstream line_modelname{ Scene::ObjVector[i] };
 			std::string model_name;
 			line_modelname >> model_name;
 			//find model with the same name
@@ -85,38 +86,38 @@ void sceneInitializer(std::string scene_filename)
 			}
 
 			//2nd param: Given Object Name
-			std::string object_name{ ObjVector[i + 1] };
+			std::string object_name{ Scene::ObjVector[i + 1] };
 
 			
 			//3rd param: R of RGB
-			GLfloat red{ std::stof(ObjVector[i + 2]) };
+			GLfloat red{ std::stof(Scene::ObjVector[i + 2]) };
 
 			//4th param: G of RGB
-			GLfloat green{ std::stof(ObjVector[i + 3]) };
+			GLfloat green{ std::stof(Scene::ObjVector[i + 3]) };
 
 			//5th param: B of RGB
-			GLfloat blue{ std::stof(ObjVector[i + 4]) };
+			GLfloat blue{ std::stof(Scene::ObjVector[i + 4]) };
 			currObj.color = { red, green, blue };
 
 			//6th param: x scale
-			GLfloat scale_x{ std::stof(ObjVector[i + 5]) };
+			GLfloat scale_x{ std::stof(Scene::ObjVector[i + 5]) };
 
 			//7th param: y scale
-			GLfloat scale_y{ std::stof(ObjVector[i + 6]) };
+			GLfloat scale_y{ std::stof(Scene::ObjVector[i + 6]) };
 			currObj.scaling = { scale_x, scale_y };
 
 			//8th param: x_orientation
-			GLfloat orientation_x{ std::stof(ObjVector[i + 7]) };
+			GLfloat orientation_x{ std::stof(Scene::ObjVector[i + 7]) };
 
 			//9th param: y_orientation
-			GLfloat orientation_y{ std::stof(ObjVector[i + 8]) };
+			GLfloat orientation_y{ std::stof(Scene::ObjVector[i + 8]) };
 			currObj.orientation = { orientation_x, orientation_y };
 
 			//10th x pos
-			GLfloat pos_x{ std::stof(ObjVector[i + 9]) };
+			GLfloat pos_x{ std::stof(Scene::ObjVector[i + 9]) };
 
 			//11th y pos
-			GLfloat pos_y{ std::stof(ObjVector[i + 10]) };
+			GLfloat pos_y{ std::stof(Scene::ObjVector[i + 10]) };
 			currObj.position = { pos_x, pos_y };
 
 
@@ -142,13 +143,13 @@ void sceneInitializer(std::string scene_filename)
 			
 
 			//12th param: shader program name
-			std::string shdr_name{ ObjVector[i + 11] };
+			std::string shdr_name{ Scene::ObjVector[i + 11] };
 
 			//13th param: vert shader path
-			std::string shdr_vert{ ObjVector[i + 12] };
+			std::string shdr_vert{ Scene::ObjVector[i + 12] };
 
 			//14th param: frag shader path
-			std::string shdr_frag{ ObjVector[i + 13] };
+			std::string shdr_frag{ Scene::ObjVector[i + 13] };
 			
 			std::map<std::string, GLSLShader>::iterator shdr_iterator;
 			shdr_iterator = GLApp::shdrpgms.find(shdr_name);

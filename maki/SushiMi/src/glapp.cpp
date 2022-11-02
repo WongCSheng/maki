@@ -24,6 +24,7 @@ to OpenGL implementations.
 #include <../Physics.h>
 #define M_PI									3.14159265358979323846  /* pi */
 #include <../include/texture.h>
+#include <../include/graphicsSerializer.h>
 
 
 /*                                                   objects with file scope
@@ -65,7 +66,7 @@ void GLApp::init() {
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container Object::objects
 	std::cout << "curr" << std::filesystem::current_path() << std::endl;
-	sceneInitializer("../scenes/graphics_scene.txt");
+	Scene::sceneInitializer("../scenes/graphics_scene.txt");
 
 
 	// Initialize camera here

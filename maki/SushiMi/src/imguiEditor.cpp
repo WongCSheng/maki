@@ -16,8 +16,9 @@ written consent of DigiPen Institute of Technology is prohibited.
 *******************************************************************************/
 
 #include "..\include\imguiEditor.h"
-
+std::vector<std::string> ObjVector;
 std::vector<const char*> objectString;
+int i = 0;
 
 void imguiEditorInit(void)
 {
@@ -27,15 +28,34 @@ void imguiEditorInit(void)
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
-	/*for (auto&e1 : Object::objects)
+	
+	/*for (int i = 1; i < Scene::ObjVector.size(); i += 14)
 	{
-		std::string s(e1.first);
+		std::string s(Scene::ObjVector[i]);
 		const char* s2 = s.c_str();
-		objectString.push_back(s2);
+		Scene::objectString.push_back(s2);
 
+	}*/
+
+	
+	/*for (int i = 0; i < Scene::objectString.size(); ++i)
+	{
+		std::cout << Scene::objectString[i] << std::endl;
+
+	}*/
+	//std::cout << "Hi" << std::endl;
+	for (int i = 1; i < 57*14; i += 14)
+	{
+		//std::cout << Scene::ObjVector[i] << std::endl;
+		const char* s2 = Scene::ObjVector[i].c_str();
+		//std::cout << s2 << std::endl;
+		objectString.push_back(s2);
 	}
-	for(int i = 0; i < objectString.size(); ++i)
-		std::cout << objectString[i] << std::endl;*/
+	/*for (int i = 0 ; i < objectString.size(); ++i)
+	{
+
+	std::cout << objectString[0] << std::endl;
+	}*/
 
 }
 
@@ -43,7 +63,7 @@ void imguiEditorDraw(void)
 {
 	//bool drawTriangle = true;
 	
-
+	//Object Index
 
 	//drawTriangle = true;
 	ImGui_ImplOpenGL3_NewFrame();
@@ -59,12 +79,16 @@ void imguiEditorDraw(void)
 	ImGui::Begin("Object Editor - Imgui Window");
 	ImGui::Text("Click to Select Object");
 	
+	
+	
 	//ImGui::Text(objectString);
 	//ImGui::Checkbox("Sample Checkbox", nullptr);
 	//Object::objects["Object5"].shd_ref;
 	//ImGui::SliderFloat("Size", (float*)Object::objects["Object5"].scale_up, 0.5f, 2.0f);
-	ImGui::SliderFloat("x-position", &Object::objects["temp"].position.x, -500.0f, 500.0f);
-	ImGui::SliderFloat("y-position", &Object::objects["temp"].position.y, -500.0f, 500.0f);
+	//ImGui::SliderFloat("Object Index", &i, 0, objectString.size());
+	ImGui::SliderInt("Object Index", &i, 0, objectString.size());
+	ImGui::SliderFloat("x-position", &Object::objects[objectString[i]].position.x, -500.0f, 500.0f);
+	ImGui::SliderFloat("y-position", &Object::objects[objectString[i]].position.y, -500.0f, 500.0f);
 
 	//rgb slider test
 	/*ImGui::SliderFloat("R in RGB", &Object::objects["Object5"].color.r, .0f, 1.0f);

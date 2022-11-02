@@ -200,6 +200,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Core\Core.cpp" />
     <ClCompile Include="Engine\Factory\Factory.cpp" />
+    <ClCompile Include="Engine\Messaging\Messaging.cpp" />
     <ClCompile Include="Engine\System\CameraSystem.cpp" />
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp" />
     <ClCompile Include="Engine\System\Renderer.cpp" />
@@ -242,6 +243,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
     <ClInclude Include="Engine\Factory\Factory.h" />
+    <ClInclude Include="Engine\Messaging\Messaging.h" />
     <ClInclude Include="Engine\System\CameraSystem.h" />
     <ClInclude Include="Engine\System\Linked List\LinkedList.h" />
     <ClInclude Include="Engine\System\Renderer.h" />

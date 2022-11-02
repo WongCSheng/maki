@@ -1,10 +1,16 @@
-#pragma once
+//******************************************************************************/
+/*!
+\file		Core.h
+\author 	Wong Chong Sheng
+\email    	w.chongsheng@digipen.edu
+\date   	25/10/2022
+\brief		Header for core system for engine.
 
-/*
-File:		 Core.h
-Author:		 w.chongsheng@digipen.edu
-Description: Header for Core.cpp
-*/
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ //******************************************************************************/
 
 #ifndef CORE_H_
 #define CORE_H_

@@ -12,12 +12,18 @@ Core::Transformer::~Transformer()
 
 void Core::Transformer::Init()
 {
-	/*std::unordered_map<Object::GameObjectProperty*, Transform*>::iterator it;
-	
-	for (it = Transforms.begin(); it != Transforms.end(); it++)
-	{
-		
-	}*/
+	//for (int i = 0; i < entities.size(); ++i)
+	//{
+	//	Transform* transform = entities[i]->GetComponent<Transform>();
+	//	if (transform != NULL)
+	//	{
+	//		// If entity does not have a parent, add it to the scene root
+	//		if (transform->parent == NULL)
+	//		{
+	//			root->AddChild(entities[i]);
+	//		}
+	//	}
+	//}
 }
 
 void Core::Transformer::Update(const double dt)
@@ -32,12 +38,7 @@ void Core::Transformer::Update(const double dt)
 
 void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
 {
-	std::unordered_map<unsigned int, Object::GameObject*>::iterator it;
-
-	for (it = ObjectContainer.begin(); it != ObjectContainer.end(); ++it)
-	{
-		Transforms.insert({ it->second->GetObjectProperties(), it->second->GetObjectProperties()->GetComponent(ComponentID::Transform) });
-	}
+	
 }
 
 void Core::Transformer::Serialise(const std::string name)

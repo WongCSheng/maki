@@ -11,6 +11,7 @@ This file contains class Window that we will use for opening windows..
 #ifndef GAMEWINDOW_H_
 #define GAMEWINDOW_H_
 
+#include <GL/glew.h>
 #include "../Headers/STL_Header.h"
 #include <GLFW/glfw3.h>
 #include "../include/glhelper.h"

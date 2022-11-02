@@ -3,6 +3,8 @@
 
 #include <GL/glew.h>
 #include "../Headers/STL_Header.h"
+#include <glm/glm/fwd.hpp>
+#include <glm/glm/glm.hpp>
 #include "../Headers/Math_Header.h"
 
 class Model
@@ -10,7 +12,7 @@ class Model
 public:
 	GLenum primitive_type{}; // which OpenGL primitive to be rendered?
 	GLuint vaoid{}; // handle to VAO
-	size_t draw_cnt{}; // count of vertices for certain type of primitives and a count of indices for other types
+	GLuint draw_cnt{}; // count of vertices for certain type of primitives and a count of indices for other types
 	GLuint primitive_cnt{}; // access the number of OGL pimitives contained in an instance of GLModel
 							// primitive_type are to be rendered
 	/*  _________________________________________________________________________ */

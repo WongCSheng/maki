@@ -20,7 +20,7 @@ namespace Core
 	
 	class Transformer : public SystemFrame
 	{
-		friend class Transform;
+		friend class Transformer;
 
 	public:
 		Transformer();

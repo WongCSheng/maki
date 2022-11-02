@@ -61,7 +61,7 @@ namespace Core
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
 		{
-			ComponentContainer.erase(ID);
+			
 		}
 
 		//Game Object

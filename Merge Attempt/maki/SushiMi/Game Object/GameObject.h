@@ -15,7 +15,7 @@ namespace Core
 		class GameObjectProperty
 		{
 		public:
-			//friend class Component;
+			friend class Component;
 			friend class GameObject;
 
 			void Init();

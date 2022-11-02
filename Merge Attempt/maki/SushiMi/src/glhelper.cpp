@@ -1,7 +1,9 @@
 /*!
 @file		glhelper.cpp
-@author		louishetong.wang@digipen.edu
-@date		20/09/2022
+@author		pghali@digipen.edu
+@co-author  louishetong.wang@digipen.edu
+@co-author  thea.sea@digipen.edu
+@date		8/06/2022
 
 This file implements functionality useful and necessary to build OpenGL
 applications including use of external APIs such as GLFW to create a
@@ -12,10 +14,7 @@ pointers to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glhelper.h>
-#include "../Game Object/GameObject.h"
-#include "../Engine/Camera/Camera2D.h"
-#include <iostream>
+#include "../include/glhelper.h"
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
@@ -26,6 +25,8 @@ GLdouble GLHelper::fps;
 GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
+
+static std::map<std::string, Object> objects;
 /*  _________________________________________________________________________ */
 /*! init
 
@@ -88,7 +89,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 			<< glewGetErrorString(err) << " abort program" << std::endl;
 		return false;
 	}
-	if (GLEW_VERSION_4_3) {
+	if (GLEW_VERSION_4_5) {
 		std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
 		std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
 	}
@@ -192,7 +193,7 @@ This function is called when keyboard buttons are pressed.
 When the ESC key is pressed, the close flag of the window is set.
 */
 void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod) {
-	
+
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
 	{
@@ -258,11 +259,9 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	if (GLFW_PRESS == action && key == GLFW_KEY_W)
 	{
 		Camera2D::camera2d.move_flag = GL_TRUE;
-		Camera2D::camera2d.decelerate = GL_FALSE;
 	}
 	else if (GLFW_RELEASE == action)
 	{
-		Camera2D::camera2d.decelerate = GL_TRUE;
 		Camera2D::camera2d.camtype_flag = GL_FALSE;
 		Camera2D::camera2d.zoom_flag = GL_FALSE;
 		Camera2D::camera2d.left_turn_flag = GL_FALSE;
@@ -274,7 +273,7 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Object::objects["Object6"].scale_down = GL_FALSE;
 	}
 
-	
+
 
 }
 

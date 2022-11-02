@@ -1,7 +1,7 @@
 //******************************************************************************/
 /*!
 \file		Collision.cpp
-\author 	Thea Sea(50%)
+\author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
 
 \co-author 	Aurelia Chong (50%)

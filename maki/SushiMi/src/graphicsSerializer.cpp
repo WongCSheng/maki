@@ -13,6 +13,7 @@ void sceneInitializer(std::string scene_filename)
 	{
 		std::cout << "ERROR: Unable to open scene file: " << scene_filename << std::endl;
 		exit(EXIT_FAILURE);
+		assert("ERROR: Unable to open scene file: ", (!ifs) );	
 	}
 	ifs.seekg(0, std::ios::beg);
 

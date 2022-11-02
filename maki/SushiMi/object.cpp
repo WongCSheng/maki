@@ -2,7 +2,7 @@
 @file		object.cpp
 @author		louishetong.wang@digipen.edu
 
-@co-author 	Aurelia Chong (20%)
+@co-author 	Aurelia Chong (
 \par		email: fei.x@digipen.edu
 
 

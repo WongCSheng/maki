@@ -67,6 +67,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	if (!GLHelper::ptr_window) {
 		std::cerr << "GLFW unable to create OpenGL context - abort program\n";
 		glfwTerminate();
+		assert("GLFW unable to create OpenGL context - abort program\n", (!GLHelper::ptr_window));
 		return false;
 	}
 

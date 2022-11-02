@@ -2,7 +2,7 @@
 @file		model.cpp
 @author		louishetong.wang@digipen.edu
 
-@co-author 	Aurelia Chong(10%)
+@co-author 	Aurelia Chong
 \par		email: fei.x@digipen.edu
 @date		20/09/2022
 
@@ -44,9 +44,9 @@ Model Model::init(std::string mesh_filepath)
 	std::ifstream ifs{ mesh_filepath, std::ios::in };
 	if (!ifs)
 	{
-		//std::cout << "ERROR: Unable to open mesh file!" << std::endl;
-		//exit(EXIT_FAILURE);
-		assert("ERROR: Unable to open mesh file!", exit(EXIT_FAILURE));
+		std::cout << "ERROR: Unable to open mesh file!" << std::endl;
+		exit(EXIT_FAILURE);
+		assert("ERROR: Unable to open mesh file!", (!ifs));
 	}
 	ifs.seekg(0, std::ios::beg);
 	while (ifs.peek() != EOF) 	// start reading file from here

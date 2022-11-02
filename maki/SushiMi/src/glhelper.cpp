@@ -15,7 +15,6 @@ pointers to OpenGL implementations.
 #include <../include/glhelper.h>
 #include "../object.h"
 #include <../Camera2D.h>
-#include <../object.h>
 #include <iostream>
 
 /*                                                   objects with file scope
@@ -166,6 +165,44 @@ void GLHelper::cleanup() {
 	glfwTerminate();
 }
 
+
+//testing clone function
+
+
+/*  _________________________________________________________________________ */
+/*! Clone(int xPos, int yPos)
+@param none
+@return
+none
+
+Makes a copy of the animating circle (currently doesnt work)
+*/
+void Clone(int xPos, int yPos)
+{
+	Object newCircle;
+	newCircle.color = { 0,0,0 };
+	newCircle.scaling = { 25.0, 25.0 };
+	newCircle.orientation = { 0.0, 0.0 };
+	newCircle.position = { xPos, yPos };
+	newCircle.initialPos = newCircle.position;
+	newCircle.aabb.min.x = newCircle.position.x - (newCircle.scaling.x); 
+	newCircle.aabb.min.y = newCircle.position.y - (newCircle.scaling.y); 
+	newCircle.aabb.max.x = newCircle.position.x + (newCircle.scaling.x); 
+	newCircle.aabb.max.y = newCircle.position.y + (newCircle.scaling.y); 
+
+	Model temp_mdl;
+	temp_mdl.primitive_type = GL_TRIANGLE_FAN;
+	temp_mdl = temp_mdl.init("../mesh/circle.msh");
+
+	Model::models.insert(std::pair<std::string, Model>("circle", temp_mdl));
+	GLApp::insert_shdrpgm("shdrpgm", "../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
+
+	newCircle.mdl_ref = Model::models.find("circle");
+	newCircle.shd_ref = GLApp::shdrpgms.find("shdrpgm");
+	Object::objects.insert(std::pair<std::string, Object>("clone", newCircle));
+
+}
+
 /*  _________________________________________________________________________*/
 /*! key_cb
 
@@ -274,6 +311,10 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	if (GLFW_PRESS == action && key == GLFW_KEY_2) {
 		Object::objects["anim"].anim_rainbow = GL_FALSE;
 		Object::objects["anim"].anim_bw = GL_TRUE;
+	}
+	//for cloning circle
+	if (GLFW_PRESS == action && key == GLFW_KEY_3) {
+		Clone(100,100);
 	}
 	
 	else if (GLFW_RELEASE == action)
@@ -424,3 +465,4 @@ void GLHelper::update_time(double fps_calc_interval) {
 		count = 0.0;
 	}
 }
+

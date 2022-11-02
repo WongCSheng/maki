@@ -66,11 +66,11 @@ public:
 	static std::map<std::string, Object> objects; // singleton
 
 	//testing color based animation
-	GLboolean anim_rainbow{}; 
+	bool anim_rainbow{}; 
 	double rainbowCount = 0;
-	GLboolean anim_bw{};
+	bool anim_bw{};
 	double bwCount = 0;
-	GLboolean flip = true;
+	bool flip{};
 
 	GLboolean rot_right{ GL_FALSE };
 	GLboolean rot_left{ GL_FALSE };

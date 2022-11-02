@@ -216,7 +216,7 @@ static void init() {
 	imguiEditorInit();
 
 	//test serialize
-	using namespace rapidjson;
+	/*using namespace rapidjson;
 	using namespace std;
 
 	Document doc;
@@ -225,7 +225,7 @@ static void init() {
 	rapidjson::Value temp(rapidjson::kObjectType);
 	Serializer serializing;
 	temp = serializing.SerializeObjects("../testObject.json", Object::objects);
-	doc.AddMember("TestClass", temp, doc.GetAllocator());
+	doc.AddMember("TestClass", temp, doc.GetAllocator());*/
 
 
 

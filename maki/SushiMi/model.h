@@ -1,6 +1,8 @@
 /*!
 @file		model.h
 @author		louishetong.wang@digipen.edu
+@co-author 	Aurelia Chong(15%)
+\par		email: fei.x@digipen.edu
 @date		20/09/2022
 
 This file implements functionality for the Model. There are 3 models currently

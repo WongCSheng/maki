@@ -2,7 +2,7 @@
 @file		model.cpp
 @author		louishetong.wang@digipen.edu
 
-@co-author 	Aurelia Chong
+@co-author 	Aurelia Chong(15%)
 \par		email: fei.x@digipen.edu
 @date		20/09/2022
 

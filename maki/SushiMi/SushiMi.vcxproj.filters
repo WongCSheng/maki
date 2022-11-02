@@ -111,9 +111,6 @@
     <ClCompile Include="Engine\System\CameraSystem.cpp">
       <Filter>GameEngine\System</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Messaging\Messaging.cpp">
-      <Filter>GameEngine\Messaging</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -247,9 +244,6 @@
     <ClInclude Include="Engine\System\CameraSystem.h">
       <Filter>GameEngine\System</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Messaging\Messaging.h">
-      <Filter>GameEngine\Messaging</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -329,9 +323,6 @@
     </Filter>
     <Filter Include="GameEngine\Core">
       <UniqueIdentifier>{f99923e3-d01c-4a30-86cb-3ebd7916fee2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Messaging">
-      <UniqueIdentifier>{b4b4406c-cd9a-4321-aca0-5cccefa0673a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

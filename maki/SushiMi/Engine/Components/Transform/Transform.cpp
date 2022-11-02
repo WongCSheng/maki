@@ -1,16 +1,4 @@
-//******************************************************************************/
-/*!
-\file		Transform.cpp
-\author 	Wong Chong Sheng
-\email    	w.chongsheng@digipen.edu
-\date   	25/10/2022
-\brief		Transform component for GameObjects.
 
-Copyright (C) 2022 DigiPen Institute of Technology.
-Reproduction or disclosure of this file or its contents without the
-prior written consent of DigiPen Institute of Technology is prohibited.
- */
- //******************************************************************************/
 
 #include "Transform.h"
 #include "../Engine/Components/Component.h"
@@ -18,8 +6,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 Core::Transform::Transform()
 {
-	owner = nullptr;
-	instance = nullptr;
 }
 
 

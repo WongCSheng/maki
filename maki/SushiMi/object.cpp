@@ -263,3 +263,6 @@ void Object::update(GLdouble delta_time)
 	mdl_to_ndc_xform = Camera2D::camera2d.world_to_ndc_xform * (trans_mat * rot_mat * scale_mat);
 
 }
+
+
+

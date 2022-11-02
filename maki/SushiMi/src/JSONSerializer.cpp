@@ -19,7 +19,7 @@ json file name
 @return bool
 returns 0 if failed, 1 if success
 
-Takes in a json file and prints contents to console. If failed, prints error code.
+Takes in a json file and prints contents to console. If failed, asserts and prints error code.
 */
 bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 
@@ -159,13 +159,30 @@ rapidjson::Value Serializer::SerializeObjects(const std::string& filepath, std::
 	rapidjson::Value TestObjectValue(rapidjson::kObjectType);
 	for (auto& [name, obj] : objMap)
 	{
-		std::cout << "name of obj" << name << std::endl;
 		rttr::type type = obj.get_type();
-		rttr::variant rainbowCount_val = type.get_property("rainbowCount").get_value(obj);
-		rttr::variant orientation_val = type.get_property("orientation").get_value(obj);
-		//TestObjectValue.AddMember("orientation", orientation_val.get_value<glm::vec2>(), doc.GetAllocator());
-		TestObjectValue.AddMember("rainbowCount", rainbowCount_val.get_value<int>(), allocator);
+
+		//rttr::variant orientation_val = type.get_property("orientation").get_value(obj); //glm::vec2
+
+		rttr::variant dirCurr_val = type.get_property("dirCurr").get_value(obj); //float
+		rttr::variant mass_bool = type.get_property("mass").get_value(obj); //float
+		rttr::variant anim_rainbow_bool = type.get_property("anim_rainbow").get_value(obj); //bool
+		rttr::variant rainbowCount_val = type.get_property("rainbowCount").get_value(obj); //double
+		rttr::variant anim_bw_bool = type.get_property("anim_bw").get_value(obj); //bool
+		rttr::variant bwCount_val = type.get_property("bw_Count").get_value(obj); //double
+		rttr::variant flip_bool = type.get_property("flip").get_value(obj); //bool
+		
+
+		TestObjectValue.AddMember("dirCurr", dirCurr_val.get_value<float>(), allocator);
+		TestObjectValue.AddMember("mass", mass_bool.get_value<bool>(), allocator);
+		TestObjectValue.AddMember("anim_rainbow", anim_rainbow_bool.get_value<bool>(), allocator);
+		TestObjectValue.AddMember("rainbowCount", rainbowCount_val.get_value<double>(), allocator);
+		TestObjectValue.AddMember("anim_bw", anim_bw_bool.get_value<bool>(), allocator);
+		TestObjectValue.AddMember("bw_Count", bwCount_val.get_value<double>(), allocator);
+		TestObjectValue.AddMember("flip", flip_bool.get_value<bool>(), allocator);
+
 	}
+	return TestObjectValue;
+
 	////if (entity.hascomponentABC)
 	////1. Get all the data of the object
 
@@ -175,7 +192,6 @@ rapidjson::Value Serializer::SerializeObjects(const std::string& filepath, std::
 	////2. write them into the document
 	//doc.AddMember("Damage", damage_value.get_value<int>(), doc.GetAllocator());
 
-	return TestObjectValue;
 }
 
 

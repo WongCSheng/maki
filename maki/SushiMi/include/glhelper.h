@@ -1,12 +1,14 @@
 /* !
 @file		glhelper.h
-@author		louishetong.wang@digipen.edu
+@author		pghali@digipen.edu
+@co-author  louishetong.wang@digipen.edu
 @date		8/06/2022
 
-This file implements functionality useful and necessary to build OpenGL
-applications including use of external APIs such as GLFW to create a
-window and start up an OpenGL context and use GLEW to extract function
-pointers to OpenGL implementations.
+This file contains the declaration of namespace Helper that encapsulates the
+functionality required to create an OpenGL context using GLFW; use GLEW
+to load OpenGL extensions; initialize OpenGL state; and finally initialize
+the OpenGL application by calling initalization functions associated with
+objects participating in the application.
 
 *//*__________________________________________________________________________*/
 
@@ -18,24 +20,37 @@ pointers to OpenGL implementations.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <GL/glew.h> // for access to OpenGL API declarations 
+#include "../Headers/STL_Header.h"
 #include <GLFW/glfw3.h>
-#include <string>
+#include "../include/glapp.h"
+#include "../Engine/Camera/Camera2D.h"
 
 /*  _________________________________________________________________________ */
 struct GLHelper
+	/*! GLHelper structure to encapsulate initialization stuff ...
+	*/
 {
 	/*  _________________________________________________________________________ */
 	/*! init
 
 	@param GLint width
 	@param GLint height
+	Dimensions of window requested by program
+
 	@param std::string title_str
+	String printed to window's title bar
 
 	@return bool
 	true if OpenGL context and GLEW were successfully initialized.
 	false otherwise.
 
-	Uses GLFW to create OpenGL context with a window of size width x height pixels.
+	Uses GLFW to create OpenGL context. GLFW's initialization follows from here:
+	http://www.glfw.org/docs/latest/quick.html
+	a window of size width x height pixels
+	and its associated OpenGL context that matches a core profile that is
+	compatible with OpenGL 4.5 and doesn't support "old" OpenGL, has 32-bit RGBA,
+	double-buffered color buffer, 24-bit depth buffer and 8-bit stencil buffer
+	with each buffer of size width x height pixels
 	*/
 	static bool init(GLint w, GLint h, std::string t);
 	/*  _________________________________________________________________________ */
@@ -45,7 +60,9 @@ struct GLHelper
 
 	@return none
 
-	GLFW return resources back to the system and terminate.
+	For now, there are no resources allocated by the application program.
+	The only task is to have GLFW return resources back to the system and
+	gracefully terminate.
 	*/
 	static void cleanup();
 
@@ -134,6 +151,25 @@ struct GLHelper
 	This function is called when mouse buttons are pressed.
 	*/
 	static void mousebutton_cb(GLFWwindow* pwin, int button, int action, int mod);
+	/*  _________________________________________________________________________*/
+	/*! mousescroll_cb
+
+	@param GLFWwindow*
+	Handle to window that is receiving event
+
+	@param double
+	Scroll offset along X-axis
+
+	@param double
+	Scroll offset along Y-axis
+
+	@return none
+
+	This function is called when the user scrolls, whether with a mouse wheel or
+	touchpad gesture. Although the function receives 2D scroll offsets, a simple
+	mouse scroll wheel, being vertical, provides offsets only along the Y-axis.
+	*/
+	static void mousescroll_cb(GLFWwindow* pwin, double xoffset, double yoffset);
 	/*  _________________________________________________________________________*/
 	/*! mousepos_cb
 

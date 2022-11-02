@@ -10,11 +10,7 @@ chosen game object.
 *//*__________________________________________________________________________*/
 
 #pragma once
-
-#include "../Headers/RapidJSON_Header.h"
-#include "../Headers/STL_Header.h"
-#include "../Game Object/GameObject.h"
-
+#include "../include/common_headers.hpp"
 #ifndef JSERIALIZE_H
 #define JSERIALIZE_H
 
@@ -25,7 +21,7 @@ public:
 	//serialize everything
 	//set value to gameobject if all property names match
 	//void Serialize(const std::string& filepath);
-
+	
 	/*  _________________________________________________________________________ */
 	/*! DeserializeObject
 	@param const std::string& filepath

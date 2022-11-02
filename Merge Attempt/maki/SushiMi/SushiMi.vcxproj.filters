@@ -347,6 +347,9 @@
     <Filter Include="GameEngine\System\LinkedList">
       <UniqueIdentifier>{0dae68f0-29b9-4c74-9569-c5411c28d956}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Fonts">
+      <UniqueIdentifier>{96f40263-9d5b-4811-99c3-540e8fed24a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag">

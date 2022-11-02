@@ -104,7 +104,7 @@ namespace Collision {
 		float dFirst = 0.f, dLast = 0.f;
 		if (aabb1.max.y < aabb2.min.y || aabb1.max.x < aabb2.min.x || aabb1.min.y > aabb2.max.y || aabb1.min.x > aabb2.max.x) //if no overlap, continue
 		{
-			return false;
+			return 0;
 		}
 
 		/***************************************/
@@ -114,15 +114,17 @@ namespace Collision {
 		{
 			if (aabb1.min.x > aabb2.max.x) //case 1
 			{
-				return false;
+				return 0;
 			}
 			if (aabb1.max.x < aabb2.min.x) //case 4  (1/2)
 			{
 				dFirst = aabb1.max.x - aabb2.min.x;
 				tFirst = dFirst / (vel2.x - vel1.x);
+
 			}
 			if (aabb1.min.x < aabb2.max.x) //case 4  (2/2)
 			{
+
 				dLast = aabb1.min.x - aabb2.max.x;
 				tLast = dLast / (vel2.x - vel1.x);
 			}
@@ -148,11 +150,11 @@ namespace Collision {
 			}
 			if (aabb1.max.x < aabb2.min.x) //case 3
 			{
-				return false;
+				return 0;
 			}
 			if (tFirst > g_dt)
 			{
-				return false;
+				return 0;
 			}
 		}
 		//case 5:
@@ -166,7 +168,7 @@ namespace Collision {
 		{
 			if (aabb1.min.y > aabb2.max.y) //case 1
 			{
-				return false;
+				return 0;
 			}
 			if (aabb1.max.y < aabb2.min.y) //case 4 revisited (1/2)
 			{
@@ -200,13 +202,13 @@ namespace Collision {
 			}
 			if (aabb1.max.y < aabb2.min.y) //case 3
 			{
-				return false; //no intersection
+				return 0; //no intersection
 			}
 		}
 		//case 5:
-		if (tFirst > tLast) { return false; } //no collision
+		if (tFirst > tLast) { return 0; } //no collision
 		//std::cout << "Collision Detected!" << std::endl;
-		return true; //collision
+		return 1; //collision
 	}
 
 	/******************************************************************************/

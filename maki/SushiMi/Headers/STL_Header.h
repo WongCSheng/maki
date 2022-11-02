@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef HEADERS_H_
-#define HEADERS_H_
-
 // STANDARD LIBRARIES
 	//Containers
 	#include <vector>
@@ -54,4 +51,3 @@
 	#include <numeric>
 	#include <thread>
 	#include <stdexcept>
-#endif

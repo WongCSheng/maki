@@ -23,6 +23,7 @@ void Texture::generateTexture()
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
 	glGenTextures(1, &texture);
+	//glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	if (data)
 	{

@@ -21,11 +21,13 @@ int Font::init()
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    GLApp::shdrpgms["shdrpgm"].Use();
+    GLApp::shdrpgms["font"].Use();
 	FT_Library ft;	//init the freetype library ft
 	if (FT_Init_FreeType(&ft))
 	{
+        assert(ft != NULL);
 		std::cout << "ERROR: Unable to init freetype library." << std::endl;
+        
 		return -1;
 	}
 	FT_Face face;	//load font as a face
@@ -85,10 +87,9 @@ int Font::init()
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 
-    Font::setup_shdrpgm();
 
     glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-
+    glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -100,53 +101,16 @@ int Font::init()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     return 1;
-    GLApp::shdrpgms["shdrpgm"].UnUse();
+    GLApp::shdrpgms["font"].UnUse();
 }
 
-void Font::setup_shdrpgm()
-{/*
-    std::string vs_source =
-        "#version 450 core                             \n"
-        "layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>;  \n"
-        "out vec2 TexCoords;                           \n"
-        "uniform mat4 projection;           		   \n"
-        ""
-        "void main(void)                               \n"
-        "{                                             \n"
-        "gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);\n"
-        "TexCoords = vertex.zw;        				   \n"
-        "}                                             \n";
-
-    std::string fs_source =
-        "#version 450 core                             \n"
-        "in vec2 TexCoords;                            \n"
-        "out vec4 color;                               \n"
-        "uniform sampler2D text;                       \n"
-        "uniform vec3 textColor;                       \n"    
-        "void main(void)                               \n"
-        "{                                             \n"
-        "vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);       \n"
-        "color = vec4(textColor, 1.0) * sampled;       \n"   
-        "}                                             \n";
-    GLApp::shdrpgms["shdrpgm"].CompileShaderFromString(GL_VERTEX_SHADER, vs_source);
-    GLApp::shdrpgms["shdrpgm"].CompileShaderFromString(GL_FRAGMENT_SHADER, fs_source);
-    GLApp::shdrpgms["shdrpgm"].Link();
-    GLApp::shdrpgms["shdrpgm"].Validate();
-
-    if (!GLApp::shdrpgms["shdrpgm"].IsLinked()) {
-        std::cout << "Unable to compile/link/validate shader programs" << "\n";
-        std::cout << GLApp::shdrpgms["shdrpgm"].GetLog() << "\n";
-        std::exit(EXIT_FAILURE);
-    }
-    */
-}
 
 void Font::RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color)
 {
     // activate corresponding render state	
     s.Use();
     glUniform3f(glGetUniformLocation(s.GetHandle(), "textColor"), color.x, color.y, color.z);
-    glActiveTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE1);
     glBindVertexArray(VAO);
 
     // iterate through all characters

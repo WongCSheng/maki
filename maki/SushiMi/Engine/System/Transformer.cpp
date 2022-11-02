@@ -1,3 +1,16 @@
+//******************************************************************************/
+/*!
+\file		Transformer.cpp
+\author 	Wong Chong Sheng
+\email    	w.chongsheng@digipen.edu
+\date   	25/10/2022
+\brief		Transformer system for Transform component.
+
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ //******************************************************************************/
 
 
 #include "Transformer.h"

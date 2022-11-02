@@ -1,8 +1,11 @@
 /******************************************************************************/
 /*!
-\file		Collision.h
-\author 	Thea Sea
+\file		Collision.hpp
+\author 	Thea Sea (50%)
 \par    	email: thea.sea@digipen.edu
+
+\co-author 	Aurelia Chong (50%)
+\par		email: fei.x@digipen.edu
 \date   	2/8/2022
 \brief		This source file contains the function declarations for
 			building line segment, checking for collision between line segment

@@ -3,7 +3,12 @@
 @author	 Aurelia Chong
 
 		 enum of keys, mouse and  kesy states
+
+/*		Copyright(C) 2022 DigiPen Institute of Technology.
+		Reproduction or disclosure of this file or its contents without the
+		prior written consent of DigiPen Institute of Technology is prohibited.
 *//*__________________________________________________________________________*/
+
 #pragma once
 #ifndef KEYS_H__
 #define KEYS_H__

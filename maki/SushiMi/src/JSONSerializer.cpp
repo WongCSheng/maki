@@ -32,10 +32,11 @@ bool Serializer::DeserializeAndPrintConsole(const std::string& filepath) {
 	bool objectsLeft = true;
 
 	if (!result) { //check if parsing succedded
-		printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
+		//printf("JSON parse error: %s (%zu)\n", GetParseError_En(result.Code()), result.Offset());
+		assert("JSON parse error: %s (%zu)\n", !result);
 		return 0; //failure
 	}
-	assert("JSON parse error: %s (%zu)\n",!result);
+	
 
 	//go through biggest object in file
 	for (auto iter = doc.MemberBegin(); iter != doc.MemberEnd(); ++iter)

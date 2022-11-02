@@ -3,6 +3,11 @@
 @author	 Aurelia Chong
 
 		 Input funcrions checking for input key pressed & allowing users to press on inputs
+
+
+/*		Copyright(C) 2022 DigiPen Institute of Technology.
+		Reproduction or disclosure of this file or its contents without the
+		prior written consent of DigiPen Institute of Technology is prohibited.
 *//*__________________________________________________________________________*/
 
 /*                                                                   includes

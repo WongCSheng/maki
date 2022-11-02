@@ -3,8 +3,11 @@
 @author	 Aurelia Chong
 
 		 header files for input.cpp
-*//*__________________________________________________________________________*/
 
+/*		Copyright(C) 2022 DigiPen Institute of Technology.
+		Reproduction or disclosure of this file or its contents without the
+		prior written consent of DigiPen Institute of Technology is prohibited.
+*//*__________________________________________________________________________*/
 
 #pragma once
 #ifndef INPUT_H

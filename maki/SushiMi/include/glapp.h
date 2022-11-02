@@ -1,6 +1,11 @@
 /*!
 @file		glapp.h
-@author		louishetong.wang@digipen.edu
+@author		Louis
+\par		louishetong.wang@digipen.edu
+@co-author	Thea
+\par		thea@digipen.edu
+@co-author 	Aurelia Chong
+\par		email: fei.x@digipen.edu
 @date		20/09/2022
 
 This file contains the declaration of namespace GLApp that encapsulates the

@@ -1,8 +1,14 @@
 /*!
 @file    Physics.cpp
 @author	 Aurelia Chong
+\par	 email: fei.x@digipen.edu
+		 Manages game physics such as acceleration and deceleration
+		 as well as updating object position that was affected by the forces
 
-		 Manages game physics such as acceleration
+
+ /*		Copyright(C) 2022 DigiPen Institute of Technology.
+		Reproduction or disclosure of this file or its contents without the
+		prior written consent of DigiPen Institute of Technology is prohibited.
 *//*__________________________________________________________________________*/
 
 #pragma once
@@ -14,12 +20,21 @@
 // F = ma ; accel = F/m
 float force = 50.f; // fixed force
 
-//acceleration
+/******************************************************************************/
+	/*!
+	\brief		This function enables accelerations in game
+	\param		 float mass
+	/******************************************************************************/
 float applyAccel(float mass) //input mass
 {
 	return force / mass;
 }
 
+/******************************************************************************/
+	/*!
+	\brief		This function enables decelerations in game
+	\param		 float mass
+	/******************************************************************************/
 float applyDecel(float mass) //deceleration for obj to stop
 {
 	return -force / mass;
@@ -30,7 +45,13 @@ float applyDecel(float mass) //deceleration for obj to stop
 //	glm::vec2 displacement = Object::objects["Object5"].position - Object::objects["Object5"].initialPos;
 
 
+/******************************************************************************/
+	/*!
+	\brief		This function updates the object's position that was affected 
+				by forces applied
 
+	\param		 Object& objectData
+	/******************************************************************************/
 void updatePosition(Object& objectData)
 {
 

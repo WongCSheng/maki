@@ -1,6 +1,8 @@
 /*!
 @file		object.h
 @author		louishetong.wang@digipen.edu
+@co-author 	Aurelia Chong
+\par		email: fei.x@digipen.edu
 @co-author	p.tzechengjennifer@digipen.edu
 @date		20/09/2022
 

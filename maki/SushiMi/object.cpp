@@ -59,7 +59,6 @@ void Object::draw() const
 
 		// bind VAO of object's model
 		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
-
 		// call glDrawElements with appropriate arguments
 		glDrawElements(Model::models[mdl_ref->first].primitive_type, Model::models[mdl_ref->first].draw_cnt, GL_UNSIGNED_SHORT, NULL);
 

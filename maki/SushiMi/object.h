@@ -68,7 +68,7 @@ public:
 	double rainbowCount = 0;
 	GLboolean anim_bw{};
 	double bwCount = 0;
-	GLboolean flip = true;
+	GLboolean flip{};
 
 	GLboolean rot_right{ GL_FALSE };
 	GLboolean rot_left{ GL_FALSE };

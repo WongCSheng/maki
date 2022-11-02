@@ -154,6 +154,7 @@ rapidjson::Value Serializer::SerializeObjects(const std::string& filepath, std::
 	Document doc;
 	ifstream ifs(filepath);
 	IStreamWrapper isw(ifs);
+	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
 	rapidjson::Value TestObjectValue(rapidjson::kObjectType);
 	for (auto& [name, obj] : objMap)
@@ -163,7 +164,7 @@ rapidjson::Value Serializer::SerializeObjects(const std::string& filepath, std::
 		rttr::variant rainbowCount_val = type.get_property("rainbowCount").get_value(obj);
 		rttr::variant orientation_val = type.get_property("orientation").get_value(obj);
 		//TestObjectValue.AddMember("orientation", orientation_val.get_value<glm::vec2>(), doc.GetAllocator());
-		TestObjectValue.AddMember("rainbowCount", rainbowCount_val.get_value<int>(), doc.GetAllocator());
+		TestObjectValue.AddMember("rainbowCount", rainbowCount_val.get_value<int>(), allocator);
 	}
 	////if (entity.hascomponentABC)
 	////1. Get all the data of the object

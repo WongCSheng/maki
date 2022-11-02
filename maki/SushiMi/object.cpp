@@ -83,6 +83,7 @@ void Object::update(GLdouble delta_time)
 	double curr_time = glfwGetTime();
 	static double prev_time = curr_time;
 	static double start_time = glfwGetTime();
+	flip = false;
 
 	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
@@ -150,25 +151,52 @@ void Object::update(GLdouble delta_time)
 	// color animation
 	if (anim_rainbow) {
 		rainbowCount = curr_time - start_time;
-		if (rainbowCount < .25)
-			Object::objects["anim"].color = { 148, 0, 211 };
-		else if (rainbowCount < .5)
-			Object::objects["anim"].color = { 75, 0, 130 };
-		else if (rainbowCount < .75)
-			Object::objects["anim"].color = { 0, 0, 255 };
-		else if (rainbowCount < 1)
-			Object::objects["anim"].color = { 0, 255, 0 };
-		else if (rainbowCount < 1.25)
-			Object::objects["anim"].color = { 255, 255, 0 };
-		else if (rainbowCount < 1.5)
-			Object::objects["anim"].color = { 255, 127, 0 };
-		else if (rainbowCount < 1.75)
-			Object::objects["anim"].color = { 255, 0 , 0 };
-		else {
-			prev_time = glfwGetTime();
-			curr_time = glfwGetTime();
-			prev_time = curr_time;
-			start_time = glfwGetTime();
+		if (!flip) {
+			if (rainbowCount < .25)
+				Object::objects["anim"].color = { 148, 0, 211 };
+			else if (rainbowCount < .5)
+				Object::objects["anim"].color = { 75, 0, 130 };
+			else if (rainbowCount < .75)
+				Object::objects["anim"].color = { 0, 0, 255 };
+			else if (rainbowCount < 1)
+				Object::objects["anim"].color = { 0, 255, 0 };
+			else if (rainbowCount < 1.25)
+				Object::objects["anim"].color = { 255, 255, 0 };
+			else if (rainbowCount < 1.5)
+				Object::objects["anim"].color = { 255, 127, 0 };
+			else if (rainbowCount < 1.75)
+				Object::objects["anim"].color = { 255, 0 , 0 };
+			else {
+				prev_time = glfwGetTime();
+				curr_time = glfwGetTime();
+				prev_time = curr_time;
+				start_time = glfwGetTime();
+				flip != flip;
+			}
+		}
+
+		else if (flip) {
+			if (rainbowCount < .25)
+				Object::objects["anim"].color = { 255, 0 , 0 };
+			else if (rainbowCount < .5)
+				Object::objects["anim"].color = { 255, 127, 0 };
+			else if (rainbowCount < .75)
+				Object::objects["anim"].color = { 255, 255, 0 };
+			else if (rainbowCount < 1)
+				Object::objects["anim"].color = { 0, 255, 0 };
+			else if (rainbowCount < 1.25)
+				Object::objects["anim"].color = { 0, 0, 255 };
+			else if (rainbowCount < 1.5)
+				Object::objects["anim"].color = { 75, 0, 130 };
+			else if (rainbowCount < 1.75)
+				Object::objects["anim"].color = { 148, 0, 211 };
+			else {
+				prev_time = glfwGetTime();
+				curr_time = glfwGetTime();
+				prev_time = curr_time;
+				start_time = glfwGetTime();
+				flip != flip;
+			}
 		}
 	}
 

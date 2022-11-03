@@ -13,7 +13,7 @@ Core::Transform::~Transform()
 {
 }
 
-const gfxMatrix3& Core::Transform::TransformMat(void)
+const gfxMatrix3 Core::Transform::TransformMat(void)
 {
 	return T * R * S;
 }

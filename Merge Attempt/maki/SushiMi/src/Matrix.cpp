@@ -55,9 +55,11 @@ void gfxMatrix3::setIdentity()
 //swap x and y elements
 void gfxMatrix3::swap(float& x, float& y)
 {
-	float temp = x;
+	/*float temp = x;
 	x = y;
-	y = temp;
+	y = temp;*/
+
+	std::swap(x, y);
 }
 
 //transpose the matrix(flipping) ( Have to test to see if it works)

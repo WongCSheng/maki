@@ -13,7 +13,7 @@ namespace Core
 	
 	Component::Component()
 	{
-		owner = new Object::GameObjectProperty();
+		owner = nullptr;
 		add = false;
 		active = false;
 		remove = false;

@@ -8,17 +8,14 @@ It will be used for rttr registration further on.
 *//*__________________________________________________________________________*/
 
 #pragma once
-#ifndef RTTR_H
-#define RTTR_H
 
-//<<<<<<< Updated upstream
 #include <rttr/type.h>
 #include <rttr/property.h>
 #include <rttr/variant.h>
 #include <rttr/registration.h>
-//=======
-#include <string>
-//>>>>>>> Stashed changes
+
+#ifndef RTTR_H
+#define RTTR_H
 
 class TestClass
 {
@@ -54,7 +51,7 @@ public://variables
 	int testInt = 0;
 	float testFloat = 0;
 	double testDouble = 0;
-	bool testBool = true;
+	bool testBool = 1;
 	int testNull = 2;
 	std::string testStr = "nothing here";
 	std::string* testArr = NULL;

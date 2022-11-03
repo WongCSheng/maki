@@ -7,19 +7,22 @@
 
 namespace Core
 {
+	//Forward Declaration
+	class Physics;
+	
 	class PhysicSystem : public SystemFrame
 	{
-	private:
-		std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer;
-
 	public:
 		PhysicSystem();
 		virtual ~PhysicSystem();
+		
+		float applyAccel(float mass);
+		float applyDecel(float mass);
+		void updatePosition(Physics* ObjectPhysics);
 
-		void Init();
+	private:
+		std::unordered_map<Object::GameObject*, Component*> PhysicsContainer;
 
-		void Update(const double dt);
 
-		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
 	};
 }

@@ -8,11 +8,10 @@ getters and setters for TestClass that is used to debug json parsing.
 *//*__________________________________________________________________________*/
 
 #pragma once
-#include "../Engine/Serialiser/RTTR.h"
+#include "../include/common_headers.hpp"
 
 //rttr doesnt work yet
 //register your class for rttr here
-
 RTTR_REGISTRATION
 {
 	using namespace rttr;

@@ -1,6 +1,6 @@
 /*!*****************************************************************************
 
-\file       GameEditor.cpp
+\file       imguiEditor.cpp
 \author     Thea Sea. thea.sea, 2102348
 \par        DP email: thea.sea@digipen.edu
 \par        Course: CSD2400/GAM200

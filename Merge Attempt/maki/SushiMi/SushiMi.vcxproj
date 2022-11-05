@@ -105,7 +105,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\theas\Documents\GitHub\maki\maki\lib\glew-2.2.0;C:\Users\theas\Documents\GitHub\maki\maki\lib\Fmod\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -173,7 +173,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -272,6 +272,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
+    <ClInclude Include="RTTR_Header.h" />
     <ClInclude Include="Users\User.h" />
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>

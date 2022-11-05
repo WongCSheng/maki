@@ -50,7 +50,7 @@ registration::class_<TestClass>("TestClass")
 //.property("rot_left", &Object::rot_left)
 //.property("scale_up", &Object::scale_up)
 //.property("scale_down", &Object::scale_down);
-//}
+}
 
 
 TestClass::TestClass()

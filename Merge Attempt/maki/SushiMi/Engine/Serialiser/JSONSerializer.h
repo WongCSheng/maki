@@ -10,7 +10,10 @@ chosen game object.
 *//*__________________________________________________________________________*/
 
 #pragma once
-#include "../include/common_headers.hpp"
+#include "../Headers/STL_Header.h"
+#include "../Headers/RapidJSON_Header.h"
+#include "../Game Object/object.h"
+
 #ifndef JSERIALIZE_H
 #define JSERIALIZE_H
 
@@ -21,7 +24,7 @@ public:
 	//serialize everything
 	//set value to gameobject if all property names match
 	//void Serialize(const std::string& filepath);
-	
+
 	/*  _________________________________________________________________________ */
 	/*! DeserializeObject
 	@param const std::string& filepath
@@ -54,7 +57,6 @@ public:
 		{
 			tempStr = iter->name.GetString(); //gets json property name
 			//rttr::property propertyType = ObjType.get_property(tempStr); //get the name by type
-
 
 			if (iter->value.IsInt())
 				obj.SetInt(iter->value.GetInt());
@@ -97,6 +99,8 @@ public:
 	}
 	//use these when debugging
 	bool DeserializeAndPrintConsole(const std::string& filepath);
+
+	static rapidjson::Value SerializeObjects(const std::string& filepath, std::map<std::string, Object> objMap);
 
 };
 

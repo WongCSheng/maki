@@ -255,6 +255,9 @@
     <ClInclude Include="Engine\System\Linked List\LinkedList.h">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="RTTR_Header.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

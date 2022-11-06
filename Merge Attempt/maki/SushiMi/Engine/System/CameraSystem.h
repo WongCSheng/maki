@@ -1,4 +1,8 @@
-#pragma once
+/*
+File: CameraSystem.h
+Author: w.chongsheng@digipen.edu
+Description: Header for CameraSystem.cpp
+*/
 
 #ifndef CAMERASYSTEM_H_
 #define CAMERASYSTEM_H_

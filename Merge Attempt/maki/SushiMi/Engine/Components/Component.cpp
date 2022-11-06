@@ -1,7 +1,7 @@
 /*
 File:		 ECS.cpp
 Author:		 w.chongsheng@digipen.edu
-Description: This file contains the function definition for Entities and Components
+Description: This file contains the function definition for Components
 */
 
 #include "Component.h"

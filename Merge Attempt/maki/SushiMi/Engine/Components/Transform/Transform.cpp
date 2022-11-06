@@ -1,4 +1,8 @@
-
+/*
+File: Transform.cpp
+Author: w.chongsheng@digipen.edu
+Description: Contains data for every type of transform. From meshes, bounding boxes, camera etc.
+*/
 
 #include "Transform.h"
 #include "../Engine/Components/Component.h"

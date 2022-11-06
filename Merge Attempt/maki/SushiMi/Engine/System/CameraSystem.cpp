@@ -1,3 +1,8 @@
+/*
+File: CameraSystem.cpp
+Author: w.chongsheng@digipen.edu
+Description: Camera System that takes data stored in Camera2D.h and runs it with it's logic.
+*/
 
 #include "CameraSystem.h"
 #include "../Camera/Camera2D.h"

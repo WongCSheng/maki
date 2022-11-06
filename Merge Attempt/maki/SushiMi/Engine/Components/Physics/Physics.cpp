@@ -1,3 +1,8 @@
+/*
+File: Physics.cpp
+Author: 
+Description: Physics components that stores data for which to be used in PhysicSystem.h
+*/
 
 #include "Physics.h"
 

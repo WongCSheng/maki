@@ -1,4 +1,8 @@
-
+/*
+File: Transformer.cpp
+Author: w.chongsheng@digipen.edu
+Description: Transform System which takes data in Transform.h to run in it's logic.
+*/
 
 #include "Transformer.h"
 

@@ -1,3 +1,9 @@
+/*
+File: Physics.cpp
+Author: w.chongsheng@digipen.edu
+Description: Physics components that stores data for which to be used in PhysicSystem.cpp
+*/
+
 #pragma once
 
 #include "../Headers/STL_Header.h"

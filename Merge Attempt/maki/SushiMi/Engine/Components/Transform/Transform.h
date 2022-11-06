@@ -1,3 +1,9 @@
+/*
+File: Transform.h
+Author: w.chongsheng@digipen.edu
+Description: Header for Transform.cpp
+*/
+
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 

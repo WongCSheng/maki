@@ -18,8 +18,8 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 #include "../include/Math.h"
 #include "../include/Vector.h"
 #include <glm/glm/trigonometric.hpp>
-#include <GLFW/glfw3.h>
-#include "../include/Matrix.h"
+//#include <GLFW/glfw3.h>
+#include "../Headers/Math_Header.h"
 /*--------------------------------------------------------------------------- */
 class Object;
 

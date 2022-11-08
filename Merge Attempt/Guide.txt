@@ -1,0 +1,147 @@
+Gamewindow.h
+Camera2d.h
+glhelper.h
+graphic_header
+
+
+Factory.h
+
+SeraliseGame(string filename)
+
+
+Factory.cpp
+$include jsonSeraliser
+
+SeraliseGame(){
+	jsonSeraliser.SerializeObjects(filename, ObjectContainer)
+}
+
+
+$include jsonSeraliser.h
+//forward declare GameObject
+//Map of GameOBject pointers
+#include base component interface, dont include individual component
+
+jsonSeraliser.SerializeObjects(string, std::u_map<string, gObject*>& map){
+
+	//read the file
+
+	//loop the thru object 
+	gObject->GameObjectProperty*
+		//does it have a specific component
+		//Check the json 
+			//Call component serialise/deserialies (pass string buffer/ json document)
+
+			if(name == "Transform")
+				Component* createdComp = CreateeComponent<Transform>()
+				
+
+			createdComp->Seralize();
+			//assign to object
+
+			//mapOfInvokes["transform"]->invoke();
+}
+
+jsonSeraliser.DeSerializeObjects(string, const std::u_map<string, gObject*>& map){
+	//open the file
+	
+	//loop thru object
+		//for each component 
+			comp->Deserialie(file)
+}	
+
+template<typename T>
+RegisterComponent
+
+
+map<string, Component*>
+
+template<typenmame T>			---> Common invokable 		-> map of invokables
+CreateComponent()
+T* template = something;
+return new T(template);
+
+
+
+"4"/"Transform": {
+	x: 5,
+	y: 10,
+	z: 15
+}
+
+
+
+//dont incluide json serialiser
+#include only the parameter type
+component serialise {
+	loop thru the document 
+	for each property --> set the value to your component
+	
+	if(iter->GetString() == "x)
+		component.x = iter->GetValue().GetInt()
+}
+
+component deserialies {
+	//state the name
+	Write "Transform"
+	object = json StartObject	
+		
+	for each property --> woitethe value to your component
+		object["x"] = component.x ;
+	json EndObject	
+}
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+Component System
+
+Name: GameObject1
+Physics: 	x	y	z
+		5	10	15
+Renderer:	texture 	vbo 	vao
+		"Tree.png"	1	2
+Name: GameObject2
+Physics: 	x	y	z
+		5	10	15
+Renderer:	texture 	vbo 	vao
+		"Tree.png"	1	2
+
+-----------
+
+ECS way
+
+Physics Container
+Physics: 	x	y	z
+		5	10	15
+		10 	21	-2
+		33 	66 	102
+
+Renderer:	texture 	vbo 	vao
+		"Tree.png"	1	2
+		"Car.png"	1	2
+
+
+
+//////
+1) restore scene loading		//Serialise
+2) restore camera 		-> can move to rendering system as a singleton	//Object->CS
+3) Scripting				//Mono
+4) RTTR					//Editor/Searies 
+		//Wrap	
+		//Declare which is visible, x (RTTR) alias position x (C++)
+5) texture, font (glBendMode), render order
+	<1, 5, 6, 100>
+	<>  <> <> <>
+6) GUI MENU
+
+///
+1) C#	: GetComponentFromC++<T>("Transform")
+2) C++ 	: GetComponentFromC++ ... convert the C# T to C++ T ... Use the CS to get the component
+3) C#   : Raw pointer ->GetPosX()		| Rawpointer.x
+4) C++  : GetPosX() -> convert std::array -> mono_array
+
+map<string, Component*>
+map<mono_type, ComponentID>

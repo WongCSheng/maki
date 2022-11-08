@@ -36,7 +36,7 @@ std::default_random_engine dre(rd()* GL_TIME_ELAPSED);
 GLint box_counter = 0;
 GLint mystery_counter = 0;
 std::map<std::string, GLSLShader>		GLApp::shdrpgms;
-Object temp;
+//Object temp;
 GLSLShader shdr_pgm;
 /*  _________________________________________________________________________ */
 /*! init
@@ -61,13 +61,13 @@ void GLApp::init() {
 	// and store repo of models of type GLModel in container Model::models,
 	// store shader programs of type GLSLShader in container GLApp::shdrpgms,
 	// and store repo of objects of type GLObject in container Object::objects
-	sceneInitializer("../scenes/graphics_scene.txt");
+	//sceneInitializer("../scenes/graphics_scene.txt");
 
 
 	// Initialize camera here
-	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
+	//Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 
-	Font::init();
+	//Font::init();
 	Texture::generateTexture();
 	Texture::drawTexture();
 
@@ -113,19 +113,19 @@ Update the camera, then loop through objects and update all objects EXCEPT the c
 void GLApp::update()
 {
 	// first, update camera
-	Camera2D::camera2d.update(GLHelper::ptr_window);
-
-	// next, iterate thru each element in container object
-	// for each object of type Object, call update function
-	// except for camera
-	for (auto& x : Object::objects)
-	{
-		if (x.first != "Camera")
-		{
-			x.second.update(GLHelper::delta_time);
-		}
-	}
-
+	//Camera2D::camera2d.update(GLHelper::ptr_window);
+	//
+	//// next, iterate thru each element in container object
+	//// for each object of type Object, call update function
+	//// except for camera
+	//for (auto& x : Object::objects)
+	//{
+	//	if (x.first != "Camera")
+	//	{
+	//		x.second.update(GLHelper::delta_time);
+	//	}
+	//}
+	//
 
 }
 
@@ -141,10 +141,10 @@ void GLApp::draw()
 	// write title stuffs similar to sample ...
 	std::stringstream ss;
 	ss << "SushiMi Engine | ";
-	ss << std::fixed << std::setprecision(2) << " Camera Position: (" << Camera2D::camera2d.pgo->position.x << ", ";
-	ss << Camera2D::camera2d.pgo->position.y << ") | ";
-	ss << std::fixed << std::setprecision(0) << " Orientation: " << Camera2D::camera2d.pgo->orientation.x << " | ";
-	ss << " Window height: " << Camera2D::camera2d.height << " | ";
+	//ss << std::fixed << std::setprecision(2) << " Camera Position: (" << Camera2D::camera2d.pgo->position.x << ", ";
+	//ss << Camera2D::camera2d.pgo->position.y << ") | ";
+	//ss << std::fixed << std::setprecision(0) << " Orientation: " << Camera2D::camera2d.pgo->orientation.x << " | ";
+	//ss << " Window height: " << Camera2D::camera2d.height << " | ";
 	ss << std::fixed << std::setprecision(2) << "FPS: " << GLHelper::fps;
 	glfwSetWindowTitle(GLHelper::ptr_window, ss.str().c_str());
 
@@ -152,14 +152,14 @@ void GLApp::draw()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// draw everything before rendering camera
-	for (auto const& x : Object::objects)
-	{
-		if (x.first != "Camera")
-		{
-			x.second.draw();
-		}
-	}
-	Object::objects["Camera"].draw();
+	//for (auto const& x : Object::objects)
+	//{
+	//	if (x.first != "Camera")
+	//	{
+	//		x.second.draw();
+	//	}
+	//}
+	//Object::objects["Camera"].draw();
 
 	//Font::RenderText(GLApp::shdrpgms["font"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
 }

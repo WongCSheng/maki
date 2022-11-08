@@ -86,7 +86,7 @@ void Core::MainSystem::Update(const double dt)
 	Checks for new Components in each SubSystem.
 */
 
-void Core::MainSystem::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
+void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 {
 	for (int i = 0; i < systems.size(); ++i)
 	{

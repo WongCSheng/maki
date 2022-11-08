@@ -48,7 +48,7 @@ namespace Core
 		class GameObject
 		{
 		private:
-			GameObjectProperty* characteristics;
+			GameObjectProperty* characteristics; //use unique_ptr
 
 		protected:
 			virtual ~GameObject();
@@ -56,7 +56,7 @@ namespace Core
 		public:
 			friend class ObjectFactory;
 			
-			LinkedList<Component*> HeadOfList;
+			//LinkedList<Component*> HeadOfList;
 			
 			GameObject();
 

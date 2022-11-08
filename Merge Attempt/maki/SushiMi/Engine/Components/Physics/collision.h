@@ -56,7 +56,7 @@ namespace Core
 	{
 		GLint mpVtxBuffer;
 		int	vtxNum;
-	}AEGfxVertexList;
+	};
 
 
 	struct GameObj

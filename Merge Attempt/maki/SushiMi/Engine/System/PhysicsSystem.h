@@ -15,13 +15,17 @@ namespace Core
 	public:
 		PhysicSystem();
 		virtual ~PhysicSystem();
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		
 		float applyAccel(float mass);
 		float applyDecel(float mass);
 		void updatePosition(Physics* ObjectPhysics);
 
 	private:
-		std::unordered_map<Object::GameObject*, Component*> PhysicsContainer;
+		std::unordered_map<std::string, Object::GameObject*> PhysicsContainer;
 
 
 	};

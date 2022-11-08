@@ -26,7 +26,7 @@ void Core::Renderer::Update(const double dt)
 	
 }
 
-void Core::Renderer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
+void Core::Renderer::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 {
 
 }

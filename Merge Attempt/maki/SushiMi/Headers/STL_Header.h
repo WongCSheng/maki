@@ -3,6 +3,8 @@
 #ifndef HEADERS_H_
 #define HEADERS_H_
 
+#define NOMINMAX	//disable win32's min max
+
 // STANDARD LIBRARIES
 	//Containers
 	#include <any>

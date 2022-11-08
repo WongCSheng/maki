@@ -28,7 +28,7 @@ namespace Core
 
 		void Init();
 		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		void Serialise(const std::string name);
 		void UpdateTransformation(Transform* Transform);
 
@@ -51,7 +51,7 @@ namespace Core
 		GLboolean scale_down{ GL_FALSE };
 
 	private:
-		std::unordered_map<Object::GameObjectProperty*, Transform*> Transforms;
+		std::unordered_map<std::string, Object::GameObject*> Transforms;
 
 		
 	};

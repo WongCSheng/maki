@@ -64,6 +64,9 @@ struct GLApp {
 	*/
 	static void cleanup();
 
+	static void insert_shdrpgm(std::string shdr_pgm_name, std::string vtx_shdr, std::string frg_shdr);
+
+
 	/*  _________________________________________________________________________ */
 	/*! init_scene
 	@param none
@@ -71,7 +74,7 @@ struct GLApp {
 
 	function to parse scene file
 	*/
-	static void init_scene(std::string);
+	//static void init_scene(std::string);
 	struct GLViewport
 	{
 		GLint x, y;

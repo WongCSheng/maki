@@ -196,22 +196,22 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
 	{
-		Object::objects["Object5"].position.x += 50.0f;
+		//Object::objects["Object5"].position.x += 50.0f;
 		std::cout << "Physics: Moving a circle object right" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
 	{
-		Object::objects["Object5"].position.x -= 50.0f;
+		//Object::objects["Object5"].position.x -= 50.0f;
 		std::cout << "Physics: Moving a circle object left" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
 	{
-		Object::objects["Object5"].position.y -= 50.0f;
+		//Object::objects["Object5"].position.y -= 50.0f;
 		std::cout << "Physics: Moving a circle object down" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
 	{
-		Object::objects["Object5"].position.y += 50.0f;
+		//Object::objects["Object5"].position.y += 50.0f;
 		std::cout << "Physics: Moving a circle object up" << std::endl;
 	}
 
@@ -220,58 +220,58 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	// press J to rotate right faster, press K to rotate left
 	if (GLFW_PRESS == action && key == GLFW_KEY_J)
 	{
-		Object::objects["Object6"].rot_left = GL_TRUE;
+		//Object::objects["Object6"].rot_left = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_K)
 	{
-		Object::objects["Object6"].rot_right = GL_TRUE;
+		//Object::objects["Object6"].rot_right = GL_TRUE;
 	}
 
 	/* for object6's scaling implementation*/
 	// Press M to scale upm press N to scale down
 	if (GLFW_PRESS == action && key == GLFW_KEY_M)
 	{
-		Object::objects["Object6"].scale_up = GL_TRUE;
+		//Object::objects["Object6"].scale_up = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_N)
 	{
-		Object::objects["Object6"].scale_down = GL_TRUE;
+		//Object::objects["Object6"].scale_down = GL_TRUE;
 	}
 
 	//for camera physics
 	if (GLFW_PRESS == action && key == GLFW_KEY_V)
 	{
-		Camera2D::camera2d.camtype_flag = GL_TRUE;
+		//Camera2D::camera2d.camtype_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_Z)
 	{
-		Camera2D::camera2d.zoom_flag = GL_TRUE;
+		//Camera2D::camera2d.zoom_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_A)
 	{
-		Camera2D::camera2d.left_turn_flag = GL_TRUE;
+		//Camera2D::camera2d.left_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_D)
 	{
-		Camera2D::camera2d.right_turn_flag = GL_TRUE;
+		//Camera2D::camera2d.right_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_W)
 	{
-		Camera2D::camera2d.move_flag = GL_TRUE;
-		Camera2D::camera2d.decelerate = GL_FALSE;
+		//Camera2D::camera2d.move_flag = GL_TRUE;
+		//Camera2D::camera2d.decelerate = GL_FALSE;
 	}
 	else if (GLFW_RELEASE == action)
 	{
-		Camera2D::camera2d.decelerate = GL_TRUE;
-		Camera2D::camera2d.camtype_flag = GL_FALSE;
-		Camera2D::camera2d.zoom_flag = GL_FALSE;
-		Camera2D::camera2d.left_turn_flag = GL_FALSE;
-		Camera2D::camera2d.right_turn_flag = GL_FALSE;
-		Camera2D::camera2d.move_flag = GL_FALSE;
-		Object::objects["Object6"].rot_left = GL_FALSE;
-		Object::objects["Object6"].rot_right = GL_FALSE;
-		Object::objects["Object6"].scale_up = GL_FALSE;
-		Object::objects["Object6"].scale_down = GL_FALSE;
+		//Camera2D::camera2d.decelerate = GL_TRUE;
+		//Camera2D::camera2d.camtype_flag = GL_FALSE;
+		//Camera2D::camera2d.zoom_flag = GL_FALSE;
+		//Camera2D::camera2d.left_turn_flag = GL_FALSE;
+		//Camera2D::camera2d.right_turn_flag = GL_FALSE;
+		//Camera2D::camera2d.move_flag = GL_FALSE;
+		//Object::objects["Object6"].rot_left = GL_FALSE;
+		//Object::objects["Object6"].rot_right = GL_FALSE;
+		//Object::objects["Object6"].scale_up = GL_FALSE;
+		//Object::objects["Object6"].scale_down = GL_FALSE;
 	}
 
 	

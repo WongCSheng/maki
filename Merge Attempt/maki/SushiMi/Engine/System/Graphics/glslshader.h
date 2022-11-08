@@ -128,6 +128,7 @@ public:
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y);
     void SetUniform(GLchar const* name, glm::vec2 const& val);
     void SetUniform(GLchar const* name, glm::vec3 const& val);
+    void SetUniform(GLchar const* name, glm::vec4 const& val);
     void SetUniform(GLchar const* name, glm::mat3 const& val);
 
     void SetUniform(GLchar const* name, glm::vec4 const& val);

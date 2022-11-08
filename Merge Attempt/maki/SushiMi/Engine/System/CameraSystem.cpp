@@ -42,7 +42,7 @@ void Core::CameraSystem::Update(const double dt)
 	}*/
 }
 
-void Core::CameraSystem::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
+void Core::CameraSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 {
 
 }

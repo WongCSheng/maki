@@ -25,6 +25,7 @@ void Texture::generateTexture()
 	glGenTextures(1, &texture);
 	//glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
+	std::cout << "texture is: " << texture << std::endl;
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -39,7 +40,7 @@ void Texture::generateTexture()
 
 	stbi_image_free(data);
 }
-
+/*
 void Texture::drawTexture()
 {
 	float vertices[] = {
@@ -68,12 +69,14 @@ void Texture::drawTexture()
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
 	GLint utexture = glGetUniformLocation(GLApp::shdrpgms["shdrpgm"].GetHandle(), "ourTexture");
-	*/
+
 	
 	glBindVertexArray(VAO);		// could it be this???
 
-	glBindTextureUnit(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	std::cout << "texture is: " << texture << std::endl;
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
 	glBindVertexArray(0);
 	GLApp::shdrpgms["texture"].UnUse();
 }
+*/

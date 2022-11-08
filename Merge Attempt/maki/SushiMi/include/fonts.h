@@ -10,7 +10,7 @@ This file implements functionality for fonts using freetype for showing words on
 
 #include <glm/glm/glm.hpp>
 #include <map>
-#include "../include/glslshader.h"
+#include "../Engine/System/Graphics/glslshader.h"
 
 #ifndef FONT_H_
 #define FONT_H_

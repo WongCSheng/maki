@@ -20,7 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
-#include "../include/glapp.h"
+#include "../Engine/System/Graphics/glapp.h"
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"

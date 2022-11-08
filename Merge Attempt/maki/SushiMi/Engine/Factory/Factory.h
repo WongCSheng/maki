@@ -22,7 +22,7 @@ namespace Core
 	private:
 		unsigned int LastObjectID;
 
-		std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer;
+		std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 
 		std::set<Object::GameObject*> DeleteList;
 
@@ -38,7 +38,7 @@ namespace Core
 
 		virtual void Update(const double dt);
 
-		void AddObjects(Object::GameObject* added, unsigned int i);
+		void AddObjects(Object::GameObject* added, std::string i);
 
 		virtual void Init();
 

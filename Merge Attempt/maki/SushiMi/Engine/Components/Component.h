@@ -17,7 +17,7 @@ namespace Core
 	{
 		class GameObjectProperty;
 	}
-	
+
 	enum class ComponentID
 	{
 		None = 0b0000'0000,

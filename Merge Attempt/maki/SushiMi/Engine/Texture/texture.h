@@ -14,8 +14,12 @@ This file implements functionality for texture loading and displaying into the v
 class Texture
 {
 public:
-	static void generateTexture();
-	static void drawTexture();
+	static void generateTexture() {
+
+	}
+	static void drawTexture() {
+
+	}
 };
 
 #endif // !TEXTURE_H_

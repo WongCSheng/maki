@@ -9,7 +9,7 @@ namespace Core
 	class Physics : public Component
 	{
 	private:
-		Physics* instance;
+		//Physics* instance;
 
 	public:
 		Physics();

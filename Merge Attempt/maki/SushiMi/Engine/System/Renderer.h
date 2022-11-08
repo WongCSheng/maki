@@ -21,7 +21,7 @@ namespace Core
 		virtual ~Renderer();
 		void Init();
 		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;

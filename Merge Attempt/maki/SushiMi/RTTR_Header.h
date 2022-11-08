@@ -13,7 +13,7 @@ It will be used for rttr registration further on.
 #include <rttr/property.h>
 #include <rttr/variant.h>
 #include <rttr/registration.h>
-#include "../Game Object/object.h"
+//#include "../Game Object/object.h"
 
 #ifndef RTTR_H
 #define RTTR_H

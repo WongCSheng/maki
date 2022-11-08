@@ -34,7 +34,7 @@ namespace Core
 
 		virtual void Init();
 		virtual void Update(const double dt);
-		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer);
+		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		Renderer* renderer;
 		Transformer* transformer;

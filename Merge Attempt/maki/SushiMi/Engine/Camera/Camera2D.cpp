@@ -12,9 +12,9 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "Camera2D.h"
 #include "../Game Object/GameObject.h"
-#include "../include/glhelper.h"
+#include "Camera2D.h"
+#include "../Engine/System/Graphics/glhelper.h"
 #include <glm/glm/trigonometric.hpp>
 #include <glm/glm/fwd.hpp>
 /*--------------------------------------------------------------------------- */
@@ -49,7 +49,7 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 //	{
 //		{1, 0, 0},
 //		{0, 1, 0},
-//		{-pgo->position.x, -pgo->position.y, 1}
+//		{-pgo->position.x, -pgo->position.y, 1} //negated because translate the view in the opposite direction of where we want cam to move
 //	};
 //
 //	GLfloat cam_W = ar * GLHelper::height;
@@ -57,11 +57,11 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 //	// compute other matrices
 //	camwin_to_ndc_xform =
 //	{
-//		{2 / cam_W, 0, 0},
+//		{2 / cam_W, 0, 0},	// formula 2/W and 2/H
 //		{0, 2 / cam_H, 0},
 //		{0, 0, 1}
 //	};
-//	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;
+//	world_to_ndc_xform = camwin_to_ndc_xform * view_xform;	// World->View->NDC
 //}
 //
 ///*  _________________________________________________________________________ */
@@ -73,6 +73,7 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 //*/
 //void Camera2D::update(GLFWwindow* pWindow)
 //{
+//	GLfloat dt = GLHelper::delta_time;
 //	ar = (GLfloat)GLHelper::width / (GLfloat)GLHelper::height;
 //	// update POV using keypress
 //	if (camtype_flag == GL_TRUE)
@@ -121,7 +122,25 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 //	// update camera's position
 //	if (move_flag == GL_TRUE)
 //	{
+//		//simple physics
+//		linear_speed = velocity * dt;
+//		velocity += acceleration * dt;
 //		pgo->position += (linear_speed * glm::normalize(up));//displace the camera
+//		vel2 = velocity;
+//
+//	}
+//
+//	if (decelerate == GL_TRUE) {
+//		//simple physics
+//
+//		linear_speed = (vel2 * dt);
+//		vel2 -= 5.0f * (acceleration * dt);
+//
+//		if (linear_speed > 0) //not reached 0
+//			pgo->position += (linear_speed * glm::normalize(up));//displace the camera
+//		else
+//			decelerate = GL_FALSE;
+//
 //	}
 //
 //	// implement camera's zoom effect (if required)

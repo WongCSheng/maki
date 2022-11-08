@@ -26,21 +26,21 @@ void Core::Transformer::Init()
 
 void Core::Transformer::Update(const double dt)
 {
-	std::unordered_map<Object::GameObjectProperty*, Transform*>::iterator it = Transforms.begin();
+	std::unordered_map<std::string, Object::GameObject*>::iterator it = Transforms.begin();
 
 	for (it; it != Transforms.end(); ++it)
 	{
-		UpdateTransformation(it->second);
+		UpdateTransformation(reinterpret_cast<Core::Transform*>(it->second->GetObjectProperties()->GetComponent(ComponentID::Transform)));
 	}
 }
 
-void Core::Transformer::RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer)
+void Core::Transformer::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 {
-	std::unordered_map<unsigned int, Object::GameObject*>::iterator it;
+	std::unordered_map<std::string, Object::GameObject*>::iterator it;
 
 	for (it = ObjectContainer.begin(); it != ObjectContainer.end(); ++it)
 	{
-		Transforms.insert({ it->second->GetObjectProperties(), it->second->GetObjectProperties()->GetComponent(ComponentID::Transform) });
+		Transforms.emplace(it->first, it->second);
 	}
 }
 

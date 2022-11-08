@@ -20,12 +20,13 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
-#include "../include/glapp.h"
+#include "../Engine/System/Graphics/glapp.h"
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"
 #include <memory> 
 #include <crtdbg.h> 
+
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
@@ -68,7 +69,7 @@ int main() {
 		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
 		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
 	};
-
+	
 	//imgui 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();

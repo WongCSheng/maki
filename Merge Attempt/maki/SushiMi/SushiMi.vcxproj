@@ -132,6 +132,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -211,6 +212,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp" />
     <ClCompile Include="Engine\Serialiser\RTTR.cpp" />
     <ClCompile Include="Engine\System\CameraSystem.cpp" />
+    <ClCompile Include="Engine\System\Graphics\glapp.cpp" />
+    <ClCompile Include="Engine\System\Graphics\glhelper.cpp" />
+    <ClCompile Include="Engine\System\Graphics\glslshader.cpp" />
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp" />
     <ClCompile Include="Engine\System\PhysicSystem.cpp" />
     <ClCompile Include="Engine\System\Renderer.cpp" />
@@ -218,9 +222,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
-    <ClCompile Include="src\glapp.cpp" />
-    <ClCompile Include="src\glhelper.cpp" />
-    <ClCompile Include="src\glslshader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="Users\User.cpp" />
@@ -253,6 +254,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Serialiser\JSONSerializer.h" />
     <ClInclude Include="Engine\Serialiser\RTTR.h" />
     <ClInclude Include="Engine\System\CameraSystem.h" />
+    <ClInclude Include="Engine\System\Graphics\glapp.h" />
+    <ClInclude Include="Engine\System\Graphics\glhelper.h" />
+    <ClInclude Include="Engine\System\Graphics\glslshader.h" />
     <ClInclude Include="Engine\System\Linked List\LinkedList.h" />
     <ClInclude Include="Engine\System\PhysicsSystem.h" />
     <ClInclude Include="Engine\System\Renderer.h" />
@@ -265,9 +269,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Headers\Math_Header.h" />
     <ClInclude Include="Headers\RapidJSON_Header.h" />
     <ClInclude Include="Headers\STL_Header.h" />
-    <ClInclude Include="include\glapp.h" />
-    <ClInclude Include="include\glhelper.h" />
-    <ClInclude Include="include\glslshader.h" />
     <ClInclude Include="include\Math.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Vector.h" />

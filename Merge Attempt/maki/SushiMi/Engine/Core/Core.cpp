@@ -6,6 +6,7 @@ Description: This file contains the MainSystem which runs all the subsystems in 
 */
 
 #include "Core.h"
+#include "../Engine/Components/Physics/Physics.h"
 
 Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
 

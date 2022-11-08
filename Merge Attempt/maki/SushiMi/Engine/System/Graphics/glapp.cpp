@@ -13,13 +13,12 @@ to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glapp.h>
-#include <../include/glhelper.h>
+#include "../Graphics/glhelper.h"
 #include "../Game Object/GameObject.h"
 #include "../Engine/Mesh/model.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../include/fonts.h"
-#include "../Physics.h"
+#include "../Engine/Components/Physics/Physics.h"
 #define M_PI									3.14159265358979323846  /* pi */
 #include "../Engine/Texture/texture.h"
 

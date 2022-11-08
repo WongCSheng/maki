@@ -13,7 +13,7 @@ This file contains class Window that we will use for opening windows..
 
 #include "../Headers/STL_Header.h"
 #include <GLFW/glfw3.h>
-#include "../include/glhelper.h"
+#include "../Engine/System/Graphics/glhelper.h"
 
 namespace Upfront
 {

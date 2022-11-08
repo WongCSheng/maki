@@ -19,7 +19,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "../Headers/STL_Header.h"
 #include "../Headers/Math_Header.h"
-#include "../include/glhelper.h"
+#include "../Engine/System/Graphics/glhelper.h"
 #include "../Component.h"
 
 namespace Core

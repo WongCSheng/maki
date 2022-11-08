@@ -23,8 +23,8 @@ and transformations (in later labs).
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "../Headers/STL_Header.h"
-#include "../include/glslshader.h"
-#include "../include/glhelper.h"
+#include "../Engine/System/Graphics/glslshader.h"
+#include "../Engine/System/Graphics/glhelper.h"
 #include <glm/glm/glm.hpp>
 #include <glm/glm/gtc/type_ptr.hpp>
 #include "../Engine/Camera/Camera2D.h"

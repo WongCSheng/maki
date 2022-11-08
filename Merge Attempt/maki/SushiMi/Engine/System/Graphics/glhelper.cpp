@@ -12,7 +12,7 @@ pointers to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glhelper.h>
+#include "../Engine/System/Graphics/glhelper.h"
 #include "../Game Object/GameObject.h"
 #include "../Engine/Camera/Camera2D.h"
 #include <iostream>

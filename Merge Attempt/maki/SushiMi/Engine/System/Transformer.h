@@ -7,7 +7,7 @@
 #include "../Game Object/GameObject.h"
 
 #include "../Headers/STL_Header.h"
-#include "../include/glslshader.h"
+#include "Graphics/glslshader.h"
 #include "../Engine/Mesh/model.h"
 
 
@@ -32,18 +32,18 @@ namespace Core
 		void Serialise(const std::string name);
 		void UpdateTransformation(Transform* Transform);
 
-		glm::vec2 orientation{};	// orientation.x is angle_disp and
+		gfxVector2 orientation{};	// orientation.x is angle_disp and
 		// orientation.y is angle_speed both in degrees
 
-		glm::vec2 scaling{};		// scaling parameters
-		glm::vec2 position{};		// translation vector coordinates
+		gfxVector2 scaling{};		// scaling parameters
+		gfxVector2 position{};		// translation vector coordinates
 		gfxVector2 velocity{};
 		float dirCurr{};
 
 		// compute object's model transform matrix using scaling,
 		// rotation, and translation attributes
-		glm::mat3 mdl_to_ndc_xform{};
-		glm::mat3 mdl_xform{}; // model transformation
+		gfxMatrix3 mdl_to_ndc_xform{};
+		gfxMatrix3 mdl_xform{}; // model transformation
 
 		GLboolean rot_right{ GL_FALSE };
 		GLboolean rot_left{ GL_FALSE };

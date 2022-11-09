@@ -12,12 +12,14 @@
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y
-;copy "$(SolutionDir)lib\glew\glew32.dll" "$(TargetDir)" /Y</Command>
+copy "$(SolutionDir)lib\glew\glew32.dll" "$(TargetDir)" /Y</Command>
     </PostBuildEvent>
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>GLFW_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
+      <WarningLevel>Level4</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

@@ -10,7 +10,6 @@ the pgmhandler
 *//*__________________________________________________________________________*/
 #include <../Engine/System/Graphics/glslshader.h>
 #include <iomanip>
-
 GLint
 GLSLShader::GetUniformLocation(GLchar const* name) {    //return location of uniform variable
     return glGetUniformLocation(pgm_handle, name);

@@ -23,9 +23,9 @@ void Texture::generateTexture()
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
 	glGenTextures(1, &texture);
-	//glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
-	std::cout << "texture is: " << texture << std::endl;
+	std::cout << "texture id is: " << texture << std::endl;
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

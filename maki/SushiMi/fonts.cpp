@@ -55,9 +55,10 @@ int Font::init()
             continue;
         }
         // generate texture
-        unsigned int texture;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
+        unsigned int font;
+        glGenTextures(1, &font);
+        glBindTexture(GL_TEXTURE_2D, font);
+        std::cout << "font id is: " << font << std::endl;
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
@@ -76,7 +77,7 @@ int Font::init()
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         // now store character for later use
         Character character = {
-            texture,
+            font,
             glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
             glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
             face->glyph->advance.x
@@ -110,7 +111,7 @@ void Font::RenderText(GLSLShader& s, std::string text, float x, float y, float s
     // activate corresponding render state	
     s.Use();
     glUniform3f(glGetUniformLocation(s.GetHandle(), "textColor"), color.x, color.y, color.z);
-    glActiveTexture(GL_TEXTURE1);
+    glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
     // iterate through all characters

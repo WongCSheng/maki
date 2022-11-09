@@ -1,28 +1,29 @@
-Gamewindow.h
-Camera2d.h
-glhelper.h
-graphic_header
+https://github.com/LIONant-depot/xECS/tree/Lesson06_Serializing/build/ExampleProject.vs2019 (xECS)
+
+https://github.com/kkolyan/embedmono/blob/master/main.cpp (Basic Mono stuff)
+
+https://github.com/ChaosInitiative/mono-wrapper/blob/master/src/monowrapper.cpp (More Mono stuff)
 
 
 Factory.h
-
 SeraliseGame(string filename)
 
 
 Factory.cpp
-$include jsonSeraliser
+#include jsonSeraliser
 
-SeraliseGame(){
+SeraliseGame(string filename){
 	jsonSeraliser.SerializeObjects(filename, ObjectContainer)
 }
 
 
-$include jsonSeraliser.h
-//forward declare GameObject
-//Map of GameOBject pointers
-#include base component interface, dont include individual component
 
-jsonSeraliser.SerializeObjects(string, std::u_map<string, gObject*>& map){
+#include jsonSeraliser.h
+//forward declare GameObject
+//Map of GameObject pointers
+#include (base component interface, dont include individual component)
+
+jsonSeraliser.SerializeObjects(std::string, std::unordered_map<string, gObject*>& map){
 
 	//read the file
 
@@ -39,10 +40,10 @@ jsonSeraliser.SerializeObjects(string, std::u_map<string, gObject*>& map){
 			createdComp->Seralize();
 			//assign to object
 
-			//mapOfInvokes["transform"]->invoke();
+					//mapOfInvokes["transform"]->invoke(); std::funtion
 }
 
-jsonSeraliser.DeSerializeObjects(string, const std::u_map<string, gObject*>& map){
+jsonSeraliser.DeSerializeObjects(std::string, const std::unordered_map<string, gObject*>& map){
 	//open the file
 	
 	//loop thru object
@@ -50,6 +51,7 @@ jsonSeraliser.DeSerializeObjects(string, const std::u_map<string, gObject*>& map
 			comp->Deserialie(file)
 }	
 
+//For adding in new components
 template<typename T>
 RegisterComponent
 
@@ -70,7 +72,6 @@ return new T(template);
 }
 
 
-
 //dont incluide json serialiser
 #include only the parameter type
 component serialise {
@@ -86,7 +87,7 @@ component deserialies {
 	Write "Transform"
 	object = json StartObject	
 		
-	for each property --> woitethe value to your component
+	for each property --> write the value to your component
 		object["x"] = component.x ;
 	json EndObject	
 }
@@ -105,10 +106,14 @@ Renderer:	texture 	vbo 	vao
 		"Tree.png"	1	2
 Name: GameObject2
 Physics: 	x	y	z
-		5	10	15
+		10	21	-2
 Renderer:	texture 	vbo 	vao
-		"Tree.png"	1	2
-
+		"Car.png"	1	2
+Name: GameObject2
+Physics: 	x	y	z
+		33	66	102
+Renderer:	texture 	vbo 	vao
+		"Dog.png"	1	2
 -----------
 
 ECS way

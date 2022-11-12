@@ -22,7 +22,7 @@ namespace Core
 
 		void GameObjectProperty::Init()
 		{
-			for (auto i : ComponentContainer)
+			for (auto&& i : ComponentContainer)
 			{
 				i.second->SetOwner(this);
 				i.second->Init();
@@ -55,9 +55,9 @@ namespace Core
 			ObjectID.second = name;
 		}
 
-		void GameObjectProperty::AddComponent(Core::ComponentID ID, Core::Component* comp)
+		void GameObjectProperty::AddComponent(Core::ComponentID ID, Component* comp)
 		{
-			ComponentContainer.insert({ ID, comp });
+			ComponentContainer.insert({ ID, std::make_unique<Component>(comp)});
 		}
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)

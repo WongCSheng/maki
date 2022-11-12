@@ -26,7 +26,7 @@ namespace Core
 		Transformer();
 		virtual ~Transformer();
 
-		void Init(Object::GameObject* obj);
+		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		void Serialise(const std::string name);

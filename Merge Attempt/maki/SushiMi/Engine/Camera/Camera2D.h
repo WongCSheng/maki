@@ -54,9 +54,9 @@ namespace Core{
 		void SetAspectRatio(float value);
 		float CalculateAspectRatio(int Height, int Width);
 		
-		void SetCamtoNDCMat(gfxVector3 value);
-		void SetWorldtoNDC(gfxVector3 value);
-		void SetView_xform(gfxVector3 value);
+		void SetCamtoNDCMat(gfxMatrix3 value);
+		void SetWorldtoNDC(gfxMatrix3 value);
+		void SetView_xform(gfxMatrix3 value);
 		void SetRight(gfxVector2 value);
 		void SetUp(gfxVector2 value);
 		void Setheight_chg_dir(int value);
@@ -100,11 +100,12 @@ namespace Core{
 
 	private:
 		GLint height{};
+		GLint width{};
 		GLfloat ar{};
 
-		gfxVector3 camwin_to_ndc_xform{};
-		gfxVector3 world_to_ndc_xform{};
-		gfxVector3 view_xform{};
+		gfxMatrix3 camwin_to_ndc_xform{};
+		gfxMatrix3 world_to_ndc_xform{};
+		gfxMatrix3 view_xform{};
 	};
 }
 

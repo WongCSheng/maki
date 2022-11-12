@@ -38,9 +38,8 @@ namespace Core
 		pgo = ptr->GetObjectProperties()->GetComponent(ComponentID::Camera);
 
 		// compute camera window's aspect ratio
-		GLsizei fb_width, fb_height;
-		glfwGetFramebufferSize(pWindow, &fb_width, &fb_height);
-		ar = static_cast<GLfloat>(fb_width) / static_cast<GLfloat>(fb_height);
+		glfwGetFramebufferSize(pWindow, &width, &height);
+		ar = static_cast<GLfloat>(width) / static_cast<GLfloat>(height);
 
 		// compute camera's up and right vectors
 		up = { -sin(pgo->orientation.x / 180.f * static_cast<GLfloat>(PI)), cos(pgo->orientation.x / 180.f * static_cast<GLfloat>(PI)) };
@@ -209,17 +208,17 @@ namespace Core
 		return static_cast<float>(Width / Height);
 	}
 
-	void Camera2D::SetCamtoNDCMat(gfxVector3 value)
+	void Camera2D::SetCamtoNDCMat(gfxMatrix3 value)
 	{
 		camwin_to_ndc_xform = value;
 	}
 
-	void Camera2D::SetWorldtoNDC(gfxVector3 value)
+	void Camera2D::SetWorldtoNDC(gfxMatrix3 value)
 	{
 		world_to_ndc_xform = value;
 	}
 
-	void Camera2D::SetView_xform(gfxVector3 value)
+	void Camera2D::SetView_xform(gfxMatrix3 value)
 	{
 		view_xform = value;
 	}

@@ -29,7 +29,8 @@ namespace Core
 			}
 		}
 
-		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
+		template<typename T>
+		T* GameObjectProperty::GetComponent(Core::ComponentID ID)
 		{
 			return ComponentContainer[ID];
 		}

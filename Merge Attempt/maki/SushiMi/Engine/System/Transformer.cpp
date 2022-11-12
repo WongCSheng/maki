@@ -14,7 +14,7 @@ Core::Transformer::~Transformer()
 {
 }
 
-void Core::Transformer::Init()
+void Core::Transformer::Init(Object::GameObject* obj)
 {
 	/*std::unordered_map<Object::GameObjectProperty*, Transform*>::iterator it;
 	

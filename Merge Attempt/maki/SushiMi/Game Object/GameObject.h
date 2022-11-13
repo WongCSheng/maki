@@ -20,6 +20,7 @@ namespace Core
 
 			void Init();
 
+			//template<typename T>
 			Component* GetComponent(ComponentID ID);
 
 			unsigned int GetID();

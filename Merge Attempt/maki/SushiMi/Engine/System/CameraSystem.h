@@ -23,11 +23,12 @@ namespace Core
 		CameraSystem();
 		virtual ~CameraSystem();
 		virtual void Init();
+		void AddinCameras(Object::GameObject* gameobj);
 		virtual void Update(const double dt);
 		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 	private:
-		std::vector<Camera2D*> cameras;
+		std::vector<Component*> cameras;
 	};
 }
 

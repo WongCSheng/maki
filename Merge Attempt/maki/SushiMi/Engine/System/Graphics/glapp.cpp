@@ -16,7 +16,7 @@ to OpenGL implementations.
 #include "../Graphics/glhelper.h"
 #include "../Game Object/GameObject.h"
 #include "../Engine/Mesh/model.h"
-//#include "../Engine/Camera/Camera2D.h"
+#include "../Engine/Camera/Camera2D.h"
 #include "../include/fonts.h"
 #include "../Engine/Components/Physics/Physics.h"
 #define M_PI									3.14159265358979323846  /* pi */

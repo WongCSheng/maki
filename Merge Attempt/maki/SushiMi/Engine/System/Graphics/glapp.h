@@ -27,7 +27,7 @@ and transformations (in later labs).
 #include "../Engine/System/Graphics/glhelper.h"
 #include <glm/glm/glm.hpp>
 #include <glm/glm/gtc/type_ptr.hpp>
-//#include "../Engine/Camera/Camera2D.h"
+#include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"
 
 struct GLApp {

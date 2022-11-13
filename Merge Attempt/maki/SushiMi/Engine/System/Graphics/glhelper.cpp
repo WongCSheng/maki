@@ -14,7 +14,7 @@ pointers to OpenGL implementations.
 ----------------------------------------------------------------------------- */
 #include "../Engine/System/Graphics/glhelper.h"
 #include "../Game Object/GameObject.h"
-//#include "../Engine/Camera/Camera2D.h"
+#include "../Engine/Camera/Camera2D.h"
 #include <iostream>
 
 /*                                                   objects with file scope

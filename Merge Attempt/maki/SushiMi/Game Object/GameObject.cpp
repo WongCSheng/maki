@@ -22,15 +22,15 @@ namespace Core
 
 		void GameObjectProperty::Init()
 		{
-			for (auto&& i : ComponentContainer)
+			for (auto i : ComponentContainer)
 			{
 				i.second->SetOwner(this);
 				i.second->Init();
 			}
 		}
-
-		template<typename T>
-		T* GameObjectProperty::GetComponent(Core::ComponentID ID)
+		
+		/*template<typename T>*/
+		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
 		{
 			return ComponentContainer[ID];
 		}
@@ -55,9 +55,9 @@ namespace Core
 			ObjectID.second = name;
 		}
 
-		void GameObjectProperty::AddComponent(Core::ComponentID ID, Component* comp)
+		void GameObjectProperty::AddComponent(Core::ComponentID ID, Core::Component* comp)
 		{
-			ComponentContainer.insert({ ID, std::make_unique<Component>(comp)});
+			ComponentContainer.insert({ ID, comp });
 		}
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)

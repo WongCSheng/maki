@@ -44,6 +44,8 @@ namespace Core
 
 		gfxMatrix3 T, R, S;
 
+		Object::GameObjectProperty* owner;
+
 		//Transform* instance; //Singleton (Don't really need)
 	};
 }

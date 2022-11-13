@@ -31,7 +31,9 @@ Core::CameraSystem::~CameraSystem()
 //}
 void Core::CameraSystem::Init()
 {
-
+	// assign address of object of type Object with name "Camera" in objects
+	//pgo = &Object::objects.at("Camera");
+	//pgo = &Object::GameObject();
 }
 
 //store gameobj into container of cameras

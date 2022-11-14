@@ -93,7 +93,7 @@ void Object::update(GLdouble delta_time)
 	//for all objects, loop thru all objects in e1 
 	for (auto& e1 : Object::objects)
 	{
-		if (e1.first == "temp")
+		if (e1.first == "temp") //store object type into container, check btw containers
 		{
 			for (auto& e2 : Object::objects)
 			{
@@ -104,6 +104,12 @@ void Object::update(GLdouble delta_time)
 						//Please uncomment this when testing collision
 						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
 					}
+					else if (Collision::CollisionIntersection_CircleRect(e1.second.obb, e1.second.aabb) == 1)
+					{
+						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
+					}
+					
+					else
 					std::cout << "No collision detected" << std::endl;
 				}
 			}

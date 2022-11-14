@@ -44,6 +44,7 @@ public:
 	gfxVector2 velocity{};
 	float dirCurr{};
 	Collision::AABB aabb;
+	Collision::OBB obb;
 	bool status{};
 	float mass;						//mass inst for accelerations
 	 

@@ -4,7 +4,7 @@
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
 
-\co-author 	Aurelia Chong (50%)
+\co-author 	Aurelia Chong 
 \par		email: fei.x@digipen.edu
 \date   	2/8/2022
 \brief		This source file contains the function definitions for

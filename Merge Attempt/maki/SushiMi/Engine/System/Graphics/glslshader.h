@@ -1,12 +1,7 @@
 /* !
 @file    glslshader.h
-@author  pghali@digipen.edu
-@date    06/11/2016
-
-Note: The contents of this file must not be updated by students. Otherwise,
-something that works for you will not work for me. If you want something to be
-modified, updated, or altered and it is useful for the entire class, please
-speak to me.
+@author  louishetong.wang@digipen.edu
+@date    20/09/2022
 
 This file contains the declaration of class GLSLShader that encapsulates the
 functionality required to load shader source; compile shader source; link
@@ -25,9 +20,18 @@ program object.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <GL/glew.h> // for access to OpenGL API declarations 
-#include "../Headers/STL_Header.h"
 #include <glm/glm/glm.hpp>
-#include "../Headers/Math_Header.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <map>
+#include "../include/Math.h"
+#include "../include/Matrix.h"
+#include "../include/vector3.h"
 
 /*  _________________________________________________________________________ */
 class GLSLShader
@@ -128,8 +132,9 @@ public:
     void SetUniform(GLchar const* name, GLfloat x, GLfloat y);
     void SetUniform(GLchar const* name, glm::vec2 const& val);
     void SetUniform(GLchar const* name, glm::vec3 const& val);
-    void SetUniform(GLchar const* name, glm::vec4 const& val);
     void SetUniform(GLchar const* name, glm::mat3 const& val);
+
+    void SetUniform(GLchar const* name, glm::vec4 const& val);
 
     // display the list of active vertex attributes used by vertex shader
     void PrintActiveAttribs() const;

@@ -24,6 +24,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"
+#include "../Editors/LevelEditor.h"
+
 #include <memory> 
 #include <crtdbg.h> 
 
@@ -63,61 +65,14 @@ int main() {
 	// Part 1
 	init();
 
-	GLfloat vertices[] =
-	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
-	};
-	
-	//imgui 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
-	ImGui_ImplOpenGL3_Init("#version 450");
-
 	// Part 2
 	while (!glfwWindowShouldClose(GLHelper::ptr_window)) {
 		// Part 2a
 		update();
 
-		//collision
-		/*for (auto& e1 : Object::objects)
-		{
-			for (auto& e2 : Object::objects)
-			{
-				if (e1.first != e2.first)
-				{
-					if (Collision::CollisionIntersection_RectRect(e1.second.aabb, e1.second.velocity, e2.second.aabb, e2.second.velocity) == 0)
-					{
-						std::cout << "Collision detected between " << e1.first << " and " << e2.first << std::endl;
-					}
-				}
-			}
-		}*/
-
-
-		//imgui
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
-
-		ImGui::Begin("I am the ImGui Window!");
-		ImGui::Text("Hi - Thea");
-		ImGui::End();
-
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
 		// Part 2b
 		draw();
 	}
-
-	//do not uncomment this first as it overrides physics
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 
 	// Part 3
@@ -168,10 +123,29 @@ static void draw() {
 	// Part 1
 	GLApp::draw();
 
+	//imGUI Game Editor
+	Editor::LevelEditor::imguiEditorDraw();
 
 	// Part 2: swap buffers: front <-> back
 	glfwSwapBuffers(GLHelper::ptr_window);
 	glfwPollEvents();
+}
+
+void GLAPIENTRY
+MessageCallback(GLenum source,
+	GLenum type,
+	GLuint id,
+	GLenum severity,
+	GLsizei length,
+	const GLchar* message,
+	const void* userParam)
+{
+	if (type == GL_DEBUG_TYPE_ERROR) {
+		fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+			(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+			type, severity, message);
+	}
+
 }
 
 /*  _________________________________________________________________________ */
@@ -184,16 +158,16 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 static void init() {
-	// Part 1
-	if (!GLHelper::init(1152, 864, "Maki Game Engine")) {
+	// Part 1: set window size
+	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
 		std::cout << "Unable to create OpenGL context" << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
 
-	glViewport(0, 0, 800, 800);
+	glEnable(GL_DEBUG_OUTPUT);
+	glDebugMessageCallback(MessageCallback, 0);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	glViewport(0, 0, 800, 800);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -201,20 +175,20 @@ static void init() {
 	// Part 2
 	GLHelper::print_specs(); //uncommented
 
-	// imgui 
-	////Setup IMGUI
-	//IMGUI_CHECKVERSION();
-	//ImGui::CreateContext();
-	//ImGuiIO& io = ImGui::GetIO(); (void)io;
-	//ImGui::StyleColorsDark();
-	//ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
-	//ImGui_ImplOpenGL3_Init((char*)glGetString(GL_NUM_SHADING_LANGUAGE_VERSIONS));
+	
 
 	glfwMakeContextCurrent(GLHelper::ptr_window);
 
 
 	// Part 3
 	GLApp::init();
+	Editor::LevelEditor::imguiEditorInit();
+
+	//load audio files
+	//AudioManager.LoadMusic("BGM.wav");
+	//AudioManager.LoadSound("WalkSFX.wav");
+	//play bgm
+	//AudioManager.PlayMusic("BGM.wav");
 }
 
 /*  _________________________________________________________________________ */
@@ -232,6 +206,9 @@ void cleanup() {
 
 	// Part 2
 	GLHelper::cleanup();
+	//unload music
+	//AudioManager.UnloadMusic("BGM.wav");
+	//AudioManager.UnloadMusic("WalkSFX.wav");
 
 	////imgui
 	//Shutdown

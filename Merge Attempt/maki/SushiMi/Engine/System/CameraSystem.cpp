@@ -7,6 +7,7 @@ Description: Camera System that takes data stored in Camera2D.h and runs it with
 #include "CameraSystem.h"
 #include "../Camera/Camera2D.h"
 #include "../Window/GameWindow.h"
+#include "../Game Object/GameObject.h"
 
 Core::CameraSystem::CameraSystem()
 {
@@ -28,10 +29,27 @@ Core::CameraSystem::~CameraSystem()
 //		}
 //	}
 //}
-
 void Core::CameraSystem::Init()
 {
+	// assign address of object of type Object with name "Camera" in objects
+	//pgo = &Object::objects.at("Camera");
+	//pgo = &Object::GameObject();
+}
 
+//store gameobj into container of cameras
+void Core::CameraSystem::AddinCameras(Object::GameObject* gameobj)
+{
+	
+	/*for (int i = 0; i < camera.size(); ++i)
+	{
+		camera[i]
+	}*/
+	
+	if (gameobj->GetObjectProperties()->GetComponent(ComponentID::Camera))
+	{
+		
+		cameras.push_back(gameobj->GetObjectProperties()->GetComponent(ComponentID::Camera));
+	}
 }
 
 void Core::CameraSystem::Update(const double dt)

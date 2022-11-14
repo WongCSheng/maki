@@ -28,7 +28,8 @@ namespace Core
 				i.second->Init();
 			}
 		}
-
+		
+		/*template<typename T>*/
 		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
 		{
 			return ComponentContainer[ID];

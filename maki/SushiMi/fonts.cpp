@@ -149,4 +149,3 @@ void Font::RenderText(GLSLShader& s, std::string text, float x, float y, float s
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
-

@@ -187,8 +187,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\maki\SushiMi\Physics.cpp" />
-    <ClCompile Include="..\..\..\maki\SushiMi\src\collision.cpp" />
     <ClCompile Include="..\lib\imgui\imgui.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\lib\imgui\imgui_draw.cpp" />
@@ -228,8 +226,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Window\GameWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\maki\SushiMi\include\collision.h" />
-    <ClInclude Include="..\..\..\maki\SushiMi\Physics.h" />
     <ClInclude Include="..\lib\imgui\imconfig.h" />
     <ClInclude Include="..\lib\imgui\imgui.h" />
     <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h" />

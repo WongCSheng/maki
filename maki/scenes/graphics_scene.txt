@@ -1,6 +1,6 @@
 modelname 	objname 	colour 			scale 			orientation 		pos 			shader
 58	
-triangle 	Camera 		0.0 0.0 0.0		50.0 100.0 		30.0 2.0   		0 0 		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
+triangle 	Camera 		0.0 0.0 0.0		50.0 100.0 		30.0 2.0   		0 0 		animation ../shaders/Animation.vert ../shaders/Animation.frag
 square  	ZRect	 	0.0 0.0 0.0 	200.0 70.0 		0.0 -22.5  		550 300		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 square  	Wall1-1 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		-25 450		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 square  	Wall1-2 	0.0 1.0 0.0 	50.0 50.0 		0.0 0.0  		25 450		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag

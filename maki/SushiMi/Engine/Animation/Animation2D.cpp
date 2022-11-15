@@ -1,5 +1,7 @@
 #include "Animation2D.h"
 
+#define SPEED 0.0125
+
 
 void Animation2D::init(const char* filename)
 {
@@ -50,7 +52,7 @@ void Animation2D::init(const char* filename)
 	//load texture
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(GL_TRUE);
-	unsigned char* img_data = stbi_load("../textures/walk.png", &width, &height, &nrChannels, 0);
+	unsigned char* img_data = stbi_load(filename, &width, &height, &nrChannels, 0);
 
 	if (img_data)
 	{
@@ -79,6 +81,67 @@ void Animation2D::init(const char* filename)
 	// loop
 	while (!glfwWindowShouldClose(GLHelper::ptr_window))
 	{
-		readKeyboard(GLHelper::ptr_window, &x_dir, &y_dir);
+		// read keyboard
+		Animation2D::readKeyboard(GLHelper::ptr_window, &x_dir, &y_dir);
+	}
+	time_now = glfwGetTime();
+	time_delta = time_now - time_old;
+	if (time_delta >= 1.0f / frames_ps) {
+		time_old = time_now;
+		time_delta = 0.0f;
+		uv_x += 1.0f;
+		if (uv_x >= nx_frames) {
+			uv_x = 0.0f;
+		}
+	}
+
+	GLuint hdlr = GLApp::shdrpgms["animation"].GetHandle();
+
+	glUseProgram(hdlr);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniform1f(glGetUniformLocation(hdlr, "x_dir"), x_dir);
+	glUniform1f(glGetUniformLocation(hdlr, "y_dir"), y_dir);
+	glUniform1f(glGetUniformLocation(hdlr, "uv_x"), uv_x);
+	glUniform1f(glGetUniformLocation(hdlr, "uv_y"), uv_y);
+	glUniform1f(glGetUniformLocation(hdlr, "nx_frames"), nx_frames);
+	glUniform1f(glGetUniformLocation(hdlr, "ny_frames"), ny_frames);
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+	glfwSwapBuffers(GLHelper::ptr_window);
+	glfwPollEvents();
+}
+
+/*void Animation2D::draw()
+{
+	glUseProgram(shaderProgram);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniform1f(glGetUniformLocation(shaderProgram, "x_dir"), x_dir);
+	glUniform1f(glGetUniformLocation(shaderProgram, "y_dir"), y_dir);
+	glUniform1f(glGetUniformLocation(shaderProgram, "uv_x"), uv_x);
+	glUniform1f(glGetUniformLocation(shaderProgram, "uv_y"), uv_y);
+	glUniform1f(glGetUniformLocation(shaderProgram, "nx_frames"), nx_frames);
+	glUniform1f(glGetUniformLocation(shaderProgram, "ny_frames"), ny_frames);
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+	glfwSwapBuffers(window);
+	glfwPollEvents();
+}
+*/
+
+void Animation2D::readKeyboard(GLFWwindow* window, float* x_direction, float* y_direction)
+{
+	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) {
+		*y_direction += SPEED;
+	}
+	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
+		*y_direction -= SPEED;
+	}
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
+		*x_direction -= SPEED;
+	}
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
+		*x_direction += SPEED;
 	}
 }

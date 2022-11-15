@@ -15,9 +15,9 @@ enum AnimationType
 class Animation2D
 {
 public:
-	void init(const char* filename);
-	void play();
-	void readKeyboard(GLFWwindow* window, float* x_direction, float* y_direction);
+	static void init(const char* filename);
+	//void draw();
+	static void readKeyboard(GLFWwindow* window, float* x_direction, float* y_direction);
 
 };
 

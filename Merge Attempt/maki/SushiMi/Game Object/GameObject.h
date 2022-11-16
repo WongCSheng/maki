@@ -20,8 +20,8 @@ namespace Core
 
 			void Init();
 
-			//template<typename T>
-			Component* GetComponent(ComponentID ID);
+			template<typename T>
+			T* GetComponent(ComponentID ID);
 
 			unsigned int GetID();
 			void SetID(unsigned int name);
@@ -29,6 +29,7 @@ namespace Core
 			std::string GetIDName();
 			void SetIDName(std::string name);
 
+			template<typename T>
 			void AddComponent(ComponentID ID, Component* comp);
 
 			void RemoveComponent(ComponentID ID);
@@ -37,7 +38,7 @@ namespace Core
 			GameObjectProperty();
 			~GameObjectProperty();
 
-			std::unordered_map<ComponentID, Component*> ComponentContainer;
+			std::unordered_map<ComponentID, std::unique_ptr<Component>> ComponentContainer;
 
 			std::pair<unsigned int, std::string> ObjectID; //Unsigned int is the component tags, String is the name of the object
 		};

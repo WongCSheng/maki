@@ -135,6 +135,7 @@ gfxMatrix3 gfxMatrix3::getInverse() const
 	return inv_matx;
 
 }
+
 /*
 | cosO		-sinO		0		|
 |								|

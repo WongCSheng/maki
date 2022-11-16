@@ -96,6 +96,9 @@ namespace Core
 		Collision() {}
 		~Collision() {}
 
+		void Init();
+		//void Serialise(const std::string name);
+
 		/**************************************************************************/
 		/*!
 		* \brief		structure for the axis bound binding box
@@ -117,9 +120,11 @@ namespace Core
 			float scale,											//scale - input
 			float dir);											//direction - input
 
-		/******************************************************************************/
-		/*!
-		 */
+		bool IsActive();
+		void Activate();
+		void Deactivate();
+		void Remove();
+
 		 /******************************************************************************/
 		 //struct Circle
 		 //{
@@ -205,6 +210,8 @@ namespace Core
 		 //	CSD1130::Vec2 &reflectedVectorB,												//Non-Normalized reflected vector of Circle B - output
 		 //	CSD1130::Vec2 &ptEndB);														//Final position of the circle B after reflection - output
 
+	private:
+		//bool active{ false };
 	};
 }
 

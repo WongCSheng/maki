@@ -16,6 +16,11 @@ namespace Core
 	{
 	}
 
+	void Physics::Init()
+	{
+
+	}
+
 	float Physics::GetMass()
 	{
 		return mass;

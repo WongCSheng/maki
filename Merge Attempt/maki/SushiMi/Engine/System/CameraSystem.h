@@ -22,10 +22,10 @@ namespace Core
 	public:
 		CameraSystem();
 		virtual ~CameraSystem();
-		virtual void Init();
+		void Init();
 		void AddinCameras(Object::GameObject* gameobj);
-		virtual void Update(const double dt);
-		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		/*-----------------------Variables declaration------------------------------------------*/
 		
 		//Object::GameObject* pgo;//Object* pgo; // pointer to game obj that embeds the camera

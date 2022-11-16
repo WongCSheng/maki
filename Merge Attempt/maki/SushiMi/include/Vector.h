@@ -152,7 +152,7 @@ public:
 	}
 
 	//normalization
-	void Normalize(gfxVector2& vecResult, const gfxVector2 vec)
+	float Normalize(gfxVector2& vecResult, const gfxVector2 vec)
 	{
 		vecResult.x = vec.x / length(vec);
 		vecResult.y = vec.y / length(vec);

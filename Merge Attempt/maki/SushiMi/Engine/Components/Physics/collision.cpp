@@ -32,6 +32,16 @@ double g_dt = GLHelper::delta_time;
 /**************************************************************************/
 namespace Core
 {
+	void Collision::Init()
+	{
+
+	}
+
+	/*void Collision::Serialise(const std::string name)
+	{
+		
+	}*/
+	
 	bool Collision::CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
 		const AABB& aabb2, const gfxVector2& vel2)
 	{
@@ -196,6 +206,26 @@ namespace Core
 		NormalVec.Normalize(NormalVec, temp);
 
 		lineSegment.m_normal = { NormalVec.y, -NormalVec.x };
+	}
+
+	bool Collision::IsActive()
+	{
+		return active;
+	}
+
+	void Collision::Activate()
+	{
+		active = true;
+	}
+
+	void Collision::Deactivate()
+	{
+		active = false;
+	}
+
+	void Collision::Remove()
+	{
+		active
 	}
 
 	/******************************************************************************/

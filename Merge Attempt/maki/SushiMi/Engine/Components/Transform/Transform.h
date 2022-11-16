@@ -19,6 +19,8 @@ namespace Core
 		Transform();
 		~Transform();
 
+		void Init();
+
 		const gfxMatrix3 TransformMat();
 		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3());
 		void SetPosition(gfxVector2 position);
@@ -32,17 +34,17 @@ namespace Core
 
 		const gfxVector2& Forward(const double dt);
 
-		gfxVector2 localposition;
-		gfxMatrix3 localrotation;
-		gfxVector2 localscale;
-		gfxVector2 worldposition;
-		gfxMatrix3 worldrotation;
-		gfxVector2 worldscale;
+		gfxVector2 localposition{};
+		gfxMatrix3 localrotation{};
+		gfxVector2 localscale{};
+		gfxVector2 worldposition{};
+		gfxMatrix3 worldrotation{};
+		gfxVector2 worldscale{};
 
 	private:
-		gfxVector2 forward;
+		gfxVector2 forward{};
 
-		gfxMatrix3 T, R, S;
+		gfxMatrix3 T{}, R{}, S{};
 
 		Object::GameObjectProperty* owner;
 

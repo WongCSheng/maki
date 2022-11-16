@@ -115,9 +115,6 @@
     <ClCompile Include="..\..\..\maki\SushiMi\src\collision.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\maki\SushiMi\Physics.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -267,9 +264,6 @@
     <ClInclude Include="..\..\..\maki\SushiMi\include\collision.h">
       <Filter>Collision</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\maki\SushiMi\Physics.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -361,9 +355,6 @@
     </Filter>
     <Filter Include="Collision">
       <UniqueIdentifier>{dbfec7a6-81a5-4db6-9317-b0e81cf8235d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Physics">
-      <UniqueIdentifier>{1aac1961-23b5-4e6b-a424-4f27dad47784}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

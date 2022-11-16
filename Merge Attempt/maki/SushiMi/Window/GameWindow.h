@@ -38,7 +38,7 @@ namespace Upfront
 
 		inline static POINT mousePos{};
 
-		inline static const char* titlebar;
+		inline static const char* titlebar{"Maki Engine"};
 	};
 
 	/*class Window_Message : public Message

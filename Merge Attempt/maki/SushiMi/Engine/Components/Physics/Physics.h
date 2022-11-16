@@ -8,12 +8,11 @@ namespace Core
 {
 	class Physics : public Component
 	{
-	private:
-		//Physics* instance;
-
 	public:
 		Physics();
 		virtual ~Physics();
+
+		void Init();
 		
 		float mass;
 		gfxVector2 velocity;
@@ -22,5 +21,8 @@ namespace Core
 		float GetMass();
 		gfxVector2 GetVelocity();
 		gfxVector2 GetPosition();
+
+	private:
+		//Physics* instance;
 	};
 }

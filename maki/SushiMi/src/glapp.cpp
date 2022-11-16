@@ -25,6 +25,7 @@ to OpenGL implementations.
 #define M_PI									3.14159265358979323846  /* pi */
 #include <../include/texture.h>
 #include <../include/graphicsSerializer.h>
+#include <../Engine/Animation/Animation2D.h>
 
 
 /*                                                   objects with file scope
@@ -77,6 +78,7 @@ void GLApp::init() {
 	//Texture::drawTexture();  // wont be needed anymore
 
 	// font testing
+	Animation2D::init("../textures/idle.png");
 
 }
 

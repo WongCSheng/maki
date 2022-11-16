@@ -113,6 +113,9 @@
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="src\Log.cpp">
+      <Filter>GameEngine\Assertion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -259,6 +262,12 @@
     <ClInclude Include="Engine\System\Graphics\glslshader.h">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Log.h">
+      <Filter>GameEngine\Assertion</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Assertion.h">
+      <Filter>GameEngine\Assertion</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -347,6 +356,9 @@
     </Filter>
     <Filter Include="GameEngine\System\LinkedList">
       <UniqueIdentifier>{0dae68f0-29b9-4c74-9569-c5411c28d956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Assertion">
+      <UniqueIdentifier>{832a41c7-836c-4581-8e4c-132681ba5090}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

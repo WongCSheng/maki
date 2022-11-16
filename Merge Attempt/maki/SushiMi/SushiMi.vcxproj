@@ -221,6 +221,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="Users\User.cpp" />
@@ -263,6 +264,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
+    <ClInclude Include="Headers\Assertion.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />
     <ClInclude Include="Headers\Math_Header.h" />
@@ -273,6 +275,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="RTTR_Header.h" />
+    <ClInclude Include="src\Log.h" />
     <ClInclude Include="Users\User.h" />
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>

@@ -78,7 +78,7 @@ void GLApp::init() {
 	//Texture::drawTexture();  // wont be needed anymore
 
 	// font testing
-	Animation2D::init("../textures/idle.png");
+	//Animation2D::init("../textures/idle.png");
 
 }
 

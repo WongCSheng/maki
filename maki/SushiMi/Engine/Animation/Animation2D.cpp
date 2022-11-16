@@ -79,11 +79,13 @@ void Animation2D::init(const char* filename)
 	time_now = time_old = glfwGetTime();
 
 	// loop
+	/*
 	while (!glfwWindowShouldClose(GLHelper::ptr_window))
 	{
 		// read keyboard
 		Animation2D::readKeyboard(GLHelper::ptr_window, &x_dir, &y_dir);
 	}
+	*/
 	time_now = glfwGetTime();
 	time_delta = time_now - time_old;
 	if (time_delta >= 1.0f / frames_ps) {

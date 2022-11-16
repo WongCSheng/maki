@@ -1,10 +1,10 @@
 #pragma once
 /******************************************************************************/
 /*!
-\file		NGAsserts.h
-\author 	Noah Alastair Ng
-\par    	email: noahalastair.ng@digipen.edu
-\date   	04 September 2022
+\file		Assertion.h
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+\date   	16 Nov 2022
 \brief		This header file contains the engine's assert functions
 
 Copyright (C) 2022 DigiPen Institute of Technology.
@@ -15,7 +15,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #ifndef Assertion_H
 #define Assertion_H
 
-//#include "NGDefines.h"
 #include "Log.h"
 
 #define ASSERTION_ENABLED //turn assertions on/off by commenting this line
@@ -61,7 +60,7 @@ extern "C" {
 For ASSERTING : USE CAUTIOUSLY! This will cause immediate Breaking of the debugger/ app
 If you are very sure that the value here should never be a certain value, or a certain pointer should never point to a NULLPTR, use ASSERT functions below accordingly.
 
-NGASSERT(expr) :
+ASSERT(expr) :
 expr is the expression you are comparing , similar to doing eg: if (file.is_open()), Assert will only run if the expr returns a FALSE/ 0 / NULLPTR!
 This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
 Format of print:
@@ -72,7 +71,7 @@ _LINE	\n	// the line in the file in which the assert happen
 
 In release build, the assert will exit the app, assertion should be logged to log file
 
-NGASSERT_MSG(expr, msg):
+ASSERT_MSG(expr, msg):
 expr is the expression you are comparing, msg is the message you input to show during assertion
 This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
 Format of print:
@@ -83,7 +82,7 @@ _LINE	\n	// the line in the file in which the assert happen
 
 In release build, the assert will exit the app, assertion should be logged to log file
 
-NGASSERT_DEBUG(expr):
+ASSERT_DEBUG(expr):
 expr is the expression you are comparing , this is a debug mode exclusive function, does not work in release mode
 This causes a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
 Format of print:

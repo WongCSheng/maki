@@ -192,7 +192,7 @@ static void init() {
 	//AudioManager.LoadSound("WalkSFX.wav");
 	//play bgm
 	//AudioManager.PlayMusic("BGM.wav");
-	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");
+	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
 
 /*  _________________________________________________________________________ */

@@ -133,7 +133,7 @@ void LogOutput(LogLevel level, const char* message, ...);
 
 /*
 LOGGING FUNCTIONS and How to use
-When using Logging Functions, do #include "UTILS/NGDebug.h"
+When using Logging Functions, do #include "UTILS/Debug.h"
 During your coding sessions, if you feel that there is a need for checking for errors, values, information printing or tracing code, you can use any of the functions below.
 
 For Logging use: (msg) -> the VA_ARG (Printf("...%s%d%f%c", str, dec, float,char) <- similar to Printf syntax)

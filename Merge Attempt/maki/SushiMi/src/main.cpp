@@ -29,6 +29,9 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include <memory> 
 #include <crtdbg.h> 
 
+//	testing
+#include "../Headers/Log.h"
+
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
@@ -189,6 +192,7 @@ static void init() {
 	//AudioManager.LoadSound("WalkSFX.wav");
 	//play bgm
 	//AudioManager.PlayMusic("BGM.wav");
+	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");
 }
 
 /*  _________________________________________________________________________ */

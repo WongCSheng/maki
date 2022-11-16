@@ -29,25 +29,25 @@
       <Filter>GameEngine\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_demo.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_draw.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_impl_glfw.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_impl_opengl3.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_tables.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Matrix.cpp">
       <Filter>Math</Filter>
@@ -112,6 +112,9 @@
     <ClCompile Include="Engine\System\Graphics\glslshader.cpp">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>Assertion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -142,31 +145,31 @@
       <Filter>GameEngine\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imconfig.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui_impl_glfw.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui_impl_opengl3.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui_impl_opengl3_loader.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imgui_internal.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imstb_rectpack.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imstb_textedit.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\imgui\imstb_truetype.h">
-      <Filter>GameEngine\UI\imgui</Filter>
+      <Filter>GameEngine\Texture\UI\imgui</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Math_Header.h">
       <Filter>Headers</Filter>
@@ -258,6 +261,12 @@
     <ClInclude Include="Engine\System\Graphics\glslshader.h">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Log.h">
+      <Filter>Assertion</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Assertion.h">
+      <Filter>Assertion</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -274,9 +283,6 @@
     </Filter>
     <Filter Include="GameEngine\Messaging">
       <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\UI">
-      <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Users">
       <UniqueIdentifier>{ad949715-feac-4c16-a62b-7bd34e0b7cda}</UniqueIdentifier>
@@ -304,9 +310,6 @@
     </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{d7af1aed-38a1-45bc-9372-e56cf6b59b5b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\UI\imgui">
-      <UniqueIdentifier>{efcaa243-5ffe-4124-905b-44d36aea7d67}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\Factory">
       <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
@@ -346,6 +349,15 @@
     </Filter>
     <Filter Include="GameEngine\System\LinkedList">
       <UniqueIdentifier>{0dae68f0-29b9-4c74-9569-c5411c28d956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Texture\UI">
+      <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Texture\UI\imgui">
+      <UniqueIdentifier>{efcaa243-5ffe-4124-905b-44d36aea7d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assertion">
+      <UniqueIdentifier>{538a8289-e886-4531-9485-88fd59a3ef4f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

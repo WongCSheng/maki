@@ -16,67 +16,60 @@ This file implements functionality for the texture creation and implementation
 #include "../fonts.h"
 
 /*--------------------------------------------------------------------------- */
-unsigned int texture;
-int width, height, nrChannels;
-void Texture::generateTexture()
+TextureSystem* TextureSystem::_instance = nullptr;
+
+TextureSystem* TextureSystem::GetInstance()
 {
+	if (_instance == nullptr) _instance = new TextureSystem();
+
+	return _instance;
+}
+
+void TextureSystem::Generate(const char* filename)
+{
+	Texture result;
+
+	int width, height, numcomponents;
+	unsigned char* data;
+	unsigned int textureID;
+
+	glGenTextures(1, &textureID);
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* data = stbi_load("../textures/doge.jpg", &width, &height, &nrChannels, 0);		// load image
-	glGenTextures(1, &texture);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	std::cout << "texture id is: " << texture << std::endl;
+	data = stbi_load(filename, &width, &height, &numcomponents, STBI_rgb_alpha);
+
+	result.width = width;
+	result.height = height;
+	result.ID = textureID;
+
 	if (data)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		// ********* texture minimize & maxmize operation
+		// to solve pixlation problem
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //GL_LINEAR_MIPMAP_NEAREST
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	}
 	else
 	{
-		std::cout << " Failed to load texture" << std::endl;
+		std::cout << "failed to load image : " << filename << std::endl;
+		std::cout << "============================================" << std::endl;
+		stbi_image_free(data);
 	}
 
 	stbi_image_free(data);
 }
 /*
-void Texture::drawTexture()
+void TextureSystem::Delete(Texture& obj)
 {
-	float vertices[] = {
-		// positions          // colors           // texture coords
-		-1.f, -1.f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-		-1.f,  1.f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f,   // top left 
-		 1.f,  1.f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-		 1.f, -1.f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f   // bottom right
-		
-	};
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
-	unsigned int VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
-
-	GLApp::shdrpgms["texture"].Use();
-	//GLApp::shdrpgms["texture"].SetUniform("ourTexture", texture);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
-	/*
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glUseProgram(GLApp::shdrpgms["shdrpgm"].GetHandle());
-	GLint utexture = glGetUniformLocation(GLApp::shdrpgms["shdrpgm"].GetHandle(), "ourTexture");
-
-	
-	glBindVertexArray(VAO);		// could it be this???
-
-	glBindTexture(GL_TEXTURE_2D, texture);
-	std::cout << "texture is: " << texture << std::endl;
-	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//incorrectly enabled vertex attribute arrays
-	glBindVertexArray(0);
-	GLApp::shdrpgms["texture"].UnUse();
+	glDeleteTextures(1, &obj.ID);
 }
 */
+TextureSystem::TextureSystem()
+{
+
+}

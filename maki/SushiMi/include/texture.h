@@ -11,11 +11,26 @@ This file implements functionality for texture loading and displaying into the v
 #ifndef TEXTURE_H_
 #define TEXTURE_H_
 
-class Texture
+struct Texture
+{
+	int width;
+	int height;
+	unsigned int ID;
+};
+
+class TextureSystem
 {
 public:
-	static void generateTexture();
-	static void drawTexture();
+	static TextureSystem* GetInstance();
+
+	static void Generate(const char* filename);
+
+	//void Delete(Texture& obj);
+
+private:
+	TextureSystem();
+
+	static TextureSystem* _instance;
 };
 
 #endif // !TEXTURE_H_

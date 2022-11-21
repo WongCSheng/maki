@@ -114,6 +114,9 @@
     <ClCompile Include="Engine\Animation\Animation2D.cpp">
       <Filter>GameEngine\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="Game Object\Sprite.cpp">
+      <Filter>GameEngine\Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -250,6 +253,9 @@
     <ClInclude Include="Engine\Animation\Animation2D.h">
       <Filter>GameEngine\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Game Object\Sprite.h">
+      <Filter>GameEngine\Sprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -332,6 +338,9 @@
     </Filter>
     <Filter Include="GameEngine\Animation">
       <UniqueIdentifier>{886cb2e0-f27d-4298-b7d9-d7ec1e1ecd7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Sprite">
+      <UniqueIdentifier>{62eb198c-580a-48ca-92fd-bfd68cc8df81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

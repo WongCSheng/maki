@@ -74,7 +74,7 @@ void GLApp::init() {
 	Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 
 	Font::init();
-	Texture::generateTexture();
+	TextureSystem::Generate("../textures/doge.jpg");
 	//Texture::drawTexture();  // wont be needed anymore
 
 	// font testing

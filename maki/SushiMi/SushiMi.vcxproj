@@ -208,6 +208,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="fonts.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
+    <ClCompile Include="Game Object\Sprite.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="src\AudioEngine.cpp" />
     <ClCompile Include="src\imguiEditor.cpp" />
@@ -251,6 +252,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="fonts.h" />
     <ClInclude Include="Game Object\GameObject.h" />
+    <ClInclude Include="Game Object\Sprite.h" />
     <ClInclude Include="Headers\STL_Header.h" />
     <ClInclude Include="include\AudioEngine.h" />
     <ClInclude Include="include\Debug.h" />

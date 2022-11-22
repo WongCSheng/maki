@@ -10,7 +10,7 @@
 #include <iomanip>
 #include <ctime>
 using namespace std;
-// Logger.h entries
+// Log.h entries
 // ----------------------------------------------- //
 
 // To switch/control logging during debug mode 

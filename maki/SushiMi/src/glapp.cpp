@@ -43,6 +43,7 @@ GLint mystery_counter = 0;
 std::map<std::string, GLSLShader>		GLApp::shdrpgms;
 Object temp;
 GLSLShader shdr_pgm;
+Sprite player;
 /*  _________________________________________________________________________ */
 /*! init
 @param none
@@ -79,6 +80,9 @@ void GLApp::init() {
 
 	// font testing
 	//Animation2D::init("../textures/idle.png");
+	Animation2D::Animation2D("../textures/idle.png");
+	player = new Sprite("../textures/idle.png");
+	//player->scale(glm::vec2(50));
 
 }
 

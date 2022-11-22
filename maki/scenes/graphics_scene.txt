@@ -58,4 +58,4 @@ circle 		temp 		0.0 0.0 1.0 	25.0 25.0 		0.0 0.0    		25 200		shdrpgm ../shaders
 circle 		anim 		0.0 0.0 1.0 	25.0 25.0 		0.0 0.0    		175 200		shdrpgm ../shaders/SushiMi.vert ../shaders/SushiMi.frag
 square		Texture		1.0 0.0 0.0		1.0 1.0			0.0 0.0			550 0		texture ../shaders/Texture.vert ../shaders/Texture.frag
 square		Font		1.0 0.0 0.0		1.0 1.0			0.0 0.0			550 0		font ../shaders/Font.vert ../shaders/Font.frag
-square  	player	 	0.0 1.0 0.0 	1.0 5.0 		0.0 0.0  		600 550		animation ../shaders/Animation.vert ../shaders/Animation.frag
+square  	player	 	0.0 1.0 0.0 	1.0 5.0 		0.0 0.0  		-225 300		animation ../shaders/Animation.vert ../shaders/Animation.frag

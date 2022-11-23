@@ -16,7 +16,8 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 *******************************************************************************/
 
-
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb-master/stb_image.h>
 #include "LevelEditor.h"
 #include "imfilebrowser.h"
 //std::vector<std::string> ObjVector;
@@ -43,12 +44,13 @@ void Editor::LevelEditor::imguiEditorInit(void)
 
 	// (optional) set browser properties
 	fileDialog.SetTitle("title");
-	fileDialog.SetTypeFilters({ ".h", ".cpp" });
+	//fileDialog.SetTypeFilters({ ".h", ".cpp" });
 }
 
 void Editor::LevelEditor::imguiEditorDraw(void)
 {
 	
+
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
@@ -57,6 +59,7 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	
 	ImGui::Begin("Object Editor - Imgui Window");
 	ImGui::Text("Click to Select Object");
+	
 	
 
 	ImGui::Text("The selected object is: ");
@@ -74,16 +77,47 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	if (ImGui::Begin("Object Editor - Imgui Window"))
 	{
 		// open file dialog when user clicks this button
-		if (ImGui::Button("open file dialog"))
+		if (ImGui::Button("Click here to Open File Explorer"))
 			fileDialog.Open();
 	}
 	ImGui::End();
 
+	
+
 	fileDialog.Display();
+
+	//const char* cctext = "../textures/BaMi_Idle1.png";
+
+	////some graphics
+	//unsigned int texture;
+	//glGenTextures(1, &texture);
+	//glBindTexture(GL_TEXTURE_2D, texture);
+	//// set the texture wrapping/filtering options (on the currently bound texture object)
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//// load and generate the texture
+	//int width, height, nrChannels;
+	//unsigned char* data = stbi_load(/*cctext*/"../textures/BaMi_Idle1.png", &width, &height, &nrChannels, 0);
+	//if (data)
+	//{
+	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	//	glGenerateMipmap(GL_TEXTURE_2D);
+	//}
+	//else
+	//{
+	//	std::cout << "Failed to load texture" << std::endl;
+	//}
+	//stbi_image_free(data);
+	////end some graphics
 
 	if (fileDialog.HasSelected())
 	{
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		/*cctext = (fileDialog.GetSelected().string()).c_str();
+		std::cout << cctext << std::endl;*/
+
 		fileDialog.ClearSelected();
 	}
 

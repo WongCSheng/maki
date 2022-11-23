@@ -117,6 +117,18 @@
     <ClCompile Include="Game Object\Sprite.cpp">
       <Filter>GameEngine\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Animation\Rectangle.cpp">
+      <Filter>GameEngine\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Animation\ShaderLibrary.cpp">
+      <Filter>GameEngine\shdrLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Animation\ShaderProgram.cpp">
+      <Filter>GameEngine\shdrLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Animation\Player.cpp">
+      <Filter>GameEngine\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\imgui\imconfig.h">
@@ -256,6 +268,21 @@
     <ClInclude Include="Game Object\Sprite.h">
       <Filter>GameEngine\Sprite</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Animation\Transform.h">
+      <Filter>GameEngine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation\Rectangle.h">
+      <Filter>GameEngine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation\ShaderLibrary.h">
+      <Filter>GameEngine\shdrLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation\ShaderProgram.h">
+      <Filter>GameEngine\shdrLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation\Player.h">
+      <Filter>GameEngine\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -341,6 +368,9 @@
     </Filter>
     <Filter Include="GameEngine\Sprite">
       <UniqueIdentifier>{62eb198c-580a-48ca-92fd-bfd68cc8df81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\shdrLib">
+      <UniqueIdentifier>{42fa8c36-04a0-48f7-82fd-d3bdc565018d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

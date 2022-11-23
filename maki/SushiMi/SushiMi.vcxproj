@@ -197,6 +197,10 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Engine\Animation\Animation2D.cpp" />
+    <ClCompile Include="Engine\Animation\Player.cpp" />
+    <ClCompile Include="Engine\Animation\Rectangle.cpp" />
+    <ClCompile Include="Engine\Animation\ShaderLibrary.cpp" />
+    <ClCompile Include="Engine\Animation\ShaderProgram.cpp" />
     <ClCompile Include="Engine\Components\Component.cpp" />
     <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Core\Core.cpp" />
@@ -241,6 +245,11 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Engine\Animation\Animation2D.h" />
+    <ClInclude Include="Engine\Animation\Player.h" />
+    <ClInclude Include="Engine\Animation\Rectangle.h" />
+    <ClInclude Include="Engine\Animation\ShaderLibrary.h" />
+    <ClInclude Include="Engine\Animation\ShaderProgram.h" />
+    <ClInclude Include="Engine\Animation\Transform.h" />
     <ClInclude Include="Engine\Components\Component.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />

@@ -59,8 +59,6 @@ void Object::draw() const
 	{
 		// load shader program
 		GLApp::shdrpgms[shd_ref->first].Use();		// this will load 4
-
-
 		// bind VAO of object's model
 		glBindVertexArray(Model::models[mdl_ref->first].vaoid);
 		glBindTexture(GL_TEXTURE_2D, 129);

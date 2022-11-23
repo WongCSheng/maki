@@ -1,149 +1,94 @@
 #include "Animation2D.h"
 
-#define SPEED 0.0125
-
-
-void Animation2D::init(const char* filename)
+Animation2D::Animation2D(const char* filename)
+	: anim_cursor(0),
+	current_frame_indx(0),
+	speed(0.05f)
 {
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	FILE* fp = nullptr;
+	const int bufferlen = 255;
+	char line[bufferlen];
 
-	// link and initialize shader programs
-	GLApp::insert_shdrpgm("animation", "../shaders/Animation.vert", "../shaders/Animation.frag");
+	fopen_s(&fp, filename, "r");
 
-	// vertices & indices
-	float vertices[] = {
-		0.0, 0.0,
-		0.0, 1.0,
-		1.0, 1.0,
-		1.0, 0.0
-	};
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	unsigned int VAO, VBO, EBO;
-
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	glBindVertexArray(VAO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
-	glEnableVertexAttribArray(0);
-
-	float x_dir = 0.0f, y_dir = 0.0f;
-
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	//load texture
-	int width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(GL_TRUE);
-	unsigned char* img_data = stbi_load(filename, &width, &height, &nrChannels, 0);
-
-	if (img_data)
+	if (fp == nullptr)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, img_data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		printf("erorr in reading animation file \n");
 	}
 	else
 	{
-		std::cout << " Failed to load texture" << std::endl;
-	}
+		while (fgets(line, bufferlen, fp))
+		{
+			vector<int> result;
 
-	stbi_image_free(img_data);
+			stringstream ss(line);
+			string token;
+			while (getline(ss, token, ','))
+			{
+				result.push_back(stoi(token));
+			}
 
-
-	// initialize delta time
-	float nx_frames = 8.0f, ny_frames = 4.0f;
-	float uv_x = 0.0f, uv_y = 2.0f;
-
-
-	double time_now, time_old, time_delta, frames_ps;
-	frames_ps = 4.0f;
-	time_now = time_old = glfwGetTime();
-
-	// loop
-	/*
-	while (!glfwWindowShouldClose(GLHelper::ptr_window))
-	{
-		// read keyboard
-		Animation2D::readKeyboard(GLHelper::ptr_window, &x_dir, &y_dir);
-	}
-	*/
-	time_now = glfwGetTime();
-	time_delta = time_now - time_old;
-	if (time_delta >= 1.0f / frames_ps) {
-		time_old = time_now;
-		time_delta = 0.0f;
-		uv_x += 1.0f;
-		if (uv_x >= nx_frames) {
-			uv_x = 0.0f;
+			glm::vec4 frame = glm::vec4(result[0], result[1], result[2], result[3]);
+			frames.push_back(frame);
 		}
 	}
 
-	GLuint hdlr = GLApp::shdrpgms["animation"].GetHandle();
+	frames_count = (int)frames.size();
 
-	glUseProgram(hdlr);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glUniform1f(glGetUniformLocation(hdlr, "x_dir"), x_dir);
-	glUniform1f(glGetUniformLocation(hdlr, "y_dir"), y_dir);
-	glUniform1f(glGetUniformLocation(hdlr, "uv_x"), uv_x);
-	glUniform1f(glGetUniformLocation(hdlr, "uv_y"), uv_y);
-	glUniform1f(glGetUniformLocation(hdlr, "nx_frames"), nx_frames);
-	glUniform1f(glGetUniformLocation(hdlr, "ny_frames"), ny_frames);
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-	glfwSwapBuffers(GLHelper::ptr_window);
-	glfwPollEvents();
+	fclose(fp);
 }
 
-/*void Animation2D::draw()
+Animation2D::~Animation2D()
 {
-	glUseProgram(shaderProgram);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glUniform1f(glGetUniformLocation(shaderProgram, "x_dir"), x_dir);
-	glUniform1f(glGetUniformLocation(shaderProgram, "y_dir"), y_dir);
-	glUniform1f(glGetUniformLocation(shaderProgram, "uv_x"), uv_x);
-	glUniform1f(glGetUniformLocation(shaderProgram, "uv_y"), uv_y);
-	glUniform1f(glGetUniformLocation(shaderProgram, "nx_frames"), nx_frames);
-	glUniform1f(glGetUniformLocation(shaderProgram, "ny_frames"), ny_frames);
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-	glfwSwapBuffers(window);
-	glfwPollEvents();
 }
-*/
 
-void Animation2D::readKeyboard(GLFWwindow* window, float* x_direction, float* y_direction)
+void Animation2D::play(Texture& spritetexture, Rectangle& rectangle, double deltatime)
 {
-	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) {
-		*y_direction += SPEED;
+	anim_cursor += deltatime;
+
+	if (anim_cursor > speed)
+	{
+		current_frame_indx = (current_frame_indx + 1) % frames_count;
+		anim_cursor = 0;
 	}
-	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
-		*y_direction -= SPEED;
-	}
-	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
-		*x_direction -= SPEED;
-	}
-	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
-		*x_direction += SPEED;
-	}
+
+	glm::vec4 frame = frames[current_frame_indx];
+
+	// normalization
+	frame.x /= spritetexture.width;
+	frame.y /= spritetexture.height;
+	frame.z /= spritetexture.width;
+	frame.w /= spritetexture.height;
+
+	vector<glm::vec2> uv;
+
+	uv = {
+		glm::vec2(frame.x,frame.y),
+		glm::vec2(frame.x, frame.y + frame.w),
+		glm::vec2(frame.x + frame.z, frame.y),
+
+		glm::vec2(frame.x + frame.z, frame.y),
+		glm::vec2(frame.x, frame.y + frame.w),
+		glm::vec2(frame.x + frame.z, frame.y + frame.w)
+	};
+
+	glBindVertexArray(rectangle.VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, rectangle.UVBO);
+
+	/*{ //realocation for memory
+		glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), &uv[0], GL_DYNAMIC_DRAW);
+	}*/
+
+
+	// best practice to send data to gpu memory..
+	void* gpubuffer = nullptr;
+	gpubuffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, 6 * sizeof(glm::vec2), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+	memcpy(gpubuffer, uv.data(), 6 * sizeof(glm::vec2));
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Animation2D::set_animation_speed(float newspeed)
+{
+	speed = newspeed;
 }

@@ -28,6 +28,8 @@ vertex shaders, textures.(Not yet added in as of this version)
 #include <iomanip>
 #include <list>
 #include <random>
+#include "../Engine/Animation/Player.h"
+#include "../Engine/Animation/ShaderLibrary.h"
 #ifndef GLAPP_H
 #define GLAPP_H
 
@@ -87,7 +89,8 @@ struct GLApp {
 	static std::map<std::string, GLSLShader> shdrpgms; // singleton
 	static std::vector<GLViewport> vps; // container for viewports
 
-
+	static Player* player;
+	static double starttime, endtime, delta;
 };
 
 

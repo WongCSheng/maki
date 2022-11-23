@@ -135,11 +135,11 @@ static void draw() {
 	GLApp::draw();
 	// Tell OpenGL which Shader Program we want to use
 	
-	if (mainclass::drawTriangle)
+	if (mainclass::drawTexture)
 	{
 		// Draw the triangle using the GL_TRIANGLES primitive
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
@@ -246,4 +246,5 @@ void cleanup() {
 	////imgui Shutdown
 	Editor::LevelEditor::imguiShutDown();
 	
+
 }

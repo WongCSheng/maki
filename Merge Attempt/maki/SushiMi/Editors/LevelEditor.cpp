@@ -246,7 +246,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// load image, create texture and generate mipmaps
-	const char* b = "../textures/test.png";
+	const char* b = "../textures/BaMi_Idle1.png";
 	data = stbi_load(b, &width, &height, &nrChannels, 0);
 	if (data)
 	{
@@ -262,14 +262,28 @@ void Editor::LevelEditor::imguiEditorInit(void)
 
 	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
 	// -------------------------------------------------------------------------------------------
-	glUseProgram(texture1);
+	glUseProgram(ID);
+	//glUseProgram(texture2);
 	//ID.use(); // don't forget to activate/use the shader before setting uniforms!
 	// either set it manually like so:
 	//glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
 	// or set it via the texture class
 	//ourShader.setInt("texture2", 1);
+	glUniform1i(glGetUniformLocation(ID, "texture1"), 0);
 	glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
 	std::cout << ID << std::endl;
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture1);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, texture2);
+
+	// render container
+	glUseProgram(ID);
+	//ourShader.use();
+	
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	// Exporting variables to shaders
 	/*glUseProgram(shaderProgram);
 	glUniform1f(glGetUniformLocation(shaderProgram, "size"), mainclass::size);
@@ -288,20 +302,16 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	glClear(GL_COLOR_BUFFER_BIT);*/
 
 	// bind textures on corresponding texture units
-	glActiveTexture(GL_TEXTURE0);
+	/*glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, texture2);
+	glBindTexture(GL_TEXTURE_2D, texture2);*/
 
 
-	std::cout << ID << std::endl;
+	//std::cout << ID << std::endl;
 
-	// render container
-	glUseProgram(ID);
-	//ourShader.use();
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
+	
+	
 	//// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 	//// -------------------------------------------------------------------------------
 	//glfwSwapBuffers(window);
@@ -326,7 +336,7 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	
 
 	ImGui::Text("The selected object is: ");
-	ImGui::Checkbox("Draw Triangle", &mainclass::drawTriangle);
+	ImGui::Checkbox("Display Texture", &mainclass::drawTexture);
 	// Slider that appears in the window
 	ImGui::SliderFloat("Size", &mainclass::size, 0.5f, 2.0f);
 	// Fancy color editor that appears in the window

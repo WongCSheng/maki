@@ -116,6 +116,9 @@
     <ClCompile Include="src\Log.cpp">
       <Filter>GameEngine\Assertion</Filter>
     </ClCompile>
+    <ClCompile Include="Mono.cpp">
+      <Filter>GameEngine\Mono</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -365,6 +368,9 @@
     </Filter>
     <Filter Include="GameEngine\Assertion">
       <UniqueIdentifier>{832a41c7-836c-4581-8e4c-132681ba5090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Mono">
+      <UniqueIdentifier>{a6c2f78c-f04c-4135-a2fa-128eee905723}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

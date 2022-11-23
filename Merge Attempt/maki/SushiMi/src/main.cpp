@@ -61,6 +61,8 @@ static void update();
 static void init();
 static void cleanup();
 
+static Core::ObjectFactory* OFactory = new Core::ObjectFactory();
+
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
 /*  _________________________________________________________________________ */
@@ -117,6 +119,9 @@ static void update() {
 
 	// Part 3
 	GLApp::update();
+
+
+	OFactory->Update(GLHelper::delta_time);
 
 	////imgui
 	////New Frame
@@ -186,6 +191,9 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 static void init() {
+
+	OFactory->Init();
+
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
 		std::cout << "Unable to create OpenGL context" << std::endl;

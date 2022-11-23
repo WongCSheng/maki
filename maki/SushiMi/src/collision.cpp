@@ -159,52 +159,6 @@ namespace Collision {
 		}
 		//case 5:
 		if (tFirst > tLast) { return 0; } //no collision
-
-
-		/***************************************/
-		// working with y-axis
-		/***************************************/
-		if ((vel2.y - vel1.y) < 0.f) //case 1 & 4
-		{
-			if (aabb1.min.y > aabb2.max.y) //case 1
-			{
-				return 0;
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 4 revisited (1/2)
-			{
-				dFirst = aabb1.max.y - aabb2.min.y;
-				tFirst = max((dFirst) / (vel2.y - vel1.y), tFirst);
-
-			}
-			if (aabb1.min.y < aabb2.max.y) //case 4 revisited (2/2)
-			{
-
-				dLast = aabb1.min.y - aabb2.max.y;
-				tLast = min((dLast) / (vel2.y - vel1.y), tLast);
-			}
-		}
-		if ((vel2.y - vel1.y) > 0.f) //case 2 & case 3
-		{
-			if (aabb1.min.y > aabb2.max.y) //case 2 (1/2)
-			{
-				dFirst = aabb1.min.y - aabb2.max.y;
-				tFirst = max((dFirst) / (vel2.y - vel1.y), tFirst);
-
-
-
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 2 (2/2)
-			{
-
-				dLast = aabb1.max.y - aabb2.min.y;
-				tLast = min((dLast) / (vel2.y - vel1.y), tLast);
-
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 3
-			{
-				return 0; //no intersection
-			}
-		}
 		//case 5:
 		if (tFirst > tLast) { return 0; } //no collision
 		//std::cout << "Collision Detected!" << std::endl;

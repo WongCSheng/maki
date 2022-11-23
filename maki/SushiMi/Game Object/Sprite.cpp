@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include <GL/glew.h>
 
 Sprite::Sprite(const char* filename)
 {

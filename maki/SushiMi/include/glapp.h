@@ -87,11 +87,11 @@ struct GLApp {
 	};
 	using VPSS = std::vector<std::pair<std::string, std::string>>;
 	static std::map<std::string, GLSLShader> shdrpgms; // singleton
-	static std::vector<GLViewport> vps; // container for viewports
+	static std::vector<GLViewport> vps; // container for viewport
 
 	static Player* player;
 	static double starttime, endtime, delta;
 };
 
 
-#endif /* GLAPP_H */
+#endif

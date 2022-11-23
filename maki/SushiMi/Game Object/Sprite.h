@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SPRITE_H
-#define SPRITE_H
 #include "../include/texture.h"
 #include "../Engine/Animation/Rectangle.h"
 #include "../Engine/Animation/Transform.h"
@@ -26,4 +24,3 @@ private:
 
 	std::vector<Animation2D*> anims;
 };
-#endif

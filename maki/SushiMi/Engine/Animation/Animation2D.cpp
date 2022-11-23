@@ -1,5 +1,9 @@
 #include "Animation2D.h"
 
+#include <string>
+#include <sstream>
+#include <GL/glew.h>
+
 Animation2D::Animation2D(const char* filename)
 	: anim_cursor(0),
 	current_frame_indx(0),

@@ -1,10 +1,8 @@
 #pragma once
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include "../../../lib/stb-master/stb_image.h"
-#include <iostream>
-#include "../Engine/Animation/Rectangle.h"
 #include "../include/texture.h"
+#include "../Engine/Animation/Rectangle.h"
+#include <glm/glm/glm.hpp>
+#include <vector>
 
 using namespace std;
 

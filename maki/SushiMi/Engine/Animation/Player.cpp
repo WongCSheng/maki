@@ -2,11 +2,11 @@
 
 Player::Player()
 {
-	sp = new Sprite("../textures/idle.png");
+	sp = new Sprite("../textures/spritesheet.png");
 	sp->transformation.position = glm::vec2(500, 500);
 	sp->transformation.scale = glm::vec2(150, 150);
 
-	sp->Add_animation("../textures/idle.txt");
+	sp->Add_animation("../textures/Idle.txt");
 
 	current_anim = Idle;
 }

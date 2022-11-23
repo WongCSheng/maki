@@ -1,5 +1,6 @@
 #pragma once
-#include "../include/common_headers.hpp"
+#include <glm/glm/glm.hpp>
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 struct Transform
 {

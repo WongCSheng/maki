@@ -323,6 +323,13 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Clone(100,100);
 	}
 	
+	// for player to move
+	if (GLFW_PRESS == action && key == GLFW_KEY_Y)
+	{
+		GLApp::player->move_right();
+		std::cout << "Our player is moving right";
+	}
+
 	else if (GLFW_RELEASE == action)
 	{
 		Camera2D::camera2d.camtype_flag = GL_FALSE;
@@ -334,9 +341,9 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 		Object::objects["ZRect"].rot_right = GL_FALSE;
 		Object::objects["ZRect"].scale_up = GL_FALSE;
 		Object::objects["ZRect"].scale_down = GL_FALSE;
+		GLApp::player->stop();
 	}
 
-	
 
 }
 

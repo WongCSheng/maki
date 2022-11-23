@@ -1,5 +1,8 @@
 #include "Rectangle.h"
 
+#include <glm/glm/glm.hpp>
+#include<GL/glew.h>
+
 RectangleSystem* RectangleSystem::_instance = nullptr;
 
 RectangleSystem* RectangleSystem::GetInstance()

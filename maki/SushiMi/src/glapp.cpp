@@ -43,7 +43,8 @@ GLint mystery_counter = 0;
 std::map<std::string, GLSLShader>		GLApp::shdrpgms;
 Object temp;
 GLSLShader shdr_pgm;
-double starttime, endtime, delta = 0;
+Player* GLApp::player;
+double GLApp::starttime, GLApp::endtime, GLApp::delta = 0;
 /*  _________________________________________________________________________ */
 /*! init
 @param none
@@ -80,8 +81,12 @@ void GLApp::init() {
 
 	// font testing
 	//Animation2D::init("../textures/idle.png");
+	GLApp::starttime = 0;
+	GLApp::endtime = 0;
+	GLApp::delta = 0;
 
-
+	Shaders = make_unique<ShaderLibrary>();
+	GLApp::player = new Player();
 }
 
 
@@ -147,7 +152,7 @@ Write information onto window title, clear colour buffer, draw everything before
 */
 void GLApp::draw()
 {
-	starttime = glfwGetTime();
+	GLApp::starttime = glfwGetTime();
 	// write title stuffs similar to sample ...
 	std::stringstream ss;
 	ss << "SushiMi Engine | ";
@@ -175,11 +180,11 @@ void GLApp::draw()
 	Font::RenderText(GLApp::shdrpgms["font"], "FONTS ARE WORKING YAY", 540.0f, 570.0f, 0.3f, glm::vec3(0.3, 0.7f, 0.9f));
 
 	Shaders->Textured_Shader()->use();
-	Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-	player->draw(delta);
+	Shaders->Textured_Shader()->ShaderProgram::Send_Mat4("model_matrx", GLApp::player->Transformation());
+	GLApp::player->draw(GLApp::delta);
 
-	endtime = glfwGetTime();
-	delta = endtime - starttime;
+	GLApp::endtime = glfwGetTime();
+	GLApp::delta = GLApp::endtime - GLApp::starttime;
 }
 
 
@@ -192,5 +197,5 @@ empty for now
 */
 void GLApp::cleanup() 
 {
-	delete player;
+	delete GLApp::player;
 }

@@ -1,5 +1,5 @@
 #include "ShaderProgram.h"
-
+#include <GL/glew.h>
 
 ShaderProgram::ShaderProgram(const char* vertex_shader, const char* fragment_shader)
 {
@@ -41,7 +41,7 @@ void ShaderProgram::use()
 	glUseProgram(ID);
 }
 
-void ShaderProgram::Send_Mat4(const char* name, glm::mat4& mat)
+void ShaderProgram::Send_Mat4(const char* name, glm::mat4 mat)
 {
 	auto location = glGetUniformLocation(ID, name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);

@@ -239,6 +239,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="..\lib\imgui\imstb_textedit.h" />
     <ClInclude Include="..\lib\imgui\imstb_truetype.h" />
     <ClInclude Include="Debugger\Debug.h" />
+    <ClInclude Include="Editors\imfilebrowser.h" />
     <ClInclude Include="Editors\LevelEditor.h" />
     <ClInclude Include="Engine\Audio\AudioEngine.h" />
     <ClInclude Include="Engine\Camera\Camera2D.h" />

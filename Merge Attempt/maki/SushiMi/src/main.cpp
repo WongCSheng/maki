@@ -24,8 +24,9 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"
+#include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
-
+#include "../Mono.h"
 #include <memory> 
 #include <crtdbg.h> 
 
@@ -186,6 +187,9 @@ static void init() {
 	// Part 3
 	GLApp::init();
 	Editor::LevelEditor::imguiEditorInit();
+
+	// create a file browser instance
+	ImGui::FileBrowser fileDialog;
 
 	//load audio files
 	//AudioManager.LoadMusic("BGM.wav");

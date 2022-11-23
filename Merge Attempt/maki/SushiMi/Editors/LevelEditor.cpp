@@ -18,10 +18,12 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 
 #include "LevelEditor.h"
+#include "imfilebrowser.h"
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
-
+// create a file browser instance
+static ImGui::FileBrowser fileDialog;
 void Editor::LevelEditor::imguiEditorInit(void)
 {
 	IMGUI_CHECKVERSION();
@@ -38,6 +40,10 @@ void Editor::LevelEditor::imguiEditorInit(void)
 		objectString.push_back(s2);
 	}*/
 	
+
+	// (optional) set browser properties
+	fileDialog.SetTitle("title");
+	fileDialog.SetTypeFilters({ ".h", ".cpp" });
 }
 
 void Editor::LevelEditor::imguiEditorDraw(void)
@@ -64,6 +70,22 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 
 	//RGB colour selection
 	//ImGui::ColorEdit3("Color", *arr);
+
+	if (ImGui::Begin("Object Editor - Imgui Window"))
+	{
+		// open file dialog when user clicks this button
+		if (ImGui::Button("open file dialog"))
+			fileDialog.Open();
+	}
+	ImGui::End();
+
+	fileDialog.Display();
+
+	if (fileDialog.HasSelected())
+	{
+		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		fileDialog.ClearSelected();
+	}
 
 	ImGui::End();
 	ImGui::Render();

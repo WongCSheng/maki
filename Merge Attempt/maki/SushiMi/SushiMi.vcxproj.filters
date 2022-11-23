@@ -268,9 +268,6 @@
     <ClInclude Include="Headers\Assertion.h">
       <Filter>GameEngine\Assertion</Filter>
     </ClInclude>
-    <ClInclude Include="Mono.h">
-      <Filter>GameEngine\Mono</Filter>
-    </ClInclude>
     <ClInclude Include="Editors\imfilebrowser.h">
       <Filter>Editors</Filter>
     </ClInclude>

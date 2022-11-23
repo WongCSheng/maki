@@ -20,6 +20,13 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../Engine/System/Graphics/glapp.h"
 
+
+class mainclass
+{
+public:
+	inline static bool drawTriangle = true;
+
+};
 namespace Editor
 {
 	class LevelEditor

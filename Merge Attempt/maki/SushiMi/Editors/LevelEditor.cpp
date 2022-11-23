@@ -29,6 +29,9 @@ unsigned int VBO, VAO, EBO;
 static ImGui::FileBrowser fileDialog;
 unsigned int texture1, texture2;
 unsigned int ID;
+int width, height, nrChannels;
+const char* a = "../textures/doge.png";
+std::string path;
 
 //Shader ourShader("../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
 
@@ -53,7 +56,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 
 	// (optional) set browser properties
 	fileDialog.SetTitle("title");
-	fileDialog.SetTypeFilters({ ".h", ".cpp" });
+	//fileDialog.SetTypeFilters({ ".h", ".cpp" });
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -209,6 +212,31 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	// load and create a texture 
 	// -------------------------
 	
+	
+}
+
+void Editor::LevelEditor::imguiGraphicsTest(void)
+{
+	if (fileDialog.HasSelected())
+	{
+		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		path = fileDialog.GetSelected().string();
+		std::replace(path.begin(), path.end(), '\\', '/');
+		/*cctext = (fileDialog.GetSelected().string()).c_str();
+		std::cout << cctext << std::endl;*/
+		a = path.c_str();
+
+		fileDialog.ClearSelected();
+	}
+
+	// input
+		// -----
+	//processInput(window);
+
+	// render
+	// ------
+	/*glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);*/
 	// texture 1
 	// ---------
 	glGenTextures(1, &texture1);
@@ -220,10 +248,11 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// load image, create texture and generate mipmaps
-	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
 	// The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-	const char* a = "../textures/doge.jpg";
+
+	
+
 	unsigned char* data = stbi_load(a, &width, &height, &nrChannels, 0);
 	if (data)
 	{
@@ -271,7 +300,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	//ourShader.setInt("texture2", 1);
 	glUniform1i(glGetUniformLocation(ID, "texture1"), 0);
 	glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
-	std::cout << ID << std::endl;
+	//std::cout << ID << std::endl;
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
@@ -281,25 +310,13 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	// render container
 	glUseProgram(ID);
 	//ourShader.use();
-	
+
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	// Exporting variables to shaders
 	/*glUseProgram(shaderProgram);
 	glUniform1f(glGetUniformLocation(shaderProgram, "size"), mainclass::size);
 	glUniform4f(glGetUniformLocation(shaderProgram, "color"), mainclass::color[0], mainclass::color[1], mainclass::color[2], mainclass::color[3]);*/
-}
-
-void Editor::LevelEditor::imguiGraphicsTest(void)
-{
-	// input
-		// -----
-	//processInput(window);
-
-	// render
-	// ------
-	/*glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);*/
 
 	// bind textures on corresponding texture units
 	/*glActiveTexture(GL_TEXTURE0);
@@ -393,14 +410,14 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	//stbi_image_free(data);
 	////end some graphics
 
-	if (fileDialog.HasSelected())
-	{
-		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
-		/*cctext = (fileDialog.GetSelected().string()).c_str();
-		std::cout << cctext << std::endl;*/
+	//if (fileDialog.HasSelected())
+	//{
+	//	std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+	//	/*cctext = (fileDialog.GetSelected().string()).c_str();
+	//	std::cout << cctext << std::endl;*/
 
-		fileDialog.ClearSelected();
-	}
+	//	fileDialog.ClearSelected();
+	//}
 
 	ImGui::End();
 	ImGui::Render();

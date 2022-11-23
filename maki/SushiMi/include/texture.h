@@ -23,9 +23,9 @@ class TextureSystem
 public:
 	static TextureSystem* GetInstance();
 
-	static Texture Generate(const char* filename);
+	static void Generate(const char* filename);
 
-	static void Delete(Texture& obj);
+	//void Delete(Texture& obj);
 
 private:
 	TextureSystem();

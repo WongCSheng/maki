@@ -28,14 +28,13 @@ vertex shaders, textures.(Not yet added in as of this version)
 #include <iomanip>
 #include <list>
 #include <random>
-#include "../Engine/Animation/Sprite.h"
 #ifndef GLAPP_H
 #define GLAPP_H
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 
-class GLApp {
+struct GLApp {
 	/*  _________________________________________________________________________ */
 	/*! init
 	@param none
@@ -88,11 +87,8 @@ class GLApp {
 	static std::map<std::string, GLSLShader> shdrpgms; // singleton
 	static std::vector<GLViewport> vps; // container for viewports
 
-private:
-	static Sprite* player;
-
 
 };
 
 
-#endif
+#endif /* GLAPP_H */

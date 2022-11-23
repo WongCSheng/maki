@@ -25,7 +25,7 @@ TextureSystem* TextureSystem::GetInstance()
 	return _instance;
 }
 
-Texture TextureSystem::Generate(const char* filename)
+void TextureSystem::Generate(const char* filename)
 {
 	Texture result;
 
@@ -62,15 +62,13 @@ Texture TextureSystem::Generate(const char* filename)
 	}
 
 	stbi_image_free(data);
-
-	return result;
 }
-
+/*
 void TextureSystem::Delete(Texture& obj)
 {
 	glDeleteTextures(1, &obj.ID);
 }
-
+*/
 TextureSystem::TextureSystem()
 {
 

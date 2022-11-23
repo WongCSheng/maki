@@ -92,8 +92,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -135,7 +135,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>fmodL_vc.lib;$(SolutionDir)lib\rttr\lib\Debug\rttr_core_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmodL_vc.lib;$(SolutionDir)lib\rttr\lib\Debug\rttr_core_d.lib;$(SolutionDir)lib\mono\mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -220,6 +220,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
+    <ClCompile Include="Mono.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -275,6 +276,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
+    <ClInclude Include="Mono.h" />
     <ClInclude Include="RTTR_Header.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="Users\User.h" />

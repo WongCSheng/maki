@@ -30,7 +30,7 @@ static ImGui::FileBrowser fileDialog;
 unsigned int texture1, texture2;
 unsigned int ID;
 int width, height, nrChannels;
-const char* a = "../textures/doge.png";
+const char* texpath = "../textures/menu.jpg";
 std::string path;
 
 //Shader ourShader("../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
@@ -55,7 +55,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 
 
 	// (optional) set browser properties
-	fileDialog.SetTitle("title");
+	fileDialog.SetTitle("ImGui File Explorer");
 	//fileDialog.SetTypeFilters({ ".h", ".cpp" });
 
 	std::string vertexCode;
@@ -224,7 +224,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 		std::replace(path.begin(), path.end(), '\\', '/');
 		/*cctext = (fileDialog.GetSelected().string()).c_str();
 		std::cout << cctext << std::endl;*/
-		a = path.c_str();
+		texpath = path.c_str();
 
 		fileDialog.ClearSelected();
 	}
@@ -253,7 +253,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 
 	
 
-	unsigned char* data = stbi_load(a, &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load(texpath, &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

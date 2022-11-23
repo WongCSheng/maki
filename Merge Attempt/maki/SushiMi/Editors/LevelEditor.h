@@ -24,7 +24,11 @@ written consent of DigiPen Institute of Technology is prohibited.
 class mainclass
 {
 public:
+
 	inline static bool drawTriangle = true;
+	inline static float size = 1.0f;
+	inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
+	inline static GLuint VAO, VBO;
 
 };
 namespace Editor
@@ -33,8 +37,9 @@ namespace Editor
 	{
 	public:
 		static void imguiEditorInit(void);
+		static void imguiGraphicsTest(void);
 		static void imguiEditorDraw(void);
-
+		static void imguiShutDown(void);
 	private:
 
 	};

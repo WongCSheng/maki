@@ -279,6 +279,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Mono.h" />
     <ClInclude Include="RTTR_Header.h" />
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="testshader.h" />
     <ClInclude Include="Users\User.h" />
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>

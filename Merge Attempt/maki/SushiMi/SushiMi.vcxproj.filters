@@ -274,6 +274,10 @@
     <ClInclude Include="Editors\imfilebrowser.h">
       <Filter>Editors</Filter>
     </ClInclude>
+    <ClInclude Include="Mono.h" />
+    <ClInclude Include="testshader.h">
+      <Filter>Editors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

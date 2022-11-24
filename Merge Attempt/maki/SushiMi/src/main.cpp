@@ -20,6 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
+//#include "../../glad/glad/glad.h"
 #include "../Engine/System/Graphics/glapp.h"
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
@@ -44,6 +45,8 @@ static void draw();
 static void update();
 static void init();
 static void cleanup();
+
+static Core::ObjectFactory* OFactory = new Core::ObjectFactory();
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -98,9 +101,13 @@ static void update() {
 
 	// Part 2
 	GLHelper::update_time(1.0);
+	Editor::LevelEditor::imguiGraphicsTest();
 
 	// Part 3
 	GLApp::update();
+
+
+	OFactory->Update(GLHelper::delta_time);
 
 	////imgui
 	////New Frame
@@ -126,7 +133,14 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 static void draw() {
 	// Part 1
 	GLApp::draw();
-
+	// Tell OpenGL which Shader Program we want to use
+	
+	if (mainclass::drawTexture)
+	{
+		// Draw the triangle using the GL_TRIANGLES primitive
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	}
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 
@@ -152,6 +166,7 @@ MessageCallback(GLenum source,
 
 }
 
+
 /*  _________________________________________________________________________ */
 /*! init
 @param none
@@ -162,6 +177,9 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 static void init() {
+
+	OFactory->Init();
+
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
 		std::cout << "Unable to create OpenGL context" << std::endl;
@@ -171,10 +189,15 @@ static void init() {
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
 
+	//load GLAD so it configures OpenGL
+	//gladLoadGL(); //do not uncomment this, glad header does not work
+
 	glViewport(0, 0, 800, 800);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+
 
 	// Part 2
 	GLHelper::print_specs(); //uncommented
@@ -187,7 +210,9 @@ static void init() {
 	// Part 3
 	GLApp::init();
 	Editor::LevelEditor::imguiEditorInit();
-
+	// Variables to be changed in the ImGUI window
+	
+	
 	// create a file browser instance
 	ImGui::FileBrowser fileDialog;
 
@@ -218,9 +243,8 @@ void cleanup() {
 	//AudioManager.UnloadMusic("BGM.wav");
 	//AudioManager.UnloadMusic("WalkSFX.wav");
 
-	////imgui
-	//Shutdown
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
+	////imgui Shutdown
+	Editor::LevelEditor::imguiShutDown();
+	
+
 }

@@ -8,7 +8,7 @@ Description: This file contains the MainSystem which runs all the subsystems in 
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
 
-Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
+//Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
 
 /*
 	Constructor for MainSystem.
@@ -26,6 +26,8 @@ Core::MainSystem::MainSystem()
 
 	physicssystem = new PhysicSystem();
 	systems.push_back(physicssystem);
+
+	objfactory = new ObjectFactory();
 }
 
 /*
@@ -47,16 +49,16 @@ Core::MainSystem::~MainSystem()
 	Create Instance of MainSystem.
 */
 
-Core::MainSystem& Core::MainSystem::Instance()
-{
-	if (instance != 0)
-	{
-		return *instance;
-	}
-
-	instance = new MainSystem();
-	return *instance;
-}
+//Core::MainSystem& Core::MainSystem::Instance()
+//{
+//	if (instance != 0)
+//	{
+//		return *instance;
+//	}
+//
+//	instance = new MainSystem();
+//	return *instance;
+//}
 
 /*
 	Register Components to each SubSystem.
@@ -68,6 +70,12 @@ void Core::MainSystem::Init()
 	{
 		sys->Init();
 	}
+
+	Object::GameObject* temp1 = objfactory->Create();
+	Object::GameObject* temp2 = objfactory->Create();
+
+	objfactory->AddObjects(temp1, "Obj Test 1");
+	objfactory->AddObjects(temp2, "Obj Test 2");
 }
 
 /*
@@ -92,6 +100,7 @@ void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object:
 	{
 		systems[i]->RegisterComponent(ObjectContainer);
 	}
+
 }
 
 

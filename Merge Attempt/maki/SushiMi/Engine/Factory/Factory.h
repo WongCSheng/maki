@@ -36,12 +36,14 @@ namespace Core
 
 		void DestroyEverything();
 
-		virtual void Update(const double dt);
+		void Update(const double dt);
 
 		void AddObjects(Object::GameObject* added, std::string i);
 
-		virtual void Init();
+		void Init();
 
 		Object::GameObject* BuildSerialise(const std::string filename);
+
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 	};
 }

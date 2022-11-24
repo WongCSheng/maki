@@ -25,16 +25,18 @@ namespace Core
 		MainSystem();
 		virtual ~MainSystem();
 
-		static MainSystem* instance;
+		//static MainSystem* instance;
 
 		std::vector<SystemFrame*> systems;
 
 	public:
-		static MainSystem& Instance();
+		//static MainSystem& Instance();
 
-		virtual void Init();
-		virtual void Update(const double dt);
-		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+
+		ObjectFactory* objfactory;
 
 		Renderer* renderer;
 		Transformer* transformer;

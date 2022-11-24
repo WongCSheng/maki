@@ -66,4 +66,9 @@ namespace Core
 	{
 		return nullptr;
 	}
+
+	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	{
+
+	}
 }

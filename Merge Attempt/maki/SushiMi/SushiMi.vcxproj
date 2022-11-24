@@ -221,7 +221,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
     <ClCompile Include="Mono.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Matrix.cpp" />

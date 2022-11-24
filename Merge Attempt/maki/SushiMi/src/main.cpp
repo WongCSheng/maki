@@ -69,20 +69,16 @@ int main() {
 	#endif
 
 	glfwInit();
-	// Part 1
 	init();
 
 	// Part 2
-	while (!glfwWindowShouldClose(GLHelper::ptr_window)) {
-		// Part 2a
+	while (!glfwWindowShouldClose(GLHelper::ptr_window)) 
+	{
 		update();
-
-		// Part 2b
 		draw();
 	}
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 
-	// Part 3
 	cleanup();
 }
 
@@ -95,31 +91,16 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 For now, there are no objects to animate nor keyboard, mouse button click,
 mouse movement, and mouse scroller events to be processed.
 */
-static void update() {
-	// Part 1
+static void update() 
+{
 	glfwPollEvents();
 
-	// Part 2
 	GLHelper::update_time(1.0);
 	Editor::LevelEditor::imguiGraphicsTest();
 
-	// Part 3
 	GLApp::update();
 
-
 	OFactory->Update(GLHelper::delta_time);
-
-	////imgui
-	////New Frame
-	//ImGui_ImplOpenGL3_NewFrame();
-	//ImGui_ImplGlfw_NewFrame();
-	//ImGui::NewFrame();
-
-	////Render
-	//ImGui::Render();
-	//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
 }
 
 /*  _________________________________________________________________________ */
@@ -130,17 +111,10 @@ static void update() {
 Call application to draw and then swap front and back frame buffers ...
 Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
-static void draw() {
-	// Part 1
+static void draw() 
+{
 	GLApp::draw();
-	// Tell OpenGL which Shader Program we want to use
 	
-	if (mainclass::drawTexture)
-	{
-		// Draw the triangle using the GL_TRIANGLES primitive
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	}
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 
@@ -197,24 +171,16 @@ static void init() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-
-
 	// Part 2
 	GLHelper::print_specs(); //uncommented
 
-	
-
 	glfwMakeContextCurrent(GLHelper::ptr_window);
-
 
 	// Part 3
 	GLApp::init();
 	Editor::LevelEditor::imguiEditorInit();
-	// Variables to be changed in the ImGUI window
 	
 	
-	// create a file browser instance
-	ImGui::FileBrowser fileDialog;
 
 	//load audio files
 	//AudioManager.LoadMusic("BGM.wav");

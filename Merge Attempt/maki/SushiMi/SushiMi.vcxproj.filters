@@ -112,7 +112,6 @@
     <ClCompile Include="Engine\System\Graphics\glslshader.cpp">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="src\Log.cpp">
       <Filter>GameEngine\Assertion</Filter>
     </ClCompile>
@@ -274,9 +273,11 @@
     <ClInclude Include="Editors\imfilebrowser.h">
       <Filter>Editors</Filter>
     </ClInclude>
-    <ClInclude Include="Mono.h" />
     <ClInclude Include="testshader.h">
       <Filter>Editors</Filter>
+    </ClInclude>
+    <ClInclude Include="Mono.h">
+      <Filter>Mono Scripting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -372,6 +373,9 @@
     </Filter>
     <Filter Include="GameEngine\Mono">
       <UniqueIdentifier>{a6c2f78c-f04c-4135-a2fa-128eee905723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mono Scripting">
+      <UniqueIdentifier>{50bfc6ff-7765-4855-9fdd-e95969b915bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

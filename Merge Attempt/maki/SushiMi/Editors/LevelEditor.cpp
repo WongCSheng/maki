@@ -52,11 +52,14 @@ void Editor::LevelEditor::imguiEditorInit(void)
 		objectString.push_back(s2);
 	}*/
 	
-
+	// create a file browser instance
+	ImGui::FileBrowser fileDialog;
 
 	// (optional) set browser properties
 	fileDialog.SetTitle("ImGui File Explorer");
-	//fileDialog.SetTypeFilters({ ".h", ".cpp" });
+	//fileDialog.SetPwd("../maki/textures/");
+	//fileDialog.SetCurrentTypeFilterIndex(0);
+	fileDialog.SetTypeFilters({ ".h", ".cpp" });
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -222,8 +225,6 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
 		path = fileDialog.GetSelected().string();
 		std::replace(path.begin(), path.end(), '\\', '/');
-		/*cctext = (fileDialog.GetSelected().string()).c_str();
-		std::cout << cctext << std::endl;*/
 		texpath = path.c_str();
 
 		fileDialog.ClearSelected();
@@ -345,7 +346,11 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::ShowDemoWindow();
 	ImGui::ShowDebugLogWindow();
 	
-	
+
+	if (mainclass::drawTexture)
+	{
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	}
 
 	ImGui::Begin("Object Editor - Imgui Window");
 	ImGui::Text("Click to Select Object");
@@ -378,10 +383,30 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 			fileDialog.Open();
 	}
 	ImGui::End();
+	fileDialog.Display();
 
 	
 
-	fileDialog.Display();
+	if (ImGui::Button("Demo Background"))
+	{
+		texpath = "../textures/demo.jpg";
+	}
+
+	if (ImGui::Button("Level1 Background"))
+	{
+		texpath = "../textures/level1.jpg";
+	}
+
+	if (ImGui::Button("BaMi Art"))
+	{
+		texpath = "../textures/test.jpg";
+	}
+
+	if (ImGui::Button("Return to Main Menu"))
+	{
+		texpath = "../textures/menu.jpg";
+	}
+
 
 	//const char* cctext = "../textures/BaMi_Idle1.png";
 

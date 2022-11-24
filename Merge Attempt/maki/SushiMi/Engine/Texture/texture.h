@@ -1,25 +1,25 @@
 #pragma once
-/* !
-@file		texture.h
-@author		louishetong.wang@digipen.edu
-@date		5/10/2022
 
-This file implements functionality for texture loading and displaying into the viewport
+// singlton pattern
 
-*//*__________________________________________________________________________*/
-
-#ifndef TEXTURE_H_
-#define TEXTURE_H_
-
-class Texture
+struct Texture
 {
-public:
-	static void generateTexture() {
-
-	}
-	static void drawTexture() {
-
-	}
+	int width;
+	int height;
+	unsigned int ID;
 };
 
-#endif // !TEXTURE_H_
+class TextureSystem
+{
+public:
+	static TextureSystem* GetInstance();
+
+	Texture Generate(const char* filename);
+
+	void Delete(Texture& obj);
+
+private:
+	TextureSystem();
+
+	static TextureSystem* _instance;
+};

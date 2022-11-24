@@ -109,6 +109,7 @@ static void update() {
 
 	OFactory->Update(GLHelper::delta_time);
 
+	
 	////imgui
 	////New Frame
 	//ImGui_ImplOpenGL3_NewFrame();

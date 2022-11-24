@@ -39,6 +39,21 @@ namespace Core
 		gfxVector2	min;
 		gfxVector2	max;
 	};
+	/**************************************************************************/
+	/*!
+	* \brief		structure for the axis bound binding box (circle_rec)
+	* \param		none, not a function
+	* \return		none, not a function
+	*/
+	/**************************************************************************/
+	struct OBB
+	{
+		gfxVector2 center; //center of circle
+		float radius;		//circle radius
+	};
+
+	bool CollisionIntersection_CircleRect(OBB& circle, AABB& aabb);
+
 
 	/******************************************************************************/
 		/*!

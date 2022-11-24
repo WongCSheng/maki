@@ -1,34 +1,42 @@
-#pragma once
 #ifndef INPUT_H
 #define INPUT_H
 
 #include "../Headers/STL_Header.h"
 #include "Keys.h"
+#include <glfw/include/GLFW/glfw3.h>
+#include "../Engine/System/SystemFrame.h"
 
-class Input
+namespace Core
 {
-public:
-	static Input& Instance()
+	class Input : public SystemFrame
 	{
-		if (instance != 0)
+	public:
+		static Input& Instance()
 		{
+			if (instance != 0)
+			{
+				return *instance;
+			}
+			instance = new Input();
 			return *instance;
 		}
-		instance = new Input();
-		return *instance;
-	}
 
-	void Update(const KEY key, const KEY_STATE action);
-	bool GetKey(const KEY key, const KEY_STATE action);
-	bool GetKeyDown(const KEY key);
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
-private:
-	Input();
-	~Input();
+		void UpdateInput(const KEY key, const KEY_STATE action);
+		bool GetKey(const KEY key, const KEY_STATE action);
+		bool GetKeyDown(const KEY key);
+		void GetMouse(GLFWwindow* window, const KEY key, const KEY_STATE action);
 
-	static Input* instance;
-	std::map<KEY, std::map<KEY_STATE, bool>> keys;
-	std::queue<KEY> keyqueue;
-};
+	private:
+		Input();
+		~Input();
 
+		static Input* instance;
+		std::map<KEY, std::map<KEY_STATE, bool>> keys;
+		std::queue<KEY> keyqueue;
+	};
+}
 #endif

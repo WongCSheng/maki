@@ -200,6 +200,74 @@ namespace Core
 
 	/******************************************************************************/
 	/*!
+	\brief		This function takes in a circle and a rectangle and calculates the distance
+				between the two parameters
+	\param		 c    (circle)
+	\param		 rect (rectangle)
+	/******************************************************************************/
+	float getDistance(gfxVector2 c, gfxVector2 rect)
+	{
+		//distance from bottom left of rect to center of circle
+		float distanceX = std::pow((rect.x - c.x), 2);  //(x2-x1)^2
+		float distanceY = std::pow((rect.y - c.y), 2);  //(y2-y1)^2
+		float distance = std::sqrt(distanceX + distanceY);
+		return distance;
+	}
+
+	/**************************************************************************/
+	/*!
+	* \brief		collision detection for Circle&Rectangle collisions
+	* \param		OBB & circle - the circle object to check for collision (against the rectangle)
+	* \param		AABB & aabb- the rectangle to checked for collision with the circle
+	* \return		bool(result), 0 if no collision/intersection and 1 if there is collision/intersection
+
+	*/
+	/**************************************************************************/
+	bool CollisionIntersection_CircleRect(OBB& circle, AABB& aabb)
+	{
+		//left edge
+		float recMin_x = aabb.min.x;
+		float recMin_y = aabb.min.y;
+		//right edge
+		float recMax_x = aabb.max.x;
+		float recMax_y = aabb.max.y;
+
+		float result = false;
+		//gfxVector2 center = circle.center; //for nicer code , later clean up
+		float center_x = circle.center.x;
+		float center_y = circle.center.y;
+		float radius = circle.radius;
+
+		if ((center_x >= recMin_x - radius) && (center_x <= recMax_x + radius) && (center_y >= recMin_y) && (center_y <= recMax_y))
+		{
+			result = true;
+		}
+		else if ((center_x >= recMin_x) && (center_x <= recMax_x) && (center_y >= recMin_y - radius) && (center_y <= recMax_y + radius))
+		{
+			result = true;
+		}
+		else
+		{
+			//calculate  bottom
+			float bottom_left__to_center = getDistance({ center_x, center_y }, { recMin_x, recMin_y });
+			float bottom_right__to_center = getDistance({ center_x, center_y }, { recMax_x, recMin_y });
+
+			//calculate top 
+			float top_left__to_center = getDistance({ center_x, center_y }, { recMin_x, recMax_y });
+			float top_right__to_center = getDistance({ center_x, center_y }, { recMax_x, recMax_y });
+
+			//check for colliding, ( if distance < circle.radius, they're colliding )
+			if ((bottom_left__to_center <= circle.radius) || (top_left__to_center <= circle.radius)
+				|| (bottom_right__to_center <= circle.radius) || (top_right__to_center <= circle.radius))
+			{
+				result = true;
+			}
+		}
+		return result;
+
+	}
+	/******************************************************************************/
+	/*!
 	* * This function checks for collision between a circle and line segment
 		*/
 		/******************************************************************************/

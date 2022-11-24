@@ -68,8 +68,8 @@ void GLApp::init() {
 	//Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 
 	//Font::init();
-	Texture::generateTexture();
-	Texture::drawTexture();
+	//Texture::generateTexture();
+	//Texture::drawTexture();
 
 	// font testing
 

@@ -14,17 +14,24 @@
 
 SushiMi::SushiMi()
 {
+	//set current dir as mono dir
+	mono_set_dirs(".", ".");
 	//create mono domain
 	m_ptrMonoDomain = mono_jit_init("maki");
 	if (m_ptrMonoDomain)
 	{
-		return;
+		//load a mono assembly.dll
+
 	}
 
 }
 
 SushiMi::~SushiMi()
-{
+{	//release the domain
+	if (m_ptrMonoDomain)
+	{
+		mono_jit_cleanup(m_ptrMonoDomain);
+	}
 
 }
 

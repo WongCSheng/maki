@@ -29,7 +29,7 @@ and transformations (in later labs).
 #include <glm/glm/gtc/type_ptr.hpp>
 #include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"
-
+#include "../Game Object/Player.h"
 struct GLApp {
 	/*  _________________________________________________________________________ */
 	/*! init
@@ -83,6 +83,7 @@ struct GLApp {
 	using VPSS = std::vector<std::pair<std::string, std::string>>;
 	static std::map<std::string, GLSLShader> shdrpgms; // singleton
 	static std::vector<GLViewport> vps; // container for viewports
+
 
 
 };

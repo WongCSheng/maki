@@ -279,6 +279,9 @@
     <ClInclude Include="Engine\Input\Keys.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Game Object\Player.h" />
+    <ClInclude Include="Engine\Texture\texture.h" />
+    <ClInclude Include="Engine\Texture\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">

@@ -263,8 +263,11 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Renderer.h" />
     <ClInclude Include="Engine\System\SystemFrame.h" />
     <ClInclude Include="Engine\System\Transformer.h" />
+    <ClInclude Include="Engine\Texture\Sprite.h" />
+    <ClInclude Include="Engine\Texture\texture.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
+    <ClInclude Include="Game Object\Player.h" />
     <ClInclude Include="Headers\Assertion.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />

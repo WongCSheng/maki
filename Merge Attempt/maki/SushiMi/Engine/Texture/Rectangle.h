@@ -2,7 +2,7 @@
 
 // singlton pattern 
 
-struct Rectangle
+struct Rect
 {
 	unsigned int VAO;  //vertex array object
 	unsigned int VBO;  // vertex buffer object
@@ -15,9 +15,9 @@ class RectangleSystem
 public:
 	static RectangleSystem* GetInstance();
 
-	Rectangle Generate();
+	Rect Generate();
 
-	void Delete(Rectangle& obj);
+	void Delete(Rect& obj);
 
 private:
 	RectangleSystem();

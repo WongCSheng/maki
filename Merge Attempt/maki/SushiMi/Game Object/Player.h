@@ -21,6 +21,6 @@ public:
 
 
 private:
-	Sprite* sp;
-	AnimationType current_anim;
+	//Sprite* sp;
+	//AnimationType current_anim;
 };

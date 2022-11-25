@@ -20,7 +20,7 @@ public:
 
 private:
 	Texture texture;
-	Rectangle rectangle;
+	Rect rectangle;
 
 	vector<Animation2D*> anims;
 };

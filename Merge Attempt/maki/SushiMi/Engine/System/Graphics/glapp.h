@@ -29,7 +29,7 @@ and transformations (in later labs).
 #include <glm/glm/gtc/type_ptr.hpp>
 #include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"
-
+#include "../Game Object/Player.h"
 struct GLApp {
 	/*  _________________________________________________________________________ */
 	/*! init

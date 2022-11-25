@@ -1,7 +1,6 @@
 #include "Rectangle.h"
 
-#include <../glm/glm/glm.hpp>
-#include <../glew/include/GL/glew.h>
+
 
 RectangleSystem* RectangleSystem::_instance = nullptr;
 
@@ -79,7 +78,7 @@ Rectangle RectangleSystem::Generate()
 	return result;
 }
 
-void RectangleSystem::Delete(Rectangle& obj)
+void RectangleSystem::Delete(Rect& obj)
 {
 	glDeleteVertexArrays(1, &obj.VAO);
 	glDeleteBuffers(1, &obj.VBO);

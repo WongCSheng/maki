@@ -69,40 +69,17 @@ namespace Core
 
 	struct VertexList
 	{
-		GLint mpVtxBuffer;
+		int mpVtxBuffer;
 		int	vtxNum;
 	};
 
-
-	struct GameObj
-	{
-		unsigned long		type;		// object type
-		VertexList* pMesh;		// This will hold the triangles which will form the shape of the object
-	};
-
-	typedef struct Mtx33
+	typedef struct Mtx33 //Why not use gfxMatrix3??
 	{
 		float	m[3][3];
 	}Mtx33;
 
-	struct GameObjInst
+	class Collision : public Component 
 	{
-		GameObj* pObject;	// pointer to the 'original' shape
-		unsigned long		flag;		// bit flag or-ed together
-		float				scale;		// scaling value of the object instance
-		gfxVector2			posCurr;	// object current position
-		gfxVector2			velCurr;	// object current velocity
-		float				dirCurr;	// object current direction
-		AABB				boundingBox;// object bouding box that encapsulates the object
-		Mtx33				transform;	// object transformation matrix: Each frame, 
-		// calculate the object instance's transformation matrix and save it here
-
-	//void				(*pfUpdate)(void);
-	//void				(*pfDraw)(void);
-	};
-
-	class Collision : public Component {
-		friend class PhysicSystem;
 
 	public:
 
@@ -111,26 +88,31 @@ namespace Core
 		Collision() {}
 		~Collision() {}
 
-		/**************************************************************************/
-		/*!
-		* \brief		structure for the axis bound binding box
-		* \param		aabb1 - the first rectangle to checked for collision with the second rectangle
-		* \param		aabb2 - the second rectangle to checked for collision with the first rectangle
-		* \param		vel1, the velocity that is set to 0 (vel1-vel1 = 0)
-		* \param		vel2, the velocity that is set to the resultant velocity (vel2-vel1 = vRel)
-		* \return		bool, 0 if no collision/intersection and 1 if there is collision/intersection
-
-		*/
-		/**************************************************************************/
-		bool CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
-			const AABB& aabb2, const gfxVector2& vel2);
-
+		void Init();
+		void Serialise(const std::string name);
 
 
 		void BuildLineSegment(LineSegment& lineSegment,								//Line segment reference - input
 			const gfxVector2& pos,									//position - input
 			float scale,											//scale - input
 			float dir);											//direction - input
+
+		AABB& GetAABB();
+		gfxVector2& GetvelCurr();
+
+	private:
+
+		unsigned long type{ 0 };		// object type
+		VertexList* pMesh{ 0 };		// This will hold the triangles which will form the shape of the object
+
+		unsigned long		flag{ 0 };		// bit flag or-ed together
+		float				scale{ 0 };		// scaling value of the object instance
+		gfxVector2			posCurr{ 0,0 };	// object current position
+		gfxVector2			velCurr{ 0,0 };	// object current velocity
+		float				dirCurr{ 0 };	// object current direction
+		AABB				boundingBox{ {0,0},{0,0} };// object bouding box that encapsulates the object
+		Mtx33				transform{ 0 };	// object transformation matrix: Each frame, 
+
 
 		/******************************************************************************/
 		/*!

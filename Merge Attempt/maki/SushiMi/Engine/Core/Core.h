@@ -14,6 +14,7 @@ Description: Header for Core.cpp
 #include "../System/Transformer.h"
 #include "../System//CameraSystem.h"
 #include "../System/PhysicsSystem.h"
+#include "../Engine/Input/Input.h"
 
 #include <vector>
 
@@ -22,8 +23,8 @@ namespace Core
 	class MainSystem : public SystemFrame
 	{
 	private:
-		MainSystem();
-		virtual ~MainSystem();
+		/*MainSystem();
+		virtual ~MainSystem();*/
 
 		//static MainSystem* instance;
 
@@ -32,11 +33,15 @@ namespace Core
 	public:
 		//static MainSystem& Instance();
 
+		MainSystem();
+		virtual ~MainSystem();
+
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		ObjectFactory* objfactory;
+		Input* inputsystem;
 
 		Renderer* renderer;
 		Transformer* transformer;

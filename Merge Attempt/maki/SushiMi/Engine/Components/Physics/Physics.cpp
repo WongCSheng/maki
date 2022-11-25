@@ -16,6 +16,16 @@ namespace Core
 	{
 	}
 
+	void Physics::Init()
+	{
+
+	}
+
+	void Physics::Serialise(const std::string name)
+	{
+
+	}
+
 	float Physics::GetMass()
 	{
 		return mass;

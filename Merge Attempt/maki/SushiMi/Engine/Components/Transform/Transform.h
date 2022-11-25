@@ -19,6 +19,9 @@ namespace Core
 		Transform();
 		~Transform();
 
+		void Init();
+		void Serialise(const std::string name);
+
 		const gfxMatrix3 TransformMat();
 		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3());
 		void SetPosition(gfxVector2 position);

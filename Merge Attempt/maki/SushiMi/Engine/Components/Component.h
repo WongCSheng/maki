@@ -41,10 +41,10 @@ namespace Core
 		Object::GameObjectProperty* GetOwner();
 		void SetOwner(Object::GameObjectProperty* owner);
 
-		bool IsActive();
-		void Activate();
-		void Deactivate();
-		void Remove();	// queue it for deletion
+		virtual bool IsActive();
+		virtual void Activate();
+		virtual void Deactivate();
+		virtual void Remove();	// queue it for deletion
 
 	protected:
 		Object::GameObjectProperty* owner;

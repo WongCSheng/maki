@@ -28,6 +28,8 @@ Core::MainSystem::MainSystem()
 	systems.push_back(physicssystem);
 
 	objfactory = new ObjectFactory();
+
+	inputsystem = new Input();
 }
 
 /*
@@ -88,6 +90,10 @@ void Core::MainSystem::Update(const double dt)
 	{
 		systems[i]->Update(dt);
 	}
+
+	int mousestate = glfwGetMouseButton(GLHelper::ptr_window, MOUSE_BUTTON_LEFT);
+
+	inputsystem->GetMouse(GLHelper::ptr_window, mousestate);
 }
 
 /*

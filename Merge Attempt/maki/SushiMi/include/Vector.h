@@ -164,7 +164,7 @@ public:
 
 private:
 	//data member
-	float mVec[2]{};
+	double mVec[2]{};
 
 };
 #endif // !VECTOR_H_

@@ -27,71 +27,71 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #define debugBreak() __builtin_trap()
 #endif
 
-/******************************************************************************/
-/*!
-\brief
-Output information to user in a readable format
+	/******************************************************************************/
+	/*!
+	\brief
+	Output information to user in a readable format
 
-\param expression
-The string represenation of the code that was running that cause the failure assert
+	\param expression
+	The string represenation of the code that was running that cause the failure assert
 
-\param message
-The message to be formatted
+	\param message
+	The message to be formatted
 
-\param file
-Name of the code file
+	\param file
+	Name of the code file
 
-\param line
-The line number within the file
+	\param line
+	The line number within the file
 
-\return
-void
-*/
-/******************************************************************************/
+	\return
+	void
+	*/
+	/******************************************************************************/
 #ifdef __cplusplus
-extern "C" {
+	extern "C" {
 #endif
-	void ReportAssertionFailure(const char* expression, const char* message, const char* file, int line);
+		void ReportAssertionFailure(const char* expression, const char* message, const char* file, int line);
 #ifdef __cplusplus
-}
+	}
 #endif //end of __cplusplus
 
-/*
-For ASSERTING : USE CAUTIOUSLY! This will cause immediate Breaking of the debugger/ app
-If you are very sure that the value here should never be a certain value, or a certain pointer should never point to a NULLPTR, use ASSERT functions below accordingly.
+	/*
+	For ASSERTING : USE CAUTIOUSLY! This will cause immediate Breaking of the debugger/ app
+	If you are very sure that the value here should never be a certain value, or a certain pointer should never point to a NULLPTR, use ASSERT functions below accordingly.
 
-ASSERT(expr) :
-expr is the expression you are comparing , similar to doing eg: if (file.is_open()), Assert will only run if the expr returns a FALSE/ 0 / NULLPTR!
-This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
-Format of print:
-(expr)	\n
-"msg"	\n	// not for this function
-_FILE	\n	// the file in which the assert happen
-_LINE	\n	// the line in the file in which the assert happen
+	ASSERT(expr) :
+	expr is the expression you are comparing , similar to doing eg: if (file.is_open()), Assert will only run if the expr returns a FALSE/ 0 / NULLPTR!
+	This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
+	Format of print:
+	(expr)	\n
+	"msg"	\n	// not for this function
+	_FILE	\n	// the file in which the assert happen
+	_LINE	\n	// the line in the file in which the assert happen
 
-In release build, the assert will exit the app, assertion should be logged to log file
+	In release build, the assert will exit the app, assertion should be logged to log file
 
-ASSERT_MSG(expr, msg):
-expr is the expression you are comparing, msg is the message you input to show during assertion
-This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
-Format of print:
-(expr)	\n
-"msg"	\n	// the message you wrote to be printed out during assertion
-_FILE	\n	// the file in which the assert happen
-_LINE	\n	// the line in the file in which the assert happen
+	ASSERT_MSG(expr, msg):
+	expr is the expression you are comparing, msg is the message you input to show during assertion
+	This will cause a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
+	Format of print:
+	(expr)	\n
+	"msg"	\n	// the message you wrote to be printed out during assertion
+	_FILE	\n	// the file in which the assert happen
+	_LINE	\n	// the line in the file in which the assert happen
 
-In release build, the assert will exit the app, assertion should be logged to log file
+	In release build, the assert will exit the app, assertion should be logged to log file
 
-ASSERT_DEBUG(expr):
-expr is the expression you are comparing , this is a debug mode exclusive function, does not work in release mode
-This causes a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
-Format of print:
-(expr)	\n
-"msg"	\n	// not for this function
-_FILE	\n	// the file in which the assert happen
-_LINE	\n	// the line in the file in which the assert happen
+	ASSERT_DEBUG(expr):
+	expr is the expression you are comparing , this is a debug mode exclusive function, does not work in release mode
+	This causes a Debug Mode break, closing the debugger, and showing you the location of where the break happens. This will also be logged into a log file for users to check
+	Format of print:
+	(expr)	\n
+	"msg"	\n	// not for this function
+	_FILE	\n	// the file in which the assert happen
+	_LINE	\n	// the line in the file in which the assert happen
 
-*/
+	*/
 
 #ifdef _DEBUG	
 #define ASSERT(expr)														\

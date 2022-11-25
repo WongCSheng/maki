@@ -74,9 +74,9 @@ namespace Core
 		return false;
 	}
 
-	void Input::GetMouse(GLFWwindow* window, const KEY key, const KEY_STATE action)
+	void Input::GetMouse(GLFWwindow* window, int action)
 	{
-		if (key == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+		if (/*mouse == MOUSE_BUTTON_LEFT &&*/ action == KEY_STATE_PRESS)
 		{
 			double xpos, ypos;
 			glfwGetCursorPos(window, &xpos, & ypos);

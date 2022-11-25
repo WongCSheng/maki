@@ -22,13 +22,13 @@ namespace Core
 	private:
 		unsigned int LastObjectID;
 
-		std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
-
 		std::set<Object::GameObject*> DeleteList;
 
 	public:		
 		ObjectFactory();
 		virtual ~ObjectFactory();
+
+		std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 
 		Object::GameObject* Create();
 

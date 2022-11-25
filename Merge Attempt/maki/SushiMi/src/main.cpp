@@ -15,7 +15,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 
 
-
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
@@ -46,7 +45,7 @@ static void update();
 static void init();
 static void cleanup();
 
-static Core::ObjectFactory* OFactory = new Core::ObjectFactory();
+static Core::MainSystem* CoreSystem = new Core::MainSystem();
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -100,9 +99,10 @@ static void update()
 
 	GLApp::update();
 
-	OFactory->Update(GLHelper::delta_time);
+	CoreSystem->objfactory->Update(GLHelper::delta_time);
 
-	
+	CoreSystem->Update(GLHelper::delta_time);
+
 	////imgui
 	////New Frame
 	//ImGui_ImplOpenGL3_NewFrame();
@@ -165,7 +165,8 @@ abstracted away in GLApp::init
 */
 static void init() {
 
-	OFactory->Init();
+	CoreSystem->Init();
+	CoreSystem->objfactory->Init();
 
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {

@@ -11,7 +11,7 @@ namespace Core
 	class Input : public SystemFrame
 	{
 	public:
-		static Input& Instance()
+		/*static Input& Instance()
 		{
 			if (instance != 0)
 			{
@@ -19,7 +19,10 @@ namespace Core
 			}
 			instance = new Input();
 			return *instance;
-		}
+		}*/
+
+		Input();
+		~Input();
 
 		void Init();
 		void Update(const double dt);
@@ -28,13 +31,13 @@ namespace Core
 		void UpdateInput(const KEY key, const KEY_STATE action);
 		bool GetKey(const KEY key, const KEY_STATE action);
 		bool GetKeyDown(const KEY key);
-		void GetMouse(GLFWwindow* window, const KEY key, const KEY_STATE action);
+		void GetMouse(GLFWwindow* window, int action);
 
 	private:
-		Input();
-		~Input();
+		/*Input();
+		~Input();*/
 
-		static Input* instance;
+		//static Input* instance;
 		std::map<KEY, std::map<KEY_STATE, bool>> keys;
 		std::queue<KEY> keyqueue;
 	};

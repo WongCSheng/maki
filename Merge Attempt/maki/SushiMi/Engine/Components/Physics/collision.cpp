@@ -32,145 +32,18 @@ double g_dt = GLHelper::delta_time;
 /**************************************************************************/
 namespace Core
 {
-	bool Collision::CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
-		const AABB& aabb2, const gfxVector2& vel2)
+	void Collision::Init()
+	{
+	}
+
+	void Collision::Serialise(const std::string name)
 	{
 
-		/*
-		Implement the collision intersection over here.
+	}
 
-		The steps are:
-		Step 1: Check for static collision detection between rectangles (before moving).
-					If the check returns no overlap you continue with the following next steps (dynamics).
-					Otherwise you return collision true
+	void Remove()
+	{
 
-		Step 2: Initialize and calculate the new velocity of Vb
-				tFirst = 0
-				tLast = dt
-
-		Step 3: Working with one dimension (x-axis).
-				if(Vb < 0)
-					case 1
-					case 4
-				if(Vb > 0)
-					case 2
-					case 3
-
-				case 5
-
-		Step 4: Repeat step 3 on the y-axis
-
-		Step 5: Otherwise the rectangles intersect
-
-		*/
-		double tFirst = 0.f;
-		double tLast = g_dt;
-		double dFirst = 0.f, dLast = 0.f;
-		if (aabb1.max.y < aabb2.min.y || aabb1.max.x < aabb2.min.x || aabb1.min.y > aabb2.max.y || aabb1.min.x > aabb2.max.x) //if no overlap, continue
-		{
-			return 0;
-		}
-
-		/***************************************/
-		// working with x-axis
-		/***************************************/
-		if ((vel2.x - vel1.x) < 0.f) //case 1 & 4
-		{
-			if (aabb1.min.x > aabb2.max.x) //case 1
-			{
-				return 0;
-			}
-			if (aabb1.max.x < aabb2.min.x) //case 4  (1/2)
-			{
-				dFirst = aabb1.max.x - aabb2.min.x;
-				tFirst = dFirst / (vel2.x - vel1.x);
-
-			}
-			if (aabb1.min.x < aabb2.max.x) //case 4  (2/2)
-			{
-
-				dLast = aabb1.min.x - aabb2.max.x;
-				tLast = dLast / (vel2.x - vel1.x);
-			}
-		}
-		if ((vel2.x - vel1.x) > 0.f) //case 2 & case 3
-		{
-			if (aabb1.min.x > aabb2.max.x) //case 2 (1/2)
-			{
-				dFirst = aabb1.min.x - aabb2.max.x;
-				tFirst = dFirst / (vel2.x - vel1.x);
-
-
-
-			}
-			if (aabb1.max.x < aabb2.min.x) //case 2 (2/2)
-			{
-
-				dLast = aabb1.max.x - aabb2.min.x;
-				tLast = dLast / (vel2.x - vel1.x);
-
-			}
-			if (aabb1.max.x < aabb2.min.x) //case 3
-			{
-				return 0;
-			}
-			if (tFirst > g_dt)
-			{
-				return 0;
-			}
-		}
-		//case 5:
-		if (tFirst > tLast) { return 0; } //no collision
-
-
-		/***************************************/
-		// working with y-axis
-		/***************************************/
-		if ((vel2.y - vel1.y) < 0.f) //case 1 & 4
-		{
-			if (aabb1.min.y > aabb2.max.y) //case 1
-			{
-				return 0;
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 4 revisited (1/2)
-			{
-				dFirst = aabb1.max.y - aabb2.min.y;
-				tFirst = max((dFirst) / (vel2.y - vel1.y), tFirst);
-
-			}
-			if (aabb1.min.y < aabb2.max.y) //case 4 revisited (2/2)
-			{
-
-				dLast = aabb1.min.y - aabb2.max.y;
-				tLast = min((dLast) / (vel2.y - vel1.y), tLast);
-			}
-		}
-		if ((vel2.y - vel1.y) > 0.f) //case 2 & case 3
-		{
-			if (aabb1.min.y > aabb2.max.y) //case 2 (1/2)
-			{
-				dFirst = aabb1.min.y - aabb2.max.y;
-				tFirst = max((dFirst) / (vel2.y - vel1.y), tFirst);
-
-
-
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 2 (2/2)
-			{
-
-				dLast = aabb1.max.y - aabb2.min.y;
-				tLast = min((dLast) / (vel2.y - vel1.y), tLast);
-
-			}
-			if (aabb1.max.y < aabb2.min.y) //case 3
-			{
-				return 0; //no intersection
-			}
-		}
-		//case 5:
-		if (tFirst > tLast) { return 0; } //no collision
-		//std::cout << "Collision Detected!" << std::endl;
-		return 1; //collision
 	}
 
 	/******************************************************************************/
@@ -266,6 +139,17 @@ namespace Core
 		return result;
 
 	}
+
+	AABB& Collision::GetAABB()
+	{
+		return boundingBox;
+	}
+
+	gfxVector2& Collision::GetvelCurr()
+	{
+		return velCurr;
+	}
+
 	/******************************************************************************/
 	/*!
 	* * This function checks for collision between a circle and line segment

@@ -14,10 +14,13 @@ namespace Core
 	public:
 		Physics();
 		virtual ~Physics();
+
+		void Init();
+		void Serialise(const std::string name);
 		
-		float mass;
-		gfxVector2 velocity;
-		gfxVector2 position;
+		float mass{};
+		gfxVector2 velocity{};
+		gfxVector2 position{};
 
 		float GetMass();
 		gfxVector2 GetVelocity();

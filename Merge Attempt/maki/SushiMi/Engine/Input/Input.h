@@ -1,5 +1,4 @@
-#ifndef INPUT_H
-#define INPUT_H
+#pragma once
 
 #include "../Headers/STL_Header.h"
 #include "Keys.h"
@@ -8,7 +7,7 @@
 
 namespace Core
 {
-	class Input : public SystemFrame
+	class Input
 	{
 	public:
 		/*static Input& Instance()
@@ -25,8 +24,6 @@ namespace Core
 		~Input();
 
 		void Init();
-		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		void UpdateInput(const KEY key, const KEY_STATE action);
 		bool GetKey(const KEY key, const KEY_STATE action);
@@ -42,4 +39,3 @@ namespace Core
 		std::queue<KEY> keyqueue;
 	};
 }
-#endif

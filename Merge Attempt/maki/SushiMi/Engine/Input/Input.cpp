@@ -1,3 +1,4 @@
+
 #include "Input.h"
 
 namespace Core
@@ -27,14 +28,6 @@ namespace Core
 	}
 
 	void Input::Init()
-	{
-	}
-
-	void Input::Update(const double dt)
-	{
-	}
-
-	void Input::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
 	}
 

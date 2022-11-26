@@ -196,6 +196,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Debugger\Debug.cpp" />
     <ClCompile Include="Editors\LevelEditor.cpp" />
+    <ClCompile Include="Engine\Animation\Animation2D.cpp" />
     <ClCompile Include="Engine\Audio\AudioEngine.cpp" />
     <ClCompile Include="Engine\Camera\Camera2D.cpp" />
     <ClCompile Include="Engine\Components\Component.cpp" />
@@ -209,6 +210,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Messaging\Messaging.cpp" />
     <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp" />
     <ClCompile Include="Engine\Serialiser\RTTR.cpp" />
+    <ClCompile Include="Engine\Shaders\ShaderLibrary.cpp" />
+    <ClCompile Include="Engine\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="Engine\System\CameraSystem.cpp" />
     <ClCompile Include="Engine\System\Graphics\glapp.cpp" />
     <ClCompile Include="Engine\System\Graphics\glhelper.cpp" />
@@ -218,8 +221,12 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\System\Renderer.cpp" />
     <ClCompile Include="Engine\System\SystemFrame.cpp" />
     <ClCompile Include="Engine\System\Transformer.cpp" />
+    <ClCompile Include="Engine\Texture\Rectangle.cpp" />
+    <ClCompile Include="Engine\Texture\Sprite.cpp" />
+    <ClCompile Include="Engine\Texture\Texture.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
+    <ClCompile Include="Game Object\Player.cpp" />
     <ClCompile Include="Mono.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -240,6 +247,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Debugger\Debug.h" />
     <ClInclude Include="Editors\imfilebrowser.h" />
     <ClInclude Include="Editors\LevelEditor.h" />
+    <ClInclude Include="Engine\Animation\Animation2D.h" />
     <ClInclude Include="Engine\Audio\AudioEngine.h" />
     <ClInclude Include="Engine\Camera\Camera2D.h" />
     <ClInclude Include="Engine\Components\Component.h" />
@@ -254,6 +262,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Messaging\Messaging.h" />
     <ClInclude Include="Engine\Serialiser\JSONSerializer.h" />
     <ClInclude Include="Engine\Serialiser\RTTR.h" />
+    <ClInclude Include="Engine\Shaders\ShaderLibrary.h" />
+    <ClInclude Include="Engine\Shaders\ShaderProgram.h" />
     <ClInclude Include="Engine\System\CameraSystem.h" />
     <ClInclude Include="Engine\System\Graphics\glapp.h" />
     <ClInclude Include="Engine\System\Graphics\glhelper.h" />
@@ -263,8 +273,9 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Renderer.h" />
     <ClInclude Include="Engine\System\SystemFrame.h" />
     <ClInclude Include="Engine\System\Transformer.h" />
+    <ClInclude Include="Engine\Texture\Rectangle.h" />
     <ClInclude Include="Engine\Texture\Sprite.h" />
-    <ClInclude Include="Engine\Texture\texture.h" />
+    <ClInclude Include="Engine\Texture\Texture.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
     <ClInclude Include="Game Object\Player.h" />

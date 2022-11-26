@@ -1,5 +1,5 @@
 #pragma once
-#include "../Engine/Texture/Sprite.h"
+//#include "../Engine/Texture/Sprite.h"
 
 class Player
 {
@@ -15,7 +15,7 @@ public:
 
 	void stop();
 
-	glm::mat4 Transformation();
+	//glm::mat4 Transformation();
 
 	void draw(double deltatime);
 

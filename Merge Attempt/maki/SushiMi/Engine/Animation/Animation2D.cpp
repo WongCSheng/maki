@@ -47,7 +47,7 @@ Animation2D::~Animation2D()
 {
 }
 
-void Animation2D::play(Texture& spritetexture, Rectangle& rectangle, double deltatime)
+void Animation2D::play(Texture& spritetexture, Rect& rectangle, double deltatime)
 {
 	anim_cursor += deltatime;
 

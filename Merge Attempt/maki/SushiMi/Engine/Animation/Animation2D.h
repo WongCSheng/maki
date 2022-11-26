@@ -22,7 +22,7 @@ public:
 	~Animation2D();
 
 
-	void play(Texture& spritetexture, Rectangle& rectangle, double deltatime);
+	void play(Texture& spritetexture, Rect& rectangle, double deltatime);
 
 	void set_animation_speed(float newspeed);
 

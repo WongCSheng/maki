@@ -1,6 +1,4 @@
 #pragma once
-#include "Texture.h"
-#include "Rectangle.h"
 #include "../Engine/Components/Transform/sTransform.h"
 #include "../Animation/Animation2D.h"
 

@@ -11,9 +11,9 @@ RectangleSystem* RectangleSystem::GetInstance()
 	return _instance;
 }
 
-Rectangle RectangleSystem::Generate()
+Rect RectangleSystem::Generate()
 {
-	Rectangle result;
+	Rect result;
 
 	glm::vec2 arr[6] = {
 	glm::vec2(0,0),

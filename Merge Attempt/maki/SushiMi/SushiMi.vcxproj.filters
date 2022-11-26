@@ -118,6 +118,27 @@
     <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Game Object\Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Animation\Animation2D.cpp">
+      <Filter>GameEngine\System\Graphics\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shaders\ShaderLibrary.cpp">
+      <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shaders\ShaderProgram.cpp">
+      <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture\Rectangle.cpp">
+      <Filter>GameEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture\Sprite.cpp">
+      <Filter>GameEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture\Texture.cpp">
+      <Filter>GameEngine\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -279,9 +300,27 @@
     <ClInclude Include="Engine\Input\Keys.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Game Object\Player.h" />
-    <ClInclude Include="Engine\Texture\texture.h" />
-    <ClInclude Include="Engine\Texture\Sprite.h" />
+    <ClInclude Include="Game Object\Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation\Animation2D.h">
+      <Filter>GameEngine\System\Graphics\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shaders\ShaderLibrary.h">
+      <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shaders\ShaderProgram.h">
+      <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture\Rectangle.h">
+      <Filter>GameEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture\Sprite.h">
+      <Filter>GameEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture\Texture.h">
+      <Filter>GameEngine\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -376,6 +415,12 @@
     </Filter>
     <Filter Include="GameEngine\Mono">
       <UniqueIdentifier>{a6c2f78c-f04c-4135-a2fa-128eee905723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics\Animation">
+      <UniqueIdentifier>{a05efc85-2883-4089-a70d-27ec6d316c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics\GL\Shaders">
+      <UniqueIdentifier>{9706fdd9-f2e3-46ab-a057-783f624fc8ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

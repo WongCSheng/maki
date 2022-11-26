@@ -187,7 +187,6 @@ static void init() {
 
 	// Part 2
 	GLHelper::print_specs(); //uncommented
-
 	glfwMakeContextCurrent(GLHelper::ptr_window);
 
 	// Part 3
@@ -225,6 +224,4 @@ void cleanup() {
 
 	////imgui Shutdown
 	Editor::LevelEditor::imguiShutDown();
-	
-
 }

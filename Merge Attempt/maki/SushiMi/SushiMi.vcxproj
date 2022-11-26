@@ -227,6 +227,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Engine\Texture\Texture.cpp" />
     <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
+    <ClCompile Include="Game Object\Player.cpp" />
     <ClCompile Include="Mono.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -279,6 +280,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Texture\Texture.h" />
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
+    <ClInclude Include="Game Object\Player.h" />
     <ClInclude Include="Headers\Assertion.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />

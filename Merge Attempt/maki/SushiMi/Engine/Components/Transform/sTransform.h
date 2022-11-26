@@ -4,7 +4,7 @@
 
 struct Transform
 {
-	glm::vec2 position = glm::vec2(0);
+	glm::vec2 position = glm::vec2(1);
 	glm::vec2 scale = glm::vec2(1);
 	float angle = 0;
 

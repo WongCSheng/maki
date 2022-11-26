@@ -130,7 +130,7 @@ static void draw()
 	
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
-
+	
 	// Part 2: swap buffers: front <-> back
 	glfwSwapBuffers(GLHelper::ptr_window);
 	glfwPollEvents();

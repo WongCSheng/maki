@@ -29,6 +29,7 @@ and transformations (in later labs).
 #include <glm/glm/gtc/type_ptr.hpp>
 #include "../Engine/Camera/Camera2D.h"
 #include "../Engine/Mesh/model.h"
+class Player;
 struct GLApp {
 	/*  _________________________________________________________________________ */
 	/*! init
@@ -83,7 +84,8 @@ struct GLApp {
 	static std::map<std::string, GLSLShader> shdrpgms; // singleton
 	static std::vector<GLViewport> vps; // container for viewports
 
-
+	inline static Player* player;
+	inline static double starttime, endtime, delta;
 };
 
 #endif /* GLAPP_H */

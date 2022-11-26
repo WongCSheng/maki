@@ -21,7 +21,8 @@ to OpenGL implementations.
 #include "../Engine/Components/Physics/Physics.h"
 #define M_PI									3.14159265358979323846  /* pi */
 #include "../Engine/Texture/texture.h"
-
+#include "../Engine/Shaders/ShaderLibrary.h"
+#include "../Game Object/Player.h"
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
@@ -38,6 +39,7 @@ GLint mystery_counter = 0;
 std::map<std::string, GLSLShader>		GLApp::shdrpgms;
 //Object temp;
 GLSLShader shdr_pgm;
+
 /*  _________________________________________________________________________ */
 /*! init
 @param none
@@ -72,7 +74,8 @@ void GLApp::init() {
 	//Texture::drawTexture();
 
 	// font testing
-
+	Shaders = make_unique<ShaderLibrary>();
+	player = new Player();
 }
 
 
@@ -162,6 +165,14 @@ void GLApp::draw()
 	//Object::objects["Camera"].draw();
 
 	//Font::RenderText(GLApp::shdrpgms["font"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
+	/*
+	Shaders->Textured_Shader()->use();
+	GLApp::starttime = glfwGetTime();
+	Shaders->Textured_Shader()->Send_Mat4("model_matrx", *player->Transformation());
+	player->draw(delta);
+	GLApp::endtime = glfwGetTime();
+	GLApp::delta = GLApp::endtime - GLApp::starttime;
+	*/
 }
 
 

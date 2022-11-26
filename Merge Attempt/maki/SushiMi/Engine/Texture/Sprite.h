@@ -17,11 +17,11 @@ public:
 
 	void Add_animation(const char* filename);
 
-	Transform* transformation;
+	Transform* transformation = nullptr;
 
 private:
-	Texture* texture;
-	Rect* rectangle;
+	Texture* texture = nullptr;
+	Rect* rectangle = nullptr;
 
 	std::vector<Animation2D*> anims;
 };

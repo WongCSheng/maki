@@ -139,6 +139,9 @@
     <ClCompile Include="Engine\Font\Font.cpp">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
+    <ClCompile Include="Game Object\Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -320,6 +323,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Components\Transform\sTransform.h">
       <Filter>GameEngine\System\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\Player.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

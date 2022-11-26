@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../glm/glm/glm.hpp"
 class Sprite;
 enum AnimationType;
+struct fakemat4;
 class Player
 {
 public:
@@ -17,7 +17,7 @@ public:
 
 	void stop();
 
-	glm::mat4 Transformation();
+	fakemat4* Transformation();
 
 	void draw(double deltatime);
 

@@ -2,14 +2,19 @@
 #include "../Engine/Components/Transform/sTransform.h"
 #include "../Engine/Animation/Animation2D.h"
 #include "../Engine/Texture/Sprite.h"
+struct fakemat4
+{
+	glm::mat4 data;
+};
 Player::Player()
 {
-	sp = new Sprite("resources/spritsheet/spritesheet.png");
+	sp = new Sprite("../textures/spritesheet/spritesheet.png");
+	sp->transformation = new Transform();
 	sp->transformation->position = glm::vec2(500, 500);
 	sp->transformation->scale = glm::vec2(150, 150);
 
-	sp->Add_animation("resources/spritsheet/Idle.txt");
-	sp->Add_animation("resources/spritsheet/Run.txt");
+	sp->Add_animation("../textures/spritesheet/Idle.txt");
+	sp->Add_animation("../textures/spritesheet/Run.txt");
 
 	current_anim = new AnimationType(Idle);
 }
@@ -42,9 +47,10 @@ void Player::stop()
 	current_anim = new AnimationType(Idle);
 }
 
-glm::mat4 Player::Transformation()
+fakemat4* Player::Transformation()
 {
-	return sp->transformation->Get();
+	fakemat4* temp = new fakemat4{ sp->transformation->Get() };
+	return temp;
 }
 
 void Player::draw(double deltatime)

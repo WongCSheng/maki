@@ -24,7 +24,8 @@ written consent of DigiPen Institute of Technology is prohibited.
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
-unsigned int VBO, VAO, EBO;
+extern unsigned int VBO, VAO;
+unsigned int EBO;
 // create a file browser instance
 static ImGui::FileBrowser fileDialog;
 unsigned int texture1, texture2;

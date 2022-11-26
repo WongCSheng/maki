@@ -118,9 +118,6 @@
     <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\Player.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Animation\Animation2D.cpp">
       <Filter>GameEngine\System\Graphics\Animation</Filter>
     </ClCompile>
@@ -138,6 +135,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Texture\Texture.cpp">
       <Filter>GameEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Font\Font.cpp">
+      <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,9 +300,6 @@
     <ClInclude Include="Engine\Input\Keys.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Game Object\Player.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Animation\Animation2D.h">
       <Filter>GameEngine\System\Graphics\Animation</Filter>
     </ClInclude>
@@ -320,6 +317,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Texture\Texture.h">
       <Filter>GameEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Transform\sTransform.h">
+      <Filter>GameEngine\System\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -421,6 +421,9 @@
     </Filter>
     <Filter Include="GameEngine\System\Graphics\GL\Shaders">
       <UniqueIdentifier>{9706fdd9-f2e3-46ab-a057-783f624fc8ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Graphics\Fonts">
+      <UniqueIdentifier>{6cb8f02b-db0a-4c0b-bbd0-d2a900ddc3f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

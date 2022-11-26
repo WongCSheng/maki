@@ -1,11 +1,11 @@
 #pragma once
-#include "../Engine/Texture/Texture.h"
-#include "../Engine/Texture/Rectangle.h"
+
 
 #include <../glm/glm/glm.hpp>
 #include <vector>
 using namespace std;
-
+class Texture;
+class Rect;
 
 enum AnimationType
 {

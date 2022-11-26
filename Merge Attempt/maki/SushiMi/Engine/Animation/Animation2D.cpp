@@ -2,7 +2,8 @@
 
 #include <string>
 #include <sstream>
-
+#include "../Engine/Texture/Texture.h"
+#include "../Engine/Texture/Rectangle.h"
 #include <../glew/include/GL/glew.h>
 
 Animation2D::Animation2D(const char* filename)

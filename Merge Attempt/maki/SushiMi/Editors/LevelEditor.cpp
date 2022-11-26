@@ -266,30 +266,32 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(data);
-	// texture 2
+
+
+	// texture 2 (idk why its not loading)
 	// ---------
-	glGenTextures(1, &texture2);
-	glBindTexture(GL_TEXTURE_2D, texture2);
-	// set the texture wrapping parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// set texture filtering parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load image, create texture and generate mipmaps
-	const char* b = "../textures/BaMi_Idle1.png";
-	data = stbi_load(b, &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		// note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
+	//glGenTextures(1, &texture2);
+	//glBindTexture(GL_TEXTURE_2D, texture2);
+	//// set the texture wrapping parameters
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//// set texture filtering parameters
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//// load image, create texture and generate mipmaps
+	//const char* b = "../textures/BaMi_Idle1.png";
+	//data = stbi_load(b, &width, &height, &nrChannels, 0);
+	//if (data)
+	//{
+	//	// note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
+	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	//	glGenerateMipmap(GL_TEXTURE_2D);
+	//}
+	//else
+	//{
+	//	std::cout << "Failed to load texture" << std::endl;
+	//}
+	//stbi_image_free(data);
 
 	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
 	// -------------------------------------------------------------------------------------------
@@ -301,20 +303,21 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	// or set it via the texture class
 	//ourShader.setInt("texture2", 1);
 	glUniform1i(glGetUniformLocation(ID, "texture1"), 0);
-	glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
+	//glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
 	//std::cout << ID << std::endl;
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, texture2);
+	//commented out as texture 2 not working
+	//glActiveTexture(GL_TEXTURE1);
+	//glBindTexture(GL_TEXTURE_2D, texture2);
 
 	// render container
 	glUseProgram(ID);
 	//ourShader.use();
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	// Exporting variables to shaders
 	/*glUseProgram(shaderProgram);
 	glUniform1f(glGetUniformLocation(shaderProgram, "size"), mainclass::size);
@@ -364,7 +367,12 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::SliderFloat("Size", &mainclass::size, 0.5f, 2.0f);
 	// Fancy color editor that appears in the window
 	ImGui::ColorEdit4("Color", mainclass::color);
-
+	if (mainclass::drawTexture)
+	{
+		// Draw the triangle using the GL_TRIANGLES primitive
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	}
 	
 	//ImGui::Text(objectString[i]);
 	//ImGui::SliderInt("Object Index", &i, 0, objectString.size()-1);
@@ -386,7 +394,20 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::End();
 	fileDialog.Display();
 
-	
+	ImGui::Text("Click below to display a sample scene");
+
+	if (ImGui::Button("Demo Background"))
+	{
+		texpath = "../textures/demo.jpg";
+	}
+	if (ImGui::Button("Level 1 Background"))
+	{
+		texpath = "../textures/level1.jpg";
+	}
+	if (ImGui::Button("BaMi Art"))
+	{
+		texpath = "../textures/test.jpg";
+	}
 
 	if (ImGui::Button("Demo Background"))
 	{

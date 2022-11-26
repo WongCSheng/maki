@@ -78,6 +78,8 @@ void Core::MainSystem::Init()
 
 	objfactory->AddObjects(temp1, "Obj Test 1");
 	objfactory->AddObjects(temp2, "Obj Test 2");
+
+
 }
 
 /*

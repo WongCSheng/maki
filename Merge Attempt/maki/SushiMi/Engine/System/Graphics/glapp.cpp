@@ -69,13 +69,11 @@ void GLApp::init() {
 	// Initialize camera here
 	//Camera2D::camera2d.init(GLHelper::ptr_window, &Object::objects.at("Camera"));
 
+	// uncomment these for errors
+	//GLApp::insert_shdrpgm("Font", "../shaders/Font.vert", "../shaders/Font.frag");
 	//Font::init();
-	//Texture::generateTexture();
-	//Texture::drawTexture();
-
-	// font testing
-	Shaders = make_unique<ShaderLibrary>();
-	player = new Player();
+	//Shaders = make_unique<ShaderLibrary>();
+	//player = new Player();
 }
 
 
@@ -164,8 +162,11 @@ void GLApp::draw()
 	//}
 	//Object::objects["Camera"].draw();
 
-	//Font::RenderText(GLApp::shdrpgms["font"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
-	/*
+
+
+	/* uncomment this chunk for errors
+	Font::RenderText(GLApp::shdrpgms["font"], "This is sample text", 25.0f, 25.0f, 9.0f, glm::vec3(0.5, 0.8f, 0.2f));
+
 	Shaders->Textured_Shader()->use();
 	GLApp::starttime = glfwGetTime();
 	Shaders->Textured_Shader()->Send_Mat4("model_matrx", *player->Transformation());

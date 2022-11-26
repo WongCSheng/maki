@@ -327,6 +327,9 @@
     <ClInclude Include="Game Object\Player.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Font\Font.h">
+      <Filter>GameEngine\System\Graphics\Fonts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -437,6 +440,12 @@
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
     <None Include="..\shaders\SushiMi.vert">
+      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
+    </None>
+    <None Include="..\shaders\Font.frag">
+      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
+    </None>
+    <None Include="..\shaders\Font.vert">
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
   </ItemGroup>

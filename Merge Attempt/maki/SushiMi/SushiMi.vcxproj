@@ -258,6 +258,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
     <ClInclude Include="Engine\Factory\Factory.h" />
+    <ClInclude Include="Engine\Font\Font.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\Input\Keys.h" />
     <ClInclude Include="Engine\Mesh\model.h" />
@@ -299,6 +300,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\shaders\Font.frag" />
+    <None Include="..\shaders\Font.vert" />
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
   </ItemGroup>

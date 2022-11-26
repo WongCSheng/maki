@@ -140,6 +140,21 @@ namespace Core
 
 	}
 
+	bool staticPointRect(gfxVector2 const& point, AABB const& rect)
+	{
+		if (point.x > rect.min.x && point.x < rect.max.x)
+		{
+			if (point.y > rect.min.y && point.y < rect.max.y)
+			{
+				return true;
+			}
+			return false;
+		}
+		else
+			return false;
+
+	}
+
 	AABB& Collision::GetAABB()
 	{
 		return boundingBox;

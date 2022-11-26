@@ -19,7 +19,7 @@ namespace Core
 
 	void PhysicSystem::Init()
 	{
-
+		
 	}
 
 	void PhysicSystem::Update(const double dt)
@@ -29,7 +29,7 @@ namespace Core
 
 	void PhysicSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-
+	
 	}
 
 	//glm::vec2 gravity(-9.81, 0); //applying gravity to x axis

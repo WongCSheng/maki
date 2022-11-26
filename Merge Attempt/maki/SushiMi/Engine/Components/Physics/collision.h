@@ -53,6 +53,7 @@ namespace Core
 	};
 
 	bool CollisionIntersection_CircleRect(OBB& circle, AABB& aabb);
+	bool staticPointRect(gfxVector2 const& point, AABB const& rect);
 
 
 	/******************************************************************************/

@@ -4,6 +4,7 @@
 #include "Keys.h"
 #include <glfw/include/GLFW/glfw3.h>
 #include "../Engine/System/SystemFrame.h"
+#include "../Headers/Math_Header.h"
 
 namespace Core
 {
@@ -28,7 +29,7 @@ namespace Core
 		void UpdateInput(const KEY key, const KEY_STATE action);
 		bool GetKey(const KEY key, const KEY_STATE action);
 		bool GetKeyDown(const KEY key);
-		void GetMouse(GLFWwindow* window, int action);
+		gfxVector2 GetMouse(GLFWwindow* window, int action);
 
 	private:
 		/*Input();

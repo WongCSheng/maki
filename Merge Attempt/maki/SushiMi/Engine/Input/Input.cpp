@@ -67,13 +67,16 @@ namespace Core
 		return false;
 	}
 
-	void Input::GetMouse(GLFWwindow* window, int action)
+	gfxVector2 Input::GetMouse(GLFWwindow* window, int action)
 	{
-		if (/*mouse == MOUSE_BUTTON_LEFT &&*/ action == KEY_STATE_PRESS)
+		double xpos, ypos;
+		if (action == KEY_STATE_PRESS)
 		{
-			double xpos, ypos;
 			glfwGetCursorPos(window, &xpos, & ypos);
-			std::cout << "Coursor position at " << xpos << " : " << ypos;
+			gfxVector2 coordinates(xpos, ypos);
+			//std::cout << "Coursor position at " << xpos << " : " << ypos << std::endl;
+			return coordinates;
 		}
+		return gfxVector2(0, 0);
 	}
 }

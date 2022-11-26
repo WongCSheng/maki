@@ -57,6 +57,7 @@ namespace Core
 		public:
 			friend class ObjectFactory;
 			
+			
 			//LinkedList<Component*> HeadOfList;
 			
 			GameObject();

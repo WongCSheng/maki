@@ -25,6 +25,7 @@ namespace Core
 		Transform = 0b0000'0100,
 		Camera = 0b0000'1000,
 		Physics = 0b0001'0000,
+		Collision = 0b0010'0000
 	};
 
 	class Component

@@ -16,7 +16,7 @@ namespace Core
 	{
 		Object::GameObject* newlycreated = new Object::GameObject();
 
-		return nullptr;
+		return newlycreated;
 	}
 
 	void ObjectFactory::AddtoDestroyList(Object::GameObject* Obj)
@@ -55,11 +55,12 @@ namespace Core
 	void ObjectFactory::AddObjects(Object::GameObject* added, std::string i)
 	{
 		ObjectContainer.insert({ i, added });
+
 	}
 
 	void ObjectFactory::Init()
 	{
-
+		
 	}
 
 	Object::GameObject* ObjectFactory::BuildSerialise(const std::string filename)

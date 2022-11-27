@@ -12,6 +12,10 @@ public:
 
 	void move_right();
 
+	void move_up();
+
+	void move_down();
+
 
 	void stop();
 

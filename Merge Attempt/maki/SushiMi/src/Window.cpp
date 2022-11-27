@@ -80,6 +80,14 @@ void Window::Input()
 	{
 		player->move_left();
 	}
+	else if (glfwGetKey(window_ptr, GLFW_KEY_UP))
+	{
+		player->move_up();
+	}
+	else if (glfwGetKey(window_ptr, GLFW_KEY_DOWN))
+	{
+		player->move_down();
+	}
 	else
 	{
 		player->stop();

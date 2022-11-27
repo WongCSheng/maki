@@ -36,6 +36,24 @@ void Player::move_right()
 	sp->transformation.position.x += 1;
 }
 
+void Player::move_up()
+{
+	if (sp->transformation.scale.y > 0)
+		sp->transformation.scale.y *= 1;
+
+	current_anim = Run;
+	sp->transformation.position.y -= 1;
+}
+
+void Player::move_down()
+{
+	if (sp->transformation.scale.y < 0)
+		sp->transformation.scale.y *= -1;
+
+	current_anim = Run;
+	sp->transformation.position.y += 1;
+}
+
 void Player::stop()
 {
 	current_anim = Idle;

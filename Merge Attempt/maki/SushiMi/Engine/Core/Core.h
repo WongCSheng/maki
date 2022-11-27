@@ -39,7 +39,7 @@ namespace Core
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
-
+		void clear();
 		ObjectFactory* objfactory;
 		Input* inputsystem;
 

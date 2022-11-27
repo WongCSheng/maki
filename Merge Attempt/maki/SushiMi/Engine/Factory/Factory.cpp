@@ -26,14 +26,14 @@ namespace Core
 
 	void ObjectFactory::DestroyEverything()
 	{
-		std::unordered_map<std::string, Object::GameObject*>::iterator it = ObjectContainer.begin();
+		std::set<Object::GameObject*>::iterator it = DeleteList.begin();
 
-		for (it; it != ObjectContainer.end(); ++it)
+		for (it; it != DeleteList.end(); ++it)
 		{
-			delete it->second;
+			delete &it;
 		}
 
-		ObjectContainer.clear();
+		DeleteList.clear();
 	}
 
 	void ObjectFactory::Update(const double dt)

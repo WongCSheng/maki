@@ -103,17 +103,7 @@ static void update()
 
 	CoreSystem->Update(GLHelper::delta_time);
 
-	////imgui
-	////New Frame
-	//ImGui_ImplOpenGL3_NewFrame();
-	//ImGui_ImplGlfw_NewFrame();
-	//ImGui::NewFrame();
-
-	////Render
-	//ImGui::Render();
-	//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
+	
 }
 
 /*  _________________________________________________________________________ */
@@ -224,4 +214,6 @@ void cleanup() {
 
 	////imgui Shutdown
 	Editor::LevelEditor::imguiShutDown();
+
+	CoreSystem->clear();
 }

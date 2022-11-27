@@ -142,6 +142,25 @@ void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object:
 
 }
 
+void Core::MainSystem::clear()
+{
+	for (auto& i : objfactory->ObjectContainer)
+	{
+		objfactory->AddtoDestroyList(i.second);
+	}
+
+	objfactory->DestroyEverything();
+
+	for (auto& i : systems)
+	{
+		delete i;
+	}
+
+	delete objfactory;
+
+	delete inputsystem;
+}
+
 
 //Core::Core::MainSystem::MainSystem()
 //{

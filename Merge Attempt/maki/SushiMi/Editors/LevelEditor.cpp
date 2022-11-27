@@ -28,9 +28,10 @@ extern unsigned int VBO, VAO;
 unsigned int EBO;
 // create a file browser instance
 static ImGui::FileBrowser fileDialog;
-unsigned int texture1, texture2;
+unsigned int texture1/*, texture2*/;
 unsigned int ID;
-int width, height, nrChannels;
+int squareX = 0, squareY = 0, squareZ = 0;
+
 const char* texpath = "../textures/menu.jpg";
 std::string path;
 
@@ -60,7 +61,10 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	fileDialog.SetTitle("ImGui File Explorer");
 	//fileDialog.SetPwd("../maki/textures/");
 	//fileDialog.SetCurrentTypeFilterIndex(0);
-	fileDialog.SetTypeFilters({ ".h", ".cpp" });
+	
+	fileDialog.SetPwd("../textures");
+
+
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -212,15 +216,12 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
-
-	// load and create a texture 
-	// -------------------------
-	
 	
 }
 
 void Editor::LevelEditor::imguiGraphicsTest(void)
 {
+	//give the directory of the texture to display
 	if (fileDialog.HasSelected())
 	{
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
@@ -230,7 +231,6 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 
 		fileDialog.ClearSelected();
 	}
-
 	// input
 		// -----
 	//processInput(window);
@@ -241,6 +241,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	glClear(GL_COLOR_BUFFER_BIT);*/
 	// texture 1
 	// ---------
+	
 	glGenTextures(1, &texture1);
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	// set the texture wrapping parameters
@@ -255,10 +256,11 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 
 	
 
-	unsigned char* data = stbi_load(texpath, &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load(texpath, &mainclass::width, &mainclass::height, &mainclass::nrChannels, 0);
 	if (data)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mainclass::width, mainclass::height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
@@ -267,7 +269,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	}
 	stbi_image_free(data);
 
-
+	
 	// texture 2 (idk why its not loading)
 	// ---------
 	//glGenTextures(1, &texture2);
@@ -306,8 +308,10 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	//glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
 	//std::cout << ID << std::endl;
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture1);
+	//code works fine commented or uncommented?!
+	//glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_2D, texture1);
+	
 	//commented out as texture 2 not working
 	//glActiveTexture(GL_TEXTURE1);
 	//glBindTexture(GL_TEXTURE_2D, texture2);
@@ -329,10 +333,6 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture2);*/
 
-
-	//std::cout << ID << std::endl;
-
-	
 	
 	//// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 	//// -------------------------------------------------------------------------------
@@ -342,7 +342,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 
 void Editor::LevelEditor::imguiEditorDraw(void)
 {
-	
+	fileDialog.SetTypeFilters({ ".png", ".jpg" });
 
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
@@ -356,6 +356,8 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 
+	
+
 	ImGui::Begin("Object Editor - Imgui Window");
 	ImGui::Text("Click to Select Object");
 	
@@ -364,7 +366,8 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::Text("The selected object is: ");
 	ImGui::Checkbox("Display Texture", &mainclass::drawTexture);
 	// Slider that appears in the window
-	ImGui::SliderFloat("Size", &mainclass::size, 0.5f, 2.0f);
+	ImGui::SliderInt("Size", &mainclass::width, mainclass::width -10, mainclass::width +10);
+	//ImGui::SliderInt("Size", &width, 1, 10);
 	// Fancy color editor that appears in the window
 	ImGui::ColorEdit4("Color", mainclass::color);
 	if (mainclass::drawTexture)
@@ -409,62 +412,11 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 		texpath = "../textures/test.jpg";
 	}
 
-	if (ImGui::Button("Demo Background"))
-	{
-		texpath = "../textures/demo.jpg";
-	}
-
-	if (ImGui::Button("Level1 Background"))
-	{
-		texpath = "../textures/level1.jpg";
-	}
-
-	if (ImGui::Button("BaMi Art"))
-	{
-		texpath = "../textures/test.jpg";
-	}
-
 	if (ImGui::Button("Return to Main Menu"))
 	{
 		texpath = "../textures/menu.jpg";
 	}
 
-
-	//const char* cctext = "../textures/BaMi_Idle1.png";
-
-	////some graphics
-	//unsigned int texture;
-	//glGenTextures(1, &texture);
-	//glBindTexture(GL_TEXTURE_2D, texture);
-
-	//// set the texture wrapping/filtering options (on the currently bound texture object)
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//// load and generate the texture
-	//int width, height, nrChannels;
-	//unsigned char* data = stbi_load(/*cctext*/"../textures/BaMi_Idle1.png", &width, &height, &nrChannels, 0);
-	//if (data)
-	//{
-	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-	//	glGenerateMipmap(GL_TEXTURE_2D);
-	//}
-	//else
-	//{
-	//	std::cout << "Failed to load texture" << std::endl;
-	//}
-	//stbi_image_free(data);
-	////end some graphics
-
-	//if (fileDialog.HasSelected())
-	//{
-	//	std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
-	//	/*cctext = (fileDialog.GetSelected().string()).c_str();
-	//	std::cout << cctext << std::endl;*/
-
-	//	fileDialog.ClearSelected();
-	//}
 
 	ImGui::End();
 	ImGui::Render();
@@ -473,6 +425,13 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 
 void Editor::LevelEditor::imguiShutDown(void)
 {
+	glDeleteTextures(1, &texture1);
+	
+
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+	glDeleteBuffers(1, &VAO);
+	//glDeleteTextures(1, &texture2);
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();

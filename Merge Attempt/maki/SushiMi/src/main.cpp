@@ -11,11 +11,8 @@ using namespace std;
 /*                                                      function declarations
 ----------------------------------------------------------------------------- */
 
-static void draw();
-static void update();
-static void init();
-static void cleanup();
 
+//void cleanup();
 void main()
 {
 	// Enable run-time memory check for debug builds.
@@ -24,21 +21,22 @@ void main()
 #endif
 
 
+	Window* window = new Window(800, 600);
 	glfwInit();
-	init();
+	pseudomain::init();
+	window->Mainloop(); //already does while (!windowshould close)
 
-	while (!glfwWindowShouldClose(GLHelper::ptr_window))
+	/*while (!glfwWindowShouldClose(Window::window_ptr))
 	{
 		update();
 		draw();
-	}
-
-	Window* window = new Window(800, 600);
-	window->Mainloop();
+	}*/
+	
 	delete window;
+
 }
 
-static void update()
+void pseudomain::update()
 {
 	glfwPollEvents();
 
@@ -65,14 +63,14 @@ MessageCallback(GLenum source,
 
 }
 
-static void init() {
+void pseudomain::init() {
 
-
+	
 	// Part 1: set window size
-	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
+	/*if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
 		std::cout << "Unable to create OpenGL context" << std::endl;
 		std::exit(EXIT_FAILURE);
-	}
+	}*/
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
@@ -88,7 +86,8 @@ static void init() {
 	// Part 2
 	GLHelper::print_specs(); //uncommented
 
-	glfwMakeContextCurrent(GLHelper::ptr_window);
+	glfwMakeContextCurrent(Window::window_ptr);
+	//glfwMakeContextCurrent();
 
 	// Part 3
 	Editor::LevelEditor::imguiEditorInit();
@@ -103,14 +102,14 @@ static void init() {
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
 
-static void draw()
+void pseudomain::draw()
 {
 
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 
+	glfwSwapBuffers(Window::window_ptr);
 	// Part 2: swap buffers: front <-> back
-	glfwSwapBuffers(GLHelper::ptr_window);
 	glfwPollEvents();
 }
 

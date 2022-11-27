@@ -24,10 +24,20 @@ public:
 
 	Player* player;
 	Sprite* sp;
+	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 
 private:
 	int m_width, m_height;
-	GLFWwindow* window_ptr;
 	GLFWwindow* ptr_win;
 	double starttime, endtime, delta;
+};
+
+class pseudomain
+{
+public:
+	static void draw();
+	static void update();
+	static void init();
+	//static void cleanup();
+
 };

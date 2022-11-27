@@ -1,6 +1,6 @@
 //******************************************************************************/
 /*!
-\file		main.cpp
+\file		Window.cpp
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
 \date   	2/8/2022
@@ -106,11 +106,12 @@ void Window::Mainloop()
 	while (!glfwWindowShouldClose(window_ptr))
 	{
 		starttime = glfwGetTime();
+		pseudomain::update();
 
 		//for each frame 
 		Resize();
 		Input();
-
+		pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 		glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -120,8 +121,8 @@ void Window::Mainloop()
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
 
-		glfwSwapBuffers(window_ptr);
-		glfwPollEvents();
+
+		
 
 		endtime = glfwGetTime();
 		delta = (endtime - starttime) / 2;

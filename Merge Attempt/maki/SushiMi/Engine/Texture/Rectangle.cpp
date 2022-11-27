@@ -34,12 +34,12 @@ Rect RectangleSystem::Generate()
 	};
 
 	glm::vec2 uv[6] = {
-		glm::vec2(0,0),
+		glm::vec2(1,1),
 		glm::vec2(0,1),
 		glm::vec2(1,0),
 		glm::vec2(1,0),
 		glm::vec2(0,1),
-		glm::vec2(1,1)
+		glm::vec2(0,0)
 	};
 
 	glGenVertexArrays(1, &result.VAO);

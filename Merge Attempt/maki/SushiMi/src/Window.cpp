@@ -19,10 +19,10 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 #include "Window.h"
 
-
 Window::Window(int width, int height)
 	:m_width(width),
 	m_height(height)
+
 {
 	glfwInit();
 
@@ -124,7 +124,7 @@ void Window::Mainloop()
 		glfwPollEvents();
 
 		endtime = glfwGetTime();
-		delta = endtime - starttime;
+		delta = (endtime - starttime) / 2;
 	}
 }
 

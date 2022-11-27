@@ -18,7 +18,7 @@ ShaderLibrary::ShaderLibrary()
 			{
 				gl_Position = projection * model_matrx * vec4(point.x, point.y, 0.0, 1.0);
 				vertex_color = color;
-				vertex_uv = uv;
+				vertex_uv = -uv;
 			};
 )CODE";
 

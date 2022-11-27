@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <glfw/include/GLFW/glfw3.h>
-using namespace std;
 
 
 
@@ -29,5 +28,6 @@ public:
 private:
 	int m_width, m_height;
 	GLFWwindow* window_ptr;
+	GLFWwindow* ptr_win;
 	double starttime, endtime, delta;
 };

@@ -3,10 +3,10 @@
 
 #include <../glm/glm/glm.hpp>
 #include <vector>
-using namespace std;
+
 class Texture;
 class Rect;
-
+using namespace std;
 enum AnimationType
 {
 	Idle,

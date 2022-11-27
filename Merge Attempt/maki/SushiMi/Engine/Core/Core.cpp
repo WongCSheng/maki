@@ -45,6 +45,10 @@ Core::MainSystem::~MainSystem()
 			sys = NULL;
 		}
 	}
+	delete objfactory;
+	delete inputsystem;
+
+
 }
 
 /*
@@ -73,11 +77,11 @@ void Core::MainSystem::Init()
 		sys->Init();
 	}
 
-	Object::GameObject* temp1 = objfactory->Create();
+	/*Object::GameObject* temp1 = objfactory->Create();
 	Object::GameObject* temp2 = objfactory->Create();
 
 	objfactory->AddObjects(temp1, "Obj Test 1");
-	objfactory->AddObjects(temp2, "Obj Test 2");
+	objfactory->AddObjects(temp2, "Obj Test 2");*/
 }
 
 /*
@@ -109,7 +113,24 @@ void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object:
 
 }
 
+void Core::MainSystem::clear()
+{
+	for (auto& i : objfactory->ObjectContainer)
+	{
+		objfactory->AddtoDestroyList(i.second);
+	}
 
+	objfactory->DestroyEverything();
+
+	for (auto& i : systems)
+	{
+		delete i;
+	}
+
+	delete objfactory;
+
+	delete inputsystem;
+}
 //Core::Core::MainSystem::MainSystem()
 //{
 //}

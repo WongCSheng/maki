@@ -24,7 +24,7 @@ void Player::move_left()
 		sp->transformation.scale.x *= -1;
 
 	current_anim = Run;
-	sp->transformation.position.x -= 5;
+	sp->transformation.position.x -= 1;
 }
 
 void Player::move_right()
@@ -33,7 +33,7 @@ void Player::move_right()
 		sp->transformation.scale.x *= -1;
 
 	current_anim = Run;
-	sp->transformation.position.x += 5;
+	sp->transformation.position.x += 1;
 }
 
 void Player::stop()

@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-struct fakemat4;
+#include "../../glm/glm/glm.hpp"
 class ShaderProgram
 {
 public:
@@ -12,7 +12,7 @@ public:
 
 	void use();
 
-	void Send_Mat4(const char* name, fakemat4& mat);
+	void Send_Mat4(const char* name, glm::mat4 mat);
 
 private:
 	void checkerorr(unsigned int shader_id, std::string type);

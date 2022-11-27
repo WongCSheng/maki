@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\Window.cpp">
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Core\Core.cpp">
@@ -100,9 +100,6 @@
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Graphics\glapp.cpp">
-      <Filter>GameEngine\System\Graphics\GL</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\System\Graphics\glhelper.cpp">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClCompile>
@@ -136,11 +133,14 @@
     <ClCompile Include="Engine\Texture\Texture.cpp">
       <Filter>GameEngine\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Font\Font.cpp">
-      <Filter>GameEngine\System\Graphics\Fonts</Filter>
-    </ClCompile>
     <ClCompile Include="Game Object\Player.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Camera\Camera.cpp">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -273,9 +273,6 @@
     <ClInclude Include="Headers\ImGui_Header.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\Graphics\glapp.h">
-      <Filter>GameEngine\System\Graphics\GL</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\System\Graphics\glhelper.h">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClInclude>
@@ -327,8 +324,11 @@
     <ClInclude Include="Game Object\Player.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Font\Font.h">
-      <Filter>GameEngine\System\Graphics\Fonts</Filter>
+    <ClInclude Include="src\Window.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Camera\Camera.h">
+      <Filter>GameEngine\System\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

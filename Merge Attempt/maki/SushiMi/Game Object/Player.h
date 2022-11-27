@@ -1,8 +1,6 @@
 #pragma once
 
-class Sprite;
-enum AnimationType;
-struct fakemat4;
+#include "../Engine/Texture/Sprite.h"
 class Player
 {
 public:
@@ -17,12 +15,12 @@ public:
 
 	void stop();
 
-	fakemat4* Transformation();
+	glm::mat4 Transformation();
 
 	void draw(double deltatime);
 
 
 private:
 	Sprite* sp;
-	AnimationType* current_anim;
+	AnimationType current_anim;
 };

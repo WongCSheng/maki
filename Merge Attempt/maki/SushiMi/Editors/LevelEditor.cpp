@@ -24,7 +24,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
-extern unsigned int VBO, VAO;
+unsigned int VBO, VAO;
 unsigned int EBO;
 // create a file browser instance
 static ImGui::FileBrowser fileDialog;
@@ -290,7 +290,7 @@ void Editor::LevelEditor::imguiGraphicsTest(void)
 		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(data);
-
+	width = mainclass::size * 1;
 	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
 	// -------------------------------------------------------------------------------------------
 	glUseProgram(ID);

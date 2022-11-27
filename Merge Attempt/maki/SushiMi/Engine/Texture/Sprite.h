@@ -1,11 +1,10 @@
 #pragma once
-//#include "../Engine/Components/Transform/sTransform.h"
-enum AnimationType;
-class Texture;
-class Rect;
-class Animation2D;
-class Transform;
-#include <vector>
+#include "../Engine/Texture/texture.h"
+#include "../Engine/Texture/Rectangle.h"
+#include "../Engine/Components/Transform/sTransform.h"
+#include "../Engine/Animation/Animation2D.h"
+
+
 class Sprite
 {
 public:
@@ -13,15 +12,15 @@ public:
 
 	~Sprite();
 
-	void draw(double deltatime, AnimationType& type);
+	void draw(double deltatime, AnimationType type);
 
 	void Add_animation(const char* filename);
 
-	Transform* transformation = nullptr;
+	Transform transformation;
 
 private:
-	Texture* texture = nullptr;
-	Rect* rectangle = nullptr;
+	Texture texture;
+	Rect rectangle;
 
-	std::vector<Animation2D*> anims;
+	vector<Animation2D*> anims;
 };

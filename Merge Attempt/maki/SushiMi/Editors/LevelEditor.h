@@ -18,7 +18,8 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 #include "../Headers/STL_Header.h"
 #include "../Headers/ImGui_Header.h"
-#include "../Engine/System/Graphics/glapp.h"
+#include "../../glew/include/GL/glew.h"
+#include "../Engine/System/Graphics/glhelper.h"
 
 class mainclass
 {

@@ -12,7 +12,7 @@ Description: Header for Core.cpp
 #include "../System/SystemFrame.h"
 #include "..//System/Renderer.h"
 #include "../System/Transformer.h"
-#include "../System//CameraSystem.h"
+#include "../System/CameraSystem.h"
 #include "../System/PhysicsSystem.h"
 #include "../Engine/Input/Input.h"
 

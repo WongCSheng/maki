@@ -3,6 +3,8 @@
 \file		Collision.h
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
 \date   	2/8/2022
 \brief		This source file contains the function declarations for
 			building line segment, checking for collision between line segment
@@ -58,8 +60,8 @@ namespace Core
 	/******************************************************************************/
 		/*!
 			Struct for line segment
-		 */
-		 /******************************************************************************/
+		*/
+	/******************************************************************************/
 	struct LineSegment
 	{
 		gfxVector2	m_pt0;

@@ -1,10 +1,18 @@
-/*
-File:		Core.cpp
-Author:		w.chongsheng@digipen.edu
-Description: This file contains the MainSystem which runs all the subsystems in the engine.
+/*!
+\file		Core.cpp
+\author 	Wong Chong Sheng
+\par    	w.chongsheng@digipen.edu
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+\date   	16 Nov 2022
+\brief		This file contains the MainSystem which runs all the subsystems in the engine.
 			 Subsystems consists of Rendering, Transforming, Camera and Factory.
-*/
 
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
 

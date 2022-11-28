@@ -1,10 +1,19 @@
 #pragma once
 
-/*
-File:		 Core.h
-Author:		 w.chongsheng@digipen.edu
-Description: Header for Core.cpp
+/*!
+\file		Core.h
+\author 	Wong Chong Sheng
+\par    	w.chongsheng@digipen.edu
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+\date   	16 Nov 2022
+\brief		Header for Core.cpp
+
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
 */
+/******************************************************************************/
 
 #ifndef CORE_H_
 #define CORE_H_

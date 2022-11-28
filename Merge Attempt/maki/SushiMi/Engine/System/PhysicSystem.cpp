@@ -1,10 +1,17 @@
-/*
-File: PhysicSystem.cpp
-Author: 
-Description: Physics System which runs data from Physics.cpp into it's logics.
-*/
+/*!
+@file    PhysicsSystem.cpp
+@author	 Aurelia Chong
+\par	 email: fei.x@digipen.edu
+		 Manages game physics such as acceleration and decelleration
 
-#include "PhysicsSystem.h"
+
+ /*		Copyright(C) 2022 DigiPen Institute of Technology.
+		Reproduction or disclosure of this file or its contents without the
+		prior written consent of DigiPen Institute of Technology is prohibited.
+*//*__________________________________________________________________________*/
+
+
+#include "PhysicSystem.h"
 #include "../Engine/Components/Physics/Physics.h"
 
 namespace Core
@@ -34,23 +41,49 @@ namespace Core
 
 	//glm::vec2 gravity(-9.81, 0); //applying gravity to x axis
 
-// F = ma ; accel = F/m
-	float force = 50.f; // fixed force
+	// F = ma ; accel = F/m
+	/******************************************************************************/
+	/*!
+	\brief		This function enables accelerations in game
 
-	//acceleration
+	\param		 float mass
+
+	\return
+				float
+	/******************************************************************************/
+	float force = 50.f; // fixed force
 	float PhysicSystem::applyAccel(float mass) //input mass
 	{
 		return force / mass;
 	}
 
+	/******************************************************************************/
+	/*!
+	\brief		This function enables decelerations in game
+
+	\param		 float mass
+
+	\return
+				float
+	/******************************************************************************/
 	float PhysicSystem::applyDecel(float mass) //deceleration for obj to stop
 	{
 		return -force / mass;
 	}
 
 
-	////apply acceleration
+	
 	//	glm::vec2 displacement = Object::objects["Object5"].position - Object::objects["Object5"].initialPos;
+	/******************************************************************************/
+	/*!
+	\brief		This function updates the object's position that was affected
+				by forces applied
+
+	\param		 Object& objectData
+
+	\return
+				void
+	/******************************************************************************/
 	void PhysicSystem::updatePosition(Physics* ObjectPhysics)
 	{
 		float acceleration = applyAccel(ObjectPhysics->GetMass());	 //	stores acceleration
@@ -83,6 +116,16 @@ namespace Core
 		
 	}
 
+	/**************************************************************************/
+	/*!
+	* \brief		collision detection for CollisionIntersection_RectRect
+	* \param		const AABB& aabb1 -  first rectangle object to check for collision (against the second rectangle)
+	* \param		const gfxVector2& vel1 - velocity of first obj
+	* \param		const AABB& aabb1 -  second rectangle object to check for collision (against the first rectangle)
+	* \param		const gfxVector2& vel2 - velocity of second obj
+	* \return		bool(result), 0 if no collision/intersection and 1 if there is collision/intersection
+	*/
+	/**************************************************************************/
 	bool PhysicSystem::CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
 		const AABB& aabb2, const gfxVector2& vel2)
 	{

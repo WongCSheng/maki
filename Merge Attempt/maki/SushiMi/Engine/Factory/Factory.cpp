@@ -1,6 +1,7 @@
 
 #include "Factory.h"
 #include "../Game Object/GameObject.h"
+#include "../Headers/RapidJSON_Header.h"
 
 namespace Core
 {
@@ -63,9 +64,64 @@ namespace Core
 		
 	}
 
-	Object::GameObject* ObjectFactory::BuildSerialise(const std::string filename)
-	{
-		return nullptr;
+	void ObjectFactory::Serialize(const char* filename) {
+	
+		/*None = 0b0000'0000,
+			Renderer = 0b0000'0010,
+			Transform = 0b0000'0100,
+			Camera = 0b0000'1000,
+			Physics = 0b0001'0000,*/
+
+			//set doc
+		rapidjson::Document doc;
+		std::ifstream ifs(filename);
+		rapidjson::IStreamWrapper isw(ifs);
+		doc.SetObject();
+
+		rapidjson::Value tempVal(rapidjson::kObjectType);
+		std::string tempStr;
+		int objCount = 0;
+
+		for (auto& it : ObjectContainer) {
+			
+			tempVal.SetObject();
+
+			//copy string for obj name
+			tempStr = it.first;
+			rapidjson::Value nameVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			tempVal.AddMember("Name", nameVal, doc.GetAllocator());
+
+			tempVal.AddMember("ID", it.second->characteristics->GetID(), doc.GetAllocator());
+
+			tempStr = (it.second->characteristics->GetIDName());
+			rapidjson::Value idVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+
+			tempVal.AddMember("ID Name", idVal, doc.GetAllocator());
+			
+			std::string s = std::to_string(objCount);
+			rapidjson::Value index(s.c_str(), s.size(), doc.GetAllocator());
+
+			doc.AddMember(index, tempVal, doc.GetAllocator());
+			objCount++;
+
+
+		}
+
+		//doc.AddMember("Obj Name2",12344, doc.GetAllocator());
+
+
+		//write ObjectID into json doc
+		//ObjectContainer[objectID]
+
+		//go through ObjectContainer
+		// if ObjectContainer.ComponentContainer.ID == x component
+
+		FILE* fp = std::fopen(filename, "wb"); // non-Windows use "w"
+		char buffer[1024];
+		rapidjson::FileWriteStream fs(fp, buffer, sizeof(buffer));
+		rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(fs);
+		doc.Accept(writer);
+		fclose(fp);
 	}
 
 	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)

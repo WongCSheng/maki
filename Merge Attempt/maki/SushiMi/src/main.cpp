@@ -46,6 +46,7 @@ static void init();
 static void cleanup();
 
 static Core::MainSystem* CoreSystem = new Core::MainSystem();
+static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -157,6 +158,9 @@ static void init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
+	TestObj->Init();
+
+	CoreSystem->objfactory->Serialize("../Assets/test.json");
 
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {

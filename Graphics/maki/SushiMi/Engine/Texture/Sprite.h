@@ -1,4 +1,11 @@
 #pragma once
+/*!
+@file		Sprite.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Drawing of the sprite and animating of it is here
+*//*__________________________________________________________________________*/
 #include "../Engine/Texture/texture.h"
 #include "../Engine/Texture/Rectangle.h"
 #include "../Engine/Components/Transform/sTransform.h"

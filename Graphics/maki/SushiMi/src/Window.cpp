@@ -3,8 +3,11 @@
 \file		Window.cpp
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
+\co-author	Louis Wang (10%)
+\par    	email: louishetong.wang@digipen.edu
 \date   	2/8/2022
-\brief		This source file contains the main function to call all other functions and implement the game loop
+\brief		This source file contains the main function to call all other functions and implement the game loop.
+			It instantiates player and sprites as well.
 
 Copyright (C) 2022 DigiPen Institute of Technology.
 Reproduction or disclosure of this file or its contents without the
@@ -58,7 +61,7 @@ Window::Window(int width, int height)
 
 	player = new Player();
 
-	sp = new Sprite("../textures/menu.jpg");
+	sp = new Sprite("../textures/level1.jpg");
 	sp->transformation.scale = glm::vec2(2000, 2000);
 	sp->transformation.position = glm::vec2(0);
 }
@@ -136,7 +139,7 @@ void Window::Mainloop()
 
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
-		
+
 
 		endtime = glfwGetTime();
 		delta = (endtime - starttime) / 2;

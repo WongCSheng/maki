@@ -1,4 +1,11 @@
 #pragma once
+/*!
+@file		Rectangle.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Generate VA,VBO,CBO and UVBO
+*//*__________________________________________________________________________*/
 #include <../glm/glm/glm.hpp>
 #include <../glew/include/GL/glew.h>
 // singlton pattern 

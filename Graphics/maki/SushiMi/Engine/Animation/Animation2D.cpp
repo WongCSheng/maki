@@ -1,5 +1,14 @@
 #include "Animation2D.h"
 
+/*!
+@file		Animation2D.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Animation functions that reads the txt file for each animation type and using delta time, loop through the
+			spritesheet corresponding to each animation. Eg: For animation type Run, it loops through the 7 running
+			sprites in the spritesheet
+*//*__________________________________________________________________________*/
 #include <string>
 #include <sstream>
 #include "../Engine/Texture/Texture.h"

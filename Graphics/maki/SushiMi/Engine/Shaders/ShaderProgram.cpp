@@ -1,4 +1,13 @@
 #include "ShaderProgram.h"
+/*!
+@file		ShaderProgram.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Redesigned Shader program that compiles the shaders, create them and
+			attach them to the shader programs using their IDs. SendMat4 will
+			set uniform location for their uniform variables(model_matrx or projection).
+*//*__________________________________________________________________________*/
 #include "../../glew/include/GL/glew.h"
 ShaderProgram::ShaderProgram(const char* vertex_shader, const char* fragment_shader)
 {

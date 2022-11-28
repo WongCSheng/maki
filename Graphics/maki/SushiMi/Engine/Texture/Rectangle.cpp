@@ -1,6 +1,12 @@
 #include "Rectangle.h"
 
+/*!
+@file		Rectangle.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
+@brief		Generate VA,VBO,CBO and UVBO
+*//*__________________________________________________________________________*/
 
 RectangleSystem* RectangleSystem::_instance = nullptr;
 

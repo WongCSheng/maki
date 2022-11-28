@@ -1,5 +1,12 @@
 #include "ShaderLibrary.h"
+/*!
+@file		ShaderLibrary.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
+@brief		Shader Library contains the vert and frag shaders for texture and colour shaders respectively.
+			When shader programs are created, they will use the respective shader library
+*//*__________________________________________________________________________*/
 ShaderLibrary::ShaderLibrary()
 {
 	const char* vs = R"CODE(

@@ -271,7 +271,7 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\System\Graphics\glhelper.h" />
     <ClInclude Include="Engine\System\Graphics\glslshader.h" />
     <ClInclude Include="Engine\System\Linked List\LinkedList.h" />
-    <ClInclude Include="Engine\System\PhysicSystem.h" />
+    <ClInclude Include="Engine\System\PhysicsSystem.h" />
     <ClInclude Include="Engine\System\Renderer.h" />
     <ClInclude Include="Engine\System\SystemFrame.h" />
     <ClInclude Include="Engine\System\Transformer.h" />

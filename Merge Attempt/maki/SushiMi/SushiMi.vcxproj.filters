@@ -252,7 +252,7 @@
     <ClInclude Include="Engine\Components\Component.h">
       <Filter>GameEngine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\PhysicSystem.h">
+    <ClInclude Include="Engine\System\PhysicsSystem.h">
       <Filter>GameEngine\System\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Editors\LevelEditor.h">

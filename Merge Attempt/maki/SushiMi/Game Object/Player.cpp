@@ -21,7 +21,7 @@ Player::~Player()
 void Player::move_left()
 {
 	if (sp->transformation.scale.x > 0)
-		sp->transformation.scale.x *= -1;
+		sp->transformation.scale.x *= 1;
 
 	current_anim = Run;
 	sp->transformation.position.x -= 1;

@@ -78,6 +78,10 @@ ShaderLibrary::ShaderLibrary()
 
 ShaderLibrary::~ShaderLibrary()
 {
+	for (const auto& [_, v] : programs)
+	{
+		delete v; //memory leak 3
+	}
 }
 
 ShaderProgram* ShaderLibrary::Textured_Shader()

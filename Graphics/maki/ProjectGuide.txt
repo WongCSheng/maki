@@ -7,8 +7,8 @@ There are 2 main folders in this submission: Main and Graphics
 	In the Main folder: 
 	- shows the latest implementation of our engine with 
 	a complete object system, collision, editor with file browser,
-	json serialisation
+	json serialisation to meet majority of the M3 Core rubrics
 
 	In the Graphics folder:
-	- displays our player animation
+	- displays our player animation to meet the M3 animation rubrics
 

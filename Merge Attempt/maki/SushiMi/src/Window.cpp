@@ -57,6 +57,10 @@ Window::Window(int width, int height)
 	camera = std::make_unique<Camera>(0, 0);
 
 	player = new Player();
+
+	sp = new Sprite("../textures/menu.jpg");
+	sp->transformation.scale = glm::vec2(2000, 2000);
+	sp->transformation.position = glm::vec2(0);
 }
 
 Window::~Window()
@@ -126,14 +130,18 @@ void Window::Mainloop()
 		// all drawing goes here ..
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
+
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
+		sp->draw();
+
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
-
-
 		
 
 		endtime = glfwGetTime();
 		delta = (endtime - starttime) / 2;
 	}
+	glfwSwapBuffers(window_ptr);
+	glfwPollEvents();
 }
 

@@ -15,14 +15,20 @@ Sprite::~Sprite()
 {
 	auto tex_sys = TextureSystem::GetInstance();
 	tex_sys->Delete(texture);
-	delete tex_sys; //memory leak 1
 
 	auto rect_sys = RectangleSystem::GetInstance();
 	rect_sys->Delete(rectangle);
-	delete rect_sys; //memory leak 2
+
 
 	for (auto& o : anims)
 		delete o;
+}
+
+void Sprite::draw()
+{
+	glBindTexture(GL_TEXTURE_2D, texture.ID);
+	glBindVertexArray(rectangle.VAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 void Sprite::draw(double deltatime, AnimationType type)

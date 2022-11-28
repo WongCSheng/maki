@@ -42,7 +42,7 @@ namespace Core
 
 		void Init();
 
-		void Serialize(const char* filename);
+		void SerializeObjects(const char* filename);
 
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 	};

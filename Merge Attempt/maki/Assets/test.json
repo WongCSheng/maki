@@ -2,21 +2,25 @@
     "0": {
         "Name": "Obj Test 1",
         "ID": 0,
-        "ID Name": "Nothing"
+        "ID Name": "Nothing",
+        "Component": "Collision"
     },
     "1": {
         "Name": "Obj Test 2",
         "ID": 0,
-        "ID Name": "Nothing"
+        "ID Name": "Nothing",
+        "Component": "Collision"
     },
     "2": {
         "Name": "CollisionObj1 Test",
         "ID": 0,
-        "ID Name": "Nothing"
+        "ID Name": "Nothing",
+        "Component": "Collision"
     },
     "3": {
         "Name": "CollisionObj2 Test",
         "ID": 0,
-        "ID Name": "Nothing"
+        "ID Name": "Nothing",
+        "Component": "Collision"
     }
 }

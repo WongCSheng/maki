@@ -65,6 +65,11 @@ namespace Core
 			ComponentContainer.erase(ID);
 		}
 
+		std::unordered_map<ComponentID, Component*> GameObjectProperty::GetComponentContainer()
+		{
+			return ComponentContainer;
+		}
+
 		//Game Object
 		GameObject::GameObject()
 		{

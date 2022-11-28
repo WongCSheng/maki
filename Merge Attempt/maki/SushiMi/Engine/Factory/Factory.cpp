@@ -64,7 +64,7 @@ namespace Core
 		
 	}
 
-	void ObjectFactory::Serialize(const char* filename) {
+	void ObjectFactory::SerializeObjects(const char* filename) {
 	
 		/*None = 0b0000'0000,
 			Renderer = 0b0000'0010,
@@ -89,25 +89,33 @@ namespace Core
 			//copy string for obj name
 			tempStr = it.first;
 			rapidjson::Value nameVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			//add obj name
 			tempVal.AddMember("Name", nameVal, doc.GetAllocator());
-
+			//add obj id
 			tempVal.AddMember("ID", it.second->characteristics->GetID(), doc.GetAllocator());
 
 			tempStr = (it.second->characteristics->GetIDName());
 			rapidjson::Value idVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
-
+			//add obj id name
 			tempVal.AddMember("ID Name", idVal, doc.GetAllocator());
-			
-			std::string s = std::to_string(objCount);
-			rapidjson::Value index(s.c_str(), s.size(), doc.GetAllocator());
 
+			for (auto& itr : it.second->GetObjectProperties()->GetComponentContainer()) {
+				if (itr.first == Core::ComponentID::Collision) {
+					tempVal.AddMember("Component", "Collision", doc.GetAllocator());
+				
+				}
+			
+			}
+
+			//add to top lvl object
+			std::string objCountStr = std::to_string(objCount);
+			rapidjson::Value index(objCountStr.c_str(), objCountStr.size(), doc.GetAllocator());
 			doc.AddMember(index, tempVal, doc.GetAllocator());
 			objCount++;
 
 
 		}
 
-		//doc.AddMember("Obj Name2",12344, doc.GetAllocator());
 
 
 		//write ObjectID into json doc
@@ -123,6 +131,7 @@ namespace Core
 		doc.Accept(writer);
 		fclose(fp);
 	}
+
 
 	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{

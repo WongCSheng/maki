@@ -33,6 +33,8 @@ namespace Core
 
 			void RemoveComponent(ComponentID ID);
 
+			std::unordered_map<ComponentID, Component*> GetComponentContainer();
+
 		private:
 			GameObjectProperty();
 			~GameObjectProperty();

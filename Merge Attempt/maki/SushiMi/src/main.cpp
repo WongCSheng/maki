@@ -26,6 +26,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
+#include "../Engine/Audio/AudioEngine.h"
+
 //#include "../Mono/Mono.h"
 #include <memory> 
 #include <crtdbg.h> 
@@ -47,6 +49,7 @@ static void cleanup();
 
 static Core::MainSystem* CoreSystem = new Core::MainSystem();
 static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
+
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -160,7 +163,7 @@ static void init() {
 	CoreSystem->objfactory->Init();
 	TestObj->Init();
 
-	CoreSystem->objfactory->Serialize("../Assets/test.json");
+	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
 
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
@@ -190,10 +193,11 @@ static void init() {
 	
 
 	//load audio files
-	//AudioManager.LoadMusic("BGM.wav");
-	//AudioManager.LoadSound("WalkSFX.wav");
+	AudioManager.LoadMusic("BGM.wav");
+	AudioManager.LoadSound("WalkSFX.wav");
 	//play bgm
-	//AudioManager.PlayMusic("BGM.wav");
+	AudioManager.PlayMusic("BGM.wav");
+
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
 
@@ -213,8 +217,8 @@ void cleanup() {
 	// Part 2
 	GLHelper::cleanup();
 	//unload music
-	//AudioManager.UnloadMusic("BGM.wav");
-	//AudioManager.UnloadMusic("WalkSFX.wav");
+	AudioManager.UnloadMusic("BGM.wav");
+	AudioManager.UnloadMusic("WalkSFX.wav");
 
 	////imgui Shutdown
 	Editor::LevelEditor::imguiShutDown();

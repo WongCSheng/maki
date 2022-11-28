@@ -19,9 +19,6 @@
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Camera\Camera2D.cpp">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Mesh\model.cpp">
       <Filter>GameEngine\Mesh</Filter>
     </ClCompile>
@@ -158,9 +155,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
       <Filter>GameEngine\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Camera\Camera2D.h">
-      <Filter>GameEngine\System\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>

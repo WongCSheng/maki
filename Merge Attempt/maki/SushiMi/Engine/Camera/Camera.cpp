@@ -1,3 +1,10 @@
+/*!
+@file		Camera.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
+
+@brief		Updated Camera that projects at 0,0 and is able to update its viewport.
+*//*__________________________________________________________________________*/
 #include "Camera.h"
 
 Camera::Camera(int window_width, int window_height)

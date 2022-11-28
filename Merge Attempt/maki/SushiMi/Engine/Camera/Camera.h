@@ -1,3 +1,10 @@
+/*!
+@file		Camera.h
+@author		louishetong.wang@digipen.edu
+@date		20/09/2022
+
+@brief		Updated Camera that projects at 0,0 and is able to update its viewport.
+*//*__________________________________________________________________________*/
 #pragma once
 #include <../glm/glm/glm.hpp>
 #include <../glm/glm/gtc/matrix_transform.hpp>

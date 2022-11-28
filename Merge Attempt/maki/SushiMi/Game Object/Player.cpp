@@ -1,3 +1,11 @@
+/*!
+@file		player.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Creating a player using sprite and adding of animation. movement of player
+			, drawing and transformation of player is here too
+*//*__________________________________________________________________________*/
 #include "Player.h"
 
 Player::Player()

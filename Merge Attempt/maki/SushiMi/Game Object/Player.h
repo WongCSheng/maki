@@ -1,5 +1,12 @@
 #pragma once
+/*!
+@file		player.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
+@brief		Creating a player using sprite and adding of animation. movement of player
+			, drawing and transformation of player is here too
+*//*__________________________________________________________________________*/
 #include "../Engine/Texture/Sprite.h"
 class Player
 {

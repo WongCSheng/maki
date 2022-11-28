@@ -1,3 +1,10 @@
+/*!
+@file		Texture.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Generating of texture using stbi and mimap. Delete of texture is here too.
+*//*__________________________________________________________________________*/
 #include "Texture.h"
 
 #include <../stb-master/stb_image.h>

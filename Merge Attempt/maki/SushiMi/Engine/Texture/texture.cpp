@@ -24,9 +24,9 @@ Texture TextureSystem::Generate(const char* filename)
 	unsigned int textureID;
 
 	glGenTextures(1, &textureID);
-	
+
 	data = stbi_load(filename, &width, &height, &numcomponents, STBI_rgb_alpha);
-	//stbi_set_flip_vertically_on_load(true);
+
 	result.width = width;
 	result.height = height;
 	result.ID = textureID;

@@ -3,6 +3,8 @@
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera.h"
 
+#include "../Engine/Texture/Sprite.h"
+
 #include <iostream>
 #include <glfw/include/GLFW/glfw3.h>
 

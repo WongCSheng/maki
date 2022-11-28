@@ -12,6 +12,8 @@ public:
 
 	~Sprite();
 
+	void draw();
+
 	void draw(double deltatime, AnimationType type);
 
 	void Add_animation(const char* filename);

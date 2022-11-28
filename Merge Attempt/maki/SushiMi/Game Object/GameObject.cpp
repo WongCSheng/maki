@@ -69,7 +69,7 @@ namespace Core
 		//Game Object
 		GameObject::GameObject()
 		{
-			characteristics = new GameObjectProperty();
+			characteristics = new GameObjectProperty;
 		}
 
 		GameObject::~GameObject()

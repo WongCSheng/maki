@@ -36,6 +36,8 @@ namespace Core
 		// assign address of object of type Object with name "Camera" in objects
 		//pgo = &Object::objects.at("Camera");
 		//pgo = &Object::GameObject();
+
+		std::unordered_map<std::string, Object::GameObject*>::iterator it = ;
 	
 	
 		/*************************************************************************************************************************************/

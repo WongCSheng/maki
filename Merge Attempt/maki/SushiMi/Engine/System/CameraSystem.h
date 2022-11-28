@@ -27,41 +27,16 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		/*-----------------------Variables declaration------------------------------------------*/
-		
-		//Object::GameObject* pgo;//Object* pgo; // pointer to game obj that embeds the camera
-		//gfxVector2 right, up;
+		//bool for physics
+		bool accelerate{ false };
+		bool decelerate{ false };
 
-		////additional parameters for camera
-		//GLint height{ 1000 };
-		//GLfloat ar;
-
-		//gfxMatrix3 camwin_to_ndc_xform;
-		//gfxMatrix3 world_to_ndc_xform;
-		//gfxMatrix3 view_xform;
-
-		////window parameters
-		//GLint min_height{ 500 }, max_height{ 720 };
-		//// height is increasing if 1 and decreasing if -1
-		//GLint height_chg_dir{ 1 };
-		//// increments by which window height is changed per Z key press
-		//GLint height_chg_val{ 5 };
-
-		//// camera speed when button U is pressed
-		//GLfloat linear_speed{ 2.f };
-		//GLfloat velocity{ 500.f };
-		//GLfloat vel2{ 500.f };
-		//GLfloat acceleration{ 100.f };
-		//GLfloat deceleration{ 0.0f };
-
-		////bool for physics
-		//GLboolean decelerate{ GL_FALSE };
-
-		//// Keyboard button press flags:
-		//GLboolean camtype_flag{ GL_FALSE }; // button V
-		//GLboolean zoom_flag{ GL_FALSE }; // button Z
-		//GLboolean left_turn_flag{ GL_FALSE }; // button H
-		//GLboolean right_turn_flag{ GL_FALSE }; // button K
-		//GLboolean move_flag{ GL_FALSE }; // button W
+		// Keyboard button press flags:
+		bool camtype_flag{ false }; // button V
+		bool zoom_flag{ false }; // button Z
+		bool left_turn_flag{ false }; // button H
+		bool right_turn_flag{ false }; // button K
+		bool move_flag{ false }; // button W
 		//static Camera2D camera2d;
 
 

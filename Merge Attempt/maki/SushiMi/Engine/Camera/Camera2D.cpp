@@ -15,18 +15,12 @@ matrix library for now. Links to GLHelper for the keypresses like rotation and z
 #include "../Game Object/GameObject.h"
 #include "Camera2D.h"
 /*--------------------------------------------------------------------------- */
--namespace Core
+namespace Core
 {
 	/*global variables*/
 	bool first_person_cam = false;
 
-	/*  _________________________________________________________________________ */
-	/*! Camera2D::init(GLFWwindow* pWindow, GLApp::GLObject* ptr)
-	@param GLFWwindow* pWindow, Object* ptr
-	@return none
-
-	Assign pgo to camera and compute aspect ratio, initialize as free camera.
-	*/
+	
 	void Camera2D::Init()
 	{
 		

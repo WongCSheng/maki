@@ -32,14 +32,7 @@ namespace Core
 	{
 	public:
 		friend class CameraSystem;
-		
-		/*  _____________________________________________________________________ */
-		/*! Camera2D::init(GLFWwindow* pWindow, Object* ptr)
-		@param GLFWwindow* pWindow, Object* ptr
-		@return none
-
-		Assign pgo to camera and compute aspect ratio, initialize as free camera.
-		*/
+	
 		void Init();
 
 		//void Serialise(const std::string name);
@@ -81,17 +74,6 @@ namespace Core
 		float vel2{};
 		float acceleration{};
 		float deceleration{};
-
-		//bool for physics
-		bool decelerate{ false };
-
-		// Keyboard button press flags:
-		bool camtype_flag{ false }; // button V
-		bool zoom_flag{ false }; // button Z
-		bool left_turn_flag{ false }; // button H
-		bool right_turn_flag{ false }; // button K
-		bool move_flag{ false }; // button W
-		static Camera2D camera2d;
 
 	private:
 		int height{};

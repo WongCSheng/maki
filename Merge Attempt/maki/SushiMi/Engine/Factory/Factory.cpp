@@ -4,7 +4,7 @@
 
 namespace Core
 {
-	ObjectFactory::ObjectFactory()
+	ObjectFactory::ObjectFactory() : LastObjectID(0)
 	{
 	}
 
@@ -55,6 +55,8 @@ namespace Core
 	void ObjectFactory::AddObjects(Object::GameObject* added, std::string i)
 	{
 		ObjectContainer.insert({ i, added });
+
+		LastObjectID = i;
 	}
 
 	void ObjectFactory::Init()

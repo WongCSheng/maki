@@ -8,93 +8,104 @@ Description: This file contains the MainSystem which runs all the subsystems in 
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
 
-Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
-
-/*
-	Constructor for MainSystem.
-*/
-Core::MainSystem::MainSystem()
+namespace Core
 {
-	renderer = new Renderer();
-	systems.push_back(renderer);
 
-	cameraSystem = new CameraSystem();
-	systems.push_back(cameraSystem);
+	MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
 
-	transformer = new Transformer();
-	systems.push_back(transformer);
-
-	physicssystem = new PhysicSystem();
-	systems.push_back(physicssystem);
-}
-
-/*
-	Destructor for MainSystem.
-*/
-Core::MainSystem::~MainSystem()
-{
-	for (auto& sys : systems)
+	/*
+		Constructor for MainSystem.
+	*/
+	MainSystem::MainSystem()
 	{
-		if (sys != NULL)
+		renderer = std::make_unique<Renderer>(Renderer());
+		systems.emplace_back(std::move(renderer));
+
+		cameraSystem = std::make_unique<CameraSystem>(CameraSystem());
+		systems.emplace_back(std::move(cameraSystem));
+
+		transformer = std::make_unique<Transformer>(Transformer());
+		systems.emplace_back(std::move(transformer));
+
+		physicssystem = std::make_unique<PhysicSystem>(PhysicSystem());
+		systems.emplace_back(std::move(physicssystem));
+	}
+
+	/*
+		Destructor for MainSystem.
+	*/
+	MainSystem::~MainSystem()
+	{
+		for (auto& sys : systems)
 		{
-			delete sys;
-			sys = NULL;
+			if (sys != nullptr)
+			{
+				delete sys;
+				sys = nullptr;
+			}
 		}
 	}
-}
 
-/*
-	Create Instance of MainSystem.
-*/
+	/*
+		Create Instance of MainSystem.
+	*/
 
-Core::MainSystem& Core::MainSystem::Instance()
-{
-	if (instance != 0)
+	MainSystem& Core::MainSystem::Instance()
 	{
+		if (instance != 0)
+		{
+			return *instance;
+		}
+
+		instance = new MainSystem();
 		return *instance;
 	}
 
-	instance = new MainSystem();
-	return *instance;
-}
+	/*
+		Register Components to each SubSystem.
+	*/
 
-/*
-	Register Components to each SubSystem.
-*/
-
-void Core::MainSystem::Init()
-{
-	for (auto& sys : systems)
+	void MainSystem::Init()
 	{
-		sys->Init();
+		for (auto& sys : systems)
+		{
+			sys->Init();
+		}
 	}
-}
 
-/*
-	Runs the update() function for each SubSystem.
-*/
+	/*
+		Runs the update() function for each SubSystem.
+	*/
 
-void Core::MainSystem::Update(const double dt)
-{
-	for (int i = 0; i < systems.size(); ++i)
+	void MainSystem::Update(const double dt)
 	{
-		systems[i]->Update(dt);
+		for (int i = 0; i < systems.size(); ++i)
+		{
+			systems[i]->Update(dt);
+		}
+
+		Object::
 	}
-}
 
-/*
-	Checks for new Components in each SubSystem.
-*/
+	/*
+		Checks for new Components in each SubSystem.
+	*/
 
-void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
-{
-	for (int i = 0; i < systems.size(); ++i)
+	void MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-		systems[i]->RegisterComponent(ObjectContainer);
+		for (int i = 0; i < systems.size(); ++i)
+		{
+			systems[i]->RegisterComponent(ObjectContainer);
+		}
 	}
+
+	void MainSystem::endprocess()
+	{
+		//should delete all pointers
+		//renderer.get_deleter();
+	}
+
 }
-
-
 //Core::Core::MainSystem::MainSystem()
 //{
 //}

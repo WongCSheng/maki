@@ -20,7 +20,7 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
-		unsigned int LastObjectID;
+		std::string LastObjectID;
 
 		std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 

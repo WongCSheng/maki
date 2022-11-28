@@ -27,19 +27,23 @@ namespace Core
 
 		static MainSystem* instance;
 
-		std::vector<SystemFrame*> systems;
+		std::vector<std::unique_ptr<SystemFrame>> systems;
+
+		static ObjectFactory* Factory;
 
 	public:
 		static MainSystem& Instance();
 
-		virtual void Init();
-		virtual void Update(const double dt);
-		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
-		Renderer* renderer;
-		Transformer* transformer;
-		CameraSystem* cameraSystem;
-		PhysicSystem* physicssystem;
+		void endprocess();
+
+		std::unique_ptr<Renderer> renderer;
+		std::unique_ptr<Transformer> transformer;
+		std::unique_ptr<CameraSystem> cameraSystem;
+		std::unique_ptr<PhysicSystem> physicssystem;
 	};
 }
 

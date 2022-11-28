@@ -6,7 +6,7 @@
 #include "../Headers/STL_Header.h"
 #include "SystemFrame.h"
 #include "../Mesh/model.h"
-#include "../Components/Component.h"
+#include "../Engine/System/Graphics/glapp.h"
 
 
 namespace Core
@@ -21,6 +21,8 @@ namespace Core
 		virtual ~Renderer();
 		void Init();
 		void Update(const double dt);
+		void Draw();
+		void Cleanup();
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 	private:

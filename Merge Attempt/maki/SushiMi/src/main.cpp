@@ -9,6 +9,7 @@
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
 #include "../Headers/Log.h"
+#include "../Engine/Audio/AudioEngine.h"
 /*                                                      function declarations
 ----------------------------------------------------------------------------- */
 
@@ -97,10 +98,11 @@ void pseudomain::init() {
 
 
 	//load audio files
-	//AudioManager.LoadMusic("BGM.wav");
-	//AudioManager.LoadSound("WalkSFX.wav");
+	AudioManager.LoadMusic("BGM.wav");
+	AudioManager.LoadSound("WalkSFX.wav");
+
 	//play bgm
-	//AudioManager.PlayMusic("BGM.wav");
+	AudioManager.PlayMusic("BGM.wav");
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
 
@@ -119,6 +121,8 @@ void pseudomain::draw()
 
 void pseudomain::cleanup()
 {
+	AudioManager.UnloadMusic("BGM.wav");
+	AudioManager.UnloadMusic("WalkSFX.wav");
 	GLHelper::cleanup();
 	Editor::LevelEditor::imguiShutDown();
 	

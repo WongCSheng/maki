@@ -13,7 +13,7 @@ Description: Header for Core.cpp
 #include "..//System/Renderer.h"
 #include "../System/Transformer.h"
 #include "../System//CameraSystem.h"
-#include "../System/PhysicsSystem.h"
+#include "../System/PhysicSystem.h"
 #include "../Engine/Input/Input.h"
 
 #include <vector>

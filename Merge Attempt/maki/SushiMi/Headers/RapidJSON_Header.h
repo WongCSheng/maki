@@ -6,6 +6,7 @@
 #include <rapidjson.h>
 #include <istreamwrapper.h>
 #include <filereadstream.h>
+#include <filewritestream.h>
 #include <reader.h>
 #include <prettywriter.h>
 #include <writer.h>

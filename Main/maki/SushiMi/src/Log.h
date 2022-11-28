@@ -1,4 +1,16 @@
 #pragma once
+/******************************************************************************/
+/*!
+\file		Log.h
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+\date   	16 Nov 2022
+\brief		This header file contains the engine's assert functions
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #ifndef LOG_H
 #define LOG_H
 

@@ -13,11 +13,10 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  /******************************************************************************/
 
 
-
-
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "Window.h"
+#include "../../imgui/imgui.h"
 
 Window::Window(int width, int height)
 	:m_width(width),
@@ -75,9 +74,15 @@ void Window::Input()
 	{
 		glfwSetWindowShouldClose(window_ptr, true);
 	}
-
-	if (glfwGetKey(window_ptr, GLFW_KEY_RIGHT))
+	if (ImGui::IsKeyDown(GLFW_KEY_RIGHT))
+	//if (glfwGetKey(window_ptr, GLFW_KEY_RIGHT))
 	{
+		//check when key is pressed only and not held to do grid snapping
+		
+		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT))
+		{
+			player->stop();
+		}
 		player->move_right();
 	}
 	else if (glfwGetKey(window_ptr, GLFW_KEY_LEFT))

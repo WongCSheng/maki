@@ -25,7 +25,7 @@ class mainclass
 {
 public:
 
-	inline static bool drawTexture = false;
+	inline static bool drawTexture = false; //setting this to true creates error? -thea
 	inline static float size = 1.0f;
 	inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
 	inline static GLuint VAO, VBO;

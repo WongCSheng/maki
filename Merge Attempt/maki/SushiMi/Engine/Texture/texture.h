@@ -2,8 +2,9 @@
 
 // singlton pattern
 
-struct Texture
+class Texture
 {
+public:
 	int width;
 	int height;
 	unsigned int ID;

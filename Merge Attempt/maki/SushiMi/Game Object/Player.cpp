@@ -1,5 +1,7 @@
 #include "Player.h"
 
+int gridDimension = 10;
+
 Player::Player()
 {
 
@@ -24,7 +26,7 @@ void Player::move_left()
 		sp->transformation.scale.x *= 1;
 
 	current_anim = Run;
-	sp->transformation.position.x -= 1;
+	sp->transformation.position.x -= gridDimension;
 }
 
 void Player::move_right()
@@ -33,7 +35,7 @@ void Player::move_right()
 		sp->transformation.scale.x *= -1;
 
 	current_anim = Run;
-	sp->transformation.position.x += 1;
+	sp->transformation.position.x += gridDimension;
 }
 
 void Player::move_up()
@@ -42,7 +44,7 @@ void Player::move_up()
 		sp->transformation.scale.y *= 1;
 
 	current_anim = Run;
-	sp->transformation.position.y -= 1;
+	sp->transformation.position.y -= gridDimension;
 }
 
 void Player::move_down()
@@ -51,7 +53,7 @@ void Player::move_down()
 		sp->transformation.scale.y *= -1;
 
 	current_anim = Run;
-	sp->transformation.position.y += 1;
+	sp->transformation.position.y += gridDimension;
 }
 
 void Player::stop()

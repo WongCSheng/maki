@@ -34,6 +34,8 @@ namespace Core
 
 		void AddtoDestroyList(Object::GameObject* Obj);
 
+		void Destroy();
+
 		void DestroyEverything();
 
 		virtual void Update(const double dt);

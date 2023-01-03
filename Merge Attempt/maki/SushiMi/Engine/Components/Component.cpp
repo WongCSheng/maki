@@ -17,6 +17,7 @@ namespace Core
 		add = false;
 		active = false;
 		remove = false;
+		ID = ComponentID::None;
 	}
 	
 	Component::~Component()

@@ -30,7 +30,7 @@ void Core::Transformer::Update(const double dt)
 
 	for (it; it != Transforms.end(); ++it)
 	{
-		UpdateTransformation(reinterpret_cast<Core::Transform*>(it->second->GetObjectProperties()->GetComponent(ComponentID::Transform)));
+		UpdateTransformation(reinterpret_cast<Core::Transform*>(it->second->GetObjectProperties()->GetComponent<Transform*>(ComponentID::Transform)));
 	}
 }
 

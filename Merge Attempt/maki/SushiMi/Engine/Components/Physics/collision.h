@@ -120,10 +120,32 @@ namespace Core
 			float scale,											//scale - input
 			float dir);											//direction - input
 
+<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Engine/Components/Physics/collision.h
 		bool IsActive();
 		void Activate();
 		void Deactivate();
 		void Remove();
+=======
+		AABB GetAABB();
+		gfxVector2 GetvelCurr();
+
+		void SetAABB(gfxVector2 newmin, gfxVector2 newmax);
+		void SetvelCurr(gfxVector2 value);
+
+	private:
+
+		unsigned long type{ 0 };		// object type
+		VertexList* pMesh{ 0 };		// This will hold the triangles which will form the shape of the object
+
+		unsigned long		flag{ 0 };		// bit flag or-ed together
+		float				scale{ 0 };		// scaling value of the object instance
+		gfxVector2			posCurr{ 0,0 };	// object current position
+		gfxVector2			velCurr{ 0,0 };	// object current velocity
+		float				dirCurr{ 0 };	// object current direction
+		AABB				boundingBox{ {0,0},{0,0} };// object bouding box that encapsulates the object
+		Mtx33				transform{ 0 };	// object transformation matrix: Each frame, 
+
+>>>>>>> Stashed changes:Main/maki/SushiMi/Engine/Components/Physics/collision.h
 
 		 /******************************************************************************/
 		 //struct Circle

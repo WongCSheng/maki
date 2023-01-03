@@ -37,6 +37,14 @@ namespace Core
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Engine/Core/Core.h
+=======
+
+		void ClearSystem();
+
+		ObjectFactory* objfactory;
+		Input* inputsystem;
+>>>>>>> Stashed changes:Main/maki/SushiMi/Engine/Core/Core.h
 
 		void endprocess();
 

@@ -30,9 +30,27 @@ namespace Core
 		}
 		
 		template<typename T>
+<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Game Object/GameObject.cpp
 		T* GameObjectProperty::GetComponent(Core::ComponentID ID)
+=======
+		T GameObjectProperty::GetComponent(Core::ComponentID ID)
+>>>>>>> Stashed changes:Main/maki/SushiMi/Game Object/GameObject.cpp
 		{
+			if (ComponentContainer.find(ID) == ComponentContainer.end())
+			{
+				std::cout << "No such Component" << std::endl;
+
+				return nullptr;
+			}
+			
+			//T ptr = ComponentContainer[ID];
+			
 			return ComponentContainer[ID];
+		}
+
+		std::unordered_map<ComponentID, Component*> GameObjectProperty::GetComponentContainer()
+		{
+			return ComponentContainer;
 		}
 
 		unsigned int GameObjectProperty::GetID()

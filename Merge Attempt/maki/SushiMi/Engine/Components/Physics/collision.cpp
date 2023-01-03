@@ -162,7 +162,6 @@ namespace Core
 				dFirst = aabb1.min.y - aabb2.max.y;
 				tFirst = max((dFirst) / (vel2.y - vel1.y), tFirst);
 
-<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Engine/Components/Physics/collision.cpp
 
 
 			}
@@ -184,8 +183,6 @@ namespace Core
 		return 1; //collision
 	}
 
-=======
->>>>>>> Stashed changes:Main/maki/SushiMi/Engine/Components/Physics/collision.cpp
 	/******************************************************************************/
 	/*!
 	* * This function builds a line segment where it's position for p0 and p1 is
@@ -221,32 +218,14 @@ namespace Core
 		active = true;
 	}
 
-<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Engine/Components/Physics/collision.cpp
 	void Collision::Deactivate()
-=======
-	AABB Collision::GetAABB()
->>>>>>> Stashed changes:Main/maki/SushiMi/Engine/Components/Physics/collision.cpp
 	{
 		active = false;
 	}
 
-<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Engine/Components/Physics/collision.cpp
 	void Collision::Remove()
-=======
-	gfxVector2 Collision::GetvelCurr()
->>>>>>> Stashed changes:Main/maki/SushiMi/Engine/Components/Physics/collision.cpp
 	{
 		active
-	}
-
-	void Collision::SetAABB(gfxVector2 newmin, gfxVector2 newmax)
-	{
-		boundingBox = { newmin, newmax };
-	}
-
-	void Collision::SetvelCurr(gfxVector2 value)
-	{
-		velCurr = value;
 	}
 
 	/******************************************************************************/

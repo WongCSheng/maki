@@ -21,13 +21,7 @@ namespace Core
 			void Init();
 
 			template<typename T>
-<<<<<<< Updated upstream:Merge Attempt/maki/SushiMi/Game Object/GameObject.h
 			T* GetComponent(ComponentID ID);
-=======
-			T GetComponent(ComponentID ID);
-
-			std::unordered_map<ComponentID, Component*> GetComponentContainer();
->>>>>>> Stashed changes:Main/maki/SushiMi/Game Object/GameObject.h
 
 			unsigned int GetID();
 			void SetID(unsigned int name);

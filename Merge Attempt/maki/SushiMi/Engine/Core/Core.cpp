@@ -8,104 +8,145 @@ Description: This file contains the MainSystem which runs all the subsystems in 
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
 
-namespace Core
+//Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
+
+/*
+	Constructor for MainSystem.
+*/
+Core::MainSystem::MainSystem()
 {
+	renderer = new Renderer();
+	systems.push_back(renderer);
 
-	MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
+	cameraSystem = new CameraSystem();
+	systems.push_back(cameraSystem);
 
-	/*
-		Constructor for MainSystem.
-	*/
-	MainSystem::MainSystem()
+	transformer = new Transformer();
+	systems.push_back(transformer);
+
+	physicssystem = new PhysicSystem();
+	systems.push_back(physicssystem);
+
+	objfactory = new ObjectFactory();
+
+	inputsystem = new Input();
+}
+
+/*
+	Destructor for MainSystem.
+*/
+Core::MainSystem::~MainSystem()
+{
+	for (auto& sys : systems)
 	{
-		renderer = std::make_unique<Renderer>(Renderer());
-		systems.emplace_back(std::move(renderer));
-
-		cameraSystem = std::make_unique<CameraSystem>(CameraSystem());
-		systems.emplace_back(std::move(cameraSystem));
-
-		transformer = std::make_unique<Transformer>(Transformer());
-		systems.emplace_back(std::move(transformer));
-
-		physicssystem = std::make_unique<PhysicSystem>(PhysicSystem());
-		systems.emplace_back(std::move(physicssystem));
-	}
-
-	/*
-		Destructor for MainSystem.
-	*/
-	MainSystem::~MainSystem()
-	{
-		for (auto& sys : systems)
+		if (sys != NULL)
 		{
-			if (sys != nullptr)
-			{
-				delete sys;
-				sys = nullptr;
-			}
+			delete sys;
+			sys = NULL;
 		}
 	}
+}
 
-	/*
-		Create Instance of MainSystem.
-	*/
+/*
+	Create Instance of MainSystem.
+*/
 
-	MainSystem& Core::MainSystem::Instance()
+//Core::MainSystem& Core::MainSystem::Instance()
+//{
+//	if (instance != 0)
+//	{
+//		return *instance;
+//	}
+//
+//	instance = new MainSystem();
+//	return *instance;
+//}
+
+/*
+	Register Components to each SubSystem.
+*/
+
+void Core::MainSystem::Init()
+{
+	for (auto& sys : systems)
 	{
-		if (instance != 0)
-		{
-			return *instance;
-		}
+		sys->Init();
 
-		instance = new MainSystem();
-		return *instance;
 	}
+	//creation of obj
+	Core::Object::GameObject* temp1 = objfactory->Create();
+	Core::Object::GameObject* temp2 = objfactory->Create();
+	objfactory->AddObjects(temp1, "Obj Test 1");
+	objfactory->AddObjects(temp2, "Obj Test 2");
 
-	/*
-		Register Components to each SubSystem.
-	*/
+	//creation of collision objs
+	Core::Object::GameObject* Collision1 = objfactory->Create();
+	Core::Object::GameObject* Collision2 = objfactory->Create();
+	objfactory->AddObjects(Collision1, "CollisionObj1 Test");
+	objfactory->AddObjects(Collision2, "CollisionObj2 Test");
 
-	void MainSystem::Init()
+	//Core::Object::GameObjectProperty* test = objfactory->ObjectContainer;
+
+	for (auto& i : objfactory->ObjectContainer)
 	{
-		for (auto& sys : systems)
-		{
-			sys->Init();
-		}
-	}
-
-	/*
-		Runs the update() function for each SubSystem.
-	*/
-
-	void MainSystem::Update(const double dt)
-	{
-		for (int i = 0; i < systems.size(); ++i)
-		{
-			systems[i]->Update(dt);
-		}
-
-		Object::
-	}
-
-	/*
-		Checks for new Components in each SubSystem.
-	*/
-
-	void MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
-	{
-		for (int i = 0; i < systems.size(); ++i)
-		{
-			systems[i]->RegisterComponent(ObjectContainer);
-		}
-	}
-
-	void MainSystem::endprocess()
-	{
-		//should delete all pointers
-		//renderer.get_deleter();
+		i.second->GetObjectProperties()->AddComponent(ComponentID::Collision, new Collision());
+		i.second->GetObjectProperties()->GetComponent<Collision*>(ComponentID::Collision)->SetAABB( gfxVector2(0, 0), gfxVector2(100, 100) ); //set button coordiantes
 	}
 
 }
+
+/*
+	Runs the update() function for each SubSystem.
+*/
+
+void Core::MainSystem::Update(const double dt)
+{
+	for (int i = 0; i < systems.size(); ++i)
+	{
+		systems[i]->Update(dt);
+	}
+
+	int mousestate = glfwGetMouseButton(GLHelper::ptr_window, MOUSE_BUTTON_LEFT);
+
+	gfxVector2 mousePos = inputsystem->GetMouse(GLHelper::ptr_window, mousestate); 
+
+	for (auto& i : objfactory->ObjectContainer)
+	{
+		if (staticPointRect(mousePos, static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent<Collision*>(ComponentID::Collision))->GetAABB()))
+		{
+			std::cout << "U are clicking" << std::endl;
+			/*std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.x << " , ";
+			std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.y << std::endl;
+			std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.x << " , ";
+			std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.y << std::endl;*/
+			std::cout << mousePos.x << ", " << mousePos.y << std::endl;
+			break;
+			
+		}
+		
+	}
+
+}
+
+/*
+	Checks for new Components in each SubSystem.
+*/
+
+void Core::MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+{
+	for (int i = 0; i < systems.size(); ++i)
+	{
+		systems[i]->RegisterComponent(ObjectContainer);
+	}
+
+}
+
+void Core::MainSystem::ClearSystem()
+{
+	objfactory->DestroyEverything();
+}
+
+
 //Core::Core::MainSystem::MainSystem()
 //{
 //}

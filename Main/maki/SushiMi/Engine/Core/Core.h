@@ -20,7 +20,6 @@ Description: Header for Core.cpp
 #ifndef CORE_H_
 #define CORE_H_
 
-#include "../System/SystemFrame.h"
 #include "..//System/Renderer.h"
 #include "../System/Transformer.h"
 #include "../System//CameraSystem.h"

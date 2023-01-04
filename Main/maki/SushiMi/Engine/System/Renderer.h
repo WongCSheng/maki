@@ -7,6 +7,7 @@
 #include "SystemFrame.h"
 //#include "../Mesh/model.h"
 #include "../Components/Component.h"
+#include <../glew/include/GL/glew.h>
 #include "../include/vector4.h"
 #include "../include/Vector.h"
 

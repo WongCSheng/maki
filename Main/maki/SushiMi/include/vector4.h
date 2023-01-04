@@ -119,48 +119,60 @@ public:
 	{
 		this->x += v.x;
 		this->y += v.y;
+		this->z += v.z;
+		this->w += v.w;
 		return *this;
 	}
-	gfxVector2& operator-=(const gfxVector2& v)
+	gfxVector4& operator-=(const gfxVector4& v)
 	{
 		this->x -= v.x;
 		this->y -= v.y;
+		this->z -= v.z;
+		this->w -= v.w;
 		return *this;
 	}
 
 	//arithmetic scalar operations
-	gfxVector2& operator*=(float i)
+	gfxVector4& operator*=(float i)
 	{
 		this->x *= i;
 		this->y *= i;
+		this->z *= i;
+		this->w *= i;
 		return *this;
 	}
-	gfxVector2& operator/=(float i)
+	gfxVector4& operator/=(float i)
 	{
 		this->x /= i;
 		this->y /= i;
+		this->z /= i;
+		this->w /= i;
 		return *this;
 	}
 
 	//arithmetic negation
-	gfxVector2 operator-(void)
+	gfxVector4 operator-(void)
 	{
 		this->x = -x;
 		this->y = -y;
+		this->z = -z;
+		this->w = -w;
 		return *this;
 	}
 
 	//find length of vector
-	float length(const gfxVector2& v) const
+	float length(const gfxVector4& v) const
 	{
-		return sqrt(v.x * v.x + v.y * v.y);
+		return sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
 	}
 
 	//normalization
-	void Normalize(gfxVector2& vecResult, const gfxVector2 vec)
+	void Normalize(gfxVector4& vecResult, const gfxVector4 vec)
 	{
 		vecResult.x = vec.x / length(vec);
 		vecResult.y = vec.y / length(vec);
+		vecResult.z = vec.z / length(vec);
+		vecResult.w = vec.w / length(vec);
 	}
 
 	//delegates

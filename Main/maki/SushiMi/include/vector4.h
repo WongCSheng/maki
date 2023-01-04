@@ -1,3 +1,4 @@
+#pragma once
 /*!
 @file    Vector.h
 @author	 Louis Wang
@@ -5,8 +6,8 @@
 Vector header file for all vector calculations
 *//*__________________________________________________________________________*/
 
-#ifndef VECTOR_H_
-#define VECTOR_H_
+#ifndef VECTOR4_H_
+#define VECTOR4_H_
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
@@ -14,24 +15,26 @@ Vector header file for all vector calculations
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */
-class gfxVector2
+class gfxVector4
 {
 
 public:
 	//constructors & destructors
-	gfxVector2() : x(), y() {};
-	gfxVector2(float x, float y) : x(x), y(y)
+	gfxVector4() : x(), y(),z(), w() {};
+	gfxVector4(float x, float y, float z, float w) : x(x), y(y),z(z), w(w)
 	{
 	};
-	gfxVector2(const gfxVector2& v) : x(v.x), y(v.y) {};
-	~gfxVector2() { /*delete[] &mVec[2];*/ };
+	gfxVector4(const gfxVector4& v) : x(v.x), y(v.y), z(v.z), w(v.w) {};
+	~gfxVector4() { /*delete[] &mVec[2];*/ };
 
-	gfxVector2(gfxVector2&&) = default;
+	gfxVector4(gfxVector4&&) = default;
 	//operator = assignment
-	gfxVector2& operator=(const gfxVector2& v)
+	gfxVector4& operator=(const gfxVector4& v)
 	{
 		this->x = v.x;
 		this->y = v.y;
+		this->w = v.w;
+		this->z = v.z;
 		return *this;
 	}
 	/*need operator to access elements???
@@ -67,50 +70,52 @@ public:
 	}
 	*/
 	//arithmetic operators
-	friend gfxVector2 operator+(const gfxVector2& l, const gfxVector2& r)
+	friend gfxVector4 operator+(const gfxVector4& l, const gfxVector4& r)
 	{
-		gfxVector2 result;
+		gfxVector4 result;
 		result.x = l.x + r.x;
 		result.y = l.y + r.y;
+		result.z = l.z + r.z;
+		result.w = l.w + r.w;
 		return result;
 	}
-	friend gfxVector2 operator-(const gfxVector2& l, const gfxVector2& r)
+	friend gfxVector4 operator-(const gfxVector4& l, const gfxVector4& r)
 	{
-		gfxVector2 result;
+		gfxVector4 result;
 		result.x = l.x - r.x;
 		result.y = l.y - r.y;
+		result.z = l.z - r.z;
+		result.w = l.w - r.w;
 		return result;
 	}
-	friend gfxVector2 operator*(float l, const gfxVector2& r)
+	friend gfxVector4 operator*(float l, const gfxVector4& r)
 	{
-		gfxVector2 result;
+		gfxVector4 result;
 		result.x = l * r.x;
 		result.y = l * r.y;
+		result.z = l * r.z;
+		result.w = l * r.w;
 		return result;
 	}
-	friend gfxVector2 operator*(const gfxVector2& r, float l)
+	friend gfxVector4 operator*(const gfxVector4& r, float l)
 	{
-		gfxVector2 result;
+		gfxVector4 result;
 		result.x = r.x * l;
 		result.y = r.y * l;
+		result.z = r.z * l;
+		result.w = r.w * l;
 		return result;
 	}
 
 	//dot product between 2 vectors
-	friend float operator*(const gfxVector2& l, const gfxVector2& r)
+	friend float operator*(const gfxVector4& l, const gfxVector4& r)
 	{
-		return (l.x * r.x + l.y * r.y);
+		return (l.x * r.x + l.y * r.y + l.z * r.z + l.w * r.w);
 	}
 
-
-	//cross product between 2 vectors
-	friend float operator^(const gfxVector2& l, const gfxVector2& r)
-	{
-		return (l.x * r.x - l.y * r.y);
-	}
 
 	//arithmetic vector operations
-	gfxVector2& operator+=(const gfxVector2& v)
+	gfxVector4& operator+=(const gfxVector4& v)
 	{
 		this->x += v.x;
 		this->y += v.y;
@@ -161,10 +166,12 @@ public:
 	//delegates
 	float x; //access to X component
 	float y; //access to Y component
+	float z; //access to Z component
+	float w; //access to W component
 
 private:
 	//data member
-	double mVec[2]{};
+	double mVec[4]{};
 
 };
 #endif // !VECTOR_H_

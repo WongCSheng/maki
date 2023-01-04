@@ -85,15 +85,15 @@ public:
 	gfxVector3& operator+=(const gfxVector3& v)
 	{
 		this->x += v.x;
-		this->y = v.y;
-        this->z = v.z;
+		this->y += v.y;
+        this->z += v.z;
 		return *this;
 	}
 	gfxVector3& operator-=(const gfxVector3& v)
 	{
 		this->x -= v.x;
 		this->y -= v.y;
-        this->z = v.z;
+        this->z -= v.z;
 		return *this;
 	}
 

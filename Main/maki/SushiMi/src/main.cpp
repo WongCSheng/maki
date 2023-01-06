@@ -118,7 +118,7 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 static void draw() 
 {
-	
+	glClear(GL_COLOR_BUFFER_BIT);
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 	

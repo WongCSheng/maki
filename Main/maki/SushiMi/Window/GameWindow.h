@@ -1,50 +1,62 @@
-/*!
-@file		Window.h
-@author		p.tzechengjennifer@digipen.edu
-@date		28/09/2022
-
-This file contains class Window that we will use for opening windows..
-*//*__________________________________________________________________________*/
-
 #pragma once
+//******************************************************************************/
+/*!
+\file		Window.h
+\author 	Thea Sea
+\par    	email: thea.sea@digipen.edu
+\co-author	Louis Wang (10%)
+\par    	email: louishetong.wang@digipen.edu
+\date   	2/8/2022
+\brief		This source file contains the main function to call all other functions and implement the game loop.
+			It instantiates player and sprites as well.
 
-#ifndef GAMEWINDOW_H_
-#define GAMEWINDOW_H_
+Copyright (C) 2022 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the
+prior written consent of DigiPen Institute of Technology is prohibited.
+ */
+ /******************************************************************************/
+#include "../Game Object/Player.h"
+#include "../Engine/Shaders/ShaderLibrary.h"
+#include "../Engine/Camera/Camera2D.h"
 
-#include "../Headers/STL_Header.h"
-#include <GLFW/glfw3.h>
-//#include "../Engine/System/Graphics/glhelper.h"
+#include "../Engine/Texture/Sprite.h"
 
-namespace Upfront
+#include <iostream>
+#include <glfw/include/GLFW/glfw3.h>
+
+
+
+
+class Window
 {
-	class Window
-	{
-	public:
-		Window();
-		~Window();
+public:
+	Window(int width, int height);
 
-		static void Win_Init();
-		void CreateWin();
-		
-		int getWinWidth();
-		int getWinHeight();
+	~Window();
 
-		inline static GLFWwindow* win = nullptr;
-		inline static GLFWmonitor* monitor = nullptr;
-		inline static HINSTANCE instance {0};
+	void Input();
 
-		inline static int winWidth{ 0 }, winHeight{ 0 },
-			dispWidth{ 0 }, dispHeight{ 0 };
+	void Resize();
 
-		inline static POINT mousePos{};
+	void Mainloop();
 
-		inline static const char* titlebar;
-	};
+	Player* player;
+	Sprite* sp;
+	Sprite* sp1;
+	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 
-	/*class Window_Message : public Message
-	{
+private:
+	int m_width, m_height;
+	GLFWwindow* ptr_win;
+	double starttime, endtime, delta;
+};
 
-	};*/
-}
+class pseudomain
+{
+public:
+	static void draw();
+	static void update();
+	static void init();
+	static void cleanup();
 
-#endif
+};

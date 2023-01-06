@@ -1,8 +1,14 @@
 #pragma once
+/*!
+@file		player.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
-class Sprite;
-enum AnimationType;
-struct fakemat4;
+@brief		Creating a player using sprite and adding of animation. movement of player
+			, drawing and transformation of player is here too
+*//*__________________________________________________________________________*/
+#include "../Engine/Texture/Sprite.h"
+#include "../../glm/glm/mat4x4.hpp"
 class Player
 {
 public:
@@ -14,15 +20,19 @@ public:
 
 	void move_right();
 
+	void move_up();
+
+	void move_down();
+
 
 	void stop();
 
-	fakemat4* Transformation();
+	glm::mat4 Transformation();
 
 	void draw(double deltatime);
 
 
 private:
 	Sprite* sp;
-	AnimationType* current_anim;
+	AnimationType current_anim;
 };

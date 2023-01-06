@@ -64,6 +64,10 @@ Window::Window(int width, int height)
 	sp = new Sprite("../textures/level1.jpg");
 	sp->transformation.scale = glm::vec2(2000, 2000);
 	sp->transformation.position = glm::vec2(0);
+
+	sp1 = new Sprite("../textures/1.png");
+	sp1->transformation.scale = glm::vec2(200, 200);
+	sp1->transformation.position = glm::vec2(500,160);
 }
 
 Window::~Window()
@@ -136,6 +140,9 @@ void Window::Mainloop()
 
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
 		sp->draw();
+
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
+		sp1->draw();
 
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);

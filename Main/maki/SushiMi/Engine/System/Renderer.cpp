@@ -1,5 +1,7 @@
 
 #include "Renderer.h"
+#include <glm/glm/fwd.hpp>
+
 
 Core::Renderer::Renderer()
 {
@@ -27,31 +29,31 @@ Core::vtx Core::Renderer::Generate()
 {
 	vtx result;
 
-	gfxVector2 arr[6] = {
-	gfxVector2(0,0),
-	gfxVector2(0,1),
-	gfxVector2(1,0),
-	gfxVector2(1,0),
-	gfxVector2(0,1),
-	gfxVector2(1,1)
+	glm::vec2 arr[6] = {
+	glm::vec2(0,0),
+	glm::vec2(0,1),
+	glm::vec2(1,0),
+	glm::vec2(1,0),
+	glm::vec2(0,1),
+	glm::vec2(1,1)
 	};
 
-	gfxVector4 colors[6] = {
-		gfxVector4(1,1,1,1),
-		gfxVector4(1,1,1,1),
-		gfxVector4(1,1,1,1),
-		gfxVector4(1,1,1,1),
-		gfxVector4(1,1,1,1),
-		gfxVector4(1,1,1,1)
+	glm::vec4 colors[6] = {
+		glm::vec4(1,1,1,1),
+		glm::vec4(1,1,1,1),
+		glm::vec4(1,1,1,1),
+		glm::vec4(1,1,1,1),
+		glm::vec4(1,1,1,1),
+		glm::vec4(1,1,1,1)
 	};
 
-	gfxVector2 uv[6] = {
-		gfxVector2(1,1),
-		gfxVector2(0,1),
-		gfxVector2(1,0),
-		gfxVector2(1,0),
-		gfxVector2(0,1),
-		gfxVector2(0,0)
+	glm::vec2 uv[6] = {
+		glm::vec2(1,1),
+		glm::vec2(0,1),
+		glm::vec2(1,0),
+		glm::vec2(1,0),
+		glm::vec2(0,1),
+		glm::vec2(0,0)
 	};
 
 	glGenVertexArrays(1, &result.VAO);
@@ -64,21 +66,21 @@ Core::vtx Core::Renderer::Generate()
 
 	// for vertex buffer ..
 	glBindBuffer(GL_ARRAY_BUFFER, result.VBO);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(gfxVector2), &arr[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), &arr[0], GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, NULL);
 
 	// for color buffer ..
 	glBindBuffer(GL_ARRAY_BUFFER, result.CBO);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(gfxVector4), &colors[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec4), &colors[0], GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, NULL);
 
 	// for uv buffer ..
 	glBindBuffer(GL_ARRAY_BUFFER, result.UVBO);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(gfxVector2), &uv[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), &uv[0], GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, false, 0, NULL);

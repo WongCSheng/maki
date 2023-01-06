@@ -3,7 +3,6 @@
 ----------------------------------------------------------------------------- */
 #include <iostream>
 #include "../Headers/STL_Header.h"
-#include "../Engine/System/Graphics/glapp.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include "fonts.h"

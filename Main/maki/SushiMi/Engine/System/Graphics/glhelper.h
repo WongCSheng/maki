@@ -21,7 +21,6 @@ objects participating in the application.
 ----------------------------------------------------------------------------- */
 #include <GL/glew.h> // for access to OpenGL API declarations 
 #include "../Headers/STL_Header.h"
-#include "../Engine/System/Graphics/glapp.h"
 #include "../Window/GameWindow.h"
 //#include "../Engine/Camera/Camera2D.h"
 

@@ -7,9 +7,9 @@
 #include "SystemFrame.h"
 //#include "../Mesh/model.h"
 #include "../Components/Component.h"
+#include <glm/glm/vec2.hpp>
+#include <glm/glm/vec4.hpp>
 #include <../glew/include/GL/glew.h>
-#include "../include/vector4.h"
-#include "../include/Vector.h"
 
 namespace Core
 {

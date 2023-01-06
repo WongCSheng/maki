@@ -20,7 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
 //#include "../../glad/glad/glad.h"
-#include "../Engine/System/Graphics/glapp.h"
+#include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/Core/Core.h"
 #include "../Window/GameWindow.h"
 #include "../Headers/ImGui_Header.h"
@@ -101,8 +101,6 @@ static void update()
 	GLHelper::update_time(1.0);
 	Editor::LevelEditor::imguiGraphicsTest();
 
-	GLApp::update();
-
 	CoreSystem->objfactory->Update(GLHelper::delta_time);
 
 	CoreSystem->Update(GLHelper::delta_time);
@@ -120,7 +118,6 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 static void draw() 
 {
-	GLApp::draw();
 	
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
@@ -187,7 +184,6 @@ static void init() {
 	glfwMakeContextCurrent(GLHelper::ptr_window);
 
 	// Part 3
-	GLApp::init();
 	Editor::LevelEditor::imguiEditorInit();
 	
 	
@@ -211,10 +207,7 @@ to system.
 Return graphics memory claimed through
 */
 void cleanup() {
-	// Part 1
-	GLApp::cleanup();
 
-	// Part 2
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");

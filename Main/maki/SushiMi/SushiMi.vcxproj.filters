@@ -100,9 +100,6 @@
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Graphics\glapp.cpp">
-      <Filter>GameEngine\System\Graphics\GL</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\System\Graphics\glhelper.cpp">
       <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClCompile>
@@ -135,9 +132,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Texture\Texture.cpp">
       <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Font\Font.cpp">
-      <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
     <ClCompile Include="Game Object\Player.cpp">
       <Filter>GameObjects</Filter>
@@ -272,9 +266,6 @@
     </ClInclude>
     <ClInclude Include="Headers\ImGui_Header.h">
       <Filter>GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Graphics\glapp.h">
-      <Filter>GameEngine\System\Graphics\GL</Filter>
     </ClInclude>
     <ClInclude Include="Engine\System\Graphics\glhelper.h">
       <Filter>GameEngine\System\Graphics\GL</Filter>

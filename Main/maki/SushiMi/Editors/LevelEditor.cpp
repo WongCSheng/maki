@@ -20,11 +20,13 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "LevelEditor.h"
 #include "imfilebrowser.h"
 #include "../testshader.h"
+#include <glew/include/GL/glew.h>
+#include "../Engine/System/Graphics/glhelper.h"
 
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
-extern unsigned int VBO, VAO;
+unsigned int VBO, VAO;
 unsigned int EBO;
 // create a file browser instance
 static ImGui::FileBrowser fileDialog;

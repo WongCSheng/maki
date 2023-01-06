@@ -156,11 +156,14 @@ abstracted away in GLApp::init
 */
 static void init() {
 
+
+
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
 	TestObj->Init();
 
-	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
+	//json init
+	CoreSystem->objfactory->SerializeObjects("../Assets/json_test_text.json");
 
 	// Part 1: set window size
 	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {

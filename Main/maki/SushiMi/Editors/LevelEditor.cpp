@@ -22,7 +22,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../testshader.h"
 #include <glew/include/GL/glew.h>
 #include "../Engine/System/Graphics/glhelper.h"
-#include "../Engine/Core/Core.h"
+
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
@@ -379,7 +379,6 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 	
-	
 	//ImGui::Text(objectString[i]);
 	//ImGui::SliderInt("Object Index", &i, 0, objectString.size()-1);
 	//ImGui::SliderFloat("x-position", &Object::objects[objectString[i]].position.x, -500.0f, 500.0f);
@@ -420,27 +419,6 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 		texpath = "../textures/menu.jpg";
 	}
 
-	ImGui::Text("Add new object: ");
-
-	if (ImGui::Begin("Object Editor - Imgui Window"))
-	{
-		// Create new object with this button
-		if (ImGui::Button("+")) 
-		{
-			//call object system to add new object (ok nvm hardcode first)\
-			
-			//creation of obj
-			Core::ObjectFactory* objfactory = new Core::ObjectFactory();
-			Core::Object::GameObject* temp1 = objfactory->Create();
-			Core::Object::GameObject* temp2 = objfactory->Create();
-			objfactory->AddObjects(temp1, "Obj Test 1");
-			objfactory->AddObjects(temp2, "Obj Test 2");
-			
-			std::cout << "new obj created" << std::endl;
-
-		}
-	}
-	ImGui::End();
 
 	ImGui::End();
 	ImGui::Render();

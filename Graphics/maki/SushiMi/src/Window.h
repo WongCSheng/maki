@@ -40,6 +40,7 @@ public:
 
 	void Mainloop();
 
+
 	Player* player;
 	Sprite* sp;
 	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp

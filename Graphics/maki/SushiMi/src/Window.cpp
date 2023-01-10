@@ -1,8 +1,10 @@
 //******************************************************************************/
 /*!
 \file		Window.cpp
-\author 	Thea Sea
+\author 	Thea Sea (45%)
 \par    	email: thea.sea@digipen.edu
+\co-author	Aurelia Chong (45%)
+\par    	email: fei.x@digipen.edu
 \co-author	Louis Wang (10%)
 \par    	email: louishetong.wang@digipen.edu
 \date   	2/8/2022
@@ -21,6 +23,45 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "Window.h"
+#include "../../imgui/imgui.h"
+
+
+/*                                                                 input states
+----------------------------------------------------------------------------- */
+static bool keystate_left = false;
+static bool keystate_right = false;
+static bool keystate_up = false;
+static bool keystate_down = false;
+
+/*	key  callback function  , helper function for controlling input
+	----------------------------------------------------------------------------- */
+void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
+{
+	if (GLFW_PRESS == action)
+	{
+		keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
+		keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
+		keystate_up = (key == GLFW_KEY_UP) ? true : false;
+		keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+
+	}
+	else if (GLFW_REPEAT == action)
+	{
+		keystate_left = false;
+		keystate_right = false;
+		keystate_up = false;
+		keystate_down = false;
+	}
+
+	else if (GLFW_RELEASE == action)
+	{
+		keystate_left = false;
+		keystate_right = false;
+		keystate_up = false;
+		keystate_down = false;
+	}
+
+}
 
 Window::Window(int width, int height)
 	:m_width(width),
@@ -43,6 +84,8 @@ Window::Window(int width, int height)
 
 	glfwMakeContextCurrent(window_ptr);
 
+	glfwSetKeyCallback(window_ptr, keyCallBack); //callback to the key everytime the key is pressed
+
 	if (glewInit())
 	{
 		std::cout << "erorr initilize glew" << std::endl;
@@ -51,6 +94,9 @@ Window::Window(int width, int height)
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+
 
 	starttime = 0;
 	endtime = 0;
@@ -72,35 +118,77 @@ Window::~Window()
 	glfwTerminate();
 }
 
+
+
 void Window::Input()
 {
+
 	if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
 	{
 		glfwSetWindowShouldClose(window_ptr, true);
 	}
+	if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
+		//if (glfwGetKey(window_ptr, GLFW_KEY_RIGHT))
+	{
+		//check when key is pressed only and not held to do grid snapping
 
-	if (glfwGetKey(window_ptr, GLFW_KEY_RIGHT))
-	{
+		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT))
+		{
+			player->stop();
+		}
 		player->move_right();
+
 	}
-	else if (glfwGetKey(window_ptr, GLFW_KEY_LEFT))
+
+	else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
 	{
-		player->move_left();
+		//player only move on one press
+		//holding key or let go key, player stop
+		if (keystate_left)
+		{
+			if (ImGui::IsKeyReleased(GLFW_KEY_LEFT))
+			{
+				player->stop();
+			}
+			player->move_left();
+
+			keystate_left = false;
+		}
 	}
-	else if (glfwGetKey(window_ptr, GLFW_KEY_UP))
+
+	else if (ImGui::IsKeyPressed(GLFW_KEY_UP))
 	{
-		player->move_up();
+		if (keystate_up)
+		{
+			if (ImGui::IsKeyReleased(GLFW_KEY_UP))
+			{
+				player->stop();
+			}
+			player->move_up();
+			//player->move_right();
+			keystate_up = false;
+		}
 	}
-	else if (glfwGetKey(window_ptr, GLFW_KEY_DOWN))
+
+
+	else if (ImGui::IsKeyPressed(GLFW_KEY_DOWN))
 	{
-		player->move_down();
-	}
-	else
-	{
-		player->stop();
+		if (keystate_down)
+		{
+			if (ImGui::IsKeyReleased(GLFW_KEY_DOWN))
+			{
+				player->stop();
+			}
+			player->move_down();
+			keystate_down = false;
+		}
+
 	}
 
 }
+
+
+
 
 void Window::Resize()
 {

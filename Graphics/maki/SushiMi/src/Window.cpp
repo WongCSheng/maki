@@ -24,16 +24,19 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 #include "Window.h"
 #include "../../imgui/imgui.h"
+#include "../Headers/SceneManager.h"
 
 
-/*                                                                 input states
+/*                                                             input key states
 ----------------------------------------------------------------------------- */
 static bool keystate_left = false;
 static bool keystate_right = false;
 static bool keystate_up = false;
 static bool keystate_down = false;
+static bool keystate_R = false;
 
-/*	key  callback function  , helper function for controlling input
+Player* player;
+/*					key  callback function  , helper function for controlling input
 	----------------------------------------------------------------------------- */
 void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 {
@@ -43,6 +46,7 @@ void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 		keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
 		keystate_up = (key == GLFW_KEY_UP) ? true : false;
 		keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+		keystate_R = (key == GLFW_KEY_R) ? true : false;
 
 	}
 	else if (GLFW_REPEAT == action)
@@ -51,6 +55,7 @@ void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 		keystate_right = false;
 		keystate_up = false;
 		keystate_down = false;
+		keystate_R = false;
 	}
 
 	else if (GLFW_RELEASE == action)
@@ -59,6 +64,7 @@ void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 		keystate_right = false;
 		keystate_up = false;
 		keystate_down = false;
+		keystate_R = false;
 	}
 
 }
@@ -127,17 +133,19 @@ void Window::Input()
 	{
 		glfwSetWindowShouldClose(window_ptr, true);
 	}
+
 	if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
-		//if (glfwGetKey(window_ptr, GLFW_KEY_RIGHT))
 	{
-		//check when key is pressed only and not held to do grid snapping
-
-		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT))
+		if (keystate_right)
 		{
-			player->stop();
-		}
-		player->move_right();
+			if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT))
+			{
+				player->stop();
+			}
+			player->move_right();
 
+			keystate_right = false;
+		}
 	}
 
 	else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
@@ -183,6 +191,14 @@ void Window::Input()
 			keystate_down = false;
 		}
 
+	}
+
+	/* 
+		restart key "R" resets the level
+	*/
+	if (ImGui::IsKeyPressed(GLFW_KEY_R))
+	{
+		restartLevel();
 	}
 
 }

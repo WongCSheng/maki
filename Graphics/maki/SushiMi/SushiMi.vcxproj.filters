@@ -142,6 +142,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>GameEngine\SceneManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -330,6 +333,9 @@
     <ClInclude Include="Engine\Camera\Camera.h">
       <Filter>GameEngine\System\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\SceneManager.h">
+      <Filter>GameEngine\SceneManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -433,6 +439,9 @@
     </Filter>
     <Filter Include="GameEngine\System\Graphics\Fonts">
       <UniqueIdentifier>{6cb8f02b-db0a-4c0b-bbd0-d2a900ddc3f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\SceneManager">
+      <UniqueIdentifier>{5c3b890d-9b95-495a-acdc-faac54ee990f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

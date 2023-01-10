@@ -26,6 +26,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 
 
+extern Player* player;
 
 class Window
 {
@@ -41,7 +42,7 @@ public:
 	void Mainloop();
 
 
-	Player* player;
+	//Player* player;
 	Sprite* sp;
 	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 

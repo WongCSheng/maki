@@ -1,14 +1,5 @@
 #include "Animation2D.h"
 
-/*!
-@file		Animation2D.cpp
-@author		louishetong.wang@digipen.edu
-@date		20/11/2022
-
-@brief		Animation functions that reads the txt file for each animation type and using delta time, loop through the
-			spritesheet corresponding to each animation. Eg: For animation type Run, it loops through the 7 running
-			sprites in the spritesheet
-*//*__________________________________________________________________________*/
 #include <string>
 #include <sstream>
 #include "../Engine/Texture/Texture.h"
@@ -28,19 +19,19 @@ Animation2D::Animation2D(const char* filename)
 
 	if (fp == nullptr)
 	{
-		printf("error in reading animation file \n");
+		printf("erorr in reading animation file \n");
 	}
 	else
 	{
 		while (fgets(line, bufferlen, fp))
 		{
-			std::vector<int> result;
+			vector<int> result;
 
-			std::stringstream ss(line);
-			std::string token;
-			while (std::getline(ss, token, ','))
+			stringstream ss(line);
+			string token;
+			while (getline(ss, token, ','))
 			{
-				result.push_back(std::stoi(token));
+				result.push_back(stoi(token));
 			}
 
 			glm::vec4 frame = glm::vec4(result[0], result[1], result[2], result[3]);
@@ -55,7 +46,6 @@ Animation2D::Animation2D(const char* filename)
 
 Animation2D::~Animation2D()
 {
-
 }
 
 void Animation2D::play(Texture& spritetexture, Rect& rectangle, double deltatime)
@@ -76,7 +66,7 @@ void Animation2D::play(Texture& spritetexture, Rect& rectangle, double deltatime
 	frame.z /= spritetexture.width;
 	frame.w /= spritetexture.height;
 
-	std::vector<glm::vec2> uv;
+	vector<glm::vec2> uv;
 
 	uv = {
 		glm::vec2(frame.x,frame.y),

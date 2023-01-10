@@ -1,62 +1,50 @@
-#pragma once
-//******************************************************************************/
 /*!
-\file		Window.h
-\author 	Thea Sea
-\par    	email: thea.sea@digipen.edu
-\co-author	Louis Wang (10%)
-\par    	email: louishetong.wang@digipen.edu
-\date   	2/8/2022
-\brief		This source file contains the main function to call all other functions and implement the game loop.
-			It instantiates player and sprites as well.
+@file		Window.h
+@author		p.tzechengjennifer@digipen.edu
+@date		28/09/2022
 
-Copyright (C) 2022 DigiPen Institute of Technology.
-Reproduction or disclosure of this file or its contents without the
-prior written consent of DigiPen Institute of Technology is prohibited.
- */
- /******************************************************************************/
-#include "../Game Object/Player.h"
-#include "../Engine/Shaders/ShaderLibrary.h"
-#include "../Engine/Camera/Camera2D.h"
+This file contains class Window that we will use for opening windows..
+*//*__________________________________________________________________________*/
 
-#include "../Engine/Texture/Sprite.h"
+#pragma once
 
-#include <iostream>
-#include <glfw/include/GLFW/glfw3.h>
+#ifndef GAMEWINDOW_H_
+#define GAMEWINDOW_H_
 
+#include "../Headers/STL_Header.h"
+#include <GLFW/glfw3.h>
+//#include "../Engine/System/Graphics/glhelper.h"
 
-
-
-class Window
+namespace Upfront
 {
-public:
-	Window(int width, int height);
+	class Window
+	{
+	public:
+		Window();
+		~Window();
 
-	~Window();
+		static void Win_Init();
+		void CreateWin();
+		
+		int getWinWidth();
+		int getWinHeight();
 
-	void Input();
+		inline static GLFWwindow* win = nullptr;
+		inline static GLFWmonitor* monitor = nullptr;
+		inline static HINSTANCE instance {0};
 
-	void Resize();
+		inline static int winWidth{ 0 }, winHeight{ 0 },
+			dispWidth{ 0 }, dispHeight{ 0 };
 
-	void Mainloop();
+		inline static POINT mousePos{};
 
-	Player* player;
-	Sprite* sp;
-	Sprite* sp1;
-	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
+		inline static const char* titlebar;
+	};
 
-private:
-	int m_width, m_height;
-	GLFWwindow* ptr_win;
-	double starttime, endtime, delta;
-};
+	/*class Window_Message : public Message
+	{
 
-class pseudomain
-{
-public:
-	static void draw();
-	static void update();
-	static void init();
-	static void cleanup();
+	};*/
+}
 
-};
+#endif

@@ -42,7 +42,6 @@ public:
 
 	Player* player;
 	Sprite* sp;
-	Sprite* sp1;
 	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 
 private:

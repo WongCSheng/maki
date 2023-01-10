@@ -1,17 +1,11 @@
 #pragma once
-/*!
-@file		Sprite.h
-@author		louishetong.wang@digipen.edu
-@date		20/11/2022
-
-@brief		Drawing of the sprite and animating of it is here
-*//*__________________________________________________________________________*/
-#include "../Engine/Texture/texture.h"
-#include "../Engine/Texture/Rectangle.h"
-#include "../Engine/Components/Transform/sTransform.h"
-#include "../Engine/Animation/Animation2D.h"
-
-
+//#include "../Engine/Components/Transform/sTransform.h"
+enum AnimationType;
+class Texture;
+class Rect;
+class Animation2D;
+class Transform;
+#include <vector>
 class Sprite
 {
 public:
@@ -19,17 +13,15 @@ public:
 
 	~Sprite();
 
-	void draw();
-
-	void draw(double deltatime, AnimationType type);
+	void draw(double deltatime, AnimationType& type);
 
 	void Add_animation(const char* filename);
 
-	Transform transformation;
+	Transform* transformation = nullptr;
 
 private:
-	Texture texture;
-	Rect rectangle;
+	Texture* texture = nullptr;
+	Rect* rectangle = nullptr;
 
 	std::vector<Animation2D*> anims;
 };

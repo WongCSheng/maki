@@ -1,27 +1,22 @@
-/*!
-@file		player.cpp
-@author		louishetong.wang@digipen.edu
-@date		20/11/2022
-
-@brief		Creating a player using sprite and adding of animation. movement of player
-			, drawing and transformation of player is here too
-*//*__________________________________________________________________________*/
 #include "Player.h"
-#include "../../glm/glm/vec2.hpp"
-#include "../../glm/glm/mat4x4.hpp"
-#include "../../glm/glm/mat4x4.hpp"
-
+#include "../Engine/Components/Transform/sTransform.h"
+#include "../Engine/Animation/Animation2D.h"
+#include "../Engine/Texture/Sprite.h"
+struct fakemat4
+{
+	glm::mat4 data;
+};
 Player::Player()
 {
-
 	sp = new Sprite("../textures/spritesheet/spritesheet.png");
-	sp->transformation.position = glm::vec2(500, 500);
-	sp->transformation.scale = glm::vec2(150, 150);
+	sp->transformation = new Transform();
+	sp->transformation->position = glm::vec2(500, 500);
+	sp->transformation->scale = glm::vec2(150, 150);
 
 	sp->Add_animation("../textures/spritesheet/Idle.txt");
 	sp->Add_animation("../textures/spritesheet/Run.txt");
 
-	current_anim = Idle;
+	current_anim = new AnimationType(Idle);
 }
 
 Player::~Player()
@@ -31,51 +26,34 @@ Player::~Player()
 
 void Player::move_left()
 {
-	if (sp->transformation.scale.x > 0)
-		sp->transformation.scale.x *= 1;
+	if (sp->transformation->scale.x > 0)
+		sp->transformation->scale.x *= -1;
 
-	current_anim = Run;
-	sp->transformation.position.x -= 1;
+	current_anim = new AnimationType(Run);
+	sp->transformation->position.x -= 5;
 }
 
 void Player::move_right()
 {
-	if (sp->transformation.scale.x < 0)
-		sp->transformation.scale.x *= -1;
+	if (sp->transformation->scale.x < 0)
+		sp->transformation->scale.x *= -1;
 
-	current_anim = Run;
-	sp->transformation.position.x += 1;
-}
-
-void Player::move_up()
-{
-	if (sp->transformation.scale.y > 0)
-		sp->transformation.scale.y *= 1;
-
-	current_anim = Run;
-	sp->transformation.position.y -= 1;
-}
-
-void Player::move_down()
-{
-	if (sp->transformation.scale.y < 0)
-		sp->transformation.scale.y *= -1;
-
-	current_anim = Run;
-	sp->transformation.position.y += 1;
+	current_anim = new AnimationType(Run);
+	sp->transformation->position.x += 5;
 }
 
 void Player::stop()
 {
-	current_anim = Idle;
+	current_anim = new AnimationType(Idle);
 }
 
-glm::mat4 Player::Transformation()
+fakemat4* Player::Transformation()
 {
-	return sp->transformation.Get();
+	fakemat4* temp = new fakemat4{ sp->transformation->Get() };
+	return temp;
 }
 
 void Player::draw(double deltatime)
 {
-	sp->draw(deltatime, current_anim);
+	sp->draw(deltatime, *current_anim);
 }

@@ -13,8 +13,6 @@
 #include "../Headers/STL_Header.h"
 #include "../System/SystemFrame.h"
 
-#include "../Headers/STL_Header.h"
-#include "../System/SystemFrame.h"
 #include "../Game Object/GameObject.h"
 #include "../Engine/Components/Physics/collision.h"
 

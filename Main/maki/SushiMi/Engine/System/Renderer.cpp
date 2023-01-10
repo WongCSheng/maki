@@ -1,6 +1,9 @@
 
 #include "Renderer.h"
-#include <glm/glm/fwd.hpp>
+
+#include <GL/glew.h>
+
+#include "../include/glm.h"
 
 
 Core::Renderer::Renderer()
@@ -94,6 +97,14 @@ Core::vtx Core::Renderer::Generate()
 
 void Core::Renderer::Update(const double dt)
 {
+}
+
+void Core::Renderer::Delete(Core::vtx& obj)
+{
+	glDeleteBuffers(1, &obj.UVBO);
+	glDeleteBuffers(1, &obj.CBO);
+	glDeleteBuffers(1, &obj.VBO);
+	glDeleteVertexArrays(1, &obj.VAO);
 }
 
 void Core::Renderer::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)

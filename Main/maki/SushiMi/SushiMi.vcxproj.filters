@@ -19,6 +19,9 @@
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Camera\Camera2D.cpp">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Mesh\model.cpp">
       <Filter>GameEngine\Mesh</Filter>
     </ClCompile>
@@ -73,6 +76,12 @@
     <ClCompile Include="Engine\System\Renderer.cpp">
       <Filter>GameEngine\System\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\Transformer.cpp">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Transform\Transform.cpp">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Components\Component.cpp">
       <Filter>GameEngine\Component</Filter>
     </ClCompile>
@@ -81,6 +90,12 @@
     </ClCompile>
     <ClCompile Include="Editors\LevelEditor.cpp">
       <Filter>Editors</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\collision.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\Physics.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
       <Filter>GameEngine\System\LinkedList</Filter>
@@ -109,33 +124,10 @@
     <ClCompile Include="Engine\Shaders\ShaderProgram.cpp">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Texture\Rectangle.cpp">
-      <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Texture\Sprite.cpp">
-      <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Texture\Texture.cpp">
       <Filter>GameEngine\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Game Object\Player.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\Transformer.cpp">
-      <Filter>GameEngine\System\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Components\Transform\Transform.cpp">
-      <Filter>GameEngine\Component\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Camera\Camera2D.cpp">
-      <Filter>GameEngine\Component\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Components\Physics\collision.cpp">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Components\Physics\Physics.cpp">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClCompile>
+    <ClCompile Include="Engine\Texture\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -152,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
       <Filter>GameEngine\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Camera\Camera2D.h">
+      <Filter>GameEngine\System\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>
@@ -234,6 +229,12 @@
     <ClInclude Include="Engine\System\Renderer.h">
       <Filter>GameEngine\System\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\Transformer.h">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Transform\Transform.h">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\Components\Component.h">
       <Filter>GameEngine\Component</Filter>
     </ClInclude>
@@ -242,6 +243,12 @@
     </ClInclude>
     <ClInclude Include="Editors\LevelEditor.h">
       <Filter>Editors</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\collision.h">
+      <Filter>GameEngine\System\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\Physics.h">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Engine\System\Linked List\LinkedList.h">
       <Filter>GameEngine\System\LinkedList</Filter>
@@ -288,36 +295,14 @@
     <ClInclude Include="Engine\Shaders\ShaderProgram.h">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Texture\Rectangle.h">
-      <Filter>GameEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture\Sprite.h">
-      <Filter>GameEngine\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Texture\Texture.h">
       <Filter>GameEngine\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Game Object\Player.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Transformer.h">
-      <Filter>GameEngine\System\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Components\Transform\sTransform.h">
-      <Filter>GameEngine\Component\Transform</Filter>
+      <Filter>GameEngine\System\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Components\Transform\Transform.h">
-      <Filter>GameEngine\Component\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Camera\Camera2D.h">
-      <Filter>GameEngine\Component\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Components\Physics\collision.h">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Components\Physics\Physics.h">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClInclude>
+    <ClInclude Include="include\glm.h" />
+    <ClInclude Include="Engine\Texture\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -421,18 +406,6 @@
     </Filter>
     <Filter Include="GameEngine\System\Graphics\Fonts">
       <UniqueIdentifier>{6cb8f02b-db0a-4c0b-bbd0-d2a900ddc3f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\System\Logic">
-      <UniqueIdentifier>{f5d7d573-34c9-4944-a3cf-b14cd29bcad4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Component\Camera">
-      <UniqueIdentifier>{258bf7c2-37fb-4319-b1dc-a3fadf8a24a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Component\Transform">
-      <UniqueIdentifier>{f102fdcb-b68c-4645-93b9-ace94cd79f0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Component\Physics">
-      <UniqueIdentifier>{9e8c9075-44df-405e-92d4-d7e58d4210f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

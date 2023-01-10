@@ -6,10 +6,6 @@
 #include "../Headers/STL_Header.h"
 #include "SystemFrame.h"
 //#include "../Mesh/model.h"
-#include "../Components/Component.h"
-#include <glm/glm/vec2.hpp>
-#include <glm/glm/vec4.hpp>
-#include <../glew/include/GL/glew.h>
 
 namespace Core
 {
@@ -34,12 +30,14 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		static Renderer* GetInstance();
+		void Delete(vtx& obj);
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;
 		std::vector<Material*> materialComponents;
 		std::vector<MeshRenderer*> meshRendererComponents;*/
 		static Renderer* _instance;
 		//std::vector<Model*> meshes;
+
 	};
 }
 

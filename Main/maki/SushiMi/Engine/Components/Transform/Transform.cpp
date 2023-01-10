@@ -29,55 +29,50 @@ namespace Core
 
 	}
 
-	const gfxMatrix3 Transform::TransformMat(void)
-	{
-		return T * R * S;
-	}
-
 	void Transform::Set(gfxVector2 position, gfxVector2 scale, gfxMatrix3 rotation)
 	{
-		this->localposition = position;
-		this->localscale = scale;
-		this->localrotation = rotation;
+		this->Position = position;
+		this->Scale = scale;
+		this->Rotation = rotation;
 	}
 
 	void Transform::SetPosition(gfxVector2 position)
 	{
-		this->localposition = position;
+		this->Position = position;
 	}
 
 	void Transform::SetScale(gfxVector2 scale)
 	{
-		this->localscale = scale;
+		this->Scale = scale;
 	}
 
 	void Transform::SetRotation(gfxMatrix3 rotation)
 	{
-		this->localrotation = rotation;
+		this->Rotation = rotation;
 	}
 
-	void Transform::SetForward(gfxVector2 forward)
+	/*void Transform::SetForward(gfxVector2 forward)
 	{
 		this->forward = forward;
-	}
+	}*/
 
-	void Transform::Translate(gfxVector2 translate)
+	void Transform::Translating(gfxVector2 translate)
 	{
-		this->localposition += translate;
+		this->Position += translate;
 	}
 
-	void Transform::Rotate(gfxMatrix3 rotate)
+	void Transform::Rotating(gfxMatrix3 rotate)
 	{
-		localrotation = localrotation * rotate;
+		Rotation *= rotate;
 	}
 
-	void Transform::Scale(float scale)
+	void Transform::Scaling(float scale)
 	{
-		this->localscale *= scale;
+		Scale *= scale;
 	}
 
-	const gfxVector2& Transform::Forward(const double dt)
+	/*const gfxVector2& Transform::Forward(const double dt)
 	{
 		return forward;
-	}
+	}*/
 }

@@ -1,5 +1,5 @@
 #include "../include/Matrix.h"
-#include <glm/glm/matrix.hpp>
+//#include <glm/glm/matrix.hpp>
 
 /*
 * 3x3 matrix is col major meaning
@@ -188,7 +188,7 @@ void gfxMatrix3::SetTranslation(float tx, float ty)
 	a[7] = ty;
 }
 
-gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs) const
+gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs)
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 3; i++)
@@ -200,7 +200,8 @@ gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs) const
 	}
 	return temp;
 }
-gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs) const
+
+gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs)
 {
 	float b[3];
 
@@ -211,7 +212,8 @@ gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs) const
 	gfxVector2 temp(b[0], b[1]);
 	return temp;
 }
-gfxMatrix3 gfxMatrix3::operator*(float value) const
+
+gfxMatrix3 gfxMatrix3::operator*(float value)
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 9; i++)
@@ -221,7 +223,30 @@ gfxMatrix3 gfxMatrix3::operator*(float value) const
 
 	return temp;
 }
-gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs) const
+
+gfxMatrix3& gfxMatrix3::operator*=(const gfxMatrix3& rhs)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			this->a[i * 3 + j] = a[0 * 3 + j] * rhs.a[i * 3 + 0] + this->a[1 * 3 + j] * rhs.a[i * 3 + 1] + this->a[2 * 3 + j] * rhs.a[i * 3 + 2];
+		}
+	}
+	return *this;
+}
+
+gfxMatrix3& gfxMatrix3::operator*=(float value)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		this->a[i] = a[i] * value;
+	}
+
+	return *this;
+}
+
+gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
 {
 	return(
 		a[0] + rhs.a[0],

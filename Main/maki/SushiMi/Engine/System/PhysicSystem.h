@@ -18,6 +18,8 @@
 #include "../Game Object/GameObject.h"
 #include "../Engine/Components/Physics/collision.h"
 
+#define NOMINMAX
+
 namespace Core
 {
 	//Forward Declaration

@@ -67,9 +67,9 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
 int main() {
 
 	// Enable run-time memory check for debug builds.
-	#if defined(DEBUG) | defined(_DEBUG)
+	/*#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	#endif
+	#endif*/
 
 	glfwInit();
 	init();
@@ -195,7 +195,7 @@ static void init() {
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSound("WalkSFX.wav");
 	//play bgm
-	AudioManager.PlayMusic("BGM.wav");
+	//AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
@@ -215,6 +215,7 @@ void cleanup() {
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
 	AudioManager.UnloadMusic("WalkSFX.wav");
+	AudioManager.UnloadMusic("BGM.wav");
 
 	////imgui Shutdown
 	Editor::LevelEditor::imguiShutDown();

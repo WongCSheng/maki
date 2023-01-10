@@ -14,7 +14,7 @@ Matrix header file for all matrix calculations
 #include "Vector.h"
 #include "Math.h"
 #include "../Headers/STL_Header.h"
-#include <glm/glm/fwd.hpp>
+//#include <glm/glm/fwd.hpp>
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */
@@ -65,12 +65,15 @@ public:
 	void SetTranslation(float tx, float ty);
 
 	// matrix calculations
-	gfxMatrix3 operator*(const gfxMatrix3& rhs) const;
-	gfxVector2 operator*(const gfxVector2& rhs) const;
-	gfxMatrix3 operator*(float value) const;
-	gfxMatrix3 operator+(const gfxMatrix3& rhs) const;
+	gfxMatrix3 operator*(const gfxMatrix3& rhs);
+	gfxVector2 operator*(const gfxVector2& rhs);
+	gfxMatrix3 operator*(float value);
+	gfxMatrix3& operator*=(const gfxMatrix3& rhs);
+	gfxMatrix3& operator*=(float value);
+	gfxMatrix3 operator+(const gfxMatrix3& rhs);
 	gfxMatrix3& operator=(const gfxMatrix3& rhs);
 
+private:
 	float a[9];
 
 };

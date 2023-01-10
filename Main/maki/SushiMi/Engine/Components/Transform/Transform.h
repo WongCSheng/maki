@@ -13,6 +13,12 @@ Description: Header for Transform.cpp
 
 namespace Core
 {
+	enum class Trans_Type
+	{
+		Local = 1,
+		World
+	};
+	
 	class Transform : public Component
 	{
 	public:
@@ -22,30 +28,26 @@ namespace Core
 		void Init();
 		void Serialise(const std::string name);
 
-		const gfxMatrix3 TransformMat();
-		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3());
+		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3(0.f));
 		void SetPosition(gfxVector2 position);
 		void SetScale(gfxVector2 scale);
 		void SetRotation(gfxMatrix3 rotation);
-		void SetForward(gfxVector2 forward);
+		//void SetForward(gfxVector2 forward);
 
-		void Translate(gfxVector2 translate);
-		void Rotate(gfxMatrix3 rotate);
-		void Scale(float scale);
+		void Translating(gfxVector2 translate);
+		void Rotating(gfxMatrix3 rotate);
+		void Scaling(float scale);
 
-		const gfxVector2& Forward(const double dt);
-
-		gfxVector2 localposition;
-		gfxMatrix3 localrotation;
-		gfxVector2 localscale;
-		gfxVector2 worldposition;
-		gfxMatrix3 worldrotation;
-		gfxVector2 worldscale;
+		//const gfxVector2& Forward(const double dt);
 
 	private:
-		gfxVector2 forward;
+		//gfxVector2 forward;
 
-		gfxMatrix3 T, R, S;
+		//gfxMatrix3 T, R, S;
+
+		gfxVector2 Position;
+		gfxMatrix3 Rotation;
+		gfxVector2 Scale;
 
 		Object::GameObjectProperty* owner;
 

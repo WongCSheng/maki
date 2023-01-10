@@ -1,12 +1,20 @@
 #pragma once
+/*!
+@file		Animation2D.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
+@brief		Animation functions that reads the txt file for each animation type and using delta time, loop through the
+			spritesheet corresponding to each animation. Eg: For animation type Run, it loops through the 7 running
+			sprites in the spritesheet
+*//*__________________________________________________________________________*/
 
 #include <../glm/glm/glm.hpp>
 #include <vector>
-using namespace std;
-class Texture;
-class Rect;
 
+#include "../Engine/Texture/Texture.h"
+#include "../Engine/System/Renderer.h"
+//using namespace std;
 enum AnimationType
 {
 	Idle,
@@ -22,7 +30,7 @@ public:
 	~Animation2D();
 
 
-	void play(Texture& spritetexture, Rect& rectangle, double deltatime);
+	void play(Texture& spritetexture, Core::vtx& rectangle, double deltatime);
 
 	void set_animation_speed(float newspeed);
 
@@ -33,5 +41,5 @@ private:
 	int frames_count;
 	float speed;
 
-	vector<glm::vec4> frames;
+	std::vector<glm::vec4> frames;
 };

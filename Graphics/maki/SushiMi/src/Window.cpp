@@ -24,6 +24,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 #include "Window.h"
 #include "../../imgui/imgui.h"
+#include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Headers/SceneManager.h"
 
 
@@ -103,7 +104,7 @@ Window::Window(int width, int height)
 
 
 
-
+	player = JSONSerializer::Deserialize("../Data/generated.json");
 	starttime = 0;
 	endtime = 0;
 	delta = 0;
@@ -111,7 +112,7 @@ Window::Window(int width, int height)
 	Shaders = std::make_unique<ShaderLibrary>();
 	camera = std::make_unique<Camera>(0, 0);
 
-	player = new Player();
+	//player = new Player();
 
 	sp = new Sprite("../textures/level1.jpg");
 	sp->transformation.scale = glm::vec2(2000, 2000);
@@ -120,7 +121,9 @@ Window::Window(int width, int height)
 
 Window::~Window()
 {
+	JSONSerializer::Serialize(player, "../Data/generated.json");
 	delete player;
+	delete sp; //16 bytes 
 	glfwTerminate();
 }
 

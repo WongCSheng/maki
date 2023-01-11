@@ -72,6 +72,9 @@ public:
 	gfxMatrix3& operator*=(float value);
 	gfxMatrix3 operator+(const gfxMatrix3& rhs);
 	gfxMatrix3& operator=(const gfxMatrix3& rhs);
+	float operator[](int elem) const;
+	float& operator[](int elem);
+	void printMatrix(const gfxMatrix3 thisone);
 
 private:
 	float a[9];

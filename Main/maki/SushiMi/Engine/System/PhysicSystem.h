@@ -16,7 +16,8 @@
 #include "../Game Object/GameObject.h"
 #include "../Engine/Components/Physics/collision.h"
 
-#define NOMINMAX
+#undef min
+#undef max
 
 namespace Core
 {

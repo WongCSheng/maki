@@ -268,3 +268,27 @@ gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 	}
 	return *this;
 }
+
+float gfxMatrix3::operator[](int elem) const
+{
+	return this->a[elem];
+}
+
+float& gfxMatrix3::operator[](int elem)
+{
+	return this->a[elem];
+}
+
+void gfxMatrix3::printMatrix(const gfxMatrix3 thisone)
+{
+	for (int i = 0, count = 1; i < 9; i++, count++)
+	{
+		std::cout << thisone[i] << ' ';
+
+		if (count == 3)
+		{
+			std::cout << std::endl;
+			count = 0;
+		}
+	}
+}

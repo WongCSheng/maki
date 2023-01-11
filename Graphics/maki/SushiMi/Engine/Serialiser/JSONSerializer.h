@@ -1,6 +1,6 @@
 /*!
 @file		JSONSerializer.h
-@author		p.tzechengjennifer@digipen.edu
+@author		fei.x@digipen.edu
 @date		28/09/2022
 
 This file contains a Serializer class that can parse json files.
@@ -17,6 +17,15 @@ chosen game object.
 
 #ifndef JSERIALIZE_H
 #define JSERIALIZE_H
+
+#include "../Game Object/Player.h"
+#include <string>
+
+namespace JSONSerializer {
+	// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
+	Player* Deserialize(std::string const& filepath);
+	void Serialize(Player* player, std::string const& filepath);
+}
 //
 //class Serializer {
 //

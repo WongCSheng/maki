@@ -22,6 +22,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../testshader.h"
 #include <glew/include/GL/glew.h>
 #include "../Engine/System/Graphics/glhelper.h"
+#include "../src/Window.h"
 
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
@@ -46,7 +47,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(GLHelper::ptr_window, true);
+	ImGui_ImplGlfw_InitForOpenGL(Window::window_ptr, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
 
 	//code to fill a vector with the names of all game objects, replace hardcoded 57 with the detected number of game elements

@@ -19,10 +19,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
-//#include "../../glad/glad/glad.h"
-#include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/Core/Core.h"
-#include "../Window/GameWindow.h"
+#include "Window.h"
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
@@ -38,14 +36,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
-
-
-/*                                                      function declarations
------------------------------------------------------------------------------ */
-static void draw();
-static void update();
-static void init();
-static void cleanup();
 
 static Core::MainSystem* CoreSystem = new Core::MainSystem();
 static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
@@ -67,22 +57,18 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
 int main() {
 
 	// Enable run-time memory check for debug builds.
-	/*#if defined(DEBUG) | defined(_DEBUG)
+	#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	#endif*/
+	#endif
 
+	Window* window = new Window(800, 600);
 	glfwInit();
-	init();
-
-	// Part 2
-	while (!glfwWindowShouldClose(GLHelper::ptr_window)) 
-	{
-		update();
-		draw();
-	}
+	pseudomain::init();
+	window->Mainloop();
+	
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
-
-	cleanup();
+	delete window;
+	pseudomain::cleanup();
 }
 
 /*  _________________________________________________________________________ */
@@ -94,7 +80,7 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 For now, there are no objects to animate nor keyboard, mouse button click,
 mouse movement, and mouse scroller events to be processed.
 */
-static void update() 
+void pseudomain::update() 
 {
 	glfwPollEvents();
 
@@ -116,14 +102,14 @@ static void update()
 Call application to draw and then swap front and back frame buffers ...
 Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
-static void draw() 
+void pseudomain::draw() 
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 	
 	// Part 2: swap buffers: front <-> back
-	glfwSwapBuffers(GLHelper::ptr_window);
+	glfwSwapBuffers(Window::window_ptr);
 	glfwPollEvents();
 }
 
@@ -154,7 +140,7 @@ The OpenGL context initialization stuff is abstracted away in GLHelper::init.
 The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
-static void init() {
+void pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
@@ -162,11 +148,6 @@ static void init() {
 
 	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
 
-	// Part 1: set window size
-	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
-		std::cout << "Unable to create OpenGL context" << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
@@ -181,7 +162,7 @@ static void init() {
 
 	// Part 2
 	GLHelper::print_specs(); //uncommented
-	glfwMakeContextCurrent(GLHelper::ptr_window);
+	glfwMakeContextCurrent(Window::window_ptr);
 
 	// Part 3
 	Editor::LevelEditor::imguiEditorInit();
@@ -206,7 +187,7 @@ Return allocated resources for window and OpenGL context thro GLFW back
 to system.
 Return graphics memory claimed through
 */
-void cleanup() {
+void pseudomain::cleanup() {
 
 	GLHelper::cleanup();
 	//unload music

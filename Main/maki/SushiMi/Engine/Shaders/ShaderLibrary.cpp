@@ -1,5 +1,12 @@
 #include "ShaderLibrary.h"
+/*!
+@file		ShaderLibrary.cpp
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
 
+@brief		Shader Library contains the vert and frag shaders for texture and colour shaders respectively.
+			When shader programs are created, they will use the respective shader library
+*//*__________________________________________________________________________*/
 ShaderLibrary::ShaderLibrary()
 {
 	const char* vs = R"CODE(
@@ -38,7 +45,7 @@ ShaderLibrary::ShaderLibrary()
 			};
 )CODE";
 
-	programs.insert(pair<string, ShaderProgram*>("Textured", new ShaderProgram(vs, fs)));
+	programs.insert(std::pair<std::string, ShaderProgram*>("Textured", new ShaderProgram(vs, fs)));
 
 
 	//////////////////////////////////////// colored shader
@@ -73,11 +80,15 @@ ShaderLibrary::ShaderLibrary()
 			};
 )CODE";
 
-	programs.insert(pair<string, ShaderProgram*>("Colored", new ShaderProgram(vs, fs)));
+	programs.insert(std::pair<std::string, ShaderProgram*>("Colored", new ShaderProgram(vs, fs)));
 }
 
 ShaderLibrary::~ShaderLibrary()
 {
+	for (const auto& [_, v] : programs)
+	{
+		delete v; //memory leak 3
+	}
 }
 
 ShaderProgram* ShaderLibrary::Textured_Shader()

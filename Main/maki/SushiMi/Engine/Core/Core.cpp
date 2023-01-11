@@ -19,6 +19,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
+#include "../../src/Window.h"
 
 //Core::MainSystem* Core::MainSystem::instance = 0; //Singleton of MainSystem.
 
@@ -119,9 +120,9 @@ void Core::MainSystem::Update(const double dt)
 		systems[i]->Update(dt);
 	}
 
-	int mousestate = glfwGetMouseButton(GLHelper::ptr_window, MOUSE_BUTTON_LEFT);
+	int mousestate = glfwGetMouseButton(Window::window_ptr, MOUSE_BUTTON_LEFT);
 
-	gfxVector2 mousePos = inputsystem->GetMouse(GLHelper::ptr_window, mousestate); 
+	gfxVector2 mousePos = inputsystem->GetMouse(Window::window_ptr, mousestate);
 
 	for (auto& i : objfactory->ObjectContainer)
 	{

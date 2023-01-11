@@ -8,12 +8,11 @@
 			spritesheet corresponding to each animation. Eg: For animation type Run, it loops through the 7 running
 			sprites in the spritesheet
 *//*__________________________________________________________________________*/
-
-#include <../glm/glm/glm.hpp>
+#include "../Engine/System/Renderer.h"
+#include <../glm/glm/vec4.hpp>
 #include <vector>
 
-#include "../Engine/Texture/Texture.h"
-#include "../Engine/System/Renderer.h"
+class Texture;
 //using namespace std;
 enum AnimationType
 {
@@ -30,7 +29,7 @@ public:
 	~Animation2D();
 
 
-	void play(Texture& spritetexture, Core::vtx& rectangle, double deltatime);
+	void play(Texture& spritetexture, Core::vtx rectangle, double deltatime);
 
 	void set_animation_speed(float newspeed);
 

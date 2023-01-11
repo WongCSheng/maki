@@ -11,7 +11,10 @@
 *//*__________________________________________________________________________*/
 #include <string>
 #include <sstream>
+#include "../Engine/Texture/Texture.h"
+#include "../Engine/System/Renderer.h"
 #include <../glew/include/GL/glew.h>
+#include <../glm/glm/vec2.hpp>
 
 Animation2D::Animation2D(const char* filename)
 	: anim_cursor(0),
@@ -56,7 +59,7 @@ Animation2D::~Animation2D()
 
 }
 
-void Animation2D::play(Texture& spritetexture, Core::vtx& rectangle, double deltatime)
+void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double deltatime)
 {
 	anim_cursor += deltatime;
 

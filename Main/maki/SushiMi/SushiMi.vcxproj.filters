@@ -115,8 +115,6 @@
     <ClCompile Include="Engine\Texture\Texture.cpp">
       <Filter>GameEngine\Component\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Texture\Sprite.cpp" />
-    <ClCompile Include="Game Object\Player.cpp" />
     <ClCompile Include="Engine\Components\Transform\Transform.cpp">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClCompile>
@@ -128,6 +126,18 @@
     </ClCompile>
     <ClCompile Include="Engine\Camera\Camera2D.cpp">
       <Filter>GameEngine\Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Object\Player.cpp">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture\Sprite.cpp">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture\Rectangle.cpp">
+      <Filter>GameEngine\System\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -288,8 +298,6 @@
       <Filter>GameEngine\Component\Texture</Filter>
     </ClInclude>
     <ClInclude Include="include\glm.h" />
-    <ClInclude Include="Engine\Texture\Sprite.h" />
-    <ClInclude Include="Game Object\Player.h" />
     <ClInclude Include="Engine\Components\Transform\sTransform.h">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClInclude>
@@ -304,6 +312,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Camera\Camera2D.h">
       <Filter>GameEngine\Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\SceneManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Object\Player.h">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture\Sprite.h">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture\Rectangle.h">
+      <Filter>GameEngine\System\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +443,9 @@
     </Filter>
     <Filter Include="GameEngine\Component\Texture">
       <UniqueIdentifier>{1fea0e2d-2379-427e-81b3-41f6c913e9b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\Texture">
+      <UniqueIdentifier>{3e7250d2-a760-4f2a-b2e8-5b8efe94606c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

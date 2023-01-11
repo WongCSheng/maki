@@ -2,8 +2,8 @@
     "sprite": {
         "filepath": "../textures/spritesheet/spritesheet.png",
         "position": [
-            1500,
-            1030
+            982,
+            346
         ],
         "scale": [
             150,

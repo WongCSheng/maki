@@ -104,7 +104,6 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 void pseudomain::draw() 
 {
-	glClear(GL_COLOR_BUFFER_BIT);
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
 	
@@ -173,7 +172,7 @@ void pseudomain::init() {
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSound("WalkSFX.wav");
 	//play bgm
-	//AudioManager.PlayMusic("BGM.wav");
+	AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }

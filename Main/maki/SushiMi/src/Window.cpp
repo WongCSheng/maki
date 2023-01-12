@@ -84,9 +84,8 @@ Window::Window(int width, int height)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-
-
-	player = JSONSerializer::Deserialize("../Data/generated.json");
+	JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
+	player = JSONSerializer::Deserialize(*JSONSerializer::LevelLoadPathPtr);
 	starttime = 0;
 	endtime = 0;
 	delta = 0;
@@ -96,6 +95,7 @@ Window::Window(int width, int height)
 
 	//player = new Player();
 
+	//background
 	sp = new Sprite("../textures/level1.jpg");
 	sp->transformation.scale = glm::vec2(2000, 2000);
 	sp->transformation.position = glm::vec2(0);
@@ -107,7 +107,7 @@ Window::Window(int width, int height)
 
 Window::~Window()
 {
-	JSONSerializer::Serialize(player, "../Data/generated.json");
+	//JSONSerializer::Serialize(player, "../Data/generated.json");
 	delete player;
 	delete sp; //16 bytes 
 	glfwTerminate();

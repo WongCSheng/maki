@@ -1,0 +1,17 @@
+{
+    "sprite": {
+        "filepath": "../textures/spritesheet/spritesheet.png",
+        "position": [
+            1689,
+            836
+        ],
+        "scale": [
+            150,
+            150
+        ]
+    },
+    "animation": [
+        "../textures/spritesheet/Idle.txt",
+        "../textures/spritesheet/Run.txt"
+    ]
+}

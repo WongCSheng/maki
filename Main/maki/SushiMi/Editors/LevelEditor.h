@@ -18,17 +18,17 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 #include "../Headers/STL_Header.h"
 #include "../Headers/ImGui_Header.h"
-
+#include "../../glew/include/GL/glew.h"
+#include "../Engine/System/Graphics/glhelper.h"
 
 class mainclass
 {
 public:
 
-	inline static bool drawTexture = true;
+	inline static bool drawTexture = false; //setting this to true creates error? -thea
 	inline static float size = 1.0f;
 	inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
-	//inline static GLuint VAO, VBO;
-	inline static int width, height, nrChannels;
+	inline static GLuint VAO, VBO;
 
 };
 namespace Editor
@@ -40,6 +40,10 @@ namespace Editor
 		static void imguiGraphicsTest(void);
 		static void imguiEditorDraw(void);
 		static void imguiShutDown(void);
+		static inline int loadnewlevel = 0;
+		static inline int levelsave = 0;
+		static inline std::string path, path2;
+
 	private:
 
 	};

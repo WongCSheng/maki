@@ -152,9 +152,6 @@ namespace JSONSerializer {
 		jsonSpriteValue.SetArray(); // sets the type to a JSON array
 		// IMPORTANT: need to get the player's sprite's transformation to pass in the position values, currently hardcoded
 		jsonSpriteValue.PushBack(Player::playerptr->x, jsonDoc.GetAllocator()); // Write in the x value
-
-
-
 		jsonSpriteValue.PushBack(Player::playerptr->y, jsonDoc.GetAllocator()); // Write in the y value
 		jsonSpriteObj.AddMember("position", jsonSpriteValue, jsonDoc.GetAllocator());
 
@@ -193,15 +190,19 @@ namespace JSONSerializer {
 		rapidjson::PrettyWriter<rapidjson::StringBuffer> jsonWriter(jsonStrBuffer);
 		jsonDoc.Accept(jsonWriter);
 
+		/*if (Editor::LevelEditor::levelsave == 1 )
+		{*/
 		// Write the JSON string into file
 		std::fstream fs;
-		fs.open(filepath.c_str(), std::fstream::out);
+		fs.open(filepath, std::fstream::out);
 		if (!fs.is_open()) {
 			std::cout << "JSONSerializer Serialize: " << filepath << " cannot be opened" << std::endl;
 			return;
 		}
 		fs.write(jsonStrBuffer.GetString(), jsonStrBuffer.GetSize()); // writing the JSON string into the file
 		fs.close();
+
+		//}
 	}
 }
 

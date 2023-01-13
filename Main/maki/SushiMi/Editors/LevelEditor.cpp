@@ -413,6 +413,11 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::Spacing();
 	ImGui::Text("Buttons to test textures load in editor");
 
+	if (ImGui::Button("increment object to swap"))
+	{
+		texpath = "../textures/level1.jpg";
+	}
+
 	if (ImGui::Button("Demo Background"))
 	{
 		texpath = "../textures/demo.jpg";

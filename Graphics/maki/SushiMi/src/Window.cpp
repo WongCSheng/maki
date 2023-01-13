@@ -37,6 +37,7 @@ static bool keystate_down = false;
 static bool keystate_R = false;
 
 Player* player;
+SceneManager* scnmanager = new SceneManager();
 /*					key  callback function  , helper function for controlling input
 	----------------------------------------------------------------------------- */
 void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
@@ -117,6 +118,8 @@ Window::Window(int width, int height)
 	sp = new Sprite("../textures/level1.jpg");
 	sp->transformation.scale = glm::vec2(2000, 2000);
 	sp->transformation.position = glm::vec2(0);
+
+	scnmanager->loadTile(); //scene manager
 }
 
 Window::~Window()
@@ -201,7 +204,7 @@ void Window::Input()
 	*/
 	if (ImGui::IsKeyPressed(GLFW_KEY_R))
 	{
-		restartLevel();
+		scnmanager->restartLevel();
 	}
 
 }
@@ -247,6 +250,7 @@ void Window::Mainloop()
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
 
+		scnmanager->drawTile();
 
 		endtime = glfwGetTime();
 		delta = (endtime - starttime) / 2;

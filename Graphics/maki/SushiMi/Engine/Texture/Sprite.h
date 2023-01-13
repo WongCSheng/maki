@@ -16,7 +16,6 @@ class Sprite
 {
 public:
 	Sprite(const char* filename);
-
 	~Sprite();
 
 	void draw();

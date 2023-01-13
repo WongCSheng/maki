@@ -19,7 +19,6 @@ int screenDimension = 1000;
 
 Player::Player()
 {
-
 	sp = new Sprite("../textures/spritesheet/spritesheet.png");
 	sp->transformation.position = glm::vec2(Player::playerptr->x, Player::playerptr->y);
 	sp->transformation.scale = glm::vec2(150, 150);

@@ -141,7 +141,7 @@ namespace Core
 		{
 			glfwGetCursorPos(window, &xpos, & ypos);
 			gfxVector2 coordinates(xpos, ypos);
-			std::cout << "Coursor position at " << xpos << " : " << ypos << std::endl;
+			std::cout << "Cursor position at " << xpos << " : " << ypos << std::endl;
 			return coordinates;
 		}
 		return gfxVector2(0, 0);

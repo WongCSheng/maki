@@ -43,6 +43,7 @@ namespace Editor
 		static inline int loadnewlevel = 0;
 		static inline int levelsave = 0;
 		static inline std::string path, path2;
+		static void imguiObjectCursor(void);
 
 	private:
 

@@ -24,6 +24,22 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Serialiser/JSONSerializer.h"
 
 
+//Object Enums for object selection:
+enum OBJECTTYPES
+{
+	GRASS, //1
+	PATH1,
+	PATH2,
+	PATH3,
+	WALL1,
+	WALL2,
+	WALL3,
+	AVOCADO,
+	CORN,
+	RICE,
+	NORI
+};
+
 //std::vector<std::string> ObjVector;
 //std::vector<const char*> objectString;
 int i = 0;
@@ -422,6 +438,11 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	ImGui::Spacing();
 	ImGui::Text("Buttons to test textures load in editor");
 
+	if (ImGui::Button("increment object to swap"))
+	{
+		texpath = "../textures/level1.jpg";
+	}
+
 	if (ImGui::Button("Demo Background"))
 	{
 		texpath = "../textures/demo.jpg";
@@ -506,4 +527,17 @@ void Editor::LevelEditor::imguiShutDown(void)
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
+}
+
+void Editor::LevelEditor::imguiObjectCursor(void)
+{
+	double xpos, ypos;
+	glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+	//std::cout << "your GLFW positions are x: " << xpos << " and y: " << ypos << std::endl;
+	
+	//grid snapping logic
+	xpos = (float)((int)(xpos) / 100 * 100);
+	ypos = (float)((int)(ypos) / 100 * 100);
+	// the grid size is now hard coded as 100 x 100
+	Window::sp1->transformation.position = glm::vec2(xpos, ypos);
 }

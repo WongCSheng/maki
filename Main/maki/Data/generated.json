@@ -2,12 +2,12 @@
     "sprite": {
         "filepath": "../textures/spritesheet/spritesheet.png",
         "position": [
-            681,
-            666
+            600,
+            600
         ],
         "scale": [
-            150,
-            150
+            100,
+            100
         ]
     },
     "animation": [

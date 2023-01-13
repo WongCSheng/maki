@@ -3,6 +3,7 @@
 #include "Window.h"
 #include "../../imgui/imgui.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
+#include "../Editors/imfilebrowser.h"
 #include "../Headers/SceneManager.h"
 #include "../Game Object/Player.h"
 #include "../Engine/Texture/Sprite.h"
@@ -103,7 +104,7 @@ Window::Window(int width, int height)
 	sp->transformation.position = glm::vec2(0);
 
 	sp1 = new Sprite("../textures/1.png");
-	sp1->transformation.scale = glm::vec2(200, 200);
+	sp1->transformation.scale = glm::vec2(100, 100);
 	sp1->transformation.position = glm::vec2(15,20);
 }
 
@@ -216,6 +217,10 @@ void Window::Mainloop()
 	while (!glfwWindowShouldClose(window_ptr))
 	{
 		starttime = glfwGetTime();
+		
+		//display object at imgui cursor
+		Editor::LevelEditor::imguiObjectCursor();
+
 		pseudomain::update();
 		pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 		//for each frame 

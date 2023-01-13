@@ -15,7 +15,7 @@
  //adjust according to tile-map size
 
 
-int screenDimension = 1000;
+
 
 Player::Player()
 {
@@ -47,15 +47,21 @@ Player::~Player()
 	delete sp;
 }
 
+//Example: my screen can display 19 (W) x 11 (H) tiles
 void Player::move_left()
 {
 	if (sp->transformation.scale.x > 0)
 		sp->transformation.scale.x *= 1;
 
 	current_anim = Run;
-	int* screenptr = &screenDimension;
-	int gridWidth = screenDimension / 6;
-	glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
+	
+	//Best way: ensure grid is consistent with all window sizes
+	//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
+	//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
+
+	//current hard code way
+	int gridWidth = 100;
+
 	sp->transformation.position.x -= gridWidth;
 	Player::playerptr->x -= gridWidth;
 
@@ -69,9 +75,13 @@ void Player::move_right()
 
 	current_anim = Run;
 
-	int* screenptr = &screenDimension;
-	int gridWidth = screenDimension / 6;
-	glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
+	//Best way: ensure grid is consistent with all window sizes
+	//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
+	//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
+
+	//current hard code way
+	int gridWidth = 100;
+
 	sp->transformation.position.x += gridWidth;
 	Player::playerptr->x += gridWidth;
 }
@@ -82,11 +92,16 @@ void Player::move_up()
 		sp->transformation.scale.y *= 1;
 
 	current_anim = Run;
-	int* screenptr = &screenDimension;
-	int gridWidth = screenDimension / 6;
-	glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-	sp->transformation.position.y -= gridWidth;
-	Player::playerptr->y -= gridWidth;
+
+	//Best way: ensure grid is consistent with all window sizes
+	//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
+	//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
+
+	//current hard code way
+	int gridHeight = 100; 
+
+	sp->transformation.position.y -= gridHeight;
+	Player::playerptr->y -= gridHeight;
 
 }
 
@@ -96,11 +111,16 @@ void Player::move_down()
 		sp->transformation.scale.y *= -1;
 
 	current_anim = Run;
-	int* screenptr = &screenDimension;
-	int gridWidth = screenDimension / 6;
-	glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-	sp->transformation.position.y += gridWidth;
-	Player::playerptr->y += gridWidth;
+
+	//Best way: ensure grid is consistent with all window sizes
+	//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
+	//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
+
+	//current hard code way
+	int gridHeight = 100;
+
+	sp->transformation.position.y += gridHeight;
+	Player::playerptr->y += gridHeight;
 
 }
 

@@ -28,10 +28,14 @@ public:
 
 
 	static inline Player* player;
-	static Sprite* sp;
-	static Sprite* sp1;
+	static inline Sprite* sp;
+	static inline Sprite* sp1;
 	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 	
+	static inline struct ScreenDimensions {
+		static inline int screenwidth;
+		static inline int screenheight;
+	};
 private:
 	int m_width, m_height;
 	GLFWwindow* ptr_win;

@@ -19,6 +19,8 @@ static bool keystate_down = false;
 static bool keystate_R = false;
 
 Player* player;
+Sprite* Window::sp = nullptr;
+Sprite* Window::sp1 = nullptr;
 /*					key  callback function  , helper function for controlling input
 	----------------------------------------------------------------------------- */
 void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)

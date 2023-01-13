@@ -58,6 +58,7 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	// create a file browser instance
 	ImGui::FileBrowser fileDialog;
 
+
 	// (optional) set browser properties
 	fileDialog.SetTitle("ImGui File Explorer");
 	//fileDialog.SetPwd("../maki/textures/");
@@ -371,6 +372,30 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 
 	}
 
+
+
+	/*Testing for interface for object properties*/
+	ImGui::Begin("Object properties");
+	//ImGui::Button("Create Object");
+	if(ImGui::Button("Create Object"))
+	{
+		ImGui::OpenPopup("Object Creation");
+	}
+	if(ImGui::BeginPopupModal("Object Creation"))
+	{
+		ImGui::Text("TESTING");
+		
+		if (ImGui::Button("Close"))
+		{
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::EndPopup();
+	}
+
+	/*This enables changing of a specific sprite, will have to make this dynamic as it currently binds to sp1 only*/
+	ImGui::SliderFloat("position X", &Window::sp1->transformation.position.x,0,100);
+	ImGui::SliderFloat("position Y", &Window::sp1->transformation.position.y, 0, 100);
+	ImGui::End();
 	/*currently not working oops*/
 	//ImGui::Text("Click to Create New Object/Modify Object");
 

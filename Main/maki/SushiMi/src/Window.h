@@ -28,8 +28,8 @@ public:
 
 
 	static inline Player* player;
-	Sprite* sp;
-	Sprite* sp1;
+	static Sprite* sp;
+	static Sprite* sp1;
 	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 	
 private:

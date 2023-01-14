@@ -50,7 +50,7 @@ static ImGui::FileBrowser fileDialog;
 unsigned int texture1, texture2;
 unsigned int ID;
 int width, height, nrChannels;
-const char* texpath = "../textures/menu.jpg";
+
 
 //Shader ourShader("../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
 
@@ -437,15 +437,18 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 
 	ImGui::Spacing();
 	ImGui::Text("Buttons to test textures load in editor");
+	
+	/*ImGui::ImageButton("gfx/image.png", 64, 64, 8, 0xffffff, 1, 0xff0000, 0.5);*/
 
-	if (ImGui::Button("increment object to swap"))
+	if (ImGui::Button("Cucumber"))
 	{
-		texpath = "../textures/level1.jpg";
+		texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
 	}
 
-	if (ImGui::Button("Demo Background"))
+	if (ImGui::Button("Salmon"))
 	{
-		texpath = "../textures/demo.jpg";
+		texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+
 	}
 
 	if (ImGui::Button("Level1 Background"))
@@ -534,10 +537,21 @@ void Editor::LevelEditor::imguiObjectCursor(void)
 	double xpos, ypos;
 	glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 	//std::cout << "your GLFW positions are x: " << xpos << " and y: " << ypos << std::endl;
-	
+
+
 	//grid snapping logic
 	xpos = (float)((int)(xpos) / 100 * 100);
 	ypos = (float)((int)(ypos) / 100 * 100);
 	// the grid size is now hard coded as 100 x 100
+	// game is 18 (W) x 10 (H)!!
 	Window::sp1->transformation.position = glm::vec2(xpos, ypos);
+
+	//place object on click
+	/*if (mouse_event(MOUSEEVENTF_LEFTDOWN))
+	{
+		glfwGetCursorPos(window, &xpos, &ypos);
+		gfxVector2 coordinates(xpos, ypos);
+		std::cout << "Cursor position at " << xpos << " : " << ypos << std::endl;
+		return coordinates;
+	}*/
 }

@@ -139,6 +139,9 @@
     <ClCompile Include="Engine\Texture\Rectangle.cpp">
       <Filter>GameEngine\System\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>Scene Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -316,9 +319,6 @@
     <ClInclude Include="src\Window.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\SceneManager.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Game Object\Player.h">
       <Filter>GameEngine\System\Texture</Filter>
     </ClInclude>
@@ -327,6 +327,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Texture\Rectangle.h">
       <Filter>GameEngine\System\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\SceneManager.h">
+      <Filter>Scene Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -446,6 +449,9 @@
     </Filter>
     <Filter Include="GameEngine\System\Texture">
       <UniqueIdentifier>{3e7250d2-a760-4f2a-b2e8-5b8efe94606c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene Manager">
+      <UniqueIdentifier>{651bec7a-1b01-4853-b443-192fa313b4ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@
 #include "../Engine/Texture/Sprite.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
+#include "../Headers/SceneManager.h"
 
 
 /*                                                             input key states
@@ -22,6 +23,8 @@ static bool keystate_R = false;
 Player* player;
 Sprite* Window::sp = nullptr;
 Sprite* Window::sp1 = nullptr;
+//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
+
 /*					key  callback function  , helper function for controlling input
 	----------------------------------------------------------------------------- */
 void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
@@ -67,7 +70,7 @@ Window::Window(int width, int height)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_MAXIMIZED, true);
 
-	window_ptr = glfwCreateWindow(width, height, "ANIMATION ONLY", NULL, NULL);
+	window_ptr = glfwCreateWindow(width, height, "SushiMi Engine", NULL, NULL);
 	if (window_ptr == nullptr)
 	{
 		std::cout << "erorr initilize glfw" << std::endl;
@@ -103,16 +106,21 @@ Window::Window(int width, int height)
 	sp->transformation.scale = glm::vec2(2000, 2000);
 	sp->transformation.position = glm::vec2(0);
 
-	sp1 = new Sprite("../textures/1.png");
+	SceneManager::loadTile(); //scene manager
+
+	//the moving ingredient
+	sp1 = new Sprite(Editor::LevelEditor::texpath);
 	sp1->transformation.scale = glm::vec2(100, 100);
 	sp1->transformation.position = glm::vec2(15,20);
 }
 
 Window::~Window()
 {
+	SceneManager::destroyTile();
 	//JSONSerializer::Serialize(player, "../Data/generated.json");
 	delete player;
 	delete sp; //16 bytes 
+	delete sp1;
 	glfwTerminate();
 }
 
@@ -135,7 +143,6 @@ void Window::Input()
 				player->stop();
 			}
 			player->move_right();
-
 			keystate_right = false;
 		}
 	}
@@ -151,7 +158,6 @@ void Window::Input()
 				player->stop();
 			}
 			player->move_left();
-
 			keystate_left = false;
 		}
 	}
@@ -165,7 +171,6 @@ void Window::Input()
 				player->stop();
 			}
 			player->move_up();
-			//player->move_right();
 			keystate_up = false;
 		}
 	}
@@ -182,7 +187,6 @@ void Window::Input()
 			player->move_down();
 			keystate_down = false;
 		}
-
 	}
 
 	/*
@@ -190,7 +194,17 @@ void Window::Input()
 	*/
 	if (ImGui::IsKeyPressed(GLFW_KEY_R))
 	{
-		restartLevel();
+		if (keystate_R)
+		{
+			if (ImGui::IsKeyPressed(GLFW_KEY_R))
+			{
+				//restart
+				std::cout << "restarting level" << std::endl;
+				player->restart();
+				std::cout << "player is moved back to x: " << Player::playerpos_restart.x << " and y: " << Player::playerpos_restart.y << std::endl;
+			}
+			keystate_R = false;
+		}
 	}
 
 }
@@ -242,6 +256,8 @@ void Window::Mainloop()
 
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
+
+		SceneManager::drawTile();
 
 
 		endtime = glfwGetTime();

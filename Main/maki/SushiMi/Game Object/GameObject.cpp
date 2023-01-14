@@ -17,6 +17,12 @@ namespace Core
 
 		GameObjectProperty::~GameObjectProperty()
 		{
+			for (auto& x : ComponentContainer)
+			{
+				if (x.second) {
+					delete x.second;
+				}
+			}
 			ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
 		}
 
@@ -62,6 +68,9 @@ namespace Core
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
 		{
+			if (ComponentContainer[ID]) {
+			delete ComponentContainer[ID];
+			}
 			ComponentContainer.erase(ID);
 		}
 
@@ -79,6 +88,7 @@ namespace Core
 
 		GameObject::~GameObject()
 		{
+			delete characteristics;
 		}
 
 		void GameObject::Init()

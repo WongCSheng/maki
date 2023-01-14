@@ -50,14 +50,14 @@ Core::MainSystem::MainSystem()
 */
 Core::MainSystem::~MainSystem()
 {
-	for (auto& sys : systems)
-	{
-		if (sys != NULL)
-		{
-			delete sys;
-			sys = NULL;
-		}
-	}
+	//for (auto& sys : systems)
+	//{
+	//	if (sys != NULL)
+	//	{
+	//		delete sys;
+	//		sys = NULL;
+	//	}
+	//}
 }
 
 /*

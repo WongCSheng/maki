@@ -44,6 +44,7 @@ namespace Editor
 		static inline int levelsave = 0;
 		static inline std::string path, path2;
 		static void imguiObjectCursor(void);
+		static inline const char* texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
 
 	private:
 

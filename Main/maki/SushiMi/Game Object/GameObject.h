@@ -54,9 +54,9 @@ namespace Core
 			GameObjectProperty* characteristics; //use unique_ptr
 
 		protected:
-			virtual ~GameObject();
 
 		public:
+			virtual ~GameObject();
 			friend class ObjectFactory;
 			
 			

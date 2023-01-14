@@ -22,7 +22,7 @@ Player::Player()
 
 	sp = new Sprite("../textures/spritesheet/spritesheet.png");
 	sp->transformation.position = glm::vec2(Player::playerptr->x, Player::playerptr->y);
-	sp->transformation.scale = glm::vec2(150, 150);
+	sp->transformation.scale = glm::vec2(100, 100);
 
 	sp->Add_animation("../textures/spritesheet/Idle.txt");
 	sp->Add_animation("../textures/spritesheet/Run.txt");
@@ -122,6 +122,12 @@ void Player::move_down()
 	sp->transformation.position.y += gridHeight;
 	Player::playerptr->y += gridHeight;
 
+}
+
+void Player::restart()
+{
+	sp->transformation.position.x = playerpos_restart.x;
+	sp->transformation.position.y = playerpos_restart.y;
 }
 
 void Player::stop()

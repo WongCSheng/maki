@@ -24,6 +24,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
+#include "../Engine/Texture/texture.h"
 #include "../Engine/Audio/AudioEngine.h"
 
 //#include "../Mono/Mono.h"
@@ -37,8 +38,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 
 
-static Core::MainSystem* CoreSystem = new Core::MainSystem();
-static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
+static Core::MainSystem* CoreSystem;
+static Core::Object::GameObject* TestObj;
 
 
 /*                                                      function definitions
@@ -59,15 +60,27 @@ int main() {
 	// Enable run-time memory check for debug builds.
 	#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(10730); //use this to detect memory leaks, replace the number with mem leak location
+
 	#endif
+
+	//systems that were new and not deleted
+	CoreSystem = new Core::MainSystem();
+	TestObj = new Core::Object::GameObject();
+	Core::Renderer::GetInstance();
+	TextureSystem::GetInstance();
 
 	Window* window = new Window(800, 600);
 	glfwInit();
 	pseudomain::init();
 	window->Mainloop();
-	
+
+	//To shift into cleanup
+	delete TestObj;
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 	delete window;
+	delete Core::Renderer::GetInstance();
+	delete TextureSystem::GetInstance();
 	pseudomain::cleanup();
 }
 
@@ -198,4 +211,5 @@ void pseudomain::cleanup() {
 	Editor::LevelEditor::imguiShutDown();
 
 	CoreSystem->clear();
+	delete CoreSystem;
 }

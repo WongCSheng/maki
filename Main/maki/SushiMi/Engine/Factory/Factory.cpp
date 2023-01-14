@@ -31,7 +31,7 @@ namespace Core
 
 		for (it; it != DeleteList.end(); ++it)
 		{
-			delete &it;
+			delete *it;
 		}
 
 		DeleteList.clear();

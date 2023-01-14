@@ -25,7 +25,7 @@ public:
 	void move_up();
 
 	void move_down();
-
+	void restart();
 
 	void stop();
 
@@ -40,6 +40,13 @@ public:
 
 	static inline struct PlayerSavedPos playerpos;
 	static inline struct PlayerSavedPos* playerptr = &playerpos;
+
+	static inline struct PlayerInitialPos {
+		static inline int x;
+		static inline int y;
+	};
+
+	static inline struct PlayerInitialPos playerpos_restart;
 
 private:
 	Sprite* sp;

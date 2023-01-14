@@ -89,6 +89,9 @@ namespace JSONSerializer {
 		}
 		//setting player pos from JSON into custom variable
 		//set your custom variable!!!! important
+		Player::playerpos_restart.x = pos[0];
+		Player::playerpos_restart.y = pos[1];
+
 		Player::playerptr->x = pos[0];
 		Player::playerptr->y = pos[1];
 
@@ -158,8 +161,8 @@ namespace JSONSerializer {
 		// Serialize "scale"
 		jsonSpriteValue.SetArray(); // sets the type to a JSON array
 		// IMPORTANT: need to get the player's sprite's transformation to pass in the scale values, currently hardcoded
-		jsonSpriteValue.PushBack(150, jsonDoc.GetAllocator()); // Write in the x value
-		jsonSpriteValue.PushBack(150, jsonDoc.GetAllocator()); // Write in the y value
+		jsonSpriteValue.PushBack(100, jsonDoc.GetAllocator()); // Write in the x value
+		jsonSpriteValue.PushBack(100, jsonDoc.GetAllocator()); // Write in the y value
 		jsonSpriteObj.AddMember("scale", jsonSpriteValue, jsonDoc.GetAllocator()); // save the scale array into the sprite JSON object
 
 		jsonDoc.AddMember("sprite", jsonSpriteObj, jsonDoc.GetAllocator()); // save the sprite JSON object into the document

@@ -23,6 +23,7 @@ static bool keystate_R = false;
 Player* player;
 Sprite* Window::sp = nullptr;
 Sprite* Window::sp1 = nullptr;
+Sprite* SceneManager::tile;
 //SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
 /*					key  callback function  , helper function for controlling input
@@ -245,6 +246,7 @@ void Window::Mainloop()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// all drawing goes here ..
+
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
@@ -254,10 +256,12 @@ void Window::Mainloop()
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
 		sp1->draw();
 
+		SceneManager::drawTile();
+
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 		player->draw(delta);
 
-		SceneManager::drawTile();
+
 
 
 		endtime = glfwGetTime();

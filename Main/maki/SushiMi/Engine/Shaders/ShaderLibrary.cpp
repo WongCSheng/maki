@@ -7,6 +7,9 @@
 @brief		Shader Library contains the vert and frag shaders for texture and colour shaders respectively.
 			When shader programs are created, they will use the respective shader library
 *//*__________________________________________________________________________*/
+
+std::unique_ptr<ShaderLibrary> Shaders = nullptr;
+
 ShaderLibrary::ShaderLibrary()
 {
 	const char* vs = R"CODE(

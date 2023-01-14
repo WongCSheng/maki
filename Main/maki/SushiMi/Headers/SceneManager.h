@@ -25,7 +25,7 @@ public:
 	unsigned int getTileWidth();
 	unsigned int getTileHeight();
 
-	static inline Sprite* tile;
+	static Sprite* tile;
 
 	unsigned int rows, cols,
 		tileWidth, tileHeight;

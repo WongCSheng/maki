@@ -23,6 +23,7 @@ static bool keystate_R = false;
 Player* player;
 Sprite* Window::sp = nullptr;
 Sprite* Window::sp1 = nullptr;
+Sprite* SceneManager::tile;
 //SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
 /*					key  callback function  , helper function for controlling input

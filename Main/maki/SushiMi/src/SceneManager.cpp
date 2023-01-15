@@ -1,5 +1,6 @@
 #include "../Headers/SceneManager.h"
 #include "../Engine//Serialiser/JSONSerializer.h"
+#include "../Engine/Shaders/ShaderLibrary.h"
 
 SceneManager::SceneManager()
 {
@@ -27,12 +28,13 @@ SceneManager::~SceneManager()
 void SceneManager::loadTile()
 {
 	tile = new Sprite("../textures/doge.PNG");
-	tile->transformation.position = glm::vec2(-100, 0);
+	tile->transformation.position = glm::vec2(100, 0);
 	tile->transformation.scale = glm::vec2(100, 100);
 }
 
 void SceneManager::drawTile()
 {
+	Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile->transformation.Get());
 	tile->draw();
 }
 

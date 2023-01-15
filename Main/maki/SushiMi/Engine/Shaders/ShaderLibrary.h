@@ -29,4 +29,4 @@ private:
 	std::map<std::string, ShaderProgram*> programs;
 };
 
-static std::unique_ptr<ShaderLibrary> Shaders;
+extern std::unique_ptr<ShaderLibrary> Shaders;

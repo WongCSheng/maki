@@ -54,14 +54,12 @@ namespace Core
 			GameObjectProperty* characteristics; //use unique_ptr
 
 		public:
+			GameObject();
 			virtual ~GameObject();
 			friend class ObjectFactory;
 			
-			virtual ~GameObject();
-			
 			//LinkedList<Component*> HeadOfList;
 			
-			GameObject();
 
 			virtual void Init();
 

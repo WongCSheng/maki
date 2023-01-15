@@ -68,9 +68,9 @@ int main() {
 	CoreSystem = new Core::MainSystem();
 	TestObj = new Core::Object::GameObject();
 	Core::Renderer::GetInstance();
-	TextureSystem::GetInstance();
+	//Core::Texture::GetInstance();
 
-	Window* window = new Window(800, 600);
+	Core::Window* window = new Core::Window(800, 600);
 	glfwInit();
 	Core::pseudomain::init();
 	window->Mainloop();
@@ -80,8 +80,8 @@ int main() {
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 	delete window;
 	delete Core::Renderer::GetInstance();
-	delete TextureSystem::GetInstance();
-	pseudomain::cleanup();
+	//delete TextureSystem::GetInstance();
+	Core::pseudomain::cleanup();
 }
 
 /*  _________________________________________________________________________ */

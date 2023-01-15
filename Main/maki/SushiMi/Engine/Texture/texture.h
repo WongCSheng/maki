@@ -7,25 +7,30 @@
 @brief		Generating of texture using stbi and mimap. Delete of texture is here too.
 *//*__________________________________________________________________________*/
 // singlton pattern
+#include <../stb-master/stb_image.h>
+#include <../glew/include/GL/glew.h>
+#include <iostream>
 
-struct Texture
+namespace Core
 {
-	int width;
-	int height;
-	unsigned int ID;
-};
+	class Texture
+	{
+	public:
+		Texture Generate(const char* filename);
 
-class TextureSystem
-{
-public:
-	static TextureSystem* GetInstance();
+		void Delete(Texture& obj);
 
-	Texture Generate(const char* filename);
+		int GetWidth() const;
+		int GetHeight() const;
+		unsigned int GetID() const;
 
-	void Delete(Texture& obj);
+	private:
+		int Texwidth;
+		int Texheight;
+		unsigned int TextureID;
 
-private:
-	TextureSystem();
+		unsigned char* data;
 
-	static TextureSystem* _instance;
-};
+		//std::string TextureName; //To be removed in the future for optimisation. We'll use numbers for naming textures instead
+	};
+}

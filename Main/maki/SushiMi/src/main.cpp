@@ -72,7 +72,7 @@ int main() {
 
 	Window* window = new Window(800, 600);
 	glfwInit();
-	pseudomain::init();
+	Core::pseudomain::init();
 	window->Mainloop();
 
 	//To shift into cleanup
@@ -93,7 +93,7 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 For now, there are no objects to animate nor keyboard, mouse button click,
 mouse movement, and mouse scroller events to be processed.
 */
-void pseudomain::update() 
+void Core::pseudomain::update() 
 {
 	glfwPollEvents();
 
@@ -115,7 +115,7 @@ void pseudomain::update()
 Call application to draw and then swap front and back frame buffers ...
 Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
-void pseudomain::draw() 
+void Core::pseudomain::draw() 
 {
 	//imGUI Game Editor
 	Editor::LevelEditor::imguiEditorDraw();
@@ -152,7 +152,7 @@ The OpenGL context initialization stuff is abstracted away in GLHelper::init.
 The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
-void pseudomain::init() {
+void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
@@ -199,7 +199,7 @@ Return allocated resources for window and OpenGL context thro GLFW back
 to system.
 Return graphics memory claimed through
 */
-void pseudomain::cleanup() {
+void Core::pseudomain::cleanup() {
 
 	GLHelper::cleanup();
 	//unload music

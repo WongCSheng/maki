@@ -11,25 +11,27 @@
 #include "../Engine/Components/Transform/sTransform.h"
 #include "../Engine/Animation/Animation2D.h"
 
-
-class Sprite
+namespace Core
 {
-public:
-	Sprite(const char* filename);
+	class Sprite
+	{
+	public:
+		Sprite(const char* filename);
 
-	~Sprite();
+		~Sprite();
 
-	void draw();
+		void draw();
 
-	void draw(double deltatime, AnimationType type);
+		void draw(double deltatime, AnimationType type);
 
-	void Add_animation(const char* filename);
+		void Add_animation(const char* filename);
 
-	Transform transformation;
+		Transform transformation;
 
-private:
-	Texture texture;
-	Core::vtx rectangle;
+	private:
+		Texture texture;
+		Core::vtx rectangle;
 
-	std::vector<Animation2D*> anims;
-};
+		std::vector<Animation2D*> anims;
+	};
+}

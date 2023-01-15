@@ -32,19 +32,12 @@ namespace Core
 		void SetPosition(gfxVector2 position);
 		void SetScale(gfxVector2 scale);
 		void SetRotation(gfxMatrix3 rotation);
-		//void SetForward(gfxVector2 forward);
 
 		void Translating(gfxVector2 translate);
 		void Rotating(gfxMatrix3 rotate);
 		void Scaling(float scale);
 
-		//const gfxVector2& Forward(const double dt);
-
 	private:
-		//gfxVector2 forward;
-
-		//gfxMatrix3 T, R, S;
-
 		gfxVector2 Position;
 		gfxMatrix3 Rotation;
 		gfxVector2 Scale;

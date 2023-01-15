@@ -12,33 +12,38 @@
 #include <../glm/glm/vec4.hpp>
 #include <vector>
 
-class Texture;
-//using namespace std;
-enum AnimationType
+namespace Core
 {
-	Idle,
-	Run,
-	Jump
-};
 
-class Animation2D
-{
-public:
-	Animation2D(const char* filename);
+	class Texture;
+	//using namespace std;
+	enum AnimationType
+	{
+		Idle,
+		Run,
+		Jump
+	};
 
-	~Animation2D();
+	class Animation2D
+	{
+	public:
+		Animation2D(const char* filename);
+
+		~Animation2D();
 
 
-	void play(Texture& spritetexture, Core::vtx rectangle, double deltatime);
+		void play(Texture& spritetexture, Core::vtx rectangle, double deltatime);
 
-	void set_animation_speed(float newspeed);
+		void set_animation_speed(float newspeed);
 
 
-private:
-	double anim_cursor;
-	int current_frame_indx;
-	int frames_count;
-	float speed;
+	private:
+		double anim_cursor;
+		int current_frame_indx;
+		int frames_count;
+		float speed;
 
-	std::vector<glm::vec4> frames;
-};
+		std::vector<glm::vec4> frames;
+	};
+
+}

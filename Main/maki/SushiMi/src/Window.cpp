@@ -29,6 +29,16 @@ Sprite* Window::sp1 = nullptr;
 	----------------------------------------------------------------------------- */
 void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 {
+	/*                                                             input key states
+	----------------------------------------------------------------------------- */
+	static bool keystate_left = false;
+	static bool keystate_right = false;
+	static bool keystate_up = false;
+	static bool keystate_down = false;
+	static bool keystate_R = false;
+
+	Player* player;
+
 	if (GLFW_PRESS == action)
 	{
 		keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
@@ -55,7 +65,6 @@ void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 		keystate_down = false;
 		keystate_R = false;
 	}
-
 }
 
 Window::Window(int width, int height)
@@ -63,23 +72,26 @@ Window::Window(int width, int height)
 	m_height(height)
 
 {
-	glfwInit();
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_MAXIMIZED, true);
-
 	window_ptr = glfwCreateWindow(width, height, "SushiMi Engine", NULL, NULL);
 	if (window_ptr == nullptr)
 	{
 		std::cout << "erorr initilize glfw" << std::endl;
 		return;
 	}
+	
+	glfwInit();
 
-	glfwMakeContextCurrent(window_ptr);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_MAXIMIZED, true);
+	
 
-	glfwSetKeyCallback(window_ptr, keyCallBack); //callback to the key everytime the key is pressed
+	JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
+	player = JSONSerializer::Deserialize(*JSONSerializer::LevelLoadPathPtr);
+	starttime = 0;
+	endtime = 0;
+	delta = 0;
 
 	if (glewInit())
 	{
@@ -89,17 +101,6 @@ Window::Window(int width, int height)
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-	player = JSONSerializer::Deserialize(*JSONSerializer::LevelLoadPathPtr);
-	starttime = 0;
-	endtime = 0;
-	delta = 0;
-
-	Shaders = std::make_unique<ShaderLibrary>();
-	camera = std::make_unique<Camera>(0, 0);
-
-	//player = new Player();
 
 	//background
 	sp = new Sprite("../textures/level1.jpg");
@@ -122,9 +123,28 @@ Window::~Window()
 	delete sp; //16 bytes 
 	delete sp1;
 	glfwTerminate();
+
+	Shaders = std::make_unique<ShaderLibrary>();
+	camera = std::make_unique<Camera>(0, 0);
+
+	//player = new Player();
+
+	sp = new Sprite("../textures/level1.jpg");
+	sp->transformation.scale = glm::vec2(2000, 2000);
+	sp->transformation.position = glm::vec2(0);
+
+	sp1 = new Sprite("../textures/1.png");
+	sp1->transformation.scale = glm::vec2(200, 200);
+	sp1->transformation.position = glm::vec2(15, 20);
 }
 
-
+Window::~Window()
+{
+	JSONSerializer::Serialize(player, "../Data/generated.json");
+	delete player;
+	delete sp; //16 bytes 
+	glfwTerminate();
+}
 
 void Window::Input()
 {
@@ -138,13 +158,10 @@ void Window::Input()
 	{
 		if (keystate_right)
 		{
-			if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT))
-			{
-				player->stop();
-			}
-			player->move_right();
-			keystate_right = false;
+			player->stop();
 		}
+		player->move_right();
+		keystate_right = false;
 	}
 
 	else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
@@ -153,13 +170,10 @@ void Window::Input()
 		//holding key or let go key, player stop
 		if (keystate_left)
 		{
-			if (ImGui::IsKeyReleased(GLFW_KEY_LEFT))
-			{
-				player->stop();
-			}
-			player->move_left();
-			keystate_left = false;
+			player->stop();
 		}
+		player->move_left();
+		keystate_left = false;
 	}
 
 	else if (ImGui::IsKeyPressed(GLFW_KEY_UP))
@@ -171,8 +185,11 @@ void Window::Input()
 				player->stop();
 			}
 			player->move_up();
+			//player->move_right();
 			keystate_up = false;
 		}
+		player->move_up();
+		keystate_up = false;
 	}
 
 
@@ -187,6 +204,7 @@ void Window::Input()
 			player->move_down();
 			keystate_down = false;
 		}
+
 	}
 
 	/*
@@ -206,11 +224,7 @@ void Window::Input()
 			keystate_R = false;
 		}
 	}
-
 }
-
-
-
 
 void Window::Resize()
 {
@@ -228,42 +242,37 @@ void Window::Resize()
 
 void Window::Mainloop()
 {
-	while (!glfwWindowShouldClose(window_ptr))
-	{
-		starttime = glfwGetTime();
-		
-		//display object at imgui cursor
-		Editor::LevelEditor::imguiObjectCursor();
+	starttime = glfwGetTime();
+	
+	//display object at imgui cursor
+	Editor::LevelEditor::imguiObjectCursor();
 
-		pseudomain::update();
-		pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
-		//for each frame 
-		Resize();
-		Input();
+	pseudomain::update();
+	pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
+	//for each frame 
+	Resize();
+	Input();
 
-		glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-		// all drawing goes here ..
-		Shaders->Textured_Shader()->use();
-		Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
+	// all drawing goes here ..
+	Shaders->Textured_Shader()->use();
+	Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
-		sp->draw();
+	Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
+	sp->draw();
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
-		sp1->draw();
+	Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
+	sp1->draw();
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-		player->draw(delta);
+	Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+	player->draw(delta);
 
-		SceneManager::drawTile();
+	SceneManager::drawTile();
 
-
-		endtime = glfwGetTime();
-		delta = (endtime - starttime) / 2;
-	}
+	endtime = glfwGetTime();
+	delta = (endtime - starttime) / 2;
 	glfwSwapBuffers(window_ptr);
 	glfwPollEvents();
 }
-

@@ -3,30 +3,33 @@
 #include "../Game Object/Player.h"
 #include "../src/Window.h"
 
-class SceneManager
+namespace Core
 {
-public:
-	SceneManager();
-	~SceneManager();
+	class SceneManager
+	{
+	public:
+		SceneManager();
+		~SceneManager();
 
-	static  void restartLevel();
-	static  void nextLevel();
-	static  void loadTile();
-	static  void drawTile();
-	static  void destroyTile();
+		static  void restartLevel();
+		static  void nextLevel();
+		static  void loadTile();
+		static  void drawTile();
+		static  void destroyTile();
 
-	static  void Readfile();
+		static  void Readfile();
 
-	static  void setRowsandCols(unsigned int inRow, unsigned int inCol);
-	static  void setTileDimension(unsigned int Width, unsigned int Height);
+		static  void setRowsandCols(unsigned int inRow, unsigned int inCol);
+		static  void setTileDimension(unsigned int Width, unsigned int Height);
 
-	unsigned int getRows();
-	unsigned int getCols();
-	unsigned int getTileWidth();
-	unsigned int getTileHeight();
+		unsigned int getRows();
+		unsigned int getCols();
+		unsigned int getTileWidth();
+		unsigned int getTileHeight();
 
-	static inline Sprite* tile;
+		static inline Sprite* tile;
 
-	unsigned int rows, cols,
-		tileWidth, tileHeight;
-};
+		unsigned int rows, cols,
+			tileWidth, tileHeight;
+	};
+}

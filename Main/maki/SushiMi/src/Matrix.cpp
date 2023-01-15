@@ -248,7 +248,7 @@ gfxMatrix3& gfxMatrix3::operator*=(float value)
 
 gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
 {
-	return(
+	return gfxMatrix3(
 		a[0] + rhs.a[0],
 		a[1] + rhs.a[1],
 		a[2] + rhs.a[2],
@@ -258,8 +258,9 @@ gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
 		a[6] + rhs.a[6],
 		a[7] + rhs.a[7],
 		a[8] + rhs.a[8]
-		);
+	);
 }
+
 gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 {
 	for (int i = 0; i < 9; i++)

@@ -21,19 +21,9 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../../glew/include/GL/glew.h"
 #include "../Engine/System/Graphics/glhelper.h"
 
-class mainclass
+namespace Core
 {
-public:
-
-	inline static bool drawTexture = false; //setting this to true creates error? -thea
-	inline static float size = 1.0f;
-	inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
-	inline static GLuint VAO, VBO;
-
-};
-namespace Editor
-{
-	class LevelEditor
+	class mainclass
 	{
 	public:
 		static void imguiEditorInit(void);
@@ -48,5 +38,24 @@ namespace Editor
 
 	private:
 
+		inline static bool drawTexture = true;
+		inline static float size = 1.0f;
+		inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
+		//inline static GLuint VAO, VBO;
+		inline static int width, height, nrChannels;
+
 	};
+	namespace Editor
+	{
+		class LevelEditor
+		{
+		public:
+			static void imguiEditorInit(void);
+			static void imguiGraphicsTest(void);
+			static void imguiEditorDraw(void);
+			static void imguiShutDown(void);
+		private:
+
+		};
+	}
 }

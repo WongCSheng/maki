@@ -51,11 +51,6 @@ namespace Core
 		this->Rotation = rotation;
 	}
 
-	/*void Transform::SetForward(gfxVector2 forward)
-	{
-		this->forward = forward;
-	}*/
-
 	void Transform::Translating(gfxVector2 translate)
 	{
 		this->Position += translate;
@@ -70,9 +65,4 @@ namespace Core
 	{
 		Scale *= scale;
 	}
-
-	/*const gfxVector2& Transform::Forward(const double dt)
-	{
-		return forward;
-	}*/
 }

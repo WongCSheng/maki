@@ -10,45 +10,49 @@
 #include "../Engine/Texture/Sprite.h"
 #include <string>
 #include <vector>
-class Player
+
+namespace Core
 {
-public:
-	Player();
-	Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList);
+	class Player
+	{
+	public:
+		Player();
+		Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList);
 
-	~Player();
+		~Player();
 
-	void move_left();
+		void move_left();
 
-	void move_right();
+		void move_right();
 
-	void move_up();
+		void move_up();
 
-	void move_down();
-	void restart();
+		void move_down();
+		void restart();
 
-	void stop();
+		void stop();
 
-	glm::mat4 Transformation();
+		glm::mat4 Transformation();
 
-	void draw(double deltatime);
+		void draw(double deltatime);
 
-	static inline struct PlayerSavedPos {
-		static inline int x;
-		static inline int y;
+		static inline struct PlayerSavedPos {
+			static inline int x;
+			static inline int y;
+		};
+
+		static inline struct PlayerSavedPos playerpos;
+		static inline struct PlayerSavedPos* playerptr = &playerpos;
+
+		static inline struct PlayerInitialPos {
+			static inline int x;
+			static inline int y;
+		};
+
+		static inline struct PlayerInitialPos playerpos_restart;
+
+	private:
+		Sprite* sp;
+		AnimationType current_anim;
 	};
-
-	static inline struct PlayerSavedPos playerpos;
-	static inline struct PlayerSavedPos* playerptr = &playerpos;
-
-	static inline struct PlayerInitialPos {
-		static inline int x;
-		static inline int y;
-	};
-
-	static inline struct PlayerInitialPos playerpos_restart;
-
-private:
-	Sprite* sp;
-	AnimationType current_anim;
-};
+}

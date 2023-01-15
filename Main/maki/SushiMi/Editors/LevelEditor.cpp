@@ -72,7 +72,10 @@ void Editor::LevelEditor::imguiEditorInit(void)
 	}*/
 
 	// create a file browser instance
-	ImGui::FileBrowser fileDialog;
+	static ImGui::FileBrowser fileDialog;
+	unsigned int texture1/*, texture2*/;
+	unsigned int ID;
+	int squareX = 0, squareY = 0, squareZ = 0;
 
 
 	// (optional) set browser properties
@@ -429,10 +432,9 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 	//ImGui::SliderFloat("y-position", &Object::objects[objectString[i]].position.y, -500.0f, 500.0f);
 
 
-	//float *arr[3] = { &Object::objects["temp"].color.r, &Object::objects["temp"].color.g, &Object::objects["temp"].color.b/*, Object::objects["Object5"].color.a*/ };
 
-	//RGB colour selection
-	//ImGui::ColorEdit3("Color", *arr);
+		ImGui::Begin("Object Editor - Imgui Window");
+		ImGui::Text("Click to Select Object");
 
 
 	ImGui::Spacing();
@@ -461,9 +463,50 @@ void Editor::LevelEditor::imguiEditorDraw(void)
 		texpath = "../textures/test.jpg";
 	}
 
-	if (ImGui::Button("Return to Main Menu"))
-	{
-		texpath = "../textures/menu.jpg";
+		//ImGui::Text(objectString[i]);
+		//ImGui::SliderInt("Object Index", &i, 0, objectString.size()-1);
+		//ImGui::SliderFloat("x-position", &Object::objects[objectString[i]].position.x, -500.0f, 500.0f);
+		//ImGui::SliderFloat("y-position", &Object::objects[objectString[i]].position.y, -500.0f, 500.0f);
+
+
+		//float *arr[3] = { &Object::objects["temp"].color.r, &Object::objects["temp"].color.g, &Object::objects["temp"].color.b/*, Object::objects["Object5"].color.a*/ };
+
+		//RGB colour selection
+		//ImGui::ColorEdit3("Color", *arr);
+
+		if (ImGui::Begin("Object Editor - Imgui Window"))
+		{
+			// open file dialog when user clicks this button
+			if (ImGui::Button("Click here to Open File Explorer"))
+				fileDialog.Open();
+		}
+		ImGui::End();
+		fileDialog.Display();
+
+		ImGui::Text("Click below to display a sample scene");
+
+		if (ImGui::Button("Demo Background"))
+		{
+			texpath = "../textures/demo.jpg";
+		}
+		if (ImGui::Button("Level 1 Background"))
+		{
+			texpath = "../textures/level1.jpg";
+		}
+		if (ImGui::Button("BaMi Art"))
+		{
+			texpath = "../textures/test.jpg";
+		}
+
+		if (ImGui::Button("Return to Main Menu"))
+		{
+			texpath = "../textures/menu.jpg";
+		}
+
+
+		ImGui::End();
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
 	ImGui::Spacing();

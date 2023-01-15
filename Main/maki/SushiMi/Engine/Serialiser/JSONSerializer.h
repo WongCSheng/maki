@@ -24,8 +24,10 @@ chosen game object.
 #include "../Game Object/Player.h"
 #include <string>
 
-namespace JSONSerializer {
-	// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
+namespace Core
+{
+	namespace JSONSerializer {
+		// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
 	Player* Deserialize(std::string const& filepath);
 	static inline std::string LevelLoadPath;
 	static inline std::string* LevelLoadPathPtr = &LevelLoadPath;
@@ -33,6 +35,7 @@ namespace JSONSerializer {
 	void Serialize(Player* player, std::string const& filepath);
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;
+	}
 }
 //
 //class Serializer {

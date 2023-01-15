@@ -4,51 +4,57 @@
 #include <glew/include/GL/glew.h>
 #include <glfw/include/GLFW/glfw3.h>
 
-/*forward declaration*/
-class Player;
-class Sprite;
-
-
-
-
-extern Player* player;
-
-class Window
+namespace Core
 {
-public:
-	Window(int width, int height);
+	/*forward declaration*/
+	class Player;
+	class Sprite;
 
-	~Window();
+	extern Player* player;
 
-	void Input();
+	class Window
+	{
+	public:
+		Window(int width, int height);
 
-	void Resize();
+		~Window();
 
-	void Mainloop();
+		void Input();
+
+		void Resize();
+
+		void Mainloop();
 
 
-	static inline Player* player;
-	static Sprite* sp;
-	static Sprite* sp1;
+		//Player* player;
+		Sprite* sp;
+		Sprite* sp1;
+		inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
+
+		static inline Player* player;
+		static Sprite* sp;
+		static Sprite* sp1;
 	
-	inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
+		inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 	
-	static inline struct ScreenDimensions {
-		static inline int screenwidth;
-		static inline int screenheight;
+		static inline struct ScreenDimensions {
+			static inline int screenwidth;
+			static inline int screenheight;
+		};
+
+	private:
+		int m_width, m_height;
+		GLFWwindow* ptr_win;
+		double starttime, endtime, delta;
 	};
-private:
-	int m_width, m_height;
-	GLFWwindow* ptr_win;
-	double starttime, endtime, delta;
-};
 
-class pseudomain
-{
-public:
-	static void draw();
-	static void update();
-	static void init();
-	static void cleanup();
+	class pseudomain
+	{
+	public:
+		static void draw();
+		static void update();
+		static void init();
+		static void cleanup();
 
-};
+		};
+}

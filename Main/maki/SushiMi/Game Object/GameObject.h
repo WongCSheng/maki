@@ -53,12 +53,11 @@ namespace Core
 		private:
 			GameObjectProperty* characteristics; //use unique_ptr
 
-		protected:
-
 		public:
 			virtual ~GameObject();
 			friend class ObjectFactory;
 			
+			virtual ~GameObject();
 			
 			//LinkedList<Component*> HeadOfList;
 			

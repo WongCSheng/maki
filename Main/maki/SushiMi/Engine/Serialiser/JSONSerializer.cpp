@@ -195,27 +195,6 @@ namespace Core
 			rapidjson::PrettyWriter<rapidjson::StringBuffer> jsonWriter(jsonStrBuffer);
 			jsonDoc.Accept(jsonWriter);
 
-			// Write the JSON string into file
-			std::fstream fs;
-			fs.open(filepath.c_str(), std::fstream::out);
-			if (!fs.is_open()) {
-				std::cout << "JSONSerializer Serialize: " << filepath << " cannot be opened" << std::endl;
-				return;
-			}
-
-			rapidjson::Value jsonAnimValue;
-			jsonAnimValue.SetString("../textures/spritesheet/Idle.txt", jsonDoc.GetAllocator());
-			jsonAnimArr.PushBack(jsonAnimValue, jsonDoc.GetAllocator());
-			jsonAnimValue.SetString("../textures/spritesheet/Run.txt", jsonDoc.GetAllocator());
-			jsonAnimArr.PushBack(jsonAnimValue, jsonDoc.GetAllocator());
-
-			jsonDoc.AddMember("animation", jsonAnimArr, jsonDoc.GetAllocator()); // add the animation JSON array into the JSON document
-
-			// Saving the JSON document into a string
-			rapidjson::StringBuffer jsonStrBuffer;
-			rapidjson::PrettyWriter<rapidjson::StringBuffer> jsonWriter(jsonStrBuffer);
-			jsonDoc.Accept(jsonWriter);
-
 			/*if (Editor::LevelEditor::levelsave == 1 )
 			{*/
 			// Write the JSON string into file

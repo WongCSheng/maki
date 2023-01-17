@@ -122,7 +122,8 @@ namespace Core
 
 		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
 		{
-			std::cout << "you are pressing right" << std::endl;
+			keystate_right = true;
+			//std::cout << "you are pressing right" << std::endl;
 			if (keystate_right)
 			{
 				player->move_right();
@@ -132,6 +133,7 @@ namespace Core
 
 		else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
 		{
+			keystate_left = true;
 			//player only move on one press
 			//holding key or let go key, player stop
 			if (keystate_left)
@@ -143,17 +145,21 @@ namespace Core
 
 		else if (ImGui::IsKeyPressed(GLFW_KEY_UP))
 		{
+			keystate_up = true;
 
 			if (keystate_up)
 			{
 				player->move_up();
 				keystate_up = false;
 			}
+			keystate_up = false;
+
 		}
 
 
 		else if (ImGui::IsKeyPressed(GLFW_KEY_DOWN))
 		{
+			keystate_down = true;
 			if (keystate_down)
 			{
 				player->move_down();

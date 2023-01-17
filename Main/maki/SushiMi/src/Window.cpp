@@ -70,6 +70,13 @@ namespace Core
 		m_height(height)
 
 	{
+		int i = glfwInit();
+
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+		glfwWindowHint(GLFW_MAXIMIZED, true);
 		window_ptr = glfwCreateWindow(width, height, "SushiMi Engine", NULL, NULL);
 		if (window_ptr == nullptr)
 		{
@@ -77,12 +84,14 @@ namespace Core
 			return;
 		}
 
-		glfwInit();
-
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_MAXIMIZED, true);
+		glfwMakeContextCurrent(window_ptr);
+		std::cout << glewGetErrorString(glewInit());
+			
+		/*if (glewInit())
+		{
+			std::cout << "erorr initilize glew" << std::endl;
+			return;
+		}*/
 
 
 		JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
@@ -91,11 +100,6 @@ namespace Core
 		endtime = 0;
 		delta = 0;
 
-		if (glewInit())
-		{
-			std::cout << "erorr initilize glew" << std::endl;
-			return;
-		}
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

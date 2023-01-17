@@ -71,7 +71,7 @@ int main() {
 	//Core::Texture::GetInstance();
 
 	Core::Window* window = new Core::Window(800, 600);
-	glfwInit();
+	/*glfwInit();*/
 	Core::pseudomain::init();
 	window->Mainloop();
 

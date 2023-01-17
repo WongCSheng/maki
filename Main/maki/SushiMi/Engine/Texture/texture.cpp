@@ -12,7 +12,6 @@ namespace Core
 	Texture Texture::Generate(const char* filename)
 	{
 		int numcomponents;
-		unsigned int TextureID;
 
 		glGenTextures(1, &TextureID);
 
@@ -35,7 +34,6 @@ namespace Core
 		{
 			std::cout << "failed to load image : " << filename << std::endl;
 			std::cout << "============================================" << std::endl;
-			stbi_image_free(data);
 		}
 
 		stbi_image_free(data);

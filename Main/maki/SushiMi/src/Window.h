@@ -24,7 +24,7 @@ namespace Core
 		void Mainloop();
 
 		static inline Player* player;
-		inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
+		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 		static inline Sprite* sp;
 		static inline Sprite* sp1;
 	

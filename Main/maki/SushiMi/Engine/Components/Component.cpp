@@ -17,6 +17,7 @@ namespace Core
 		add = false;
 		active = false;
 		remove = false;
+		ID =  ComponentID::None;
 	}
 	
 	Component::~Component()
@@ -32,6 +33,14 @@ namespace Core
 	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
 	{
 		owner = NewOwner;
+	}
+
+	void Reset(bool set)
+	{
+		if (set)
+		{
+
+		}
 	}
 
 	bool Component::IsActive()

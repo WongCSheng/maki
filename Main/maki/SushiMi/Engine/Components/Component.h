@@ -41,6 +41,7 @@ namespace Core
 		virtual void Serialise(const std::string name) = 0;
 		Object::GameObjectProperty* GetOwner();
 		void SetOwner(Object::GameObjectProperty* owner);
+		void Reset(bool set);
 
 		virtual bool IsActive();
 		virtual void Activate();

@@ -23,8 +23,26 @@ written consent of DigiPen Institute of Technology is prohibited.
 
 namespace Core
 {
-	namespace Editor
+	class Window;
+
+	//Object Enums for object selection:
+	enum OBJECTTYPES
 	{
+		GRASS, //1
+		PATH1,
+		PATH2,
+		PATH3,
+		WALL1,
+		WALL2,
+		WALL3,
+		AVOCADO,
+		CORN,
+		RICE,
+		NORI
+	};
+
+	namespace Editor
+	{		
 		class LevelEditor
 		{
 		public:

@@ -10,8 +10,6 @@ namespace Core
 	class Player;
 	class Sprite;
 
-	extern Player* player;
-
 	class Window
 	{
 	public:
@@ -25,11 +23,10 @@ namespace Core
 
 		void Mainloop();
 
-
-		//Player* player;
+		static inline Player* player;
 		inline static GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
-		static Sprite* sp;
-		static Sprite* sp1;
+		static inline Sprite* sp;
+		static inline Sprite* sp1;
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;
@@ -49,6 +46,5 @@ namespace Core
 		static void update();
 		static void init();
 		static void cleanup();
-
 		};
 }

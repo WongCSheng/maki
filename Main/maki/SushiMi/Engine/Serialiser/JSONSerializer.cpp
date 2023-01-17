@@ -41,76 +41,93 @@ namespace Core
 	namespace JSONSerializer {
 		/* text to screen*/
 		Player* Deserialize(std::string const& filepath) {
+			
+
 			std::string json_from_file = ReadFileContents(filepath.c_str());
 
 			rapidjson::Document document; // Create a JSON document
 			if (document.Parse(json_from_file.c_str()).HasParseError()) {
 				std::cout << "JSONSerializer Deserialize: There was a JSON parse error : " << filepath << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 
 			if (!document.IsObject()) { // if json document does not start with {}, throw an error
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not start with a JSON object" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 
 			// does the root object has a key called "sprite" and is it an object?
 			if (!document.HasMember("sprite") || !document["sprite"].IsObject()) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'sprite'" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 
 			// Deserialize sprite content
 			rapidjson::Value& spriteObj = document["sprite"]; // get the sprite JSON object
 			if (!spriteObj.HasMember("filepath") || !spriteObj["filepath"].IsString()) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'filepath'" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 			const char* spriteFilepath = spriteObj["filepath"].GetString(); // need to convert the data retrieved to a C++ type
 
 			if (!spriteObj.HasMember("position") || !spriteObj["position"].IsArray()) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'position'" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 
 			rapidjson::Value& posArr = spriteObj["position"];
 			if (posArr.Size() != 2) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " 'position' must have array size of 2" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 			float pos[2];
 			for (rapidjson::SizeType i = 0; i < posArr.Size(); i++) {
 				rapidjson::Value& posValue = posArr[i];
 				if (!posValue.IsNumber()) { // allows float or integer
 					std::cout << "JSONSerializer Deserialize: " << filepath << " position[" << i << "] must be a number" << std::endl;
-					return new Player();
+					Player* player{}; 
+					return player;
 				}
+				pos[i] = posValue.GetFloat(); // since you know posValue is a number, can just get the value as a float
 			}
 			//setting player pos from JSON into custom variable
 			//set your custom variable!!!! important
-			Player::playerpos_restart.x = pos[0];
-			Player::playerpos_restart.y = pos[1];
+			Player::playerpos_restart.x = Player::playerpos.x = pos[0];
+			Player::playerpos_restart.y = Player::playerpos.y = pos[0];
+		
 
-			Player::playerptr->x = pos[0];
-			Player::playerptr->y = pos[1];
+			/*playerpos_restart.x = pos[0];
+			player->playerpos_restart.y = pos[1];
+
+			player->playerpos.x = pos[0];
+			player->playerpos.y = pos[1];*/
 
 
 			if (!spriteObj.HasMember("scale") || !spriteObj["scale"].IsArray()) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'scale'" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 
 			rapidjson::Value& scaleArr = spriteObj["scale"];
 			if (scaleArr.Size() != 2) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " 'scale' must have array size of 2" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 			float scale[2];
 			for (rapidjson::SizeType i = 0; i < scaleArr.Size(); i++) {
 				rapidjson::Value& scaleValue = scaleArr[i];
 				if (!scaleValue.IsNumber()) { // allows float or integer
 					std::cout << "JSONSerializer Deserialize: " << filepath << " scale[" << i << "] must be a number" << std::endl;
-					return new Player();
+					Player* player{}; 
+					return player;
 				}
 
 				scale[i] = scaleValue.GetFloat(); // since you know scaleValue is a number, can just get the value as a float
@@ -118,7 +135,8 @@ namespace Core
 
 			if (!document.HasMember("animation") || !document["animation"].IsArray()) {
 				std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'animation'" << std::endl;
-				return new Player();
+				Player* player{}; 
+				return player;
 			}
 			rapidjson::Value& animationArr = document["animation"];
 			std::vector<std::string> animationList;
@@ -126,18 +144,24 @@ namespace Core
 				rapidjson::Value& animationName = animationArr[i];
 				if (!animationName.IsString()) {
 					std::cout << "JSONSerializer Deserialize: " << filepath << " animation[" << i << "] must be a string" << std::endl;
-					return new Player();
+					Player* player{}; 
+					return player;
 				}
 				animationList.push_back(animationName.GetString());
 			}
 
 			std::cout << "JSONSerializer Deserialize: Managed to parse " << filepath << std::endl;
+			
 			return new Player(spriteFilepath, pos, scale, animationList);
+			/*Player *valid_player(spriteFilepath, pos, scale, animationList);
+			valid_player->playerpos = player->playerpos;
+			valid_player->playerpos_restart = player->playerpos_restart;
+			return valid_player;*/
 		}
 
 
 		/* screen to text*/
-		void Serialize(Player* player, std::string const& filepath) {
+		void Serialize(const Player& player, std::string const& filepath) {
 			rapidjson::Document jsonDoc; // create json document
 			jsonDoc.SetObject(); // sets the root to be a JSON object
 
@@ -153,14 +177,8 @@ namespace Core
 			// Serialize "position"
 			jsonSpriteValue.SetArray(); // sets the type to a JSON array
 			// IMPORTANT: need to get the player's sprite's transformation to pass in the position values, currently hardcoded
-			jsonSpriteValue.PushBack(Player::playerptr->x, jsonDoc.GetAllocator()); // Write in the x value
-
-
-			// Serialize "position"
-			jsonSpriteValue.SetArray(); // sets the type to a JSON array
-			// IMPORTANT: need to get the player's sprite's transformation to pass in the position values, currently hardcoded
-			jsonSpriteValue.PushBack(Player::playerptr->x, jsonDoc.GetAllocator()); // Write in the x value
-			jsonSpriteValue.PushBack(Player::playerptr->y, jsonDoc.GetAllocator()); // Write in the y value
+			jsonSpriteValue.PushBack(player.playerpos.x, jsonDoc.GetAllocator()); // Write in the x value
+			jsonSpriteValue.PushBack(player.playerpos.y, jsonDoc.GetAllocator()); // Write in the y value
 			jsonSpriteObj.AddMember("position", jsonSpriteValue, jsonDoc.GetAllocator());
 
 			// Serialize "scale"

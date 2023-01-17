@@ -12,7 +12,7 @@ namespace Core
 {
 	Sprite::Sprite(const char* filename)
 	{
-		auto tex_sys = new Texture();
+		auto tex_sys = Core::TextureSystem::GetInstance();
 		texture = tex_sys->Generate(filename);
 
 		auto rect_sys = Core::Renderer::GetInstance();
@@ -21,7 +21,7 @@ namespace Core
 
 	Sprite::~Sprite()
 	{
-		auto tex_sys = new Texture();
+		auto tex_sys = Core::TextureSystem::GetInstance();
 		tex_sys->Delete(texture);
 
 		auto rect_sys = Core::Renderer::GetInstance();
@@ -34,7 +34,7 @@ namespace Core
 
 	void Sprite::draw()
 	{
-		glBindTexture(GL_TEXTURE_2D, texture.GetID());
+		glBindTexture(GL_TEXTURE_2D, texture.ID);
 		glBindVertexArray(rectangle.VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
@@ -47,7 +47,7 @@ namespace Core
 			anims[type]->play(texture, rectangle, deltatime);
 		}
 
-		glBindTexture(GL_TEXTURE_2D, texture.GetID());
+		glBindTexture(GL_TEXTURE_2D, texture.ID);
 		glBindVertexArray(rectangle.VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}

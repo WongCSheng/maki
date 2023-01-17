@@ -60,7 +60,8 @@ int main() {
 	// Enable run-time memory check for debug builds.
 	#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	//_CrtSetBreakAlloc(10730); //use this to detect memory leaks, replace the number with mem leak location
+	
+	//_CrtSetBreakAlloc(11379); //use this to detect memory leaks, replace the number with mem leak location
 
 	#endif
 
@@ -68,10 +69,10 @@ int main() {
 	CoreSystem = new Core::MainSystem();
 	TestObj = new Core::Object::GameObject();
 	Core::Renderer::GetInstance();
-	//Core::Texture::GetInstance();
+	Core::TextureSystem::GetInstance();
 
 	Core::Window* window = new Core::Window(800, 600);
-	/*glfwInit();*/
+	//glfwInit();
 	Core::pseudomain::init();
 	window->Mainloop();
 
@@ -80,7 +81,7 @@ int main() {
 	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 	delete window;
 	delete Core::Renderer::GetInstance();
-	//delete TextureSystem::GetInstance();
+	delete Core::TextureSystem::GetInstance();
 	Core::pseudomain::cleanup();
 }
 

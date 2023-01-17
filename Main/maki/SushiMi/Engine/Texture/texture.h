@@ -13,24 +13,25 @@
 
 namespace Core
 {
-	class Texture
+	struct Texture
+	{
+		int width;
+		int height;
+		unsigned int ID;
+	};
+
+	class TextureSystem
 	{
 	public:
+		static TextureSystem* GetInstance();
+
 		Texture Generate(const char* filename);
 
 		void Delete(Texture& obj);
 
-		int GetWidth() const;
-		int GetHeight() const;
-		unsigned int GetID() const;
-
 	private:
-		int Texwidth;
-		int Texheight;
-		unsigned int TextureID;
+		TextureSystem();
 
-		unsigned char* data;
-
-		//std::string TextureName; //To be removed in the future for optimisation. We'll use numbers for naming textures instead
+		static TextureSystem* _instance;
 	};
 }

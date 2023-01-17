@@ -56,7 +56,7 @@ namespace Core
 		{
 			if (sys != NULL)
 			{
-				delete sys;
+				//delete sys;
 				sys = NULL;
 			}
 		}

@@ -1,3 +1,4 @@
+#include "Texture.h"
 /*!
 @file		Texture.cpp
 @author		louishetong.wang@digipen.edu
@@ -5,22 +6,43 @@
 
 @brief		Generating of texture using stbi and mimap. Delete of texture is here too.
 *//*__________________________________________________________________________*/
-#include "Texture.h"
+#include <../stb-master/stb_image.h>
 
-namespace Core
-{
-	Texture Texture::Generate(const char* filename)
+#include <../glew/include/GL/glew.h>
+#include <iostream>
+//using namespace std;
+namespace Core {
+
+
+	TextureSystem* TextureSystem::_instance = nullptr;
+
+	TextureSystem* TextureSystem::GetInstance()
 	{
-		int numcomponents;
+		if (_instance == nullptr) _instance = new TextureSystem();
 
-		glGenTextures(1, &TextureID);
+		return _instance;
+	}
 
-		data = stbi_load(filename, &Texwidth, &Texheight, &numcomponents, STBI_rgb_alpha);
+	Texture TextureSystem::Generate(const char* filename)
+	{
+		Texture result;
+
+		int width, height, numcomponents;
+		unsigned char* data;
+		unsigned int textureID;
+
+		glGenTextures(1, &textureID);
+
+		data = stbi_load(filename, &width, &height, &numcomponents, STBI_rgb_alpha);
+
+		result.width = width;
+		result.height = height;
+		result.ID = textureID;
 
 		if (data)
 		{
-			glBindTexture(GL_TEXTURE_2D, TextureID);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Texwidth, Texheight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+			glBindTexture(GL_TEXTURE_2D, textureID);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 			glGenerateMipmap(GL_TEXTURE_2D);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -34,30 +56,21 @@ namespace Core
 		{
 			std::cout << "failed to load image : " << filename << std::endl;
 			std::cout << "============================================" << std::endl;
+			stbi_image_free(data);
 		}
 
 		stbi_image_free(data);
 
-		return *this;
+		return result;
 	}
 
-	void Texture::Delete(Texture& obj)
+	void TextureSystem::Delete(Texture& obj)
 	{
-		glDeleteTextures(1, &obj.TextureID);
+		glDeleteTextures(1, &obj.ID);
 	}
 
-	int Texture::GetWidth() const
+	TextureSystem::TextureSystem()
 	{
-		return Texwidth;
-	}
 
-	int Texture::GetHeight() const
-	{
-		return Texheight;
-	}
-
-	unsigned int Texture::GetID() const
-	{
-		return TextureID;
 	}
 }

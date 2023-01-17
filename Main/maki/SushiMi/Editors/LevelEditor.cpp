@@ -328,10 +328,10 @@ namespace Core
 			//ImGui::ShowDebugLogWindow();
 
 
-			if (drawTexture)
+			/*if (drawTexture)
 			{
 				glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-			}
+			}*/
 
 			ImGui::Begin("Object Editor - Imgui Window");
 
@@ -379,30 +379,6 @@ namespace Core
 
 			}
 
-
-
-			/*Testing for interface for object properties*/
-			ImGui::Begin("Object properties");
-			//ImGui::Button("Create Object");
-			if (ImGui::Button("Create Object"))
-			{
-				ImGui::OpenPopup("Object Creation");
-			}
-			if (ImGui::BeginPopupModal("Object Creation"))
-			{
-				ImGui::Text("TESTING");
-
-				if (ImGui::Button("Close"))
-				{
-					ImGui::CloseCurrentPopup();
-				}
-				ImGui::EndPopup();
-			}
-
-			/*This enables changing of a specific sprite, will have to make this dynamic as it currently binds to sp1 only*/
-			ImGui::SliderFloat("position X", &Window::sp1->transformation.position.x, 0, 100);
-			ImGui::SliderFloat("position Y", &Window::sp1->transformation.position.y, 0, 100);
-			ImGui::End();
 			/*currently not working oops*/
 			//ImGui::Text("Click to Create New Object/Modify Object");
 
@@ -420,9 +396,10 @@ namespace Core
 			//ImGui::SliderFloat("y-position", &Object::objects[objectString[i]].position.y, -500.0f, 500.0f);
 
 
+			//float *arr[3] = { &Object::objects["temp"].color.r, &Object::objects["temp"].color.g, &Object::objects["temp"].color.b/*, Object::objects["Object5"].color.a*/ };
 
-			ImGui::Begin("Object Editor - Imgui Window");
-			ImGui::Text("Click to Select Object");
+			//RGB colour selection
+			//ImGui::ColorEdit3("Color", *arr);
 
 
 			ImGui::Spacing();
@@ -451,50 +428,10 @@ namespace Core
 				texpath = "../textures/test.jpg";
 			}
 
-			//ImGui::Text(objectString[i]);
-			//ImGui::SliderInt("Object Index", &i, 0, objectString.size()-1);
-			//ImGui::SliderFloat("x-position", &Object::objects[objectString[i]].position.x, -500.0f, 500.0f);
-			//ImGui::SliderFloat("y-position", &Object::objects[objectString[i]].position.y, -500.0f, 500.0f);
-
-
-			//float *arr[3] = { &Object::objects["temp"].color.r, &Object::objects["temp"].color.g, &Object::objects["temp"].color.b/*, Object::objects["Object5"].color.a*/ };
-
-			//RGB colour selection
-			//ImGui::ColorEdit3("Color", *arr);
-
-			if (ImGui::Begin("Object Editor - Imgui Window"))
-			{
-				// open file dialog when user clicks this button
-				if (ImGui::Button("Click here to Open File Explorer"))
-					fileDialog.Open();
-			}
-			ImGui::End();
-			fileDialog.Display();
-
-			ImGui::Text("Click below to display a sample scene");
-
-			if (ImGui::Button("Demo Background"))
-			{
-				texpath = "../textures/demo.jpg";
-			}
-			if (ImGui::Button("Level 1 Background"))
-			{
-				texpath = "../textures/level1.jpg";
-			}
-			if (ImGui::Button("BaMi Art"))
-			{
-				texpath = "../textures/test.jpg";
-			}
-
 			if (ImGui::Button("Return to Main Menu"))
 			{
 				texpath = "../textures/menu.jpg";
 			}
-
-
-			ImGui::End();
-			ImGui::Render();
-			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 			ImGui::Spacing();
 			ImGui::Text("File Save Functions:");
@@ -530,7 +467,7 @@ namespace Core
 						//std::cout << "Selected filename" << *JSONSerializer::LevelSavePathPtr << std::endl;
 						levelsave = 2;
 
-						JSONSerializer::Serialize(Window::player, *JSONSerializer::LevelSavePathPtr);
+						JSONSerializer::Serialize(*Window::player, *JSONSerializer::LevelSavePathPtr);
 
 						std::cout << "the level is saved! level save status is " << levelsave << std::endl;
 

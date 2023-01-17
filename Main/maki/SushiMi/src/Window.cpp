@@ -20,6 +20,7 @@ namespace Core
 	static bool keystate_up = false;
 	static bool keystate_down = false;
 	static bool keystate_R = false;
+	Player* player;
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
@@ -27,26 +28,7 @@ namespace Core
 		----------------------------------------------------------------------------- */
 	void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
 	{
-		/*                                                             input key states
-		----------------------------------------------------------------------------- */
-		static bool keystate_left = false;
-		static bool keystate_right = false;
-		static bool keystate_up = false;
-		static bool keystate_down = false;
-		static bool keystate_R = false;
-
-		Player* player;
-
-		if (GLFW_PRESS == action)
-		{
-			keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
-			keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
-			keystate_up = (key == GLFW_KEY_UP) ? true : false;
-			keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
-			keystate_R = (key == GLFW_KEY_R) ? true : false;
-
-		}
-		else if (GLFW_REPEAT == action)
+		if (GLFW_REPEAT == action)
 		{
 			keystate_left = false;
 			keystate_right = false;
@@ -54,14 +36,13 @@ namespace Core
 			keystate_down = false;
 			keystate_R = false;
 		}
-
 		else if (GLFW_RELEASE == action)
 		{
-			keystate_left = false;
-			keystate_right = false;
-			keystate_up = false;
-			keystate_down = false;
-			keystate_R = false;
+			keystate_left = true;
+			keystate_right = true;
+			keystate_up = true;
+			keystate_down = true;
+			keystate_R = true;
 		}
 	}
 
@@ -70,7 +51,7 @@ namespace Core
 		m_height(height)
 
 	{
-		int i = glfwInit();
+		glfwInit();
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
@@ -92,6 +73,8 @@ namespace Core
 			std::cout << "erorr initilize glew" << std::endl;
 			return;
 		}*/
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
 		JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
@@ -101,8 +84,6 @@ namespace Core
 		delta = 0;
 
 
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
@@ -141,12 +122,12 @@ namespace Core
 
 		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
 		{
+			std::cout << "you are pressing right" << std::endl;
 			if (keystate_right)
 			{
-				player->stop();
+				player->move_right();
+				keystate_right = false;
 			}
-			player->move_right();
-			keystate_right = false;
 		}
 
 		else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
@@ -154,27 +135,20 @@ namespace Core
 			//player only move on one press
 			//holding key or let go key, player stop
 			if (keystate_left)
-			{
-				player->stop();
+			{			
+				player->move_left();
+				keystate_left = false;
 			}
-			player->move_left();
-			keystate_left = false;
 		}
 
 		else if (ImGui::IsKeyPressed(GLFW_KEY_UP))
 		{
+
 			if (keystate_up)
 			{
-				if (ImGui::IsKeyReleased(GLFW_KEY_UP))
-				{
-					player->stop();
-				}
 				player->move_up();
-				//player->move_right();
 				keystate_up = false;
 			}
-			player->move_up();
-			keystate_up = false;
 		}
 
 
@@ -182,14 +156,9 @@ namespace Core
 		{
 			if (keystate_down)
 			{
-				if (ImGui::IsKeyReleased(GLFW_KEY_DOWN))
-				{
-					player->stop();
-				}
 				player->move_down();
 				keystate_down = false;
 			}
-
 		}
 
 		/*
@@ -199,16 +168,22 @@ namespace Core
 		{
 			if (keystate_R)
 			{
-				if (ImGui::IsKeyPressed(GLFW_KEY_R))
-				{
+				
 					//restart
 					std::cout << "restarting level" << std::endl;
 					player->restart();
-					std::cout << "player is moved back to x: " << Player::playerpos_restart.x << " and y: " << Player::playerpos_restart.y << std::endl;
-				}
+					std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;
+				
 				keystate_R = false;
 			}
+
 		}
+
+		if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
 	}
 
 	void Window::Resize()
@@ -227,38 +202,43 @@ namespace Core
 
 	void Window::Mainloop()
 	{
-		starttime = glfwGetTime();
+		while (!glfwWindowShouldClose(window_ptr))
+		{
 
-		//display object at imgui cursor
-		Core::Editor::LevelEditor::imguiObjectCursor();
+			starttime = glfwGetTime();
 
-		pseudomain::update();
-		pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
-		//for each frame 
-		Resize();
-		Input();
+			//display object at imgui cursor
+			Core::Editor::LevelEditor::imguiObjectCursor();
 
-		glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+			pseudomain::update();
+			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
+			//for each frame 
+			Resize();
+			Input();
 
-		// all drawing goes here ..
-		Shaders->Textured_Shader()->use();
-		Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
+			glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
-		sp->draw();
+			// all drawing goes here ..
+			Shaders->Textured_Shader()->use();
+			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
-		sp1->draw();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
+			sp->draw();
 
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-		player->draw(delta);
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
+			sp1->draw();
 
-		SceneManager::drawTile();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+			player->draw(delta);
 
-		endtime = glfwGetTime();
-		delta = (endtime - starttime) / 2;
+			SceneManager::drawTile();
+
+			endtime = glfwGetTime();
+			delta = (endtime - starttime) / 2;
+		}
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
+		
 	}
 }

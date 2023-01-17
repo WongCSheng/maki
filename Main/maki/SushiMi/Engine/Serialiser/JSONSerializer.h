@@ -32,7 +32,7 @@ namespace Core
 	static inline std::string LevelLoadPath;
 	static inline std::string* LevelLoadPathPtr = &LevelLoadPath;
 
-	void Serialize(Player* player, std::string const& filepath);
+	void Serialize(const Player& player, std::string const& filepath);
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;
 	}

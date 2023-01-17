@@ -9,6 +9,7 @@ namespace Core
 	/*forward declaration*/
 	class Player;
 	class Sprite;
+	//extern Player* player;
 
 	class Window
 	{

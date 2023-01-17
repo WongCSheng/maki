@@ -16,14 +16,12 @@
 namespace Core
 {
 
-	int screenDimension = 1000;
-
 	Player::Player()
 	{
 
 		sp = new Sprite("../textures/spritesheet/spritesheet.png");
-		sp->transformation.position = glm::vec2(Player::playerptr->x, Player::playerptr->y);
-		sp->transformation.scale = glm::vec2(150, 150);
+		sp->transformation.position = glm::vec2(playerpos.x, playerpos.y);
+		sp->transformation.scale = glm::vec2(100, 100);
 
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
@@ -51,11 +49,11 @@ namespace Core
 	//Example: my screen can display 19 (W) x 11 (H) tiles
 	void Player::move_left()
 	{
-		/* if (sp->transformation.scale.x > 0)
+		if (sp->transformation.scale.x > 0)
 			sp->transformation.scale.x *= 1;
 
 		current_anim = Run;
-		
+
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
@@ -64,16 +62,9 @@ namespace Core
 		int gridWidth = 100;
 
 		sp->transformation.position.x -= gridWidth;
-		Player::playerptr->x -= gridWidth; */
-		if (sp->transformation.scale.x > 0)
-		sp->transformation.scale.x *= 1;
+		playerpos.x -= gridWidth;
 
-		current_anim = Run;
-		int* screenptr = &screenDimension;
-		int gridWidth = screenDimension / 6;
-		glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-		sp->transformation.position.x -= gridWidth;
-		Player::playerptr->x -= gridWidth;
+
 	}
 
 	void Player::move_right()
@@ -88,22 +79,17 @@ namespace Core
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
-		/* int gridWidth = 100;
+		int gridWidth = 100;
 
 		sp->transformation.position.x += gridWidth;
-		Player::playerptr->x += gridWidth; */
-
-		int* screenptr = &screenDimension;
-		int gridWidth = screenDimension / 6;
-		glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-		sp->transformation.position.x += gridWidth;
-		Player::playerptr->x += gridWidth;
+		playerpos.x += gridWidth;
 	}
 
 	void Player::move_up()
 	{
 		if (sp->transformation.scale.y > 0)
 			sp->transformation.scale.y *= 1;
+		std::cout << "you are pressing up" << std::endl;
 
 		current_anim = Run;
 
@@ -112,17 +98,10 @@ namespace Core
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
 		//current hard code way
-		/* int gridHeight = 100; 
+		int gridHeight = 100;
 
 		sp->transformation.position.y -= gridHeight;
-		Player::playerptr->y -= gridHeight; */
-
-		current_anim = Run;
-		int* screenptr = &screenDimension;
-		int gridWidth = screenDimension / 6;
-		glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-		sp->transformation.position.y -= gridWidth;
-		Player::playerptr->y -= gridWidth;
+		Player::playerpos.y -= gridHeight;
 	}
 
 	void Player::move_down()
@@ -140,7 +119,7 @@ namespace Core
 		int gridHeight = 100;
 
 		sp->transformation.position.y += gridHeight;
-		Player::playerptr->y += gridHeight;
+		Player::playerpos.y += gridHeight;
 
 	}
 
@@ -149,12 +128,7 @@ namespace Core
 		sp->transformation.position.x = playerpos_restart.x;
 		sp->transformation.position.y = playerpos_restart.y;
 
-		/* current_anim = Run;
-		int* screenptr = &screenDimension;
-		int gridWidth = screenDimension / 6;
-		glfwGetWindowSize(Window::window_ptr, screenptr, screenptr);
-		sp->transformation.position.y += gridWidth;
-		Player::playerptr->y += gridWidth; */
+		
 	}
 
 	void Player::stop()

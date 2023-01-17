@@ -74,10 +74,10 @@ namespace Core
 		glm::vec4 frame = frames[current_frame_indx];
 
 		// normalization
-		frame.x /= spritetexture.GetWidth();
-		frame.y /= spritetexture.GetHeight();
-		frame.z /= spritetexture.GetWidth();
-		frame.w /= spritetexture.GetHeight();
+		frame.x /= spritetexture.width;
+		frame.y /= spritetexture.height;
+		frame.z /= spritetexture.width;
+		frame.w /= spritetexture.height;
 
 		std::vector<glm::vec2> uv;
 

@@ -37,19 +37,14 @@ namespace Core
 		void draw(double deltatime);
 
 		static inline struct PlayerSavedPos {
-			static inline int x;
-			static inline int y;
-		};
-
-		static inline struct PlayerSavedPos playerpos;
-		static inline struct PlayerSavedPos* playerptr = &playerpos;
+			int x;
+			int y;
+		} playerpos;
 
 		static inline struct PlayerInitialPos {
-			static inline int x;
-			static inline int y;
-		};
-
-		static inline struct PlayerInitialPos playerpos_restart;
+			int x;
+			int y;
+		} playerpos_restart;
 
 	private:
 		Sprite* sp;

@@ -152,7 +152,6 @@ namespace Core
 				player->move_up();
 				keystate_up = false;
 			}
-			keystate_up = false;
 
 		}
 
@@ -174,11 +173,10 @@ namespace Core
 		{
 			if (keystate_R)
 			{
-				
-					//restart
-					std::cout << "restarting level" << std::endl;
-					player->restart();
-					std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;
+				//restart
+				std::cout << "restarting level" << std::endl;
+				player->restart();
+				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;
 				
 				keystate_R = false;
 			}
@@ -190,6 +188,8 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
+
+		
 	}
 
 	void Window::Resize()

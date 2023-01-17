@@ -60,11 +60,16 @@ namespace Core
 
 		//current hard code way
 		int gridWidth = 100;
-
-		sp->transformation.position.x -= gridWidth;
 		playerpos.x -= gridWidth;
-
-
+		//ensure player does not go out of screen
+		if (playerpos.x < 0)
+		{
+			playerpos.x = 0;
+		}
+		else
+		{
+			sp->transformation.position.x -= gridWidth;
+		}
 	}
 
 	void Player::move_right()
@@ -80,16 +85,23 @@ namespace Core
 
 		//current hard code way
 		int gridWidth = 100;
-
-		sp->transformation.position.x += gridWidth;
 		playerpos.x += gridWidth;
+		//ensure player does not go out of screen
+		if (playerpos.x > 1800)
+		{
+			playerpos.x = 1800;
+		}
+		else
+		{
+			sp->transformation.position.x += gridWidth;
+		}
 	}
 
 	void Player::move_up()
 	{
 		if (sp->transformation.scale.y > 0)
 			sp->transformation.scale.y *= 1;
-		std::cout << "you are pressing up" << std::endl;
+		//std::cout << "you are pressing up" << std::endl;
 
 		current_anim = Run;
 
@@ -99,9 +111,15 @@ namespace Core
 
 		//current hard code way
 		int gridHeight = 100;
-
-		sp->transformation.position.y -= gridHeight;
 		Player::playerpos.y -= gridHeight;
+		if (playerpos.y < 0)
+		{
+			playerpos.y = 0;
+		}
+		else
+		{
+			sp->transformation.position.y -= gridHeight; //up is negative for some reason
+		}
 	}
 
 	void Player::move_down()
@@ -117,9 +135,15 @@ namespace Core
 
 		//current hard code way
 		int gridHeight = 100;
-
-		sp->transformation.position.y += gridHeight;
 		Player::playerpos.y += gridHeight;
+		if (playerpos.y > 900)
+		{
+			playerpos.y = 900;
+		}
+		else
+		{
+			sp->transformation.position.y += gridHeight; //down is positive for some reason
+		}
 
 	}
 

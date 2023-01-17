@@ -290,7 +290,7 @@ namespace Core
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			bool b = false;
+			/*bool b = false;
 			if (ImGui::BeginMainMenuBar())
 			{
 				if (ImGui::BeginMenu("menu"))
@@ -322,7 +322,7 @@ namespace Core
 					ImGui::CloseCurrentPopup();
 				}
 				ImGui::EndPopup();
-			}
+			}*/
 
 			//ImGui::ShowDemoWindow();
 			//ImGui::ShowDebugLogWindow();

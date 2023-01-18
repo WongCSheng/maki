@@ -1,4 +1,8 @@
 #pragma once
+#ifndef SPRITE_H_
+#define SPRITE_H_
+
+
 /*!
 @file		Sprite.h
 @author		louishetong.wang@digipen.edu
@@ -35,3 +39,4 @@ namespace Core
 		std::vector<Animation2D*> anims;
 	};
 }
+#endif

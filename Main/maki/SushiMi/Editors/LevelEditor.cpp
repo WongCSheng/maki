@@ -17,11 +17,50 @@ written consent of DigiPen Institute of Technology is prohibited.
 *******************************************************************************/
 #define STB_IMAGE_IMPLEMENTATION
 //#include "../../stb-master/stb_image.h"
+
 #include "LevelEditor.h"
 #include "imfilebrowser.h"
+#include "../Engine/Shaders/ShaderLibrary.h"
 #include "../testshader.h"
 #include "../src/Window.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
+#include "../Engine/Factory/Factory.h"
+//#include "../Engine/Core/Core.h"
+
+// Simple helper function to load an image into a OpenGL texture with common settings
+bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
+{
+	// Load from file
+	int image_width = 0;
+	int image_height = 0;
+	unsigned char* image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
+	if (image_data == NULL)
+		return false;
+
+	// Create a OpenGL texture identifier
+	GLuint image_texture;
+	glGenTextures(1, &image_texture);
+	glBindTexture(GL_TEXTURE_2D, image_texture);
+
+	// Setup filtering parameters for display
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // This is required on WebGL for non power-of-two textures
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); // Same
+
+	// Upload pixels into texture
+#if defined(GL_UNPACK_ROW_LENGTH) && !defined(__EMSCRIPTEN__)
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+#endif
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
+	stbi_image_free(image_data);
+
+	*out_texture = image_texture;
+	*out_width = image_width;
+	*out_height = image_height;
+
+	return true;
+}
 
 namespace Core
 {
@@ -34,12 +73,7 @@ namespace Core
 	//unsigned int EBO;
 	// create a file browser instance
 	static ImGui::FileBrowser fileDialog;
-	unsigned int texture1, texture2;
-	unsigned int ID;
-	int width, height, nrChannels;
 
-
-	//Shader ourShader("../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
 
 	namespace Editor
 	{
@@ -61,9 +95,7 @@ namespace Core
 
 			// create a file browser instance
 			static ImGui::FileBrowser fileDialog;
-			unsigned int texture1/*, texture2*/;
-			unsigned int ID;
-			int squareX = 0, squareY = 0, squareZ = 0;
+			
 
 
 			// (optional) set browser properties
@@ -71,100 +103,6 @@ namespace Core
 			//fileDialog.SetPwd("../maki/textures/");
 			//fileDialog.SetCurrentTypeFilterIndex(0);
 
-			//std::string vertexCode;
-			//std::string fragmentCode;
-			//std::ifstream vShaderFile;
-			//std::ifstream fShaderFile;
-			//// ensure ifstream objects can throw exceptions:
-			//vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-			//fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-			//try
-			//{
-			//	// open files
-			//	vShaderFile.open("../shaders/test.vert");
-			//	fShaderFile.open("../shaders/test.frag");
-			//	std::stringstream vShaderStream, fShaderStream;
-			//	// read file's buffer contents into streams
-			//	vShaderStream << vShaderFile.rdbuf();
-			//	fShaderStream << fShaderFile.rdbuf();
-			//	// close file handlers
-			//	vShaderFile.close();
-			//	fShaderFile.close();
-			//	// convert stream into string
-			//	vertexCode = vShaderStream.str();
-			//	fragmentCode = fShaderStream.str();
-			//}
-			//catch (std::ifstream::failure& e)
-			//{
-			//	std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
-			//}
-			//const char* vShaderCode = vertexCode.c_str();
-			//const char* fShaderCode = fragmentCode.c_str();
-			//// 2. compile shaders
-			//unsigned int vertex, fragment;
-			//// vertex shader
-			//vertex = glCreateShader(GL_VERTEX_SHADER);
-			//glShaderSource(vertex, 1, &vShaderCode, NULL);
-			//glCompileShader(vertex);
-			////checkCompileErrors(vertex, "VERTEX");
-			//// fragment Shader
-			//fragment = glCreateShader(GL_FRAGMENT_SHADER);
-			//glShaderSource(fragment, 1, &fShaderCode, NULL);
-			//glCompileShader(fragment);
-			////checkCompileErrors(fragment, "FRAGMENT");
-			//// shader Program
-			//ID = glCreateProgram();
-			//glAttachShader(ID, vertex);
-			//glAttachShader(ID, fragment);
-			//glLinkProgram(ID);
-			////checkCompileErrors(ID, "PROGRAM");
-			//// delete the shaders as they're linked into our program now and no longer necessary
-			//glDeleteShader(vertex);
-			//glDeleteShader(fragment);
-
-
-			//// Vertices coordinates
-			//float vertices[] = {
-			//	// positions          // colors           // texture coords
-			//	 1.f,  1.f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-			//	 1.f, -1.f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-			//	 -1.f, -1.f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-			//	-1.f,  1.f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-			//};
-			//unsigned int indices[] = {
-			//0, 1, 3, // first triangle
-			//1, 2, 3  // second triangle
-			//};
-
-			//// Create reference containers for the Vertex Array Object and the Vertex Buffer Object
-			//
-			//glGenVertexArrays(1, &VAO);
-			//glGenBuffers(1, &VBO);
-			//glGenBuffers(1, &EBO);
-
-			//glBindVertexArray(VAO);
-
-			//glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-			//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-			//// position attribute
-			//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-			//glEnableVertexAttribArray(0);
-			//// color attribute
-			//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-			//glEnableVertexAttribArray(1);
-			//// texture coord attribute
-			//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-			//glEnableVertexAttribArray(2);
-
-
-			//// load and create a texture 
-			//// -------------------------
-			//
-			//
 		}
 
 		void LevelEditor::imguiGraphicsTest(void)
@@ -178,107 +116,6 @@ namespace Core
 
 				fileDialog.ClearSelected();
 			}
-
-			//// texture 1
-			//// ---------
-			//glGenTextures(1, &texture1);
-			//glBindTexture(GL_TEXTURE_2D, texture1);
-			//// set the texture wrapping parameters
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			//// set texture filtering parameters
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			//// load image, create texture and generate mipmaps
-			//stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-			//// The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-
-			//
-
-			//unsigned char* data = stbi_load(texpath, &width, &height, &nrChannels, 0);
-			//if (data)
-			//{
-			//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			//	glGenerateMipmap(GL_TEXTURE_2D);
-			//}
-			//else
-			//{
-			//	std::cout << "Failed to load texture" << std::endl;
-			//}
-			//stbi_image_free(data);
-			//// texture 2
-			//// ---------
-			//glGenTextures(1, &texture2);
-			//glBindTexture(GL_TEXTURE_2D, texture2);
-			//// set the texture wrapping parameters
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			//// set texture filtering parameters
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			//// load image, create texture and generate mipmaps
-			//const char* b = "../textures/BaMi_Idle1.png";
-			//data = stbi_load(b, &width, &height, &nrChannels, 0);
-			//if (data)
-			//{
-			//	// note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
-			//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-			//	glGenerateMipmap(GL_TEXTURE_2D);
-			//}
-			//else
-			//{
-			//	std::cout << "Failed to load texture" << std::endl;
-			//}
-			//stbi_image_free(data);
-			//width = mainclass::size * 1;
-			//// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
-			//// -------------------------------------------------------------------------------------------
-			//glUseProgram(ID);
-			////glUseProgram(texture2);
-			////ID.use(); // don't forget to activate/use the shader before setting uniforms!
-			//// either set it manually like so:
-			////glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
-			//// or set it via the texture class
-			////ourShader.setInt("texture2", 1);
-			//glUniform1i(glGetUniformLocation(ID, "texture1"), 0);
-			//glUniform1i(glGetUniformLocation(ID, "texture2"), 1);
-			////std::cout << ID << std::endl;
-
-			//glActiveTexture(GL_TEXTURE0);
-			//glBindTexture(GL_TEXTURE_2D, texture1);
-			//glActiveTexture(GL_TEXTURE1);
-			//glBindTexture(GL_TEXTURE_2D, texture2);
-
-			//// render container
-			//glUseProgram(ID);
-			////ourShader.use();
-
-			//glBindVertexArray(VAO);
-			//if (mainclass::drawTexture)
-			//{
-			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-			//}
-			//// Exporting variables to shaders
-			///*glUseProgram(shaderProgram);
-			//glUniform1f(glGetUniformLocation(shaderProgram, "size"), mainclass::size);
-			//glUniform4f(glGetUniformLocation(shaderProgram, "color"), mainclass::color[0], mainclass::color[1], mainclass::color[2], mainclass::color[3]);*/
-
-			//// bind textures on corresponding texture units
-			///*glActiveTexture(GL_TEXTURE0);
-			//glBindTexture(GL_TEXTURE_2D, texture1);
-			//glActiveTexture(GL_TEXTURE1);
-			//glBindTexture(GL_TEXTURE_2D, texture2);*/
-
-
-			////std::cout << ID << std::endl;
-
-			//
-			//
-			////// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-			////// -------------------------------------------------------------------------------
-			////glfwSwapBuffers(window);
-			////glfwPollEvents();
 		}
 
 		void LevelEditor::imguiEditorDraw(void)
@@ -289,6 +126,143 @@ namespace Core
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
+
+			//in-Editor viewport view:
+			//ImGui::Begin("Screen Viewport FrameBuffer Window");
+			//int my_image_width = 0;
+			//int my_image_height = 0;
+			//GLuint my_image_texture = 0;
+			//
+			//
+			////get texel data
+			////IM_ASSERT(ret);
+			//ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80));
+			////get frame buffer
+			//ImGui::End(); //end frame buffer
+
+
+
+			//DISPLAYING TILES
+			if (ImGui::Begin("Tile Selector"))
+			{
+				//start tile selector
+				int my_image_width = 0;
+				int my_image_height = 0;
+				GLuint my_image_texture = 0;
+
+				//ImGui::BeginTabBar("Hi");
+
+				bool ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_cucumber.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					std::cout << "button for cucumber is pressed" << std::endl;
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
+				}
+				ImGui::SameLine();
+
+				//salmon
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+				}
+
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_avocado.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
+				}
+
+
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Soya_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Soya_Ingredient.png";
+				}
+
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients1_nori.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
+				}
+
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tuna.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
+				}
+
+
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Wasabi_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Wasabi_Ingredient.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_roes.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
+				}
+
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_rice.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_inari.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tofu.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
+				}
+				//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f)); //uncomment if u want to make button bg transparent
+				//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
+				//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+
+				////salmon
+				//int my_image_width2 = 0;
+				//int my_image_height2 = 0;
+				//GLuint my_image_texture2 = 0;
+				//bool ret2 = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture2, &my_image_width2, &my_image_height2);
+				//IM_ASSERT(ret2);
+				//if (ImGui::ImageButton((void*)(intptr_t)my_image_texture2, ImVec2(80, 80)))
+				//{
+				//	texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+				//}
+
+				//ImGui::PopStyleColor(3); //free the custom transparency buttons
+			}
+			ImGui::End(); //end tile selector
+
 
 			/*bool b = false;
 			if (ImGui::BeginMainMenuBar())
@@ -412,6 +386,16 @@ namespace Core
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
 			}
 
+			//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f));
+			//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
+			//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+			////ImTextureID("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
+			//if (ImGui::ImageButton(ImTextureID("../textures/Tiles/Ingredients/Ingredients0_octopus.png"), ImVec2((float)300, (float)50), ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), 1, ImVec4(0.0f, 0.0f, 0.0f, 0.0f), ImVec4(1.0f, 1.0f, 1.0f, 1.0f))) {
+			//	Beep(400, 300);
+			//	
+			//}
+			//ImGui::PopStyleColor(3);
+
 			if (ImGui::Button("Salmon"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
@@ -431,6 +415,11 @@ namespace Core
 			if (ImGui::Button("Return to Main Menu"))
 			{
 				texpath = "../textures/menu.jpg";
+			}
+
+			if (ImGui::Button("+"))
+			{
+				/*Window::ImGuiToObjContainer()*/
 			}
 
 			ImGui::Spacing();
@@ -499,28 +488,52 @@ namespace Core
 			ImGui::DestroyContext();
 		}
 
-		void LevelEditor::imguiObjectCursor(void)
-		{
-			double xpos, ypos;
-			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			//std::cout << "your GLFW positions are x: " << xpos << " and y: " << ypos << std::endl;
+		/*void LevelEditor::imguiCreateObj(ObjectFactory& container)*/
 
+		void LevelEditor::imguiCreateObj()
+		{
+			double xpos = 0, ypos = 0;
 
 			//grid snapping logic
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
-			// the grid size is now hard coded as 100 x 100
-			// game is 18 (W) x 10 (H)!!
-			Window::sp1->transformation.position = glm::vec2(xpos, ypos);
+
+			Sprite *a = new Sprite(texpath);
+			a->transformation.position = glm::vec2(xpos, ypos);
+			a->transformation.scale = glm::vec2(100, 100);
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", a->transformation.Get());
+
+			a->draw();
+		
+			//newobjarr.push_back(a);
+			delete a;
+		}
+
+		void LevelEditor::AddToFactory(ObjectFactory* container)
+		{
+			Object::GameObject* EditorObj = container->Create();
+			container->AddObjects(EditorObj, "Editor Obj");
+			//container
+			
+			//this function is called when the "+" button to add new objects is called.
+		}
+
+		void LevelEditor::imguiObjectCursor(void)
+		{
+			
+			//display obj to place on cursor
+			//Window::ingredient->transformation.position = glm::vec2(xpos, ypos);
 
 			//place object on click
-			/*if (mouse_event(MOUSEEVENTF_LEFTDOWN))
+			if (ImGui::IsMouseClicked(0)) //0 means left
 			{
-				glfwGetCursorPos(window, &xpos, &ypos);
-				gfxVector2 coordinates(xpos, ypos);
-				std::cout << "Cursor position at " << xpos << " : " << ypos << std::endl;
-				return coordinates;
-			}*/
+				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.position.x << " and y: " << Window::ingredient->transformation.position.y << std::endl;
+				
+				imguiCreateObj();
+
+			}
+			
 		}
 	}
 }

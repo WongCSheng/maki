@@ -20,10 +20,15 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../../glew/include/GL/glew.h"
 #include "../Engine/System/Graphics/glhelper.h"
+#include "../Engine/System/SystemFrame.h"
+//#include "../Engine/Texture/Sprite.h"
+
 
 namespace Core
 {
 	class Window;
+	class Sprite;
+	class ObjectFactory;
 
 	//Object Enums for object selection:
 	enum OBJECTTYPES
@@ -43,7 +48,7 @@ namespace Core
 
 	namespace Editor
 	{		
-		class LevelEditor
+		class LevelEditor : public SystemFrame
 		{
 		public:
 			static void imguiEditorInit(void);
@@ -53,8 +58,20 @@ namespace Core
 			static inline int loadnewlevel = 0;
 			static inline int levelsave = 0;
 			static inline std::string path, path2;
-			static void imguiObjectCursor(void);
+
+			static void imguiCreateObj();
+			static void AddToFactory(ObjectFactory* container);
+
+
 			static inline const char* texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
+			static inline  std::vector<Sprite*> newobjarr;
+			//obj placing
+			static inline bool objplace = false;
+			static void imguiObjectCursor(void);
+
+			void Init() {}
+			void Update(const double dt) {}
+			void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		private:
 

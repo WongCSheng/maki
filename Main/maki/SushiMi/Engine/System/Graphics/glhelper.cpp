@@ -73,6 +73,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	glfwMakeContextCurrent(GLHelper::ptr_window); // make current window the context
 
 	// first parameter represent the handle to the window (ptr_window) while 2nd paramter is the callback function
+	
 	glfwSetFramebufferSizeCallback(GLHelper::ptr_window, GLHelper::fbsize_cb);
 	glfwSetKeyCallback(GLHelper::ptr_window, GLHelper::key_cb);
 	glfwSetMouseButtonCallback(GLHelper::ptr_window, GLHelper::mousebutton_cb);
@@ -323,7 +324,7 @@ relative to the top-left corner of the window client area.
 */
 void GLHelper::mousepos_cb(GLFWwindow* pwin, double xpos, double ypos) {
 #ifdef _DEBUG
-	std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
+	//std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
 #endif
 }
 

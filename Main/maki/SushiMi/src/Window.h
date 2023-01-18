@@ -3,6 +3,8 @@
 #include <iostream>
 #include <glew/include/GL/glew.h>
 #include <glfw/include/GLFW/glfw3.h>
+#include "../Engine/System/SystemFrame.h"
+
 
 namespace Core
 {
@@ -10,13 +12,18 @@ namespace Core
 	class Player;
 	class Sprite;
 	//extern Player* player;
+	class ObjectFactory;
 
-	class Window
+	class Window : public SystemFrame
 	{
 	public:
 		Window(int width, int height);
 
 		~Window();
+
+		void Init() {}
+		void Update(const double dt) {}
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		void Input();
 
@@ -24,10 +31,13 @@ namespace Core
 
 		void Mainloop();
 
+		static inline void ImGuiToObjContainer(ObjectFactory*);
+
 		static inline Player* player;
 		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 		static inline Sprite* sp;
-		static inline Sprite* sp1;
+		static inline Sprite* ingredient;
+		static inline Sprite* a;
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;

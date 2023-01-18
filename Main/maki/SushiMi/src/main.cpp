@@ -68,20 +68,13 @@ int main() {
 	//systems that were new and not deleted
 	CoreSystem = new Core::MainSystem();
 	TestObj = new Core::Object::GameObject();
-	Core::Renderer::GetInstance();
-	Core::TextureSystem::GetInstance();
 
-	Core::Window* window = new Core::Window(800, 600);
 	//glfwInit();
 	Core::pseudomain::init();
-	window->Mainloop();
 
-	//To shift into cleanup
+	CoreSystem->windowsystem->Mainloop();
+
 	delete TestObj;
-	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
-	delete window;
-	delete Core::Renderer::GetInstance();
-	delete Core::TextureSystem::GetInstance();
 	Core::pseudomain::cleanup();
 }
 
@@ -178,9 +171,8 @@ void Core::pseudomain::init() {
 	glfwMakeContextCurrent(Window::window_ptr);
 
 	// Part 3
-	Editor::LevelEditor::imguiEditorInit();
-	
-	
+	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
+	CoreSystem->leveleditorsystem->imguiEditorInit();
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");

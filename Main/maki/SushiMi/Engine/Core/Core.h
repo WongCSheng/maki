@@ -20,11 +20,13 @@ Description: Header for Core.cpp
 #ifndef CORE_H_
 #define CORE_H_
 
-#include "..//System/Renderer.h"
+#include "../System/Renderer.h"
 #include "../System/Transformer.h"
 #include "../System//CameraSystem.h"
 #include "../System/PhysicSystem.h"
 #include "../Engine/Input/Input.h"
+#include "../Editors/LevelEditor.h"
+#include "../Engine/Texture/texture.h"
 
 #include <vector>
 
@@ -53,10 +55,17 @@ namespace Core
 		ObjectFactory* objfactory;
 		Input* inputsystem;
 
+		void AccessObjFactory();
+
+
 		Renderer* renderer;
 		Transformer* transformer;
 		CameraSystem* cameraSystem;
 		PhysicSystem* physicssystem;
+		Renderer* rendersystem;
+		Window* windowsystem;
+		TextureSystem* texturesystem;
+		Editor::LevelEditor* leveleditorsystem;
 	};
 }
 

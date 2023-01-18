@@ -9,6 +9,7 @@
 // singlton pattern
 #include <../stb-master/stb_image.h>
 #include <../glew/include/GL/glew.h>
+#include "../Engine/System/SystemFrame.h"
 #include <iostream>
 
 namespace Core
@@ -20,10 +21,14 @@ namespace Core
 		unsigned int ID;
 	};
 
-	class TextureSystem
+	class TextureSystem : public SystemFrame
 	{
 	public:
 		static TextureSystem* GetInstance();
+
+		void Init() {}
+		void Update(const double dt) {}
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		Texture Generate(const char* filename);
 

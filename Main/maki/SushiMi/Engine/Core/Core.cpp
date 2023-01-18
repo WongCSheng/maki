@@ -42,6 +42,18 @@ namespace Core
 		physicssystem = new PhysicSystem();
 		systems.push_back(physicssystem);
 
+		windowsystem = new Window(800, 600);
+		systems.push_back(windowsystem);
+
+		rendersystem = Renderer::GetInstance();
+		systems.push_back(rendersystem);
+
+		texturesystem = TextureSystem::GetInstance();
+		systems.push_back(texturesystem);
+
+		leveleditorsystem = new Editor::LevelEditor();
+		systems.push_back(leveleditorsystem);
+
 		objfactory = new ObjectFactory();
 
 		inputsystem = new Input();
@@ -60,6 +72,9 @@ namespace Core
 				sys = NULL;
 			}
 		}
+		//To shift into cleanup
+		
+		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
 	}
 
 	/*
@@ -99,6 +114,8 @@ namespace Core
 		Object::GameObject* Collision2 = objfactory->Create();
 		objfactory->AddObjects(Collision1, "CollisionObj1 Test");
 		objfactory->AddObjects(Collision2, "CollisionObj2 Test");
+
+		
 
 		//Object::GameObjectProperty* test = objfactory->ObjectContainer;
 
@@ -174,6 +191,10 @@ namespace Core
 		delete objfactory;
 
 		delete inputsystem;
+	}
+	void MainSystem::AccessObjFactory()
+	{
+		Editor::LevelEditor::AddToFactory(objfactory);
 	}
 }
 

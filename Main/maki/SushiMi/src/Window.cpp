@@ -6,7 +6,7 @@
 #include "../Editors/imfilebrowser.h"
 #include "../Headers/SceneManager.h"
 #include "../Game Object/Player.h"
-#include "../Engine/Texture/Sprite.h"
+//#include "../Engine/Texture/Sprite.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Headers/SceneManager.h"
@@ -20,6 +20,7 @@ namespace Core
 	static bool keystate_up = false;
 	static bool keystate_down = false;
 	static bool keystate_R = false;
+	static bool place_obj = false;
 	Player* player;
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
@@ -35,6 +36,7 @@ namespace Core
 			keystate_up = false;
 			keystate_down = false;
 			keystate_R = false;
+			
 		}
 		else if (GLFW_RELEASE == action)
 		{
@@ -90,16 +92,21 @@ namespace Core
 
 		//player = new Player();
 
-		sp = new Sprite("../textures/level1.jpg");
+		/*sp = new Sprite("../textures/level1.jpg");
 		sp->transformation.scale = glm::vec2(2000, 2000);
-		sp->transformation.position = glm::vec2(0);
+		sp->transformation.position = glm::vec2(0);*/
 
+		/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 		SceneManager::loadTile(); //scene manager
 
 		//the moving ingredient
-		sp1 = new Sprite(Editor::LevelEditor::texpath);
-		sp1->transformation.scale = glm::vec2(100, 100);
-		sp1->transformation.position = glm::vec2(15, 20);
+		ingredient = new Sprite(Editor::LevelEditor::texpath);
+		ingredient->transformation.scale = glm::vec2(100, 100);
+		ingredient->transformation.position = glm::vec2(15, 20);
+
+		a = nullptr;
+
+		
 	}
 
 	Window::~Window()
@@ -108,12 +115,22 @@ namespace Core
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes 
-		delete sp1;
+		delete ingredient;
 		glfwTerminate();
 	}
 
 	void Window::Input()
 	{
+
+		//if (ImGui::IsMouseReleased(MOUSEEVENTF_LEFTDOWN))
+		//{
+		//	//place_obj = true;
+		//	//if (place_obj)
+		//	//{
+		//		std::cout << "placing obj at x: " << ingredient->transformation.position.x << "and y: " << ingredient->transformation.position.y << std::endl;
+		//		//place_obj = false;
+		//	//}
+		//}
 
 		if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
 		{
@@ -213,32 +230,38 @@ namespace Core
 
 			starttime = glfwGetTime();
 
-			//display object at imgui cursor
-			Core::Editor::LevelEditor::imguiObjectCursor();
+			
 
 			pseudomain::update();
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
+
 			//for each frame 
 			Resize();
 			Input();
 
 			glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
+			
+			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 
 			// all drawing goes here ..
 			Shaders->Textured_Shader()->use();
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
-			sp->draw();
+			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
+			sp->draw();*/
 
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp1->transformation.Get());
-			sp1->draw();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
+			ingredient->draw();
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 			player->draw(delta);
 
 			SceneManager::drawTile();
+
+			//display object at imgui cursor
+			Core::Editor::LevelEditor::imguiObjectCursor();
+
 
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
@@ -246,5 +269,10 @@ namespace Core
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
 		
+	}
+	void Window::ImGuiToObjContainer(ObjectFactory* c)
+	{
+
+		//Editor::LevelEditor::AddToFactory(ObjectFactory)
 	}
 }

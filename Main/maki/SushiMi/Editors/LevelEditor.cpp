@@ -399,7 +399,7 @@ namespace Core
 			if (ImGui::Button("Salmon"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-
+				
 			}
 
 			if (ImGui::Button("Level1 Background"))
@@ -496,18 +496,29 @@ namespace Core
 
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			
+			std::cout << "X: " << xpos << " " << ypos << std::endl;
+			int i = imguiPlacedObjs;
+			newobjarr.push_back(new Sprite(texpath));
+			/*Window::a = new Sprite(texpath);*/
+			newobjarr[i]->transformation.scale = glm::vec2(100, 100);
+			xpos += newobjarr[i]->transformation.scale.x * 0.5f;
+			ypos += newobjarr[i]->transformation.scale.y * 0.5f;
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
+			newobjarr[i]->transformation.position = glm::vec2(xpos, ypos);
 
-			Sprite *a = new Sprite(texpath);
-			a->transformation.position = glm::vec2(xpos, ypos);
-			a->transformation.scale = glm::vec2(100, 100);
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", a->transformation.Get());
+			
+			++imguiPlacedObjs;
+			
+		}
 
-			a->draw();
-		
-			//newobjarr.push_back(a);
-			delete a;
+		void LevelEditor::imguiDestroyObj()
+		{
+			for (int i = 0; i < imguiPlacedObjs; ++i)
+			{
+				delete newobjarr[i];
+			}
 		}
 
 		void LevelEditor::AddToFactory(ObjectFactory* container)
@@ -523,8 +534,16 @@ namespace Core
 		{
 			
 			//display obj to place on cursor
-			//Window::ingredient->transformation.position = glm::vec2(xpos, ypos);
+			double xpos = 0, ypos = 0;
 
+			//grid snapping logic
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			xpos += 100 * 0.5f;
+			ypos += 100 * 0.5f;
+			xpos = (float)((int)(xpos) / 100 * 100);
+			ypos = (float)((int)(ypos) / 100 * 100);
+
+			Window::ingredient->transformation.position = glm::vec2(xpos, ypos);
 			//place object on click
 			if (ImGui::IsMouseClicked(0)) //0 means left
 			{

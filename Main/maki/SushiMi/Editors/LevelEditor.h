@@ -60,6 +60,9 @@ namespace Core
 			static inline std::string path, path2;
 
 			static void imguiCreateObj();
+			static void imguiDestroyObj();
+			static inline int imguiPlacedObjs = 0;
+			
 			static void AddToFactory(ObjectFactory* container);
 
 

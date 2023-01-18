@@ -104,7 +104,7 @@ namespace Core
 		ingredient->transformation.scale = glm::vec2(100, 100);
 		ingredient->transformation.position = glm::vec2(15, 20);
 
-		a = nullptr;
+	
 
 		
 	}
@@ -117,6 +117,7 @@ namespace Core
 		delete sp; //16 bytes 
 		delete ingredient;
 		glfwTerminate();
+		Editor::LevelEditor::imguiDestroyObj();
 	}
 
 	void Window::Input()
@@ -233,7 +234,6 @@ namespace Core
 			
 
 			pseudomain::update();
-			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 			//for each frame 
 			Resize();
@@ -262,10 +262,16 @@ namespace Core
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
 
-
+			for (Sprite* test : Editor::LevelEditor::newobjarr)
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test->transformation.Get());
+				test->draw();
+			}
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
+			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 		}
+
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
 		

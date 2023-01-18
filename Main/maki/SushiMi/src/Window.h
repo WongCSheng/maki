@@ -37,7 +37,7 @@ namespace Core
 		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
 		static inline Sprite* sp;
 		static inline Sprite* ingredient;
-		static inline Sprite* a;
+		
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;

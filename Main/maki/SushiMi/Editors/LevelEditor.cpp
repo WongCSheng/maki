@@ -73,7 +73,8 @@ namespace Core
 	//unsigned int EBO;
 	// create a file browser instance
 	static ImGui::FileBrowser fileDialog;
-
+	std::filesystem::path m_curr_path;
+	static const std::filesystem::path s_TextureDirectory = "../textures";
 
 	namespace Editor
 	{
@@ -97,7 +98,7 @@ namespace Core
 			static ImGui::FileBrowser fileDialog;
 			
 
-
+			m_curr_path = s_TextureDirectory;
 			// (optional) set browser properties
 			fileDialog.SetTitle("ImGui File Explorer");
 			//fileDialog.SetPwd("../maki/textures/");
@@ -352,6 +353,43 @@ namespace Core
 
 
 			}
+			/*----------------------*/
+			/*Content Browser Panel*/
+			/*----------------------*/
+			ImGui::Begin("Content Browser");
+
+			if(m_curr_path != std::filesystem::path(s_TextureDirectory))
+			{
+				if(ImGui::Button("<-"))
+				{
+					m_curr_path = m_curr_path.parent_path();
+				}
+			}
+
+			for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
+			{
+				std::string path = directory_entry.path().string();
+				auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
+				if (directory_entry.is_directory())
+				{
+					if (ImGui::Button(path.c_str()))
+					{
+						m_curr_path /= directory_entry.path().filename();
+					}
+				}
+				else
+				{
+					if(ImGui::Button(path.c_str()))
+					{
+						
+					}
+				}
+
+				
+			}
+			
+			ImGui::End();
+
 
 			/*currently not working oops*/
 			//ImGui::Text("Click to Create New Object/Modify Object");

@@ -11,7 +11,7 @@
 *//*__________________________________________________________________________*/
 #include <string>
 #include <sstream>
-#include "../Engine/Texture/Texture.h"
+#include "../Components/Texture/Texture.h"
 #include "../Engine/System/Renderer.h"
 #include <../glew/include/GL/glew.h>
 #include <../glm/glm/vec2.hpp>
@@ -74,10 +74,10 @@ namespace Core
 		glm::vec4 frame = frames[current_frame_indx];
 
 		// normalization
-		frame.x /= spritetexture.width;
-		frame.y /= spritetexture.height;
-		frame.z /= spritetexture.width;
-		frame.w /= spritetexture.height;
+		frame.x /= spritetexture.Texwidth;
+		frame.y /= spritetexture.Texheight;
+		frame.z /= spritetexture.Texwidth;
+		frame.w /= spritetexture.Texheight;
 
 		std::vector<glm::vec2> uv;
 

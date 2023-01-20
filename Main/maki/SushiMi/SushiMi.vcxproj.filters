@@ -112,9 +112,6 @@
     <ClCompile Include="Engine\Shaders\ShaderProgram.cpp">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Texture\Texture.cpp">
-      <Filter>GameEngine\Component\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Components\Transform\Transform.cpp">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClCompile>
@@ -133,14 +130,20 @@
     <ClCompile Include="Game Object\Player.cpp">
       <Filter>GameEngine\System\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Texture\Sprite.cpp">
-      <Filter>GameEngine\System\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Texture\Rectangle.cpp">
-      <Filter>GameEngine\System\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="src\SceneManager.cpp">
       <Filter>Scene Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\TextureSystem.cpp">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Texture\Rectangle.cpp">
+      <Filter>GameEngine\Component\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Texture\Sprite.cpp">
+      <Filter>GameEngine\Component\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Texture\Texture.cpp">
+      <Filter>GameEngine\Component\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -297,9 +300,6 @@
     <ClInclude Include="Engine\Shaders\ShaderProgram.h">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Texture\Texture.h">
-      <Filter>GameEngine\Component\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="include\glm.h" />
     <ClInclude Include="Engine\Components\Transform\sTransform.h">
       <Filter>GameEngine\Component\Transform</Filter>
@@ -322,14 +322,20 @@
     <ClInclude Include="Game Object\Player.h">
       <Filter>GameEngine\System\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Texture\Sprite.h">
-      <Filter>GameEngine\System\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture\Rectangle.h">
-      <Filter>GameEngine\System\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\SceneManager.h">
       <Filter>Scene Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\TextureSystem.h">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Texture\Rectangle.h">
+      <Filter>GameEngine\Component\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Texture\Sprite.h">
+      <Filter>GameEngine\Component\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Texture\Texture.h">
+      <Filter>GameEngine\Component\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

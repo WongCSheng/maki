@@ -35,7 +35,7 @@ namespace Core
 		owner = NewOwner;
 	}
 
-	void Reset(bool set)
+	void Component::Reset(bool set)
 	{
 		if (set)
 		{

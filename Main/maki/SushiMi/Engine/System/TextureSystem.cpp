@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "TextureSystem.h"
 /*!
 @file		Texture.cpp
 @author		louishetong.wang@digipen.edu
@@ -8,13 +8,9 @@
 *//*__________________________________________________________________________*/
 #include <../stb-master/stb_image.h>
 
-#include <../glew/include/GL/glew.h>
-#include <iostream>
-//using namespace std;
-namespace Core {
-
-
-	TextureSystem* TextureSystem::_instance = nullptr;
+namespace Core
+{
+	TextureSystem* TextureSystem::_instance{};
 
 	TextureSystem* TextureSystem::GetInstance()
 	{
@@ -23,26 +19,21 @@ namespace Core {
 		return _instance;
 	}
 
-	Texture TextureSystem::Generate(const char* filename)
+	TextureSystem::TextureSystem()
 	{
-		Texture result;
+		_instance = nullptr;
+	}
 
-		int width, height, numcomponents;
-		unsigned char* data;
-		unsigned int textureID;
 
-		glGenTextures(1, &textureID);
+	Texture TextureSystem::Generate(Texture* tex)
+	{		
+		glGenTextures(1, &tex->TextureID);
 
-		data = stbi_load(filename, &width, &height, &numcomponents, STBI_rgb_alpha);
-
-		result.width = width;
-		result.height = height;
-		result.ID = textureID;
-
-		if (data)
+		if (tex->data)
 		{
-			glBindTexture(GL_TEXTURE_2D, textureID);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+			glBindTexture(GL_TEXTURE_2D, tex->TextureID);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tex->Texheight, tex->Texwidth, 0, GL_RGBA, GL_UNSIGNED_BYTE, tex->data);
+			std::cout << "Error: " << glGetError() << std::endl;
 			glGenerateMipmap(GL_TEXTURE_2D);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -54,22 +45,30 @@ namespace Core {
 		}
 		else
 		{
-			std::cout << "failed to load image : " << filename << std::endl;
+			std::cout << "failed to load image : " << tex->TextureID << std::endl;
 			std::cout << "============================================" << std::endl;
-			stbi_image_free(data);
+			//stbi_image_free(tex->data);
 		}
 
-		stbi_image_free(data);
-
-		return result;
+		return *tex;
 	}
 
 	void TextureSystem::Delete(Texture& obj)
 	{
-		glDeleteTextures(1, &obj.ID);
+		glDeleteTextures(1, &obj.TextureID);
 	}
 
-	TextureSystem::TextureSystem()
+	void TextureSystem::Init()
+	{
+
+	}
+
+	void TextureSystem::Update(const double dt)
+	{
+
+	}
+
+	void TextureSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
 
 	}

@@ -10,14 +10,14 @@
 
 @brief		Drawing of the sprite and animating of it is here
 *//*__________________________________________________________________________*/
-#include "../Engine/Texture/texture.h"
+#include "../Engine/Components/Texture/Texture.h"
 #include "../Engine/System/Renderer.h"
 #include "../Engine/Components/Transform/sTransform.h"
 #include "../Engine/Animation/Animation2D.h"
 
 namespace Core
 {
-	class Sprite
+	class Sprite : public Component
 	{
 	public:
 		Sprite(const char* filename);
@@ -30,11 +30,19 @@ namespace Core
 
 		void Add_animation(const char* filename);
 
+		void Init();
+		void Serialise(const std::string name);
+
+		bool IsActive();
+		void Activate();
+		void Deactivate();
+		void Remove();
+
 		Transform transformation;
 
 	private:
 		Texture texture;
-		Core::vtx rectangle;
+		vtx rectangle;
 
 		std::vector<Animation2D*> anims;
 	};

@@ -24,7 +24,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
-#include "../Engine/Texture/texture.h"
+#include "../Engine/System/TextureSystem.h"
 #include "../Engine/Audio/AudioEngine.h"
 
 //#include "../Mono/Mono.h"
@@ -69,7 +69,6 @@ int main() {
 	CoreSystem = new Core::MainSystem();
 	TestObj = new Core::Object::GameObject();
 
-	//glfwInit();
 	Core::pseudomain::init();
 
 	CoreSystem->windowsystem->Mainloop();
@@ -112,8 +111,11 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 void Core::pseudomain::draw() 
 {
 	//imGUI Game Editor
+
+//#ifdef Editor_debug
 	Editor::LevelEditor::imguiEditorDraw();
-	
+//#endif
+
 	// Part 2: swap buffers: front <-> back
 	glfwSwapBuffers(Window::window_ptr);
 	glfwPollEvents();

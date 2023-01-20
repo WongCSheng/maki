@@ -26,7 +26,7 @@ Description: Header for Core.cpp
 #include "../System/PhysicSystem.h"
 #include "../Engine/Input/Input.h"
 #include "../Editors/LevelEditor.h"
-#include "../Engine/Texture/texture.h"
+#include "../System/TextureSystem.h"
 
 #include <vector>
 

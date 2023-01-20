@@ -7,7 +7,7 @@
 */
 #pragma once
 
-#include "../Engine/Texture/Sprite.h"
+#include "../Engine/Components/Texture/Sprite.h"
 #include <string>
 #include <vector>
 

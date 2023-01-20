@@ -14,6 +14,21 @@ namespace Core
 	{
 
 	}
+
+	void SceneManager::Init()
+	{
+
+	}
+
+	void SceneManager::Update(const double dt)
+	{
+
+	}
+
+	void SceneManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	{
+
+	}
 	//R key for restart
 	// update by thea: i've written a new restart function
 	//					that just restarts the position, rather than

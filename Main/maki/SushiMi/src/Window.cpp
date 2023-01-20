@@ -6,7 +6,7 @@
 #include "../Editors/imfilebrowser.h"
 #include "../Headers/SceneManager.h"
 #include "../Game Object/Player.h"
-//#include "../Engine/Texture/Sprite.h"
+#include "../Engine/Components/Texture/Sprite.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Headers/SceneManager.h"
@@ -53,13 +53,15 @@ namespace Core
 		m_height(height)
 
 	{
-		glfwInit();
+		starttime = endtime = delta = 0;
 
+		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 		glfwWindowHint(GLFW_MAXIMIZED, true);
+		
 		window_ptr = glfwCreateWindow(width, height, "SushiMi Engine", NULL, NULL);
 		if (window_ptr == nullptr)
 		{
@@ -84,8 +86,6 @@ namespace Core
 		starttime = 0;
 		endtime = 0;
 		delta = 0;
-
-
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);

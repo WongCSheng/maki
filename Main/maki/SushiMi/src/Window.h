@@ -46,7 +46,6 @@ namespace Core
 
 	private:
 		int m_width, m_height;
-		GLFWwindow* ptr_win;
 		double starttime, endtime, delta;
 	};
 
@@ -57,5 +56,5 @@ namespace Core
 		static void update();
 		static void init();
 		static void cleanup();
-		};
+	};
 }

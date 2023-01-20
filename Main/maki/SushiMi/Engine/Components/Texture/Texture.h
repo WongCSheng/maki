@@ -10,33 +10,29 @@
 #include <../stb-master/stb_image.h>
 #include <../glew/include/GL/glew.h>
 #include "../Engine/System/SystemFrame.h"
+#include "../Component.h"
+#include <unordered_map>
 #include <iostream>
 
 namespace Core
 {
-	struct Texture
+	struct Texture : public Component
 	{
-		int width;
-		int height;
-		unsigned int ID;
-	};
-
-	class TextureSystem : public SystemFrame
-	{
-	public:
-		static TextureSystem* GetInstance();
-
-		void Init() {}
-		void Update(const double dt) {}
-		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
-
-		Texture Generate(const char* filename);
+		void TextureLoadIn(const char* filename);
 
 		void Delete(Texture& obj);
 
-	private:
-		TextureSystem();
+		void Init();
+		void Serialise(const std::string name);
 
-		static TextureSystem* _instance;
+		bool IsActive();
+		void Activate();
+		void Deactivate();
+		void Remove();
+		
+		int Texwidth, Texheight, num_8_bit_component;
+		unsigned int TextureID;
+
+		unsigned char* data;
 	};
 }

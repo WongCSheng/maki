@@ -1,15 +1,19 @@
 #pragma once
-#include "../Engine/Texture/Sprite.h"
+#include "../Engine/Components/Texture/Sprite.h"
 #include "../Game Object/Player.h"
 #include "../src/Window.h"
 
 namespace Core
 {
-	class SceneManager
+	class SceneManager : public SystemFrame
 	{
 	public:
 		SceneManager();
 		~SceneManager();
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static  void restartLevel();
 		static  void nextLevel();

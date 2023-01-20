@@ -365,29 +365,46 @@ namespace Core
 					m_curr_path = m_curr_path.parent_path();
 				}
 			}
+			float padding = 10.f;
+			float thumbnail_size = 128;
+			float cellSize = thumbnail_size + padding;
+
+			float panelWidth = ImGui::GetContentRegionAvail().x;
+			float columnCount = (int)(panelWidth / cellSize);
+			ImGui::Columns(5, 0, false);
 
 			for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
 			{
 				std::string path = directory_entry.path().string();
 				auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
+
+				ImGui::Button(path.c_str(), { thumbnail_size, thumbnail_size });
+				ImGui::Text(path.c_str());
+
 				if (directory_entry.is_directory())
 				{
+					/*
 					if (ImGui::Button(path.c_str()))
 					{
 						m_curr_path /= directory_entry.path().filename();
 					}
+					*/
 				}
 				else
 				{
+					/*
 					if(ImGui::Button(path.c_str()))
 					{
 						
 					}
+					*/
 				}
-
+				ImGui::NextColumn();
 				
 			}
-			
+			ImGui::Columns(1);
+			ImGui::SliderFloat("Thumbnail Size", &thumbnail_size, 16, 512);
+			ImGui::SliderFloat("Padding", &padding, 0, 32);
 			ImGui::End();
 
 

@@ -206,7 +206,7 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
-
+		//player->stop();
 		
 	}
 

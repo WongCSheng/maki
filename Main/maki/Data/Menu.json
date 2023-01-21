@@ -1,0 +1,24 @@
+{
+  "Menu": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 1280, 720 ]
+    },
+    {
+      "type": "Sprite",
+      "texture_path": "background.png",
+      "sprite_sheet": false,
+      "sprite_size": [ 0, 0 ]
+    },
+    {
+      "type": "AudioBGM",
+      "AudioID": "main_menu_bgm"
+    },
+    {
+      "type": "Behaviour",
+      "class_path": " "
+    }
+  ]
+}

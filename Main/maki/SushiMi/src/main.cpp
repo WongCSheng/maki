@@ -154,7 +154,7 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->Init();
 	TestObj->Init();
 
-	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
+	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 
 	glEnable(GL_DEBUG_OUTPUT);

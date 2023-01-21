@@ -24,12 +24,12 @@ namespace Core
 
 	}
 
-	void Transform::Serialise(const std::string name)
+	void Transform::Serialize(const std::string name)
 	{
 
 	}
 
-	void Transform::Deserialise(const std::string name)
+	void Transform::Deserialize(const std::string name)
 	{
 
 	}

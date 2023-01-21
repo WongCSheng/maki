@@ -26,7 +26,8 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
 //#include "../Engine/Core/Core.h"
-
+namespace Core
+{
 // Simple helper function to load an image into a OpenGL texture with common settings
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
 {
@@ -62,8 +63,7 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 	return true;
 }
 
-namespace Core
-{
+
 	
 
 	//std::vector<std::string> ObjVector;
@@ -340,13 +340,13 @@ namespace Core
 				//std::cout << "Selected Load file before conversion " << fileDialog.GetSelected().string() << std::endl;
 				path2 = fileDialog.GetSelected().string();
 				std::replace(path2.begin(), path2.end(), '\\', '/');
-				*JSONSerializer::LevelLoadPathPtr = path2.c_str();
+				*Core::LevelLoadPathPtr = path2.c_str();
 				//std::cout << "Selected Load file AFTER conversion" << *JSONSerializer::LevelLoadPathPtr << std::endl;
 
 				delete Window::player; //delete old player? but it feels so inappropriate to put it here if i need to delete all objects in future to replace them
-				Window::player = JSONSerializer::Deserialize(*JSONSerializer::LevelLoadPathPtr);
+				Window::player = Core::Deserialize(*Core::LevelLoadPathPtr);
 
-				std::cout << "the level is loaded, JSON file is " << *JSONSerializer::LevelLoadPathPtr << std::endl;
+				std::cout << "the level is loaded, JSON file is " << *Core::LevelLoadPathPtr << std::endl;
 
 				fileDialog.ClearSelected();
 				loadnewlevel = false;
@@ -507,11 +507,11 @@ namespace Core
 						//std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
 						path2 = fileDialog.GetSelected().string();
 						std::replace(path2.begin(), path2.end(), '\\', '/');
-						*JSONSerializer::LevelSavePathPtr = path2.c_str();
+						*Core::LevelSavePathPtr = path2.c_str();
 						//std::cout << "Selected filename" << *JSONSerializer::LevelSavePathPtr << std::endl;
 						levelsave = 2;
 
-						JSONSerializer::Serialize(*Window::player, *JSONSerializer::LevelSavePathPtr);
+						Core::Serialize(*Window::player, *Core::LevelSavePathPtr);
 
 						std::cout << "the level is saved! level save status is " << levelsave << std::endl;
 

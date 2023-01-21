@@ -116,15 +116,16 @@ namespace Core
 		objfactory->AddObjects(Collision2, "CollisionObj2 Test");
 
 		
+		
 
 		//Object::GameObjectProperty* test = objfactory->ObjectContainer;
 
-		for (auto& i : objfactory->ObjectContainer)
-		{
-			i.second->GetObjectProperties()->AddComponent(ComponentID::Collision, new Collision());
-			static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min = gfxVector2(0, 0); //set button coordiantes
-			static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max = gfxVector2(100, 100);
-		}
+		//for (auto& i : objfactory->ObjectContainer)
+		//{
+		//	i.second->GetObjectProperties()->AddComponent(ComponentID::Collision, new Collision());
+		//	static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min = gfxVector2(0, 0); //set button coordiantes
+		//	static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max = gfxVector2(100, 100);
+		//}
 
 	}
 
@@ -143,21 +144,21 @@ namespace Core
 
 		gfxVector2 mousePos = inputsystem->GetMouse(Window::window_ptr, mousestate);
 
-		for (auto& i : objfactory->ObjectContainer)
-		{
-			if (staticPointRect(mousePos, static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB()))
-			{
-				std::cout << "U are clicking" << std::endl;
-				/*std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.x << " , ";
-				std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.y << std::endl;
-				std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.x << " , ";
-				std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.y << std::endl;*/
-				std::cout << mousePos.x << ", " << mousePos.y << std::endl;
-				break;
+		//for (auto& i : objfactory->ObjectContainer)
+		//{
+		//	if (staticPointRect(mousePos, static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB()))
+		//	{
+		//		std::cout << "U are clicking" << std::endl;
+		//		/*std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.x << " , ";
+		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.y << std::endl;
+		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.x << " , ";
+		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.y << std::endl;*/
+		//		std::cout << mousePos.x << ", " << mousePos.y << std::endl;
+		//		break;
 
-			}
+		//	}
 
-		}
+		//}
 
 	}
 

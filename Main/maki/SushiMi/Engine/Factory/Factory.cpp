@@ -64,7 +64,7 @@ namespace Core
 		
 	}
 
-	void ObjectFactory::SerializeObjects(const char* filename) {
+	void ObjectFactory::DeserializeObjects(const char* filename) {
 	
 		/*None = 0b0000'0000,
 			Renderer = 0b0000'0010,

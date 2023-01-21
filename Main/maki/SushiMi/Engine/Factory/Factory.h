@@ -42,8 +42,8 @@ namespace Core
 
 		void Init();
 
-		void SerializeObjects(const char* filename);
-
+		void DeserializeObjects(const char* filename);
+	
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 	};
 }

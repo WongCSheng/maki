@@ -81,8 +81,8 @@ namespace Core
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
-		JSONSerializer::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-		player = JSONSerializer::Deserialize(*JSONSerializer::LevelLoadPathPtr);
+		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
+		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 		starttime = 0;
 		endtime = 0;
 		delta = 0;

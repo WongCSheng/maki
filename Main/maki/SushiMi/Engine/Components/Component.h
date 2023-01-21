@@ -39,6 +39,7 @@ namespace Core
 		// Function to initialize the component's owner when it is added to the entity
 		virtual void Init() = 0;
 		virtual void Serialise(const std::string name) = 0;
+		virtual void Deserialise(const std::string name) = 0;
 		Object::GameObjectProperty* GetOwner();
 		void SetOwner(Object::GameObjectProperty* owner);
 		void Reset(bool set);

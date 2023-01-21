@@ -71,6 +71,11 @@ namespace Core
 
 	}
 
+	void Sprite::Deserialise(const std::string name)
+	{
+
+	}
+
 	bool Sprite::IsActive()
 	{
 		return active;

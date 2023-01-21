@@ -93,7 +93,7 @@ namespace Core
 
 		void Init();
 		void Serialise(const std::string name);
-
+		void Deserialise(const std::string name);
 
 		void BuildLineSegment(LineSegment& lineSegment,								//Line segment reference - input
 			const gfxVector2& pos,									//position - input

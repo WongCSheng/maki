@@ -115,9 +115,6 @@
     <ClCompile Include="Engine\Components\Transform\Transform.cpp">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Components\Physics\collision.cpp">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Components\Physics\Physics.cpp">
       <Filter>GameEngine\Component\Physics</Filter>
     </ClCompile>
@@ -144,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Components\Texture\Texture.cpp">
       <Filter>GameEngine\Component\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Physics\collision.cpp">
+      <Filter>GameEngine\Component\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,9 +307,6 @@
     <ClInclude Include="Engine\Components\Transform\Transform.h">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Components\Physics\collision.h">
-      <Filter>GameEngine\Component\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Components\Physics\Physics.h">
       <Filter>GameEngine\Component\Physics</Filter>
     </ClInclude>
@@ -336,6 +333,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Components\Texture\Texture.h">
       <Filter>GameEngine\Component\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\Physics\collision.h">
+      <Filter>GameEngine\Component\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

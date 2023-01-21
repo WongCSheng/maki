@@ -27,6 +27,7 @@ namespace Core
 
 		void Init();
 		void Serialise(const std::string name);
+		void Deserialise(const std::string name);
 
 		void Set(gfxVector2 position = gfxVector2(0.f, 0.f), gfxVector2 scale = gfxVector2(1.f, 1.f), gfxMatrix3 rotation = gfxMatrix3(0.f));
 		void SetPosition(gfxVector2 position);

@@ -38,6 +38,11 @@ namespace Core
 
 	}
 
+	void Texture::Deserialise(const std::string name)
+	{
+
+	}
+
 	bool Texture::IsActive()
 	{
 		return active;

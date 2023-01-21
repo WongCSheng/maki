@@ -29,6 +29,11 @@ namespace Core
 
 	}
 
+	void Transform::Deserialise(const std::string name)
+	{
+
+	}
+
 	void Transform::Set(gfxVector2 position, gfxVector2 scale, gfxMatrix3 rotation)
 	{
 		this->Position = position;

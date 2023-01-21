@@ -26,6 +26,7 @@ namespace Core
 
 		void Init();
 		void Serialise(const std::string name);
+		void Deserialise(const std::string name);
 		
 		float mass{};
 		gfxVector2 velocity{};

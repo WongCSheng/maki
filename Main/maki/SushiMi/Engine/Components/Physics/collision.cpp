@@ -43,6 +43,11 @@ namespace Core
 
 	}
 
+	void Collision::Deserialise(const std::string name)
+	{
+
+	}
+
 	void Remove()
 	{
 

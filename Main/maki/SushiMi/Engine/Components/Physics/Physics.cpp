@@ -30,6 +30,11 @@ namespace Core
 
 	}
 
+	void Physics::Deserialise(const std::string name)
+	{
+
+	}
+
 	float Physics::GetMass()
 	{
 		return mass;

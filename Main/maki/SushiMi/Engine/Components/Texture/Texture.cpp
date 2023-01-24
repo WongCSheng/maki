@@ -33,12 +33,12 @@ namespace Core
 
 	}
 
-	void Texture::Serialise(const std::string name)
+	void Texture::Serialize(const std::string name)
 	{
 
 	}
 
-	void Texture::Deserialise(const std::string name)
+	void Texture::Deserialize(const std::string name)
 	{
 
 	}

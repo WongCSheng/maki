@@ -23,8 +23,8 @@ namespace Core
 		void Delete(Texture& obj);
 
 		void Init();
-		void Serialise(const std::string name);
-		void Deserialise(const std::string name);
+		void Serialize(const std::string name);
+		void Deserialize(const std::string name);
 
 		bool IsActive();
 		void Activate();

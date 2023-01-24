@@ -12,10 +12,10 @@ chosen game object.
 #pragma once
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Game Object/GameObject.h"
-#include "../Factory/Factory.h"
 #include <fstream>
 #include <exception>
 #include <vector>
+#include "../Components/Transform/Transform.h"
 #include "../Game Object/Player.h"
 
 namespace Core
@@ -64,39 +64,25 @@ namespace Core
 	//	}
 	//}
 
+	//Deserialze is read from json file.
 	void DeserializeEntity(std::string const& filepath, std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-		//read from json file
-		std::string json_from_file = ReadFileContents(filepath.c_str());
-
-		rapidjson::Document document; // Create a JSON document
-		//checking for parse errors...
-		if (document.Parse(json_from_file.c_str()).HasParseError())
-		{
-			std::cout << "JSONSerializer DeserializeEntity: There was a JSON parse error : " << filepath << std::endl;
-			return;
-		}
-
-		if (!document.IsObject())
-		{ // if json document does not start with {}, throw an error
-			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object" << std::endl;
-			return;
-		}
-
-		/*start checking jason file components, keep expanding this list according to file contents */
-
-		// does the root object has a key called "sprite" and is it an object?
-		if (!document.HasMember("sprite") || !document["sprite"].IsObject())
-		{
-			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not have 'sprite'" << std::endl;
-			return;
-		}
 		//Object::GameObject gameObj = ObjectFactory::Create();
+		rapidjson::Document document;
 
 		// remember to delete entity if nullptr is returned
+		if (!document.IsObject()) 
+		{
+			std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 1" << std::endl;
+			return;
+		}
+		/* creating a gameObj inst to store and to be saved into Obj Container */
+		Object::GameObject* gameObj; //contains characteristics of game objects
+	
+
 		if (!document.HasMember("components") || !document["components"].IsArray()) 
 		{
-			std::cout << "JSONSerializer DeserializeLevel: " << filepath << "  does not have 'components'" << std::endl;
+			std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 2" << std::endl;
 
 			return;
 
@@ -105,26 +91,34 @@ namespace Core
 			{
 				rapidjson::Value& compJsonObj = document["components"][i]; // access element inside components array
 
+
 				if (!compJsonObj.IsObject())
 				{
-					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object" << std::endl;
+					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 3" << std::endl;
 				}
 
 				if (!compJsonObj.HasMember("type") || !compJsonObj["type"].IsString()) 
 				{
+					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 4" << std::endl;
 
+					return;
 				}
 
 				// what happens in a scenario where a Component failed to deserialize?
 				// How will this function know that the component failed to deserialize, then not add that component?
 				if (compJsonObj["type"] == "Transform") 
 				{
-					Transform* trans = new Transform();
-					//trans->ObjectFactory::DeserializeObjects(compJsonObj);
-					//gameObj.addComponent(trans)
+					Object::GameObjectProperty* transProperty;
+					Transform* transComp;
+					//Object::GameObjectProperty tempProperty = &gameObj->GetObjectProperties();
+					transComp->Deserialize(compJsonObj);
+					transProperty->SetID(0b0000'0100); //transformID
+					transProperty->AddComponent(ComponentID::Transform, transComp);
+					gameObj->characteristics = transProperty;
+					
 				}
 
-				else if (compJsonObj["type"] == "Renderer") 
+				/*else if (compJsonObj["type"] == "Sprite") 
 				{
 
 				}
@@ -132,20 +126,26 @@ namespace Core
 				else if (compJsonObj["type"] == "Music")
 				{
 
-				}
-				else if (compJsonObj["type"] == "GameBehaviour")
-				{
-
-				}
+				}*/
+				
 			}
 
 			return;
 		}
+		ObjectFactory::ObjectContainer.emplace(filepath, gameObj); //save everything in gameObj into container
 	}
 
 
-	
+	/*
+		template T = Player
+		Deserialize()
+		{
+			GO* = Deserialize(file)
+			T* = new T(GO)
+		}
+	*/
 	/* text to screen*/
+	//template <typename T>
 	Player* Deserialize(std::string const& filepath)
 	{
 		std::string json_from_file = ReadFileContents(filepath.c_str());

@@ -28,7 +28,7 @@ namespace Core
 		ObjectFactory();
 		virtual ~ObjectFactory();
 
-		std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
+		static inline std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 
 		Object::GameObject* Create();
 

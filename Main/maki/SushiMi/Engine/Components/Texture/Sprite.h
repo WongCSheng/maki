@@ -12,12 +12,14 @@
 *//*__________________________________________________________________________*/
 #include "../Engine/Components/Texture/Texture.h"
 #include "../Engine/System/Renderer.h"
-#include "../Engine/Components/Transform/sTransform.h"
+#include "../Engine/Components/Transform/Transform.h" //important as it is the only function that has a get()
+//#include "../Engine/Components/Transform/Transform.h"
+//#include "../Engine/System/Transformer.h"
 #include "../Engine/Animation/Animation2D.h"
 
 namespace Core
 {
-	class Sprite : public Component
+	class Sprite :public Component
 	{
 	public:
 		Sprite(const char* filename);

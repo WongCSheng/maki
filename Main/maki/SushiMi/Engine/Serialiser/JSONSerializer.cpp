@@ -67,72 +67,81 @@ namespace Core
 	//Deserialze is read from json file.
 	void DeserializeEntity(std::string const& filepath, std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
+		std::string json_from_file = ReadFileContents(filepath.c_str());
 		//Object::GameObject gameObj = ObjectFactory::Create();
 		rapidjson::Document document;
 
+		if (document.Parse(json_from_file.c_str()).HasParseError())
+		{
+			std::cout << "JSONSerializer DeserializeEntity: There was a JSON parse error : " << filepath << std::endl;
+			return;
+		}
 		// remember to delete entity if nullptr is returned
 		if (!document.IsObject()) 
 		{
-			std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 1" << std::endl;
+			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 1" << std::endl;
 			return;
 		}
 		/* creating a gameObj inst to store and to be saved into Obj Container */
-		Object::GameObject* gameObj; //contains characteristics of game objects
-	
+		Object::GameObject* gameObj = nullptr; //contains characteristics of game objects
+		std::cout << "Managed to parse " << filepath << std::endl;
 
 		if (!document.HasMember("components") || !document["components"].IsArray()) 
 		{
-			std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 2" << std::endl;
-
-			return;
-
-
-			for (rapidjson::SizeType i = 0; i < document["components"].Size(); i++)
-			{
-				rapidjson::Value& compJsonObj = document["components"][i]; // access element inside components array
-
-
-				if (!compJsonObj.IsObject())
-				{
-					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 3" << std::endl;
-				}
-
-				if (!compJsonObj.HasMember("type") || !compJsonObj["type"].IsString()) 
-				{
-					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 4" << std::endl;
-
-					return;
-				}
-
-				// what happens in a scenario where a Component failed to deserialize?
-				// How will this function know that the component failed to deserialize, then not add that component?
-				if (compJsonObj["type"] == "Transform") 
-				{
-					Object::GameObjectProperty* transProperty;
-					Transform* transComp;
-					//Object::GameObjectProperty tempProperty = &gameObj->GetObjectProperties();
-					transComp->Deserialize(compJsonObj);
-					transProperty->SetID(0b0000'0100); //transformID
-					transProperty->AddComponent(ComponentID::Transform, transComp);
-					gameObj->characteristics = transProperty;
-					
-				}
-
-				/*else if (compJsonObj["type"] == "Sprite") 
-				{
-
-				}
-
-				else if (compJsonObj["type"] == "Music")
-				{
-
-				}*/
-				
-			}
+			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 2" << std::endl;
 
 			return;
 		}
-		ObjectFactory::ObjectContainer.emplace(filepath, gameObj); //save everything in gameObj into container
+
+		for (rapidjson::SizeType i = 0; i < document["components"].Size(); i++)
+		{
+			rapidjson::Value& compJsonObj = document["components"][i]; // access element inside components array
+
+
+			if (!compJsonObj.IsObject())
+			{
+				std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 3" << std::endl;
+			}
+
+			if (!compJsonObj.HasMember("type") || !compJsonObj["type"].IsString())
+			{
+				std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 4" << std::endl;
+
+				return;
+			}
+
+			// what happens in a scenario where a Component failed to deserialize?
+			// How will this function know that the component failed to deserialize, then not add that component?
+			if (compJsonObj["type"] == "Transform")
+			{
+				Object::GameObjectProperty* transProperty = nullptr;
+				Transform* transComp = nullptr;
+				//important line to help u debug!!!
+				//std::cout << "this line means i can read the json obj : " << compJsonObj.GetString() << std::endl;
+
+				//Object::GameObjectProperty tempProperty = &gameObj->GetObjectProperties();
+				//transComp->Deserialize(compJsonObj);
+				//transProperty->SetID(0b0000'0100); //transformID
+				//transProperty->AddComponent(ComponentID::Transform, transComp);
+				//gameObj->characteristics = transProperty;
+				//std::cout << "transform property is : " << transProperty << std::endl;
+				//std::cout << "transform component is : " << transComp << std::endl;
+				//std::cout << "json obj is : " << gameObj << std::endl;
+				//std::cout << "json obj characteristics is : " << gameObj->characteristics << std::endl;
+			}
+
+			/*else if (compJsonObj["type"] == "Sprite")
+			{
+
+			}
+
+			else if (compJsonObj["type"] == "Music")
+			{
+
+			}*/
+
+		}
+		//ObjectFactory::ObjectContainer.insert({ 00, gameObj }); //save everything in gameObj into container
 	}
 
 
@@ -153,14 +162,14 @@ namespace Core
 		rapidjson::Document document; // Create a JSON document
 		if (document.Parse(json_from_file.c_str()).HasParseError())
 		{
-			std::cout << "JSONSerializer Deserialize: There was a JSON parse error : " << filepath << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: There was a JSON parse error : " << filepath << std::endl;
 			Player* player{};
 			return player;
 		}
 
 		if (!document.IsObject())
 		{ // if json document does not start with {}, throw an error
-			std::cout << "JSONSerializer Deserialize: " << filepath << " does not start with a JSON object" << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: " << filepath << " does not start with a JSON object" << std::endl;
 			Player* player{};
 			return player;
 		}
@@ -168,7 +177,7 @@ namespace Core
 		// does the root object has a key called "sprite" and is it an object?
 		if (!document.HasMember("sprite") || !document["sprite"].IsObject()) 
 		{
-			std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'sprite'" << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: " << filepath << " does not have 'sprite'" << std::endl;
 			Player* player{};
 			return player;
 		}
@@ -177,7 +186,7 @@ namespace Core
 		rapidjson::Value& spriteObj = document["sprite"]; // get the sprite JSON object
 		if (!spriteObj.HasMember("filepath") || !spriteObj["filepath"].IsString()) 
 		{
-			std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'filepath'" << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: " << filepath << " does not have 'filepath'" << std::endl;
 			Player* player{};
 			return player;
 		}
@@ -185,7 +194,7 @@ namespace Core
 
 		if (!spriteObj.HasMember("position") || !spriteObj["position"].IsArray())
 		{
-			std::cout << "JSONSerializer Deserialize: " << filepath << " does not have 'position'" << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: " << filepath << " does not have 'position'" << std::endl;
 			Player* player{};
 			return player;
 		}
@@ -193,7 +202,7 @@ namespace Core
 		rapidjson::Value& posArr = spriteObj["position"];
 		if (posArr.Size() != 2) 
 		{
-			std::cout << "JSONSerializer Deserialize: " << filepath << " 'position' must have array size of 2" << std::endl;
+			std::cout << "JSONSerializer Deserialize Player: " << filepath << " 'position' must have array size of 2" << std::endl;
 			Player* player{};
 			return player;
 		}
@@ -203,7 +212,7 @@ namespace Core
 			rapidjson::Value& posValue = posArr[i];
 			if (!posValue.IsNumber())
 			{ // allows float or integer
-				std::cout << "JSONSerializer Deserialize: " << filepath << " position[" << i << "] must be a number" << std::endl;
+				std::cout << "JSONSerializer Deserialize Player: " << filepath << " position[" << i << "] must be a number" << std::endl;
 				Player* player{};
 				return player;
 			}

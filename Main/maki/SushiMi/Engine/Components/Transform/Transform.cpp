@@ -32,6 +32,7 @@ namespace Core
 	{
 		if (!jsonObj.HasMember("position") || !jsonObj["position"].IsArray() || jsonObj["position"].Size() < 2)
 			std::cout << "Component of type Transform must have key 'position' with an array of size 2" << std::endl;
+		std::cout << "this line means i can read the json obj : " << jsonObj.GetString() << std::endl;
 
 		const rapidjson::Value& posArr = jsonObj["position"];
 		for (int i = 0; i < 2; i++)
@@ -41,6 +42,8 @@ namespace Core
 			if (!posArr[i].IsNumber())
 				std::cout << "component of type Transform" << jsonObj.GetString() << "position[" + std::to_string(i) + "]", "number";
 			//std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object" << std::endl;
+			//ok so position is a number. then how can i read it?
+			//it seems like im unable to get a single string from the file?
 
 			float value = posArr[i].GetFloat();
 			if (i == 0)

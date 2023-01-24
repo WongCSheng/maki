@@ -338,7 +338,6 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Engine\Components\Texture\Rectangle.h" />
     <ClInclude Include="Engine\Components\Texture\Sprite.h" />
     <ClInclude Include="Engine\Components\Texture\Texture.h" />
-    <ClInclude Include="Engine\Components\Transform\sTransform.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
     <ClInclude Include="Engine\Factory\Factory.h" />

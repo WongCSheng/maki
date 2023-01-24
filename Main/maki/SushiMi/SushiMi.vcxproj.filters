@@ -301,9 +301,6 @@
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="include\glm.h" />
-    <ClInclude Include="Engine\Components\Transform\sTransform.h">
-      <Filter>GameEngine\Component\Transform</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Components\Transform\Transform.h">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClInclude>

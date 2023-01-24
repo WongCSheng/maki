@@ -70,7 +70,7 @@ namespace Core
 		}
 
 		glfwMakeContextCurrent(window_ptr);
-		std::cout << glewGetErrorString(glewInit());
+		std::cout << glewGetErrorString(glewInit()) << std::endl ;  //it says "No error"
 			
 		/*if (glewInit())
 		{

@@ -1,20 +1,20 @@
 {
-  "components": {
+  "components": [
+    {
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
-      "rotation": [ 0.0 ],
+      "rotation": 0.0,
       "scale": [ 1280, 720 ]
     },
-   {
+    {
       "type": "Sprite",
-      "texture_path": "background.png",
+      "texture_path": "background\bg_cafe.png",
       "sprite_sheet": false,
       "sprite_size": [ 0, 0 ]
     },
-
     {
-      "type": "Music", 
-      "AudioPath": "BGM.wav"
+      "type": "Audio",
+      "AudioPath": "main_menu_bgm"
     }
-    
+  ]
 }

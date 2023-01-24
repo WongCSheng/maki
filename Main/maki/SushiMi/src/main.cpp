@@ -159,11 +159,12 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 	/*testing if object container is working*/
-	Core::DeserializeEntity("../Data/generated.json", ObjectFactory::ObjectContainer);
+	Core::DeserializeEntity("../Data/Menu.json", ObjectFactory::ObjectContainer);
+	std::cout << "what is inside obj container:" << std::endl;
 	for (auto& x : ObjectFactory::ObjectContainer)
 	{
-		std::cout << x.first; //should print out menu.json
-		std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
+		std::cout << x.first << std::endl; //should print out menu.json
+		//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
 	}
 
 	glEnable(GL_DEBUG_OUTPUT);

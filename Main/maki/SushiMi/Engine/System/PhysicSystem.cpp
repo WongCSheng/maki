@@ -11,6 +11,7 @@ Description: Physics System which runs data from Physics.cpp into it's logics.
 
 #include "PhysicSystem.h"
 #include "../Engine/Components/Physics/Physics.h"
+#include "../Engine/TileMap/Map.cpp"
 
 namespace Core
 {
@@ -24,17 +25,17 @@ namespace Core
 
 	void PhysicSystem::Init()
 	{
-		
+
 	}
 
 	void PhysicSystem::Update(const double dt)
 	{
-		
+
 	}
 
 	void PhysicSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-	
+
 	}
 
 	//glm::vec2 gravity(-9.81, 0); //applying gravity to x axis
@@ -68,7 +69,7 @@ namespace Core
 	}
 
 
-	
+
 	//	glm::vec2 displacement = Object::objects["Object5"].position - Object::objects["Object5"].initialPos;
 	/******************************************************************************/
 	/*!
@@ -104,10 +105,10 @@ namespace Core
 			(ObjectPhysics->velocity.y * static_cast<float>(GLHelper::delta_time)) + prePos.y);					//step2	.y
 
 	}
-	
+
 	void PhysicSystem::updateCollision(std::unordered_map<std::string, Object::GameObject*> Container)
 	{
-		
+
 	}
 
 	/**************************************************************************/
@@ -259,5 +260,35 @@ namespace Core
 		if (tFirst > tLast) { return 0; } //no collision
 		//std::cout << "Collision Detected!" << std::endl;
 		return 1; //collision
+	}
+	int PhysicSystem::checkneighbour(int row, int col)
+	{
+		int neighbour = 0;
+		for (int row = 0; row < grid_row; ++row) {
+			for (int col = 0; col < grid_col; ++col) {
+				neighbour = 0;
+
+				for (int i = -1; i <= 1; ++i)
+				{
+					if (row + i == -1 || row + i == 30) {
+						continue;
+					}
+					for (int j = -1; j <= 1; j++)
+					{
+
+						// conditions coming soon
+						if (col + j == -1 || col + j == 30) {
+							continue;
+						}
+						neighbour += gGrids[row + i][col + j];
+
+					}
+				}
+
+				neighbour -= gGrids[row][col];
+
+				return 0;
+			}
+		}
 	}
 }

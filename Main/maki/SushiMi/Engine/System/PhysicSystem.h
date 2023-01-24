@@ -54,6 +54,8 @@ namespace Core
 		bool CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
 			const AABB& aabb2, const gfxVector2& vel2);
 
+		int checkneighbour(int row, int col);
+
 	private:
 		std::unordered_map<std::string, Object::GameObject*> PhysicsContainer;
 	};

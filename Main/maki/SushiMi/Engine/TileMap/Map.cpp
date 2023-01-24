@@ -4,6 +4,20 @@
 #include <iostream>
 #include <fstream>
 
+/*set a static grid first*/
+#define GRID_COL 30
+#define GRID_ROW 30
+
+#define EMPTY 0
+#define WALL 1
+#define PLAYER 2
+#define MAKI 3
+#define GOAL 4
+
+int grid_row = 30;
+int grid_col = 30;
+
+int gGrids[GRID_ROW][GRID_COL];
 
 namespace Core
 {

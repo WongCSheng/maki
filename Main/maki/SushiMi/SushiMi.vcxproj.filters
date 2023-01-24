@@ -145,6 +145,9 @@
     <ClCompile Include="Engine\Components\Physics\collision.cpp">
       <Filter>GameEngine\Component\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\TileMap\Map.cpp">
+      <Filter>GameEngine\System\TileMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -334,6 +337,9 @@
     <ClInclude Include="Engine\Components\Physics\collision.h">
       <Filter>GameEngine\Component\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\TileMap\Map.h">
+      <Filter>GameEngine\System\TileMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -455,6 +461,9 @@
     </Filter>
     <Filter Include="Scene Manager">
       <UniqueIdentifier>{651bec7a-1b01-4853-b443-192fa313b4ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\System\TileMap">
+      <UniqueIdentifier>{cbabbd0e-3048-4c6a-a162-7e78baffdcfd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

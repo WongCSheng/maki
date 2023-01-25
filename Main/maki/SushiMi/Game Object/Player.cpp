@@ -9,10 +9,14 @@
 #include "Player.h"
 #include "../src/Window.h"
 #include "../Engine/System/Graphics/glhelper.h"
+#include "../Engine/TileMap/Map.h"
 
 //static Window win; //create a external window variable to pass through data
 
  //adjust according to tile-map size
+
+float Core::Map::tile_width = 0;
+float Core::Map::tile_height = 0;
 namespace Core
 {
 
@@ -59,8 +63,7 @@ namespace Core
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
-		int gridWidth = 100;
-		playerpos.x -= gridWidth;
+		playerpos.x -= Map::tile_width;
 		//ensure player does not go out of screen
 		if (playerpos.x < 0)
 		{
@@ -68,7 +71,7 @@ namespace Core
 		}
 		else
 		{
-			sp->transformation.position.x -= gridWidth;
+			sp->transformation.position.x -= Map::tile_width;
 		}
 	}
 
@@ -84,8 +87,7 @@ namespace Core
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
-		int gridWidth = 100;
-		playerpos.x += gridWidth;
+		playerpos.x += Map::tile_width;
 		//ensure player does not go out of screen
 		if (playerpos.x > 1800)
 		{
@@ -93,7 +95,7 @@ namespace Core
 		}
 		else
 		{
-			sp->transformation.position.x += gridWidth;
+			sp->transformation.position.x += Map::tile_width;
 		}
 	}
 
@@ -110,15 +112,14 @@ namespace Core
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
 		//current hard code way
-		int gridHeight = 100;
-		Player::playerpos.y -= gridHeight;
+		Player::playerpos.y -= Core::Map::tile_height;
 		if (playerpos.y < 0)
 		{
 			playerpos.y = 0;
 		}
 		else
 		{
-			sp->transformation.position.y -= gridHeight; //up is negative for some reason
+			sp->transformation.position.y -= Core::Map::tile_height; //up is negative for some reason
 		}
 	}
 
@@ -133,16 +134,15 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
-		//current hard code way
-		int gridHeight = 100;
-		Player::playerpos.y += gridHeight;
+
+		Player::playerpos.y += Core::Map::tile_height;
 		if (playerpos.y > 900)
 		{
 			playerpos.y = 900;
 		}
 		else
 		{
-			sp->transformation.position.y += gridHeight; //down is positive for some reason
+			sp->transformation.position.y += Core::Map::tile_height; //down is positive for some reason
 		}
 
 	}

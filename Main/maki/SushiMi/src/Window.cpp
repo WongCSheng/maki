@@ -83,6 +83,7 @@ namespace Core
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
+
 		starttime = 0;
 		endtime = 0;
 		delta = 0;
@@ -103,7 +104,6 @@ namespace Core
 		ingredient = new Sprite(Editor::LevelEditor::texpath);
 		ingredient->transformation.scale = glm::vec2(100, 100);
 		ingredient->transformation.position = glm::vec2(15, 20);
-
 	
 
 		
@@ -228,6 +228,9 @@ namespace Core
 	{
 		while (!glfwWindowShouldClose(window_ptr))
 		{
+			/*FOR DEBUGGING PURPOSES*/
+			std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
+			/*--------------------------*/
 
 			starttime = glfwGetTime();
 
@@ -254,6 +257,7 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
 
+
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 			player->draw(delta);
 
@@ -271,7 +275,7 @@ namespace Core
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 		}
-
+		
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
 		

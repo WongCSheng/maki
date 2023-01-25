@@ -37,8 +37,8 @@ namespace Core
 		void draw(double deltatime);
 
 		static inline struct PlayerSavedPos {
-			int x;
-			int y;
+			float x;
+			float y;
 		} playerpos;
 
 		static inline struct PlayerInitialPos {

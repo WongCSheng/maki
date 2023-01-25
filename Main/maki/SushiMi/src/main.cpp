@@ -73,9 +73,12 @@ int main() {
 	TestObj = new Core::Object::GameObject();
 
 	Core::pseudomain::init();
+
 	/*map init*/
 	std::string level_file = "../TileMap/level1.txt";
 	Core::Map::initMap(level_file);
+	/*----------------------------------------------*/
+
 	CoreSystem->windowsystem->Mainloop();
 
 	delete TestObj;

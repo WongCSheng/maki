@@ -32,7 +32,7 @@ namespace Core
 		static int** BinaryData;
 		static int grid_row;
 		static int grid_col;
-
+		static float tile_width, tile_height;
 		static int gGrids[GRID_ROW][GRID_COL];
 	};
 }

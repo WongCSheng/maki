@@ -13,6 +13,7 @@ int Core::Map::grid_col = 0;
 
 int Core::Map::gGrids[GRID_ROW][GRID_COL];
 int width, height;
+
 namespace Core
 {
 	Map::Map()
@@ -54,8 +55,10 @@ namespace Core
 				std::cout << gGrids[r][c] << "\t";
 				if (gGrids[r][c] == 2)
 				{
-					Player::playerpos.x = r / static_cast<float>(grid_row) * width;
-					Player::playerpos.y = c/ static_cast<float>(grid_col) * height;
+					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
+					Window::player->playerpos.y = c/ static_cast<float>(grid_col) * height;
+					Window::player->sp->transformation.position.x = r / static_cast<float>(grid_row) * width;
+					Window::player->sp->transformation.position.y = c / static_cast<float>(grid_col) * height;
 				}
 			}
 			std::cout << std::endl;

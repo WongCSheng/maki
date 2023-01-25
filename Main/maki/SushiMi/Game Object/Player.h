@@ -46,7 +46,6 @@ namespace Core
 			int y;
 		} playerpos_restart;
 
-	private:
 		Sprite* sp;
 		AnimationType current_anim;
 	};

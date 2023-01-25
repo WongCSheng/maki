@@ -1,6 +1,7 @@
 #pragma once
 #ifndef Map_H_
 #define Map_H_
+#include <string>
 
 enum class TileType
 {
@@ -9,7 +10,11 @@ enum class TileType
 	PLAYER = 2,
 	MAKI = 3,
 	GOAL = 4
-}
+};
+
+/*set a static grid first*/
+#define GRID_COL 30
+#define GRID_ROW 30
 
 namespace Core
 {
@@ -19,13 +24,16 @@ namespace Core
 		Map();
 		~Map();
 
-		int initMap(const char* Filename);
+		static int initMap(std::string Filename);
 		void DrawMap();
 
-	private:
 		static int Map_Height, Map_Width;
 		static int** MapData;
 		static int** BinaryData;
+		static int grid_row;
+		static int grid_col;
+
+		static int gGrids[GRID_ROW][GRID_COL];
 	};
 }
 #endif

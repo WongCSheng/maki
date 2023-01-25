@@ -28,6 +28,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
+#include "../Engine/TileMap/Map.h"
 
 //#include "../Mono/Mono.h"
 #include <memory> 
@@ -72,7 +73,9 @@ int main() {
 	TestObj = new Core::Object::GameObject();
 
 	Core::pseudomain::init();
-
+	/*map init*/
+	std::string level_file = "../TileMap/level1.txt";
+	Core::Map::initMap(level_file);
 	CoreSystem->windowsystem->Mainloop();
 
 	delete TestObj;

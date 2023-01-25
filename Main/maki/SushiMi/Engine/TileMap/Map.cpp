@@ -4,26 +4,23 @@
 #include <iostream>
 #include <fstream>
 
-/*set a static grid first*/
-#define GRID_COL 30
-#define GRID_ROW 30
 
-int grid_row;
-int grid_col;
+int Core::Map::grid_row = 0;
+int Core::Map::grid_col = 0;
 
-int gGrids[GRID_ROW][GRID_COL];
+int Core::Map::gGrids[GRID_ROW][GRID_COL];
 
 namespace Core
 {
-	Core::Map::Map()
+	Map::Map()
 	{
 	}
 
-	Core::Map::~Map()
+	Map::~Map()
 	{
 	}
 
-	int Core::Map::initMap(const char* Filename)
+	int Map::initMap(std::string Filename)
 	{
 		//Open File using ifstream
 		std::ifstream fin(Filename);
@@ -54,7 +51,7 @@ namespace Core
 		return 1;
 	}
 
-	void Core::Map::DrawMap()
+	void Map::DrawMap()
 	{
 	}
 }

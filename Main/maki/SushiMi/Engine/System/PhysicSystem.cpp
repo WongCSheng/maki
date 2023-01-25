@@ -11,7 +11,6 @@ Description: Physics System which runs data from Physics.cpp into it's logics.
 
 #include "PhysicSystem.h"
 #include "../Engine/Components/Physics/Physics.h"
-#include "../Engine/TileMap/Map.cpp"
 
 namespace Core
 {
@@ -263,6 +262,8 @@ namespace Core
 	}
 	int PhysicSystem::checkneighbour(int row, int col)
 	{
+		return 1;
+		/*
 		int neighbour = 0;
 		for (int row = 0; row < grid_row; ++row) {
 			for (int col = 0; col < grid_col; ++col) {
@@ -290,5 +291,6 @@ namespace Core
 				return 0;
 			}
 		}
+		*/
 	}
 }

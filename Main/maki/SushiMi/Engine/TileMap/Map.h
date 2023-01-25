@@ -2,6 +2,15 @@
 #ifndef Map_H_
 #define Map_H_
 
+enum class TileType
+{
+	EMPTY = 0,
+	WALL = 1,
+	PLAYER = 2,
+	MAKI = 3,
+	GOAL = 4
+}
+
 namespace Core
 {
 	class Map

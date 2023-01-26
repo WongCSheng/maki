@@ -36,6 +36,7 @@ namespace Core
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;
 	
+	static Transform* transComp;
 }
 
 #endif

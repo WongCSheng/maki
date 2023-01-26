@@ -103,8 +103,8 @@ namespace Core
 
 		//the moving ingredient
 		ingredient = new Sprite(Editor::LevelEditor::texpath);
-		ingredient->transformation.scale = glm::vec2(100, 100);
-		ingredient->transformation.position = glm::vec2(15, 20);
+		ingredient->transformation.Scale = glm::vec2(100, 100);
+		ingredient->transformation.Position = glm::vec2(15, 20);
 	
 
 		

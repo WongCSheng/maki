@@ -24,8 +24,8 @@ namespace Core
 	{
 
 		sp = new Sprite("../textures/spritesheet/spritesheet.png");
-		sp->transformation.position = glm::vec2(playerpos.x, playerpos.y);
-		sp->transformation.scale = glm::vec2(100, 100);
+		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
+		sp->transformation.Scale = glm::vec2(100, 100);
 
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
@@ -35,8 +35,8 @@ namespace Core
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
 		sp = new Sprite(spriteFilepath);
-		sp->transformation.position = glm::vec2(spritePos[0], spritePos[1]);
-		sp->transformation.scale = glm::vec2(spriteScale[0], spriteScale[1]);
+		sp->transformation.Position = glm::vec2(spritePos[0], spritePos[1]);
+		sp->transformation.Scale = glm::vec2(spriteScale[0], spriteScale[1]);
 
 		for (std::string const& animFilepath : animationList) {
 			sp->Add_animation(animFilepath.c_str());
@@ -53,8 +53,8 @@ namespace Core
 	//Example: my screen can display 19 (W) x 11 (H) tiles
 	void Player::move_left()
 	{
-		if (sp->transformation.scale.x > 0)
-			sp->transformation.scale.x *= 1;
+		if (sp->transformation.Scale.x > 0)
+			sp->transformation.Scale.x *= 1;
 
 		current_anim = Run;
 
@@ -70,8 +70,8 @@ namespace Core
 
 	void Player::move_right()
 	{
-		if (sp->transformation.scale.x < 0)
-			sp->transformation.scale.x *= -1;
+		if (sp->transformation.Scale.x < 0)
+			sp->transformation.Scale.x *= -1;
 
 		current_anim = Run;
 
@@ -87,8 +87,8 @@ namespace Core
 
 	void Player::move_up()
 	{
-		if (sp->transformation.scale.y > 0)
-			sp->transformation.scale.y *= 1;
+		if (sp->transformation.Scale.y > 0)
+			sp->transformation.Scale.y *= 1;
 		//std::cout << "you are pressing up" << std::endl;
 
 		current_anim = Run;
@@ -105,14 +105,14 @@ namespace Core
 		}
 		else
 		{
-			sp->transformation.position.y -= Core::Map::tile_height; //up is negative for some reason
+			sp->transformation.Position.y -= Core::Map::tile_height; //up is negative for some reason
 		}
 	}
 
 	void Player::move_down()
 	{
-		if (sp->transformation.scale.y < 0)
-			sp->transformation.scale.y *= -1;
+		if (sp->transformation.Scale.y < 0)
+			sp->transformation.Scale.y *= -1;
 
 		current_anim = Run;
 
@@ -129,8 +129,8 @@ namespace Core
 
 	void Player::restart()
 	{
-		sp->transformation.position.x = playerpos_restart.x;
-		sp->transformation.position.y = playerpos_restart.y;
+		sp->transformation.Position.x = playerpos_restart.x;
+		sp->transformation.Position.y = playerpos_restart.y;
 
 		
 	}

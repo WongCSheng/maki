@@ -165,7 +165,7 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 	/*testing if object container is working*/
-	Core::DeserializeEntity("../Data/Menu.json", ObjectFactory::ObjectContainer);
+	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory->ObjectContainer);
 	std::cout << "what is inside obj container:" << std::endl;
 	for (auto& x : ObjectFactory::ObjectContainer)
 	{

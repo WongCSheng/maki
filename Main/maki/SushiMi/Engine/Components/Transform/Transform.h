@@ -10,7 +10,7 @@ Description: Header for Transform.cpp
 #include <../glm/glm/glm.hpp>
 #include <../glm/glm/gtc/matrix_transform.hpp>
 #include "../Component.h"
-//#include "../Headers/Math_Header.h"
+#include "../Headers/Math_Header.h"
 //#include <vector>
 //#include "../Engine/Serialiser/JSONSerializer.h"
 
@@ -62,7 +62,7 @@ namespace Core
 		/*gfxVector2 Position;
 		gfxMatrix3 Rotation;
 		gfxVector2 Scale;*/
-
+		glm::vec2 testpostion;
 		Object::GameObjectProperty* owner;
 
 		//Transform* instance; //Singleton (Don't really need)

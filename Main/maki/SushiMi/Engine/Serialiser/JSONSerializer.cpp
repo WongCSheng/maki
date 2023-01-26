@@ -77,7 +77,7 @@ namespace Core
 			return;
 		}
 		// remember to delete entity if nullptr is returned
-		if (!document.IsObject()) 
+		if (!document.IsObject())
 		{
 			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 1" << std::endl;
 			return;
@@ -86,7 +86,7 @@ namespace Core
 		Object::GameObject* gameObj = nullptr; //contains characteristics of game objects
 		std::cout << "Managed to parse " << filepath << std::endl;
 
-		if (!document.HasMember("components") || !document["components"].IsArray()) 
+		if (!document.HasMember("components") || !document["components"].IsArray())
 		{
 			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 2" << std::endl;
 
@@ -110,17 +110,17 @@ namespace Core
 				return;
 			}
 
-			// what happens in a scenario where a Component failed to deserialize?
-			// How will this function know that the component failed to deserialize, then not add that component?
+			 //what happens in a scenario where a Component failed to deserialize?
+			 //How will this function know that the component failed to deserialize, then not add that component?
 			if (compJsonObj["type"] == "Transform")
 			{
-				Object::GameObjectProperty* transProperty = nullptr;
-				Transform* transComp = nullptr;
+				//Object::GameObjectProperty* transProperty =  new Object::GameObjectProperty();
+				Transform* transComp = new Transform();
 				//important line to help u debug!!!
 				//std::cout << "this line means i can read the json obj : " << compJsonObj.GetString() << std::endl;
 
 				//Object::GameObjectProperty tempProperty = &gameObj->GetObjectProperties();
-				//transComp->Deserialize(compJsonObj);
+				transComp->Deserialize(compJsonObj);
 				//transProperty->SetID(0b0000'0100); //transformID
 				//transProperty->AddComponent(ComponentID::Transform, transComp);
 				//gameObj->characteristics = transProperty;
@@ -145,16 +145,6 @@ namespace Core
 	}
 
 
-	/*
-		template T = Player
-		Deserialize()
-		{
-			GO* = Deserialize(file)
-			T* = new T(GO)
-		}
-	*/
-	/* text to screen*/
-	//template <typename T>
 	Player* Deserialize(std::string const& filepath)
 	{
 		std::string json_from_file = ReadFileContents(filepath.c_str());

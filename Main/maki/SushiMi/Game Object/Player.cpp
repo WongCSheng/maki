@@ -65,7 +65,7 @@ namespace Core
 		//current hard code way
 		playerpos.x -= Map::tile_width;
 
-		sp->transformation.position.x -= Map::tile_width;
+		sp->transformation.Position.x -= Map::tile_width;
 	}
 
 	void Player::move_right()
@@ -82,7 +82,7 @@ namespace Core
 		//current hard code way
 		playerpos.x += Map::tile_width;
 
-		sp->transformation.position.x += Map::tile_width;
+		sp->transformation.Position.x += Map::tile_width;
 	}
 
 	void Player::move_up()
@@ -123,7 +123,7 @@ namespace Core
 
 		Player::playerpos.y += Core::Map::tile_height;
 
-		sp->transformation.position.y += Core::Map::tile_height; //down is positive for some reason
+		sp->transformation.Position.y += Core::Map::tile_height; //down is positive for some reason
 
 	}
 

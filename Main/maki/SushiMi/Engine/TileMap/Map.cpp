@@ -60,8 +60,8 @@ namespace Core
 				{
 					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
-					Window::player->sp->transformation.position.x = r / static_cast<float>(grid_row) * width;
-					Window::player->sp->transformation.position.y = c / static_cast<float>(grid_col) * height;
+					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
+					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
 					/*save player index in grid*/
 					Window::player->player_grid_pos.x = r;
 					Window::player->player_grid_pos.y = c;

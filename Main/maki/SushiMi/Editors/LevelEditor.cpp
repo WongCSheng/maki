@@ -556,12 +556,12 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			int i = imguiPlacedObjs;
 			newobjarr.push_back(new Sprite(texpath));
 			/*Window::a = new Sprite(texpath);*/
-			newobjarr[i]->transformation.scale = glm::vec2(100, 100);
-			xpos += newobjarr[i]->transformation.scale.x * 0.5f;
-			ypos += newobjarr[i]->transformation.scale.y * 0.5f;
+			newobjarr[i]->transformation.Scale = glm::vec2(100, 100);
+			xpos += newobjarr[i]->transformation.Scale.x * 0.5f;
+			ypos += newobjarr[i]->transformation.Scale.y * 0.5f;
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
-			newobjarr[i]->transformation.position = glm::vec2(xpos, ypos);
+			newobjarr[i]->transformation.Position = glm::vec2(xpos, ypos);
 
 			
 			++imguiPlacedObjs;
@@ -598,11 +598,11 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
 
-			Window::ingredient->transformation.position = glm::vec2(xpos, ypos);
+			Window::ingredient->transformation.Position = glm::vec2(xpos, ypos);
 			//place object on click
 			if (ImGui::IsMouseClicked(0)) //0 means left
 			{
-				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.position.x << " and y: " << Window::ingredient->transformation.position.y << std::endl;
+				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
 				
 				imguiCreateObj();
 

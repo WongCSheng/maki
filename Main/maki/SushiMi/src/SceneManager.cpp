@@ -45,8 +45,8 @@ namespace Core
 	void SceneManager::loadTile()
 	{
 		tile = new Sprite("../textures/doge.PNG");
-		tile->transformation.position = glm::vec2(100, 0);
-		tile->transformation.scale = glm::vec2(100, 100);
+		tile->transformation.Position = glm::vec2(100, 0);
+		tile->transformation.Scale = glm::vec2(100, 100);
 	}
 
 	void SceneManager::drawTile()

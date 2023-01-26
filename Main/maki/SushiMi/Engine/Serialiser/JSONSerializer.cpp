@@ -83,7 +83,7 @@ namespace Core
 			return;
 		}
 		/* creating a gameObj inst to store and to be saved into Obj Container */
-		Object::GameObject* gameObj = nullptr; //contains characteristics of game objects
+		Object::GameObject* gameObj = new Object::GameObject(); //contains characteristics of game objects
 		std::cout << "Managed to parse " << filepath << std::endl;
 
 		if (!document.HasMember("components") || !document["components"].IsArray())
@@ -111,24 +111,19 @@ namespace Core
 			}
 
 			 //what happens in a scenario where a Component failed to deserialize?
-			 //How will this function know that the component failed to deserialize, then not add that component?
-			if (compJsonObj["type"] == "Transform")
-			{
-				//Object::GameObjectProperty* transProperty =  new Object::GameObjectProperty();
-				Transform* transComp = new Transform();
-				//important line to help u debug!!!
-				//std::cout << "this line means i can read the json obj : " << compJsonObj.GetString() << std::endl;
+			// //How will this function know that the component failed to deserialize, then not add that component?
+			//if (compJsonObj["type"] == "Transform")
+			//{
+			//	Transform* transComp = new Transform();
+			//	//important line to help u debug!!!
+			//	std::cout << "this line means i can read the json obj 2: " << compJsonObj.GetFloat() << std::endl;
 
-				//Object::GameObjectProperty tempProperty = &gameObj->GetObjectProperties();
-				transComp->Deserialize(compJsonObj);
-				//transProperty->SetID(0b0000'0100); //transformID
-				//transProperty->AddComponent(ComponentID::Transform, transComp);
-				//gameObj->characteristics = transProperty;
-				//std::cout << "transform property is : " << transProperty << std::endl;
-				//std::cout << "transform component is : " << transComp << std::endl;
-				//std::cout << "json obj is : " << gameObj << std::endl;
-				//std::cout << "json obj characteristics is : " << gameObj->characteristics << std::endl;
-			}
+			//	transComp->Deserialize(compJsonObj);
+			//	gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
+			//	std::cout << "transform component is : " << transComp << std::endl;
+			//	std::cout << "json obj is : " << gameObj << std::endl;
+			//	//std::cout << "json obj characteristics is : " << gameObj->characteristics << std::endl;
+			//}
 
 			/*else if (compJsonObj["type"] == "Sprite")
 			{

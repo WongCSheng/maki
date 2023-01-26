@@ -113,6 +113,7 @@ namespace Core
 	Window::~Window()
 	{
 		SceneManager::destroyTile();
+		SceneManager::destroyObj();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes

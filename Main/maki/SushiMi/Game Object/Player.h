@@ -48,5 +48,11 @@ namespace Core
 
 		Sprite* sp;
 		AnimationType current_anim;
+
+		static inline struct PlayergridPos
+		{
+			int x;
+			int y;
+		} player_grid_pos;
 	};
 }

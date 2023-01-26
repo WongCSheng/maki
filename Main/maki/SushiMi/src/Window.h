@@ -35,6 +35,7 @@ namespace Core
 
 		static inline Player* player;
 		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
+		static inline Sprite* obj;
 		static inline Sprite* sp;
 		static inline Sprite* ingredient;
 		

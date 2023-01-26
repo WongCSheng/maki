@@ -64,15 +64,8 @@ namespace Core
 
 		//current hard code way
 		playerpos.x -= Map::tile_width;
-		//ensure player does not go out of screen
-		if (playerpos.x < 0)
-		{
-			playerpos.x = 0;
-		}
-		else
-		{
-			sp->transformation.position.x -= Map::tile_width;
-		}
+
+		sp->transformation.position.x -= Map::tile_width;
 	}
 
 	void Player::move_right()
@@ -88,15 +81,8 @@ namespace Core
 
 		//current hard code way
 		playerpos.x += Map::tile_width;
-		//ensure player does not go out of screen
-		if (playerpos.x > 1800)
-		{
-			playerpos.x = 1800;
-		}
-		else
-		{
-			sp->transformation.position.x += Map::tile_width;
-		}
+
+		sp->transformation.position.x += Map::tile_width;
 	}
 
 	void Player::move_up()
@@ -136,14 +122,8 @@ namespace Core
 
 
 		Player::playerpos.y += Core::Map::tile_height;
-		if (playerpos.y > 900)
-		{
-			playerpos.y = 900;
-		}
-		else
-		{
-			sp->transformation.position.y += Core::Map::tile_height; //down is positive for some reason
-		}
+
+		sp->transformation.position.y += Core::Map::tile_height; //down is positive for some reason
 
 	}
 

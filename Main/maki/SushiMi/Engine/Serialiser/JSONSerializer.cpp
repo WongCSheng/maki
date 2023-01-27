@@ -83,7 +83,7 @@ namespace Core
 			return;
 		}
 		/* creating a gameObj inst to store and to be saved into Obj Container */
-		Object::GameObject* gameObj = new Object::GameObject(); //contains characteristics of game objects
+		Object::GameObject* gameObj /*= new Object::GameObject()*/; //contains characteristics of game objects
 		std::cout << "Managed to parse " << filepath << std::endl;
 
 		if (!document.HasMember("components") || !document["components"].IsArray())

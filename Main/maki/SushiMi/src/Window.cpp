@@ -248,11 +248,11 @@ namespace Core
 
 			glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			
+			Shaders->Textured_Shader()->use();
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			Map::DrawMap();
 			// all drawing goes here ..
-			Shaders->Textured_Shader()->use();
+			
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
 			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
@@ -260,20 +260,20 @@ namespace Core
 
 			//the moving ingredient
 			if (ingredient) {
-			delete ingredient;
+			//delete ingredient;
 			ingredient = nullptr;
 			} 
-
+			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
 			ingredient->transformation.Position = glm::vec2(600,600);
-
+			*/
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
-
+			/*
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
-
+			*/
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 			player->draw(delta);
@@ -290,11 +290,7 @@ namespace Core
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
-			
-			if (ingredient) {
-				delete ingredient;
-				ingredient = nullptr;
-			}
+
 		}
 
 

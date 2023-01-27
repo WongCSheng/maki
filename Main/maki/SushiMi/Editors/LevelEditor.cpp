@@ -570,8 +570,8 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			****************************************************/
 			addedobjinfo a;
 			a.spritepath = new Sprite(texpath); //1
-			a.spritepath->transformation.position = glm::vec2(xpos, ypos); //1a
-			a.spritepath->transformation.scale = glm::vec2(100, 100); //1b
+			a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
+			a.spritepath->transformation.Scale = glm::vec2(100, 100); //1b
 			a.objname = "path"; //2
 			a.x = xpos;
 			a.y = ypos; //3

@@ -621,11 +621,11 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
 
-			Window::ingredient->transformation.position = glm::vec2(xpos, ypos);
+			Window::ingredient->transformation.Position = glm::vec2(xpos, ypos);
 			//place object on click
 			if (ImGui::IsMouseClicked(0)) //0 means left
 			{
-				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.position.x << " and y: " << Window::ingredient->transformation.position.y << std::endl;
+				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
 				
 				imguiCreateObj();
 

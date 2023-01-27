@@ -10,6 +10,7 @@
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Headers/SceneManager.h"
+#include "../Engine/TileMap/Map.h"
 
 namespace Core
 {
@@ -83,6 +84,7 @@ namespace Core
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
+
 		starttime = 0;
 		endtime = 0;
 		delta = 0;
@@ -97,7 +99,7 @@ namespace Core
 		sp->transformation.position = glm::vec2(0);*/
 
 		/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
-		SceneManager::loadTile(); //scene manager
+		//SceneManager::loadTile(); //scene manager
 
 		////the moving ingredient
 		//ingredient = new Sprite(Editor::LevelEditor::texpath);
@@ -112,10 +114,12 @@ namespace Core
 	Window::~Window()
 	{
 		SceneManager::destroyTile();
+		SceneManager::destroyObj();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
-		delete sp; //16 bytes 
-		if(ingredient)delete ingredient;
+		delete sp; //16 bytes
+		delete obj;
+		delete ingredient;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -144,7 +148,7 @@ namespace Core
 			//std::cout << "you are pressing right" << std::endl;
 			if (keystate_right)
 			{
-				player->move_right();
+				Map::collision_check_right();
 				keystate_right = false;
 			}
 		}
@@ -156,7 +160,7 @@ namespace Core
 			//holding key or let go key, player stop
 			if (keystate_left)
 			{			
-				player->move_left();
+				Map::collision_check_left();
 				keystate_left = false;
 			}
 		}
@@ -167,7 +171,7 @@ namespace Core
 
 			if (keystate_up)
 			{
-				player->move_up();
+				Map::collision_check_up();
 				keystate_up = false;
 			}
 
@@ -179,7 +183,7 @@ namespace Core
 			keystate_down = true;
 			if (keystate_down)
 			{
-				player->move_down();
+				Map::collision_check_down();
 				keystate_down = false;
 			}
 		}
@@ -231,6 +235,10 @@ namespace Core
 	{
 		while (!glfwWindowShouldClose(window_ptr))
 		{
+			/*FOR DEBUGGING PURPOSES*/
+			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
+			/*--------------------------*/
+
 			starttime = glfwGetTime();
 			pseudomain::update();
 
@@ -242,7 +250,7 @@ namespace Core
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
-
+			Map::DrawMap();
 			// all drawing goes here ..
 			Shaders->Textured_Shader()->use();
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
@@ -266,10 +274,10 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
 
+
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 			player->draw(delta);
 
-			SceneManager::drawTile();
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();

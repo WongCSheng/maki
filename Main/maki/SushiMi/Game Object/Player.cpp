@@ -9,10 +9,14 @@
 #include "Player.h"
 #include "../src/Window.h"
 #include "../Engine/System/Graphics/glhelper.h"
+#include "../Engine/TileMap/Map.h"
 
 //static Window win; //create a external window variable to pass through data
 
  //adjust according to tile-map size
+
+float Core::Map::tile_width = 0;
+float Core::Map::tile_height = 0;
 namespace Core
 {
 
@@ -20,8 +24,8 @@ namespace Core
 	{
 
 		sp = new Sprite("../textures/spritesheet/spritesheet.png");
-		sp->transformation.position = glm::vec2(playerpos.x, playerpos.y);
-		sp->transformation.scale = glm::vec2(100, 100);
+		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
+		sp->transformation.Scale = glm::vec2(100, 100);
 
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
@@ -31,8 +35,8 @@ namespace Core
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
 		sp = new Sprite(spriteFilepath);
-		sp->transformation.position = glm::vec2(spritePos[0], spritePos[1]);
-		sp->transformation.scale = glm::vec2(spriteScale[0], spriteScale[1]);
+		sp->transformation.Position = glm::vec2(spritePos[0], spritePos[1]);
+		sp->transformation.Scale = glm::vec2(spriteScale[0], spriteScale[1]);
 
 		for (std::string const& animFilepath : animationList) {
 			sp->Add_animation(animFilepath.c_str());
@@ -49,8 +53,8 @@ namespace Core
 	//Example: my screen can display 19 (W) x 11 (H) tiles
 	void Player::move_left()
 	{
-		if (sp->transformation.scale.x > 0)
-			sp->transformation.scale.x *= 1;
+		if (sp->transformation.Scale.x > 0)
+			sp->transformation.Scale.x *= 1;
 
 		current_anim = Run;
 
@@ -59,24 +63,15 @@ namespace Core
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
-		int gridWidth = 100;
-		playerpos.x -= gridWidth;
-		//ensure player does not go out of screen
-		if (playerpos.x < 0)
-		{
-			playerpos.x = 0;
-		}
-		else
-		{
-			sp->transformation.position.x -= gridWidth;
-			
-		}
+		playerpos.x -= Map::tile_width;
+
+		sp->transformation.Position.x -= Map::tile_width;
 	}
 
 	void Player::move_right()
 	{
-		if (sp->transformation.scale.x < 0)
-			sp->transformation.scale.x *= -1;
+		if (sp->transformation.Scale.x < 0)
+			sp->transformation.Scale.x *= -1;
 
 		current_anim = Run;
 
@@ -85,23 +80,15 @@ namespace Core
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
-		int gridWidth = 100;
-		playerpos.x += gridWidth;
-		//ensure player does not go out of screen
-		if (playerpos.x > 1800)
-		{
-			playerpos.x = 1800;
-		}
-		else
-		{
-			sp->transformation.position.x += gridWidth;
-		}
+		playerpos.x += Map::tile_width;
+
+		sp->transformation.Position.x += Map::tile_width;
 	}
 
 	void Player::move_up()
 	{
-		if (sp->transformation.scale.y > 0)
-			sp->transformation.scale.y *= 1;
+		if (sp->transformation.Scale.y > 0)
+			sp->transformation.Scale.y *= 1;
 		//std::cout << "you are pressing up" << std::endl;
 
 		current_anim = Run;
@@ -111,22 +98,21 @@ namespace Core
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
 		//current hard code way
-		int gridHeight = 100;
-		Player::playerpos.y -= gridHeight;
+		Player::playerpos.y -= Core::Map::tile_height;
 		if (playerpos.y < 0)
 		{
 			playerpos.y = 0;
 		}
 		else
 		{
-			sp->transformation.position.y -= gridHeight; //up is negative for some reason
+			sp->transformation.Position.y -= Core::Map::tile_height; //up is negative for some reason
 		}
 	}
 
 	void Player::move_down()
 	{
-		if (sp->transformation.scale.y < 0)
-			sp->transformation.scale.y *= -1;
+		if (sp->transformation.Scale.y < 0)
+			sp->transformation.Scale.y *= -1;
 
 		current_anim = Run;
 
@@ -134,17 +120,10 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
-		//current hard code way
-		int gridHeight = 100;
-		Player::playerpos.y += gridHeight;
-		if (playerpos.y > 900)
-		{
-			playerpos.y = 900;
-		}
-		else
-		{
-			sp->transformation.position.y += gridHeight; //down is positive for some reason
-		}
+
+		Player::playerpos.y += Core::Map::tile_height;
+
+		sp->transformation.Position.y += Core::Map::tile_height; //down is positive for some reason
 
 	}
 

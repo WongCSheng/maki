@@ -12,6 +12,7 @@ namespace Core
 {
 	Transform::Transform()
 	{
+		
 	}
 
 
@@ -21,7 +22,7 @@ namespace Core
 
 	void Transform::Init()
 	{
-
+		
 	}
 
 	void Transform::Serialize(const std::string name)  
@@ -32,24 +33,25 @@ namespace Core
 	{
 		if (!jsonObj.HasMember("position") || !jsonObj["position"].IsArray() || jsonObj["position"].Size() < 2)
 			std::cout << "Component of type Transform must have key 'position' with an array of size 2" << std::endl;
-		std::cout << "this line means i can read the json obj : " << jsonObj.GetString() << std::endl;
+		//std::cout << "this line means i can read the json obj : " << jsonObj["position"].GetString() << std::endl;
 
 		const rapidjson::Value& posArr = jsonObj["position"];
+
 		for (int i = 0; i < 2; i++)
 		{
 			// here read json object data here using jsondoc parameter
 			// jsonDoc["position"][0].GetDouble();
 			if (!posArr[i].IsNumber())
-				std::cout << "component of type Transform" << jsonObj.GetString() << "position[" + std::to_string(i) + "]", "number";
+				std::cout << "component of type Transform" << jsonObj["position"].GetString() << std::endl /* "position[" + std::to_string(i) + "]", "number" */;
 			//std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object" << std::endl;
 			//ok so position is a number. then how can i read it?
 			//it seems like im unable to get a single string from the file?
 
 			float value = posArr[i].GetFloat();
 			if (i == 0)
-				position.x = value; //rmb to uncomment
+				Position.x = value; //rmb to uncomment
 			else
-				position.y = value; //rmb to uncomment
+				Position.y = value; //rmb to uncomment
 		}
 
 		if (!jsonObj.HasMember("rotation") || !jsonObj["rotation"].IsNumber())
@@ -63,13 +65,16 @@ namespace Core
 		const rapidjson::Value& scaleArr = jsonObj["scale"];
 		for (int i = 0; i < 2; i++) {
 			if (!scaleArr[i].IsNumber())
-				std::cout << "component of type Transform" << jsonObj.GetString() << "scale[" + std::to_string(i) + "]", "number";
+			{
+
+				std::cout << "component of type Transform" << jsonObj["scale"].GetString() << "scale[" + std::to_string(i) + "]", "number";
+			}
 
 			float value = scaleArr[i].GetFloat();
 			if (i == 0)
-				scale.x = value;
+				Scale.x = value;
 			else
-				scale.y = value;
+				Scale.y = value;
 		}
 
 		std::cout << "Deserializing Tranform Component! \n";
@@ -79,19 +84,19 @@ namespace Core
 
 	void Transform::Set(glm::vec2  position, glm::vec2  scale, float rotation)
 	{
-		this->position = position;
-		this->scale = scale;
+		this->Position = position;
+		this->Scale = scale;
 		this->angle = rotation;
 	}
 
 	void Transform::SetPosition(glm::vec2 position)
 	{
-		this->position = position;
+		this->Position = position;
 	}
 
 	void Transform::SetScale(glm::vec2 scale)
 	{
-		this->scale = scale;
+		this->Scale = scale;
 	}
 
 	void Transform::SetRotation(float rotation)
@@ -101,7 +106,7 @@ namespace Core
 
 	void Transform::Translating(glm::vec2 translate)
 	{
-		this->position += translate;
+		this->Position += translate;
 	}
 
 	void Transform::Rotating(float rotate)

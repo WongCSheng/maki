@@ -18,6 +18,8 @@ enum class TileType
 
 namespace Core
 {
+	class Sprite;
+
 	class Map
 	{
 	public:
@@ -25,14 +27,19 @@ namespace Core
 		~Map();
 
 		static int initMap(std::string Filename);
-		void DrawMap();
+		static void DrawMap();
+		/*put here temporarily first*/
+		static void collision_check_right();
+		static void collision_check_left();
+		static void collision_check_up();
+		static void collision_check_down();
 
 		static int Map_Height, Map_Width;
 		static int** MapData;
 		static int** BinaryData;
 		static int grid_row;
 		static int grid_col;
-
+		static float tile_width, tile_height;
 		static int gGrids[GRID_ROW][GRID_COL];
 	};
 }

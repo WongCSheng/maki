@@ -37,8 +37,8 @@ namespace Core
 		void draw(double deltatime);
 
 		static inline struct PlayerSavedPos {
-			int x;
-			int y;
+			float x;
+			float y;
 		} playerpos;
 
 		static inline struct PlayerInitialPos {
@@ -46,8 +46,13 @@ namespace Core
 			int y;
 		} playerpos_restart;
 
-	private:
 		Sprite* sp;
 		AnimationType current_anim;
+
+		static inline struct PlayergridPos
+		{
+			int x;
+			int y;
+		} player_grid_pos;
 	};
 }

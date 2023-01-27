@@ -42,11 +42,16 @@ namespace Core
 	//	player = new Player(); //respawn player to start position
 	//}
 
-	void SceneManager::loadTile()
+	void SceneManager::loadTile(int x, int y)
 	{
-		tile = new Sprite("../textures/doge.PNG");
-		tile->transformation.position = glm::vec2(100, 0);
-		tile->transformation.scale = glm::vec2(100, 100);
+		tile->transformation.Position = glm::vec2(x, y);
+		tile->transformation.Scale = glm::vec2(150, 150);
+	}
+
+	void SceneManager::loadObj(int x, int y)
+	{
+		obj->transformation.Position = glm::vec2(x, y);
+		obj->transformation.Scale = glm::vec2(150, 150);
 	}
 
 	void SceneManager::drawTile()
@@ -55,8 +60,18 @@ namespace Core
 		tile->draw();
 	}
 
+	void SceneManager::drawObj()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", obj->transformation.Get());
+		obj->draw();
+	}
+
 	void SceneManager::destroyTile()
 	{
 		delete tile;
+	}
+	void SceneManager::destroyObj()
+	{
+		delete obj;
 	}
 }

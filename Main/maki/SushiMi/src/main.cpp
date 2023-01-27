@@ -73,9 +73,12 @@ int main() {
 	TestObj = new Core::Object::GameObject();
 
 	Core::pseudomain::init();
+
 	/*map init*/
 	std::string level_file = "../TileMap/level1.txt";
 	Core::Map::initMap(level_file);
+	/*----------------------------------------------*/
+
 	CoreSystem->windowsystem->Mainloop();
 
 	delete TestObj;
@@ -162,7 +165,7 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 	/*testing if object container is working*/
-	Core::DeserializeEntity("../Data/Menu.json", ObjectFactory::ObjectContainer);
+	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory->ObjectContainer);
 	std::cout << "what is inside obj container:" << std::endl;
 	for (auto& x : ObjectFactory::ObjectContainer)
 	{

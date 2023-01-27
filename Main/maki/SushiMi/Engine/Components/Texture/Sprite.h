@@ -43,6 +43,12 @@ namespace Core
 
 		Transform transformation;
 
+		static inline struct objGridPos
+		{
+			int x;
+			int y;
+		} obj_Grid_pos;
+
 	private:
 		Texture texture;
 		vtx rectangle;

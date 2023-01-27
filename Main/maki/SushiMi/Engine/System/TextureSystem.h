@@ -24,13 +24,15 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
-		Texture Generate(Texture* filename);
+		Texture Generate(const char* filename);
 
 		void Delete(Texture& obj);
 
+		void Shutdown();
+
+		std::unordered_map<std::string, Texture> database;
 	private:
 		TextureSystem();
-
 		static TextureSystem* _instance;
 	};
 }

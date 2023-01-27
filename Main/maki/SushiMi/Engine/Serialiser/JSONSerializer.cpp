@@ -280,7 +280,7 @@ namespace Core
 		}
 
 		std::cout << "JSONSerializer Deserialize: Managed to parse " << filepath << std::endl;
-
+		
 		return new Player(spriteFilepath, pos, scale, animationList);
 		/*Player *valid_player(spriteFilepath, pos, scale, animationList);
 		valid_player->playerpos = player->playerpos;

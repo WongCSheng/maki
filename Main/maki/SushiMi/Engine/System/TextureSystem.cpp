@@ -25,36 +25,56 @@ namespace Core
 	}
 
 
-	Texture TextureSystem::Generate(Texture* tex)
+	Texture TextureSystem::Generate(const char* filename)
 	{		
-		glGenTextures(1, &tex->TextureID);
-
-		if (tex->data)
-		{
-			glBindTexture(GL_TEXTURE_2D, tex->TextureID);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tex->Texheight, tex->Texwidth, 0, GL_RGBA, GL_UNSIGNED_BYTE, tex->data);
-			std::cout << "Error: " << glGetError() << std::endl;
-			glGenerateMipmap(GL_TEXTURE_2D);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-			// ********* texture minimize & maxmize operation
-			// to solve pixlation problem
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //GL_LINEAR_MIPMAP_NEAREST
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		
+		Texture result;
+		int width, height, numcomponents;
+		unsigned char* data;
+		unsigned int textureID = 0;
+		//mini Asset Manager -Thea
+		//check if the texture has already been loaded, 
+		auto iter = database.find(filename);
+		if (iter != database.end()) {
+			return iter->second; //if it already has been loaded, dont load again
 		}
 		else
 		{
-			std::cout << "failed to load image : " << tex->TextureID << std::endl;
-			std::cout << "============================================" << std::endl;
-			//stbi_image_free(tex->data);
+			glGenTextures(1, &textureID);
+			data = stbi_load(filename, &width, &height, &numcomponents, STBI_rgb_alpha);
+			result.Texwidth = width;
+			result.Texheight = height;
+			result.TextureID = textureID;
+			if (data)
+			{
+				glBindTexture(GL_TEXTURE_2D, textureID);
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+				glGenerateMipmap(GL_TEXTURE_2D);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+				// ********* texture minimize & maxmize operation
+				// to solve pixlation problem
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //GL_LINEAR_MIPMAP_NEAREST
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			}
+			else
+			{
+				std::cout << "failed to load image : " << filename << std::endl;
+				std::cout << "============================================" << std::endl;
+			}
+			stbi_image_free(data);
+			database[filename] = result;
+			return result;
 		}
-
-		return *tex;
+		
 	}
 
 	void TextureSystem::Delete(Texture& obj)
 	{
+		/*if (obj.data)
+		{
+			stbi_image_free(obj.data);
+		}*/
 		glDeleteTextures(1, &obj.TextureID);
 	}
 
@@ -70,6 +90,14 @@ namespace Core
 
 	void TextureSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-
+		
 	}
+	void TextureSystem::Shutdown()
+	{
+		for (auto[name, tex] : database)
+		{
+			Delete(tex);
+		}
+	}
+
 }

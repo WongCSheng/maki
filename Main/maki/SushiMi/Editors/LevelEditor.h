@@ -65,9 +65,17 @@ namespace Core
 			
 			static void AddToFactory(ObjectFactory* container);
 
+			static inline const char* texpath = "../textures/Tiles/Wall/RicePlain_Wall3_2.jpg";
 
-			static inline const char* texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
-			static inline  std::vector<Sprite*> newobjarr;
+			struct addedobjinfo
+			{
+				Sprite* spritepath;
+				std::string objname;
+				int x;
+				int y;
+
+			}add_obj_info_here;
+			static inline  std::vector<addedobjinfo> newobjarr;
 			//obj placing
 			static inline bool objplace = false;
 			static void imguiObjectCursor(void);

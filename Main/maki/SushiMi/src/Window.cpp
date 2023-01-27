@@ -99,13 +99,13 @@ namespace Core
 		/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 		SceneManager::loadTile(); //scene manager
 
-		//the moving ingredient
-		ingredient = new Sprite(Editor::LevelEditor::texpath);
-		ingredient->transformation.scale = glm::vec2(100, 100);
-		ingredient->transformation.position = glm::vec2(15, 20);
+		////the moving ingredient
+		//ingredient = new Sprite(Editor::LevelEditor::texpath);
+		//ingredient->transformation.scale = glm::vec2(100, 100);
+		//ingredient->transformation.position = glm::vec2(15, 20);
 
-	
-
+		
+		
 		
 	}
 
@@ -115,7 +115,7 @@ namespace Core
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes 
-		delete ingredient;
+		if(ingredient)delete ingredient;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -193,8 +193,11 @@ namespace Core
 			{
 				//restart
 				std::cout << "restarting level" << std::endl;
-				player->restart();
+				player->restart(); //tell graphics to reset sprite pos
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;
+				//reset our position variable
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
 				
 				keystate_R = false;
 			}
@@ -228,11 +231,7 @@ namespace Core
 	{
 		while (!glfwWindowShouldClose(window_ptr))
 		{
-
 			starttime = glfwGetTime();
-
-			
-
 			pseudomain::update();
 
 			//for each frame 
@@ -251,6 +250,19 @@ namespace Core
 			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
 			sp->draw();*/
 
+			//the moving ingredient
+			if (ingredient) {
+			delete ingredient;
+			ingredient = nullptr;
+			} 
+
+			ingredient = new Sprite(Editor::LevelEditor::texpath);
+			ingredient->transformation.scale = glm::vec2(100, 100);
+			ingredient->transformation.position = glm::vec2(600,600);
+
+			//display object at imgui cursor
+			Core::Editor::LevelEditor::imguiObjectCursor();
+
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
 
@@ -259,18 +271,24 @@ namespace Core
 
 			SceneManager::drawTile();
 
-			//display object at imgui cursor
-			Core::Editor::LevelEditor::imguiObjectCursor();
+			////display object at imgui cursor
+			//Core::Editor::LevelEditor::imguiObjectCursor();
 
-			for (Sprite* test : Editor::LevelEditor::newobjarr)
+			for (auto test : Editor::LevelEditor::newobjarr)
 			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test->transformation.Get());
-				test->draw();
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
+				test.spritepath->draw();
 			}
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
+			
+			if (ingredient) {
+				delete ingredient;
+				ingredient = nullptr;
+			}
 		}
+
 
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();

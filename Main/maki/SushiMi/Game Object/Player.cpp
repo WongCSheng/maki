@@ -69,6 +69,7 @@ namespace Core
 		else
 		{
 			sp->transformation.position.x -= gridWidth;
+			
 		}
 	}
 
@@ -151,8 +152,6 @@ namespace Core
 	{
 		sp->transformation.position.x = playerpos_restart.x;
 		sp->transformation.position.y = playerpos_restart.y;
-
-		
 	}
 
 	void Player::stop()

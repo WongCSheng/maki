@@ -28,7 +28,7 @@ namespace Core
 
 	int Map::initMap(std::string Filename)
 	{
-		SceneManager::tile = new Sprite("../textures/Tiles/Ingredients/Ingredients0_cucumber.png");
+		SceneManager::tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
 		SceneManager::obj = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		//Open File using ifstream
@@ -60,6 +60,8 @@ namespace Core
 				{
 					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
+					//Window::player->playerpos_restart.x = Window::player->playerpos.x;
+					//Window::player->playerpos_restart.y = Window::player->playerpos.y;
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
 					/*save player index in grid*/
@@ -102,7 +104,7 @@ namespace Core
 			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 			gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
 			Window::player->move_right();
-			SceneManager::loadTile(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
+			SceneManager::loadObj(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
 			std::cout << "Push object" << std::endl;
 			for (int c = 0; c < grid_col; c++)
 			{
@@ -154,7 +156,7 @@ namespace Core
 			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 			gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
 			Window::player->move_left();
-			SceneManager::loadTile(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
+			SceneManager::loadObj(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
 			std::cout << "Push object" << std::endl;
 			for (int c = 0; c < grid_col; c++)
 			{
@@ -207,7 +209,7 @@ namespace Core
 			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
 			Window::player->move_up();
-			SceneManager::loadTile(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
+			SceneManager::loadObj(Window::obj->obj_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->obj_Grid_pos.y / static_cast<float>(grid_col) * height);
 			std::cout << "Push object" << std::endl;
 			for (int c = 0; c < grid_col; c++)
 			{

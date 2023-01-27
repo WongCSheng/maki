@@ -44,14 +44,16 @@ namespace Core
 
 	void SceneManager::loadTile(int x, int y)
 	{
+		
 		tile->transformation.Position = glm::vec2(x, y);
-		tile->transformation.Scale = glm::vec2(150, 150);
+		tile->transformation.Scale = glm::vec2(105, 105);
 	}
 
 	void SceneManager::loadObj(int x, int y)
 	{
+
 		obj->transformation.Position = glm::vec2(x, y);
-		obj->transformation.Scale = glm::vec2(150, 150);
+		obj->transformation.Scale = glm::vec2(100, 100);
 	}
 
 	void SceneManager::drawTile()

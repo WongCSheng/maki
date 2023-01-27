@@ -18,7 +18,7 @@ namespace Core
 {
 	struct Texture : public Component
 	{
-		void TextureLoadIn(const char* filename);
+		//void TextureLoadIn(const char* filename);
 
 		void Delete(Texture& obj);
 

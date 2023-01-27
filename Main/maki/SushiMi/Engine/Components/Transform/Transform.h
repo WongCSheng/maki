@@ -35,7 +35,7 @@ namespace Core
 		 void Deserialize(const rapidjson::Value& jsonObj) /*override*/; //parse in json(read from)
 		
 		float angle =0; //chong sheng louis help! //angle = rotation, suppose to be mat3 but we previously used float. plse hlp make consistent 
-		void Set(glm::vec2 position = glm::vec2(0.f, 0.f), glm::vec2 scale = glm::vec2(1.f, 1.f), float rotation = 0);
+		void Set(glm::vec2 Position = glm::vec2(0.f, 0.f), glm::vec2 Scale = glm::vec2(1.f, 1.f), float Rotation = 0);
 		void SetPosition(glm::vec2 position);
 		void SetScale(glm::vec2 scale);
 		void SetRotation(float rotation);

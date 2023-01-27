@@ -11,12 +11,7 @@
 
 namespace Core
 {
-	void Texture::TextureLoadIn(const char* filename)
-	{		
-		Texheight = Texwidth = TextureID = 0;
-
-		data = stbi_load(filename, &Texwidth, &Texheight, &num_8_bit_component, STBI_rgb_alpha);
-	}
+	
 
 	void Texture::Delete(Texture& obj)
 	{

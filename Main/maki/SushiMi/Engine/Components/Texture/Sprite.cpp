@@ -14,8 +14,10 @@ namespace Core
 	Sprite::Sprite(const char* filename)
 	{
 		auto tex_sys = Core::TextureSystem::GetInstance();
-		texture.TextureLoadIn(filename);
-		tex_sys->Generate(&texture);
+		texture = tex_sys->Generate(filename);
+		
+		/*texture.TextureLoadIn(filename);
+		tex_sys->Generate(&texture);*/
 
 		auto rect_sys = Core::Renderer::GetInstance();
 		rectangle = rect_sys->Generate();

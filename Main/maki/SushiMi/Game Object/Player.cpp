@@ -82,6 +82,8 @@ namespace Core
 		//current hard code way
 		playerpos.x += Map::tile_width;
 
+
+
 		sp->transformation.Position.x += Map::tile_width;
 	}
 
@@ -131,8 +133,6 @@ namespace Core
 	{
 		sp->transformation.Position.x = playerpos_restart.x;
 		sp->transformation.Position.y = playerpos_restart.y;
-
-		
 	}
 
 	void Player::stop()

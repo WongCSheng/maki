@@ -64,14 +64,15 @@ namespace Core
 	*/
 	MainSystem::~MainSystem()
 	{
-		for (auto& sys : systems)
-		{
-			if (sys != NULL)
-			{
-				//delete sys;
-				sys = NULL;
-			}
-		}
+
+		//for (auto& sys : systems)
+		//{
+		//	if (sys != NULL)
+		//	{
+		//		//delete sys;
+		//		sys = NULL;
+		//	}
+		//}
 		//To shift into cleanup
 		
 		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
@@ -184,9 +185,11 @@ namespace Core
 
 		objfactory->DestroyEverything();
 
+		TextureSystem::GetInstance()->Shutdown();
 		for (auto& i : systems)
 		{
-			delete i;
+			delete i; 
+			i = nullptr;
 		}
 
 		delete objfactory;

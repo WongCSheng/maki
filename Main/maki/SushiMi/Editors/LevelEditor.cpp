@@ -554,14 +554,37 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			
 			std::cout << "X: " << xpos << " " << ypos << std::endl;
 			int i = imguiPlacedObjs;
-			newobjarr.push_back(new Sprite(texpath));
+
+			//newobjarr[i].spritevector = new Sprite(texpath); replace with pushing back a struct
 			/*Window::a = new Sprite(texpath);*/
-			newobjarr[i]->transformation.Scale = glm::vec2(100, 100);
-			xpos += newobjarr[i]->transformation.Scale.x * 0.5f;
-			ypos += newobjarr[i]->transformation.Scale.y * 0.5f;
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
-			newobjarr[i]->transformation.Position = glm::vec2(xpos, ypos);
+
+			/**************************
+			* Step 1: set ur spritepath
+			* 1a) set scale,
+			* 1b) set pos
+			* Step 2: set ur name given to object
+			* Step 3: save your pos into x and y so that Object Container can read it
+			* Step 4: push back the whole struct
+			****************************************************/
+			addedobjinfo a;
+			a.spritepath = new Sprite(texpath); //1
+			a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
+			a.spritepath->transformation.Scale = glm::vec2(100, 100); //1b
+			a.objname = "path"; //2
+			a.x = xpos;
+			a.y = ypos; //3
+			newobjarr.push_back(a); //push back the whole struct
+			//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
+			//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
+			//if (texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png")
+			//{
+			//	newobjarr[i].objname = "salmon";//you placed a salmon!
+			//}
+			//else
+			//	newobjarr[i].objname = "unknown";
+			std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
 
 			
 			++imguiPlacedObjs;
@@ -572,7 +595,7 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 		{
 			for (int i = 0; i < imguiPlacedObjs; ++i)
 			{
-				delete newobjarr[i];
+				delete newobjarr[i].spritepath;
 			}
 		}
 
@@ -593,8 +616,8 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			xpos += 100 * 0.5f;
-			ypos += 100 * 0.5f;
+			//xpos += 100 * 0.5f;
+			//ypos += 100 * 0.5f;
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
 

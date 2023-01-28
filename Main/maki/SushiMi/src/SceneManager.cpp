@@ -7,6 +7,9 @@ namespace Core
 	SceneManager::SceneManager()
 	{
 		tile = nullptr;
+		ingredient = nullptr;
+		trap = nullptr;
+		goal = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}
 
@@ -49,31 +52,64 @@ namespace Core
 		tile->transformation.Scale = glm::vec2(105, 105);
 	}
 
-	void SceneManager::loadObj(int x, int y)
+	void SceneManager::loadIngr(int x, int y)
 	{
 
-		obj->transformation.Position = glm::vec2(x, y);
-		obj->transformation.Scale = glm::vec2(100, 100);
+		ingredient->transformation.Position = glm::vec2(x, y);
+		ingredient->transformation.Scale = glm::vec2(100, 100);
 	}
 
+	void SceneManager::loadTrap(int x, int y)
+	{
+
+		trap->transformation.Position = glm::vec2(x, y);
+		trap->transformation.Scale = glm::vec2(100, 100);
+	}
+
+	void SceneManager::loadGoal(int x, int y)
+	{
+
+		goal->transformation.Position = glm::vec2(x, y);
+		goal->transformation.Scale = glm::vec2(100, 100);
+	}
+	/*draw functions*/
 	void SceneManager::drawTile()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile->transformation.Get());
 		tile->draw();
 	}
 
-	void SceneManager::drawObj()
+	void SceneManager::drawIngr()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", obj->transformation.Get());
-		obj->draw();
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
+		ingredient->draw();
 	}
-
+	void SceneManager::drawTrap()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", trap->transformation.Get());
+		trap->draw();
+	}
+	void SceneManager::drawGoal()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal->transformation.Get());
+		goal->draw();
+	}
+	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
 		delete tile;
 	}
-	void SceneManager::destroyObj()
+	void SceneManager::destroyIngr()
 	{
-		delete obj;
+		delete ingredient;
 	}
+	void SceneManager::destroyTrap()
+	{
+		delete trap;
+	}
+	void SceneManager::destroyGoal()
+	{
+		delete goal;
+	}
+
 }

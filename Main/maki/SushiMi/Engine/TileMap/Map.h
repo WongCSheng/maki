@@ -34,6 +34,8 @@ namespace Core
 		static void collision_check_up();
 		static void collision_check_down();
 
+		static bool isStuck();
+
 		static int Map_Height, Map_Width;
 		static int** MapData;
 		static int** BinaryData;

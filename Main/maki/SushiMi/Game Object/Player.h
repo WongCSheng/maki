@@ -54,5 +54,11 @@ namespace Core
 			int x;
 			int y;
 		} player_grid_pos;
+
+		static inline struct PlayerInitialgridPos
+		{
+			int x;
+			int y;
+		} player_initial_grid_pos;
 	};
 }

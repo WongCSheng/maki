@@ -114,12 +114,13 @@ namespace Core
 	Window::~Window()
 	{
 		SceneManager::destroyTile();
-		SceneManager::destroyObj();
+		SceneManager::destroyIngr();
+		SceneManager::destroyTrap();
+		SceneManager::destroyGoal();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes
 		delete obj;
-		delete ingredient;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}

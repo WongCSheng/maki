@@ -10,6 +10,7 @@
 #include "../src/Window.h"
 #include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/TileMap/Map.h"
+#include "../Headers/SceneManager.h"
 
 //static Window win; //create a external window variable to pass through data
 
@@ -131,8 +132,39 @@ namespace Core
 
 	void Player::restart()
 	{
-		sp->transformation.Position.x = playerpos_restart.x;
-		sp->transformation.Position.y = playerpos_restart.y;
+		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
+
+		SceneManager::destroyTile();
+		SceneManager::destroyIngr();
+		SceneManager::destroyTrap();
+		SceneManager::destroyGoal();
+		Map::initMap("../TileMap/level1.txt");
+		*/
+		/*IF PLAYER STUCK IN SINKHOLE*/
+		/*if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
+		{
+			/*sinkhole goes back to norm*/
+			/*doesnt work for now, will figure out
+			SceneManager::destroyTrap();
+			SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
+
+			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 4;
+			sp->transformation.Position.x = playerpos_restart.x;
+			sp->transformation.Position.y = playerpos_restart.y;
+			*/
+		/*this is working, FOR NOW*/
+		if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
+		{
+			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 0;
+			sp->transformation.Position.x = playerpos_restart.x;
+			sp->transformation.Position.y = playerpos_restart.y;
+			Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
+			Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
+
+			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
+		}
+
+
 	}
 
 	void Player::stop()

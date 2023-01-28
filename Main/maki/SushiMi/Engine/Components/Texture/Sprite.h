@@ -43,11 +43,23 @@ namespace Core
 
 		Transform transformation;
 
-		static inline struct objGridPos
+		static inline struct ingrGridPos
 		{
 			int x;
 			int y;
-		} obj_Grid_pos;
+		} ingredient_Grid_pos;
+
+		static inline struct trapGridPos
+		{
+			int x;
+			int y;
+		} trap_Grid_pos;
+
+		static inline struct goalGridPos
+		{
+			int x;
+			int y;
+		} goal_Grid_pos;
 
 	private:
 		Texture texture;

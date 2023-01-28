@@ -20,8 +20,6 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
-		unsigned int LastObjectID;
-
 		std::set<Object::GameObject*> DeleteList;
 
 	public:		
@@ -29,6 +27,7 @@ namespace Core
 		virtual ~ObjectFactory();
 
 		static inline std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
+		unsigned int LastObjectID;
 
 		Object::GameObject* Create();
 

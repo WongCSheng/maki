@@ -1,6 +1,8 @@
 /*
 File: Transform.h
 Author: w.chongsheng@digipen.edu
+co-Author:  Aurelia Chong 
+email:		fei.x@digipen.edu
 Description: Header for Transform.cpp
 */
 

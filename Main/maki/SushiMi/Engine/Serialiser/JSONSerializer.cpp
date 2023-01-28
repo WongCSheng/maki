@@ -17,9 +17,12 @@ chosen game object.
 #include <vector>
 #include "../Components/Transform/Transform.h"
 #include "../Game Object/Player.h"
+#include "../Core/Core.h"
 
 namespace Core
 {
+	ObjectFactory* MainSystem::objfactory;
+
 	std::string ReadFileContents(const char* filepath)
 	{
 		static std::fstream fs;
@@ -65,7 +68,7 @@ namespace Core
 	//}
 
 	//Deserialze is read from json file.
-	void DeserializeEntity(std::string const& filepath, std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	void DeserializeEntity(std::string const& filepath, ObjectFactory *objfact)
 	{
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 		//Object::GameObject gameObj = ObjectFactory::Create();
@@ -82,8 +85,9 @@ namespace Core
 			std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 1" << std::endl;
 			return;
 		}
+
 		/* creating a gameObj inst to store and to be saved into Obj Container */
-		Object::GameObject* gameObj /*= new Object::GameObject()*/; //contains characteristics of game objects
+		Object::GameObject* gameObj = new Object::GameObject(); //contains characteristics of game objects
 		std::cout << "Managed to parse " << filepath << std::endl;
 
 		if (!document.HasMember("components") || !document["components"].IsArray())
@@ -110,33 +114,39 @@ namespace Core
 				return;
 			}
 
-			 //what happens in a scenario where a Component failed to deserialize?
-			// //How will this function know that the component failed to deserialize, then not add that component?
-			//if (compJsonObj["type"] == "Transform")
-			//{
-			//	Transform* transComp = new Transform();
-			//	//important line to help u debug!!!
-			//	std::cout << "this line means i can read the json obj 2: " << compJsonObj.GetFloat() << std::endl;
-
-			//	transComp->Deserialize(compJsonObj);
-			//	gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
-			//	std::cout << "transform component is : " << transComp << std::endl;
-			//	std::cout << "json obj is : " << gameObj << std::endl;
-			//	//std::cout << "json obj characteristics is : " << gameObj->characteristics << std::endl;
-			//}
-
-			/*else if (compJsonObj["type"] == "Sprite")
+			if (compJsonObj["type"] == "Transform")
 			{
+				//destructor will  auto destroy? WATCH out for MemLeak!!!
+				Transform* transComp = new Transform();
+				transComp->Deserialize(compJsonObj);
+				gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
+				std::cout << "transform component is : " << transComp << std::endl;
+				//delete transComp;
+			} 
 
+			else if (compJsonObj["type"] == "Sprite")
+			{
+				//rapidjson::Value& spritJsonObj = document["Sprite"]; // get the sprite JSON object
+				//if (!spritJsonObj.HasMember("texturepath") || !spritJsonObj["texturepath"].IsString())
+				//{
+				//	std::cout << "JSONSerializer Deserialize Sprite: " << filepath << " does not have 'texturepath'" << std::endl;
+				//	return;
+				//}
+				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
+				Sprite* spriteComp = new Sprite(texturePath);
+				spriteComp->Deserialize(compJsonObj);
 			}
 
-			else if (compJsonObj["type"] == "Music")
+			/*else if (compJsonObj["type"] == "Music")
 			{
 
 			}*/
 
 		}
-		//ObjectFactory::ObjectContainer.insert({ 00, gameObj }); //save everything in gameObj into container
+
+		std::string name("Object: " + std::to_string(objfact->LastObjectID));
+		objfact->ObjectContainer.insert({name, gameObj });	//	save everything in gameObj into container
+		objfact->LastObjectID++;
 	}
 
 

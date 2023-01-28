@@ -1,6 +1,8 @@
 /*!
 @file		Sprite.cpp
 @author		louishetong.wang@digipen.edu
+co-Author:  Aurelia Chong
+email:		fei.x@digipen.edu
 @date		20/11/2022
 
 @brief		Drawing of the sprite and animating of it is here
@@ -68,14 +70,43 @@ namespace Core
 
 	}
 
-	void Sprite::Serialise(const std::string name)
+	void Sprite::Serialize(const std::string name)
 	{
 
 	}
 
-	void Sprite::Deserialise(const std::string name)
+	
+	void Sprite::Deserialize(const rapidjson::Value& jsonObj)
 	{
+		//checking file exist/no
+		if (!jsonObj.HasMember("SpriteSheet"))
+		{
+			std::cout << "Component of type SpriteSheet cannot be read" << std::endl;
+			return;
+		}
 
+		isSpriteSheet = jsonObj["SpriteSheet"].GetBool();
+
+		if (!jsonObj.HasMember("SpriteSize") || !jsonObj["SpriteSize"].IsArray() || jsonObj["SpriteSize"].Size() < 2)
+		{
+			std::cout << "Component of type SpriteSize must have key 'SpriteSize' with an array of size 2" << std::endl;
+		}
+
+		const rapidjson::Value& SpriteArr = jsonObj["SpriteSize"]; 
+
+		for (int i = 0; i < 2; i++)
+		{
+
+			float value = SpriteArr[i].GetFloat();
+			if (i == 0)
+				SpriteSize[i] = value; //value of spriteArr from json, sabed into spritesize
+			else
+				SpriteSize[i] = value; 
+		}
+		std::cout << "SpriteSize X: " << SpriteSize[0] << "        " << "SpriteSize Y: " << SpriteSize[1] << "\n";
+
+		std::cout << "Deserializing Sprite Component! \n";
+	
 	}
 
 	bool Sprite::IsActive()

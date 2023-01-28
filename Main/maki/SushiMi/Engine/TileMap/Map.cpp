@@ -9,13 +9,22 @@
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Headers/SceneManager.h"
 
+/*
+ * What each grid number means:
+ * 0 - free space
+ * 1 - wall
+ * 2 - Player
+ * 3 - ingredient
+ * 4 - sinkhole
+ * 9 - Goal
+ */
 
 int Core::Map::grid_row = 0;
 int Core::Map::grid_col = 0;
 
 int Core::Map::gGrids[GRID_ROW][GRID_COL];
 int width, height;
-
+int win = 0;
 namespace Core
 {
 	Map::Map()
@@ -102,7 +111,8 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 99, means its STUCK
-		if(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
+		if(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99 || 
+			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 100)
 		{
 			return 1;
 		}
@@ -129,16 +139,39 @@ namespace Core
 				std::cout << "Wall on right" << std::endl;
 				Window::player->stop();
 			}
+			/*check for ingredient & pod*/
+			else if (Window::ingredient->ingredient_Grid_pos.x == Window::goal->goal_Grid_pos.x - 1 &&
+				Window::ingredient->ingredient_Grid_pos.y == Window::goal->goal_Grid_pos.y)
+			{
+				Window::ingredient->ingredient_Grid_pos.x++;
+				Window::player->player_grid_pos.x++;
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
+				Window::player->move_right();
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
+				SceneManager::destroyGoal();
+				SceneManager::goal = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				Window::goal->goal_Grid_pos.x = Window::ingredient->ingredient_Grid_pos.x;
+				Window::goal->goal_Grid_pos.y = Window::ingredient->ingredient_Grid_pos.y;
+				for (int c = 0; c < grid_col; c++)
+				{
+					for (int r = 0; r < grid_row; r++)
+					{
+						std::cout << gGrids[r][c];
+					}
+					std::cout << std::endl;
+				}
+			}
 			/*check object*/
 			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3)
 			{
-				Window::obj->ingredient_Grid_pos.x++;
+				Window::ingredient->ingredient_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;
-				gGrids[Window::obj->ingredient_Grid_pos.x][Window::obj->ingredient_Grid_pos.y] = 3;
+				gGrids[Window::ingredient->ingredient_Grid_pos.x][Window::ingredient->ingredient_Grid_pos.y] = 3;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_right();
-				SceneManager::loadIngr(Window::obj->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
 				std::cout << "Push object" << std::endl;
 				for (int c = 0; c < grid_col; c++)
 				{
@@ -182,9 +215,8 @@ namespace Core
 					std::cout << std::endl;
 				}
 			}
+
 		}
-	
-		
 	}
 
 	void Map::collision_check_left()
@@ -204,16 +236,39 @@ namespace Core
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+			/*check for ingredient & pod*/
+			else if (Window::ingredient->ingredient_Grid_pos.x == Window::goal->goal_Grid_pos.x + 1 &&
+				Window::ingredient->ingredient_Grid_pos.y == Window::goal->goal_Grid_pos.y)
+			{
+				Window::ingredient->ingredient_Grid_pos.x--;
+				Window::player->player_grid_pos.x--;
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
+				Window::player->move_left();
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 99;
+				SceneManager::destroyGoal();
+				SceneManager::goal = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				Window::goal->goal_Grid_pos.x = Window::ingredient->ingredient_Grid_pos.x;
+				Window::goal->goal_Grid_pos.y = Window::ingredient->ingredient_Grid_pos.y;
+				for (int c = 0; c < grid_col; c++)
+				{
+					for (int r = 0; r < grid_row; r++)
+					{
+						std::cout << gGrids[r][c];
+					}
+					std::cout << std::endl;
+				}
+			}
 			/*check object*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
 			{
-				Window::obj->ingredient_Grid_pos.x--;
+				Window::ingredient->ingredient_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
-				gGrids[Window::obj->ingredient_Grid_pos.x][Window::obj->ingredient_Grid_pos.y] = 3;
+				gGrids[Window::ingredient->ingredient_Grid_pos.x][Window::ingredient->ingredient_Grid_pos.y] = 3;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_left();
-				SceneManager::loadIngr(Window::obj->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
 				std::cout << "Push object" << std::endl;
 				for (int c = 0; c < grid_col; c++)
 				{
@@ -249,8 +304,8 @@ namespace Core
 					std::cout << std::endl;
 				}
 			}
-
 		}
+
 	
 	}
 
@@ -271,16 +326,39 @@ namespace Core
 				std::cout << "Wall on top" << std::endl;
 				Window::player->stop();
 			}
+			/*check for ingredient & pod*/
+			else if (Window::ingredient->ingredient_Grid_pos.x == Window::goal->goal_Grid_pos.x &&
+				Window::ingredient->ingredient_Grid_pos.y == Window::goal->goal_Grid_pos.y + 1)
+			{
+				Window::ingredient->ingredient_Grid_pos.y--;
+				Window::player->player_grid_pos.y--;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
+				Window::player->move_up();
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
+				SceneManager::destroyGoal();
+				SceneManager::goal = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				Window::goal->goal_Grid_pos.x = Window::ingredient->ingredient_Grid_pos.x;
+				Window::goal->goal_Grid_pos.y = Window::ingredient->ingredient_Grid_pos.y;
+				for (int c = 0; c < grid_col; c++)
+				{
+					for (int r = 0; r < grid_row; r++)
+					{
+						std::cout << gGrids[r][c];
+					}
+					std::cout << std::endl;
+				}
+			}
 			/*check object*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3)
 			{
-				Window::obj->ingredient_Grid_pos.y--;
+				Window::ingredient->ingredient_Grid_pos.y--;
 				Window::player->player_grid_pos.y--;
-				gGrids[Window::obj->ingredient_Grid_pos.x][Window::obj->ingredient_Grid_pos.y] = 3;
+				gGrids[Window::ingredient->ingredient_Grid_pos.x][Window::ingredient->ingredient_Grid_pos.y] = 3;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
 				Window::player->move_up();
-				SceneManager::loadIngr(Window::obj->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
 				std::cout << "Push object" << std::endl;
 				for (int c = 0; c < grid_col; c++)
 				{
@@ -300,6 +378,17 @@ namespace Core
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y - 1;
 				Window::player->move_up();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 99;
+			}
+			/*check for obj & pod*/
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == 9)
+			{
+				Window::player->move_up();
+				SceneManager::destroyGoal();
+				SceneManager::goal = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				Window::goal->goal_Grid_pos.x = Window::player->player_grid_pos.x;
+				Window::goal->goal_Grid_pos.y = Window::player->player_grid_pos.y - 1;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
 			}
 			else
 			{
@@ -337,16 +426,39 @@ namespace Core
 				std::cout << "Wall on bottom" << std::endl;
 				Window::player->stop();
 			}
+			/*check for ingredient & pod*/
+			else if (Window::ingredient->ingredient_Grid_pos.x == Window::goal->goal_Grid_pos.x &&
+				Window::ingredient->ingredient_Grid_pos.y == Window::goal->goal_Grid_pos.y - 1)
+			{
+				Window::ingredient->ingredient_Grid_pos.y++;
+				Window::player->player_grid_pos.y++;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
+				Window::player->move_down();
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
+				SceneManager::destroyGoal();
+				SceneManager::goal = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				Window::goal->goal_Grid_pos.x = Window::ingredient->ingredient_Grid_pos.x;
+				Window::goal->goal_Grid_pos.y = Window::ingredient->ingredient_Grid_pos.y;
+				for (int c = 0; c < grid_col; c++)
+				{
+					for (int r = 0; r < grid_row; r++)
+					{
+						std::cout << gGrids[r][c];
+					}
+					std::cout << std::endl;
+				}
+			}
 			/*check object*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3)
 			{
-				Window::obj->ingredient_Grid_pos.y++;
+				Window::ingredient->ingredient_Grid_pos.y++;
 				Window::player->player_grid_pos.y++;
-				gGrids[Window::obj->ingredient_Grid_pos.x][Window::obj->ingredient_Grid_pos.y] = 3;
+				gGrids[Window::ingredient->ingredient_Grid_pos.x][Window::ingredient->ingredient_Grid_pos.y] = 3;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
 				Window::player->move_down();
-				SceneManager::loadIngr(Window::obj->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::obj->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::loadIngr(Window::ingredient->ingredient_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient->ingredient_Grid_pos.y / static_cast<float>(grid_col) * height);
 				SceneManager::drawIngr();
 				std::cout << "Push object" << std::endl;
 				for (int c = 0; c < grid_col; c++)

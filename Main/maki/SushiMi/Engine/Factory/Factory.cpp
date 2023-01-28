@@ -1,4 +1,11 @@
 
+/*
+File: Factory.cpp
+Author: w.chongsheng@digipen.edu
+co-Author:  Aurelia Chong
+email:		fei.x@digipen.edu
+Description: 
+*/
 #include "Factory.h"
 #include "../Game Object/GameObject.h"
 #include "../Headers/RapidJSON_Header.h"

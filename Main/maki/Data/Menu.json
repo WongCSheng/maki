@@ -8,9 +8,9 @@
     },
     {
       "type": "Sprite",
-      "texture_path": "background\bg_cafe.png",
-      "sprite_sheet": false,
-      "sprite_size": [ 0, 0 ]
+      "texturepath": "../textures/StartMenu.jpg",
+      "SpriteSheet": false,
+      "SpriteSize": [ 10, 50 ]
     },
     {
       "type": "Audio",

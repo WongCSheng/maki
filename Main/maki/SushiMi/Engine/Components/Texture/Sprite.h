@@ -33,14 +33,15 @@ namespace Core
 		void Add_animation(const char* filename);
 
 		void Init();
-		void Serialise(const std::string name);
-		void Deserialise(const std::string name);
+		void Serialize(const std::string name);
+		void Deserialize(const rapidjson::Value& jsonObj);
 
 		bool IsActive();
 		void Activate();
 		void Deactivate();
 		void Remove();
-
+		bool isSpriteSheet;
+		float SpriteSize[2];
 		Transform transformation;
 
 		static inline struct objGridPos
@@ -50,9 +51,10 @@ namespace Core
 		} obj_Grid_pos;
 
 	private:
+
 		Texture texture;
 		vtx rectangle;
-
+	
 		std::vector<Animation2D*> anims;
 	};
 }

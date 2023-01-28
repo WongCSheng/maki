@@ -1,6 +1,8 @@
 /*
 File: Transform.cpp
 Author: w.chongsheng@digipen.edu
+co-Author:  Aurelia Chong
+email:		fei.x@digipen.edu
 Description: Contains data for every type of transform. From meshes, bounding boxes, camera etc.
 */
 
@@ -53,6 +55,8 @@ namespace Core
 			else
 				Position.y = value; //rmb to uncomment
 		}
+
+		std::cout << "Pos X: " << Position.x << "        " << "Pos Y: " << Position.y << "\n";
 
 		if (!jsonObj.HasMember("rotation") || !jsonObj["rotation"].IsNumber())
 			std::cout << "Component of type Transform must have key 'rotation' with a number value." << std::endl;

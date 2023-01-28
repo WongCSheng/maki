@@ -27,11 +27,11 @@ chosen game object.
 
 namespace Core
 {
-		// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
+	// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
 	Player* Deserialize(std::string const& filepath);
 	static inline std::string LevelLoadPath;
 	static inline std::string* LevelLoadPathPtr = &LevelLoadPath;
-	void DeserializeEntity(std::string const& filepath, std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+	void DeserializeEntity(std::string const& filepath, ObjectFactory* objfact);
 	void Serialize(const Player& player, std::string const& filepath);
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;

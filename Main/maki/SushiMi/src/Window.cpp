@@ -77,7 +77,7 @@ namespace Core
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 		glfwWindowHint(GLFW_MAXIMIZED, true);
 		
-		window_ptr = glfwCreateWindow(width, height, "SushiMi Engine", NULL, NULL);
+		window_ptr = glfwCreateWindow(width, height, "SushiMi", NULL, NULL);
 		if (window_ptr == nullptr)
 		{
 			std::cout << "erorr initilize glfw" << std::endl;
@@ -160,7 +160,7 @@ namespace Core
 		}
 
 		//player input
-		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
+		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT)|| ImGui::IsKeyPressed(GLFW_KEY_D))
 		{
 			keystate_right = true;
 			std::cout << "you are pressing right" << std::endl;
@@ -171,7 +171,7 @@ namespace Core
 			}
 		}
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT))
+		else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A))
 		{
 			keystate_left = true;
 			//player only move on one press
@@ -183,7 +183,7 @@ namespace Core
 			}
 		}
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_UP))
+		else if (ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W))
 		{
 			keystate_up = true;
 
@@ -196,7 +196,7 @@ namespace Core
 		}
 
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_DOWN))
+		else if (ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S))
 		{
 			keystate_down = true;
 			if (keystate_down)
@@ -211,9 +211,11 @@ namespace Core
 		*/
 		if (ImGui::IsKeyPressed(GLFW_KEY_R))
 		{
+			keystate_R = true;
 			if (keystate_R)
 			{
 				//restart
+
 				std::cout << "restarting level" << std::endl;
 				player->restart(); //tell graphics to reset sprite pos
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;

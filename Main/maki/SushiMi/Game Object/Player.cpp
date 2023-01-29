@@ -153,8 +153,8 @@ namespace Core
 			sp->transformation.Position.y = playerpos_restart.y;
 			*/
 		/*this is working, FOR NOW*/
-		if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
-		{
+		/*if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
+		{*/ //i commented out this line as its affecting Restart - thea
 			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 0;
 			sp->transformation.Position.x = playerpos_restart.x;
 			sp->transformation.Position.y = playerpos_restart.y;
@@ -162,7 +162,7 @@ namespace Core
 			Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
 			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-		}
+		//}
 
 
 	}

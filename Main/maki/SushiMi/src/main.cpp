@@ -61,12 +61,12 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
 int main() {
 
 	// Enable run-time memory check for debug builds.
-	#if defined(DEBUG) | defined(_DEBUG)
+#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(11379); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(11762); //use this to detect memory leaks, replace the number with mem leak location
 
-	#endif
+#endif
 
 	//systems that were new and not deleted
 	CoreSystem = new Core::MainSystem();
@@ -99,7 +99,9 @@ void Core::pseudomain::update()
 	glfwPollEvents();
 
 	GLHelper::update_time(1.0);
+
 	Editor::LevelEditor::imguiGraphicsTest();
+
 
 	CoreSystem->objfactory->Update(GLHelper::delta_time);
 
@@ -120,9 +122,9 @@ void Core::pseudomain::draw()
 {
 	//imGUI Game Editor
 
-//#ifdef Editor_debug
+
 	Editor::LevelEditor::imguiEditorDraw();
-//#endif
+
 
 	// Part 2: swap buffers: front <-> back
 	glfwSwapBuffers(Window::window_ptr);
@@ -175,7 +177,7 @@ void Core::pseudomain::init() {
 		{
 			Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
 
-			std::cout << transComp->Position.x << " <<<<<<<<<herererwrasf sdfgazdfgsdfgdgdfgdfg" << "\n";
+			std::cout << transComp->Position.x << " <<<<<<<<<here" << "\n";
 		}
 
 		std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
@@ -199,7 +201,10 @@ void Core::pseudomain::init() {
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
+#if defined(DEBUG) | defined(_DEBUG)
 	CoreSystem->leveleditorsystem->imguiEditorInit();
+	
+#endif
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
@@ -228,7 +233,9 @@ void Core::pseudomain::cleanup() {
 	AudioManager.UnloadMusic("BGM.wav");
 
 	////imgui Shutdown
+#if defined(DEBUG) | defined(_DEBUG)
 	Editor::LevelEditor::imguiShutDown();
+#endif
 
 	CoreSystem->clear();
 	delete CoreSystem;

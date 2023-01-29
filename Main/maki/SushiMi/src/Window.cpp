@@ -127,26 +127,29 @@ namespace Core
 
 	void Window::Input()
 	{
+		
+		if (ImGui::IsMouseReleased(MOUSEEVENTF_LEFTDOWN))
+		{
+			//place_obj = true;
+			//if (place_obj)
+			//{
+				//std::cout << "placing obj at x: " << ingredient->transformation.position.x << "and y: " << ingredient->transformation.position.y << std::endl;
+				//place_obj = false;
+			//}
+		}
 
-		//if (ImGui::IsMouseReleased(MOUSEEVENTF_LEFTDOWN))
-		//{
-		//	//place_obj = true;
-		//	//if (place_obj)
-		//	//{
-		//		std::cout << "placing obj at x: " << ingredient->transformation.position.x << "and y: " << ingredient->transformation.position.y << std::endl;
-		//		//place_obj = false;
-		//	//}
-		//}
+		
 
 		if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
 		{
 			glfwSetWindowShouldClose(window_ptr, true);
 		}
 
+		//player input
 		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT))
 		{
 			keystate_right = true;
-			//std::cout << "you are pressing right" << std::endl;
+			std::cout << "you are pressing right" << std::endl;
 			if (keystate_right)
 			{
 				Map::collision_check_right();
@@ -214,7 +217,7 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
-		//player->stop();
+		player->stop();
 		
 	}
 
@@ -260,6 +263,7 @@ namespace Core
 			sp->draw();*/
 
 			//the moving ingredient
+#if defined(EDITOR) | defined(_EDITOR)
 			if (ingredient) {
 			//delete ingredient;
 			ingredient = nullptr;
@@ -271,6 +275,7 @@ namespace Core
 			*/
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
+#endif
 			/*
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
@@ -282,12 +287,13 @@ namespace Core
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
-
+			#if DEBUG
 			for (auto test : Editor::LevelEditor::newobjarr)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
 			}
+			#endif
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below

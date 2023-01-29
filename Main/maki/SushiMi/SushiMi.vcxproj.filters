@@ -61,9 +61,6 @@
     <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp">
       <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Serialiser\RTTR.cpp">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClCompile>
     <ClCompile Include="Game Object\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
     </ClCompile>
     <ClCompile Include="src\Log.cpp">
       <Filter>GameEngine\Assertion</Filter>
-    </ClCompile>
-    <ClCompile Include="Mono.cpp">
-      <Filter>GameEngine\Mono</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>GameEngine\Input</Filter>
@@ -234,9 +228,6 @@
     <ClInclude Include="Engine\Serialiser\JSONSerializer.h">
       <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Serialiser\RTTR.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
     <ClInclude Include="Game Object\GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -261,9 +252,6 @@
     <ClInclude Include="Engine\System\Linked List\LinkedList.h">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClInclude>
-    <ClInclude Include="RTTR_Header.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\ImGui_Header.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
@@ -284,9 +272,6 @@
     </ClInclude>
     <ClInclude Include="testshader.h">
       <Filter>Editors</Filter>
-    </ClInclude>
-    <ClInclude Include="Mono.h">
-      <Filter>GameEngine\Mono</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Input\Input.h">
       <Filter>GameEngine\Input</Filter>

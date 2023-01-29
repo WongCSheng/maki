@@ -14,7 +14,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /******************************************************************************/
 #include "../Headers/STL_Header.h"
 #include "Keys.h"
-#include <glfw/include/GLFW/glfw3.h>
+#include <GLFW/glfw3.h>
 #include "../Engine/System/SystemFrame.h"
 #include "../Headers/Math_Header.h"
 

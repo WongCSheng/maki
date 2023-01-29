@@ -23,7 +23,7 @@ chosen game object.
 
 #include "../Game Object/Player.h"
 #include <string>
-#include <rapidJSON/document.h>
+#include <rapidjson.h>
 
 namespace Core
 {

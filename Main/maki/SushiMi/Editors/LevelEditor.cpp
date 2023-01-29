@@ -62,8 +62,6 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 
 	return true;
 }
-
-
 	
 
 	//std::vector<std::string> ObjVector;
@@ -85,7 +83,10 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			ImGuiIO& io = ImGui::GetIO(); (void)io;
 			ImGui::StyleColorsDark();
 			ImGui_ImplGlfw_InitForOpenGL(Window::window_ptr, true);
+			//ImGui_ImplOpenGL3_Init();
 			ImGui_ImplOpenGL3_Init("#version 450");
+#if defined(EDITOR) | defined(_EDITOR)
+
 
 			//code to fill a vector with the names of all game objects, replace hardcoded 57 with the detected number of game elements
 			/*for (int i = 1; i < 57 * 14; i += 14)
@@ -103,11 +104,14 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			fileDialog.SetTitle("ImGui File Explorer");
 			//fileDialog.SetPwd("../maki/textures/");
 			//fileDialog.SetCurrentTypeFilterIndex(0);
+#endif
 
 		}
 
 		void LevelEditor::imguiGraphicsTest(void)
 		{
+#if defined(EDITOR) | defined(_EDITOR)
+
 			if (fileDialog.HasSelected())
 			{
 				std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
@@ -117,16 +121,19 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 
 				fileDialog.ClearSelected();
 			}
+#endif
 		}
 
 		void LevelEditor::imguiEditorDraw(void)
 		{
-			fileDialog.SetTypeFilters({ ".png", ".jpg", ".json" });
-
-
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
+#if defined(EDITOR) | defined(_EDITOR)
+
+
+
+			fileDialog.SetTypeFilters({ ".png", ".jpg", ".json" });
 
 			//in-Editor viewport view:
 			//ImGui::Begin("Screen Viewport FrameBuffer Window");
@@ -532,6 +539,7 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			ImGui::End(); //end level save window
 
 			ImGui::End(); //end the whole imgui process
+#endif
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		}
@@ -541,12 +549,17 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 			ImGui_ImplOpenGL3_Shutdown();
 			ImGui_ImplGlfw_Shutdown();
 			ImGui::DestroyContext();
+#if defined(EDITOR) | defined(_EDITOR)
+
+#endif
 		}
 
 		/*void LevelEditor::imguiCreateObj(ObjectFactory& container)*/
 
 		void LevelEditor::imguiCreateObj()
 		{
+#if defined(EDITOR) | defined(_EDITOR)
+
 			double xpos = 0, ypos = 0;
 
 			//grid snapping logic
@@ -588,15 +601,18 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 
 			
 			++imguiPlacedObjs;
-			
+#endif
 		}
 
 		void LevelEditor::imguiDestroyObj()
 		{
+#if defined(EDITOR) | defined(_EDITOR)
+
 			for (int i = 0; i < imguiPlacedObjs; ++i)
 			{
 				delete newobjarr[i].spritepath;
 			}
+#endif
 		}
 
 		void LevelEditor::AddToFactory(ObjectFactory* container)
@@ -610,7 +626,8 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 
 		void LevelEditor::imguiObjectCursor(void)
 		{
-			
+#if defined(EDITOR) | defined(_EDITOR)
+
 			//display obj to place on cursor
 			double xpos = 0, ypos = 0;
 
@@ -631,6 +648,7 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_wid
 				imguiCreateObj();
 
 			}
+#endif
 			
 		}
 	}

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <glew/include/GL/glew.h>
-#include <glfw/include/GLFW/glfw3.h>
+#include <gl/glew.h>
+#include <GLFW/glfw3.h>
 #include "../Engine/System/SystemFrame.h"
 
 

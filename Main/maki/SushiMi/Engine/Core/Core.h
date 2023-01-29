@@ -66,6 +66,8 @@ namespace Core
 		Window* windowsystem;
 		TextureSystem* texturesystem;
 		Editor::LevelEditor* leveleditorsystem;
+	
+
 	};
 }
 

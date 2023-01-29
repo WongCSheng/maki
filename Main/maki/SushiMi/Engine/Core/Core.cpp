@@ -50,9 +50,11 @@ namespace Core
 
 		texturesystem = TextureSystem::GetInstance();
 		systems.push_back(texturesystem);
-
+#if defined(DEBUG) | defined(_DEBUG)
 		leveleditorsystem = new Editor::LevelEditor();
 		systems.push_back(leveleditorsystem);
+#endif
+
 
 		objfactory = new ObjectFactory();
 

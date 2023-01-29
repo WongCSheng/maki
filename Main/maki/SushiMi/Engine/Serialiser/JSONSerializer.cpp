@@ -135,6 +135,7 @@ namespace Core
 				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
 				Sprite* spriteComp = new Sprite(texturePath);
 				spriteComp->Deserialize(compJsonObj);
+				delete spriteComp;
 			}
 
 			/*else if (compJsonObj["type"] == "Music")

@@ -44,6 +44,8 @@ namespace Core
 		float SpriteSize[2];
 		Transform transformation;
 
+		static inline Sprite* menu;
+
 		static inline struct ingrGridPos
 		{
 			int x;
@@ -69,5 +71,8 @@ namespace Core
 	
 		std::vector<Animation2D*> anims;
 	};
+
+	
+
 }
 #endif

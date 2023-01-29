@@ -133,9 +133,20 @@ namespace Core
 				//	return;
 				//}
 				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
-				Sprite* spriteComp = new Sprite(texturePath);
-				spriteComp->Deserialize(compJsonObj);
-				delete spriteComp;
+				const char* textureName = compJsonObj["name"].GetString();
+
+				std::cout << "loading of " << filepath << "\n";
+				Sprite::menu = new Sprite(texturePath);
+				Sprite::menu->transformation.Position = { 0,0 };
+				Sprite::menu->transformation.Scale = { 50,50 };
+
+				Sprite::menu->Deserialize(compJsonObj);
+				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, Sprite::menu);
+				if (textureName == "Menu")
+				{
+					
+				}
+				//delete spriteComp;
 			}
 
 			/*else if (compJsonObj["type"] == "Music")

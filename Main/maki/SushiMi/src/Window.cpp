@@ -1,3 +1,12 @@
+/*
+File: Transform.cpp
+Author:		
+email:		
+co-Author:  Chong Rui Xuan Aurelia 
+email:		fei.x@digipen.edu
+Description: 
+*/
+
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "Window.h"
@@ -11,9 +20,14 @@
 #include "../Engine/Camera/Camera2D.h"
 #include "../Headers/SceneManager.h"
 #include "../Engine/TileMap/Map.h"
+#include "../Engine/Core/Core.h"
+#include "../Engine/Serialiser/JSONSerializer.h"
 
 namespace Core
 {
+	static Core::MainSystem* CoreSystem;
+
+
 	/*                                                             input key states
 	----------------------------------------------------------------------------- */
 	static bool keystate_left = false;
@@ -256,7 +270,10 @@ namespace Core
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			Map::DrawMap();
 			// all drawing goes here ..
-			
+			Sprite::menu->transformation.Position = { 0, 0 };
+			Sprite::menu->draw();
+
+
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
 			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
@@ -282,6 +299,30 @@ namespace Core
 			*/
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+			std::cout << "what is inside obj container:" << std::endl;
+			for (auto& x : CoreSystem->objfactory->ObjectContainer)
+			{
+				std::cout << x.first << std::endl; //should print out menu.json
+
+				Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+
+				//menu->transformation.Position = { 0,0 };
+				//menu->transformation.Scale = { 50,50 };
+				
+
+
+
+
+				//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
+			}
+			std::cout << "end of obj container\n";
+			
+			//Sprite::menu->transformation.Position = {0.f,0.f};
+			//Sprite::menu->transformation.Scale = { 50,50 };
+			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+		
+
 			player->draw(delta);
 
 

@@ -40,7 +40,6 @@ namespace Core
 		static inline Sprite* ingredient;
 		static inline Sprite* goal;
 		static inline Sprite* trap;
-		
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;

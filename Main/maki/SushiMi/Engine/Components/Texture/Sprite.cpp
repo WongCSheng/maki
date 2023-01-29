@@ -1,7 +1,8 @@
 /*!
 @file		Sprite.cpp
-@author		louishetong.wang@digipen.edu
-co-Author:  Aurelia Chong
+@author		WOng Louis He Tong 60%
+email:		louishetong.wang@digipen.edu
+co-Author:  Chong Rui Xuan Aurelia 40%
 email:		fei.x@digipen.edu
 @date		20/11/2022
 
@@ -23,6 +24,8 @@ namespace Core
 
 		auto rect_sys = Core::Renderer::GetInstance();
 		rectangle = rect_sys->Generate();
+
+		std::cout << filename << "" << texture.TextureID << "\n";
 	}
 
 	Sprite::~Sprite()

@@ -168,21 +168,7 @@ void Core::pseudomain::init() {
 
 	/*testing if object container is working*/
 	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
-	std::cout << "what is inside obj container:" << std::endl;
-	for (auto& x : CoreSystem->objfactory->ObjectContainer)
-	{
-		std::cout << x.first << std::endl; //should print out menu.json
-
-		if (x.first == "../Data/Menu.json")
-		{
-			Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-
-			std::cout << transComp->Position.x << " <<<<<<<<<here" << "\n";
-		}
-
-		std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
-	}
-	std::cout << "end of obj container\n";
+	
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);

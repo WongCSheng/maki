@@ -1,7 +1,8 @@
 /*
 File: Transform.cpp
-Author: w.chongsheng@digipen.edu
-co-Author:  Aurelia Chong
+Author:		Wong Chong Sheng 35%
+email:		w.chongsheng@digipen.edu
+co-Author:  Chong Rui Xuan Aurelia 65%
 email:		fei.x@digipen.edu
 Description: Contains data for every type of transform. From meshes, bounding boxes, camera etc.
 */

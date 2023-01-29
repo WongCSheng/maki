@@ -107,16 +107,16 @@ namespace Core
 
 		}
 		//creation of obj
-		Object::GameObject* temp1 = objfactory->Create();
-		Object::GameObject* temp2 = objfactory->Create();
-		objfactory->AddObjects(temp1, "Obj Test 1");
-		objfactory->AddObjects(temp2, "Obj Test 2");
+		//Object::GameObject* temp1 = objfactory->Create();
+		//Object::GameObject* temp2 = objfactory->Create();
+		//objfactory->AddObjects(temp1, "Obj Test 1");
+		//objfactory->AddObjects(temp2, "Obj Test 2");
 
-		//creation of collision objs
-		Object::GameObject* Collision1 = objfactory->Create();
-		Object::GameObject* Collision2 = objfactory->Create();
-		objfactory->AddObjects(Collision1, "CollisionObj1 Test");
-		objfactory->AddObjects(Collision2, "CollisionObj2 Test");
+		////creation of collision objs
+		//Object::GameObject* Collision1 = objfactory->Create();
+		//Object::GameObject* Collision2 = objfactory->Create();
+		//objfactory->AddObjects(Collision1, "CollisionObj1 Test");
+		//objfactory->AddObjects(Collision2, "CollisionObj2 Test");
 
 		
 		

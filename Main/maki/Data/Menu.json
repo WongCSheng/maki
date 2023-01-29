@@ -9,8 +9,9 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/StartMenu.jpg",
+      "name": "Menu",
       "SpriteSheet": false,
-      "SpriteSize": [ 10, 50 ]
+      "SpriteSize": [ 100, 500 ]
     },
     {
       "type": "Audio",

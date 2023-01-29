@@ -27,6 +27,14 @@ namespace Core
 {
 	static Core::MainSystem* CoreSystem;
 
+	/*                                                             game states
+	----------------------------------------------------------------------------- */
+	enum class GameState {
+		LEVEL1,
+		MENU
+
+	};
+	
 
 	/*                                                             input key states
 	----------------------------------------------------------------------------- */
@@ -35,6 +43,8 @@ namespace Core
 	static bool keystate_up = false;
 	static bool keystate_down = false;
 	static bool keystate_R = false;
+	static bool keystate_M = false;
+	static bool keystate_paused = false;
 	static bool place_obj = false;
 	Player* player;
 
@@ -51,6 +61,8 @@ namespace Core
 			keystate_up = false;
 			keystate_down = false;
 			keystate_R = false;
+			keystate_M = false;
+			keystate_paused = false;
 			
 		}
 		else if (GLFW_RELEASE == action)
@@ -60,6 +72,8 @@ namespace Core
 			keystate_up = true;
 			keystate_down = true;
 			keystate_R = true;
+			keystate_M = true;
+			keystate_paused = true;
 		}
 	}
 
@@ -105,6 +119,11 @@ namespace Core
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
+		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		gameIsPaused = false;
+
 
 		//player = new Player();
 
@@ -131,6 +150,7 @@ namespace Core
 		SceneManager::destroyIngr();
 		SceneManager::destroyTrap();
 		SceneManager::destroyGoal();
+		SceneManager::destroyPauseOverlay();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes
@@ -142,7 +162,20 @@ namespace Core
 	void Window::Input()
 	{
 		
-		if (ImGui::IsMouseReleased(MOUSEEVENTF_LEFTDOWN))
+		//player input
+		if (ImGui::IsKeyPressed(GLFW_KEY_M))
+		{
+			keystate_M = true;
+			std::cout << "you are pressing menu" << std::endl;
+			if (keystate_M)
+			{
+				//clear all player
+				
+				keystate_M = false;
+			}
+		}
+
+		if (ImGui::IsMouseReleased(0))
 		{
 			//place_obj = true;
 			//if (place_obj)
@@ -151,16 +184,63 @@ namespace Core
 				//place_obj = false;
 			//}
 		}
-
-		
-
-		if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
+		if (gameIsPaused == false)
 		{
-			glfwSetWindowShouldClose(window_ptr, true);
+			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE))
+			{
+				keystate_paused = true;
+				if (keystate_paused)
+				{
+					gameIsPaused = true;
+					std::cout << "game paused, pause screen showing" << std::endl;
+					
+					SceneManager::loadPauseOverlay(0, 0);
+
+					keystate_paused = false;
+				}
+			}
 		}
+		//if press escape again, close pause screen
+		else if (gameIsPaused == true)
+		{
+			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE))
+			{
+				keystate_paused = true;
+				if (keystate_paused)
+				{
+					gameIsPaused = false;
+					std::cout << "game resume, no morepause screen" << std::endl;
+					int screenwidth = 0, screenheight = 0;
+					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+					SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+					SceneManager::pause_overlay->transformation.Position.y = screenheight;
+					keystate_paused = false;
+
+				}
+			}
+
+		}
+		if (ImGui::IsMouseReleased(0) && gameIsPaused == true)
+		{
+			gameIsPaused = false;
+			std::cout << "game resume, no morepause screen" << std::endl;
+			int screenwidth = 0, screenheight = 0;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+			SceneManager::pause_overlay->transformation.Position.y = screenheight;
+		}
+		//note: escape should be mapped to pause/menu
+		//if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
+		//{
+		//	
+
+		//	//the code below closes the game
+		//	//glfwSetWindowShouldClose(window_ptr, true);
+		//}
+
 
 		//player input
-		if (ImGui::IsKeyPressed(GLFW_KEY_RIGHT)|| ImGui::IsKeyPressed(GLFW_KEY_D))
+		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT)|| ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false)
 		{
 			keystate_right = true;
 			std::cout << "you are pressing right" << std::endl;
@@ -171,7 +251,7 @@ namespace Core
 			}
 		}
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A))
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false)
 		{
 			keystate_left = true;
 			//player only move on one press
@@ -183,7 +263,7 @@ namespace Core
 			}
 		}
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W))
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false)
 		{
 			keystate_up = true;
 
@@ -196,7 +276,7 @@ namespace Core
 		}
 
 
-		else if (ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S))
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false)
 		{
 			keystate_down = true;
 			if (keystate_down)
@@ -209,7 +289,7 @@ namespace Core
 		/*
 			restart key "R" resets the level
 		*/
-		if (ImGui::IsKeyPressed(GLFW_KEY_R))
+		if (ImGui::IsKeyPressed(GLFW_KEY_R) && gameIsPaused == false)
 		{
 			keystate_R = true;
 			if (keystate_R)
@@ -326,6 +406,7 @@ namespace Core
 		
 
 			player->draw(delta);
+			SceneManager::drawPauseOverlay();
 
 
 			////display object at imgui cursor
@@ -337,6 +418,7 @@ namespace Core
 				test.spritepath->draw();
 			}
 			#endif
+			
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below

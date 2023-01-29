@@ -10,6 +10,7 @@ namespace Core
 		ingredient = nullptr;
 		trap = nullptr;
 		goal = nullptr;
+		pause_overlay = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}
 
@@ -72,6 +73,15 @@ namespace Core
 		goal->transformation.Position = glm::vec2(x, y);
 		goal->transformation.Scale = glm::vec2(100, 100);
 	}
+	void SceneManager::loadPauseOverlay(int x, int y)
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		/*x = screenwidth * 0.5;
+		y = screenheight * 0.5;*/
+		pause_overlay->transformation.Position = glm::vec2(x, y);
+		pause_overlay->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	}
 	/*draw functions*/
 	void SceneManager::drawTile()
 	{
@@ -94,6 +104,11 @@ namespace Core
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal->transformation.Get());
 		goal->draw();
 	}
+	void SceneManager::drawPauseOverlay()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", pause_overlay->transformation.Get());
+		pause_overlay->draw();
+	}
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
@@ -110,6 +125,11 @@ namespace Core
 	void SceneManager::destroyGoal()
 	{
 		delete goal;
+	}
+
+	void SceneManager::destroyPauseOverlay()
+	{
+		delete pause_overlay;
 	}
 
 }

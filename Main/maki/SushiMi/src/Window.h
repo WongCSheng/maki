@@ -31,6 +31,19 @@ namespace Core
 
 		void Mainloop();
 
+		bool gameIsPaused;
+
+		void SetPaused(bool paused) //take in boolean
+		{
+			gameIsPaused = paused;
+
+		}
+
+		bool GetPaused(void)//check if game is paused
+		{
+			return gameIsPaused;
+		}
+
 		static inline void ImGuiToObjContainer(ObjectFactory*);
 
 		static inline Player* player;
@@ -40,6 +53,8 @@ namespace Core
 		static inline Sprite* ingredient;
 		static inline Sprite* goal;
 		static inline Sprite* trap;
+		static inline Sprite* pause_overlay;
+		
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;

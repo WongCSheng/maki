@@ -22,14 +22,17 @@ namespace Core
 		static  void loadIngr(int x, int y);
 		static  void loadTrap(int x, int y);
 		static  void loadGoal(int x, int y);
+		static  void loadPauseOverlay(int x, int y);
 		static  void drawTile();
 		static  void drawIngr();
 		static  void drawTrap();
 		static  void drawGoal();
+		static  void drawPauseOverlay();
 		static  void destroyTile();
 		static  void destroyIngr();
 		static  void destroyTrap();
 		static  void destroyGoal();
+		static  void destroyPauseOverlay();
 
 		static  void Readfile();
 
@@ -45,6 +48,7 @@ namespace Core
 		static inline Sprite* ingredient;
 		static inline Sprite* trap;
 		static inline Sprite* goal;
+		static inline Sprite* pause_overlay;
 
 		unsigned int rows, cols,
 			tileWidth, tileHeight;

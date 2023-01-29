@@ -195,7 +195,7 @@ namespace Core
 					std::cout << "game paused, pause screen showing" << std::endl;
 					
 					SceneManager::loadPauseOverlay(0, 0);
-
+					
 					keystate_paused = false;
 				}
 			}
@@ -404,8 +404,16 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 		
-
+			if (gameIsPaused == false)
+			{
 			player->draw(delta);
+
+			}
+			else if (gameIsPaused == true)
+			{
+				player->draw(0);
+
+			}
 			SceneManager::drawPauseOverlay();
 
 

@@ -49,6 +49,7 @@ namespace Core
 		static inline Sprite* trap;
 		static inline Sprite* goal;
 		static inline Sprite* pause_overlay;
+		static inline Sprite* menu;
 
 		unsigned int rows, cols,
 			tileWidth, tileHeight;

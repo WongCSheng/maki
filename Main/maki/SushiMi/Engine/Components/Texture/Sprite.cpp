@@ -64,7 +64,7 @@ namespace Core
 	void Sprite::Add_animation(const char* filename)
 	{
 		auto anim = new Animation2D(filename);
-
+		anim->set_animation_speed(0.05f);
 		anims.push_back(anim);
 	}
 

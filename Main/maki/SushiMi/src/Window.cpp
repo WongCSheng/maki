@@ -19,6 +19,7 @@ Description:
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
 #include "../Headers/SceneManager.h"
+#include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Core/Core.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
@@ -123,6 +124,8 @@ namespace Core
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
+		isMenuState = true;
+		isWalk = false;
 
 
 		//player = new Player();
@@ -161,7 +164,8 @@ namespace Core
 
 	void Window::Input()
 	{
-		
+		Sprite::menu->transformation.Position = glm::vec2(0, 0);
+		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);
 		//player input
 		if (ImGui::IsKeyPressed(GLFW_KEY_M))
 		{
@@ -170,7 +174,7 @@ namespace Core
 			if (keystate_M)
 			{
 				//clear all player
-				
+				isMenuState == true;
 				keystate_M = false;
 			}
 		}
@@ -220,14 +224,63 @@ namespace Core
 			}
 
 		}
+		if (ImGui::IsMouseReleased(0) && isMenuState == true)
+		{
+			double xpos = 0, ypos = 0;
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			
+			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+			//MENU BUTTON - START (PLAY GAME) 
+			if (xpos > 275 && xpos < 811 && ypos > 349 && ypos < 487)
+			{
+				isMenuState = false;
+				std::cout << "exit main menu" << std::endl;
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				Sprite::menu->transformation.Position.x += screenwidth;
+				Sprite::menu->transformation.Position.y += screenheight;
+
+			}
+			//MENU BUTTON - QUIT
+			if (xpos > 275 && ypos > 890 && xpos < 811 && ypos < 1010)
+			{
+				glfwSetWindowShouldClose(window_ptr, true);
+			}
+
+		}
 		if (ImGui::IsMouseReleased(0) && gameIsPaused == true)
 		{
+			double xpos = 0, ypos = 0;
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+
+			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+			//PAUSE THE GAME BUTTON
+			if (xpos > 600 && ypos > 460 && xpos < 1310 && ypos <560)
+			{
 			gameIsPaused = false;
-			std::cout << "game resume, no morepause screen" << std::endl;
+			std::cout << "game resume, no more pause screen" << std::endl;
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 			SceneManager::pause_overlay->transformation.Position.x = screenwidth;
 			SceneManager::pause_overlay->transformation.Position.y = screenheight;
+
+			}
+			//RETURN TO MAIN MENU
+			if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
+			{
+				isMenuState = true;
+				player->restart();
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
+				gameIsPaused = false;
+			}
+			//QUIT GAME
+			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
+			{
+				glfwSetWindowShouldClose(window_ptr, true);
+			}
 		}
 		//note: escape should be mapped to pause/menu
 		//if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
@@ -270,7 +323,9 @@ namespace Core
 			if (keystate_up)
 			{
 				Map::collision_check_up();
+				isWalk = true;
 				keystate_up = false;
+				
 			}
 
 		}
@@ -315,6 +370,8 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
 		player->stop();
 		
+		
+		
 	}
 
 	void Window::Resize()
@@ -351,9 +408,11 @@ namespace Core
 			Shaders->Textured_Shader()->use();
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			Map::DrawMap();
+			
 			// all drawing goes here ..
-			Sprite::menu->transformation.Position = { 0, 0 };
-			Sprite::menu->draw();
+			//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+			//Sprite::menu->transformation.Scale = glm::vec2(1000, 800);
+			
 
 
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
@@ -382,23 +441,21 @@ namespace Core
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
-			std::cout << "what is inside obj container:" << std::endl;
-			for (auto& x : CoreSystem->objfactory->ObjectContainer)
-			{
-				std::cout << x.first << std::endl; //should print out menu.json
+			//FOR OBJ CONTAINER DEBUGGING
+// 
+			//std::cout << "what is inside obj container:" << std::endl;
+			//for (auto& x : CoreSystem->objfactory->ObjectContainer)
+			//{
+			//	std::cout << x.first << std::endl; //should print out menu.json
 
-				Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+			//	Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
 
-				//menu->transformation.Position = { 0,0 };
-				//menu->transformation.Scale = { 50,50 };
-				
-
-
-
-
-				//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
-			}
-			std::cout << "end of obj container\n";
+			//	//menu->transformation.Position = { 0,0 };
+			//	//menu->transformation.Scale = { 50,50 };
+			//
+			//	//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
+			//}
+			//std::cout << "end of obj container\n";
 			
 			//Sprite::menu->transformation.Position = {0.f,0.f};
 			//Sprite::menu->transformation.Scale = { 50,50 };
@@ -414,9 +471,32 @@ namespace Core
 				player->draw(0);
 
 			}
+			//Draw Pause Overlay
+			if (gameIsPaused == true)
+			{
 			SceneManager::drawPauseOverlay();
 
+			}
 
+			//Draw Main Menu
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+			if (isMenuState == true)
+			{
+				Sprite::menu->draw();
+
+			}
+			else if (isMenuState == false)
+			{
+				//AudioManager.LoadMusic("BGM.wav");
+				//AudioManager.PlayMusic("BGM.wav");
+
+			}
+			
+			if (isWalk == true)
+			{
+				AudioManager.PlayClip("WalkSFX.wav");
+				isWalk = false;
+			}
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
 			#if DEBUG

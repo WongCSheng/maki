@@ -44,7 +44,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 static Core::MainSystem* CoreSystem;
 static Core::Object::GameObject* TestObj;
 
-
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
 /*  _________________________________________________________________________ */
@@ -80,6 +79,7 @@ int main() {
 	/*----------------------------------------------*/
 
 	CoreSystem->windowsystem->Mainloop();
+	
 
 	delete TestObj;
 	Core::pseudomain::cleanup();

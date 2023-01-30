@@ -65,7 +65,7 @@ namespace Core
 
 		//current hard code way
 		playerpos.x -= Map::tile_width;
-
+		
 		sp->transformation.Position.x -= Map::tile_width;
 	}
 

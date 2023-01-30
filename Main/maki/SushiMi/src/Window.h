@@ -32,6 +32,8 @@ namespace Core
 		void Mainloop();
 
 		bool gameIsPaused;
+		bool isMenuState;
+		bool isWalk;
 
 		void SetPaused(bool paused) //take in boolean
 		{
@@ -54,6 +56,7 @@ namespace Core
 		static inline Sprite* goal;
 		static inline Sprite* trap;
 		static inline Sprite* pause_overlay;
+
 		
 	
 		static inline struct ScreenDimensions {

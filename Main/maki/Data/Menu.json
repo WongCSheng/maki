@@ -2,16 +2,16 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 1.0, 1.0 ],
+      "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 1280, 720 ]
+      "scale": [ 1920, 1080 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/StartMenu.jpg",
+      "texturepath": "../textures/Menu.jpg",
       "name": "Menu",
       "SpriteSheet": false,
-      "SpriteSize": [ 100, 500 ]
+      "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",

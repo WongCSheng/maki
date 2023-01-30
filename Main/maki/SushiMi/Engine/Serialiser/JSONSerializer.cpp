@@ -137,8 +137,8 @@ namespace Core
 
 				std::cout << "loading of " << filepath << "\n";
 				Sprite::menu = new Sprite(texturePath);
-				Sprite::menu->transformation.Position = { 0,0 };
-				Sprite::menu->transformation.Scale = { 50,50 };
+				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
+				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
 
 				Sprite::menu->Deserialize(compJsonObj);
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, Sprite::menu);

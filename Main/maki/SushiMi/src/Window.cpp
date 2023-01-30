@@ -35,7 +35,7 @@ namespace Core
 		MENU
 
 	};
-	
+
 
 	/*                                                             input key states
 	----------------------------------------------------------------------------- */
@@ -64,7 +64,7 @@ namespace Core
 			keystate_R = false;
 			keystate_M = false;
 			keystate_paused = false;
-			
+
 		}
 		else if (GLFW_RELEASE == action)
 		{
@@ -91,7 +91,7 @@ namespace Core
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 		glfwWindowHint(GLFW_MAXIMIZED, true);
-		
+
 		window_ptr = glfwCreateWindow(width, height, "SushiMi", NULL, NULL);
 		if (window_ptr == nullptr)
 		{
@@ -100,8 +100,8 @@ namespace Core
 		}
 
 		glfwMakeContextCurrent(window_ptr);
-		std::cout << glewGetErrorString(glewInit()) << std::endl ;  //it says "No error"
-			
+		std::cout << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
+
 		/*if (glewInit())
 		{
 			std::cout << "erorr initilize glew" << std::endl;
@@ -120,12 +120,16 @@ namespace Core
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
-		SceneManager::pause_overlay = new Sprite("../textures/pause.jpg");
+		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
+		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
+		SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
 		isMenuState = true;
 		isWalk = false;
+		isLevel1 = false;
+		isWinCondition = false;
 
 
 		//player = new Player();
@@ -142,9 +146,9 @@ namespace Core
 		//ingredient->transformation.scale = glm::vec2(100, 100);
 		//ingredient->transformation.position = glm::vec2(15, 20);
 
-		
-		
-		
+
+
+
 	}
 
 	Window::~Window()
@@ -155,6 +159,7 @@ namespace Core
 		SceneManager::destroyGoal1();
 		SceneManager::destroyGoal2();
 		SceneManager::destroyPauseOverlay();
+		SceneManager::destroyWinOverlay();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes
@@ -165,10 +170,13 @@ namespace Core
 
 	void Window::Input()
 	{
-		//Sprite::menu->transformation.Position = glm::vec2(0, 0);
-		//Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);
-		//player input
-		if (ImGui::IsKeyPressed(GLFW_KEY_M))
+		//display main menu
+		/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
+		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);*/
+
+
+		//idk why this isnt working
+		if (ImGui::IsKeyPressed(GLFW_KEY_M) && isMenuState == false)
 		{
 			keystate_M = true;
 			std::cout << "you are pressing menu" << std::endl;
@@ -176,6 +184,8 @@ namespace Core
 			{
 				//clear all player
 				isMenuState == true;
+				Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
 				keystate_M = false;
 			}
 		}
@@ -198,9 +208,9 @@ namespace Core
 				{
 					gameIsPaused = true;
 					std::cout << "game paused, pause screen showing" << std::endl;
-					
+
 					SceneManager::loadPauseOverlay(0, 0);
-					
+
 					keystate_paused = false;
 				}
 			}
@@ -214,7 +224,7 @@ namespace Core
 				if (keystate_paused)
 				{
 					gameIsPaused = false;
-					std::cout << "game resume, no morepause screen" << std::endl;
+					std::cout << "game resume, no more pause screen" << std::endl;
 					int screenwidth = 0, screenheight = 0;
 					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 					SceneManager::pause_overlay->transformation.Position.x = screenwidth;
@@ -225,31 +235,40 @@ namespace Core
 			}
 
 		}
+		/**************************************/
+		//BUTTONS DISPLAYED AT MAIN MENU
+		/**************************************/
+
 		if (ImGui::IsMouseReleased(0) && isMenuState == true)
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			
+
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
-			//MENU BUTTON - START (PLAY GAME) 
-			if (xpos > 275 && xpos < 811 && ypos > 349 && ypos < 487)
+			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
+			if (xpos > 275 && xpos < (275 + 366) && ypos > 349 && ypos < (349+96))
 			{
+
 				isMenuState = false;
+				isLevel1 = true;
 				std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				//Sprite::menu->transformation.Position.x += screenwidth;
-				//Sprite::menu->transformation.Position.y += screenheight;
+				/*Sprite::menu->transformation.Position.x = screenwidth;
+				Sprite::menu->transformation.Position.y = screenheight;*/
 
 			}
-			//MENU BUTTON - QUIT
-			if (xpos > 275 && ypos > 890 && xpos < 811 && ypos < 1010)
+			//MENU BUTTON - QUIT, reference ExitButton.json
+			if (xpos > 275 && xpos < (275 + 366) && ypos > 890 && ypos < (890 + 96))
 			{
 				glfwSetWindowShouldClose(window_ptr, true);
 			}
 
 		}
+		/**************************************/
+		//BUTTONS DISPLAYED WHEN GAME IS PAUSED
+		/**************************************/
 		if (ImGui::IsMouseReleased(0) && gameIsPaused == true)
 		{
 			double xpos = 0, ypos = 0;
@@ -257,21 +276,22 @@ namespace Core
 
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
-			//PAUSE THE GAME BUTTON
-			if (xpos > 600 && ypos > 460 && xpos < 1310 && ypos <560)
+			//RESUME THE GAME BUTTON
+			if (xpos > 600 && ypos > 460 && xpos < 1310 && ypos < 560)
 			{
-			gameIsPaused = false;
-			std::cout << "game resume, no more pause screen" << std::endl;
-			int screenwidth = 0, screenheight = 0;
-			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-			SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-			SceneManager::pause_overlay->transformation.Position.y = screenheight;
+				gameIsPaused = false;
+				std::cout << "game resume, no more pause screen" << std::endl;
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+				SceneManager::pause_overlay->transformation.Position.y = screenheight;
 
 			}
 			//RETURN TO MAIN MENU
 			if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
 			{
 				isMenuState = true;
+				isLevel1 = false;
 				player->restart();
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
@@ -294,10 +314,9 @@ namespace Core
 
 
 		//player input
-		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT)|| ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false)
+		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false)
 		{
 			keystate_right = true;
-			std::cout << "you are pressing right" << std::endl;
 			if (keystate_right)
 			{
 				Map::collision_check_right();
@@ -305,19 +324,19 @@ namespace Core
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false)
 		{
 			keystate_left = true;
 			//player only move on one press
 			//holding key or let go key, player stop
 			if (keystate_left)
-			{			
+			{
 				Map::collision_check_left();
 				keystate_left = false;
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false && isWinCondition == false)
 		{
 			keystate_up = true;
 
@@ -326,13 +345,13 @@ namespace Core
 				Map::collision_check_up();
 				isWalk = true;
 				keystate_up = false;
-				
+
 			}
 
 		}
 
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false)
 		{
 			keystate_down = true;
 			if (keystate_down)
@@ -342,10 +361,10 @@ namespace Core
 			}
 		}
 
-		/*
+		/***************************
 			restart key "R" resets the level
-		*/
-		if (ImGui::IsKeyPressed(GLFW_KEY_R) && gameIsPaused == false)
+		*******************************/
+		if (ImGui::IsKeyPressed(GLFW_KEY_R) && (gameIsPaused == false && isWinCondition == false))
 		{
 			keystate_R = true;
 			if (keystate_R)
@@ -408,7 +427,7 @@ namespace Core
 			glClear(GL_COLOR_BUFFER_BIT);
 			Shaders->Textured_Shader()->use();
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
-			Map::DrawMap();
+			//Map::DrawMap(); //shifted into boolean
 			
 			// all drawing goes here ..
 			//Sprite::menu->transformation.Position = glm::vec2(0, 0);
@@ -440,7 +459,6 @@ namespace Core
 			ingredient->draw();
 			*/
 
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
 			//FOR OBJ CONTAINER DEBUGGING
 // 
@@ -462,22 +480,67 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 		
-			if (gameIsPaused == false)
+			//order of rendering
+			//step 1: map
+			//step 2: pause overlay
+			//step 3: main menu
+			if (isLevel1 == true)
 			{
-			player->draw(delta);
+				//draw lv1 tile map
+				Map::DrawMap();
+				
+				//draw playerpos at lvl 1
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+				
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+
+
+				if (gameIsPaused == false)
+				{
+					player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0);
+					SceneManager::drawPauseOverlay();
+
+				}
+				if (questProgress == numQuests)
+				{
+					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = true;
+				}
+			}
+		
+			if (isWinCondition == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(screenwidth*0.25,screenheight*0.25);
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (ImGui::IsMouseReleased(0) && isWinCondition == true)
+				{
+					isLevel1 = false;
+					isWinCondition = false;
+				}
 
 			}
-			else if (gameIsPaused == true)
-			{
-				player->draw(0);
 
-			}
+			
 			//Draw Pause Overlay
 			if (gameIsPaused == true)
 			{
-			SceneManager::drawPauseOverlay();
+				SceneManager::drawPauseOverlay();
 
 			}
+			/*if (isMenuState == true)
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+				Sprite::menu->draw();
+			}*/
 
 
 			//Sprite::menu->draw();
@@ -486,6 +549,8 @@ namespace Core
 			{
 				Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
 				Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+			
+			
 
 				spritecomp->transformation.Position = transcomp->Position;
 				spritecomp->transformation.Scale = transcomp->Scale;
@@ -494,6 +559,9 @@ namespace Core
 				
 				if (isMenuState == true)
 				{
+					/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+					Sprite::menu->draw();*/
+
 					if (x.first == "Menu") //draw menu
 						spritecomp->draw();
 					

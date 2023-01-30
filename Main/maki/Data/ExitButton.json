@@ -2,9 +2,9 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 300, 815],
+      "position": [ 275, 890],
       "rotation": 0.0,
-      "scale": [ 275, 125 ]
+      "scale": [ 366, 96 ]
     },
     {
       "type": "Sprite",

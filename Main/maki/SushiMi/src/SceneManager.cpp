@@ -12,7 +12,9 @@ namespace Core
 		trap = nullptr;
 		goal1 = nullptr;
 		goal2 = nullptr;
+		cover1 = nullptr;
 		pause_overlay = nullptr;
+		win_overlay = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}
 
@@ -87,6 +89,14 @@ namespace Core
 		goal2->transformation.Position = glm::vec2(x, y);
 		goal2->transformation.Scale = glm::vec2(100, 100);
 	}
+	void SceneManager::loadCover1(int x, int y)
+	{
+		cover1->transformation.Position = glm::vec2(x, y);
+		cover1->transformation.Scale = glm::vec2(100, 100);
+	}
+	void SceneManager::loadCover2(int x, int y)
+	{
+	}
 	void SceneManager::loadPauseOverlay(int x, int y)
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -95,6 +105,11 @@ namespace Core
 		y = screenheight * 0.5;*/
 		pause_overlay->transformation.Position = glm::vec2(x, y);
 		pause_overlay->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	}
+	void SceneManager::loadWinOverlay(int x, int y)
+	{
+		win_overlay->transformation.Position = glm::vec2(x, y);
+		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
 	/*draw functions*/
 	void SceneManager::drawTile()
@@ -128,10 +143,23 @@ namespace Core
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal2->transformation.Get());
 		goal2->draw();
 	}
+	void SceneManager::drawCover1()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", cover1->transformation.Get());
+		cover1->draw();
+	}
+	void SceneManager::drawCover2()
+	{
+	}
 	void SceneManager::drawPauseOverlay()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", pause_overlay->transformation.Get());
 		pause_overlay->draw();
+	}
+	void SceneManager::drawWinOverlay()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
+		win_overlay->draw();
 	}
 	/*destroy functions*/
 	void SceneManager::destroyTile()
@@ -156,9 +184,23 @@ namespace Core
 		delete goal2;
 	}
 
+	void SceneManager::destroyCover1()
+	{
+		delete cover1;
+	}
+
+	void SceneManager::destroyCover2()
+	{
+	}
+
 	void SceneManager::destroyPauseOverlay()
 	{
 		delete pause_overlay;
+	}
+
+	void SceneManager::destroyWinOverlay()
+	{
+		delete win_overlay;
 	}
 
 }

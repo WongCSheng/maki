@@ -24,20 +24,29 @@ namespace Core
 		static  void loadTrap(int x, int y);
 		static  void loadGoal1(int x, int y);
 		static  void loadGoal2(int x, int y);
+		static  void loadCover1(int x, int y);
+		static  void loadCover2(int x, int y);
 		static  void loadPauseOverlay(int x, int y);
+		static  void loadWinOverlay(int x, int y);
 		static  void drawTile();
 		static  void drawIngr1();
 		static  void drawIngr2();
 		static  void drawTrap();
 		static  void drawGoal1();
 		static  void drawGoal2();
+		static  void drawCover1();
+		static  void drawCover2();
 		static  void drawPauseOverlay();
+		static  void drawWinOverlay();
 		static  void destroyTile();
 		static  void destroyIngr();
 		static  void destroyTrap();
 		static  void destroyGoal1();
 		static  void destroyGoal2();
+		static  void destroyCover1();
+		static  void destroyCover2();
 		static  void destroyPauseOverlay();
+		static  void destroyWinOverlay();
 
 		static  void Readfile();
 
@@ -55,7 +64,10 @@ namespace Core
 		static inline Sprite* trap;
 		static inline Sprite* goal1;
 		static inline Sprite* goal2;
+		static inline Sprite* cover1;
+		static inline Sprite* cover2;
 		static inline Sprite* pause_overlay;
+		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
 
 		unsigned int rows, cols,

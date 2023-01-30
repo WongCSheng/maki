@@ -33,6 +33,8 @@ namespace Core
 		static void collision_check_left();
 		static void collision_check_up();
 		static void collision_check_down();
+	
+
 
 		static bool isStuck();
 		static bool isWin();

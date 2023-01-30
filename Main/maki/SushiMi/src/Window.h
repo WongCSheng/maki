@@ -34,6 +34,13 @@ namespace Core
 		bool gameIsPaused;
 		bool isMenuState;
 		bool isWalk;
+		bool isLevel1;
+		bool isLevel2;
+		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
+		static inline int questProgress;
+		static inline int numQuests;
+
+
 
 		void SetPaused(bool paused) //take in boolean
 		{

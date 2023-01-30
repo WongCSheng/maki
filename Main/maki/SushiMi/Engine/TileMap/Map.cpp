@@ -37,6 +37,13 @@ namespace Core
 
 	Map::~Map()
 	{
+		//this does deleting of textures
+		SceneManager::destroyTile();
+		SceneManager::destroyGoal1();
+		SceneManager::destroyGoal2();
+		SceneManager::destroyCover1();
+		SceneManager::destroyIngr();
+		SceneManager::destroyIngr();
 	}
 
 	int Map::initMap(std::string Filename)
@@ -100,15 +107,18 @@ namespace Core
 				}
 				if(gGrids[r][c] == 9)
 				{
-					SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
+					SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
 					Window::goal1->goal1_Grid_pos.x = r;
 					Window::goal1->goal1_Grid_pos.y = c;
+					Window::numQuests += 1;
+
 				}
 				if(gGrids[r][c] == 10)
 				{
-					SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
+					SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
 					Window::goal2->goal2_Grid_pos.x = r;
 					Window::goal2->goal2_Grid_pos.y = c;
+					Window::numQuests += 1;
 				}
 				if(gGrids[r][c] == 50)
 				{
@@ -116,6 +126,7 @@ namespace Core
 					Window::trap->trap_Grid_pos.x = r;
 					Window::trap->trap_Grid_pos.y = c;
 				}
+				
 			}
 			std::cout << std::endl;
 		}
@@ -181,8 +192,15 @@ namespace Core
 				Window::player->move_left();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 1" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+
+				//SceneManager::destroyGoal1();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -203,9 +221,17 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_left();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100; //win condition
+				std::cout << "win = 2" << std::endl;
+				Window::questProgress += 1;
+				//std::cout << "winvalue is " << isWin() << std::endl;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -228,8 +254,16 @@ namespace Core
 				Window::player->move_left();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 3" << std::endl;
+				Window::questProgress += 1;
+
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+
+				//SceneManager::destroyGoal1();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -251,8 +285,16 @@ namespace Core
 				Window::player->move_left();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 4" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+
+
+				//SceneManager::destroyGoal2(); //dont destroy here!!
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -368,8 +410,15 @@ namespace Core
 				Window::player->move_right();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 1" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+
+				//SceneManager::destroyGoal1();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -391,8 +440,16 @@ namespace Core
 				Window::player->move_right();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 2" << std::endl;
+				Window::questProgress += 1;
+
+				std::cout << "progress is " << Window::questProgress << std::endl;
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -415,8 +472,17 @@ namespace Core
 				Window::player->move_right();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 3" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -438,8 +504,17 @@ namespace Core
 				Window::player->move_right();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 4" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -553,8 +628,17 @@ namespace Core
 				Window::player->move_down();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 1" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -576,8 +660,17 @@ namespace Core
 				Window::player->move_down();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 2" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -600,8 +693,17 @@ namespace Core
 				Window::player->move_down();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 3" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -623,8 +725,17 @@ namespace Core
 				Window::player->move_down();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 4" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -738,8 +849,17 @@ namespace Core
 				Window::player->move_up();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 1" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -761,8 +881,17 @@ namespace Core
 				Window::player->move_up();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 2" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -785,8 +914,17 @@ namespace Core
 				Window::player->move_up();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal1();
-				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+				std::cout << "win = 3" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -808,8 +946,17 @@ namespace Core
 				Window::player->move_up();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 100;
-				SceneManager::destroyGoal2();
-				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+				std::cout << "win = 4" << std::endl;
+				Window::questProgress += 1;
+				std::cout << "progress is " << Window::questProgress << std::endl;
+
+				//std::cout << "winvalue is " << isWin() << std::endl;
+
+
+				//SceneManager::destroyGoal2();
+				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
+				SceneManager::cover1->draw();
+
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
 				for (int c = 0; c < grid_col; c++)
@@ -908,6 +1055,24 @@ namespace Core
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
 					SceneManager::drawTile();
 				}
+				if (gGrids[r][c] == 50)
+				{
+					SceneManager::loadTrap(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+					SceneManager::drawTrap();
+				}
+				if (gGrids[r][c] == 9)
+				{
+					SceneManager::loadGoal1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+					SceneManager::loadCover1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+					SceneManager::drawGoal1();
+				}
+				if (gGrids[r][c] == 10)
+				{
+					SceneManager::loadGoal2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+					SceneManager::loadCover1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+
+					SceneManager::drawGoal2();
+				}
 				if (gGrids[r][c] == 3)
 				{
 					SceneManager::loadIngr1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
@@ -918,21 +1083,7 @@ namespace Core
 					SceneManager::loadIngr2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
 					SceneManager::drawIngr2();
 				}
-				if (gGrids[r][c] == 50)
-				{
-					SceneManager::loadTrap(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawTrap();
-				}
-				if (gGrids[r][c] == 9)
-				{
-					SceneManager::loadGoal1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal1();
-				}
-				if (gGrids[r][c] == 10)
-				{
-					SceneManager::loadGoal2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal2();
-				}
+				
 			}
 		}
 	}

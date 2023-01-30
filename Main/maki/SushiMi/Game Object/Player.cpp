@@ -153,16 +153,24 @@ namespace Core
 			sp->transformation.Position.y = playerpos_restart.y;
 			*/
 		/*this is working, FOR NOW*/
-		/*if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
-		{*/ //i commented out this line as its affecting Restart - thea
-			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 0;
+		if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 50)
+		{
+			/*Set grid back to sinkhole*/
+			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 3;
+			/*Set player position back to initial position*/
 			sp->transformation.Position.x = playerpos_restart.x;
 			sp->transformation.Position.y = playerpos_restart.y;
+			/*Set player grid bacl to initial position*/
 			Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 			Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
-
+			/*Set player grid to 2*/
 			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-		//}
+		}
+		else
+		{
+			/*If player want to reset or push ingredient to wall*/
+			
+		}
 
 
 	}

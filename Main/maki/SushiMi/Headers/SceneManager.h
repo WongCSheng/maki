@@ -19,19 +19,24 @@ namespace Core
 		static  void nextLevel();
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static  void loadTile(int x, int y);
-		static  void loadIngr(int x, int y);
+		static  void loadIngr1(int x, int y);
+		static  void loadIngr2(int x, int y);
 		static  void loadTrap(int x, int y);
-		static  void loadGoal(int x, int y);
+		static  void loadGoal1(int x, int y);
+		static  void loadGoal2(int x, int y);
 		static  void loadPauseOverlay(int x, int y);
 		static  void drawTile();
-		static  void drawIngr();
+		static  void drawIngr1();
+		static  void drawIngr2();
 		static  void drawTrap();
-		static  void drawGoal();
+		static  void drawGoal1();
+		static  void drawGoal2();
 		static  void drawPauseOverlay();
 		static  void destroyTile();
-		static  void destroyIngr();
+		static  void destroyIngr()
 		static  void destroyTrap();
-		static  void destroyGoal();
+		static  void destroyGoal1();
+		static  void destroyGoal2();
 		static  void destroyPauseOverlay();
 
 		static  void Readfile();
@@ -45,9 +50,11 @@ namespace Core
 		unsigned int getTileHeight();
 
 		static inline Sprite* tile;
-		static inline Sprite* ingredient;
+		static inline Sprite* ingredient1;
+		static inline Sprite* ingredient2;
 		static inline Sprite* trap;
-		static inline Sprite* goal;
+		static inline Sprite* goal1;
+		static inline Sprite* goal2;
 		static inline Sprite* pause_overlay;
 		static inline Sprite* menu;
 

@@ -152,7 +152,8 @@ namespace Core
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
 		SceneManager::destroyTrap();
-		SceneManager::destroyGoal();
+		SceneManager::destroyGoal1();
+		SceneManager::destroyGoal2();
 		SceneManager::destroyPauseOverlay();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;

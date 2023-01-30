@@ -46,11 +46,17 @@ namespace Core
 
 		static inline Sprite* menu;
 
-		static inline struct ingrGridPos
+		static inline struct ingr1GridPos
 		{
 			int x;
 			int y;
-		} ingredient_Grid_pos;
+		} ingredient1_Grid_pos;
+
+		static inline struct ingr1_init_GridPos
+		{
+			int x;
+			int y;
+		} ingredient1_initial_pos;
 
 		static inline struct trapGridPos
 		{
@@ -58,11 +64,11 @@ namespace Core
 			int y;
 		} trap_Grid_pos;
 
-		static inline struct goalGridPos
+		static inline struct goal1GridPos
 		{
 			int x;
 			int y;
-		} goal_Grid_pos;
+		} goal1_Grid_pos;
 
 	private:
 

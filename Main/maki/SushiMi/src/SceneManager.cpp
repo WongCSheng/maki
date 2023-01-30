@@ -53,11 +53,17 @@ namespace Core
 		tile->transformation.Scale = glm::vec2(105, 105);
 	}
 
-	void SceneManager::loadIngr(int x, int y)
+	void SceneManager::loadIngr1(int x, int y)
 	{
 
-		ingredient->transformation.Position = glm::vec2(x, y);
-		ingredient->transformation.Scale = glm::vec2(100, 100);
+		ingredient1->transformation.Position = glm::vec2(x, y);
+		ingredient1->transformation.Scale = glm::vec2(100, 100);
+	}
+	void SceneManager::loadIngr2(int x, int y)
+	{
+
+		ingredient2->transformation.Position = glm::vec2(x, y);
+		ingredient2->transformation.Scale = glm::vec2(100, 100);
 	}
 
 	void SceneManager::loadTrap(int x, int y)
@@ -67,11 +73,17 @@ namespace Core
 		trap->transformation.Scale = glm::vec2(100, 100);
 	}
 
-	void SceneManager::loadGoal(int x, int y)
+	void SceneManager::loadGoal1(int x, int y)
 	{
 
-		goal->transformation.Position = glm::vec2(x, y);
-		goal->transformation.Scale = glm::vec2(100, 100);
+		goal1->transformation.Position = glm::vec2(x, y);
+		goal1->transformation.Scale = glm::vec2(100, 100);
+	}
+	void SceneManager::loadGoal2(int x, int y)
+	{
+
+		goal2->transformation.Position = glm::vec2(x, y);
+		goal2->transformation.Scale = glm::vec2(100, 100);
 	}
 	void SceneManager::loadPauseOverlay(int x, int y)
 	{
@@ -89,20 +101,30 @@ namespace Core
 		tile->draw();
 	}
 
-	void SceneManager::drawIngr()
+	void SceneManager::drawIngr1()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
-		ingredient->draw();
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient1->transformation.Get());
+		ingredient1->draw();
+	}
+	void SceneManager::drawIngr2()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient2->transformation.Get());
+		ingredient2->draw();
 	}
 	void SceneManager::drawTrap()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", trap->transformation.Get());
 		trap->draw();
 	}
-	void SceneManager::drawGoal()
+	void SceneManager::drawGoal1()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal->transformation.Get());
-		goal->draw();
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal1->transformation.Get());
+		goal1->draw();
+	}
+	void SceneManager::drawGoal2()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal2->transformation.Get());
+		goal2->draw();
 	}
 	void SceneManager::drawPauseOverlay()
 	{
@@ -116,15 +138,20 @@ namespace Core
 	}
 	void SceneManager::destroyIngr()
 	{
-		delete ingredient;
+		delete ingredient1;
+		delete ingredient2;
 	}
 	void SceneManager::destroyTrap()
 	{
 		delete trap;
 	}
-	void SceneManager::destroyGoal()
+	void SceneManager::destroyGoal1()
 	{
-		delete goal;
+		delete goal1;
+	}
+	void SceneManager::destroyGoal2()
+	{
+		delete goal2;
 	}
 
 	void SceneManager::destroyPauseOverlay()

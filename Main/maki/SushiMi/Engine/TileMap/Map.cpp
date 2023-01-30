@@ -205,7 +205,7 @@ namespace Core
 				std::cout << "win = 1" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//SceneManager::destroyGoal1();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
@@ -236,7 +236,7 @@ namespace Core
 				Window::questProgress += 1;
 				//std::cout << "winvalue is " << isWin() << std::endl;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//SceneManager::destroyGoal2();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
@@ -268,7 +268,7 @@ namespace Core
 				Window::questProgress += 1;
 
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//SceneManager::destroyGoal1();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
@@ -298,7 +298,7 @@ namespace Core
 				std::cout << "win = 4" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 
 				//SceneManager::destroyGoal2(); //dont destroy here!!
@@ -429,7 +429,7 @@ namespace Core
 				std::cout << "win = 1" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//SceneManager::destroyGoal1();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
@@ -461,7 +461,7 @@ namespace Core
 
 				std::cout << "progress is " << Window::questProgress << std::endl;
 				//std::cout << "winvalue is " << isWin() << std::endl;
-
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//SceneManager::destroyGoal2();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
@@ -491,7 +491,7 @@ namespace Core
 				std::cout << "win = 3" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
 
@@ -523,7 +523,7 @@ namespace Core
 				std::cout << "win = 4" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
 
@@ -653,7 +653,7 @@ namespace Core
 				std::cout << "win = 1" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
-
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
 
@@ -692,6 +692,7 @@ namespace Core
 				//SceneManager::destroyGoal2();
 				SceneManager::loadCover1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				SceneManager::cover1->draw();
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
@@ -718,6 +719,7 @@ namespace Core
 				std::cout << "win = 3" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
@@ -750,6 +752,7 @@ namespace Core
 				std::cout << "win = 4" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
@@ -880,6 +883,7 @@ namespace Core
 				std::cout << "win = 1" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
@@ -912,6 +916,7 @@ namespace Core
 				std::cout << "win = 2" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
@@ -945,6 +950,7 @@ namespace Core
 				std::cout << "win = 3" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 
@@ -977,6 +983,7 @@ namespace Core
 				std::cout << "win = 4" << std::endl;
 				Window::questProgress += 1;
 				std::cout << "progress is " << Window::questProgress << std::endl;
+				SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 
 				//std::cout << "winvalue is " << isWin() << std::endl;
 

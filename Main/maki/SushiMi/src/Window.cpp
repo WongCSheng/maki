@@ -183,8 +183,13 @@ namespace Core
 			if (keystate_M)
 			{
 				//clear all player
-				isMenuState == true;
-				Sprite::menu->transformation.Position = glm::vec2(0, 0);
+				isLevel1 = false;
+				isMenuState = true;
+				player->restart();
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
+				gameIsPaused = false;
+				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
 
 				keystate_M = false;
 			}
@@ -513,7 +518,7 @@ namespace Core
 				}
 			}
 		
-			if (isWinCondition == true)
+			if (isWinCondition == true && isLevel1 == true)
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -524,11 +529,40 @@ namespace Core
 				if (ImGui::IsMouseReleased(0) && isWinCondition == true)
 				{
 					isLevel1 = false;
+					isLevel2 = true;
 					isWinCondition = false;
 				}
 
 			}
 
+			if (isLevel2 == true)
+			{
+				//draw lv2 tile map
+				//Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				//Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+
+
+				//if (gameIsPaused == false)
+				//{
+				//	player->draw(delta);
+
+				//}
+				//else if (gameIsPaused == true)
+				//{
+				//	player->draw(0);
+				//	SceneManager::drawPauseOverlay();
+
+				//}
+				//if (questProgress == numQuests)
+				//{
+				//	//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+				//	isWinCondition = true;
+				//}
+			}
 			
 			//Draw Pause Overlay
 			if (gameIsPaused == true)

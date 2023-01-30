@@ -39,7 +39,7 @@ namespace Core
 		static bool isStuck();
 		static bool isWin();
 
-		static int Map_Height, Map_Width;
+		static inline int Map_Height, Map_Width;
 		static int** MapData;
 		static int** BinaryData;
 		static int grid_row;

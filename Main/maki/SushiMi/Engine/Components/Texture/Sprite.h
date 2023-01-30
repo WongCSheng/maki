@@ -36,6 +36,8 @@ namespace Core
 		void Serialize(const std::string name);
 		void Deserialize(const rapidjson::Value& jsonObj);
 
+		void restart();
+
 		bool IsActive();
 		void Activate();
 		void Deactivate();
@@ -63,6 +65,12 @@ namespace Core
 			int x;
 			int y;
 		} ingredient1_initial_pos;
+			
+		static inline struct ingr2_init_GridPos
+		{
+			int x;
+			int y;
+		}ingredient2_initial_pos;
 
 		static inline struct trapGridPos
 		{

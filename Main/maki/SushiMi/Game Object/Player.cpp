@@ -156,12 +156,15 @@ namespace Core
 
 /*if (Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 99)
 		{*/ //i commented out this line as its affecting Restart - thea
-		Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 0;
+
+		//set the initial grid that the player is leaving back to blank 
+		Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 0; 
 		sp->transformation.Position.x = playerpos_restart.x;
 		sp->transformation.Position.y = playerpos_restart.y;
 		Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 		Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
+		//set the new grid the player is now at to contain player
 		Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 		//}
 

@@ -175,7 +175,6 @@ namespace Core
 		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);*/
 
 
-		//idk why this isnt working
 		if (ImGui::IsKeyPressed(GLFW_KEY_M) && isMenuState == false)
 		{
 			keystate_M = true;
@@ -382,7 +381,16 @@ namespace Core
 				//reset our position variable
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
-				
+
+
+				//i want to know what the ingredients initial pos
+				std::cout << "ingredient initial pos are: (" << ingredient1->ingredient1_initial_pos.x << "," << ingredient1->ingredient1_initial_pos.y << ") and also (" << ingredient2->ingredient1_initial_pos.x << "," << ingredient2->ingredient1_initial_pos.y << ")." << std::endl;
+				//reset ingredient pos
+				ingredient1->restart();
+				ingredient2->restart();
+				questProgress = 0;
+				//missing: restart sinkhole, restart sushi plate pods
+
 				keystate_R = false;
 			}
 

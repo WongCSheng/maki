@@ -98,12 +98,16 @@ namespace Core
 					SceneManager::ingredient1 = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
 					Window::ingredient1->ingredient1_Grid_pos.x = r;
 					Window::ingredient1->ingredient1_Grid_pos.y = c;
+					SceneManager::ingredient1->ingredient1_initial_pos.x = r;
+					SceneManager::ingredient1->ingredient1_initial_pos.y = c;
 				}
 				if(gGrids[r][c] == 4)
 				{
 					SceneManager::ingredient2 = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					Window::ingredient2->ingredient2_Grid_pos.x = r;
 					Window::ingredient2->ingredient2_Grid_pos.y = c;
+					SceneManager::ingredient2->ingredient2_initial_pos.x = r;
+					SceneManager::ingredient2->ingredient2_initial_pos.y = c;
 				}
 				if(gGrids[r][c] == 9)
 				{
@@ -755,7 +759,7 @@ namespace Core
 				Window::player->player_grid_pos.y++;
 				gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y] = 3;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
 				Window::player->move_down();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 				

@@ -167,7 +167,12 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 	/*testing if object container is working*/
+	//loading image&button paths
 	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
 	
 
 	glEnable(GL_DEBUG_OUTPUT);
@@ -176,7 +181,7 @@ void Core::pseudomain::init() {
 	//load GLAD so it configures OpenGL
 	//gladLoadGL(); //do not uncomment this, glad header does not work
 
-	glViewport(0, 0, 800, 800);
+	glViewport(0, 0, 800, 800); //resize window
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);

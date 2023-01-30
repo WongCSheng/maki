@@ -411,9 +411,6 @@
     <Filter Include="GameEngine\Assertion">
       <UniqueIdentifier>{832a41c7-836c-4581-8e4c-132681ba5090}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Mono">
-      <UniqueIdentifier>{a6c2f78c-f04c-4135-a2fa-128eee905723}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine\System\Graphics\Animation">
       <UniqueIdentifier>{a05efc85-2883-4089-a70d-27ec6d316c75}</UniqueIdentifier>
     </Filter>
@@ -450,6 +447,9 @@
     <Filter Include="Users\Windows">
       <UniqueIdentifier>{00b5f330-e753-466f-90cf-5d7d87e1cef0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Serialization\Data">
+      <UniqueIdentifier>{e153f348-3983-4b34-b528-aba846e633a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag">
@@ -457,6 +457,39 @@
     </None>
     <None Include="..\shaders\SushiMi.vert">
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
+    </None>
+    <None Include="..\Data\Bami bottom right.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\Bami top right.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\ExitButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\generated.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\HowToPlay.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\Menu.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\MenuButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\QuitButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\ResumeButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\SettingsButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
+    <None Include="..\Data\StartButton.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
     </None>
   </ItemGroup>
 </Project>

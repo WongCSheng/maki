@@ -120,7 +120,7 @@ namespace Core
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
-		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
+		SceneManager::pause_overlay = new Sprite("../textures/pause.jpg");
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
@@ -165,8 +165,8 @@ namespace Core
 
 	void Window::Input()
 	{
-		Sprite::menu->transformation.Position = glm::vec2(0, 0);
-		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);
+		//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+		//Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);
 		//player input
 		if (ImGui::IsKeyPressed(GLFW_KEY_M))
 		{
@@ -239,8 +239,8 @@ namespace Core
 				std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				Sprite::menu->transformation.Position.x += screenwidth;
-				Sprite::menu->transformation.Position.y += screenheight;
+				//Sprite::menu->transformation.Position.x += screenwidth;
+				//Sprite::menu->transformation.Position.y += screenheight;
 
 			}
 			//MENU BUTTON - QUIT
@@ -479,18 +479,43 @@ namespace Core
 
 			}
 
+
+			//Sprite::menu->draw();
 			//Draw Main Menu
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
-			if (isMenuState == true)
+			for (auto& x : CoreSystem->objfactory->ObjectContainer)
 			{
-				Sprite::menu->draw();
+				Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-			}
-			else if (isMenuState == false)
-			{
-				//AudioManager.LoadMusic("BGM.wav");
-				//AudioManager.PlayMusic("BGM.wav");
+				spritecomp->transformation.Position = transcomp->Position;
+				spritecomp->transformation.Scale = transcomp->Scale;
 
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+				
+				if (isMenuState == true)
+				{
+					if (x.first == "Menu") //draw menu
+						spritecomp->draw();
+					
+					if (x.first == "StartButton")
+						spritecomp->draw();
+
+					if (x.first == "HowToPlay")
+						spritecomp->draw();
+
+					if (x.first == "SettingsButton")
+						spritecomp->draw();
+
+					if (x.first == "ExitButton")
+						spritecomp->draw();
+				}
+
+				else if (isMenuState == false)
+				{
+					//AudioManager.LoadMusic("BGM.wav");
+					//AudioManager.PlayMusic("BGM.wav");
+
+				}
 			}
 			
 			if (isWalk == true)

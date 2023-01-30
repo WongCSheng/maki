@@ -71,6 +71,8 @@ namespace Core
 	void DeserializeEntity(std::string const& filepath, ObjectFactory *objfact)
 	{
 		std::string json_from_file = ReadFileContents(filepath.c_str());
+
+		std::string name;
 		//Object::GameObject gameObj = ObjectFactory::Create();
 		rapidjson::Document document;
 
@@ -133,19 +135,15 @@ namespace Core
 				//	return;
 				//}
 				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
-				const char* textureName = compJsonObj["name"].GetString();
+				name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
 
-				std::cout << "loading of " << filepath << "\n";
-				Sprite::menu = new Sprite(texturePath);
+				std::cout << "loading of " << name << "\n";
+				Sprite* object = new Sprite(texturePath);
 				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
 				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
 
-				Sprite::menu->Deserialize(compJsonObj);
-				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, Sprite::menu);
-				if (textureName == "Menu")
-				{
-					
-				}
+				object->Deserialize(compJsonObj);
+				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
 				//delete spriteComp;
 			}
 
@@ -156,7 +154,7 @@ namespace Core
 
 		}
 
-		std::string name("Object: " + std::to_string(objfact->LastObjectID));
+		//td::string name("Object: " + std::to_string(objfact->LastObjectID));
 		objfact->ObjectContainer.insert({name, gameObj });	//	save everything in gameObj into container
 		objfact->LastObjectID++;
 	}

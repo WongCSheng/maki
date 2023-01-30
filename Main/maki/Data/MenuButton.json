@@ -4,14 +4,14 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 1920, 1080 ]
+      "scale": [ 100, 100 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/StartMenu.jpg",
-      "name": "Menu",
+      "texturepath": "../textures/MenuButtons/Start.jpg",
+      "name": "StartButton",
       "SpriteSheet": false,
-      "SpriteSize": [ 1280, 703 ]
+      "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",

@@ -186,6 +186,12 @@ namespace Core
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+			/*check with pod 1/2*/
+			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 9 ||
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 10)
+			{
+				Window::player->stop();
+			}
 			/*check for ingredient1 & pod 1*/
 			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x + 1 &&
 				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
@@ -404,6 +410,12 @@ namespace Core
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+			/*check with pod 1/2*/
+			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 9 ||
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 10)
+			{
+				Window::player->stop();
+			}
 			/*check for ingredient1 & pod 1*/
 			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x - 1 &&
 				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
@@ -619,6 +631,12 @@ namespace Core
 			}
 			/*check wall*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 1)
+			{
+				Window::player->stop();
+			}
+			/*check with pod 1/2*/
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 9 ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 10)
 			{
 				Window::player->stop();
 			}
@@ -840,6 +858,12 @@ namespace Core
 			}
 			/*check wall*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 1)
+			{
+				Window::player->stop();
+			}
+			/*check with pod 1/2*/
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 9 ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 10)
 			{
 				Window::player->stop();
 			}

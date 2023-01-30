@@ -33,7 +33,7 @@ namespace Core
 		static  void drawGoal2();
 		static  void drawPauseOverlay();
 		static  void destroyTile();
-		static  void destroyIngr()
+		static  void destroyIngr();
 		static  void destroyTrap();
 		static  void destroyGoal1();
 		static  void destroyGoal2();

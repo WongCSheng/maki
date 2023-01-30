@@ -52,6 +52,12 @@ namespace Core
 			int y;
 		} ingredient1_Grid_pos;
 
+		static inline struct ingr2GridPos
+		{
+			int x;
+			int y;
+		} ingredient2_Grid_pos;
+
 		static inline struct ingr1_init_GridPos
 		{
 			int x;
@@ -69,6 +75,12 @@ namespace Core
 			int x;
 			int y;
 		} goal1_Grid_pos;
+
+		static inline struct goal2GridPos
+		{
+			int x;
+			int y;
+		} goal2_Grid_pos;
 
 	private:
 

@@ -7,9 +7,11 @@ namespace Core
 	SceneManager::SceneManager()
 	{
 		tile = nullptr;
-		ingredient = nullptr;
+		ingredient1 = nullptr;
+		ingredient2 = nullptr;
 		trap = nullptr;
-		goal = nullptr;
+		goal1 = nullptr;
+		goal2 = nullptr;
 		pause_overlay = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}

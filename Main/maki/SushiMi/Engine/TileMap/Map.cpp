@@ -16,7 +16,7 @@
  * 2 - Player
  * 3 - ingredient
  * 4 - ingredient 2
- * 20 - sinkhole
+ * 50 - sinkhole
  * 9 - Goal1
  * 10- Goal2
  * If player go to sinkhole, grid change to 50. When reset, need reset sinkhole back
@@ -141,7 +141,7 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 50 || 
+		if(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 51 || 
 			isWin() == TRUE)
 		{
 			return 1;
@@ -312,7 +312,7 @@ namespace Core
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x-1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_left();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 50;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -499,7 +499,7 @@ namespace Core
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x + 1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_right();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 50;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -684,7 +684,7 @@ namespace Core
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y + 1;
 				Window::player->move_down();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 50;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -869,7 +869,7 @@ namespace Core
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y - 1;
 				Window::player->move_up();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 50;
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)

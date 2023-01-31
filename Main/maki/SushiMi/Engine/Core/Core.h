@@ -57,8 +57,6 @@ namespace Core
 
 		void AccessObjFactory();
 
-
-		Renderer* renderer;
 		Transformer* transformer;
 		CameraSystem* cameraSystem;
 		PhysicSystem* physicssystem;

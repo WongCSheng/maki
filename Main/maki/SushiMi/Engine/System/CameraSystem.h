@@ -22,6 +22,9 @@ namespace Core
 	public:
 		CameraSystem();
 		virtual ~CameraSystem();
+
+		static CameraSystem* GetInstance();
+
 		virtual void Init();
 		void AddinCameras(Object::GameObject* gameobj);
 		virtual void Update(const double dt);
@@ -67,6 +70,8 @@ namespace Core
 
 	private:
 		std::vector<Component*> cameras;
+
+		static CameraSystem* instance;
 	};
 }
 

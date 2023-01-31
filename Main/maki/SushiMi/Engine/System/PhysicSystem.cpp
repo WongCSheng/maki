@@ -14,12 +14,25 @@ Description: Physics System which runs data from Physics.cpp into it's logics.
 
 namespace Core
 {
+	PhysicSystem* PhysicSystem::instance;
+
 	PhysicSystem::PhysicSystem()
 	{
+		instance = nullptr;
 	}
 
 	PhysicSystem::~PhysicSystem()
 	{
+	}
+
+	PhysicSystem* PhysicSystem::GetInstance()
+	{
+		if (!instance)
+		{
+			instance = new PhysicSystem();
+		}
+		
+		return instance;
 	}
 
 	void PhysicSystem::Init()

@@ -30,16 +30,13 @@ namespace Core
 {
 	MainSystem::MainSystem()
 	{
-		renderer = new Renderer();
-		systems.push_back(renderer);
-
-		cameraSystem = new CameraSystem();
+		cameraSystem = CameraSystem::GetInstance();
 		systems.push_back(cameraSystem);
 
-		transformer = new Transformer();
+		transformer = Transformer::GetInstance();
 		systems.push_back(transformer);
 
-		physicssystem = new PhysicSystem();
+		physicssystem = PhysicSystem::GetInstance();
 		systems.push_back(physicssystem);
 
 		windowsystem = new Window(800, 600);
@@ -66,15 +63,14 @@ namespace Core
 	*/
 	MainSystem::~MainSystem()
 	{
-
-		//for (auto& sys : systems)
-		//{
-		//	if (sys != NULL)
-		//	{
-		//		//delete sys;
-		//		sys = NULL;
-		//	}
-		//}
+		/*for (auto& sys : systems)
+		{
+			if (sys != NULL)
+			{
+				delete sys;
+				sys = NULL;
+			}
+		}*/
 		//To shift into cleanup
 		
 		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);

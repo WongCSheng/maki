@@ -30,6 +30,8 @@ namespace Core
 		PhysicSystem();
 		virtual ~PhysicSystem();
 
+		static PhysicSystem* GetInstance();
+
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
@@ -58,5 +60,7 @@ namespace Core
 
 	private:
 		std::unordered_map<std::string, Object::GameObject*> PhysicsContainer;
+
+		static PhysicSystem* instance;
 	};
 }

@@ -119,19 +119,19 @@ namespace Core
 		*************/
 
 		//set the initial grid that the ingredient is leaving back to blank 
-		//Map::gGrids[SceneManager::ingredient1->ingredient1_Grid_pos.x][SceneManager::ingredient1->ingredient1_Grid_pos.y] = 0;
+		Map::gGrids[SceneManager::ingredient1->ingredient1_Grid_pos.x][SceneManager::ingredient1->ingredient1_Grid_pos.y] = 0;
 		//
 
 		////update graphics
-		//SceneManager::ingredient1->transformation.Position.x = SceneManager::ingredient1->ingredient1_initial_pos.x; //initial pos is set in Map.cpp
-		//SceneManager::ingredient1->transformation.Position.y = SceneManager::ingredient1->ingredient1_initial_pos.y;
+		SceneManager::ingredient1->transformation.Position.x = SceneManager::ingredient1->ingredient1_initial_pos.x; //initial pos is set in Map.cpp
+		SceneManager::ingredient1->transformation.Position.y = SceneManager::ingredient1->ingredient1_initial_pos.y;
 
 		//
-		//SceneManager::ingredient1->ingredient1_Grid_pos.x = SceneManager::ingredient1->ingredient1_initial_pos.x ;
-		//SceneManager::ingredient1->ingredient1_Grid_pos.y = SceneManager::ingredient1->ingredient1_initial_pos.y;
+		SceneManager::ingredient1->ingredient1_Grid_pos.x = SceneManager::ingredient1->ingredient1_initial_pos.x ;
+		SceneManager::ingredient1->ingredient1_Grid_pos.y = SceneManager::ingredient1->ingredient1_initial_pos.y;
 
 		////set the new grid the ingredient is now at to contain player
-		//Map::gGrids[SceneManager::ingredient1->ingredient1_Grid_pos.x][SceneManager::ingredient1->ingredient1_Grid_pos.y] = 3;
+		Map::gGrids[SceneManager::ingredient1->ingredient1_Grid_pos.x][SceneManager::ingredient1->ingredient1_Grid_pos.y] = 3;
 		////}
 
 		///**************
@@ -139,19 +139,19 @@ namespace Core
 		//*************/
 
 		////set the initial grid that the ingredient is leaving back to blank 
-		//Map::gGrids[SceneManager::ingredient2->ingredient2_Grid_pos.x][SceneManager::ingredient2->ingredient2_Grid_pos.y] = 0;
+		Map::gGrids[SceneManager::ingredient2->ingredient2_Grid_pos.x][SceneManager::ingredient2->ingredient2_Grid_pos.y] = 0;
 
 
 		////update graphics
-		//SceneManager::ingredient2->transformation.Position.x = SceneManager::ingredient2->ingredient2_initial_pos.x; //initial pos is set in Map.cpp
-		//SceneManager::ingredient2->transformation.Position.y = SceneManager::ingredient2->ingredient2_initial_pos.y;
+		SceneManager::ingredient2->transformation.Position.x = SceneManager::ingredient2->ingredient2_initial_pos.x; //initial pos is set in Map.cpp
+		SceneManager::ingredient2->transformation.Position.y = SceneManager::ingredient2->ingredient2_initial_pos.y;
 
 
-		//SceneManager::ingredient2->ingredient2_Grid_pos.x = SceneManager::ingredient2->ingredient2_initial_pos.x;
-		//SceneManager::ingredient2->ingredient2_Grid_pos.y = SceneManager::ingredient2->ingredient2_initial_pos.y;
+		SceneManager::ingredient2->ingredient2_Grid_pos.x = SceneManager::ingredient2->ingredient2_initial_pos.x;
+		SceneManager::ingredient2->ingredient2_Grid_pos.y = SceneManager::ingredient2->ingredient2_initial_pos.y;
 
 		////set the new grid the ingredient is now at to contain player
-		//Map::gGrids[SceneManager::ingredient2->ingredient2_Grid_pos.x][SceneManager::ingredient2->ingredient2_Grid_pos.y] = 4;
+		Map::gGrids[SceneManager::ingredient2->ingredient2_Grid_pos.x][SceneManager::ingredient2->ingredient2_Grid_pos.y] = 4;
 		////}
 	}
 

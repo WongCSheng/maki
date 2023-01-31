@@ -549,8 +549,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient2 & pod 2*/
-			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x - 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x + 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;

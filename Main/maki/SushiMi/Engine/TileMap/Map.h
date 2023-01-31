@@ -28,6 +28,7 @@ namespace Core
 
 		static int initMap(std::string Filename);
 		static void DrawMap();
+		static void ResetMap();
 		/*put here temporarily first*/
 		static void collision_check_right();
 		static void collision_check_left();

@@ -24,7 +24,7 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
-		Texture Generate(const char* filename);
+		Texture Generate(Texture* tex);
 
 		void Delete(Texture& obj);
 

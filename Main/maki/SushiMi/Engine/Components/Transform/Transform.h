@@ -50,20 +50,24 @@ namespace Core
 
 		glm::mat4 Get()
 		{
-			glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(Position, 1.0f));
-			glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0.0f, 0.0f, 1.0f));
-			glm::mat4 scal = glm::scale(glm::mat4(1.0f), glm::vec3(Scale, 1.0f));
+			TranslateMat = glm::translate(glm::mat4(1.0f), glm::vec3(Position, 1.0f));
+			RotationMat = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0.0f, 0.0f, 1.0f));
+			ScaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(Scale, 1.0f));
 
-			return translation * scal * rotation;
+			return TranslateMat * RotationMat * ScaleMat;
 		}
 
-		/*glm::vec2 position = glm::vec2(1);
-		glm::vec2 scale = glm::vec2(1);*/
 		glm::vec2 Position;
 		glm::mat3 Rotation;
 		glm::vec2 Scale;
+		/*glm::vec2 position = glm::vec2(1);
+		glm::vec2 scale = glm::vec2(1);*/
 	private:
-		glm::vec2 testpostion;
+
+		glm::mat4 TranslateMat;
+		glm::mat4 RotationMat;
+		glm::mat4 ScaleMat;
+
 		Object::GameObjectProperty* owner;
 
 		//Transform* instance; //Singleton (Don't really need)

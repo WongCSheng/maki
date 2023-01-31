@@ -47,7 +47,7 @@ namespace Core
 
 	void ObjectFactory::Update(const double dt)
 	{
-		for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
+		/*for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
 		{
 			Object::GameObject* temp = *it;
 
@@ -58,7 +58,7 @@ namespace Core
 			delete temp;
 		}
 
-		DeleteList.clear();
+		DeleteList.clear();*/
 	}
 
 	void ObjectFactory::AddObjects(Object::GameObject* added, std::string i)

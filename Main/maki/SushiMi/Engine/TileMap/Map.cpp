@@ -111,7 +111,7 @@ namespace Core
 				}
 				if(gGrids[r][c] == 9)
 				{
-					SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
+					SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
 					Window::goal1->goal1_Grid_pos.x = r;
 					Window::goal1->goal1_Grid_pos.y = c;
 					Window::numQuests += 1;
@@ -119,7 +119,7 @@ namespace Core
 				}
 				if(gGrids[r][c] == 10)
 				{
-					SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
+					SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
 					Window::goal2->goal2_Grid_pos.x = r;
 					Window::goal2->goal2_Grid_pos.y = c;
 					Window::numQuests += 1;
@@ -137,6 +137,24 @@ namespace Core
 
 
 		return 1;
+	}
+
+	void Map::ResetMap()
+	{
+		for (int i = 0; i < grid_row; i++)
+		{
+			for (int j = 0; j < grid_col; j++)
+			{
+				gGrids[i][j] = 0;
+			}
+		}
+		/*SceneManager::destroyTile();
+		SceneManager::destroyIngr();
+		SceneManager::destroyTrap();
+		SceneManager::destroyGoal1();
+		SceneManager::destroyGoal2();
+		SceneManager::destroyCover1();
+		SceneManager::destroyCover2();*/
 	}
 
 	bool Map::isWin()

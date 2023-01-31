@@ -18,9 +18,12 @@ namespace Core
 {
 	struct Texture : public Component
 	{
-		//void TextureLoadIn(const char* filename);
+		Texture();
+		~Texture();
+		
+		void TextureLoadIn(const char* filename);
 
-		void Delete(Texture& obj);
+		void Delete();
 
 		void Init();
 		void Serialize(const std::string name);

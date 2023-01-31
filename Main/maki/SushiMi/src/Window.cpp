@@ -49,6 +49,8 @@ namespace Core
 	static bool place_obj = false;
 	Player* player;
 
+	bool loaded = false;
+
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
 	/*					key  callback function  , helper function for controlling input
@@ -539,37 +541,58 @@ namespace Core
 					isLevel1 = false;
 					isLevel2 = true;
 					isWinCondition = false;
+					loaded = false;
 				}
 
 			}
 
 			if (isLevel2 == true)
 			{
+				if (loaded == false)
+				{
+					Map::ResetMap();
+					
+					Map::initMap("../TileMap/level2.txt");
+
+					loaded = true;
+				}
+				
 				//draw lv2 tile map
-				//Map::DrawMap(); //this will also set numQuests
+				Map::DrawMap(); //this will also set numQuests
 
 				//draw playerpos at lvl 2
-				//Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
 
-				//if (gameIsPaused == false)
-				//{
-				//	player->draw(delta);
+				if (gameIsPaused == false)
+				{
+					player->draw(delta);
 
-				//}
-				//else if (gameIsPaused == true)
-				//{
-				//	player->draw(0);
-				//	SceneManager::drawPauseOverlay();
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0);
+					SceneManager::drawPauseOverlay();
 
-				//}
-				//if (questProgress == numQuests)
-				//{
-				//	//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
-				//	isWinCondition = true;
-				//}
+				}
+				if (questProgress == numQuests)
+				{
+					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = true;
+				}
+			}
+
+			if (isWinCondition == true && isLevel2 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(screenwidth * 0.25, screenheight * 0.25);
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+
 			}
 			
 			//Draw Pause Overlay

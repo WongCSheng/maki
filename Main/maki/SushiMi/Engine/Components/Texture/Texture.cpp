@@ -11,16 +11,28 @@
 
 namespace Core
 {
-	
+	Texture::Texture()
+	{
+		Texheight = Texwidth = TextureID = num_8_bit_component = 0;
 
-	void Texture::Delete(Texture& obj)
+		data = NULL;
+	}
+
+	Texture::~Texture()
+	{
+	}
+	
+	void Texture::TextureLoadIn(const char* filename)
+	{
+		data = stbi_load(filename, &Texwidth, &Texheight, &num_8_bit_component, STBI_rgb_alpha);
+	}
+
+	void Texture::Delete()
 	{
 		if (data)
 		{
 			stbi_image_free(data);
 		}
-
-		glDeleteTextures(1, &obj.TextureID);
 	}
 
 	void Texture::Init()

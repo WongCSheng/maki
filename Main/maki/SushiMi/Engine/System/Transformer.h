@@ -26,6 +26,8 @@ namespace Core
 		Transformer();
 		virtual ~Transformer();
 
+		static Transformer* GetInstance();
+
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
@@ -53,7 +55,7 @@ namespace Core
 	private:
 		std::unordered_map<std::string, Object::GameObject*> Transforms;
 
-		
+		static Transformer* instance;
 	};
 }
 

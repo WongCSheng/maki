@@ -1,9 +1,9 @@
 /*
-File: Transform.cpp
-Author:		
-email:		
-co-Author:  Chong Rui Xuan Aurelia 
-email:		fei.x@digipen.edu
+File: Window.cpp
+@author		louishetong.wang@digipen.edu
+co-Author:  thea.sea@digipen.edu
+co-Author:  w.chongsheng@digipen.edu
+co-Author:  fei.x@digipen.edu
 Description: 
 */
 
@@ -162,6 +162,7 @@ namespace Core
 		SceneManager::destroyGoal2();
 		SceneManager::destroyPauseOverlay();
 		SceneManager::destroyWinOverlay();
+		SceneManager::destroyCover1();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes

@@ -377,9 +377,11 @@ namespace Core
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 50)
 			{
-				SceneManager::destroyTrap();
+				//SceneManager::destroyTrap();
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
-				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x - 1;
+				SceneManager::loadTrap(Window::player->player_grid_pos.x-1, Window::player->player_grid_pos.y);
+				SceneManager::drawTrap();
+				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x-1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_left();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
@@ -603,8 +605,10 @@ namespace Core
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 50)
 			{
-				SceneManager::destroyTrap();
+				//SceneManager::destroyTrap();
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
+				SceneManager::loadTrap(Window::player->player_grid_pos.x+1, Window::player->player_grid_pos.y);
+				SceneManager::drawTrap();
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x + 1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_right();
@@ -833,8 +837,10 @@ namespace Core
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 50)
 			{
-				SceneManager::destroyTrap();
+				//SceneManager::destroyTrap();
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
+				SceneManager::loadTrap(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y+1);
+				SceneManager::drawTrap();
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y + 1;
 				Window::player->move_down();
@@ -1064,8 +1070,10 @@ namespace Core
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 50)
 			{
-				SceneManager::destroyTrap();
+				//SceneManager::destroyTrap();
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
+				SceneManager::loadTrap(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y-1);
+				SceneManager::drawTrap();
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y - 1;
 				Window::player->move_up();

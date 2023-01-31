@@ -49,12 +49,12 @@ namespace Core
 	int Map::initMap(std::string Filename)
 	{
 		SceneManager::tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
-		
+
 
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		//Open File using ifstream
 		std::ifstream fin(Filename);
-		if(!fin)
+		if (!fin)
 		{
 			std::cout << "Unable to open tilemap file!";
 			return 0;
@@ -64,15 +64,15 @@ namespace Core
 		fin >> grid_col;
 		tile_width = width / grid_row;
 		tile_height = height / grid_col;
-		for(int c = 0; c < grid_col; c++)
+		for (int c = 0; c < grid_col; c++)
 		{
-			for(int r = 0; r < grid_row; r++)
+			for (int r = 0; r < grid_row; r++)
 			{
 				fin >> gGrids[r][c];
 			}
 		}
 		/*Testing whether is loaded correctly*/
-		for(int c = 0; c < grid_col; c++)
+		for (int c = 0; c < grid_col; c++)
 		{
 			for (int r = 0; r < grid_row; r++)
 			{
@@ -93,7 +93,7 @@ namespace Core
 					Window::player->player_initial_grid_pos.x = r;
 					Window::player->player_initial_grid_pos.y = c;
 				}
-				if(gGrids[r][c] == 3)
+				if (gGrids[r][c] == 3)
 				{
 					SceneManager::ingredient1 = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
 					Window::ingredient1->ingredient1_Grid_pos.x = r;
@@ -101,7 +101,7 @@ namespace Core
 					SceneManager::ingredient1->ingredient1_initial_pos.x = r;
 					SceneManager::ingredient1->ingredient1_initial_pos.y = c;
 				}
-				if(gGrids[r][c] == 4)
+				if (gGrids[r][c] == 4)
 				{
 					SceneManager::ingredient2 = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					Window::ingredient2->ingredient2_Grid_pos.x = r;
@@ -109,7 +109,7 @@ namespace Core
 					SceneManager::ingredient2->ingredient2_initial_pos.x = r;
 					SceneManager::ingredient2->ingredient2_initial_pos.y = c;
 				}
-				if(gGrids[r][c] == 9)
+				if (gGrids[r][c] == 9)
 				{
 					SceneManager::goal1 = new Sprite("../textures/Tiles/Pods/Pod0_6.png");
 					Window::goal1->goal1_Grid_pos.x = r;
@@ -117,20 +117,20 @@ namespace Core
 					Window::numQuests += 1;
 
 				}
-				if(gGrids[r][c] == 10)
+				if (gGrids[r][c] == 10)
 				{
 					SceneManager::goal2 = new Sprite("../textures/Tiles/Pods/Pod0_4.png");
 					Window::goal2->goal2_Grid_pos.x = r;
 					Window::goal2->goal2_Grid_pos.y = c;
 					Window::numQuests += 1;
 				}
-				if(gGrids[r][c] == 50)
+				if (gGrids[r][c] == 50)
 				{
 					SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
 					Window::trap->trap_Grid_pos.x = r;
 					Window::trap->trap_Grid_pos.y = c;
 				}
-				
+
 			}
 			std::cout << std::endl;
 		}
@@ -141,8 +141,8 @@ namespace Core
 
 	bool Map::isWin()
 	{
-		if(gGrids[Window::goal1->goal1_Grid_pos.x][Window::goal1->goal1_Grid_pos.y] == 100 &&
-		gGrids[Window::goal2->goal2_Grid_pos.x][Window::goal2->goal2_Grid_pos.y] == 100)
+		if (gGrids[Window::goal1->goal1_Grid_pos.x][Window::goal1->goal1_Grid_pos.y] == 100 &&
+			gGrids[Window::goal2->goal2_Grid_pos.x][Window::goal2->goal2_Grid_pos.y] == 100)
 		{
 			return TRUE;
 		}
@@ -156,7 +156,7 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 51 || 
+		if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == 51 ||
 			isWin() == TRUE)
 		{
 			return 1;
@@ -169,7 +169,7 @@ namespace Core
 
 	void Map::collision_check_left()
 	{
-		if(isStuck() == 0)
+		if (isStuck() == 0)
 		{
 			/*check right neighbour, (wall)(ingredient1/2)(player)*/
 			if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3 &&
@@ -193,8 +193,8 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for ingredient1 & pod 1*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x + 1 &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x - 1][Window::ingredient1->ingredient1_Grid_pos.y] == 9 &&
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
@@ -223,8 +223,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient1 & pod 2*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal2->goal2_Grid_pos.x + 1 &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal2->goal2_Grid_pos.y)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x - 1][Window::ingredient1->ingredient1_Grid_pos.y] == 10 &&
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
@@ -255,8 +255,8 @@ namespace Core
 			}
 
 			/*check for ingredient2 & pod 1*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal1->goal1_Grid_pos.x + 1 &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x - 1][Window::ingredient2->ingredient2_Grid_pos.y] == 9 &&
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
@@ -286,8 +286,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient2 & pod 2*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal2->goal2_Grid_pos.x + 1 &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal2->goal2_Grid_pos.y)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x - 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
@@ -327,7 +327,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_left();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
-				
+
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -361,7 +361,7 @@ namespace Core
 			{
 				SceneManager::destroyTrap();
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
-				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x-1;
+				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x - 1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_left();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
@@ -393,7 +393,7 @@ namespace Core
 	}
 	void Map::collision_check_right()
 	{
-		if(isStuck() == 0)
+		if (isStuck() == 0)
 		{
 			/*check right neighbour, (wall)(ingredient1/2)(player)*/
 			if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3 &&
@@ -417,8 +417,8 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for ingredient1 & pod 1*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x - 1 &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x + 1][Window::ingredient1->ingredient1_Grid_pos.y] == 9 &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;
@@ -447,8 +447,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient1 & pod 2*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal2->goal2_Grid_pos.x - 1 &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal2->goal2_Grid_pos.y)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x + 1][Window::ingredient1->ingredient1_Grid_pos.y] == 10 &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;
@@ -479,8 +479,8 @@ namespace Core
 			}
 
 			/*check for ingredient2 & pod 1*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal1->goal1_Grid_pos.x - 1 &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal1->goal1_Grid_pos.y)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x + 1][Window::ingredient2->ingredient2_Grid_pos.y] == 9 &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;
@@ -511,8 +511,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient2 & pod 2*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal2->goal2_Grid_pos.x - 1 &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal2->goal2_Grid_pos.y)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x - 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.x++;
 				Window::player->player_grid_pos.x++;
@@ -553,7 +553,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_right();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
-				
+
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -619,7 +619,7 @@ namespace Core
 	}
 	void Map::collision_check_down()
 	{
-		if(isStuck() == 0)
+		if (isStuck() == 0)
 		{
 			/*check right neighbour, (wall)(ingredient1/2)(player)*/
 			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3 &&
@@ -641,8 +641,8 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for ingredient1 & pod 1*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y - 1)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y + 1] == 9 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.y++;
 				Window::player->player_grid_pos.y++;
@@ -673,8 +673,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient1 & pod 2*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal2->goal2_Grid_pos.x &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal2->goal2_Grid_pos.y - 1)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y + 1] == 10 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.y++;
 				Window::player->player_grid_pos.y++;
@@ -707,8 +707,8 @@ namespace Core
 			}
 
 			/*check for ingredient2 & pod 1*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal1->goal1_Grid_pos.x &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal1->goal1_Grid_pos.y - 1)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y + 1] == 9 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.y++;
 				Window::player->player_grid_pos.y++;
@@ -740,8 +740,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient2 & pod 2*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal2->goal2_Grid_pos.x &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal2->goal2_Grid_pos.y - 1)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y + 1] == 10 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.y++;
 				Window::player->player_grid_pos.y++;
@@ -783,7 +783,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
 				Window::player->move_down();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
-				
+
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -849,7 +849,7 @@ namespace Core
 	}
 	void Map::collision_check_up()
 	{
-		if(isStuck() == 0)
+		if (isStuck() == 0)
 		{
 			/*check right neighbour, (wall)(ingredient1/2)(player)*/
 			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3 &&
@@ -871,8 +871,8 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for ingredient1 & pod 1*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal1->goal1_Grid_pos.x &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal1->goal1_Grid_pos.y + 1)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y - 1] == 9 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.y--;
 				Window::player->player_grid_pos.y--;
@@ -904,8 +904,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient1 & pod 2*/
-			else if (Window::ingredient1->ingredient1_Grid_pos.x == Window::goal2->goal2_Grid_pos.x &&
-				Window::ingredient1->ingredient1_Grid_pos.y == Window::goal2->goal2_Grid_pos.y + 1)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y - 1] == 10 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.y--;
 				Window::player->player_grid_pos.y--;
@@ -938,8 +938,8 @@ namespace Core
 			}
 
 			/*check for ingredient2 & pod 1*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal1->goal1_Grid_pos.x &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal1->goal1_Grid_pos.y + 1)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y - 1] == 9 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.y--;
 				Window::player->player_grid_pos.y--;
@@ -971,8 +971,8 @@ namespace Core
 				}
 			}
 			/*check for ingredient2 & pod 2*/
-			else if (Window::ingredient2->ingredient2_Grid_pos.x == Window::goal2->goal2_Grid_pos.x &&
-				Window::ingredient2->ingredient2_Grid_pos.y == Window::goal2->goal2_Grid_pos.y + 1)
+			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y - 1] == 10 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 4)
 			{
 				Window::ingredient2->ingredient2_Grid_pos.y--;
 				Window::player->player_grid_pos.y--;
@@ -1014,7 +1014,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
 				Window::player->move_up();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
-				
+
 				for (int c = 0; c < grid_col; c++)
 				{
 					for (int r = 0; r < grid_row; r++)
@@ -1118,9 +1118,9 @@ namespace Core
 					SceneManager::loadIngr2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
 					SceneManager::drawIngr2();
 				}
-				
+
 			}
 		}
 	}
-	
+
 }

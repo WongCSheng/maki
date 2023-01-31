@@ -240,6 +240,16 @@ namespace Core
 					std::cout << std::endl;
 				}
 			}
+
+			/*check if player and ingredient and ingredient*/
+			else if(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3 &&
+				gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == 4 ||
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4 &&
+				gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == 3)
+			{
+				Window::player->stop();
+			}
+
 			/*check for ingredient1 & pod 2*/
 			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x - 1][Window::ingredient1->ingredient1_Grid_pos.y] == 10 &&
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
@@ -428,6 +438,14 @@ namespace Core
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3 &&
+				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == 4 ||
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 4 &&
+				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == 3)
+			{
+				Window::player->stop();
+			}
+
 			/*check with pod 1/2*/
 			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 9 ||
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 10)
@@ -658,6 +676,13 @@ namespace Core
 			{
 				Window::player->stop();
 			}
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == 4 ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 4 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == 3)
+			{
+				Window::player->stop();
+			}
 			/*check for ingredient1 & pod 1*/
 			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y + 1] == 9 &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3)
@@ -885,6 +910,13 @@ namespace Core
 			/*check with pod 1/2*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 9 ||
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 10)
+			{
+				Window::player->stop();
+			}
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == 4 ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 4 &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == 3)
 			{
 				Window::player->stop();
 			}

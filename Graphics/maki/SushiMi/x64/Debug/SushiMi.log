@@ -1,0 +1,157 @@
+﻿  LevelEditor.cpp
+  Window.cpp
+  main.cpp
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(15,14): warning C4099: 'Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\texture.h(11): message : see declaration of 'Texture' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(16,11): warning C4099: 'Rect': type name first seen using 'struct' now seen using 'class' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\Rectangle.h(13): message : see declaration of 'Rect' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(15,14): warning C4099: 'Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\main.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\texture.h(11): message : see declaration of 'Texture' (compiling source file src\main.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(16,11): warning C4099: 'Rect': type name first seen using 'struct' now seen using 'class' (compiling source file src\main.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\Rectangle.h(13): message : see declaration of 'Rect' (compiling source file src\main.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\main.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\main.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\src\main.cpp(18,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\src\main.cpp(59,14): warning C4100: 'userParam': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\src\main.cpp(57,10): warning C4100: 'length': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\src\main.cpp(55,9): warning C4100: 'id': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\src\main.cpp(53,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(15,14): warning C4099: 'Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\texture.h(11): message : see declaration of 'Texture' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Animation\Animation2D.h(16,11): warning C4099: 'Rect': type name first seen using 'struct' now seen using 'class' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Texture\Rectangle.h(13): message : see declaration of 'Rect' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(58,31): warning C4459: declaration of 'fileDialog' hides global declaration
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(31,27): message : see declaration of 'fileDialog'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(1786,1): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(1786): message : while compiling class template member function 'const T &ImVector<T>::operator [](int) const'
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(2871): message : see reference to function template instantiation 'const T &ImVector<T>::operator [](int) const' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(2844): message : see reference to class template instantiation 'ImVector<float>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(1785,1): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(1785): message : while compiling class template member function 'T &ImVector<T>::operator [](int)'
+          with
+          [
+              T=ImFontAtlasCustomRect
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(2795): message : see reference to function template instantiation 'T &ImVector<T>::operator [](int)' being compiled
+          with
+          [
+              T=ImFontAtlasCustomRect
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\imgui\imgui.h(2822): message : see reference to class template instantiation 'ImVector<ImFontAtlasCustomRect>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec4.inl(477,98): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec4.inl(478): message : while compiling class template member function 'T &glm::vec<4,T,glm::packed_highp>::operator [](glm::vec<4,T,glm::packed_highp>::length_type)'
+          with
+          [
+              T=glm::i8
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(108): message : see reference to function template instantiation 'T &glm::vec<4,T,glm::packed_highp>::operator [](glm::vec<4,T,glm::packed_highp>::length_type)' being compiled
+          with
+          [
+              T=glm::i8
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(106): message : see reference to class template instantiation 'glm::vec<4,glm::i8,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec2.inl(104,99): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec2.inl(105): message : while compiling class template member function 'T &glm::vec<2,T,glm::packed_highp>::operator [](glm::vec<2,T,glm::packed_highp>::length_type)'
+          with
+          [
+              T=glm::i16
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(48): message : see reference to function template instantiation 'T &glm::vec<2,T,glm::packed_highp>::operator [](glm::vec<2,T,glm::packed_highp>::length_type)' being compiled
+          with
+          [
+              T=glm::i16
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(46): message : see reference to class template instantiation 'glm::vec<2,glm::i16,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec2.inl(118,104): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec2.inl(119): message : while compiling class template member function 'const T &glm::vec<2,T,glm::packed_highp>::operator [](glm::vec<2,T,glm::packed_highp>::length_type) const'
+          with
+          [
+              T=glm::uint
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(137): message : see reference to function template instantiation 'const T &glm::vec<2,T,glm::packed_highp>::operator [](glm::vec<2,T,glm::packed_highp>::length_type) const' being compiled
+          with
+          [
+              T=glm::uint
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\func_packing.inl(137): message : see reference to class template instantiation 'glm::vec<2,glm::uint,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec3.inl(184,104): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec3.inl(185): message : while compiling class template member function 'const T &glm::vec<3,T,glm::packed_highp>::operator [](glm::vec<3,T,glm::packed_highp>::length_type) const'
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\ext\matrix_transform.inl(13): message : see reference to function template instantiation 'const T &glm::vec<3,T,glm::packed_highp>::operator [](glm::vec<3,T,glm::packed_highp>::length_type) const' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec3.inl(38): message : while compiling class template member function 'glm::vec<3,float,glm::packed_highp>::vec(T,T,T)'
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Components\Transform\sTransform.h(21): message : see reference to function template instantiation 'glm::vec<3,float,glm::packed_highp>::vec(T,T,T)' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x3.hpp(23): message : see reference to class template instantiation 'glm::vec<3,float,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Components\Transform\sTransform.h(20): message : see reference to class template instantiation 'glm::mat<4,3,glm::f32,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec3.inl(168,99): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec3.inl(169): message : while compiling class template member function 'T &glm::vec<3,T,glm::packed_highp>::operator [](glm::vec<3,T,glm::packed_highp>::length_type)'
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\ext\matrix_transform.inl(28): message : see reference to function template instantiation 'T &glm::vec<3,T,glm::packed_highp>::operator [](glm::vec<3,T,glm::packed_highp>::length_type)' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec4.inl(495,104): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_vec4.inl(496): message : while compiling class template member function 'const T &glm::vec<4,T,glm::packed_highp>::operator [](glm::vec<4,T,glm::packed_highp>::length_type) const'
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(643): message : see reference to function template instantiation 'const T &glm::vec<4,T,glm::packed_highp>::operator [](glm::vec<4,T,glm::packed_highp>::length_type) const' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(41): message : while compiling class template member function 'glm::mat<4,4,glm::f32,glm::packed_highp>::mat(const T &)'
+          with
+          [
+              T=glm::f32
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Components\Transform\sTransform.h(20): message : see reference to function template instantiation 'glm::mat<4,4,glm::f32,glm::packed_highp>::mat(const T &)' being compiled
+          with
+          [
+              T=glm::f32
+          ] (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Engine\Components\Transform\sTransform.h(19): message : see reference to class template instantiation 'glm::mat<4,4,glm::f32,glm::packed_highp>' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(296,143): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(297): message : while compiling class template member function 'const glm::vec<4,float,glm::packed_highp> &glm::mat<4,4,glm::f32,glm::packed_highp>::operator [](glm::mat<4,4,glm::f32,glm::packed_highp>::length_type) const' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\ext\matrix_transform.inl(13): message : see reference to function template instantiation 'const glm::vec<4,float,glm::packed_highp> &glm::mat<4,4,glm::f32,glm::packed_highp>::operator [](glm::mat<4,4,glm::f32,glm::packed_highp>::length_type) const' being compiled (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(289,124): warning C4459: declaration of 'i' hides global declaration (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\SushiMi\Editors\LevelEditor.cpp(27,5): message : see declaration of 'i'
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\detail\type_mat4x4.inl(290): message : while compiling class template member function 'glm::vec<4,float,glm::packed_highp> &glm::mat<4,4,glm::f32,glm::packed_highp>::operator [](glm::mat<4,4,glm::f32,glm::packed_highp>::length_type)' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\lib\glm\glm\ext\matrix_transform.inl(13): message : see reference to function template instantiation 'glm::vec<4,float,glm::packed_highp> &glm::mat<4,4,glm::f32,glm::packed_highp>::operator [](glm::mat<4,4,glm::f32,glm::packed_highp>::length_type)' being compiled (compiling source file Editors\LevelEditor.cpp)
+  SushiMi.vcxproj -> C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Graphics\maki\x64\Debug\SushiMi.exe

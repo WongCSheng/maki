@@ -124,7 +124,7 @@ namespace Core
 		camera = std::make_unique<Camera>(0, 0);
 		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
-		SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
+		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 
 
@@ -153,26 +153,23 @@ namespace Core
 		//ingredient->transformation.scale = glm::vec2(100, 100);
 		//ingredient->transformation.position = glm::vec2(15, 20);
 
-
-
-
 	}
 
 	Window::~Window()
 	{
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
-		SceneManager::destroyTrap();
+		/*SceneManager::destroyTrap();
 		SceneManager::destroyGoal1();
-		SceneManager::destroyGoal2();
+		SceneManager::destroyGoal2();*/
 		SceneManager::destroyPauseOverlay();
 		SceneManager::destroyWinOverlay();
-		SceneManager::destroyCover1();
+		//SceneManager::destroyCover1();
 		SceneManager::destroyPlayer_Stuck();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
-		delete sp; //16 bytes
-		delete obj;
+		//delete sp; //16 bytes
+		//delete obj;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -309,8 +306,11 @@ namespace Core
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
 				//reset ingredient pos
-				ingredient1->restart();
-				ingredient2->restart();
+				for (auto& ingredient : SceneManager::ingredientcontainer)
+				{
+					ingredient.second->restart();
+				}
+
 				questProgress = 0;
 				//missing: restart sinkhole, restart sushi plate pods
 				isPlayerinSinkhole = false;
@@ -399,11 +399,17 @@ namespace Core
 
 
 				//i want to know what the ingredients initial pos
-				std::cout << "ingredient initial pos are: (" << ingredient1->ingredient1_initial_pos.x << "," << ingredient1->ingredient1_initial_pos.y << ") and also (" << ingredient2->ingredient1_initial_pos.x << "," << ingredient2->ingredient1_initial_pos.y << ")." << std::endl;
+				//std::cout << "ingredient initial pos are: (" << ingredient1->ingredient1_initial_pos.x << "," << ingredient1->ingredient1_initial_pos.y << ") and also (" << ingredient2->ingredient1_initial_pos.x << "," << ingredient2->ingredient1_initial_pos.y << ")." << std::endl;
 				//reset ingredient pos
-				ingredient1->restart();
-				ingredient2->restart();
-				questProgress = 0;
+				/*ingredient1->restart();
+				ingredient2->restart();*/
+
+				for (auto& ingredient : SceneManager::ingredientcontainer)
+				{
+					ingredient.second->restart();
+				}
+
+				SceneManager::amt_of_win_conditions = 0;
 				//missing: restart sinkhole, restart sushi plate pods
 				isPlayerinSinkhole = false;
 
@@ -515,6 +521,10 @@ namespace Core
 			//step 3: main menu
 			if (isLevel1 == true)
 			{
+				Map::initMap("../TileMap/level1(new).txt");
+				
+				Map::LoadMap();
+				
 				//draw lv1 tile map
 				Map::DrawMap();
 				
@@ -535,7 +545,7 @@ namespace Core
 					SceneManager::drawPauseOverlay();
 
 				}
-				if (questProgress == numQuests)
+				if (Map::isWin())
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
@@ -570,6 +580,8 @@ namespace Core
 
 					loaded = true;
 				}
+
+				Map::LoadMap();
 				
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests
@@ -596,7 +608,7 @@ namespace Core
 					SceneManager::drawPauseOverlay();
 
 				}
-				if (questProgress == numQuests)
+				if (Map::isWin())
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
@@ -611,7 +623,11 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-
+				if (Map::isWin())
+				{
+					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = true;
+				}
 			}
 
 			
@@ -692,7 +708,6 @@ namespace Core
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 		}
-
 
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();

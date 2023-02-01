@@ -177,7 +177,7 @@ namespace Core
     */
     void _audioManager::LoadMusic(string name)
     {
-        string pathString = "../Assets/Audio/" + name + '\0';
+        string pathString = "../Assets/Audio/Music/" + name + '\0';
         char* pathName = new char[pathString.length() + 1];
         copy(pathString.begin(), pathString.end(), pathName);
         Sound* music = 0;

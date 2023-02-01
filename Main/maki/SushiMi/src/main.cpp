@@ -175,8 +175,6 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
 
 
-	
-
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
 
@@ -222,7 +220,7 @@ void Core::pseudomain::cleanup() {
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
-	AudioManager.UnloadMusic("WalkSFX.wav");
+	AudioManager.UnloadSound("WalkSFX.wav");
 	AudioManager.UnloadMusic("BGM.wav");
 
 	////imgui Shutdown

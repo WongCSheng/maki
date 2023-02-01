@@ -521,9 +521,14 @@ namespace Core
 			//step 3: main menu
 			if (isLevel1 == true)
 			{
-				Map::initMap("../TileMap/level1(new).txt");
-				
-				Map::LoadMap();
+				if (!loaded)
+				{
+					Map::initMap("../TileMap/level1(new).txt");
+
+					Map::LoadMap();
+
+					loaded = true;
+				}
 				
 				//draw lv1 tile map
 				Map::DrawMap();

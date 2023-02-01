@@ -264,6 +264,7 @@
     <None Include="..\Data\HowToPlay.json" />
     <None Include="..\Data\Menu.json" />
     <None Include="..\Data\MenuButton.json" />
+    <None Include="..\Data\PauseMenu.json" />
     <None Include="..\Data\QuitButton.json" />
     <None Include="..\Data\ResumeButton.json" />
     <None Include="..\Data\SettingsButton.json" />

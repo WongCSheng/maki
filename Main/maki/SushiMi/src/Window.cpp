@@ -222,7 +222,7 @@ namespace Core
 					gameIsPaused = true;
 					//std::cout << "game paused, pause screen showing" << std::endl;
 
-					SceneManager::loadPauseOverlay(0, 0);
+					//SceneManager::loadPauseOverlay(0, 0);
 
 					keystate_paused = false;
 				}
@@ -240,8 +240,8 @@ namespace Core
 					//std::cout << "game resume, no more pause screen" << std::endl;
 					int screenwidth = 0, screenheight = 0;
 					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-					SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-					SceneManager::pause_overlay->transformation.Position.y = screenheight;
+					//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+					//SceneManager::pause_overlay->transformation.Position.y = screenheight;
 					keystate_paused = false;
 
 				}
@@ -260,7 +260,7 @@ namespace Core
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
-			if (xpos > 275 && xpos < (275 + 366) && ypos > 349 && ypos < (349+96))
+			if (xpos > 275 && xpos < (275 + 366) && ypos > 349 && ypos < (349 + 96))
 			{
 
 				isMenuState = false;
@@ -392,7 +392,7 @@ namespace Core
 
 				std::cout << "restarting level" << std::endl;
 				player->restart(); //tell graphics to reset sprite pos
-				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " <<player->playerpos_restart.y << std::endl;
+				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
 				//reset our position variable
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
@@ -418,9 +418,9 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
 		player->stop();
-		
-		
-		
+
+
+
 	}
 
 	void Window::Resize()
@@ -457,11 +457,11 @@ namespace Core
 			Shaders->Textured_Shader()->use();
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			//Map::DrawMap(); //shifted into boolean
-			
+
 			// all drawing goes here ..
 			//Sprite::menu->transformation.Position = glm::vec2(0, 0);
 			//Sprite::menu->transformation.Scale = glm::vec2(1000, 800);
-			
+
 
 
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
@@ -472,9 +472,9 @@ namespace Core
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
 			if (ingredient) {
-			//delete ingredient;
-			ingredient = nullptr;
-			} 
+				//delete ingredient;
+				ingredient = nullptr;
+			}
 			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
@@ -504,11 +504,11 @@ namespace Core
 			//	//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
 			//}
 			//std::cout << "end of obj container\n";
-			
+
 			//Sprite::menu->transformation.Position = {0.f,0.f};
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
-		
+
 			//order of rendering
 			//step 1: map
 			//step 2: pause overlay
@@ -517,10 +517,10 @@ namespace Core
 			{
 				//draw lv1 tile map
 				Map::DrawMap();
-				
+
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-				
+
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
 
@@ -541,12 +541,12 @@ namespace Core
 					isWinCondition = true;
 				}
 			}
-		
+
 			if (isWinCondition == true && isLevel1 == true)
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::loadWinOverlay(screenwidth*0.25,screenheight*0.25);
+				SceneManager::loadWinOverlay(screenwidth * 0.25, screenheight * 0.25);
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
@@ -565,12 +565,12 @@ namespace Core
 				if (loaded == false)
 				{
 					Map::ResetMap();
-					
+
 					Map::initMap("../TileMap/level2.txt");
 
 					loaded = true;
 				}
-				
+
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -587,13 +587,13 @@ namespace Core
 
 					}
 					else
-					player->draw(delta);
+						player->draw(delta);
 
 				}
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawPauseOverlay();
+					//SceneManager::drawPauseOverlay();
 
 				}
 				if (questProgress == numQuests)
@@ -614,14 +614,14 @@ namespace Core
 
 			}
 
-			
-			
+
+
 			//Draw Pause Overlay
-			if (gameIsPaused == true)
+			/*if (gameIsPaused == true)
 			{
 				SceneManager::drawPauseOverlay();
 
-			}
+			}*/
 			/*if (isMenuState == true)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
@@ -631,26 +631,20 @@ namespace Core
 
 			//Sprite::menu->draw();
 			//Draw Main Menu
-			for (auto& x : CoreSystem->objfactory->ObjectContainer)
+			if (isMenuState == true)
 			{
-				Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-			
-			
-
-				spritecomp->transformation.Position = transcomp->Position;
-				spritecomp->transformation.Scale = transcomp->Scale;
-
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-				
-				if (isMenuState == true)
+				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
-					Sprite::menu->draw();*/
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 					if (x.first == "Menu") //draw menu
 						spritecomp->draw();
-					
+
 					if (x.first == "StartButton")
 						spritecomp->draw();
 
@@ -663,15 +657,34 @@ namespace Core
 					if (x.first == "ExitButton")
 						spritecomp->draw();
 				}
+			}
 
-				else if (isMenuState == false)
+			if (gameIsPaused == true)
+			{
+				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					//AudioManager.LoadMusic("BGM.wav");
-					//AudioManager.PlayMusic("BGM.wav");
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+					if (x.first == "PauseMenu")
+						spritecomp->draw();
+
+					if (x.first == "ResumeButton")
+						spritecomp->draw();
+
+					if (x.first == "QuitButton")
+						spritecomp->draw();
+
+					if (x.first == "MenuButton")
+						spritecomp->draw();
 				}
 			}
-			
+
+
 			if (isWalk == true)
 			{
 				AudioManager.PlayClip("WalkSFX.wav");
@@ -679,28 +692,29 @@ namespace Core
 			}
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
-			#if DEBUG
+#if DEBUG
 			for (auto test : Editor::LevelEditor::newobjarr)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
 			}
-			#endif
-			
+#endif
+
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
+
 		}
 
+			glfwSwapBuffers(window_ptr);
+			glfwPollEvents();
 
-		glfwSwapBuffers(window_ptr);
-		glfwPollEvents();
 		
-	}
-	void Window::ImGuiToObjContainer(ObjectFactory* c)
-	{
+		//void Window::ImGuiToObjContainer(ObjectFactory* c)
+		//{
 
-		//Editor::LevelEditor::AddToFactory(ObjectFactory)
+		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
+		//}
 	}
 }

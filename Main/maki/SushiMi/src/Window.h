@@ -66,8 +66,7 @@ namespace Core
 		static inline Sprite* goal2;
 		static inline Sprite* trap;
 		static inline Sprite* pause_overlay;
-
-		
+		//void ImGuiToObjContainer(ObjectFactory* c);
 	
 		static inline struct ScreenDimensions {
 			static inline int screenwidth;

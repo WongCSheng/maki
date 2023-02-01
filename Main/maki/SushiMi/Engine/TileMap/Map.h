@@ -4,8 +4,8 @@
 #include <string>
 
 /*set a static grid first*/
-#define GRID_COL 30
-#define GRID_ROW 30
+#define GRID_COL 18
+#define GRID_ROW 10
 
 namespace Core
 {

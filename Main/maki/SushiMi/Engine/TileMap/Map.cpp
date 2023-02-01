@@ -80,7 +80,6 @@ namespace Core
 			}
 		}
 
-		print_map_to_console();
 
 		fin.close();
 	}
@@ -111,9 +110,9 @@ namespace Core
 		{
 			for (int r = 0; r < grid_row; r++)
 			{
-				//print_map_to_console();
-				/*Load texture depending on the grid*/
-				if (gGrids[r][c] == static_cast<char>(grid_number::player))
+				switch (gGrids[r][c])
+				{
+				case static_cast<char>(grid_number::player):
 				{
 					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
@@ -127,47 +126,57 @@ namespace Core
 					/*save initial index for restart purposes*/
 					Window::player->player_initial_grid_pos.x = r;
 					Window::player->player_initial_grid_pos.y = c;
+					break;
 				}
+					
 
-				if(gGrids[r][c] == static_cast<char>(grid_number::rice))
+				case static_cast<char>(grid_number::rice):
 				{
 					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					
+					break;
 				}
+					
 
-				if(gGrids[r][c] == static_cast<char>(grid_number::nori))
+				case static_cast<char>(grid_number::nori):
 				{
 					Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
 				}
-
-				if(gGrids[r][c] == static_cast<char>(grid_number::inari))
+				case static_cast<char>(grid_number::inari):
 				{
 					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(grid_number::box1))
+				case static_cast<char>(grid_number::box1):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::box1, box);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 
-					SceneManager::win_condition.push_back(std::make_pair(r, c ));
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
-				}
+					break;
 
-				if (gGrids[r][c] == static_cast<char>(grid_number::box2))
+				}
+					
+
+				case static_cast<char>(grid_number::box2):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::box2, box);
@@ -176,140 +185,187 @@ namespace Core
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(grid_number::boxcover))
+				case static_cast<char>(grid_number::boxcover):
 				{
 					Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(grid_number::sinkhole))
+				case static_cast<char>(grid_number::sinkhole):
 				{
 					Sprite* sinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, sinkhole);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
 				}
-
-				if (gGrids[r][c] == static_cast<char>(grid_number::filledsinkhole))
+					
+				case static_cast<char>(grid_number::filledsinkhole):
 				{
 					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, filledsinkhole);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
 				}
-
-				//buttload of walls
-				if (gGrids[r][c] == static_cast<char>(wall_type::bottomleftwall))
+					
+				case static_cast<char>(wall_type::bottomleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomleftwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
-
-				if (gGrids[r][c] == static_cast<char>(wall_type::bottomrightwall))
+					
+				case static_cast<char>(wall_type::bottomrightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomrightwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::bottomwall))
+				case static_cast<char>(wall_type::bottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middlebottomlefttopwall))
+				case static_cast<char>(wall_type::middlebottomlefttopwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlebottomlefttopwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middleleftbottomrightwall))
+				case static_cast<char>(wall_type::middleleftbottomrightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftbottomrightwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middleleftwall))
+				case static_cast<char>(wall_type::middleleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middlelefttoprightwall))
+				case static_cast<char>(wall_type::middlelefttoprightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
-
-				if (gGrids[r][c] == static_cast<char>(wall_type::middlerightwall))
+					
+					
+				case static_cast<char>(wall_type::middlerightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlerightwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletopbottomwall))
+				case static_cast<char>(wall_type::middletopbottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletopbottomwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletoprightbottomwall))
+				case static_cast<char>(wall_type::middletoprightbottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletoprightbottomwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
-
-				if (gGrids[r][c] == static_cast<char>(wall_type::middlewall))
+					
+				//most common wall
+				case static_cast<char>(wall_type::middlewall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlewall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-				}
+					break;
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::topleftwall))
+				}
+					
+
+				case static_cast<char>(wall_type::topleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::topleftwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+					
 
-				if (gGrids[r][c] == static_cast<char>(wall_type::toprightwall))
+					
+				case static_cast<char>(wall_type::toprightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::toprightwall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
 				}
+
+				default:
+					break;
+
+				}
+				
 				
 			}
 			std::cout << std::endl;
 		}
+		std::cout << "ingredientcontainer contains:" << std::endl;
+		for (auto& x : SceneManager::ingredientcontainer)
+		{
+			
+			std::cout << static_cast<char>(x.first) << ": " << x.second << std::endl;
+
+		}
+
+		print_map_to_console();
+
 
 		return 1;
 	}
@@ -392,6 +448,7 @@ namespace Core
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(check))
 			{
 				/*check for ingredient & box*/
+				SceneManager::ingredientcontainer.
 				if ((SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.x + 1 &&
 					SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.y) ||
 					(SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.x + 1 &&
@@ -661,7 +718,7 @@ namespace Core
 		
 		if(isStuck() == 0)
 		{
-			/*check right neighbour, (wall)(ingredient1/2)(player)*/
+			/*check player against ingredient against wall*/
 			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] >= static_cast<int>(wall_type::first) ||
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::items) &&
@@ -669,13 +726,13 @@ namespace Core
 			{
 				Window::player->stop();
 			}
-			/*check wall*/
+			/*check player against wall*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::first) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::last))
 			{
 				Window::player->stop();
 			}
-			/*check with pod 1/2*/
+			/*check with player with box*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::boxcover))
 			{
 				Window::player->stop();
@@ -687,31 +744,32 @@ namespace Core
 			{
 				Window::player->stop();
 			}
-			/*check for ingredient1 & pod 1*/
-			else if ((SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.x &&
-				SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.y + 1) ||
-				(SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.x &&
-					SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.y + 1))
+			/*check for ingredient & box*/
+			else if (check <= grid_number::items && check >= grid_number::ingredients)
 			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.y--;
-				Window::player->player_grid_pos.y--;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
-				Window::player->move_up();
+				if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::box1) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(check)))
+				{
+					SceneManager::ingredientcontainer[check]->transformation.Position.y--;
+					Window::player->player_grid_pos.y--;
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+					Window::player->move_up();
 
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
-				SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
+					SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
 
-				std::cout << "win = 1" << std::endl;
-				Window::questProgress += 1;
-				std::cout << "progress is " << Window::questProgress << std::endl;
+					std::cout << "win = 1" << std::endl;
+					Window::questProgress += 1;
+					std::cout << "progress is " << Window::questProgress << std::endl;
 
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
+					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
+					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
 
-				print_map_to_console();
+					print_map_to_console();
+				}
 			}
 
-			/*check ingr1*/
+			/*check player against ingredient*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(check))
 			{
 				SceneManager::ingredientcontainer[check]->transformation.Position.y--;
@@ -725,7 +783,7 @@ namespace Core
 				print_map_to_console();
 			}
 			
-			/*check for sinkhole*/
+			/*check player against sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::sinkhole))
 			{
 				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.x = Window::player->player_grid_pos.x;
@@ -734,6 +792,12 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				print_map_to_console();
 			}
+			/*check ingredient against sinkhole*/
+			else if (gGrid[][])
+			{
+
+			}
+			/*player moves*/
 			else
 			{
 				Window::player->move_up();
@@ -754,7 +818,7 @@ namespace Core
 		{
 			for (int r = 0; r < grid_row; r++)
 			{
-				std::cout << std::setw(4) << gGrids[r][c] << std::setw(4);
+				std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
 
 			}
 			std::cout << std::endl;

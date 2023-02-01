@@ -114,9 +114,10 @@ namespace Core
 		unsigned int getTileWidth();
 		unsigned int getTileHeight();
 
-		static inline std::unordered_map<wall_type, Sprite*> tilecontainer;
-		static inline std::unordered_map<grid_number, Sprite*> ingredientcontainer;
-		static inline std::unordered_map<grid_number, Sprite*> ingredient_starting_pos;
+	
+		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
+		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 		/*static inline Sprite* tile;

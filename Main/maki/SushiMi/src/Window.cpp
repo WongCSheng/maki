@@ -338,7 +338,7 @@ namespace Core
 			keystate_right = true;
 			if (keystate_right)
 			{
-				Map::collision_check_right();
+				//Map::collision_check_right();
 				keystate_right = false;
 			}
 		}
@@ -350,7 +350,7 @@ namespace Core
 			//holding key or let go key, player stop
 			if (keystate_left)
 			{
-				Map::collision_check_left();
+				//Map::collision_check_left();
 				keystate_left = false;
 			}
 		}
@@ -361,7 +361,7 @@ namespace Core
 
 			if (keystate_up)
 			{
-				Map::collision_check_up();
+				//Map::collision_check_up();
 				isWalk = true; //play walking sfx
 				keystate_up = false;
 
@@ -375,7 +375,7 @@ namespace Core
 			keystate_down = true;
 			if (keystate_down)
 			{
-				Map::collision_check_down();
+				//Map::collision_check_down();
 				keystate_down = false;
 			}
 		}
@@ -521,6 +521,7 @@ namespace Core
 			//step 3: main menu
 			if (isLevel1 == true)
 			{
+				isMenuState = false;
 				if (!loaded)
 				{
 					Map::initMap("../TileMap/level1(new).txt");

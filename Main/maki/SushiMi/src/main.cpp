@@ -62,7 +62,7 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(1286494); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(7227); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 

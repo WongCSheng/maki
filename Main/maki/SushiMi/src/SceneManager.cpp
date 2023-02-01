@@ -56,7 +56,11 @@ namespace Core
 		tile.second->transformation.Position = glm::vec2(x, y);
 		tile.second->transformation.Scale = glm::vec2(105, 105);
 
-		tilecontainer.insert(tile);
+		tilecontainer.push_back(tile);
+		
+		
+		std::cout << std::endl;
+		std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
 	}
 
 	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>&ingredient)
@@ -66,7 +70,9 @@ namespace Core
 
 		ingredient.second->transformation.grid_pos = { posX, posY };
 
-		ingredientcontainer.insert(ingredient);
+		ingredientcontainer.push_back(ingredient);
+		std::cout << std::endl;
+		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
 
 	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition)

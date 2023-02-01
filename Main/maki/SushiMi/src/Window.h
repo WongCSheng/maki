@@ -34,6 +34,7 @@ namespace Core
 		bool gameIsPaused;
 		bool isMenuState;
 		bool isWalk;
+		static inline bool isPlayerinSinkhole;
 		bool isLevel1;
 		bool isLevel2;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false

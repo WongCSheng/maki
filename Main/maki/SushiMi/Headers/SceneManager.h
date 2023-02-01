@@ -25,7 +25,7 @@ namespace Core
 		static  void loadGoal1(int x, int y);
 		static  void loadGoal2(int x, int y);
 		static  void loadCover1(int x, int y);
-		static  void loadCover2(int x, int y);
+		static  void loadPlayer_Stuck(int x, int y);
 		static  void loadPauseOverlay(int x, int y);
 		static  void loadWinOverlay(int x, int y);
 		static  void drawTile();
@@ -35,7 +35,7 @@ namespace Core
 		static  void drawGoal1();
 		static  void drawGoal2();
 		static  void drawCover1();
-		static  void drawCover2();
+		static  void drawPlayer_Stuck();
 		static  void drawPauseOverlay();
 		static  void drawWinOverlay();
 		static  void destroyTile();
@@ -47,6 +47,7 @@ namespace Core
 		static  void destroyCover2();
 		static  void destroyPauseOverlay();
 		static  void destroyWinOverlay();
+		static  void destroyPlayer_Stuck();
 
 		static  void Readfile();
 
@@ -69,6 +70,7 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
+		static inline Sprite* player_stuck;
 
 		unsigned int rows, cols,
 			tileWidth, tileHeight;

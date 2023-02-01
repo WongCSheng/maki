@@ -102,7 +102,7 @@ namespace Core
 		}
 
 		glfwMakeContextCurrent(window_ptr);
-		std::cout << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
+		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
 
 		/*if (glewInit())
 		{
@@ -125,13 +125,18 @@ namespace Core
 		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
+		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+
+
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
 		isMenuState = true;
 		isWalk = false;
 		isLevel1 = false;
+		isLevel2 = false;
 		isWinCondition = false;
+		isPlayerinSinkhole = false;
 
 
 		//player = new Player();
@@ -163,6 +168,7 @@ namespace Core
 		SceneManager::destroyPauseOverlay();
 		SceneManager::destroyWinOverlay();
 		SceneManager::destroyCover1();
+		SceneManager::destroyPlayer_Stuck();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 		delete sp; //16 bytes
@@ -214,7 +220,7 @@ namespace Core
 				if (keystate_paused)
 				{
 					gameIsPaused = true;
-					std::cout << "game paused, pause screen showing" << std::endl;
+					//std::cout << "game paused, pause screen showing" << std::endl;
 
 					SceneManager::loadPauseOverlay(0, 0);
 
@@ -231,7 +237,7 @@ namespace Core
 				if (keystate_paused)
 				{
 					gameIsPaused = false;
-					std::cout << "game resume, no more pause screen" << std::endl;
+					//std::cout << "game resume, no more pause screen" << std::endl;
 					int screenwidth = 0, screenheight = 0;
 					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 					SceneManager::pause_overlay->transformation.Position.x = screenwidth;
@@ -259,7 +265,7 @@ namespace Core
 
 				isMenuState = false;
 				isLevel1 = true;
-				std::cout << "exit main menu" << std::endl;
+				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				/*Sprite::menu->transformation.Position.x = screenwidth;
@@ -287,7 +293,7 @@ namespace Core
 			if (xpos > 600 && ypos > 460 && xpos < 1310 && ypos < 560)
 			{
 				gameIsPaused = false;
-				std::cout << "game resume, no more pause screen" << std::endl;
+				//std::cout << "game resume, no more pause screen" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				SceneManager::pause_overlay->transformation.Position.x = screenwidth;
@@ -302,6 +308,12 @@ namespace Core
 				player->restart();
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
+				//reset ingredient pos
+				ingredient1->restart();
+				ingredient2->restart();
+				questProgress = 0;
+				//missing: restart sinkhole, restart sushi plate pods
+				isPlayerinSinkhole = false;
 				gameIsPaused = false;
 			}
 			//QUIT GAME
@@ -321,7 +333,7 @@ namespace Core
 
 
 		//player input
-		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false)
+		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_right = true;
 			if (keystate_right)
@@ -331,7 +343,7 @@ namespace Core
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_left = true;
 			//player only move on one press
@@ -343,14 +355,14 @@ namespace Core
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false && isWinCondition == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_up = true;
 
 			if (keystate_up)
 			{
 				Map::collision_check_up();
-				isWalk = true;
+				isWalk = true; //play walking sfx
 				keystate_up = false;
 
 			}
@@ -358,7 +370,7 @@ namespace Core
 		}
 
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false)
+		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_down = true;
 			if (keystate_down)
@@ -393,6 +405,7 @@ namespace Core
 				ingredient2->restart();
 				questProgress = 0;
 				//missing: restart sinkhole, restart sushi plate pods
+				isPlayerinSinkhole = false;
 
 				keystate_R = false;
 			}
@@ -569,6 +582,11 @@ namespace Core
 
 				if (gameIsPaused == false)
 				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
 					player->draw(delta);
 
 				}
@@ -595,6 +613,8 @@ namespace Core
 				//press button to undraw level 1, and draw level 2
 
 			}
+
+			
 			
 			//Draw Pause Overlay
 			if (gameIsPaused == true)

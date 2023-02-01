@@ -15,6 +15,7 @@ namespace Core
 		cover1 = nullptr;
 		pause_overlay = nullptr;
 		win_overlay = nullptr;
+		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}
 
@@ -94,9 +95,13 @@ namespace Core
 		cover1->transformation.Position = glm::vec2(x, y);
 		cover1->transformation.Scale = glm::vec2(100, 100);
 	}
-	void SceneManager::loadCover2(int x, int y)
+
+	void SceneManager::loadPlayer_Stuck(int x, int y)
 	{
+		player_stuck->transformation.Position = glm::vec2(x, y);
+		player_stuck->transformation.Scale = glm::vec2(90, 90);
 	}
+	
 	void SceneManager::loadPauseOverlay(int x, int y)
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -148,9 +153,13 @@ namespace Core
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", cover1->transformation.Get());
 		cover1->draw();
 	}
-	void SceneManager::drawCover2()
+
+	void SceneManager::drawPlayer_Stuck()
 	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player_stuck->transformation.Get());
+		player_stuck->draw();
 	}
+	
 	void SceneManager::drawPauseOverlay()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", pause_overlay->transformation.Get());
@@ -201,6 +210,11 @@ namespace Core
 	void SceneManager::destroyWinOverlay()
 	{
 		delete win_overlay;
+	}
+
+	void SceneManager::destroyPlayer_Stuck()
+	{
+		delete player_stuck;
 	}
 
 }

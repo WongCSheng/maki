@@ -198,21 +198,22 @@ namespace Core
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+
 			/*check wall*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 1)
 			{
 				std::cout << "Wall on left" << std::endl;
 				Window::player->stop();
 			}
+
 			/*check with pod 1/2*/
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 9 ||
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 10)
+			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 9 || gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 10)
 			{
 				Window::player->stop();
 			}
+
 			/*check for ingredient1 & pod 1*/
-			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x - 1][Window::ingredient1->ingredient1_Grid_pos.y] == 9 &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
+			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x - 1][Window::ingredient1->ingredient1_Grid_pos.y] == 9 && gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 3)
 			{
 				Window::ingredient1->ingredient1_Grid_pos.x--;
 				Window::player->player_grid_pos.x--;
@@ -238,6 +239,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -279,6 +282,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -311,6 +316,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient2 & pod 2*/
@@ -342,6 +349,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -363,6 +372,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check ingr2*/
@@ -382,6 +393,7 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
 				}
 			}
 			/*check for sinkhole*/
@@ -391,9 +403,20 @@ namespace Core
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 				SceneManager::loadTrap(Window::player->player_grid_pos.x-1, Window::player->player_grid_pos.y);
 				SceneManager::drawTrap();
+
+				//draw player stuck in sinkhole
+				Window::isPlayerinSinkhole = true;
+				SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+
+				SceneManager::loadPlayer_Stuck(Window::player->player_grid_pos.x - 1, Window::player->player_grid_pos.y);
+				SceneManager::drawPlayer_Stuck();
+
+
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x-1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
+
 				Window::player->move_left();
+
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
 				for (int c = 0; c < grid_col; c++)
 				{
@@ -402,6 +425,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			else
@@ -417,6 +442,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 		}
@@ -482,6 +509,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient1 & pod 2*/
@@ -513,6 +542,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -546,6 +577,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient2 & pod 2*/
@@ -578,6 +611,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -599,6 +634,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check ingr2*/
@@ -618,6 +655,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for sinkhole*/
@@ -627,6 +666,14 @@ namespace Core
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 				SceneManager::loadTrap(Window::player->player_grid_pos.x+1, Window::player->player_grid_pos.y);
 				SceneManager::drawTrap();
+
+				//draw player stuck in sinkhole
+				Window::isPlayerinSinkhole = true;
+				SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+
+				SceneManager::loadPlayer_Stuck(Window::player->player_grid_pos.x + 1, Window::player->player_grid_pos.y);
+				SceneManager::drawPlayer_Stuck();
+
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x + 1;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_right();
@@ -638,6 +685,7 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
 				}
 			}
 			else
@@ -653,6 +701,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 		}
@@ -717,6 +767,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient1 & pod 2*/
@@ -750,6 +802,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -784,6 +838,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient2 & pod 2*/
@@ -817,6 +873,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -838,6 +896,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check ingr2*/
@@ -857,6 +917,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for sinkhole*/
@@ -866,6 +928,14 @@ namespace Core
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 				SceneManager::loadTrap(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y+1);
 				SceneManager::drawTrap();
+
+				//draw player stuck in sinkhole
+				Window::isPlayerinSinkhole = true;
+				SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+
+				SceneManager::loadPlayer_Stuck(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y+1);
+				SceneManager::drawPlayer_Stuck();
+
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y + 1;
 				Window::player->move_down();
@@ -877,6 +947,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			else
@@ -892,6 +964,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 		}
@@ -957,6 +1031,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient1 & pod 2*/
@@ -990,6 +1066,7 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
 				}
 			}
 
@@ -1024,6 +1101,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for ingredient2 & pod 2*/
@@ -1057,6 +1136,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 
@@ -1078,6 +1159,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check ingr2*/
@@ -1097,6 +1180,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			/*check for sinkhole*/
@@ -1106,6 +1191,14 @@ namespace Core
 				SceneManager::trap = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 				SceneManager::loadTrap(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y-1);
 				SceneManager::drawTrap();
+
+				//draw player stuck in sinkhole
+				Window::isPlayerinSinkhole = true;
+				SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+
+				SceneManager::loadPlayer_Stuck(Window::player->player_grid_pos.x, Window::player->player_grid_pos.y -1);
+				SceneManager::drawPlayer_Stuck();
+
 				Window::trap->trap_Grid_pos.x = Window::player->player_grid_pos.x;
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y - 1;
 				Window::player->move_up();
@@ -1117,6 +1210,8 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
+
 				}
 			}
 			else
@@ -1132,6 +1227,7 @@ namespace Core
 						std::cout << gGrids[r][c];
 					}
 					std::cout << std::endl;
+					std::cout << "********************" << std::endl;
 				}
 			}
 		}

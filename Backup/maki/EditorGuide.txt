@@ -1,0 +1,33 @@
+/*****************************
+		Editor Guide
+*****************************/
+
+To launch the file explorer dialogue
+- press button "Click here to lauch file explorer
+- navigate one directory before to /maki, and then click on the textures folder
+- click on a .png or .jpg file to load a texture.
+
+(This will also print the file path of the texture 
+to the Visual Studio Debug console)
+
+	*In the main folder: 
+	- the change in texture can be displayed on the screen.
+
+	*In the graphics folder:
+	- the change in the texture can only be seen as a printing of its file path to the Visual Studio Debug console.
+
+****************************
+other implemented functions:
+
+	*In the main folder
+	- the texture can be displayed and removed by 
+	ticking the checkbox "Display Texture"
+	
+	- different scenes can be displayed by clicking the following buttons
+		1) Demo Background - loads the tutorial demo level 
+		2) Level1 Background - loads level 1 
+		3) Return to Main Menu - loads the main menu 
+	
+		
+	
+	

@@ -6,13 +6,13 @@ namespace Core
 {
 	SceneManager::SceneManager()
 	{
-		tile = nullptr;
+		/*tile = nullptr;
 		ingredient1 = nullptr;
 		ingredient2 = nullptr;
 		trap = nullptr;
 		goal1 = nullptr;
 		goal2 = nullptr;
-		cover1 = nullptr;
+		cover1 = nullptr;*/
 		pause_overlay = nullptr;
 		win_overlay = nullptr;
 		player_stuck = nullptr;
@@ -51,27 +51,42 @@ namespace Core
 	//	player = new Player(); //respawn player to start position
 	//}
 
-	void SceneManager::loadTile(int x, int y)
+	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
 	{
-		
-		tile->transformation.Position = glm::vec2(x, y);
-		tile->transformation.Scale = glm::vec2(105, 105);
+		tile.second->transformation.Position = glm::vec2(x, y);
+		tile.second->transformation.Scale = glm::vec2(105, 105);
+
+		tilecontainer.insert(tile);
 	}
 
-	void SceneManager::loadIngr1(int x, int y)
+	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>&ingredient)
 	{
+		ingredient.second->transformation.Position = glm::vec2(x, y);
+		ingredient.second->transformation.Scale = glm::vec2(100, 100);
 
-		ingredient1->transformation.Position = glm::vec2(x, y);
-		ingredient1->transformation.Scale = glm::vec2(100, 100);
+		ingredient.second->transformation.grid_pos = { posX, posY };
+
+		ingredientcontainer.insert(ingredient);
 	}
-	void SceneManager::loadIngr2(int x, int y)
+
+	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition)
+	{
+		ingrposition.second->transformation.grid_pos = { x, y };
+		ingrposition.second->transformation.Scale = glm::vec2(100, 100);
+
+		ingrposition.second->transformation.grid_pos = { x, y };
+
+		ingredient_starting_pos.insert(ingrposition);
+	}
+
+	/*void SceneManager::loadIngr2(int x, int y)
 	{
 
 		ingredient2->transformation.Position = glm::vec2(x, y);
 		ingredient2->transformation.Scale = glm::vec2(100, 100);
-	}
+	}*/
 
-	void SceneManager::loadTrap(int x, int y)
+	/*void SceneManager::loadTrap(int x, int y)
 	{
 
 		trap->transformation.Position = glm::vec2(x, y);
@@ -94,7 +109,7 @@ namespace Core
 	{
 		cover1->transformation.Position = glm::vec2(x, y);
 		cover1->transformation.Scale = glm::vec2(100, 100);
-	}
+	}*/
 
 	void SceneManager::loadPlayer_Stuck(int x, int y)
 	{
@@ -116,23 +131,41 @@ namespace Core
 		win_overlay->transformation.Position = glm::vec2(x, y);
 		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
+
 	/*draw functions*/
 	void SceneManager::drawTile()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile->transformation.Get());
-		tile->draw();
+		for (auto& tile : tilecontainer)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile.second->transformation.Get());
+			tile.second->draw();
+		}
 	}
 
-	void SceneManager::drawIngr1()
+	void SceneManager::drawIngr()
+	{
+		for (auto& ingredient : ingredientcontainer)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
+			ingredient.second->draw();
+		}
+	}
+
+	/*void SceneManager::drawIngr1()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient1->transformation.Get());
 		ingredient1->draw();
 	}
+
 	void SceneManager::drawIngr2()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient2->transformation.Get());
-		ingredient2->draw();
+		for (auto& ingredient : ingredientcontainer)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
+			ingredient->draw();
+		}
 	}
+
 	void SceneManager::drawTrap()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", trap->transformation.Get());
@@ -152,7 +185,7 @@ namespace Core
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", cover1->transformation.Get());
 		cover1->draw();
-	}
+	}*/
 
 	void SceneManager::drawPlayer_Stuck()
 	{
@@ -170,17 +203,27 @@ namespace Core
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
 		win_overlay->draw();
 	}
+
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
-		delete tile;
+		for (auto& it : tilecontainer)
+		{
+			delete it.second;
+		}
+
+		tilecontainer.clear();
 	}
 	void SceneManager::destroyIngr()
 	{
-		delete ingredient1;
-		delete ingredient2;
+		for (auto& it : ingredientcontainer)
+		{
+			delete it.second;
+		}
+
+		ingredientcontainer.clear();
 	}
-	void SceneManager::destroyTrap()
+	/*void SceneManager::destroyTrap()
 	{
 		delete trap;
 	}
@@ -191,16 +234,16 @@ namespace Core
 	void SceneManager::destroyGoal2()
 	{
 		delete goal2;
-	}
+	}*/
 
-	void SceneManager::destroyCover1()
+	/*void SceneManager::destroyCover1()
 	{
 		delete cover1;
 	}
 
 	void SceneManager::destroyCover2()
 	{
-	}
+	}*/
 
 	void SceneManager::destroyPauseOverlay()
 	{

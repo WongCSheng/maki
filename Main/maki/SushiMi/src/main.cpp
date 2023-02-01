@@ -42,7 +42,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 
 static Core::MainSystem* CoreSystem;
-static Core::Object::GameObject* TestObj;
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -69,19 +68,13 @@ int main() {
 
 	//systems that were new and not deleted
 	CoreSystem = new Core::MainSystem();
-	TestObj = new Core::Object::GameObject();
 
 	Core::pseudomain::init();
 
-	/*map init*/
-	std::string level_file = "../TileMap/level1.txt";
-	Core::Map::initMap(level_file);
 	/*----------------------------------------------*/
 
 	CoreSystem->windowsystem->Mainloop();
 	
-
-	delete TestObj;
 	Core::pseudomain::cleanup();
 }
 
@@ -162,7 +155,6 @@ void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-	TestObj->Init();
 
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 

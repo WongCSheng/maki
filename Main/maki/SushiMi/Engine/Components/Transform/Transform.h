@@ -60,6 +60,8 @@ namespace Core
 		glm::vec2 Position;
 		glm::mat3 Rotation;
 		glm::vec2 Scale;
+
+		std::pair<int, int> grid_pos;
 		/*glm::vec2 position = glm::vec2(1);
 		glm::vec2 scale = glm::vec2(1);*/
 	private:

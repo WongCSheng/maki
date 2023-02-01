@@ -59,7 +59,6 @@ namespace Core
 
 		Transformer* transformer;
 		CameraSystem* cameraSystem;
-		PhysicSystem* physicssystem;
 		Renderer* rendersystem;
 		Window* windowsystem;
 		TextureSystem* texturesystem;

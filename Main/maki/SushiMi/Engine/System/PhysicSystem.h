@@ -21,46 +21,5 @@
 
 namespace Core
 {
-	//Forward Declaration
-	class Physics;
 	
-	class PhysicSystem : public SystemFrame
-	{
-	public:
-		PhysicSystem();
-		virtual ~PhysicSystem();
-
-		static PhysicSystem* GetInstance();
-
-		void Init();
-		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
-		
-		float applyAccel(float mass);
-		float applyDecel(float mass);
-		void updatePosition(Physics* ObjectPhysics);
-
-		//Collision
-		void updateCollision(std::unordered_map<std::string, Object::GameObject*> Container);
-		/**************************************************************************/
-		/*!
-		* \brief		structure for the axis bound binding box
-		* \param		aabb1 - the first rectangle to checked for collision with the second rectangle
-		* \param		aabb2 - the second rectangle to checked for collision with the first rectangle
-		* \param		vel1, the velocity that is set to 0 (vel1-vel1 = 0)
-		* \param		vel2, the velocity that is set to the resultant velocity (vel2-vel1 = vRel)
-		* \return		bool, 0 if no collision/intersection and 1 if there is collision/intersection
-
-		*/
-		/**************************************************************************/
-		bool CollisionIntersection_RectRect(const AABB& aabb1, const gfxVector2& vel1,
-			const AABB& aabb2, const gfxVector2& vel2);
-
-		int checkneighbour(int row, int col);
-
-	private:
-		std::unordered_map<std::string, Object::GameObject*> PhysicsContainer;
-
-		static PhysicSystem* instance;
-	};
 }

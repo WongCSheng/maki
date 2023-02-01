@@ -36,9 +36,6 @@ namespace Core
 		transformer = Transformer::GetInstance();
 		systems.push_back(transformer);
 
-		physicssystem = PhysicSystem::GetInstance();
-		systems.push_back(physicssystem);
-
 		windowsystem = new Window(800, 600);
 		systems.push_back(windowsystem);
 

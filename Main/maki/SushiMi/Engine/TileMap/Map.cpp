@@ -76,7 +76,7 @@ namespace Core
 		{
 			for (int r = 0; r < grid_row; r++)
 			{
-				std::cout << gGrids[r][c];
+				//print_map_to_console();
 				/*Load texture depending on the grid*/
 				if (gGrids[r][c] == 2)
 				{
@@ -132,8 +132,10 @@ namespace Core
 				}
 
 			}
-			std::cout << std::endl;
+			
 		}
+		print_map_to_console();
+
 
 
 		return 1;
@@ -232,16 +234,8 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
 
-				}
+				print_map_to_console();
 			}
 
 			/*check if player and ingredient and ingredient*/
@@ -275,16 +269,9 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
 
-				}
+				print_map_to_console(); //commented out in release mode
+				
 			}
 
 			/*check for ingredient2 & pod 1*/
@@ -309,16 +296,7 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for ingredient2 & pod 2*/
 			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x - 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
@@ -342,16 +320,8 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 
 			/*check ingr1*/
@@ -365,16 +335,7 @@ namespace Core
 				Window::player->move_left();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check ingr2*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 4)
@@ -386,15 +347,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_left();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-				}
+				print_map_to_console();
 			}
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == 50)
@@ -418,16 +371,7 @@ namespace Core
 				Window::player->move_left();
 
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			else
 			{
@@ -435,16 +379,7 @@ namespace Core
 				Window::player->player_grid_pos.x--;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 		}
 	}
@@ -502,16 +437,7 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for ingredient1 & pod 2*/
 			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x + 1][Window::ingredient1->ingredient1_Grid_pos.y] == 10 &&
@@ -535,16 +461,7 @@ namespace Core
 				SceneManager::cover1->draw();
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 
 			/*check for ingredient2 & pod 1*/
@@ -570,16 +487,7 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for ingredient2 & pod 2*/
 			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x + 1][Window::ingredient2->ingredient2_Grid_pos.y] == 10 &&
@@ -604,16 +512,8 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 
 			/*check ingr1*/
@@ -627,16 +527,8 @@ namespace Core
 				Window::player->move_right();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check ingr2*/
 			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 4)
@@ -648,16 +540,8 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
 				Window::player->move_right();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 50)
@@ -678,15 +562,8 @@ namespace Core
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y;
 				Window::player->move_right();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-				}
+				print_map_to_console();
+
 			}
 			else
 			{
@@ -694,16 +571,8 @@ namespace Core
 				Window::player->player_grid_pos.x++;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 		}
 	}
@@ -760,16 +629,8 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check for ingredient1 & pod 2*/
 			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y + 1] == 10 &&
@@ -795,16 +656,8 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 
 			/*check for ingredient2 & pod 1*/
@@ -831,16 +684,8 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check for ingredient2 & pod 2*/
 			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y + 1] == 10 &&
@@ -866,16 +711,8 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 
 			/*check ingr1*/
@@ -889,16 +726,8 @@ namespace Core
 				Window::player->move_down();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check ingr2*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 4)
@@ -910,16 +739,8 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
 				Window::player->move_down();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 50)
@@ -940,16 +761,8 @@ namespace Core
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y + 1;
 				Window::player->move_down();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 			else
 			{
@@ -957,19 +770,12 @@ namespace Core
 				Window::player->player_grid_pos.y++;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
+				print_map_to_console();
 
-				}
 			}
 		}
 	}
+	
 	void Map::collision_check_up()
 	{
 		if (isStuck() == 0)
@@ -1024,16 +830,7 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for ingredient1 & pod 2*/
 			else if (gGrids[Window::ingredient1->ingredient1_Grid_pos.x][Window::ingredient1->ingredient1_Grid_pos.y - 1] == 10 &&
@@ -1059,15 +856,7 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient1->ingredient1_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient1->ingredient1_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-				}
+				print_map_to_console();
 			}
 
 			/*check for ingredient2 & pod 1*/
@@ -1094,16 +883,7 @@ namespace Core
 
 				Window::goal1->goal1_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal1->goal1_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for ingredient2 & pod 2*/
 			else if (gGrids[Window::ingredient2->ingredient2_Grid_pos.x][Window::ingredient2->ingredient2_Grid_pos.y - 1] == 10 &&
@@ -1129,16 +909,7 @@ namespace Core
 
 				Window::goal2->goal2_Grid_pos.x = Window::ingredient2->ingredient2_Grid_pos.x;
 				Window::goal2->goal2_Grid_pos.y = Window::ingredient2->ingredient2_Grid_pos.y;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 
 			/*check ingr1*/
@@ -1152,16 +923,7 @@ namespace Core
 				Window::player->move_up();
 				SceneManager::loadIngr1(Window::ingredient1->ingredient1_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient1->ingredient1_Grid_pos.y / static_cast<float>(grid_col) * height);
 
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check ingr2*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 4)
@@ -1173,16 +935,7 @@ namespace Core
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
 				Window::player->move_up();
 				SceneManager::loadIngr2(Window::ingredient2->ingredient2_Grid_pos.x / static_cast<float>(grid_row) * width, Window::ingredient2->ingredient2_Grid_pos.y / static_cast<float>(grid_col) * height);
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			/*check for sinkhole*/
 			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 50)
@@ -1203,16 +956,7 @@ namespace Core
 				Window::trap->trap_Grid_pos.y = Window::player->player_grid_pos.y - 1;
 				Window::player->move_up();
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-
-				}
+				print_map_to_console();
 			}
 			else
 			{
@@ -1220,17 +964,28 @@ namespace Core
 				Window::player->player_grid_pos.y--;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
-				for (int c = 0; c < grid_col; c++)
-				{
-					for (int r = 0; r < grid_row; r++)
-					{
-						std::cout << gGrids[r][c];
-					}
-					std::cout << std::endl;
-					std::cout << "********************" << std::endl;
-				}
+				print_map_to_console();
+
 			}
 		}
+	}
+
+	void Map::print_map_to_console()
+	{
+		std::cout << "**************************** MAP LAYOUT ************************************" << std::endl;
+
+		for (int c = 0; c < grid_col; c++)
+		{
+			for (int r = 0; r < grid_row; r++)
+			{
+				std::cout << std::setw(4) << gGrids[r][c] << std::setw(4);
+
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "**********************************************************************************" << std::endl;
+
+		
 	}
 
 	void Map::DrawMap()

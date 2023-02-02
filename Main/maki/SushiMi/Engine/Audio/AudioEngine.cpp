@@ -49,13 +49,13 @@ namespace Core
     {
     }
 
-    /*!				void _audioManager::PlayClip(string clipName)
+    /*!				void _audioManager::PlaySFX(string clipName)
     @param			string clipName
     @return none
 
                     Plays music clip
     */
-    void _audioManager::PlayClip(string clipName)
+    void _audioManager::PlaySFX(string clipName)
     {
         // Create the sound.
         Sound* audioClip = 0;
@@ -96,6 +96,18 @@ namespace Core
     {
         // stop play the sound.
         musicChannel->stop();
+    }
+
+    /*!				void _audioManager::StopSFX(void)
+    @param			void
+    @return none
+
+                    Stop playing Sound Effects
+    */
+    void _audioManager::StopSFX(void)
+    {
+        // stop play the sound.
+        channel->stop();
     }
 
     /*!				void _audioManager::SetAudioVolume(float volume)
@@ -150,14 +162,14 @@ namespace Core
         fmodSystem->release();
     }
 
-    /*!				void _audioManager::LoadSound(string name)
+    /*!				void _audioManager::LoadSFX(string name)
     {
     @param          string name
     @return none
 
                    Load sound into directory
     */
-    void _audioManager::LoadSound(string name)
+    void _audioManager::LoadSFX(string name)
     {
         string pathString = "../Assets/Audio/" + name + '\0';
         char* pathName = new char[pathString.length() + 1];
@@ -186,14 +198,14 @@ namespace Core
         delete[] pathName;
     }
 
-    /*!				void _audioManager::UnloadSound(string name)
+    /*!				void _audioManager::UnLoadSFX(string name)
     {
     @param          string name
     @return none
 
                    Unload sound into directory
     */
-    void _audioManager::UnloadSound(string name)
+    void _audioManager::UnLoadSFX(string name)
     {
         if (isActive && soundDatabase.find(name) != soundDatabase.end())
             soundDatabase[name]->release();

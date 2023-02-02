@@ -1,0 +1,2 @@
+1. Change system pointers to unique pointers
+2. Store all objects fully to game objects

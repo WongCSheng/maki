@@ -1,0 +1,123 @@
+﻿  LevelEditor.cpp
+  Animation2D.cpp
+  Component.cpp
+  collision.cpp
+  Physics.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(11,10): fatal error C1083: Cannot open include file: '../Engine/System/Renderer.h': No such file or directory (compiling source file Engine\Animation\Animation2D.cpp)
+  Rectangle.cpp
+  Sprite.cpp
+  Texture.cpp
+  Transform.cpp
+  Core.cpp
+  Factory.cpp
+  Input.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Physics\Physics.h(12,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Components\Physics\Physics.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Renderer.h(6,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Core\Core.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Sprite.h(13,10): fatal error C1083: Cannot open include file: '../Engine/Components/Texture/Texture.h': No such file or directory (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Physics\collision.h(22,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Components\Physics\collision.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Factory\Factory.h(9,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Factory\Factory.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Input\Input.h(15,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Input\Input.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.cpp(9,10): fatal error C1083: Cannot open include file: '../Engine/System/TextureSystem.h': No such file or directory
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Rectangle.cpp(2,10): fatal error C1083: Cannot open include file: '../include/glm.h': No such file or directory
+  model.cpp
+  Messaging.cpp
+  JSONSerializer.cpp
+  CameraSystem.cpp
+  glhelper.cpp
+  glslshader.cpp
+  LinkedList.cpp
+  PhysicSystem.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Messaging\Messaging.h(3,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Messaging\Messaging.cpp)
+  Renderer.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(13,10): fatal error C1083: Cannot open include file: '../Engine/Serialiser/JSONSerializer.h': No such file or directory
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Renderer.h(6,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\System\Renderer.cpp)
+  TextureSystem.cpp
+  Transformer.cpp
+  Map.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\CameraSystem.h(10,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\System\CameraSystem.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Linked List\LinkedList.h(3,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\System\Linked List\LinkedList.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Graphics\glhelper.cpp(15,10): fatal error C1083: Cannot open include file: '../Engine/System/Graphics/glhelper.h': No such file or directory
+  Timer.cpp
+  GameObject.cpp
+  Player.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Graphics\glslshader.cpp(11,10): fatal error C1083: Cannot open include file: '../Engine/System/Graphics/glslshader.h': No such file or directory
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\PhysicSystem.h(13,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\System\PhysicSystem.cpp)
+  main.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(6,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Timer\Timer.cpp)
+  SceneManager.cpp
+  Window.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Mesh\model.h(5,10): fatal error C1083: Cannot open include file: '../Headers/STL_Header.h': No such file or directory (compiling source file Engine\Mesh\model.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Component.h(12,10): fatal error C1083: Cannot open include file: '../Headers/RapidJSON_Header.h': No such file or directory (compiling source file Engine\Components\Component.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\System\Transformer.h(6,10): fatal error C1083: Cannot open include file: '../Headers/Math_Header.h': No such file or directory (compiling source file Engine\System\Transformer.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Component.h(12,10): fatal error C1083: Cannot open include file: '../Headers/RapidJSON_Header.h': No such file or directory (compiling source file Engine\Components\Transform\Transform.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(12,10): fatal error C1083: Cannot open include file: '../Engine/System/SystemFrame.h': No such file or directory (compiling source file Engine\System\TextureSystem.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(8,10): fatal error C1083: Cannot open include file: '../Engine/Serialiser/JSONSerializer.h': No such file or directory
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(74): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Game Object\Player.cpp(162,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Game Object\Player.cpp(163,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(32,41): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(78,66): warning C4100: 'posY': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(78,56): warning C4100: 'posX': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(134,14): warning C4100: 'userParam': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(132,10): warning C4100: 'length': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(130,9): warning C4100: 'id': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(128,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(58,76): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(58,50): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(58,41): warning C4100: 'key': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(58,31): warning C4100: 'pwin': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(194,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(195,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(296,62): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(297,62): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(306,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(307,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(397,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(398,52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(565,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(565,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(628,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(628,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data

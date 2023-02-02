@@ -356,13 +356,15 @@ namespace Core
 			}
 			std::cout << std::endl;
 		}
-		std::cout << "ingredientcontainer contains:" << std::endl;
+
+		//debug ingredient container
+		/*std::cout << "ingredientcontainer contains:" << std::endl;
 		for (auto& x : SceneManager::ingredientcontainer)
 		{
 			
 			std::cout << static_cast<char>(x.first) << ": " << x.second << std::endl;
 
-		}
+		}*/
 
 		print_map_to_console();
 
@@ -411,402 +413,388 @@ namespace Core
 
 	void Map::collision_check_left()
 	{
-		grid_number check{};
-		
-		//Store what kind of ingredient is player pushing
-		if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-			gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
+		if (isStuck() == 0)
 		{
-			check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-		}
-		
-		if(!isStuck())
-		{
-			/*check right neighbour, (wall)(ingredient)(player)*/
+			//check (x-1,y)
+			//Step 1: if player is colliding w ingredient or wall 
 			if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) &&
-				gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first)&&
-				gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
-			{
-				std::cout << "Wall on left" << std::endl;
-				Window::player->stop();
-			}
-			/*check wall*/
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) ||
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) ||
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 			{
-				std::cout << "Wall on left" << std::endl;
-				Window::player->stop();
-			}
-			/*check with covered box*/
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
-			{
-				Window::player->stop();
-			}
-
-			/*check ingredient*/
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(check))
-			{
-				/*check for ingredient & box*/
-				SceneManager::ingredientcontainer.
-				if ((SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.x + 1 &&
-					SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.y) ||
-					(SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.x + 1 &&
-						SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.y))
+				//Step 1A: if it is a wall
+				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 				{
-					SceneManager::ingredientcontainer[check]->transformation.Position.x--;
-					Window::player->player_grid_pos.x--;
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-					Window::player->move_left();
+					//do nothing
+					Window::player->stop();
 
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
-					SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
-
-					std::cout << "win = 1" << std::endl;
-					Window::questProgress += 1;
-					std::cout << "progress is " << Window::questProgress << std::endl;
-
-					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
-					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
-					
-					print_map_to_console();
 				}
-				
-				SceneManager::ingredientcontainer[check]->transformation.Position.x--;
-				Window::player->player_grid_pos.x--;
-				gGrids[static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.x)][static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.y)]
-					= static_cast<int>(check);
+				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x-2, y)
+				else
+				{
+					//Store what kind of ingredient is player pushing
+					grid_number check{};
+					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x-1][Window::player->player_grid_pos.y ]);
+					//Step 2A: if it is a wall
+					if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+					{
+						//do nothing
+						std::cout << "wall detected up of player" << std::endl;
+						Window::player->stop();
+					}
+					//Step 2B: if it is an empty space
+					else
+					{
 
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				Window::player->move_left();
 
-				print_map_to_console();
+						//step 3: check if (x-2,y) is a (A) blank space or (B) box plate or (C) sinkhole
+						if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::space))
+						{
+							//set (x-2,y) to ingredient
+							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
+							//set (x-1,y) to player
+							gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+							//set (x,y) to blank
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							//move the player forward
+							Window::player->move_left();
+							Window::player->player_grid_pos.x--;
+							//move ingredient forward 
+							//iterate through vector and find ingredient
+							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
+
+							/*if (iter != SceneManager::ingredientcontainer.end())
+							{
+								i
+							}*/
+						}
+					}
+				}
 			}
-			
-			/*check for sinkhole*/
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+			else //it is a blank space or a sinkhole to check w the player
 			{
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.x = Window::player->player_grid_pos.x - 1;
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.y = Window::player->player_grid_pos.y;
+				//if it is a sinkhole
+				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				{
+					//player moves anyway
+					std::cout << "player stepped in sinkhole!" << std::endl;
+					//set (x-1,y) to player in sinkhole
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_left();
+					Window::player->player_grid_pos.x--;
 
-				Window::player->move_left();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
+					//is it a sinkhole
+				}
+				else //it is a blank space
+				{
+					//set (x-1,y) to player
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_left();
+					Window::player->player_grid_pos.x--;
 
-				print_map_to_console();
+				}
+
 			}
-			else
-			{
-				Window::player->move_left();
-				Window::player->player_grid_pos.x--;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = 0;
-				print_map_to_console();
-			}
+
 		}
 	}
+
 	void Map::collision_check_right()
 	{
-		grid_number check{};
-
-		//Store what kind of ingredient is player pushing
-		if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-			gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
+		if (isStuck() == 0)
 		{
-			check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
-		}
-		
-		if(isStuck() == 0)
-		{
-			/*check right neighbour, (wall)(ingredient1/2)(player)*/
+			//check (x+1,y)
+			//Step 1: if player is colliding w ingredient or wall 
 			if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) ||
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) &&
-				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
-			{
-				std::cout << "Wall on riight" << std::endl;
-				Window::player->stop();
-			}
-			/*check wall*/
-			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) ||
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 			{
-				std::cout << "Wall on right" << std::endl;
-				Window::player->stop();
+				//Step 1A: if it is a wall
+				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+				{
+					//do nothing
+					Window::player->stop();
+
+				}
+				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x+2, y)
+				else
+				{
+					//Store what kind of ingredient is player pushing
+					grid_number check{};
+					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x+1][Window::player->player_grid_pos.y]);
+					//Step 2A: if it is a wall
+					if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+					{
+						//do nothing
+						std::cout << "wall detected up of player" << std::endl;
+						Window::player->stop();
+					}
+					//Step 2B: if it is an empty space
+					else
+					{
+
+
+						//step 3: check if (x+2,y) is a (A) blank space or (B) box plate or (C) sinkhole
+						if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::space))
+						{
+							//set (x+2,y) to ingredient
+							gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
+							//set (x+1,y) to player
+							gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+							//set (x,y) to blank
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							//move the player forward
+							Window::player->move_right();
+							Window::player->player_grid_pos.x++;
+							//move ingredient forward 
+							//iterate through vector and find ingredient
+							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
+
+							/*if (iter != SceneManager::ingredientcontainer.end())
+							{
+								i
+							}*/
+						}
+					}
+				}
 			}
-			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 3 &&
-				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == 4 ||
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == 4 &&
-				gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == 3)
+			else //it is a blank space or a sinkhole to check w the player
 			{
-				Window::player->stop();
-			}
+				//if it is a sinkhole
+				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				{
+					//player moves anyway
+					std::cout << "player stepped in sinkhole!" << std::endl;
+					//set (x+1,y) to player in sinkhole
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_right();
+					Window::player->player_grid_pos.x++;
 
-			/*check with pod 1/2*/
-			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
-			{
-				Window::player->stop();
-			}
-			/*check for ingredient1 & pod 1*/
-			else if ((SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.x - 1 &&
-				SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.y) ||
-				(SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.x - 1 &&
-					SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.y))
-			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.x++;
-				Window::player->player_grid_pos.x++;
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				Window::player->move_right();
+					//is it a sinkhole
+				}
+				else //it is a blank space
+				{
+					//set (x+1,y) to player
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_right();
+					Window::player->player_grid_pos.x++;
 
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
-				SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
-
-				std::cout << "win = 1" << std::endl;
-				Window::questProgress += 1;
-				std::cout << "progress is " << Window::questProgress << std::endl;
-
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
-
-				print_map_to_console();
-			}
-
-			/*check ingr1*/
-			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(check))
-			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.x++;
-				Window::player->player_grid_pos.x++;
-				gGrids[static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.x)][static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.y)] =
-					static_cast<int>(check);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
-				Window::player->move_right();
-
-				print_map_to_console();
-			}
-
-			/*check for sinkhole*/
-			else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
-			{
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.x = Window::player->player_grid_pos.x;
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.y = Window::player->player_grid_pos.y + 1;
-				Window::player->move_right();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
-
-				print_map_to_console();
-			}
-			else
-			{
-				Window::player->move_right();
-				Window::player->player_grid_pos.x++;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = 0;
-				print_map_to_console();
+				}
 
 			}
+
 		}
+		
 	}
 	void Map::collision_check_down()
 	{
-		grid_number check{};
-
-		//Store what kind of ingredient is player pushing
-		if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::ingredients) &&
-			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::items))
+		//if the player is not stuck
+		if (isStuck() == 0)
 		{
-			check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
-		}
-		
-		if(isStuck() == 0)
-		{
-			/*check down neighbour, (wall)(ingredient1/2)(player)*/
+			//check (x, y-1)
+			//Step 1: if player is colliding w ingredient or wall 
 			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::first) ||
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::items) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::last))
-			{
-				Window::player->stop();
-			}
-			/*check wall*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(wall_type::first) &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::items) ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(wall_type::first) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(wall_type::last))
 			{
-				Window::player->stop();
+				//Step 1A: if it is a wall
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(wall_type::first) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(wall_type::last))
+				{
+					//do nothing
+					Window::player->stop();
+
+				}
+				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x, y-2)
+				else
+				{
+					//Store what kind of ingredient is player pushing
+					grid_number check{};
+					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
+					//Step 2A: if it is a wall
+					if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::first) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::last))
+					{
+						//do nothing
+						std::cout << "wall detected down of player" << std::endl;
+						Window::player->stop();
+					}
+					//Step 2B: if it is an empty space
+					else
+					{
+
+
+						//step 3: check if (x,y+2) is a (A) blank space or (B) box plate or (C) sinkhole
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(grid_number::space))
+						{
+							//set (x,y+2) to ingredient
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(check);
+							//set (x,y+1) to player
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
+							//set (x,y) to blank
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							//move the player forward
+							Window::player->move_down();
+							Window::player->player_grid_pos.y++;
+							//move ingredient forward 
+							//iterate through vector and find ingredient
+							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
+
+							/*if (iter != SceneManager::ingredientcontainer.end())
+							{
+								i
+							}*/
+						}
+					}
+				}
 			}
-			/*check with pod 1/2*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::boxcover))
+			else //it is a blank space or a sinkhole to check w the player
 			{
-				Window::player->stop();
-			}
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 3 &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == 4 ||
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == 4 &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == 3)
-			{
-				Window::player->stop();
-			}
-			/*check for ingredient1 & pod 1*/
-			else if ((SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.x &&
-				SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box1]->transformation.Position.y - 1) ||
-				(SceneManager::ingredientcontainer[check]->transformation.Position.x == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.x &&
-					SceneManager::ingredientcontainer[check]->transformation.Position.y == SceneManager::ingredientcontainer[grid_number::box2]->transformation.Position.y - 1))
-			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.y++;
-				Window::player->player_grid_pos.y++;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
-				Window::player->move_down();
+				//if it is a sinkhole
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::sinkhole))
+				{
+					//player moves anyway
+					std::cout << "player stepped in sinkhole!" << std::endl;
+					//set (x,y+1) to player in sinkhole
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::filledsinkhole);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_down();
+					Window::player->player_grid_pos.y++;
 
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
-				SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
+					//is it a sinkhole
+				}
+				else //it is a blank space
+				{
+					//set (x,y+1) to player
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_down();
+					Window::player->player_grid_pos.y++;
 
-				std::cout << "win = 1" << std::endl;
-				Window::questProgress += 1;
-				std::cout << "progress is " << Window::questProgress << std::endl;
-
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
-				SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
-
-				print_map_to_console();
-			}
-
-			/*check ingr1*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(check))
-			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.y++;
-				Window::player->player_grid_pos.y++;
-				gGrids[static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.x)][static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.y)] =
-					static_cast<int>(check);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
-				Window::player->move_down();
-
-				print_map_to_console();
-			}
-			
-			/*check for sinkhole*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::sinkhole))
-			{
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.x = Window::player->player_grid_pos.x;
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.y = Window::player->player_grid_pos.y + 1;
-				Window::player->move_down();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
-
-				print_map_to_console();
-			}
-			else
-			{
-				Window::player->move_down();
-				Window::player->player_grid_pos.y++;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = 0;
-				print_map_to_console();
+				}
 
 			}
 		}
+
+		
 	}
 	
 	void Map::collision_check_up()
 	{
-		grid_number check{};
-
-		//Store what kind of ingredient is player pushing
-		if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::ingredients) &&
-			gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::items))
+		//if the player is not stuck
+		if (isStuck() == 0)
 		{
-			check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-		}
-		
-		if(isStuck() == 0)
-		{
-			/*check player against ingredient against wall*/
+			//check (x, y-1)
+			//Step 1: if player is colliding w ingredient or wall 
 			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] >= static_cast<int>(wall_type::first) ||
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::items) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(wall_type::last))
-			{
-				Window::player->stop();
-			}
-			/*check player against wall*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::first) &&
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::items) ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::first) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::last))
 			{
-				Window::player->stop();
-			}
-			/*check with player with box*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::boxcover))
-			{
-				Window::player->stop();
-			}
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 3 &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == 4 ||
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == 4 &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == 3)
-			{
-				Window::player->stop();
-			}
-			/*check for ingredient & box*/
-			else if (check <= grid_number::items && check >= grid_number::ingredients)
-			{
-				if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::box1) &&
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(check)))
+				//Step 1A: if it is a wall
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::first) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::last))
 				{
-					SceneManager::ingredientcontainer[check]->transformation.Position.y--;
-					Window::player->player_grid_pos.y--;
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
-					Window::player->move_up();
+					//do nothing
+					Window::player->stop();
 
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::win);
-					SceneManager::win_condition.push_back({ Window::player->player_grid_pos.x, Window::player->player_grid_pos.y });
+				}
+				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x, y-2)
+				else
+				{
+					//Store what kind of ingredient is player pushing
+					grid_number check{};
+					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+					//Step 2A: if it is a wall
+					if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] >= static_cast<int>(wall_type::first) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(wall_type::last))
+					{
+						//do nothing
+						std::cout << "wall detected up of player" << std::endl;
+						Window::player->stop();
+					}
+					//Step 2B: if it is an empty space
+					else
+					{
+						
 
-					std::cout << "win = 1" << std::endl;
-					Window::questProgress += 1;
-					std::cout << "progress is " << Window::questProgress << std::endl;
+						//step 3: check if (x,y-2) is a (A) blank space or (B) box plate or (C) sinkhole
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(grid_number::space))
+						{
+							//set (x,y-2) to ingredient
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(check);
+							//set (x,y-1) to player
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
+							//set (x,y) to blank
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							//move the player forward
+							Window::player->move_up();
+							Window::player->player_grid_pos.y--;
+							//move ingredient forward 
+							//iterate through vector and find ingredient
+							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
 
-					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.x = SceneManager::ingredientcontainer[check]->transformation.Position.x;
-					SceneManager::ingredientcontainer[grid_number::boxcover]->transformation.Position.y = SceneManager::ingredientcontainer[check]->transformation.Position.y;
-
-					print_map_to_console();
+							/*if (iter != SceneManager::ingredientcontainer.end())
+							{
+								i
+							}*/
+						}
+					}
 				}
 			}
-
-			/*check player against ingredient*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(check))
+			else //it is a blank space or a sinkhole to check w the player
 			{
-				SceneManager::ingredientcontainer[check]->transformation.Position.y--;
-				Window::player->player_grid_pos.y--;
-				gGrids[static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.x)][static_cast<int>(SceneManager::ingredientcontainer[check]->transformation.Position.y)] =
-					static_cast<int>(check);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
-				Window::player->move_up();
+				//if it is a sinkhole
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::sinkhole))
+				{
+					//player moves anyway
+					std::cout << "player stepped in sinkhole!" << std::endl;
+					//set (x,y-1) to player in sinkhole
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::filledsinkhole);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_up();
+					Window::player->player_grid_pos.y--;
 
-				print_map_to_console();
+					//is it a sinkhole
+				}
+				else //it is a blank space
+				{
+					//set (x,y-1) to player
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
+					//set (x,y) to blank
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					//move the player forward
+					Window::player->move_up();
+					Window::player->player_grid_pos.y--;
+
+				}
+				
 			}
 			
-			/*check player against sinkhole*/
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::sinkhole))
-			{
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.x = Window::player->player_grid_pos.x;
-				SceneManager::ingredientcontainer[grid_number::sinkhole]->transformation.Position.y = Window::player->player_grid_pos.y - 1;
-				Window::player->move_up();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 51;
-				print_map_to_console();
-			}
-			/*check ingredient against sinkhole*/
-			else if (gGrid[][])
-			{
-
-			}
-			/*player moves*/
-			else
-			{
-				Window::player->move_up();
-				Window::player->player_grid_pos.y--;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = 0;
-				print_map_to_console();
-
-			}
 		}
 	}
 

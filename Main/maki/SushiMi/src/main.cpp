@@ -199,7 +199,7 @@ void Core::pseudomain::init() {
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
-	AudioManager.LoadSound("WalkSFX.wav");
+	AudioManager.LoadSFX("WalkSFX.wav");
 	//play bgm
 	AudioManager.PlayMusic("BGM.wav");
 
@@ -220,7 +220,7 @@ void Core::pseudomain::cleanup() {
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
-	AudioManager.UnloadSound("WalkSFX.wav");
+	AudioManager.UnLoadSFX("WalkSFX.wav");
 	AudioManager.UnloadMusic("BGM.wav");
 
 	////imgui Shutdown

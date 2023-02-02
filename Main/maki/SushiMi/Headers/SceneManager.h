@@ -83,6 +83,7 @@ namespace Core
 		static void loadWinOverlay(int x, int y);
 		static void drawTile();
 		static void drawIngr();
+		static void draw();
 		/*static void drawIngr1();
 		static void drawIngr2();
 		static void drawTrap();

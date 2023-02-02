@@ -338,7 +338,7 @@ namespace Core
 			keystate_right = true;
 			if (keystate_right)
 			{
-				//Map::collision_check_right();
+				Map::collision_check_right();
 				keystate_right = false;
 			}
 		}
@@ -350,7 +350,7 @@ namespace Core
 			//holding key or let go key, player stop
 			if (keystate_left)
 			{
-				//Map::collision_check_left();
+				Map::collision_check_left();
 				keystate_left = false;
 			}
 		}
@@ -361,7 +361,8 @@ namespace Core
 
 			if (keystate_up)
 			{
-				//Map::collision_check_up();
+				Map::collision_check_up();
+				Map::print_map_to_console();
 				isWalk = true; //play walking sfx
 				keystate_up = false;
 
@@ -375,7 +376,9 @@ namespace Core
 			keystate_down = true;
 			if (keystate_down)
 			{
-				//Map::collision_check_down();
+				Map::collision_check_down();
+				Map::print_map_to_console();
+
 				keystate_down = false;
 			}
 		}
@@ -477,10 +480,7 @@ namespace Core
 
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
-			if (ingredient) {
-				//delete ingredient;
-				ingredient = nullptr;
-			}
+			
 			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
@@ -709,7 +709,7 @@ namespace Core
 
 			if (isWalk == true)
 			{
-				AudioManager.PlayClip("WalkSFX.wav");
+				AudioManager.PlaySFX("WalkSFX.wav");
 				isWalk = false;
 			}
 			////display object at imgui cursor

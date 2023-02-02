@@ -370,7 +370,6 @@ namespace Core
 
 		}
 
-
 		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_down = true;
@@ -426,10 +425,9 @@ namespace Core
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
-		player->stop();
 
-
-
+		//if(keystate_down && keystate_up && keystate_left && keystate_right)
+			player->stop();
 	}
 
 	void Window::Resize()

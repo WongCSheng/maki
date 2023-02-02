@@ -25,7 +25,7 @@ namespace Core
 		auto rect_sys = Core::Renderer::GetInstance();
 		rectangle = rect_sys->Generate();
 
-		std::cout << "Texture loaded: " << filename << " Texture ID: a" << texture.TextureID << "\n";
+		//std::cout << "Texture loaded: " << filename << " Texture ID: a" << texture.TextureID << "\n";
 	}
 
 	Sprite::~Sprite()

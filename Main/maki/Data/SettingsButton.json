@@ -8,14 +8,14 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Buttons/Settings.jpg",
+      "texturepath": "../textures/Buttons/Button_Options.png",
       "name": "SettingsButton",
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",
-      "AudioPath": "../Assets/ Audio/BGM.wav"
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

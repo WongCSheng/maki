@@ -8,14 +8,14 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Buttons/Quit.jpg",
+      "texturepath": "../textures/Buttons/Button_Quit.png",
       "name": "QuitButton",
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",
-      "AudioPath": "../Assets/ Audio/BGM.wav"
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

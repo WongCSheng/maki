@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/TabMenu.jpg",
+      "texturepath": "../textures/TabMenu.png",
       "name": "TabMenu",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]

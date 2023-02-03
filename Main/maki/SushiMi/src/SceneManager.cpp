@@ -41,6 +41,10 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
+		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+		{
+			Map::ResetMap();
+		}
 		Window::loaded = false;
 		//SceneManager::tilecontainer.clear();
 		//SceneManager::ingredientcontainer.clear();
@@ -58,10 +62,7 @@ namespace Core
 			ingredient.second->restart();
 		}
 
-		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
-		{
-			Map::ResetMap();
-		}
+		
 	}
 	//R key for restart
 	// update by thea: i've written a new restart function

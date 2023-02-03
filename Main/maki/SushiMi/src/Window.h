@@ -56,7 +56,7 @@ namespace Core
 		bool isSettings;
 		static inline bool isCredits;
 
-
+		static inline bool timetodeletegrid;
 
 		void SetPaused(bool paused) //take in boolean
 		{

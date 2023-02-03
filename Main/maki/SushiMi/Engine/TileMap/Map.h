@@ -50,10 +50,11 @@ namespace Core
 		static inline int Map_Height, Map_Width;
 		/*static int** MapData;
 		static int** BinaryData;*/
-		static int grid_row;
-		static int grid_col;
+		static inline int grid_row;
+		static inline int grid_col;
 		static float tile_width, tile_height;
 		static int** gGrids;
+
 
 		//texture names
 		/*static inline Sprite* rice;

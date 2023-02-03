@@ -150,6 +150,7 @@ namespace Core
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 
+		timetodeletegrid = false;
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -186,6 +187,7 @@ namespace Core
 
 	Window::~Window()
 	{
+		timetodeletegrid = true;
 		Map::ResetMap();
 
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
@@ -196,6 +198,7 @@ namespace Core
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
+		
 
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
@@ -633,6 +636,7 @@ namespace Core
 			//step 3: main menu
 			if (isLevel1 == true)
 			{
+				isCutscene = false;
 				isMenuState = false;
 				isLevel2 = false;
 				if (!loaded)
@@ -696,6 +700,7 @@ namespace Core
 
 			if (isLevel2 == true)
 			{
+				isCutscene = false;
 				isLevel1 = false;
 				if (!loaded)
 				{

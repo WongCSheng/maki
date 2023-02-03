@@ -175,19 +175,19 @@ namespace Core
 		{*/ //i commented out this line as its affecting Restart - thea
 		if (Window::isLevel1 || Window::isLevel2)
 		{
-			//set the initial grid that the player is leaving back to blank 
-			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-			sp->transformation.Position.x = playerpos_restart.x;
-			sp->transformation.Position.y = playerpos_restart.y;
-			Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
-			Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
+		//	//set the initial grid that the player is leaving back to blank 
+		//	Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+		//	sp->transformation.Position.x = playerpos_restart.x;
+		//	sp->transformation.Position.y = playerpos_restart.y;
+		//	Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
+		//	Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
-		//set the initial grid that the player is leaving back to blank 
-		Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-		sp->transformation.Position.x = playerpos_restart.x;
-		sp->transformation.Position.y = playerpos_restart.y;
-		Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
-		Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
+		////set the initial grid that the player is leaving back to blank 
+		//Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+		//sp->transformation.Position.x = playerpos_restart.x;
+		//sp->transformation.Position.y = playerpos_restart.y;
+		//Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
+		//Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
 		}
 

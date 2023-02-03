@@ -25,9 +25,7 @@
 
 namespace Core
 {
-	int Map::grid_row = 0;
-	int Map::grid_col = 0;
-
+	
 	//int Map::gGrids[GRID_ROW][GRID_COL];
 	int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
@@ -38,6 +36,11 @@ namespace Core
 
 	Map::~Map()
 	{
+		/*for (int i = 0; i < grid_row; i++)
+		{
+			delete gGrids[i];
+		}
+		delete gGrids;*/
 		//this does deleting of textures
 		/*SceneManager::destroyTile();
 		SceneManager::destroyGoal1();
@@ -94,14 +97,19 @@ namespace Core
 			}
 		}
 
+
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
-
-		for (int i = 0; i < grid_row; i++)
+		if (Window::timetodeletegrid)
 		{
-			delete gGrids[i];
+			for (int i = 0; i < grid_row; i++)
+			{
+				delete gGrids[i];
+			}
+			delete gGrids;
+
 		}
-		delete gGrids;
+		
 
 		win_amt = 0;
 		SceneManager::amt_of_win_conditions = 0;

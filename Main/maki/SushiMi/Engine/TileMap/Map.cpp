@@ -30,7 +30,7 @@ namespace Core
 
 	//int Map::gGrids[GRID_ROW][GRID_COL];
 	int width, height;
-	unsigned int SceneManager::amt_of_win_conditions;
+	unsigned int SceneManager::amt_of_win_conditions, win_amt;
 
 	Map::Map()
 	{
@@ -102,6 +102,9 @@ namespace Core
 			delete gGrids[i];
 		}
 		delete gGrids;
+
+		win_amt = 0;
+		SceneManager::amt_of_win_conditions = 0;
 	}
 
 	int Map::LoadMap()
@@ -376,26 +379,7 @@ namespace Core
 
 	bool Map::isWin()
 	{
-		int win_check{ 0 };
-
-		for (auto check : SceneManager::win_condition)
-		{
-			if (gGrids[check.first][check.second] == static_cast<int>(grid_number::win))
-			{
-				win_check++;
-			}
-
-			if (win_check == SceneManager::amt_of_win_conditions)
-			{
-				SceneManager::win_condition.clear();
-
-				win_check = 0;
-				
-				return true;
-			}
-		}
-
-		return false;
+		return ((win_amt == SceneManager::amt_of_win_conditions) ? true : false);
 	}
 
 
@@ -488,6 +472,8 @@ namespace Core
 								break;
 							}
 						}
+
+						win_amt++;
 
 						std::cout << "left ingredient box\n";
 						Window::player->move_left();
@@ -629,6 +615,8 @@ namespace Core
 							}
 						}
 
+						win_amt++;
+
 						std::cout << "right ingredient box\n";
 						Window::player->move_right();
 					}
@@ -762,6 +750,8 @@ namespace Core
 							}
 						}
 
+						win_amt++;
+
 						std::cout << "down ingredient box\n";
 						Window::player->move_down();
 					}
@@ -894,6 +884,9 @@ namespace Core
 								break;
 							}
 						}
+
+						win_amt++;
+
 						std::cout << "up ingredient box\n";
 						Window::player->move_up();
 					}
@@ -965,6 +958,10 @@ namespace Core
 			}
 			std::cout << std::endl;
 		}
+
+		std::cout << "Goals: " << SceneManager::amt_of_win_conditions << std::endl;
+		std::cout << "Current goals: " << win_amt << std::endl;
+
 		std::cout << "****************************************************************************" << std::endl;
 	}
 

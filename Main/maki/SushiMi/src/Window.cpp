@@ -704,8 +704,6 @@ namespace Core
 					Map::initMap("../TileMap/level2(new).txt");
 					Map::LoadMap();
 
-					Map::LoadMap();
-
 					loaded = true;
 				}
 				

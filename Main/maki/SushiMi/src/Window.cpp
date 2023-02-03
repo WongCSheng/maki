@@ -132,6 +132,10 @@ namespace Core
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
+
+		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
+		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
+
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
@@ -143,6 +147,7 @@ namespace Core
 		isMenuState = true;
 		isHowToPlay = false;
 		isSettings = false;
+		isCredits = false;
 		isWalk = false;
 		isLevel1 = false;
 		isLevel2 = false;
@@ -174,6 +179,7 @@ namespace Core
 		SceneManager::destroyIngr();
 		
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
+		SceneManager::destroySettings();
 		SceneManager::destroyWinOverlay(); //delete Win Overlay
 
 		SceneManager::destroyPlayer_Stuck();
@@ -359,7 +365,7 @@ namespace Core
 			//SETTINGS
 			if (xpos > 275 && xpos < (275 + 366) && ypos > 700 && ypos < (700 + 96))
 			{
-				
+				isSettings = true;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
 			if (xpos > 275 && xpos < (275 + 366) && ypos > 890 && ypos < (890 + 96))
@@ -800,9 +806,6 @@ namespace Core
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-
-					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-
 					//NEXT PAGE
 					if (HowToPlayPage < 3)
 					{
@@ -846,6 +849,44 @@ namespace Core
 				}
 
 			}
+
+			if (isSettings == true)
+			{
+				SceneManager::loadSettings(0,0);
+				SceneManager::drawSettings();
+				if (ImGui::IsMouseReleased(0))
+				{
+					double xpos = 0, ypos = 0;
+					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+
+					//PRESS CREDITS
+					if (xpos > 814 && xpos < 1047 && ypos > 536 && ypos < 612)
+					{
+						isCredits = true;
+						
+					}
+					//PRESS BACK
+					if (xpos > 814 && xpos < 1047 && ypos > 635 && ypos < 708)
+					{
+						isSettings = false;
+					}
+				}
+			}
+
+			if (isCredits == true)
+			{
+				if (ImGui::IsMouseReleased(0))
+				{
+					double xpos = 0, ypos = 0;
+					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
+					{
+						isCredits = false;
+					}
+				}
+			}
+
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
 #if DEBUG

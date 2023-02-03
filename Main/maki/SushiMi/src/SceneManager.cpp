@@ -158,6 +158,18 @@ namespace Core
 		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
 		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
+	void SceneManager::loadSettings(int x, int y)
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		//settings
+		settings_page->transformation.Position = glm::vec2(screenwidth * 0.25, screenheight * 0.25);
+		settings_page->transformation.Scale = glm::vec2(screenwidth*0.47, screenheight*0.5);
+
+		//credits
+		credits_page->transformation.Position = glm::vec2(0, 0);
+		credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
 		win_overlay->transformation.Position = glm::vec2(x, y);
@@ -255,6 +267,23 @@ namespace Core
 		}
 		}
 	}
+	void SceneManager::drawSettings()
+	{
+		//if settings only 
+		if (Window::isCredits == false)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", settings_page->transformation.Get());
+			settings_page->draw();
+
+		}
+		else //isCredits == true
+		{
+			//if credits only
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", credits_page->transformation.Get());
+			credits_page->draw();
+
+		}
+	}
 	void SceneManager::drawWinOverlay()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
@@ -308,6 +337,12 @@ namespace Core
 		delete howtoplay_overlay2;
 		delete howtoplay_overlay3;
 		delete howtoplay_overlay4;
+	}
+
+	void SceneManager::destroySettings()
+	{
+		delete settings_page;
+		delete credits_page;
 	}
 
 	void SceneManager::destroyWinOverlay()

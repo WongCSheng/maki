@@ -764,7 +764,14 @@ namespace Core
 							//move ingredient forward 
 							//iterate through vector and find ingredient
 							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
+							for (auto& ingredient : SceneManager::ingredientcontainer)
+							{
+								if (ingredient.first == check)
+								{
+									ingredient.second->transformation.Position.y + 500;
 
+								}
+							}
 							/*if (iter != SceneManager::ingredientcontainer.end())
 							{
 								i

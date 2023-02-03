@@ -52,7 +52,7 @@ namespace Core
 	static bool place_obj = false;
 	Player* player;
 
-	bool loaded = false;
+	
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
@@ -140,7 +140,7 @@ namespace Core
 		isLevel2 = false;
 		isWinCondition = false;
 		isPlayerinSinkhole = false;
-
+		loaded = false;
 
 		//player = new Player();
 
@@ -162,17 +162,14 @@ namespace Core
 	{
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
-		/*SceneManager::destroyTrap();
-		SceneManager::destroyGoal1();
-		SceneManager::destroyGoal2();*/
+
 		SceneManager::destroyPauseOverlay();
 		SceneManager::destroyWinOverlay();
-		//SceneManager::destroyCover1();
+
 		SceneManager::destroyPlayer_Stuck();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
-		//delete sp; //16 bytes
-		//delete obj;
+
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -192,12 +189,10 @@ namespace Core
 			{
 				//clear all player
 				isLevel1 = false;
+				isLevel2 = false;
 				isMenuState = true;
-				player->restart();
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-				gameIsPaused = false;
-				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+				SceneManager::restartLevel();
+
 
 				keystate_M = false;
 			}
@@ -213,14 +208,12 @@ namespace Core
 				isMenuState = false;
 				isLevel1 = true;
 				isLevel2 = false;
-				loaded = false;
+
+				SceneManager::restartLevel();
+				
 				//SceneManager::tilecontainer.clear();
 				//SceneManager::ingredientcontainer.clear();
-				player->restart();
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-				gameIsPaused = false;
-				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
 
 				keystate_1 = false;
 			}
@@ -236,13 +229,11 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = true;
 				loaded = false;
+
+				SceneManager::restartLevel();
 				//SceneManager::tilecontainer.clear();
 				//SceneManager::ingredientcontainer.clear();
-				player->restart();
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-				gameIsPaused = false;
-				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
 
 				keystate_2 = false;
 			}
@@ -258,11 +249,7 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = false;
 				isLevelSelection = true;
-				player->restart();
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-				gameIsPaused = false;
-				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+				SceneManager::restartLevel();
 
 				keystate_T = false;
 			}
@@ -287,7 +274,6 @@ namespace Core
 					gameIsPaused = true;
 					//std::cout << "game paused, pause screen showing" << std::endl;
 
-					//SceneManager::loadPauseOverlay(0, 0);
 
 					keystate_paused = false;
 				}
@@ -370,19 +356,8 @@ namespace Core
 			{
 				isMenuState = true;
 				isLevel1 = false;
-				player->restart();
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-				//reset ingredient pos
-				for (auto& ingredient : SceneManager::ingredientcontainer)
-				{
-					ingredient.second->restart();
-				}
-
-				questProgress = 0;
-				//missing: restart sinkhole, restart sushi plate pods
-				isPlayerinSinkhole = false;
-				gameIsPaused = false;
+				isLevel2 = false;
+				SceneManager::restartLevel();
 			}
 			//QUIT GAME
 			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
@@ -473,29 +448,9 @@ namespace Core
 			if (keystate_R)
 			{
 				//restart
-
+				SceneManager::restartLevel();
 				std::cout << "restarting level" << std::endl;
-				player->restart(); //tell graphics to reset sprite pos
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
-				//reset our position variable
-				player->playerpos.x = player->playerpos_restart.x;
-				player->playerpos.y = player->playerpos_restart.y;
-
-
-				//i want to know what the ingredients initial pos
-				//std::cout << "ingredient initial pos are: (" << ingredient1->ingredient1_initial_pos.x << "," << ingredient1->ingredient1_initial_pos.y << ") and also (" << ingredient2->ingredient1_initial_pos.x << "," << ingredient2->ingredient1_initial_pos.y << ")." << std::endl;
-				//reset ingredient pos
-				/*ingredient1->restart();
-				ingredient2->restart();*/
-
-				for (auto& ingredient : SceneManager::ingredientcontainer)
-				{
-					ingredient.second->restart();
-				}
-
-				SceneManager::amt_of_win_conditions = 0;
-				//missing: restart sinkhole, restart sushi plate pods
-				isPlayerinSinkhole = false;
 
 				keystate_R = false;
 			}
@@ -610,6 +565,11 @@ namespace Core
 				isLevel2 = false;
 				if (!loaded)
 				{
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
+					
 					Map::initMap("../TileMap/level1(new).txt");
 
 					Map::LoadMap();

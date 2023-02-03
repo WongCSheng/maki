@@ -31,10 +31,11 @@ namespace Core
 
 		void Mainloop();
 
-		bool gameIsPaused;
+		static inline bool gameIsPaused;
 		bool isMenuState;
 		bool isLevelSelection;
 		bool isWalk;
+		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
 		bool isCutscene;
 		bool isLevel1;

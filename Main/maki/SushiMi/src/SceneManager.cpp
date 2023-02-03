@@ -1,6 +1,7 @@
 #include "../Headers/SceneManager.h"
 #include "../Engine//Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
+#include "../Engine/TileMap/Map.h"
 
 namespace Core
 {
@@ -38,6 +39,30 @@ namespace Core
 	{
 
 	}
+	void SceneManager::restartLevel()
+	{
+		Window::loaded = false;
+		//SceneManager::tilecontainer.clear();
+		//SceneManager::ingredientcontainer.clear();
+		Window::player->restart();
+		Window::player->playerpos.x = Window::player->playerpos_restart.x;
+		Window::player->playerpos.y = Window::player->playerpos_restart.y;
+		Window::gameIsPaused = false;
+		Window::questProgress = 0;
+		amt_of_win_conditions = 0;
+		//missing: restart sinkhole, restart sushi plate pods
+		Window::isPlayerinSinkhole = false;
+		//reset ingredient pos
+		for (auto& ingredient : SceneManager::ingredientcontainer)
+		{
+			ingredient.second->restart();
+		}
+
+		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+		{
+			Map::ResetMap();
+		}
+	}
 	//R key for restart
 	// update by thea: i've written a new restart function
 	//					that just restarts the position, rather than
@@ -45,11 +70,7 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
-	//void SceneManager::restartLevel()
-	//{
-	//	player->~Player(); // destroy player
-	//	player = new Player(); //respawn player to start position
-	//}
+	
 
 	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
 	{

@@ -81,7 +81,7 @@ namespace Core
 			static void imguiObjectCursor(void);
 
 			void Init() {}
-			void Update(const double dt) {}
+			void Update(const double dt) { dt; }
 			void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		private:

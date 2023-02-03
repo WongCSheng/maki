@@ -280,6 +280,9 @@ namespace Core
             // music ended
         }
 
+        commandData1;
+        commandData2;
+
         return FMOD_OK;
     }
 }

@@ -14,8 +14,7 @@
 
 namespace Core
 {
-
-	class Texture;
+	struct Texture;
 	//using namespace std;
 	enum AnimationType
 	{

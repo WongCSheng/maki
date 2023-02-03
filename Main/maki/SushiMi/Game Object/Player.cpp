@@ -59,11 +59,15 @@ namespace Core
 
 		current_anim = Run;
 
-		std::cout << "player move left\n";
-
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
+
+		if ((player_grid_pos.x - 1) <= 0)
+		{
+			std::cout << "out of grid on the left" << std::endl;
+			return;
+		}
 
 		//current hard code way
 		playerpos.x -= Map::tile_width;

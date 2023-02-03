@@ -477,7 +477,7 @@ namespace Core
 						{
 							if (ingredient.first == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.second->transformation.Position.x -= tile_width;
 								break;
 							}
 						}
@@ -594,7 +594,7 @@ namespace Core
 						{
 							if (ingredient.first == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.second->transformation.Position.x += tile_width;
 								break;
 							}
 						}
@@ -648,8 +648,6 @@ namespace Core
 	{
 		if (!isStuck())
 		{
-			std::cout << static_cast<char>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]) << std::endl;
-			
 			//Check if below tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(grid_number::items)) ||
@@ -768,8 +766,6 @@ namespace Core
 	{
 		if (!isStuck())
 		{
-			std::cout << static_cast<char>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]) << std::endl;
-
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(grid_number::items)) ||
@@ -873,7 +869,7 @@ namespace Core
 			//Just move
 			else
 			{
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
 				std::cout << "normal up" << std::endl;

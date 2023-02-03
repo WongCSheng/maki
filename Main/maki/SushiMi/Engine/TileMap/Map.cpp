@@ -363,12 +363,6 @@ namespace Core
 			}
 		}
 
-		std::cout << "ingredientcontainer contains:" << std::endl;
-		for (auto& x : SceneManager::ingredientcontainer)
-		{
-			std::cout << static_cast<char>(x.first) << ": " << x.second << std::endl;
-		}
-
 		print_map_to_console();
 
 		return 1;

@@ -83,9 +83,10 @@ namespace Core
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings(int x, int y);
 		static void loadWinOverlay(int x, int y);
+		static void loadCutscene(int x, int y);
+
 		static void drawTile();
 		static void drawIngr();
-
 		/*static void drawIngr1();
 		static void drawIngr2();
 		static void drawTrap();
@@ -97,6 +98,9 @@ namespace Core
 		static void drawHowToOverlay();
 		static void drawSettings();
 		static void drawWinOverlay();
+		static void drawCutscene();
+
+
 		static void destroyTile();
 		static void destroyIngr();
 		/*static void destroyTrap();
@@ -108,6 +112,7 @@ namespace Core
 		static void destroyHowToOverlay();
 		static void destroySettings();
 		static void destroyWinOverlay();
+		static void destroyCutscene();
 
 		static void Readfile();
 
@@ -138,6 +143,16 @@ namespace Core
 		static inline Sprite* howtoplay_overlay2;
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
+
+		static inline Sprite* frame1;
+		static inline Sprite* frame2;
+		static inline Sprite* frame3;
+		static inline Sprite* frame4;
+		static inline Sprite* frame5;
+		static inline Sprite* frame6;
+		static inline Sprite* frame7;
+		static inline Sprite* frame8;
+
 
 		static inline Sprite* settings_page;
 		static inline Sprite* credits_page;

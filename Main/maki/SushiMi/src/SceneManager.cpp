@@ -176,6 +176,43 @@ namespace Core
 		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
 
+	void SceneManager::loadCutscene(int x, int y)
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		frame1->transformation.Position = glm::vec2(0, 0);
+		frame1->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+		frame2->transformation.Position = glm::vec2(0, 0);
+		frame2->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame3->transformation.Position = glm::vec2(0, 0);
+		frame3->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame4->transformation.Position = glm::vec2(0, 0);
+		frame4->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame5->transformation.Position = glm::vec2(0, 0);
+		frame5->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame6->transformation.Position = glm::vec2(0, 0);
+		frame6->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame7->transformation.Position = glm::vec2(0, 0);
+		frame7->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+
+		frame8->transformation.Position = glm::vec2(0, 0);
+		frame8->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+	}
+
 	/*draw functions*/
 	void SceneManager::drawTile()
 	{
@@ -241,30 +278,30 @@ namespace Core
 	{
 		switch (Window::HowToPlayPage)
 		{
-		case 0:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
-			howtoplay_overlay1->draw();
-			break;
-		}
-		case 1:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
-			howtoplay_overlay2->draw();
-			break;
-		}
-		case 2:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
-			howtoplay_overlay3->draw();
-			break;
-		}
-		case 3:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
-			howtoplay_overlay4->draw();
-			break;
-		}
+			case 0:
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
+				howtoplay_overlay1->draw();
+				break;
+			}
+			case 1:
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
+				howtoplay_overlay2->draw();
+				break;
+			}
+			case 2:
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
+				howtoplay_overlay3->draw();
+				break;
+			}
+			case 3:
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
+				howtoplay_overlay4->draw();
+				break;
+			}
 		}
 	}
 	void SceneManager::drawSettings()
@@ -288,6 +325,62 @@ namespace Core
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
 		win_overlay->draw();
+	}
+
+	void SceneManager::drawCutscene()
+	{
+		switch (Window::CutscenePage)
+		{
+		case 0:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame1->transformation.Get());
+			frame1->draw();
+			break;
+		}
+		case 1:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame2->transformation.Get());
+			frame2->draw();
+			break;
+		}
+		case 2:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame3->transformation.Get());
+			frame3->draw();
+			break;
+		}
+		case 3:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame4->transformation.Get());
+			frame4->draw();
+			break;
+		}
+		case 4:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame5->transformation.Get());
+			frame5->draw();
+			break;
+		}
+		case 5:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame6->transformation.Get());
+			frame6->draw();
+			break;
+		}
+		case 6:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame7->transformation.Get());
+			frame7->draw();
+			break;
+		}
+		case 7:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame8->transformation.Get());
+			frame8->draw();
+			break;
+		}
+		
+		}
 	}
 
 	/*destroy functions*/
@@ -348,6 +441,18 @@ namespace Core
 	void SceneManager::destroyWinOverlay()
 	{
 		delete win_overlay;
+	}
+
+	void SceneManager::destroyCutscene()
+	{
+		delete frame1;
+		delete frame2;
+		delete frame3;
+		delete frame4;
+		delete frame5;
+		delete frame6;
+		delete frame7;
+		delete frame8;
 	}
 
 	void SceneManager::destroyPlayer_Stuck()

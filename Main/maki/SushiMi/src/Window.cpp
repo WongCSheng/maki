@@ -47,6 +47,7 @@ namespace Core
 	static bool keystate_R = false;
 	static bool keystate_M = false;
 	static bool keystate_tab = false;
+	static bool keystate_space = false;
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
 	static bool keystate_T = false;
@@ -133,6 +134,15 @@ namespace Core
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
 
+		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
+		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
+		SceneManager::frame3 = new Sprite("../Textures/Cutscene/frame3.jpg");
+		SceneManager::frame4 = new Sprite("../Textures/Cutscene/frame4.jpg");
+		SceneManager::frame5 = new Sprite("../Textures/Cutscene/frame5.jpg");
+		SceneManager::frame6 = new Sprite("../Textures/Cutscene/frame6.jpg");
+		SceneManager::frame7 = new Sprite("../Textures/Cutscene/frame7.jpg");
+		SceneManager::frame8 = new Sprite("../Textures/Cutscene/frame8.jpg");
+
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
@@ -156,6 +166,7 @@ namespace Core
 		isPlayerinSinkhole = false;
 		loaded = false;
 		HowToPlayPage = 0;
+		CutscenePage = 0;
 
 		//player = new Player();
 
@@ -348,7 +359,8 @@ namespace Core
 			{
 
 				isMenuState = false;
-				isLevel1 = true;
+				isCutscene = true;
+				
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -584,6 +596,34 @@ namespace Core
 
 			if (isCutscene)
 			{
+				SceneManager::loadCutscene(0, 0);
+				SceneManager::drawCutscene();
+				if (ImGui::IsKeyPressed(GLFW_KEY_SPACE) && isMenuState == false )
+				{
+					keystate_space = true;
+					if (keystate_space)
+					{
+						double xpos = 0, ypos = 0;
+						glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+						//NEXT PAGE
+						if (CutscenePage < 8)
+						{
+
+							CutscenePage++;
+
+							std::cout << "next page" << std::endl;
+
+						}
+						if (CutscenePage == 7)
+						{
+							isCutscene = false;
+							isLevel1 = true;
+							CutscenePage = 0;
+						}
+						keystate_space = false;
+					}
+					
+				}
 
 			}
 

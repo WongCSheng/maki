@@ -40,7 +40,6 @@ namespace Core
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
-		bool isCutscene;
 		bool isLevel1;
 		bool isLevel2;
 		bool isQuestTab;
@@ -48,6 +47,8 @@ namespace Core
 		static inline int questProgress;
 		static inline int numQuests;
 
+		bool isCutscene;
+		static inline int CutscenePage;
 
 		bool isHowToPlay;
 		static inline int HowToPlayPage;

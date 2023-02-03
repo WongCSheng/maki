@@ -35,7 +35,7 @@ namespace Core
 
 		static inline bool gameIsPaused;
 		bool isMenuState;
-		bool isSettings;
+		
 		bool isLevelSelection;
 		bool isWalk;
 		static inline bool loaded;
@@ -51,6 +51,9 @@ namespace Core
 
 		bool isHowToPlay;
 		static inline int HowToPlayPage;
+
+		bool isSettings;
+		static inline bool isCredits;
 
 
 

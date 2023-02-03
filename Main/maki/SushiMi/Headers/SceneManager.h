@@ -81,6 +81,7 @@ namespace Core
 		static void loadCover2(int x, int y);*/
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
+		static void loadSettings(int x, int y);
 		static void loadWinOverlay(int x, int y);
 		static void drawTile();
 		static void drawIngr();
@@ -94,6 +95,7 @@ namespace Core
 		static void drawCover2();*/
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay();
+		static void drawSettings();
 		static void drawWinOverlay();
 		static void destroyTile();
 		static void destroyIngr();
@@ -104,6 +106,7 @@ namespace Core
 		static void destroyCover2();*/
 		static void destroyPlayer_Stuck();
 		static void destroyHowToOverlay();
+		static void destroySettings();
 		static void destroyWinOverlay();
 
 		static void Readfile();
@@ -135,6 +138,10 @@ namespace Core
 		static inline Sprite* howtoplay_overlay2;
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
+
+		static inline Sprite* settings_page;
+		static inline Sprite* credits_page;
+
 		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
 		static inline Sprite* player_stuck;

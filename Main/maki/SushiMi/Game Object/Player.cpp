@@ -173,9 +173,12 @@ namespace Core
 			Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 			Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
-			//set the new grid the player is now at to contain player
-			Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = 2;
-			//}
+		//set the initial grid that the player is leaving back to blank 
+		Map::gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+		sp->transformation.Position.x = playerpos_restart.x;
+		sp->transformation.Position.y = playerpos_restart.y;
+		Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
+		Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
 
 		}
 

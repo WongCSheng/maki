@@ -398,19 +398,6 @@ namespace Core
 			}
 		}
 
-		//player input
-		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
-		{
-			keystate_right = true;
-			if (keystate_right)
-			{
-				Map::collision_check_right();
-				Map::print_map_to_console();
-
-				keystate_right = false;
-			}
-		}
-
 		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_left = true;
@@ -433,7 +420,8 @@ namespace Core
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
-				isWalk = true; //play walking sfx
+				AudioManager.PlaySFX("WalkSFX.wav");
+				//isWalk = true; //play walking sfx
 				keystate_up = false;
 
 			}
@@ -645,9 +633,10 @@ namespace Core
 					Map::initMap("../TileMap/level2(new).txt");
 					Map::LoadMap();
 
+					Map::LoadMap();
+
 					loaded = true;
 				}
-
 				
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests

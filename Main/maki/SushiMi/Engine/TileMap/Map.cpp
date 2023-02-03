@@ -439,9 +439,11 @@ namespace Core
 					//check if tile on the left of ingredient is a sinkhole
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
 					{
+						//Set grid
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::temp); // Food stuck in sinkhole
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
 
 						std::cout << "left ingredient sinkhole\n";
 						Window::player->move_left();
@@ -496,11 +498,18 @@ namespace Core
 					
 					std::cout << "left sinkhole\n";
 					Window::player->move_left();
-
-					print_map_to_console();
 				}
 			}
+			else
+			{
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+				std::cout << "normal left" << std::endl;
+				Window::player->move_left();
+			}
 		}
+		//Just move
 		else
 		{
 			gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
@@ -508,8 +517,6 @@ namespace Core
 
 			std::cout << "normal left" << std::endl;
 			Window::player->move_left();
-
-			print_map_to_console();
 		}
 	}
 
@@ -596,11 +603,10 @@ namespace Core
 
 					std::cout << "right sinkhole\n";
 					Window::player->move_right();
-
-					print_map_to_console();
 				}
 			}
 		}
+		//Just move
 		else
 		{
 			gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
@@ -608,8 +614,6 @@ namespace Core
 
 			std::cout << "normal right" << std::endl;
 			Window::player->move_right();
-
-			print_map_to_console();
 		}
 	}
 	void Map::collision_check_down()

@@ -84,6 +84,12 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
+		if ((player_grid_pos.x + 1) >= Map::grid_row)
+		{
+			std::cout << "out of grid on the right" << std::endl;
+			return;
+		}
+
 		//current hard code way
 		playerpos.x += Map::tile_width;
 
@@ -104,17 +110,15 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
-		player_grid_pos.y--;
-
 		//current hard code way
-		Player::playerpos.y -= Core::Map::tile_height;
+		Player::playerpos.y -= Map::tile_height;
 		if (playerpos.y < 0)
 		{
 			playerpos.y = 0;
 		}
 		else
 		{
-			sp->transformation.Position.y -= Core::Map::tile_height; //up is negative for some reason
+			sp->transformation.Position.y -= Map::tile_height; //up is negative for some reason
 		}
 	}
 
@@ -129,11 +133,9 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
-		player_grid_pos.y++;
+		Player::playerpos.y += Map::tile_height;
 
-		Player::playerpos.y += Core::Map::tile_height;
-
-		sp->transformation.Position.y += Core::Map::tile_height; //down is positive for some reason
+		sp->transformation.Position.y += Map::tile_height; //down is positive for some reason
 	}
 
 	void Player::restart()

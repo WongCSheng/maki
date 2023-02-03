@@ -60,9 +60,9 @@ namespace Core
 		Transformer* transformer;
 		CameraSystem* cameraSystem;
 		Renderer* rendersystem;
-		Window* windowsystem;
+		std::unique_ptr<Window> windowsystem;
 		TextureSystem* texturesystem;
-		Editor::LevelEditor* leveleditorsystem;
+		std::unique_ptr<Editor::LevelEditor> leveleditorsystem;
 	
 
 	};

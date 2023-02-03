@@ -74,6 +74,7 @@ namespace Core
 
 	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
 	{
+		
 		tile.second->transformation.Position = glm::vec2(x, y);
 		tile.second->transformation.Scale = glm::vec2(105, 105);
 

@@ -36,9 +36,10 @@ namespace Core
 	void ObjectFactory::DestroyEverything()
 	{
 		std::set<Object::GameObject*>::iterator it = DeleteList.begin();
-
+		
 		for (it; it != DeleteList.end(); ++it)
 		{
+			//erase from ObjectContainer
 			delete *it;
 		}
 

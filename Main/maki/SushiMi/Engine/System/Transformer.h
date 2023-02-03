@@ -26,7 +26,11 @@ namespace Core
 		Transformer();
 		virtual ~Transformer();
 
-		static Transformer* GetInstance();
+		static Transformer* GetInstance()
+		{
+			static Transformer transformersystem;
+			return &transformersystem;
+		}
 
 		void Init();
 		void Update(const double dt);

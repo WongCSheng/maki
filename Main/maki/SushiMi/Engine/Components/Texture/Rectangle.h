@@ -21,6 +21,7 @@ public:
 
 private:
 	RectangleSystem();
+	~RectangleSystem();
 
 	static RectangleSystem* _instance;
 };

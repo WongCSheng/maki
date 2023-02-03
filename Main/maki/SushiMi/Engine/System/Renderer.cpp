@@ -16,14 +16,9 @@ namespace Core
 	{
 	}
 
-	Renderer* Core::Renderer::_instance = nullptr;
+	//Renderer* Core::Renderer::_instance = nullptr;
 
-	Renderer* Core::Renderer::GetInstance()
-	{
-		if (_instance == nullptr) _instance = new Core::Renderer();
-
-		return _instance;
-	}
+	
 
 	void Renderer::Init()
 	{

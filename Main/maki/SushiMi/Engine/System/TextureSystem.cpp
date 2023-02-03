@@ -10,18 +10,9 @@
 
 namespace Core
 {
-	TextureSystem* TextureSystem::_instance{};
-
-	TextureSystem* TextureSystem::GetInstance()
-	{
-		if (_instance == nullptr) _instance = new TextureSystem();
-
-		return _instance;
-	}
-
 	TextureSystem::TextureSystem()
 	{
-		_instance = nullptr;
+		//_instance = nullptr;
 	}
 
 
@@ -74,7 +65,7 @@ namespace Core
 	}
 	void TextureSystem::Shutdown()
 	{
-		for (auto[name, tex] : database)
+		for (auto&[name, tex] : database)
 		{
 			Delete(tex);
 		}

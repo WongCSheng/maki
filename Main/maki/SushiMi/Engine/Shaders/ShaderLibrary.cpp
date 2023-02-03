@@ -88,9 +88,9 @@ ShaderLibrary::ShaderLibrary()
 
 ShaderLibrary::~ShaderLibrary()
 {
-	for (const auto& [_, v] : programs)
+	for (const auto& x : programs)
 	{
-		delete v; //memory leak 3
+		delete x.second; //memory leak 3
 	}
 }
 

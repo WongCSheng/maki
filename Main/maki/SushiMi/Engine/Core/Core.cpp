@@ -32,21 +32,21 @@ namespace Core
 	{
 		cameraSystem = CameraSystem::GetInstance();
 		systems.push_back(cameraSystem);
-
+		// -
 		transformer = Transformer::GetInstance();
 		systems.push_back(transformer);
 
-		windowsystem = new Window(800, 600);
-		systems.push_back(windowsystem);
-
+		windowsystem = std::make_unique<Window>(800, 600);
+		systems.push_back(windowsystem.get());
+		// -
 		rendersystem = Renderer::GetInstance();
 		systems.push_back(rendersystem);
 
 		texturesystem = TextureSystem::GetInstance();
 		systems.push_back(texturesystem);
 #if defined(DEBUG) | defined(_DEBUG)
-		leveleditorsystem = new Editor::LevelEditor();
-		systems.push_back(leveleditorsystem);
+		leveleditorsystem = std::make_unique<Editor::LevelEditor>();
+		systems.push_back(leveleditorsystem.get());
 #endif
 
 
@@ -181,11 +181,6 @@ namespace Core
 		objfactory->DestroyEverything();
 
 		TextureSystem::GetInstance()->Shutdown();
-		for (auto& i : systems)
-		{
-			delete i; 
-			i = nullptr;
-		}
 
 		delete objfactory;
 

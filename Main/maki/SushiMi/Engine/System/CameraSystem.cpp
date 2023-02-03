@@ -13,24 +13,14 @@ namespace Core
 {
 	CameraSystem::CameraSystem()
 	{
-		instance = nullptr;
+		//instance = nullptr;
 	}
 
 
 	CameraSystem::~CameraSystem()
 	{
-	}
-
-	CameraSystem* CameraSystem::instance;
-
-	CameraSystem* CameraSystem::GetInstance()
-	{
-		if (!instance)
-		{
-			instance = new CameraSystem();
-		}
-		
-		return instance;
+		//if (instance)
+			//delete instance;
 	}
 
 	//void Core::CameraSystem::Init(const std::vector<Entity*>& entities)

@@ -19,15 +19,7 @@ namespace Core
 	{
 	}
 
-	Transformer* Transformer::GetInstance()
-	{
-		if (!instance)
-		{
-			instance = new Transformer();
-		}
-		
-		return instance;
-	}
+	
 
 	void Transformer::Init()
 	{

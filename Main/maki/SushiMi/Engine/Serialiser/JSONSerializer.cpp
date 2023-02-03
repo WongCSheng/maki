@@ -158,6 +158,7 @@ namespace Core
 		//td::string name("Object: " + std::to_string(objfact->LastObjectID));
 		objfact->ObjectContainer.insert({name, gameObj });	//	save everything in gameObj into container
 		objfact->LastObjectID++;
+		//delete gameObj;
 	}
 
 

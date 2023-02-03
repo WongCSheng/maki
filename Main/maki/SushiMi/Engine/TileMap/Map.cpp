@@ -96,6 +96,12 @@ namespace Core
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
+
+		for (int i = 0; i < grid_row; i++)
+		{
+			delete gGrids[i];
+		}
+		delete gGrids;
 	}
 
 	int Map::LoadMap()

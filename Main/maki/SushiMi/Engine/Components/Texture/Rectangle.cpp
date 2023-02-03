@@ -89,4 +89,11 @@ void RectangleSystem::Delete(Rect& obj)
 
 RectangleSystem::RectangleSystem()
 {
+	
+}
+
+RectangleSystem::~RectangleSystem()
+{
+	if (_instance)
+		delete _instance;
 }

@@ -186,14 +186,14 @@ namespace Core
 
 	Window::~Window()
 	{
-		SceneManager::destroyTile();
-		SceneManager::destroyIngr();
-		
+		Map::ResetMap();
+
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
 		SceneManager::destroySettings();
 		SceneManager::destroyWinOverlay(); //delete Win Overlay
 		SceneManager::destroyCutscene();
 		SceneManager::destroyPlayer_Stuck();
+
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
 

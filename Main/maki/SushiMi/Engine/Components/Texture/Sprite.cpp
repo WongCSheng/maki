@@ -18,6 +18,7 @@ namespace Core
 {
 	Sprite::Sprite(const char* filename)
 	{
+		//mem leak here?
 		auto tex_sys = Core::TextureSystem::GetInstance();
 		texture.TextureLoadIn(filename);
 		tex_sys->Generate(&texture);

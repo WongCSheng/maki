@@ -9,12 +9,14 @@ Description: Enables collision boxes, force vectors and different rendering patt
 
 Debugger* Debugger::instance = 0;
 Debugger::Debugger()
-{
+{	
 }
 
 
 Debugger::~Debugger()
 {
+	if (instance)
+		delete instance;
 }
 
 void Debugger::Log(std::string log)

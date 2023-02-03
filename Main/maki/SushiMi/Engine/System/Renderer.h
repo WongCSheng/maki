@@ -29,13 +29,17 @@ namespace Core
 		vtx Generate();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
-		static Renderer* GetInstance();
+		static Renderer* GetInstance()
+		{
+			static Renderer renderersystem;
+			return &renderersystem;
+		}
 		void Delete(vtx& obj);
 	private:
 		/*std::vector<MeshFilter*> meshFilterComponents;
 		std::vector<Material*> materialComponents;
 		std::vector<MeshRenderer*> meshRendererComponents;*/
-		static Renderer* _instance;
+		//static Renderer* _instance;
 		//std::vector<Model*> meshes;
 
 	};

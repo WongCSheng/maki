@@ -20,6 +20,7 @@ namespace Core
 
 	Texture::~Texture()
 	{
+		
 	}
 	
 	void Texture::TextureLoadIn(const char* filename)

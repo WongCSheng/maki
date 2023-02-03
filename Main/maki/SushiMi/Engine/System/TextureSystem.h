@@ -18,7 +18,10 @@ namespace Core
 	class TextureSystem : public SystemFrame
 	{
 	public:
-		static TextureSystem* GetInstance();
+		static TextureSystem* GetInstance() {
+			static TextureSystem texturesystem;
+			return &texturesystem;
+		}
 
 		void Init();
 		void Update(const double dt);
@@ -33,6 +36,6 @@ namespace Core
 		std::unordered_map<std::string, Texture> database;
 	private:
 		TextureSystem();
-		static TextureSystem* _instance;
+		//static TextureSystem* _instance;
 	};
 }

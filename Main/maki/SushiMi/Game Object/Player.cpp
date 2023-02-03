@@ -124,6 +124,8 @@ namespace Core
 		{
 			sp->transformation.Position.y -= Map::tile_height; //up is negative for some reason
 		}
+
+		Player::player_grid_pos.y--;
 	}
 
 	void Player::move_down()
@@ -140,6 +142,8 @@ namespace Core
 		Player::playerpos.y += Map::tile_height;
 
 		sp->transformation.Position.y += Map::tile_height; //down is positive for some reason
+
+		Player::player_grid_pos.y++;
 	}
 
 	void Player::restart()

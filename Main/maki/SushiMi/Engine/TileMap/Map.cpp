@@ -441,8 +441,6 @@ namespace Core
 
 						std::cout << "left ingredient sinkhole\n";
 						Window::player->move_left();
-
-						Window::player->player_grid_pos.x--;
 					}
 					//check if tile on the left of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
@@ -461,8 +459,6 @@ namespace Core
 
 						std::cout << "left ingredient box\n";
 						Window::player->move_left();
-
-						Window::player->player_grid_pos.x--;
 					}
 					//Otherwise, it is a space
 					else
@@ -484,8 +480,6 @@ namespace Core
 						
 						std::cout << "left ingredient space\n";
 						Window::player->move_left();
-
-						Window::player->player_grid_pos.x--;
 					}
 				}
 				/*check wall*/
@@ -509,8 +503,6 @@ namespace Core
 					
 					std::cout << "left sinkhole\n";
 					Window::player->move_left();
-
-					Window::player->player_grid_pos.x--;
 				}
 			}
 			else
@@ -520,8 +512,6 @@ namespace Core
 
 				std::cout << "normal left" << std::endl;
 				Window::player->move_left();
-
-				Window::player->player_grid_pos.x--;
 			}
 		}
 	}
@@ -558,8 +548,6 @@ namespace Core
 
 						std::cout << "right ingredient sinkhole\n";
 						Window::player->move_right();
-
-						Window::player->player_grid_pos.x++;
 					}
 					//check if tile on the right of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
@@ -578,8 +566,6 @@ namespace Core
 
 						std::cout << "right ingredient box\n";
 						Window::player->move_right();
-
-						Window::player->player_grid_pos.x++;
 					}
 					//Otherwise, it is a space
 					else
@@ -601,8 +587,6 @@ namespace Core
 
 						std::cout << "right ingredient space\n";
 						Window::player->move_right();
-
-						Window::player->player_grid_pos.x++;
 					}
 				}
 				/*check wall*/
@@ -626,8 +610,6 @@ namespace Core
 
 					std::cout << "right sinkhole\n";
 					Window::player->move_right();
-
-					Window::player->player_grid_pos.x++;
 				}
 			}
 			//Just move
@@ -638,8 +620,6 @@ namespace Core
 
 				std::cout << "normal right" << std::endl;
 				Window::player->move_right();
-
-				Window::player->player_grid_pos.x++;
 			}
 		}
 	}
@@ -676,8 +656,6 @@ namespace Core
 
 						std::cout << "down ingredient sinkhole\n";
 						Window::player->move_down();
-
-						Window::player->player_grid_pos.y++;
 					}
 					//check if tile below of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(grid_number::ingredients) &&
@@ -696,8 +674,6 @@ namespace Core
 
 						std::cout << "down ingredient box\n";
 						Window::player->move_down();
-
-						Window::player->player_grid_pos.y++;
 					}
 					//Otherwise, it is a space
 					else
@@ -712,15 +688,13 @@ namespace Core
 						{
 							if (ingredient.first == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.second->transformation.Position.y += tile_height;
 								break;
 							}
 						}
 
 						std::cout << "down ingredient space\n";
 						Window::player->move_down();
-
-						Window::player->player_grid_pos.y++;
 					}
 				}
 				/*check wall*/
@@ -744,8 +718,6 @@ namespace Core
 
 					std::cout << "down sinkhole\n";
 					Window::player->move_down();
-
-					Window::player->player_grid_pos.y++;
 				}
 			}
 			//Just move
@@ -756,8 +728,6 @@ namespace Core
 
 				std::cout << "normal down" << std::endl;
 				Window::player->move_down();
-
-				Window::player->player_grid_pos.y++;
 			}
 		}
 	}
@@ -794,8 +764,6 @@ namespace Core
 
 						std::cout << "up ingredient sinkhole\n";
 						Window::player->move_up();
-
-						Window::player->player_grid_pos.y--;
 					}
 					//check if tile above of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] > static_cast<int>(grid_number::ingredients) &&
@@ -814,8 +782,6 @@ namespace Core
 
 						std::cout << "up ingredient box\n";
 						Window::player->move_up();
-
-						Window::player->player_grid_pos.y--;
 					}
 					//Otherwise, it is a space
 					else
@@ -837,8 +803,6 @@ namespace Core
 
 						std::cout << "up ingredient space\n";
 						Window::player->move_up();
-
-						Window::player->player_grid_pos.y--;
 					}
 				}
 				/*check wall*/
@@ -862,8 +826,6 @@ namespace Core
 
 					std::cout << "up sinkhole\n";
 					Window::player->move_up();
-
-					Window::player->player_grid_pos.y--;
 				}
 			}
 			//Just move
@@ -874,8 +836,6 @@ namespace Core
 
 				std::cout << "normal up" << std::endl;
 				Window::player->move_up();
-
-				Window::player->player_grid_pos.y--;
 			}
 		}
 	}

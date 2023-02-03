@@ -354,6 +354,7 @@
     <ClCompile Include="Engine\Components\Texture\Texture.cpp" />
     <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Core\Core.cpp" />
+    <ClCompile Include="Engine\Cutscene\Cutscene.cpp" />
     <ClCompile Include="Engine\Factory\Factory.cpp" />
     <ClCompile Include="Engine\Input\Input.cpp" />
     <ClCompile Include="Engine\Mesh\model.cpp" />
@@ -406,6 +407,7 @@
     <ClInclude Include="Engine\Components\Texture\Texture.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
+    <ClInclude Include="Engine\Cutscene\Cutscene.hpp" />
     <ClInclude Include="Engine\Factory\Factory.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\Input\Keys.h" />

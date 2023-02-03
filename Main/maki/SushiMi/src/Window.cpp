@@ -45,6 +45,9 @@ namespace Core
 	static bool keystate_down = false;
 	static bool keystate_R = false;
 	static bool keystate_M = false;
+	static bool keystate_1 = false;
+	static bool keystate_2 = false;
+	static bool keystate_T = false;
 	static bool keystate_paused = false;
 	static bool place_obj = false;
 	Player* player;
@@ -200,6 +203,71 @@ namespace Core
 			}
 		}
 
+		if (ImGui::IsKeyPressed(GLFW_KEY_1))
+		{
+			keystate_1 = true;
+			std::cout << "you have loaded level 1" << std::endl;
+			if (keystate_1)
+			{
+				
+				isMenuState = false;
+				isLevel1 = true;
+				isLevel2 = false;
+				loaded = false;
+				SceneManager::tilecontainer.clear();
+				SceneManager::ingredientcontainer.clear();
+				player->restart();
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
+				gameIsPaused = false;
+				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
+				keystate_1 = false;
+			}
+		}
+		if (ImGui::IsKeyPressed(GLFW_KEY_2))
+		{
+			keystate_2 = true;
+			std::cout << "you have loaded level 2" << std::endl;
+			if (keystate_2)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = true;
+				loaded = false;
+				SceneManager::tilecontainer.clear();
+				SceneManager::ingredientcontainer.clear();
+				player->restart();
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
+				gameIsPaused = false;
+				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
+				keystate_2 = false;
+			}
+		}
+		if (ImGui::IsKeyPressed(GLFW_KEY_T) && isMenuState == false)
+		{
+			keystate_T = true;
+			std::cout << "you are in level selection screen" << std::endl;
+			if (keystate_T)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevelSelection = true;
+				player->restart();
+				player->playerpos.x = player->playerpos_restart.x;
+				player->playerpos.y = player->playerpos_restart.y;
+				gameIsPaused = false;
+				//Sprite::menu->transformation.Position = glm::vec2(0, 0);
+
+				keystate_T = false;
+			}
+		}
+
 		if (ImGui::IsMouseReleased(0))
 		{
 			//place_obj = true;
@@ -330,7 +398,17 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
+		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		{
+			keystate_right = true;
+			if (keystate_right)
+			{
+				Map::collision_check_right();
+				Map::print_map_to_console();
 
+				keystate_right = false;
+			}
+		}
 
 		//player input
 		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
@@ -339,6 +417,8 @@ namespace Core
 			if (keystate_right)
 			{
 				Map::collision_check_right();
+				Map::print_map_to_console();
+
 				keystate_right = false;
 			}
 		}
@@ -351,6 +431,8 @@ namespace Core
 			if (keystate_left)
 			{
 				Map::collision_check_left();
+				Map::print_map_to_console();
+
 				keystate_left = false;
 			}
 		}
@@ -515,6 +597,11 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 
+			if (isCutscene)
+			{
+
+			}
+
 			//order of rendering
 			//step 1: map
 			//step 2: pause overlay
@@ -522,13 +609,14 @@ namespace Core
 			if (isLevel1 == true)
 			{
 				isMenuState = false;
+				isLevel2 = false;
 				if (!loaded)
 				{
 					Map::initMap("../TileMap/level1(new).txt");
 
 					Map::LoadMap();
-
 					loaded = true;
+
 				}
 				
 				//draw lv1 tile map
@@ -578,16 +666,17 @@ namespace Core
 
 			if (isLevel2 == true)
 			{
-				if (loaded == false)
+				isLevel1 = false;
+				if (!loaded)
 				{
 					Map::ResetMap();
 
-					Map::initMap("../TileMap/level2.txt");
+					Map::initMap("../TileMap/level2(new).txt");
+					Map::LoadMap();
 
 					loaded = true;
 				}
 
-				Map::LoadMap();
 				
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests

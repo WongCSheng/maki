@@ -142,6 +142,9 @@
     <ClCompile Include="Engine\TileMap\Map.cpp">
       <Filter>GameEngine\System\TileMap</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Cutscene\Cutscene.cpp">
+      <Filter>Cutscene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -325,6 +328,9 @@
     <ClInclude Include="Engine\TileMap\Map.h">
       <Filter>GameEngine\System\TileMap</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Cutscene\Cutscene.hpp">
+      <Filter>Cutscene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -449,6 +455,9 @@
     </Filter>
     <Filter Include="GameEngine\Serialization\Data">
       <UniqueIdentifier>{e153f348-3983-4b34-b528-aba846e633a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cutscene">
+      <UniqueIdentifier>{dac5785e-a57e-4e03-a956-d7d8bc294bdd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

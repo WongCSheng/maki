@@ -14,6 +14,8 @@ namespace Core
 
 	Renderer::~Renderer()
 	{
+		/*if (_instance)
+			delete _instance;*/
 	}
 
 	//Renderer* Core::Renderer::_instance = nullptr;

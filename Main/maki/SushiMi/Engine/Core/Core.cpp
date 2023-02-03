@@ -71,6 +71,8 @@ namespace Core
 		//To shift into cleanup
 		
 		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
+
+		//delete windowsystem;
 	}
 
 	/*

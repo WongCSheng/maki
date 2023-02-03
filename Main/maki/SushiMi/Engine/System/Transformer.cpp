@@ -17,6 +17,8 @@ namespace Core
 
 	Transformer::~Transformer()
 	{
+		/*if (instance)
+			delete instance;*/
 	}
 
 	

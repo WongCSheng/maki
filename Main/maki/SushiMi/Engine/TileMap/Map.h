@@ -56,7 +56,7 @@ namespace Core
 		static int** gGrids;
 
 		//texture names
-		static inline Sprite* rice;
+		/*static inline Sprite* rice;
 		static inline Sprite* nori;
 		static inline Sprite* inari;
 		static inline Sprite* box;
@@ -73,7 +73,7 @@ namespace Core
 		static inline Sprite* tile9;
 		static inline Sprite* tile10;
 		static inline Sprite* tile11;
-		static inline Sprite* tile12;
+		static inline Sprite* tile12;*/
 	};
 }
 #endif

@@ -1,6 +1,7 @@
 /*!
 @file		JSONSerializer.cpp
-@author		fei.x@digipen.edu
+@author		Chong Rui Xuan Aurelia
+@par		fei.x@digipen.edu
 @date		6/1/2022
 
 This file contains a Serializer class that can parse json files.

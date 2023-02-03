@@ -1,11 +1,10 @@
 /*!
-@file		JSONSerializer.h
-@author		fei.x@digipen.edu
-@date		06/01/2022
+@file		JSONSerializer.cpp
+@author		Chong Rui Xuan Aurelia
+@par		fei.x@digipen.edu
+@date		6/1/2022
 
-This file contains a Serializer class that can parse json files.
-You can choose to print to console or directly deserialize into your
-chosen game object.
+			This is header file for JSONSerializer.cpp
 
 *//*__________________________________________________________________________*/
 

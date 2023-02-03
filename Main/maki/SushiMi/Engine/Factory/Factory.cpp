@@ -1,9 +1,9 @@
 
 /*
 File: Factory.cpp
-Author:		Wong Chong Sheng 50%
+Author:		Wong Chong Sheng 
 email:		w.chongsheng@digipen.edu
-co-Author:  Chong Rui Xuan Aurelia 50%
+co-Author:  Chong Rui Xuan Aurelia 
 email:		fei.x@digipen.edu
 Description: 
 */

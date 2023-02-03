@@ -2,8 +2,9 @@
 File: Window.cpp
 @author		louishetong.wang@digipen.edu
 co-Author:  thea.sea@digipen.edu
+co-Author:  Aurelia (fei.x@digipen.edu)
 co-Author:  w.chongsheng@digipen.edu
-co-Author:  fei.x@digipen.edu
+
 Description: 
 */
 

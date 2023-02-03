@@ -386,18 +386,24 @@ namespace Core
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
-		for (auto& it : tilecontainer)
+		if (tilecontainer.size() != 0)
 		{
-			delete it.second;
+			for (auto it : tilecontainer)
+			{
+				delete it.second;
+			}
 		}
 
 		tilecontainer.clear();
 	}
 	void SceneManager::destroyIngr()
 	{
-		for (auto& it : ingredientcontainer)
+		if (ingredientcontainer.size() != 0)
 		{
-			delete it.second;
+			for (auto it : ingredientcontainer)
+			{
+				delete it.second;
+			}
 		}
 
 		ingredientcontainer.clear();

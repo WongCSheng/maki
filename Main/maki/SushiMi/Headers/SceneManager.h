@@ -44,10 +44,10 @@ namespace Core
 		bottomrightwall,			//I
 		middletoprightbottomwall,	//J
 		middlerightwall,			//K
-		topbottom,
-		bottomwall,					//M
-		middletopbottomwall,		//N
-		middlewall,					//O
+		topbottom,					//M
+		bottomwall,					//N
+		middletopbottomwall,		//O
+		middlewall,					//P
 		last
 	};
 

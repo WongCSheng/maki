@@ -1,14 +1,40 @@
-﻿  Map.cpp
+﻿  Sprite.cpp
+  Map.cpp
   Player.cpp
+  SceneManager.cpp
+  Window.cpp
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Engine\TileMap\Map.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Engine\TileMap\Map.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\SceneManager.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file src\SceneManager.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Editors\LevelEditor.h(84,29): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Game Object\Player.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file Game Object\Player.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file Engine\Components\Texture\Sprite.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(33,41): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(48,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(49,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(99,66): warning C4100: 'posY': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(99,56): warning C4100: 'posX': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(161,45): warning C4100: 'y': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(161,38): warning C4100: 'x': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(179,45): warning C4100: 'y': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(179,38): warning C4100: 'x': unreferenced formal parameter
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(179,53): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -29,11 +55,27 @@ C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Pla
           [
               T=float
           ]
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file src\Window.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file src\Window.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Animation\Animation2D.h(18,15): warning C4099: 'Core::Texture': type name first seen using 'struct' now seen using 'class' (compiling source file Engine\TileMap\Map.cpp)
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Texture.h(19): message : see declaration of 'Core::Texture' (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,76): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,50): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,41): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,31): warning C4100: 'pwin': unreferenced formal parameter
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(105,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(106,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(406,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(119,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(407,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(120,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(135,21): warning C4458: declaration of 'rice' hides class member
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.h(59,25): message : see declaration of 'Core::Map::rice' (compiling source file Engine\TileMap\Map.cpp)
@@ -49,9 +91,13 @@ C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(151,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(156,22): warning C4458: declaration of 'inari' hides class member
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.h(61,25): message : see declaration of 'Core::Map::inari' (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(683,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(683,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(159,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(159,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(748,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(160,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(748,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(160,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(167,20): warning C4458: declaration of 'box' hides class member
 C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.h(62,25): message : see declaration of 'Core::Map::box' (compiling source file Engine\TileMap\Map.cpp)

@@ -355,7 +355,7 @@ namespace Core
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
-			if (xpos > 275 && xpos < (275 + 366) && ypos > 349 && ypos < (349 + 96))
+			if (xpos > 275 && xpos < (275 + 266) && ypos > 349 && ypos < (349 + 96))
 			{
 
 				isMenuState = false;
@@ -369,18 +369,18 @@ namespace Core
 
 			}
 			//HOW TO PLAY
-			if (xpos > 275 && xpos < (275 + 366) && ypos > 520 && ypos < (520 + 96))
+			if (xpos > 275 && xpos < (275 + 266) && ypos > 520 && ypos < (520 + 96))
 			{
 				isHowToPlay = true;
 				//std::cout << "in how to play screen" << std::endl;
 			}
 			//SETTINGS
-			if (xpos > 275 && xpos < (275 + 366) && ypos > 700 && ypos < (700 + 96))
+			if (xpos > 275 && xpos < (275 + 266) && ypos > 700 && ypos < (700 + 96))
 			{
 				isSettings = true;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
-			if (xpos > 275 && xpos < (275 + 366) && ypos > 890 && ypos < (890 + 96))
+			if (xpos > 275 && xpos < (275 + 266) && ypos > 890 && ypos < (890 + 96))
 			{
 				glfwSetWindowShouldClose(window_ptr, true);
 			}

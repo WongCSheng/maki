@@ -214,8 +214,8 @@ namespace Core
 				isLevel1 = true;
 				isLevel2 = false;
 				loaded = false;
-				SceneManager::tilecontainer.clear();
-				SceneManager::ingredientcontainer.clear();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
 				player->restart();
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;
@@ -236,8 +236,8 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = true;
 				loaded = false;
-				SceneManager::tilecontainer.clear();
-				SceneManager::ingredientcontainer.clear();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
 				player->restart();
 				player->playerpos.x = player->playerpos_restart.x;
 				player->playerpos.y = player->playerpos_restart.y;

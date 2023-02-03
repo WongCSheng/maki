@@ -94,8 +94,8 @@ namespace Core
 			}
 		}
 
-		/*SceneManager::destroyTile();
-		SceneManager::destroyIngr();*/
+		SceneManager::destroyTile();
+		SceneManager::destroyIngr();
 	}
 
 	int Map::LoadMap()

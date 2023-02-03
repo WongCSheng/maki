@@ -460,6 +460,7 @@
     <None Include="..\Data\ResumeButton.json" />
     <None Include="..\Data\SettingsButton.json" />
     <None Include="..\Data\StartButton.json" />
+    <None Include="..\Data\TabMenu.json" />
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
   </ItemGroup>

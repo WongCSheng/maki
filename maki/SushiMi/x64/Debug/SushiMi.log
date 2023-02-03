@@ -1,0 +1,9 @@
+﻿  object.cpp
+C:\Users\Aurel\Desktop\Maki_Clone\maki\maki\SushiMi\object.cpp(185,10): warning C4552: '!=': result of expression not used
+C:\Users\Aurel\Desktop\Maki_Clone\maki\maki\SushiMi\object.cpp(209,10): warning C4552: '!=': result of expression not used
+  imguiEditor.cpp
+C:\Users\Aurel\Desktop\Maki_Clone\maki\maki\SushiMi\src\imguiEditor.cpp(91,63): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  LINK : C:\Users\Aurel\Desktop\Maki_Clone\maki\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
+  SushiMi.vcxproj -> C:\Users\Aurel\Desktop\Maki_Clone\maki\maki\x64\Debug\SushiMi.exe

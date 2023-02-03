@@ -162,6 +162,9 @@ void Core::pseudomain::init() {
 	//loading main menu
 	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
+	//loading TabMenu
+	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
+
 	//loading image&button paths
 	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);

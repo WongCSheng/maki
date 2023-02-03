@@ -202,14 +202,20 @@ namespace Core
 
 		if (ImGui::IsKeyPressed(GLFW_KEY_TAB))
 		{
-			keystate_tab = true;
+			
 			std::cout << "opening quest tab" << std::endl;
 			if (keystate_tab)
 			{
 				isQuestTab = true;
-				//aurelia
-				keystate_tab = false;
+				keystate_tab = false;  
+
 			}
+			else
+			{
+				isQuestTab = false;
+				keystate_tab = true;
+			}
+
 		}
 		if (ImGui::IsKeyPressed(GLFW_KEY_1))
 		{
@@ -532,7 +538,7 @@ namespace Core
 
 
 			//FOR OBJ CONTAINER DEBUGGING
-// 
+			// 
 			//std::cout << "what is inside obj container:" << std::endl;
 			//for (auto& x : CoreSystem->objfactory->ObjectContainer)
 			//{
@@ -738,9 +744,24 @@ namespace Core
 						spritecomp->draw();
 				}
 			}
-			if (isQuestTab)
+
+			if (isQuestTab == true)
 			{
-				//aurelia
+				for (auto& x : CoreSystem->objfactory->ObjectContainer)
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					if (x.first == "TabMenu")
+					{
+						std::cout << "Drawing tabmenu\n";
+						spritecomp->draw();
+					}
+				}
 			}
 
 			if (isWalk == true)

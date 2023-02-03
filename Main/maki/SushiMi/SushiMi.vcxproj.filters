@@ -503,5 +503,8 @@
     <None Include="..\Data\PauseMenu.json">
       <Filter>GameEngine\Serialization\Data</Filter>
     </None>
+    <None Include="..\Data\TabMenu.json">
+      <Filter>GameEngine\Serialization\Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

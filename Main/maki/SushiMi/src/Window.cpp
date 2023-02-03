@@ -45,6 +45,7 @@ namespace Core
 	static bool keystate_down = false;
 	static bool keystate_R = false;
 	static bool keystate_M = false;
+	static bool keystate_tab = false;
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
 	static bool keystate_T = false;
@@ -138,6 +139,7 @@ namespace Core
 		isWalk = false;
 		isLevel1 = false;
 		isLevel2 = false;
+		isQuestTab = false;
 		isWinCondition = false;
 		isPlayerinSinkhole = false;
 		loaded = false;
@@ -198,19 +200,30 @@ namespace Core
 			}
 		}
 
+		if (ImGui::IsKeyPressed(GLFW_KEY_TAB))
+		{
+			keystate_tab = true;
+			std::cout << "opening quest tab" << std::endl;
+			if (keystate_tab)
+			{
+				isQuestTab = true;
+				//aurelia
+				keystate_tab = false;
+			}
+		}
 		if (ImGui::IsKeyPressed(GLFW_KEY_1))
 		{
 			keystate_1 = true;
 			std::cout << "you have loaded level 1" << std::endl;
 			if (keystate_1)
 			{
-				
+
 				isMenuState = false;
 				isLevel1 = true;
 				isLevel2 = false;
 
 				SceneManager::restartLevel();
-				
+
 				//SceneManager::tilecontainer.clear();
 				//SceneManager::ingredientcontainer.clear();
 
@@ -683,22 +696,6 @@ namespace Core
 				}
 			}
 
-
-
-			//Draw Pause Overlay
-			/*if (gameIsPaused == true)
-			{
-				SceneManager::drawPauseOverlay();
-
-			}*/
-			/*if (isMenuState == true)
-			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
-				Sprite::menu->draw();
-			}*/
-
-
-			//Sprite::menu->draw();
 			//Draw Main Menu
 			if (isMenuState == true)
 			{
@@ -752,7 +749,10 @@ namespace Core
 						spritecomp->draw();
 				}
 			}
-
+			if (isQuestTab)
+			{
+				//aurelia
+			}
 
 			if (isWalk == true)
 			{

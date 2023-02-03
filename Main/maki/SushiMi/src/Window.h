@@ -40,6 +40,7 @@ namespace Core
 		bool isCutscene;
 		bool isLevel1;
 		bool isLevel2;
+		bool isQuestTab;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;
 		static inline int numQuests;

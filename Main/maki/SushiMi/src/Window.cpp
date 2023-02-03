@@ -126,7 +126,11 @@ namespace Core
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
-		SceneManager::pause_overlay = new Sprite("../textures/pause.png");
+		
+		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
+		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
+		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
+		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
@@ -136,6 +140,8 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
 		isMenuState = true;
+		isHowToPlay = false;
+		isSettings = false;
 		isWalk = false;
 		isLevel1 = false;
 		isLevel2 = false;
@@ -143,6 +149,7 @@ namespace Core
 		isWinCondition = false;
 		isPlayerinSinkhole = false;
 		loaded = false;
+		HowToPlayPage = 0;
 
 		//player = new Player();
 
@@ -164,9 +171,9 @@ namespace Core
 	{
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
-
-		SceneManager::destroyPauseOverlay();
-		SceneManager::destroyWinOverlay();
+		
+		SceneManager::destroyHowToOverlay(); //delete How to play overlay
+		SceneManager::destroyWinOverlay(); //delete Win Overlay
 
 		SceneManager::destroyPlayer_Stuck();
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
@@ -285,7 +292,7 @@ namespace Core
 		}
 		if (gameIsPaused == false)
 		{
-			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE))
+			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) && (isLevel1 || isLevel2))
 			{
 				keystate_paused = true;
 				if (keystate_paused)
@@ -342,6 +349,17 @@ namespace Core
 				Sprite::menu->transformation.Position.y = screenheight;*/
 
 			}
+			//HOW TO PLAY
+			if (xpos > 275 && xpos < (275 + 366) && ypos > 520 && ypos < (520 + 96))
+			{
+				isHowToPlay = true;
+				//std::cout << "in how to play screen" << std::endl;
+			}
+			//SETTINGS
+			if (xpos > 275 && xpos < (275 + 366) && ypos > 700 && ypos < (700 + 96))
+			{
+				
+			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
 			if (xpos > 275 && xpos < (275 + 366) && ypos > 890 && ypos < (890 + 96))
 			{
@@ -366,8 +384,8 @@ namespace Core
 				//std::cout << "game resume, no more pause screen" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-				SceneManager::pause_overlay->transformation.Position.y = screenheight;
+				SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
+				SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
 
 			}
 			//RETURN TO MAIN MENU
@@ -601,7 +619,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawPauseOverlay();
+					SceneManager::drawHowToOverlay();
 
 				}
 				if (Map::isWin())
@@ -652,7 +670,7 @@ namespace Core
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
-
+				
 				if (gameIsPaused == false)
 				{
 					if (isPlayerinSinkhole)
@@ -768,6 +786,64 @@ namespace Core
 			{
 				AudioManager.PlaySFX("WalkSFX.wav");
 				isWalk = false;
+			}
+
+			if (isHowToPlay == true)
+			{
+				isMenuState = false; //disable menu buttons
+				gameIsPaused = false;
+				
+				SceneManager::loadHowToOverlay(0, 0);
+				SceneManager::drawHowToOverlay();
+				if (ImGui::IsMouseReleased(0) && isMenuState == false)
+				{
+					double xpos = 0, ypos = 0;
+					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+
+					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+					//NEXT PAGE
+					if (HowToPlayPage < 3)
+					{
+						if (xpos > 1651 && xpos < 1732 && ypos > 820 && ypos < 889)
+						{
+
+							HowToPlayPage++;
+
+							std::cout << "next page" << std::endl;
+
+						}
+					}
+					//PREV PAGE 
+					if (HowToPlayPage > 0)
+					{
+						if (xpos > 1525 && xpos < 1608 && ypos > 820 && ypos < 889)
+						{
+
+							HowToPlayPage--;
+
+							std::cout << "previous page" << std::endl;
+
+						}
+					}
+
+
+					//BACK
+					
+					if (xpos > 151 && xpos < 339 && ypos > 820 && ypos < 889)
+					{
+
+						isMenuState = true;
+						HowToPlayPage = 0;
+						isHowToPlay = false;
+
+						std::cout << "return to main menu" << std::endl;
+
+					}
+					
+
+				}
+
 			}
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();

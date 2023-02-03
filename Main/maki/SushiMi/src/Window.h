@@ -31,8 +31,11 @@ namespace Core
 
 		void Mainloop();
 
+
+
 		static inline bool gameIsPaused;
 		bool isMenuState;
+		bool isSettings;
 		bool isLevelSelection;
 		bool isWalk;
 		static inline bool loaded;
@@ -44,6 +47,10 @@ namespace Core
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;
 		static inline int numQuests;
+
+
+		bool isHowToPlay;
+		static inline int HowToPlayPage;
 
 
 

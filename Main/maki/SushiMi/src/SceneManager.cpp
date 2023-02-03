@@ -14,7 +14,7 @@ namespace Core
 		goal1 = nullptr;
 		goal2 = nullptr;
 		cover1 = nullptr;*/
-		pause_overlay = nullptr;
+		howtoplay_overlay1 = nullptr;
 		win_overlay = nullptr;
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
@@ -144,14 +144,19 @@ namespace Core
 		player_stuck->transformation.Scale = glm::vec2(90, 90);
 	}
 	
-	void SceneManager::loadPauseOverlay(int x, int y)
+	void SceneManager::loadHowToOverlay(int x, int y)
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-		/*x = screenwidth * 0.5;
-		y = screenheight * 0.5;*/
-		pause_overlay->transformation.Position = glm::vec2(x, y);
-		pause_overlay->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	
+		howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay2->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay3->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
@@ -220,10 +225,35 @@ namespace Core
 		player_stuck->draw();
 	}
 	
-	void SceneManager::drawPauseOverlay()
+	void SceneManager::drawHowToOverlay()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", pause_overlay->transformation.Get());
-		pause_overlay->draw();
+		switch (Window::HowToPlayPage)
+		{
+		case 0:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
+			howtoplay_overlay1->draw();
+			break;
+		}
+		case 1:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
+			howtoplay_overlay2->draw();
+			break;
+		}
+		case 2:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
+			howtoplay_overlay3->draw();
+			break;
+		}
+		case 3:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
+			howtoplay_overlay4->draw();
+			break;
+		}
+		}
 	}
 	void SceneManager::drawWinOverlay()
 	{
@@ -272,9 +302,12 @@ namespace Core
 	{
 	}*/
 
-	void SceneManager::destroyPauseOverlay()
+	void SceneManager::destroyHowToOverlay()
 	{
-		delete pause_overlay;
+		delete howtoplay_overlay1;
+		delete howtoplay_overlay2;
+		delete howtoplay_overlay3;
+		delete howtoplay_overlay4;
 	}
 
 	void SceneManager::destroyWinOverlay()

@@ -26,6 +26,8 @@ namespace Core
 		boxcover,		//p
 		win,			//q
 		temp,			//r
+		inbox1,			//s
+		inbox2,			//t
 		end
 	};
 

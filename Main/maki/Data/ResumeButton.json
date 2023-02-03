@@ -8,14 +8,14 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Buttons/Resume.jpg",
+      "texturepath": "../textures/Buttons/Button_Resume.png",
       "name": "ResumeButton",
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",
-      "AudioPath": "../Assets/ Audio/BGM.wav"
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

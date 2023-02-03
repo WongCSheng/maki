@@ -59,12 +59,16 @@ namespace Core
 
 		current_anim = Run;
 
+		std::cout << "player move left\n";
+
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
 		//current hard code way
 		playerpos.x -= Map::tile_width;
+
+		player_grid_pos.x--;
 		
 		sp->transformation.Position.x -= Map::tile_width;
 	}
@@ -83,7 +87,7 @@ namespace Core
 		//current hard code way
 		playerpos.x += Map::tile_width;
 
-
+		player_grid_pos.x++;
 
 		sp->transformation.Position.x += Map::tile_width;
 	}
@@ -99,6 +103,8 @@ namespace Core
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
+
+		player_grid_pos.y--;
 
 		//current hard code way
 		Player::playerpos.y -= Core::Map::tile_height;
@@ -123,11 +129,11 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
 
+		player_grid_pos.y++;
 
 		Player::playerpos.y += Core::Map::tile_height;
 
 		sp->transformation.Position.y += Core::Map::tile_height; //down is positive for some reason
-
 	}
 
 	void Player::restart()

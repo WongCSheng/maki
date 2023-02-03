@@ -25,6 +25,7 @@ namespace Core
 		box2,			//o
 		boxcover,		//p
 		win,			//q
+		temp,			//r
 		end
 	};
 

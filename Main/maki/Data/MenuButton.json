@@ -8,14 +8,14 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Buttons/Menu.jpg",
+      "texturepath": "../textures/Buttons/Button_MainMenu.png",
       "name": "MenuButton",
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     },
     {
       "type": "Audio",
-      "AudioPath": "../Assets/ Audio/BGM.wav"
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

@@ -112,7 +112,7 @@ namespace Core
 			{
 				switch (gGrids[r][c])
 				{
-				case static_cast<char>(grid_number::player):
+				case static_cast<int>(grid_number::player):
 				{
 					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
@@ -130,7 +130,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(grid_number::rice):
+				case static_cast<int>(grid_number::rice):
 				{
 					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
@@ -142,7 +142,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(grid_number::nori):
+				case static_cast<int>(grid_number::nori):
 				{
 					Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
@@ -151,7 +151,7 @@ namespace Core
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-				case static_cast<char>(grid_number::inari):
+				case static_cast<int>(grid_number::inari):
 				{
 					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
@@ -162,7 +162,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(grid_number::box1):
+				case static_cast<int>(grid_number::box1):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::box1, box);
@@ -176,7 +176,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(grid_number::box2):
+				case static_cast<int>(grid_number::box2):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::box2, box);
@@ -189,7 +189,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(grid_number::boxcover):
+				case static_cast<int>(grid_number::boxcover):
 				{
 					Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
@@ -197,9 +197,8 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-					
 
-				case static_cast<char>(grid_number::sinkhole):
+				case static_cast<int>(grid_number::sinkhole):
 				{
 					Sprite* sinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, sinkhole);
@@ -208,7 +207,7 @@ namespace Core
 					break;
 				}
 					
-				case static_cast<char>(grid_number::filledsinkhole):
+				case static_cast<int>(grid_number::filledsinkhole):
 				{
 					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, filledsinkhole);
@@ -216,8 +215,18 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
+
+				//Temporary placeholder for food in sinkhole
+				case static_cast<int>(grid_number::temp):
+				{
+					Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::temp, foodinsinkhole);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 					
-				case static_cast<char>(wall_type::bottomleftwall):
+				case static_cast<int>(wall_type::bottomleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomleftwall, tile);
@@ -226,7 +235,7 @@ namespace Core
 					break;
 				}
 					
-				case static_cast<char>(wall_type::bottomrightwall):
+				case static_cast<int>(wall_type::bottomrightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomrightwall, tile);
@@ -236,7 +245,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::bottomwall):
+				case static_cast<int>(wall_type::bottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomwall, tile);
@@ -246,7 +255,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middlebottomlefttopwall):
+				case static_cast<int>(wall_type::middlebottomlefttopwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlebottomlefttopwall, tile);
@@ -256,7 +265,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middleleftbottomrightwall):
+				case static_cast<int>(wall_type::middleleftbottomrightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftbottomrightwall, tile);
@@ -266,7 +275,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middleleftwall):
+				case static_cast<int>(wall_type::middleleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
@@ -276,7 +285,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middlelefttoprightwall):
+				case static_cast<int>(wall_type::middlelefttoprightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
@@ -286,7 +295,7 @@ namespace Core
 				}
 					
 					
-				case static_cast<char>(wall_type::middlerightwall):
+				case static_cast<int>(wall_type::middlerightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlerightwall, tile);
@@ -296,7 +305,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middletopbottomwall):
+				case static_cast<int>(wall_type::middletopbottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletopbottomwall, tile);
@@ -306,7 +315,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::middletoprightbottomwall):
+				case static_cast<int>(wall_type::middletoprightbottomwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletoprightbottomwall, tile);
@@ -316,7 +325,7 @@ namespace Core
 				}
 					
 				//most common wall
-				case static_cast<char>(wall_type::middlewall):
+				case static_cast<int>(wall_type::middlewall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlewall, tile);
@@ -327,7 +336,7 @@ namespace Core
 				}
 					
 
-				case static_cast<char>(wall_type::topleftwall):
+				case static_cast<int>(wall_type::topleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::topleftwall, tile);
@@ -338,7 +347,7 @@ namespace Core
 					
 
 					
-				case static_cast<char>(wall_type::toprightwall):
+				case static_cast<int>(wall_type::toprightwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::toprightwall, tile);
@@ -348,26 +357,19 @@ namespace Core
 				}
 
 				default:
+					assert("Texture type not found\n");
 					break;
-
 				}
-				
-				
 			}
-			std::cout << std::endl;
 		}
 
-		//debug ingredient container
-		/*std::cout << "ingredientcontainer contains:" << std::endl;
+		std::cout << "ingredientcontainer contains:" << std::endl;
 		for (auto& x : SceneManager::ingredientcontainer)
 		{
-			
 			std::cout << static_cast<char>(x.first) << ": " << x.second << std::endl;
-
-		}*/
+		}
 
 		print_map_to_console();
-
 
 		return 1;
 	}
@@ -413,195 +415,202 @@ namespace Core
 
 	void Map::collision_check_left()
 	{
-		if (isStuck() == 0)
+		//Check if left tile is a wall or ingredient
+		if ((gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+			gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items)) ||
+			(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+			gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last)))
 		{
-			//check (x-1,y)
-			//Step 1: if player is colliding w ingredient or wall 
-			if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) ||
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+			if (!isStuck())
 			{
-				//Step 1A: if it is a wall
-				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+				//check if left tile is ingredient
+				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
 				{
-					//do nothing
-					Window::player->stop();
-
-				}
-				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x-2, y)
-				else
-				{
-					//Store what kind of ingredient is player pushing
-					grid_number check{};
-					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x-1][Window::player->player_grid_pos.y ]);
-					//Step 2A: if it is a wall
+					std::cout << "left ingredient\n";
+					
+					//check if tile on the left of ingredient is a wall
 					if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 					{
-						//do nothing
-						std::cout << "wall detected up of player" << std::endl;
+						std::cout << "left ingredient wall\n";
 						Window::player->stop();
 					}
-					//Step 2B: if it is an empty space
+					//check if tile on the left of ingredient is a sinkhole
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+					{
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::temp); // Food stuck in sinkhole
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						std::cout << "left ingredient sinkhole\n";
+						Window::player->move_left();
+					}
+					//check if tile on the left of ingredient is another food
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
+					{
+						std::cout << "left ingredient ingredient\n";
+						Window::player->stop();
+					}
+					//check if it's a box
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::box1) ||
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::box2))
+					{
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						std::cout << "left ingredient box\n";
+						Window::player->move_left();
+					}
+					//Otherwise, it is a space
 					else
 					{
-
-
-						//step 3: check if (x-2,y) is a (A) blank space or (B) box plate or (C) sinkhole
-						if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::space))
-						{
-							//set (x-2,y) to ingredient
-							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
-							//set (x-1,y) to player
-							gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-							//set (x,y) to blank
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							//move the player forward
-							Window::player->move_left();
-							Window::player->player_grid_pos.x--;
-							//move ingredient forward 
-							//iterate through vector and find ingredient
-							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
-
-							/*if (iter != SceneManager::ingredientcontainer.end())
-							{
-								i
-							}*/
-						}
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y];
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						
+						std::cout << "left ingredient space\n";
+						Window::player->move_left();
 					}
 				}
-			}
-			else //it is a blank space or a sinkhole to check w the player
-			{
-				//if it is a sinkhole
-				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				/*check wall*/
+				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) ||
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 				{
-					//player moves anyway
-					std::cout << "player stepped in sinkhole!" << std::endl;
-					//set (x-1,y) to player in sinkhole
+					std::cout << "Wall on left" << std::endl;
+					Window::player->stop();
+				}
+				/*check with covered box*/
+				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+				{
+					std::cout << "Cover on left\n";
+					Window::player->stop();
+				}
+				/*check for sinkhole*/
+				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				{
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
-					//set (x,y) to blank
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-					//move the player forward
+					
+					std::cout << "left sinkhole\n";
 					Window::player->move_left();
-					Window::player->player_grid_pos.x--;
 
-					//is it a sinkhole
+					print_map_to_console();
 				}
-				else //it is a blank space
-				{
-					//set (x-1,y) to player
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					//set (x,y) to blank
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-					//move the player forward
-					Window::player->move_left();
-					Window::player->player_grid_pos.x--;
-
-				}
-
 			}
+			else
+			{
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+				std::cout << "normal left" << std::endl;
+				Window::player->move_left();
+
+				print_map_to_console();
+			}
 		}
 	}
 
 	void Map::collision_check_right()
-	{
-		if (isStuck() == 0)
+	{		
+		//Check if right tile is a wall or ingredient
+		if ((gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+			gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items)) ||
+			(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last)))
 		{
-			//check (x+1,y)
-			//Step 1: if player is colliding w ingredient or wall 
-			if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items) ||
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+			if (!isStuck())
 			{
-				//Step 1A: if it is a wall
-				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
+				//check if right tile is ingredient
+				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
 				{
-					//do nothing
-					Window::player->stop();
+					std::cout << "right ingredient\n";
 
-				}
-				//Step 1B: it is an ingredient, store its value then  go to step 2 to check (x+2, y)
-				else
-				{
-					//Store what kind of ingredient is player pushing
-					grid_number check{};
-					check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x+1][Window::player->player_grid_pos.y]);
-					//Step 2A: if it is a wall
+					//check if tile on the right of ingredient is a wall
 					if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) &&
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 					{
-						//do nothing
-						std::cout << "wall detected up of player" << std::endl;
+						std::cout << "right ingredient wall\n";
 						Window::player->stop();
 					}
-					//Step 2B: if it is an empty space
+					//check if tile on the right of ingredient is a sinkhole
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+					{
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::temp); // Food stuck in sinkhole
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						std::cout << "right ingredient sinkhole\n";
+						Window::player->move_right();
+					}
+					//check if tile on the right of ingredient is another food
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::ingredients) &&
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::items))
+					{
+						std::cout << "right ingredient ingredient\n";
+						Window::player->stop();
+					}
+					//check if it's a box
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::box1) ||
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::box2))
+					{
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						std::cout << "right ingredient box\n";
+						Window::player->move_right();
+					}
+					//Otherwise, it is a space
 					else
 					{
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y];
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
-
-						//step 3: check if (x+2,y) is a (A) blank space or (B) box plate or (C) sinkhole
-						if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::space))
-						{
-							//set (x+2,y) to ingredient
-							gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
-							//set (x+1,y) to player
-							gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-							//set (x,y) to blank
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							//move the player forward
-							Window::player->move_right();
-							Window::player->player_grid_pos.x++;
-							//move ingredient forward 
-							//iterate through vector and find ingredient
-							//auto iter = std::find(SceneManager::ingredientcontainer.begin(), SceneManager::ingredientcontainer.end(), check);
-
-							/*if (iter != SceneManager::ingredientcontainer.end())
-							{
-								i
-							}*/
-						}
+						std::cout << "right ingredient space\n";
+						Window::player->move_right();
 					}
 				}
-			}
-			else //it is a blank space or a sinkhole to check w the player
-			{
-				//if it is a sinkhole
-				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				/*check wall*/
+				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::first) ||
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::last))
 				{
-					//player moves anyway
-					std::cout << "player stepped in sinkhole!" << std::endl;
-					//set (x+1,y) to player in sinkhole
+					std::cout << "Wall on right" << std::endl;
+					Window::player->stop();
+				}
+				/*check with covered box*/
+				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+				{
+					std::cout << "Cover on right\n";
+					Window::player->stop();
+				}
+				/*check for sinkhole*/
+				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
+				{
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::filledsinkhole);
-					//set (x,y) to blank
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-					//move the player forward
+
+					std::cout << "right sinkhole\n";
 					Window::player->move_right();
-					Window::player->player_grid_pos.x++;
 
-					//is it a sinkhole
+					print_map_to_console();
 				}
-				else //it is a blank space
-				{
-					//set (x+1,y) to player
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					//set (x,y) to blank
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-					//move the player forward
-					Window::player->move_right();
-					Window::player->player_grid_pos.x++;
-
-				}
-
 			}
+			else
+			{
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+				std::cout << "normal right" << std::endl;
+				Window::player->move_right();
+
+				print_map_to_console();
+			}
 		}
-		
 	}
 	void Map::collision_check_down()
 	{
@@ -807,7 +816,6 @@ namespace Core
 			for (int r = 0; r < grid_row; r++)
 			{
 				std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
-
 			}
 			std::cout << std::endl;
 		}

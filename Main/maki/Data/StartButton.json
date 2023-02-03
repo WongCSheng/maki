@@ -4,11 +4,11 @@
       "type": "Transform",
       "position": [ 275, 349 ],
       "rotation": 0.0,
-      "scale": [ 366, 96 ]
+      "scale": [ 266, 96 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Buttons/Start.jpg",
+      "texturepath": "../textures/Buttons/Button_Start.png",
       "name": "StartButton",
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]

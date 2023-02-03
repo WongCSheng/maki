@@ -40,8 +40,8 @@ namespace Core
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
-		bool isLevel1;
-		bool isLevel2;
+		static inline bool isLevel1;
+		static inline bool isLevel2;
 		bool isQuestTab;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;

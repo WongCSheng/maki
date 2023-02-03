@@ -176,3 +176,5 @@ BundleArtifacts/
 !*.[Cc]ache/
 #Merge Attempt/maki/x64/Debug/SushiMi.exe
 Main/maki/SushiMi/Log.txt
+Main/maki/SushiMi/Log.txt
+Main/maki/SushiMi/x64/Debug/SushiMi.log

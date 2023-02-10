@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 /*
 File: PhysicSystem.cpp
 Author: 
+=======
+/*!
+@file    PhysicsSystem.cpp
+@author	 Aurelia Chong
+\par	 email: fei.x@digipen.edu
+		 Manages game physics such as acceleration and decelleration
+/*
+File: PhysicSystem.cpp
+Author:
+>>>>>>> M3-submission-branch
 Description: Physics System which runs data from Physics.cpp into it's logics.
 */
 
@@ -9,6 +20,7 @@ Description: Physics System which runs data from Physics.cpp into it's logics.
 
 namespace Core
 {
+<<<<<<< HEAD
 	PhysicSystem::PhysicSystem()
 	{
 	}
@@ -223,4 +235,7 @@ namespace Core
 		//std::cout << "Collision Detected!" << std::endl;
 		return 1; //collision
 	}
+=======
+	
+>>>>>>> M3-submission-branch
 }

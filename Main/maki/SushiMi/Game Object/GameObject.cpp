@@ -17,6 +17,15 @@ namespace Core
 
 		GameObjectProperty::~GameObjectProperty()
 		{
+<<<<<<< HEAD
+=======
+			for (auto& x : ComponentContainer)
+			{
+				if (x.second) {
+					delete x.second;
+				}
+			}
+>>>>>>> M3-submission-branch
 			ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
 		}
 
@@ -62,6 +71,12 @@ namespace Core
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
 		{
+<<<<<<< HEAD
+=======
+			if (ComponentContainer[ID]) {
+			delete ComponentContainer[ID];
+			}
+>>>>>>> M3-submission-branch
 			ComponentContainer.erase(ID);
 		}
 
@@ -79,6 +94,10 @@ namespace Core
 
 		GameObject::~GameObject()
 		{
+<<<<<<< HEAD
+=======
+			delete characteristics;
+>>>>>>> M3-submission-branch
 		}
 
 		void GameObject::Init()

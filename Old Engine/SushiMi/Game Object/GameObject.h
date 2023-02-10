@@ -1,8 +1,9 @@
 #pragma once
 
+#include "../Headers/STL_Header.h"
 #include "../Engine/Components/Component.h"
 #include "../Engine/Factory/Factory.h"
-//#include "../Engine/System/Linked List/LinkedList.h"
+#include "../Engine/System/Linked List/LinkedList.h"
 
 namespace Core
 {
@@ -14,11 +15,12 @@ namespace Core
 		class GameObjectProperty
 		{
 		public:
-			friend class Component;
+			//friend class Component;
 			friend class GameObject;
 
 			void Init();
 
+			//template<typename T>
 			Component* GetComponent(ComponentID ID);
 
 			unsigned int GetID();
@@ -30,6 +32,8 @@ namespace Core
 			void AddComponent(ComponentID ID, Component* comp);
 
 			void RemoveComponent(ComponentID ID);
+
+			std::unordered_map<ComponentID, Component*> GetComponentContainer();
 
 		private:
 			GameObjectProperty();
@@ -47,17 +51,15 @@ namespace Core
 		class GameObject
 		{
 		private:
-			GameObjectProperty* characteristics;
-
-		protected:
-			virtual ~GameObject();
+			
 
 		public:
-			friend class ObjectFactory;
-
-			//LinkedList<Component*> HeadOfList;
-
 			GameObject();
+			virtual ~GameObject();
+			friend class ObjectFactory;
+			GameObjectProperty* characteristics; //use unique_ptr
+			//LinkedList<Component*> HeadOfList;
+			
 
 			virtual void Init();
 

@@ -15,14 +15,14 @@ to draw the object, then unbind and unuse the shader program.
 #define OBJECT_H_
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "include/common_headers.hpp"
 #include <rttr/type>
-#include "Camera2D.h"
+#include "../Engine/Camera/Camera2D.h"
 #include <GL/glew.h>
 #include <map>
-#include "include/glslshader.h"
-#include "model.h"
-#include "include/collision.h"
+
+#include "../Engine/System/Graphics/glslshader.h"
+#include "../Engine/Mesh/model.h"
+#include "../Engine/Components/Physics/collision.h"
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/trigonometric.hpp>
 #include <GLFW/glfw3.h>
@@ -30,7 +30,7 @@ to draw the object, then unbind and unuse the shader program.
 class Object
 {
 public:
-	
+
 	void draw() const;
 
 	void update(GLdouble delta_time);
@@ -44,10 +44,9 @@ public:
 	gfxVector2 velocity{};
 	float dirCurr{};
 	Collision::AABB aabb;
-	Collision::OBB obb;
 	bool status{};
 	float mass;						//mass inst for accelerations
-	 
+
 
 
 	// compute object's model transform matrix using scaling,
@@ -67,7 +66,7 @@ public:
 	static std::map<std::string, Object> objects; // singleton
 
 	//testing color based animation
-	bool anim_rainbow{}; 
+	bool anim_rainbow{};
 	double rainbowCount = 0;
 	bool anim_bw{};
 	double bwCount = 0;

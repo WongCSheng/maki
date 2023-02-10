@@ -1,19 +1,5 @@
-//******************************************************************************/
-/*!
-\file		Matrix.cpp
-\author 	Thea Sea
-\par    	email: thea.sea@digipen.edu
-\date   	2/8/2022
-\brief		This source file contains the function definitions for
-			custom matrix functions.
-
-Copyright (C) 2022 DigiPen Institute of Technology.
-Reproduction or disclosure of this file or its contents without the
-prior written consent of DigiPen Institute of Technology is prohibited.
- */
- /******************************************************************************/
- #include "../include/Matrix.h"
-#include <glm/glm/matrix.hpp>
+#include "../include/Matrix.h"
+//#include <glm/glm/matrix.hpp>
 
 /*
 * 3x3 matrix is col major meaning
@@ -69,9 +55,11 @@ void gfxMatrix3::setIdentity()
 //swap x and y elements
 void gfxMatrix3::swap(float& x, float& y)
 {
-	float temp = x;
+	/*float temp = x;
 	x = y;
-	y = temp;
+	y = temp;*/
+
+	std::swap(x, y);
 }
 
 //transpose the matrix(flipping) ( Have to test to see if it works)
@@ -200,7 +188,7 @@ void gfxMatrix3::SetTranslation(float tx, float ty)
 	a[7] = ty;
 }
 
-gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs) const
+gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs)
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 3; i++)
@@ -212,7 +200,8 @@ gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs) const
 	}
 	return temp;
 }
-gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs) const
+
+gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs)
 {
 	float b[3];
 
@@ -223,7 +212,8 @@ gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs) const
 	gfxVector2 temp(b[0], b[1]);
 	return temp;
 }
-gfxMatrix3 gfxMatrix3::operator*(float value) const
+
+gfxMatrix3 gfxMatrix3::operator*(float value)
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 9; i++)
@@ -233,9 +223,32 @@ gfxMatrix3 gfxMatrix3::operator*(float value) const
 
 	return temp;
 }
-gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs) const
+
+gfxMatrix3& gfxMatrix3::operator*=(const gfxMatrix3& rhs)
 {
-	return(
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			this->a[i * 3 + j] = a[0 * 3 + j] * rhs.a[i * 3 + 0] + this->a[1 * 3 + j] * rhs.a[i * 3 + 1] + this->a[2 * 3 + j] * rhs.a[i * 3 + 2];
+		}
+	}
+	return *this;
+}
+
+gfxMatrix3& gfxMatrix3::operator*=(float value)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		this->a[i] = a[i] * value;
+	}
+
+	return *this;
+}
+
+gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
+{
+	return gfxMatrix3(
 		a[0] + rhs.a[0],
 		a[1] + rhs.a[1],
 		a[2] + rhs.a[2],
@@ -245,8 +258,9 @@ gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs) const
 		a[6] + rhs.a[6],
 		a[7] + rhs.a[7],
 		a[8] + rhs.a[8]
-		);
+	);
 }
+
 gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 {
 	for (int i = 0; i < 9; i++)
@@ -254,4 +268,28 @@ gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 		a[i] = rhs.a[i];
 	}
 	return *this;
+}
+
+float gfxMatrix3::operator[](int elem) const
+{
+	return this->a[elem];
+}
+
+float& gfxMatrix3::operator[](int elem)
+{
+	return this->a[elem];
+}
+
+void gfxMatrix3::printMatrix(const gfxMatrix3 thisone)
+{
+	for (int i = 0, count = 1; i < 9; i++, count++)
+	{
+		std::cout << thisone[i] << ' ';
+
+		if (count == 3)
+		{
+			std::cout << std::endl;
+			count = 0;
+		}
+	}
 }

@@ -85,15 +85,24 @@ public:
 	gfxVector3& operator+=(const gfxVector3& v)
 	{
 		this->x += v.x;
+<<<<<<< HEAD
 		this->y = v.y;
         this->z = v.z;
+=======
+		this->y += v.y;
+        this->z += v.z;
+>>>>>>> M3-submission-branch
 		return *this;
 	}
 	gfxVector3& operator-=(const gfxVector3& v)
 	{
 		this->x -= v.x;
 		this->y -= v.y;
+<<<<<<< HEAD
         this->z = v.z;
+=======
+        this->z -= v.z;
+>>>>>>> M3-submission-branch
 		return *this;
 	}
 

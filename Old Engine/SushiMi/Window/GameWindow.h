@@ -11,10 +11,9 @@ This file contains class Window that we will use for opening windows..
 #ifndef GAMEWINDOW_H_
 #define GAMEWINDOW_H_
 
-#include <GL/glew.h>
 #include "../Headers/STL_Header.h"
 #include <GLFW/glfw3.h>
-#include "../include/glhelper.h"
+//#include "../Engine/System/Graphics/glhelper.h"
 
 namespace Upfront
 {
@@ -30,16 +29,16 @@ namespace Upfront
 		int getWinWidth();
 		int getWinHeight();
 
-		static GLFWwindow* win;
-		static GLFWmonitor* monitor;
-		static HINSTANCE instance;
+		inline static GLFWwindow* win = nullptr;
+		inline static GLFWmonitor* monitor = nullptr;
+		inline static HINSTANCE instance {0};
 
-		static int winWidth, winHeight,
-			dispWidth, dispHeight;
+		inline static int winWidth{ 0 }, winHeight{ 0 },
+			dispWidth{ 0 }, dispHeight{ 0 };
 
-		static POINT mousePos;
+		inline static POINT mousePos{};
 
-		static const char* titlebar;
+		inline static const char* titlebar;
 	};
 
 	/*class Window_Message : public Message

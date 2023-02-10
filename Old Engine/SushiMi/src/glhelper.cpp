@@ -12,11 +12,10 @@ pointers to OpenGL implementations.
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include <../include/glhelper.h>
-#include "../object.h"
-#include <../Camera2D.h>
+#include "../Engine/System/Graphics/glhelper.h"
+#include "../Game Object/GameObject.h"
+#include "../Engine/Camera/Camera2D.h"
 #include <iostream>
-#include <../include/AudioEngine.h>
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */
@@ -68,13 +67,13 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	if (!GLHelper::ptr_window) {
 		std::cerr << "GLFW unable to create OpenGL context - abort program\n";
 		glfwTerminate();
-		assert("GLFW unable to create OpenGL context - abort program\n", (!GLHelper::ptr_window));
 		return false;
 	}
 
 	glfwMakeContextCurrent(GLHelper::ptr_window); // make current window the context
 
 	// first parameter represent the handle to the window (ptr_window) while 2nd paramter is the callback function
+	
 	glfwSetFramebufferSizeCallback(GLHelper::ptr_window, GLHelper::fbsize_cb);
 	glfwSetKeyCallback(GLHelper::ptr_window, GLHelper::key_cb);
 	glfwSetMouseButtonCallback(GLHelper::ptr_window, GLHelper::mousebutton_cb);
@@ -167,44 +166,6 @@ void GLHelper::cleanup() {
 	glfwTerminate();
 }
 
-
-//testing clone function
-
-
-/*  _________________________________________________________________________ */
-/*! Clone(int xPos, int yPos)
-@param none
-@return
-none
-
-Makes a copy of the animating circle (currently doesnt work)
-*/
-void Clone(int xPos, int yPos)
-{
-	Object newCircle;
-	newCircle.color = { 0,0,0 };
-	newCircle.scaling = { 25.0, 25.0 };
-	newCircle.orientation = { 0.0, 0.0 };
-	newCircle.position = { xPos, yPos };
-	newCircle.initialPos = newCircle.position;
-	newCircle.aabb.min.x = newCircle.position.x - (newCircle.scaling.x); 
-	newCircle.aabb.min.y = newCircle.position.y - (newCircle.scaling.y); 
-	newCircle.aabb.max.x = newCircle.position.x + (newCircle.scaling.x); 
-	newCircle.aabb.max.y = newCircle.position.y + (newCircle.scaling.y); 
-
-	Model temp_mdl;
-	temp_mdl.primitive_type = GL_TRIANGLE_FAN;
-	temp_mdl = temp_mdl.init("../mesh/circle.msh");
-
-	Model::models.insert(std::pair<std::string, Model>("circle", temp_mdl));
-	GLApp::insert_shdrpgm("shdrpgm", "../shaders/SushiMi.vert", "../shaders/SushiMi.frag");
-
-	newCircle.mdl_ref = Model::models.find("circle");
-	newCircle.shd_ref = GLApp::shdrpgms.find("shdrpgm");
-	Object::objects.insert(std::pair<std::string, Object>("clone", newCircle));
-
-}
-
 /*  _________________________________________________________________________*/
 /*! key_cb
 
@@ -236,104 +197,82 @@ void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int m
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
 	{
-		Object::objects["temp"].position.x += 50.0f;
-		std::cout << "Physics: Moving player right" << std::endl;
-		AudioManager.PlayClip("WalkSFX.wav");
+		//Object::objects["Object5"].position.x += 50.0f;
+		std::cout << "Physics: Moving a circle object right" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
 	{
-		Object::objects["temp"].position.x -= 50.0f;
-		std::cout << "Physics: Moving a player left" << std::endl;
-		AudioManager.PlayClip("WalkSFX.wav");
+		//Object::objects["Object5"].position.x -= 50.0f;
+		std::cout << "Physics: Moving a circle object left" << std::endl;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
 	{
-		Object::objects["temp"].position.y -= 50.0f;
+		//Object::objects["Object5"].position.y -= 50.0f;
 		std::cout << "Physics: Moving a circle object down" << std::endl;
-		AudioManager.PlayClip("WalkSFX.wav");
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
 	{
-		Object::objects["temp"].position.y += 50.0f;
+		//Object::objects["Object5"].position.y += 50.0f;
 		std::cout << "Physics: Moving a circle object up" << std::endl;
-		AudioManager.PlayClip("WalkSFX.wav");
 	}
 
-	/* for Rect's rotation implementation*/
+	/* for object6's rotation implementation*/
 	/* the lower right rectangle*/
 	// press J to rotate right faster, press K to rotate left
 	if (GLFW_PRESS == action && key == GLFW_KEY_J)
 	{
-		Object::objects["ZRect"].rot_left = GL_TRUE;
+		//Object::objects["Object6"].rot_left = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_K)
 	{
-		Object::objects["ZRect"].rot_right = GL_TRUE;
+		//Object::objects["Object6"].rot_right = GL_TRUE;
 	}
 
 	/* for object6's scaling implementation*/
 	// Press M to scale upm press N to scale down
 	if (GLFW_PRESS == action && key == GLFW_KEY_M)
 	{
-		Object::objects["ZRect"].scale_up = GL_TRUE;
+		//Object::objects["Object6"].scale_up = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_N)
 	{
-		Object::objects["ZRect"].scale_down = GL_TRUE;
+		//Object::objects["Object6"].scale_down = GL_TRUE;
 	}
 
 	//for camera physics
 	if (GLFW_PRESS == action && key == GLFW_KEY_V)
 	{
-		Camera2D::camera2d.camtype_flag = GL_TRUE;
+		//Camera2D::camera2d.camtype_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_Z)
 	{
-		Camera2D::camera2d.zoom_flag = GL_TRUE;
+		//Camera2D::camera2d.zoom_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_A)
 	{
-		Camera2D::camera2d.left_turn_flag = GL_TRUE;
+		//Camera2D::camera2d.left_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_D)
 	{
-		Camera2D::camera2d.right_turn_flag = GL_TRUE;
+		//Camera2D::camera2d.right_turn_flag = GL_TRUE;
 	}
 	if (GLFW_PRESS == action && key == GLFW_KEY_W)
 	{
-		Camera2D::camera2d.move_flag = GL_TRUE;
-		Camera2D::camera2d.decelerate = GL_FALSE;
-		if (GLFW_RELEASE == action)
-		{
-			Camera2D::camera2d.decelerate = GL_TRUE;
-		}
+		//Camera2D::camera2d.move_flag = GL_TRUE;
+		//Camera2D::camera2d.decelerate = GL_FALSE;
 	}
-
-	//for circle animation
-	if (GLFW_PRESS == action && key == GLFW_KEY_1) {
-		Object::objects["anim"].anim_rainbow = GL_TRUE;
-		Object::objects["anim"].anim_bw = GL_FALSE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_2) {
-		Object::objects["anim"].anim_rainbow = GL_FALSE;
-		Object::objects["anim"].anim_bw = GL_TRUE;
-	}
-	//for cloning circle (doesnt work fully)
-	if (GLFW_PRESS == action && key == GLFW_KEY_TAB) {
-		Clone(100,100);
-	}
-	
 	else if (GLFW_RELEASE == action)
 	{
-		Camera2D::camera2d.camtype_flag = GL_FALSE;
-		Camera2D::camera2d.zoom_flag = GL_FALSE;
-		Camera2D::camera2d.left_turn_flag = GL_FALSE;
-		Camera2D::camera2d.right_turn_flag = GL_FALSE;
-		Camera2D::camera2d.move_flag = GL_FALSE;
-		Object::objects["ZRect"].rot_left = GL_FALSE;
-		Object::objects["ZRect"].rot_right = GL_FALSE;
-		Object::objects["ZRect"].scale_up = GL_FALSE;
-		Object::objects["ZRect"].scale_down = GL_FALSE;
+		//Camera2D::camera2d.decelerate = GL_TRUE;
+		//Camera2D::camera2d.camtype_flag = GL_FALSE;
+		//Camera2D::camera2d.zoom_flag = GL_FALSE;
+		//Camera2D::camera2d.left_turn_flag = GL_FALSE;
+		//Camera2D::camera2d.right_turn_flag = GL_FALSE;
+		//Camera2D::camera2d.move_flag = GL_FALSE;
+		//Object::objects["Object6"].rot_left = GL_FALSE;
+		//Object::objects["Object6"].rot_right = GL_FALSE;
+		//Object::objects["Object6"].scale_up = GL_FALSE;
+		//Object::objects["Object6"].scale_down = GL_FALSE;
 	}
 
 	
@@ -471,4 +410,3 @@ void GLHelper::update_time(double fps_calc_interval) {
 		count = 0.0;
 	}
 }
-

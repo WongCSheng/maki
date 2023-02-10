@@ -2,8 +2,7 @@
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <iostream>
-#include "include/common_headers.hpp"
-#include "include/glapp.h"
+#include "../Headers/STL_Header.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include "fonts.h"
@@ -22,27 +21,27 @@ int Font::init()
     glEnable(GL_CULL_FACE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     GLApp::shdrpgms["font"].Use();
-	FT_Library ft;	//init the freetype library ft
-	if (FT_Init_FreeType(&ft))
-	{
+    FT_Library ft;	//init the freetype library ft
+    if (FT_Init_FreeType(&ft))
+    {
         assert(ft != NULL);
-		std::cout << "ERROR: Unable to init freetype library." << std::endl;
-        
-		return -1;
-	}
-	FT_Face face;	//load font as a face
-    
-	if (FT_New_Face(ft, "../amiri-regular.ttf", 0, &face))	//try to load arial font here
-	{
-		std::cout << "ERROR: Arial not found!" << std::endl;
-		return -1;
-	}
-	FT_Set_Pixel_Sizes(face, 0, 48);
-	if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
-	{
-		std::cout << "ERROR:FREETYPE: Failed to load Glyph" << std::endl;
-		return -1;
-	}
+        std::cout << "ERROR: Unable to init freetype library." << std::endl;
+
+        return -1;
+    }
+    FT_Face face;	//load font as a face
+
+    if (FT_New_Face(ft, "../amiri-regular.ttf", 0, &face))	//try to load arial font here
+    {
+        std::cout << "ERROR: Arial not found!" << std::endl;
+        return -1;
+    }
+    FT_Set_Pixel_Sizes(face, 0, 48);
+    if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
+    {
+        std::cout << "ERROR:FREETYPE: Failed to load Glyph" << std::endl;
+        return -1;
+    }
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
 
@@ -91,7 +90,7 @@ int Font::init()
 
     glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
     glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-    
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);

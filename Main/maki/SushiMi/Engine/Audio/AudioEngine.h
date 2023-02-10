@@ -16,6 +16,7 @@
 using namespace std;
 using namespace FMOD;
 
+<<<<<<< HEAD
 /*                                                                   zinstances
 ----------------------------------------------------------------------------- */
 #define AudioManager _audioManager::Instance()
@@ -66,3 +67,59 @@ FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
     FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,
     void* commandData1,
     void* commandData2);
+=======
+namespace Core
+{
+    /*                                                                   zinstances
+    ----------------------------------------------------------------------------- */
+#define AudioManager _audioManager::Instance()
+
+    /*                                                                   Class
+    ----------------------------------------------------------------------------- */
+    class _audioManager
+    {
+
+        /*                                                              Private Class
+       ----------------------------------------------------------------------------- */
+    private:
+        _audioManager(void);
+        ~_audioManager(void);
+        System* fmodSystem = NULL;
+        Channel* channel = nullptr;
+        Channel* musicChannel = nullptr;
+        ChannelGroup* channelGroup = nullptr;
+        map<string, Sound*> soundDatabase;
+        map<string, Sound*> musicDatabase;
+        bool isActive = true;
+
+
+        /*                                                             Public Class
+        ----------------------------------------------------------------------------- */
+    public:
+        static _audioManager& Instance(void);
+        Channel* GetMusicChannel(void);
+        void CleanPlaying(void);
+        void PlaySFX(string audiClip);
+        void PlayMusic(string musicTrack);
+        void StopMusic(void);
+        void StopSFX(void);
+        void SetAudioVolume(float volume);
+        void SetMusicVolume(float volume);
+        void Update(void);
+        void LoadSFX(string name);
+        void LoadMusic(string name);
+        void UnLoadSFX(string name);
+        void UnloadMusic(string name);
+        void Free(void);
+        Sound* GetSound(string name);
+    };
+
+    /*                                                             Call back function
+     ----------------------------------------------------------------------------- */
+    FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
+        FMOD_CHANNELCONTROL_TYPE controlType,
+        FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,
+        void* commandData1,
+        void* commandData2);
+}
+>>>>>>> M3-submission-branch

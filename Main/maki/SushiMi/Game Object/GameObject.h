@@ -51,6 +51,7 @@ namespace Core
 		class GameObject
 		{
 		private:
+<<<<<<< HEAD
 			GameObjectProperty* characteristics; //use unique_ptr
 
 		protected:
@@ -63,6 +64,17 @@ namespace Core
 			//LinkedList<Component*> HeadOfList;
 			
 			GameObject();
+=======
+			
+
+		public:
+			GameObject();
+			virtual ~GameObject();
+			friend class ObjectFactory;
+			GameObjectProperty* characteristics; //use unique_ptr
+			//LinkedList<Component*> HeadOfList;
+			
+>>>>>>> M3-submission-branch
 
 			virtual void Init();
 

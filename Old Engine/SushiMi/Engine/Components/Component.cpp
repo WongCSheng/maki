@@ -1,7 +1,7 @@
 /*
 File:		 ECS.cpp
 Author:		 w.chongsheng@digipen.edu
-Description: This file contains the function definition for Entities and Components
+Description: This file contains the function definition for Components
 */
 
 #include "Component.h"
@@ -10,15 +10,16 @@ Description: This file contains the function definition for Entities and Compone
 
 namespace Core
 {
-
+	
 	Component::Component()
 	{
-		owner = new Object::GameObjectProperty();
+		owner = nullptr;
 		add = false;
 		active = false;
 		remove = false;
+		ID =  ComponentID::None;
 	}
-
+	
 	Component::~Component()
 	{
 		//delete owner;
@@ -32,6 +33,14 @@ namespace Core
 	void Component::SetOwner(Object::GameObjectProperty* NewOwner)
 	{
 		owner = NewOwner;
+	}
+
+	void Component::Reset(bool set)
+	{
+		if (set)
+		{
+
+		}
 	}
 
 	bool Component::IsActive()

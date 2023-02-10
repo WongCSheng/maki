@@ -20,18 +20,12 @@ program object.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <GL/glew.h> // for access to OpenGL API declarations 
-#include <glm/glm/glm.hpp>
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include <string>
-#include <cstdlib>
 #include <string>
 #include <vector>
-#include <map>
-#include "Vector.h"
-#include "Matrix.h"
-#include "vector3.h"
+#include <../include/glm.h>
+
+#include "../include/Matrix.h"
 
 /*  _________________________________________________________________________ */
 class GLSLShader

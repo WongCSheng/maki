@@ -1,4 +1,5 @@
 SushiMi Engine by Maki 
+<<<<<<< HEAD
 This folder contains our Merge Attempt.
 
 For a compilable project, please refer to the other "maki.sln" solution file.
@@ -27,3 +28,9 @@ Rotating the Camera:
 Scaling an Object
 - Key N (Scale Down)
 - Key M (Scale Up)
+=======
+This folder contains our Main file for meeting most of the M3 Rubrics
+
+The Component system, Object System, Collision, Deserialisation and Editor File Explorer 
+is most updated in this branch compared to the Graphics branch
+>>>>>>> M3-submission-branch

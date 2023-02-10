@@ -7,7 +7,11 @@
 #include "../Game Object/GameObject.h"
 
 #include "../Headers/STL_Header.h"
+<<<<<<< HEAD
 #include "Graphics/glslshader.h"
+=======
+//#include "Graphics/glslshader.h"
+>>>>>>> M3-submission-branch
 #include "../Engine/Mesh/model.h"
 
 
@@ -26,6 +30,15 @@ namespace Core
 		Transformer();
 		virtual ~Transformer();
 
+<<<<<<< HEAD
+=======
+		static Transformer* GetInstance()
+		{
+			static Transformer transformersystem;
+			return &transformersystem;
+		}
+
+>>>>>>> M3-submission-branch
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
@@ -53,7 +66,11 @@ namespace Core
 	private:
 		std::unordered_map<std::string, Object::GameObject*> Transforms;
 
+<<<<<<< HEAD
 		
+=======
+		static Transformer* instance;
+>>>>>>> M3-submission-branch
 	};
 }
 

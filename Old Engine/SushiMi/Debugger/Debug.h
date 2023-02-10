@@ -1,4 +1,8 @@
-#pragma once
+/*
+File: Debug.h
+Author: 
+Description: Header for Debug.cpp.
+*/
 
 #ifndef DEBUGGER_H
 #define DEBUGGER_H

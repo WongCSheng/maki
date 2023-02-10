@@ -19,14 +19,26 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
-//#include "../../glad/glad/glad.h"
-#include "../Engine/System/Graphics/glapp.h"
 #include "../Engine/Core/Core.h"
-#include "../Window/GameWindow.h"
+#include "Window.h"
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
+<<<<<<< HEAD
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
 #include "../Engine/Audio/AudioEngine.h"
+========
+=======
+>>>>>>> M3-submission-branch
+#include "../Engine/System/TextureSystem.h"
+#include "../Engine/Audio/AudioEngine.h"
+#include "../Engine/Serialiser/JSONSerializer.h"
+#include "../Engine/Factory/Factory.h"
+#include "../Engine/TileMap/Map.h"
+<<<<<<< HEAD
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
+=======
+>>>>>>> M3-submission-branch
 
 //#include "../Mono/Mono.h"
 #include <memory> 
@@ -39,6 +51,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
 
 /*                                                      function declarations
 ----------------------------------------------------------------------------- */
@@ -50,6 +64,13 @@ static void cleanup();
 static Core::MainSystem* CoreSystem = new Core::MainSystem();
 static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
 
+========
+static Core::MainSystem* CoreSystem;
+static Core::Object::GameObject* TestObj;
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
+=======
+static Core::MainSystem* CoreSystem;
+>>>>>>> M3-submission-branch
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -67,22 +88,42 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
 int main() {
 
 	// Enable run-time memory check for debug builds.
-	#if defined(DEBUG) | defined(_DEBUG)
+#if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	#endif
+	
+<<<<<<< HEAD
+	//_CrtSetBreakAlloc(1286494); //use this to detect memory leaks, replace the number with mem leak location
+=======
+	//_CrtSetBreakAlloc(28293); //use this to detect memory leaks, replace the number with mem leak location
+>>>>>>> M3-submission-branch
 
-	glfwInit();
-	init();
+#endif
 
-	// Part 2
-	while (!glfwWindowShouldClose(GLHelper::ptr_window)) 
-	{
-		update();
-		draw();
-	}
-	//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
+	//systems that were new and not deleted
+	CoreSystem = new Core::MainSystem();
+<<<<<<< HEAD
+	TestObj = new Core::Object::GameObject();
 
-	cleanup();
+	Core::pseudomain::init();
+
+	/*map init*/
+	std::string level_file = "../TileMap/level1.txt";
+	Core::Map::initMap(level_file);
+=======
+
+	Core::pseudomain::init();
+
+>>>>>>> M3-submission-branch
+	/*----------------------------------------------*/
+
+	CoreSystem->windowsystem->Mainloop();
+	
+<<<<<<< HEAD
+
+	delete TestObj;
+=======
+>>>>>>> M3-submission-branch
+	Core::pseudomain::cleanup();
 }
 
 /*  _________________________________________________________________________ */
@@ -94,14 +135,14 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 For now, there are no objects to animate nor keyboard, mouse button click,
 mouse movement, and mouse scroller events to be processed.
 */
-static void update() 
+void Core::pseudomain::update() 
 {
 	glfwPollEvents();
 
 	GLHelper::update_time(1.0);
+
 	Editor::LevelEditor::imguiGraphicsTest();
 
-	GLApp::update();
 
 	CoreSystem->objfactory->Update(GLHelper::delta_time);
 
@@ -118,15 +159,16 @@ static void update()
 Call application to draw and then swap front and back frame buffers ...
 Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
-static void draw() 
+void Core::pseudomain::draw() 
 {
-	GLApp::draw();
-	
 	//imGUI Game Editor
+
+
 	Editor::LevelEditor::imguiEditorDraw();
-	
+
+
 	// Part 2: swap buffers: front <-> back
-	glfwSwapBuffers(GLHelper::ptr_window);
+	glfwSwapBuffers(Window::window_ptr);
 	glfwPollEvents();
 }
 
@@ -157,19 +199,51 @@ The OpenGL context initialization stuff is abstracted away in GLHelper::init.
 The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
-static void init() {
+void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
+<<<<<<< HEAD
 	TestObj->Init();
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
 
 	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
+========
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
 
-	// Part 1: set window size
-	if (!GLHelper::init(1680, 1050, "Maki Game Engine")) {
-		std::cout << "Unable to create OpenGL context" << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
+	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
+
+	/*testing if object container is working*/
+	//loading image&button paths
+	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+=======
+
+	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
+
+
+	//loading main menu
+	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+
+	//loading TabMenu
+	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
+
+	//loading image&button paths
+>>>>>>> M3-submission-branch
+	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
+<<<<<<< HEAD
+	
+=======
+
+	//loading pause menu & buttons
+	Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
+
+>>>>>>> M3-submission-branch
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
@@ -177,24 +251,37 @@ static void init() {
 	//load GLAD so it configures OpenGL
 	//gladLoadGL(); //do not uncomment this, glad header does not work
 
-	glViewport(0, 0, 800, 800);
+	glViewport(0, 0, 800, 800); //resize window
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
 	// Part 2
 	GLHelper::print_specs(); //uncommented
+<<<<<<< HEAD
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
 	glfwMakeContextCurrent(GLHelper::ptr_window);
+========
+	glfwMakeContextCurrent(Window::window_ptr);
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
+=======
+	glfwMakeContextCurrent(Window::window_ptr);
+>>>>>>> M3-submission-branch
 
 	// Part 3
-	GLApp::init();
-	Editor::LevelEditor::imguiEditorInit();
+	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
+#if defined(DEBUG) | defined(_DEBUG)
+	CoreSystem->leveleditorsystem->imguiEditorInit();
 	
-	
+#endif
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
+<<<<<<< HEAD
 	AudioManager.LoadSound("WalkSFX.wav");
+=======
+	AudioManager.LoadSFX("WalkSFX.wav");
+>>>>>>> M3-submission-branch
 	//play bgm
 	AudioManager.PlayMusic("BGM.wav");
 
@@ -210,18 +297,38 @@ Return allocated resources for window and OpenGL context thro GLFW back
 to system.
 Return graphics memory claimed through
 */
-void cleanup() {
-	// Part 1
-	GLApp::cleanup();
+void Core::pseudomain::cleanup() {
 
-	// Part 2
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
+<<<<<<< HEAD
 	AudioManager.UnloadMusic("WalkSFX.wav");
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
+========
+	AudioManager.UnloadMusic("BGM.wav");
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
+=======
+	AudioManager.UnLoadSFX("WalkSFX.wav");
+	AudioManager.UnloadMusic("BGM.wav");
+>>>>>>> M3-submission-branch
 
 	////imgui Shutdown
+#if defined(DEBUG) | defined(_DEBUG)
 	Editor::LevelEditor::imguiShutDown();
+<<<<<<< HEAD
+<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
 
 	CoreSystem->clear();
+========
+=======
+>>>>>>> M3-submission-branch
+#endif
+
+	CoreSystem->clear();
+	delete CoreSystem;
+<<<<<<< HEAD
+>>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
+=======
+>>>>>>> M3-submission-branch
 }

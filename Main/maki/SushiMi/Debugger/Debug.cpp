@@ -9,12 +9,21 @@ Description: Enables collision boxes, force vectors and different rendering patt
 
 Debugger* Debugger::instance = 0;
 Debugger::Debugger()
+<<<<<<< HEAD
 {
+=======
+{	
+>>>>>>> M3-submission-branch
 }
 
 
 Debugger::~Debugger()
 {
+<<<<<<< HEAD
+=======
+	if (instance)
+		delete instance;
+>>>>>>> M3-submission-branch
 }
 
 void Debugger::Log(std::string log)

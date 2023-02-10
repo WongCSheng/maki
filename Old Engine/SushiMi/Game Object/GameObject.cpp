@@ -17,6 +17,12 @@ namespace Core
 
 		GameObjectProperty::~GameObjectProperty()
 		{
+			for (auto& x : ComponentContainer)
+			{
+				if (x.second) {
+					delete x.second;
+				}
+			}
 			ComponentContainer.erase(ComponentContainer.begin(), ComponentContainer.end());
 		}
 
@@ -28,7 +34,8 @@ namespace Core
 				i.second->Init();
 			}
 		}
-
+		
+		/*template<typename T>*/
 		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
 		{
 			return ComponentContainer[ID];
@@ -61,22 +68,32 @@ namespace Core
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)
 		{
+			if (ComponentContainer[ID]) {
+			delete ComponentContainer[ID];
+			}
+			ComponentContainer.erase(ID);
+		}
 
+		std::unordered_map<ComponentID, Component*> GameObjectProperty::GetComponentContainer()
+		{
+			return ComponentContainer;
 		}
 
 		//Game Object
 		GameObject::GameObject()
 		{
-			characteristics = new GameObjectProperty();
+			characteristics = new GameObjectProperty;
+		
 		}
 
 		GameObject::~GameObject()
 		{
+			delete characteristics;
 		}
 
 		void GameObject::Init()
 		{
-
+			
 		}
 
 		GameObjectProperty* GameObject::GetObjectProperties()

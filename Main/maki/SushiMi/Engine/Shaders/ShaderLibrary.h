@@ -1,8 +1,23 @@
 #pragma once
+<<<<<<< HEAD
 #include "ShaderProgram.h"
 #include <map>
 #include <memory>
 using namespace std;
+=======
+/*!
+@file		ShaderLibrary.h
+@author		louishetong.wang@digipen.edu
+@date		20/11/2022
+
+@brief		Shader Library contains the vert and frag shaders for texture and colour shaders respectively.
+			When shader programs are created, they will use the respective shader library
+*//*__________________________________________________________________________*/
+#include "ShaderProgram.h"
+#include <map>
+#include <memory>
+//using namespace std;
+>>>>>>> M3-submission-branch
 
 
 class ShaderLibrary
@@ -18,7 +33,14 @@ public:
 
 private:
 
+<<<<<<< HEAD
 	map<string, ShaderProgram*> programs;
 };
 
 static unique_ptr<ShaderLibrary> Shaders;
+=======
+	std::map<std::string, ShaderProgram*> programs;
+};
+
+extern std::unique_ptr<ShaderLibrary> Shaders;
+>>>>>>> M3-submission-branch

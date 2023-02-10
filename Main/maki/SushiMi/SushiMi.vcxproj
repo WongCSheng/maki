@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+<<<<<<< HEAD
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+=======
+>>>>>>> M3-submission-branch
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+<<<<<<< HEAD
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+=======
+    <ProjectConfiguration Include="Editor Mode|x64">
+      <Configuration>Editor Mode</Configuration>
+      <Platform>x64</Platform>
+>>>>>>> M3-submission-branch
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+<<<<<<< HEAD
+=======
+    <ProjectConfiguration Include="Editor|x64">
+      <Configuration>Editor</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+>>>>>>> M3-submission-branch
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -27,23 +43,63 @@
     <ProjectName>SushiMi</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+<<<<<<< HEAD
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+=======
+>>>>>>> M3-submission-branch
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+<<<<<<< HEAD
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
+=======
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor Mode|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+>>>>>>> M3-submission-branch
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -58,6 +114,7 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
+<<<<<<< HEAD
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -65,11 +122,33 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+=======
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor Mode|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+>>>>>>> M3-submission-branch
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+<<<<<<< HEAD
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -90,11 +169,47 @@
     <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+=======
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor Mode|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\editor.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\opengl-glfw3-glew-glm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\opengl-glfw3-glew-glm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\opengl-glfw3-glew-glm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\opengl-glfw3-glew-glm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\opengl-glfw3-glew-glm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-pages\release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+>>>>>>> M3-submission-branch
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+<<<<<<< HEAD
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(IncludePath)</IncludePath>
@@ -123,6 +238,43 @@
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+=======
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor Mode|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\include;$(SolutionDir)lib\glew-2.2.0\include;$(SolutionDir)lib\glm-0.9.9.8;$(SolutionDir)lib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew-2.2.0;$(SolutionDir)lib;mono-2.0-sgen.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib\glfw\include;$(SolutionDir)lib\glew\include;$(SolutionDir)lib\glm;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\Fmod\lib;$(SolutionDir)lib\glew;$(SolutionDir)lib\Fmod;$(SolutionDir)lib\glfw;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+>>>>>>> M3-submission-branch
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -135,13 +287,18 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>fmodL_vc.lib;$(SolutionDir)lib\rttr\lib\Debug\rttr_core_d.lib;$(SolutionDir)lib\mono\mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
+=======
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+>>>>>>> M3-submission-branch
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+<<<<<<< HEAD
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -162,11 +319,129 @@
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN32\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
 copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)glew32.dll" /Y</Command>
+=======
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor Mode|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Editor|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+>>>>>>> M3-submission-branch
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+<<<<<<< HEAD
       <WarningLevel>Level3</WarningLevel>
+=======
+      <WarningLevel>Level4</WarningLevel>
+>>>>>>> M3-submission-branch
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -179,7 +454,11 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>fmod_vc.lib;$(SolutionDir)lib\rttr\lib\Release\rttr_core_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+=======
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+>>>>>>> M3-submission-branch
     </Link>
     <PostBuildEvent>
       <Command>
@@ -198,29 +477,44 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Editors\LevelEditor.cpp" />
     <ClCompile Include="Engine\Animation\Animation2D.cpp" />
     <ClCompile Include="Engine\Audio\AudioEngine.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="Engine\Camera\Camera.cpp" />
+=======
+>>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Camera\Camera2D.cpp" />
     <ClCompile Include="Engine\Components\Component.cpp" />
     <ClCompile Include="Engine\Components\Physics\collision.cpp" />
     <ClCompile Include="Engine\Components\Physics\Physics.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Core\Core.cpp" />
+=======
+    <ClCompile Include="Engine\Components\Texture\Rectangle.cpp" />
+    <ClCompile Include="Engine\Components\Texture\Sprite.cpp" />
+    <ClCompile Include="Engine\Components\Texture\Texture.cpp" />
+    <ClCompile Include="Engine\Components\Transform\Transform.cpp" />
+    <ClCompile Include="Engine\Core\Core.cpp" />
+    <ClCompile Include="Engine\Cutscene\Cutscene.cpp" />
+>>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Factory\Factory.cpp" />
-    <ClCompile Include="Engine\Font\Font.cpp" />
     <ClCompile Include="Engine\Input\Input.cpp" />
     <ClCompile Include="Engine\Mesh\model.cpp" />
     <ClCompile Include="Engine\Messaging\Messaging.cpp" />
     <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Engine\Serialiser\RTTR.cpp" />
+=======
+>>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Shaders\ShaderLibrary.cpp" />
     <ClCompile Include="Engine\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="Engine\System\CameraSystem.cpp" />
-    <ClCompile Include="Engine\System\Graphics\glapp.cpp" />
     <ClCompile Include="Engine\System\Graphics\glhelper.cpp" />
     <ClCompile Include="Engine\System\Graphics\glslshader.cpp" />
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp" />
     <ClCompile Include="Engine\System\PhysicSystem.cpp" />
     <ClCompile Include="Engine\System\Renderer.cpp" />
     <ClCompile Include="Engine\System\SystemFrame.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\Texture\Rectangle.cpp" />
     <ClCompile Include="Engine\Texture\Sprite.cpp" />
@@ -231,7 +525,22 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClCompile Include="Mono.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
+=======
+    <ClCompile Include="Engine\System\TextureSystem.cpp" />
+    <ClCompile Include="Engine\System\Transformer.cpp" />
+    <ClCompile Include="Engine\TileMap\Map.cpp" />
+    <ClCompile Include="Engine\Timer\Timer.cpp" />
+    <ClCompile Include="Game Object\GameObject.cpp" />
+    <ClCompile Include="Game Object\Player.cpp" />
+    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Matrix.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+>>>>>>> M3-submission-branch
     <ClCompile Include="Users\User.cpp" />
     <ClCompile Include="Window\GameWindow.cpp" />
   </ItemGroup>
@@ -250,34 +559,55 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Editors\LevelEditor.h" />
     <ClInclude Include="Engine\Animation\Animation2D.h" />
     <ClInclude Include="Engine\Audio\AudioEngine.h" />
+<<<<<<< HEAD
+    <ClInclude Include="Engine\Camera\Camera.h" />
+=======
+>>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Camera\Camera2D.h" />
     <ClInclude Include="Engine\Components\Component.h" />
     <ClInclude Include="Engine\Components\Physics\collision.h" />
     <ClInclude Include="Engine\Components\Physics\Physics.h" />
+<<<<<<< HEAD
     <ClInclude Include="Engine\Components\Transform\sTransform.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h" />
     <ClInclude Include="Engine\Core\Core.h" />
+=======
+    <ClInclude Include="Engine\Components\Texture\Rectangle.h" />
+    <ClInclude Include="Engine\Components\Texture\Sprite.h" />
+    <ClInclude Include="Engine\Components\Texture\Texture.h" />
+    <ClInclude Include="Engine\Components\Transform\Transform.h" />
+    <ClInclude Include="Engine\Core\Core.h" />
+    <ClInclude Include="Engine\Cutscene\Cutscene.hpp" />
+>>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Factory\Factory.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\Input\Keys.h" />
     <ClInclude Include="Engine\Mesh\model.h" />
     <ClInclude Include="Engine\Messaging\Messaging.h" />
     <ClInclude Include="Engine\Serialiser\JSONSerializer.h" />
+<<<<<<< HEAD
     <ClInclude Include="Engine\Serialiser\RTTR.h" />
+=======
+>>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Shaders\ShaderLibrary.h" />
     <ClInclude Include="Engine\Shaders\ShaderProgram.h" />
     <ClInclude Include="Engine\System\CameraSystem.h" />
-    <ClInclude Include="Engine\System\Graphics\glapp.h" />
     <ClInclude Include="Engine\System\Graphics\glhelper.h" />
     <ClInclude Include="Engine\System\Graphics\glslshader.h" />
     <ClInclude Include="Engine\System\Linked List\LinkedList.h" />
     <ClInclude Include="Engine\System\PhysicSystem.h" />
     <ClInclude Include="Engine\System\Renderer.h" />
     <ClInclude Include="Engine\System\SystemFrame.h" />
+<<<<<<< HEAD
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="Engine\Texture\Rectangle.h" />
     <ClInclude Include="Engine\Texture\Sprite.h" />
     <ClInclude Include="Engine\Texture\Texture.h" />
+=======
+    <ClInclude Include="Engine\System\TextureSystem.h" />
+    <ClInclude Include="Engine\System\Transformer.h" />
+    <ClInclude Include="Engine\TileMap\Map.h" />
+>>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
     <ClInclude Include="Game Object\Player.h" />
@@ -286,19 +616,46 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\Win32\glew32.dll" "$(TargetDir)gl
     <ClInclude Include="Headers\ImGui_Header.h" />
     <ClInclude Include="Headers\Math_Header.h" />
     <ClInclude Include="Headers\RapidJSON_Header.h" />
+    <ClInclude Include="Headers\SceneManager.h" />
     <ClInclude Include="Headers\STL_Header.h" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="include\glm.h" />
+>>>>>>> M3-submission-branch
     <ClInclude Include="include\Math.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
+<<<<<<< HEAD
     <ClInclude Include="Mono.h" />
     <ClInclude Include="RTTR_Header.h" />
+=======
+>>>>>>> M3-submission-branch
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Window.h" />
     <ClInclude Include="testshader.h" />
     <ClInclude Include="Users\User.h" />
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <None Include="..\shaders\Font.frag" />
+    <None Include="..\shaders\Font.vert" />
+=======
+    <None Include="..\Data\Bami bottom right.json" />
+    <None Include="..\Data\Bami top right.json" />
+    <None Include="..\Data\ExitButton.json" />
+    <None Include="..\Data\generated.json" />
+    <None Include="..\Data\HowToPlay.json" />
+    <None Include="..\Data\Menu.json" />
+    <None Include="..\Data\MenuButton.json" />
+    <None Include="..\Data\PauseMenu.json" />
+    <None Include="..\Data\QuitButton.json" />
+    <None Include="..\Data\ResumeButton.json" />
+    <None Include="..\Data\SettingsButton.json" />
+    <None Include="..\Data\StartButton.json" />
+    <None Include="..\Data\TabMenu.json" />
+>>>>>>> M3-submission-branch
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
   </ItemGroup>

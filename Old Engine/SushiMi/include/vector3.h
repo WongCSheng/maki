@@ -10,8 +10,7 @@ Vector header file for all vector3 calculations
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "Headers.h"
-#include <iostream>
+#include "../Headers/STL_Header.h"
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */
@@ -86,15 +85,15 @@ public:
 	gfxVector3& operator+=(const gfxVector3& v)
 	{
 		this->x += v.x;
-		this->y = v.y;
-        this->z = v.z;
+		this->y += v.y;
+        this->z += v.z;
 		return *this;
 	}
 	gfxVector3& operator-=(const gfxVector3& v)
 	{
 		this->x -= v.x;
 		this->y -= v.y;
-        this->z = v.z;
+        this->z -= v.z;
 		return *this;
 	}
 
@@ -111,13 +110,6 @@ public:
 		this->x /= i;
 		this->y /= i;
         this->z /= i;
-		return *this;
-	}
-	gfxVector3& operator++()
-	{
-		this->x++;
-		this->y++;
-		this->z++;
 		return *this;
 	}
 

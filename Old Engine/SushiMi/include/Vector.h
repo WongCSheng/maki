@@ -10,8 +10,7 @@ Vector header file for all vector calculations
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "Headers.h"
-#include <iostream>
+#include "../Headers/STL_Header.h"
 
 /*                                                                    classes
 ----------------------------------------------------------------------------- */
@@ -27,7 +26,7 @@ public:
 	gfxVector2(const gfxVector2& v) : x(v.x), y(v.y) {};
 	~gfxVector2() { /*delete[] &mVec[2];*/ };
 
-	gfxVector2 (gfxVector2 &&) = default;
+	gfxVector2(gfxVector2&&) = default;
 	//operator = assignment
 	gfxVector2& operator=(const gfxVector2& v)
 	{
@@ -114,7 +113,7 @@ public:
 	gfxVector2& operator+=(const gfxVector2& v)
 	{
 		this->x += v.x;
-		this->y = v.y;
+		this->y += v.y;
 		return *this;
 	}
 	gfxVector2& operator-=(const gfxVector2& v)
@@ -123,13 +122,6 @@ public:
 		this->y -= v.y;
 		return *this;
 	}
-	gfxVector2& operator++()
-	{
-		this->x++;
-		this->y++;
-		return *this;
-	}
-
 
 	//arithmetic scalar operations
 	gfxVector2& operator*=(float i)
@@ -172,7 +164,7 @@ public:
 
 private:
 	//data member
-	float mVec[2]{};
+	double mVec[2]{};
 
 };
 #endif // !VECTOR_H_

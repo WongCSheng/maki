@@ -3,6 +3,11 @@
 \file		Collision.cpp
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
+<<<<<<< HEAD
+=======
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+>>>>>>> M3-submission-branch
 \date   	2/8/2022
 \brief		This source file contains the function definitions for
 			building line segment, checking for collision between line segment
@@ -16,6 +21,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "collision.h"
 
+<<<<<<< HEAD
 
 double g_dt = GLHelper::delta_time;
 
@@ -414,4 +420,9 @@ namespace Core
 			//	UNREFERENCED_PARAMETER(reflectedVectorB);
 			//	UNREFERENCED_PARAMETER(ptEndB);
 			//}
+=======
+namespace Core
+{
+	
+>>>>>>> M3-submission-branch
 }

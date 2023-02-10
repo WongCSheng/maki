@@ -6,7 +6,8 @@
 This file contains functions for class Window that we will use for opening windows.
 *//*__________________________________________________________________________*/
 
-#include "GameWindow.h"
+#include "../Engine/System/Graphics/glhelper.h"	//GLEW first
+#include "GameWindow.h"				//GLFW second
 
 Upfront::Window::Window()
 {

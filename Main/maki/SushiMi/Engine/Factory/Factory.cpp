@@ -1,4 +1,15 @@
 
+<<<<<<< HEAD
+=======
+/*
+File: Factory.cpp
+Author:		Wong Chong Sheng 
+email:		w.chongsheng@digipen.edu
+co-Author:  Chong Rui Xuan Aurelia 
+email:		fei.x@digipen.edu
+Description: 
+*/
+>>>>>>> M3-submission-branch
 #include "Factory.h"
 #include "../Game Object/GameObject.h"
 #include "../Headers/RapidJSON_Header.h"
@@ -28,10 +39,18 @@ namespace Core
 	void ObjectFactory::DestroyEverything()
 	{
 		std::set<Object::GameObject*>::iterator it = DeleteList.begin();
+<<<<<<< HEAD
 
 		for (it; it != DeleteList.end(); ++it)
 		{
 			delete &it;
+=======
+		
+		for (it; it != DeleteList.end(); ++it)
+		{
+			//erase from ObjectContainer
+			delete *it;
+>>>>>>> M3-submission-branch
 		}
 
 		DeleteList.clear();
@@ -39,7 +58,11 @@ namespace Core
 
 	void ObjectFactory::Update(const double dt)
 	{
+<<<<<<< HEAD
 		for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
+=======
+		/*for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
+>>>>>>> M3-submission-branch
 		{
 			Object::GameObject* temp = *it;
 
@@ -50,7 +73,11 @@ namespace Core
 			delete temp;
 		}
 
+<<<<<<< HEAD
 		DeleteList.clear();
+=======
+		DeleteList.clear();*/
+>>>>>>> M3-submission-branch
 	}
 
 	void ObjectFactory::AddObjects(Object::GameObject* added, std::string i)
@@ -64,7 +91,11 @@ namespace Core
 		
 	}
 
+<<<<<<< HEAD
 	void ObjectFactory::SerializeObjects(const char* filename) {
+=======
+	void ObjectFactory::DeserializeObjects(const char* filename) {
+>>>>>>> M3-submission-branch
 	
 		/*None = 0b0000'0000,
 			Renderer = 0b0000'0010,

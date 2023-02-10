@@ -113,7 +113,11 @@ public:
 	gfxVector2& operator+=(const gfxVector2& v)
 	{
 		this->x += v.x;
+<<<<<<< HEAD
 		this->y = v.y;
+=======
+		this->y += v.y;
+>>>>>>> M3-submission-branch
 		return *this;
 	}
 	gfxVector2& operator-=(const gfxVector2& v)

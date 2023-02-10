@@ -3,28 +3,30 @@
 #ifndef HEADERS_H_
 #define HEADERS_H_
 
+#define NOMINMAX	//disable win32's min max
+
 // STANDARD LIBRARIES
 	//Containers
-	#include <vector>
+	#include <any>
 	#include <array>
+	#include <cstring>
 	#include <list>
 	#include <map>
+	#include <queue>
 	#include <set>
-	#include <unordered_map>
-	#include <unordered_set>
 	#include <stack>
 	#include <string>
-	#include <cstring>
-	#include <queue>
-	#include <any>
+	#include <unordered_map>
+	#include <unordered_set>
+	#include <vector>
 	//Input Output
+	#include <cstdio>
 	#include <fstream>
 	#include <iomanip>
 	#include <ios>
 	#include <iostream>
 	#include <ostream>
 	#include <sstream>
-	#include <cstdio>
 	//Algorithm
 	#include <algorithm>
 	#include <iterator>
@@ -32,26 +34,25 @@
 	#include <Windows.h>
 	#include <windef.h>
 	//Haven't sort yet
-	#include <numeric>
+	#include <bit>
 	#include <cstdlib>
 	#include <cassert>
-	#include <ctime>
-	#include <span>
-	#include <bit>
-	#include <memory>
-	#include <typeindex>
-	#include <scoped_allocator>
-	#include <utility>
-	#include <exception>
 	#include <cmath>
-	#include <vector>
-	#include <random>
-	#include <new>
+	#include <ctime>
 	#include <chrono>
 	#include <cctype>
 	#include <complex>
+	#include <exception>
 	#include <limits>
+	#include <memory>
+	#include <new>
 	#include <numeric>
-	#include <thread>
+	#include <random>
+	#include <scoped_allocator>
 	#include <stdexcept>
+	#include <span>
+	#include <thread>
+	#include <typeindex>
+	#include <utility>
+	#include <vector>
 #endif

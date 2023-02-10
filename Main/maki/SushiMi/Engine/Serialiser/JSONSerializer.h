@@ -1,22 +1,47 @@
 /*!
+<<<<<<< HEAD
 @file		JSONSerializer.h
-@author		p.tzechengjennifer@digipen.edu
+@author		fei.x@digipen.edu
 @date		28/09/2022
 
 This file contains a Serializer class that can parse json files.
 You can choose to print to console or directly deserialize into your
 chosen game object.
+=======
+@file		JSONSerializer.cpp
+@author		Chong Rui Xuan Aurelia
+@par		fei.x@digipen.edu
+@date		6/1/2022
+
+			This is header file for JSONSerializer.cpp
+>>>>>>> M3-submission-branch
 
 *//*__________________________________________________________________________*/
 
 #pragma once
 #include "../Headers/STL_Header.h"
 #include "../Headers/RapidJSON_Header.h"
+<<<<<<< HEAD
+=======
+#include "../Editors/LevelEditor.h"
+#include "../Editors/imfilebrowser.h"
+
+>>>>>>> M3-submission-branch
 //#include "../Game Object/object.h"
 
 
 #ifndef JSERIALIZE_H
 #define JSERIALIZE_H
+
+#include "../Game Object/Player.h"
+#include <string>
+<<<<<<< HEAD
+
+namespace JSONSerializer {
+	// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
+	Player* Deserialize(std::string const& filepath);
+	void Serialize(Player* player, std::string const& filepath);
+}
 //
 //class Serializer {
 //
@@ -124,5 +149,22 @@ chosen game object.
 //	cout << obj.GetStr() << std::endl;
 //}
 //
+=======
+#include <rapidjson.h>
+
+namespace Core
+{
+	// Calling of these 2 functions are inside Window.cpp's Window(int, int) function
+	Player* Deserialize(std::string const& filepath);
+	static inline std::string LevelLoadPath;
+	static inline std::string* LevelLoadPathPtr = &LevelLoadPath;
+	void DeserializeEntity(std::string const& filepath, ObjectFactory* objfact);
+	void Serialize(const Player& player, std::string const& filepath);
+	static inline std::string LevelSavePath;
+	static inline std::string* LevelSavePathPtr = &LevelSavePath;
+	
+	static Transform* transComp;
+}
+>>>>>>> M3-submission-branch
 
 #endif

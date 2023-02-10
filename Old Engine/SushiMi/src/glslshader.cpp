@@ -8,7 +8,7 @@ There are many functions to get the location of the uniform and linking to
 the pgmhandler
 
 *//*__________________________________________________________________________*/
-#include <../include/glslshader.h>
+#include <../Engine/System/Graphics/glslshader.h>
 #include <iomanip>
 GLint
 GLSLShader::GetUniformLocation(GLchar const* name) {    //return location of uniform variable

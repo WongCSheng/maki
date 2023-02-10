@@ -17,7 +17,7 @@ namespace Core
 	{
 		class GameObject;
 	}
-
+	
 	class SystemFrame
 	{
 	public:
@@ -25,7 +25,7 @@ namespace Core
 		virtual ~SystemFrame();
 		virtual void Init() = 0;
 		virtual void Update(const double dt) = 0;
-		virtual void RegisterComponent(std::unordered_map<unsigned int, Object::GameObject*> ObjectContainer) = 0;
+		virtual void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) = 0;
 	};
 }
 

@@ -17,6 +17,10 @@ namespace Core
 		add = false;
 		active = false;
 		remove = false;
+<<<<<<< HEAD
+=======
+		ID =  ComponentID::None;
+>>>>>>> M3-submission-branch
 	}
 	
 	Component::~Component()
@@ -34,6 +38,17 @@ namespace Core
 		owner = NewOwner;
 	}
 
+<<<<<<< HEAD
+=======
+	void Component::Reset(bool set)
+	{
+		if (set)
+		{
+
+		}
+	}
+
+>>>>>>> M3-submission-branch
 	bool Component::IsActive()
 	{
 		return active;

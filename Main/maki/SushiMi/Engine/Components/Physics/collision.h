@@ -3,6 +3,11 @@
 \file		Collision.h
 \author 	Thea Sea
 \par    	email: thea.sea@digipen.edu
+<<<<<<< HEAD
+=======
+\author 	Aurelia Chong
+\par    	email: fei.x@digipen.edu
+>>>>>>> M3-submission-branch
 \date   	2/8/2022
 \brief		This source file contains the function declarations for
 			building line segment, checking for collision between line segment
@@ -24,6 +29,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 namespace Core
 {
+<<<<<<< HEAD
 	/**************************************************************************/
 	/*!
 	* \brief		structure for the axis bound binding box
@@ -203,6 +209,36 @@ namespace Core
 		 //	CSD1130::Vec2 &reflectedVectorB,												//Non-Normalized reflected vector of Circle B - output
 		 //	CSD1130::Vec2 &ptEndB);														//Final position of the circle B after reflection - output
 
+=======
+	enum class wall_type;
+	enum class grid_number;
+
+	class Sprite;
+	
+	class collision : public Component
+	{
+	public:
+		
+		collision();
+		virtual ~collision();
+
+		void Init();
+
+		bool IsActive();
+		void Activate();
+		void Deactivate();
+		void Remove();
+
+		void checkleft();
+		void checkright();
+		void checkdown();
+		void checkup();
+
+		std::unordered_map<wall_type, Sprite*> tilecontainer;
+		std::unordered_map<grid_number, Sprite*> ingredientcontainer;
+		std::unordered_map<grid_number, Sprite*> ingredient_starting_pos;
+		unsigned int x, y;
+>>>>>>> M3-submission-branch
 	};
 }
 

@@ -10,7 +10,10 @@ Maths functions like min max, special value like PI and deg->rad conversions
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
-#include "Headers.h"
+#include "../Headers/STL_Header.h"
+
+#undef min
+#undef max
 
 /*                                                                  constants
 ----------------------------------------------------------------------------- */
@@ -61,6 +64,18 @@ As a result, the value of seed changes with time. So every time we run the progr
 inline void rand_generator()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+}
+
+//More Uniform way of randomly generating a number
+template<typename T>
+inline T rand_generator(T start, T end, unsigned int size)
+{
+	std::default_random_engine generator;
+	std::uniform_real_distribution<T> distributor(start, end);
+
+	generator.seed(size);
+
+	return distributor(generator);
 }
 
 //random int

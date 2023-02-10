@@ -20,6 +20,7 @@ program object.
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <GL/glew.h> // for access to OpenGL API declarations 
+<<<<<<< HEAD
 #include <glm/glm/glm.hpp>
 #include <iostream>
 #include <fstream>
@@ -32,6 +33,14 @@ program object.
 #include "../include/Math.h"
 #include "../include/Matrix.h"
 #include "../include/vector3.h"
+=======
+#include <string>
+#include <string>
+#include <vector>
+#include <../include/glm.h>
+
+#include "../include/Matrix.h"
+>>>>>>> M3-submission-branch
 
 /*  _________________________________________________________________________ */
 class GLSLShader

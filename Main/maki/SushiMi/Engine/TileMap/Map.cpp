@@ -36,11 +36,11 @@ namespace Core
 
 	Map::~Map()
 	{
-		/*for (int i = 0; i < grid_row; i++)
+		for (int i = 0; i < grid_row; i++)
 		{
 			delete gGrids[i];
 		}
-		delete gGrids;*/
+		delete gGrids;
 		//this does deleting of textures
 		/*SceneManager::destroyTile();
 		SceneManager::destroyGoal1();
@@ -100,6 +100,7 @@ namespace Core
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
+
 		if (Window::timetodeletegrid)
 		{
 			for (int i = 0; i < grid_row; i++)
@@ -107,9 +108,7 @@ namespace Core
 				delete gGrids[i];
 			}
 			delete gGrids;
-
 		}
-		
 
 		win_amt = 0;
 		SceneManager::amt_of_win_conditions = 0;

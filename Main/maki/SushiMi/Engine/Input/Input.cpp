@@ -148,7 +148,11 @@ namespace Core
 		{
 			return true;
 		}
+		else
+		{
 		return false;
+
+		}
 	}
 
 <<<<<<< HEAD
@@ -181,4 +185,10 @@ namespace Core
 		}
 		return gfxVector2(0, 0);
 	}
+
+	bool Input::IsKeyPressed( KEY key, KEY_STATE pressed)
+	{
+		return key;
+	}
+	
 }

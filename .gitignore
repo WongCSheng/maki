@@ -61,7 +61,6 @@ artifacts/
 *.tlh
 *.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
@@ -176,5 +175,11 @@ BundleArtifacts/
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
 #Merge Attempt/maki/x64/Debug/SushiMi.exe
+<<<<<<< HEAD
 Merge Attempt/maki/x64/Debug/SushiMi.exe
 Merge Attempt/maki/SushiMi/Log.txt
+=======
+Main/maki/SushiMi/Log.txt
+Main/maki/SushiMi/Log.txt
+Main/maki/SushiMi/x64/Debug/SushiMi.log
+>>>>>>> M3-submission-branch

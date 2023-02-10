@@ -1,0 +1,21 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 100, 100 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Quit.jpg",
+      "name": "QuitButton",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    },
+    {
+      "type": "Audio",
+      "AudioPath": "../Assets/ Audio/BGM.wav"
+    }
+  ]
+}

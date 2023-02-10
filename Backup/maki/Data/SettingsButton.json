@@ -1,0 +1,21 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 275, 700],
+      "rotation": 0.0,
+      "scale": [ 366, 96 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Settings.jpg",
+      "name": "SettingsButton",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    },
+    {
+      "type": "Audio",
+      "AudioPath": "../Assets/ Audio/BGM.wav"
+    }
+  ]
+}

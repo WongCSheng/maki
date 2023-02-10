@@ -11,6 +11,7 @@ Description:
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "Window.h"
+#include "../Engine/Input/Input.h"
 #include "../../imgui/imgui.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Editors/imfilebrowser.h"
@@ -211,9 +212,34 @@ namespace Core
 		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);*/
 
 
-		if (ImGui::IsKeyPressed(GLFW_KEY_M) && isMenuState == false)
+		//if (ImGui::IsKeyPressed(GLFW_KEY_M) && isMenuState == false)
+		//{
+		//	keystate_M = true;
+		//	std::cout << "you are pressing menu" << std::endl;
+		//	if (keystate_M)
+		//	{
+		//		//clear all player
+		//		isLevel1 = false;
+		//		isLevel2 = false;
+		//		isMenuState = true;
+		//		SceneManager::restartLevel();
+
+
+		//		keystate_M = false;
+		//	}
+		//}
+
+		/*Hi all, I'm testing here to use our own input system. 
+		The original code is commented up above, if anything goes wrong can bring them back */
+
+
+		Core::Input key;
+		std::cout << "value of key is: " << key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) << std::endl;
+		//std::cout << "value of GetKeydown is: " << GetKeyDown(KEY_M);
+
+		if (key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) && isMenuState == false)
 		{
-			keystate_M = true;
+			//keystate_M = true;
 			std::cout << "you are pressing menu" << std::endl;
 			if (keystate_M)
 			{
@@ -224,7 +250,7 @@ namespace Core
 				SceneManager::restartLevel();
 
 
-				keystate_M = false;
+				//keystate_M = false;
 			}
 		}
 

@@ -136,6 +136,11 @@ namespace Core
 		KEY_STATE_REPEAT,
 		KEY_STATE_UNDEFINED = 999,
 	};
+
+	//enum REPEAT
+	//{
+
+	//};
 }
 
 #endif

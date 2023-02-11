@@ -36,6 +36,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 //	testing
 #include "../Headers/Log.h"
+#include "Engine/Font/Font.h"
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
@@ -155,7 +156,7 @@ void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-
+	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 

@@ -145,6 +145,9 @@
     <ClCompile Include="Engine\Cutscene\Cutscene.cpp">
       <Filter>Cutscene</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Font\Font.cpp">
+      <Filter>GameEngine\System\Graphics\Fonts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -330,6 +333,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Cutscene\Cutscene.hpp">
       <Filter>Cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Font\Font.h">
+      <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -25,6 +25,7 @@ Description:
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Core/Core.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
+#include "Engine/Font/Font.h"
 
 namespace Core
 {
@@ -561,7 +562,7 @@ namespace Core
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
-
+			//Font::RenderText(,"This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 			starttime = glfwGetTime();
 			pseudomain::update();
 

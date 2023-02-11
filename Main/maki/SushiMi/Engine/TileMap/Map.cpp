@@ -367,7 +367,7 @@ namespace Core
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::toprightwall, tile);
-
+					//tile->Add_animation()
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}

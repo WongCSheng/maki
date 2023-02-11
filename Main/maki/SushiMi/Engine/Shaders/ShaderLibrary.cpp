@@ -84,8 +84,39 @@ ShaderLibrary::ShaderLibrary()
 )CODE";
 
 	programs.insert(std::pair<std::string, ShaderProgram*>("Colored", new ShaderProgram(vs, fs)));
-}
 
+
+	//////////////////////////////////////// For Fonts
+	vs = R"CODE(
+		#version 450 core
+		layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>
+		out vec2 TexCoords;
+
+		uniform mat4 projection;
+
+		void main()
+		{
+		    gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);
+		    TexCoords = vertex.zw;
+	)CODE";
+
+	fs = R"CODE(
+
+		in vec2 TexCoords;
+		out vec4 color;
+
+		uniform sampler2D text;
+		uniform vec3 textColor;
+
+		void main()
+		{    
+		    vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);
+		    color = vec4(textColor, 1.0) * sampled;
+	)CODE";
+
+	programs.insert(std::pair<std::string, ShaderProgram*>("Font", new ShaderProgram(vs, fs)));
+	
+}
 ShaderLibrary::~ShaderLibrary()
 {
 	for (const auto& x : programs)
@@ -97,6 +128,11 @@ ShaderLibrary::~ShaderLibrary()
 ShaderProgram* ShaderLibrary::Textured_Shader()
 {
 	return programs["Textured"];
+}
+
+ShaderProgram* ShaderLibrary::Font_Shader()
+{
+	return programs["Font"];
 }
 
 ShaderProgram* ShaderLibrary::Colored_Shader()

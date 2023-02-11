@@ -11,6 +11,7 @@ This file implements functionality for fonts using freetype for showing words on
 #include <glm/glm/glm.hpp>
 #include <map>
 #include "../Engine/System/Graphics/glslshader.h"
+#include "Engine/Shaders/ShaderLibrary.h"
 
 #ifndef FONT_H_
 #define FONT_H_
@@ -27,7 +28,7 @@ public:
 	};
 	static std::map<char, Character> Characters;	// Singleton
 	static int init();
-	static void RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color);
+	static void RenderText(ShaderLibrary& s, std::string text, float x, float y, float scale, glm::vec3 color);
 
 };
 

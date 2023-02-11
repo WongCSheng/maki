@@ -1,11 +1,16 @@
 
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
+#include "Font.h"
+
 #include <iostream>
 #include "../Headers/STL_Header.h"
 #include <ft2build.h>
+#include <ext/matrix_clip_space.hpp>
+
+#include "Engine/Shaders/ShaderLibrary.h"
+
 #include FT_FREETYPE_H
-#include "fonts.h"
 
 /*--------------------------------------------------------------------------- */
 
@@ -20,7 +25,7 @@ int Font::init()
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    GLApp::shdrpgms["font"].Use();
+    Shaders->Font_Shader()->use();
     FT_Library ft;	//init the freetype library ft
     if (FT_Init_FreeType(&ft))
     {
@@ -89,8 +94,8 @@ int Font::init()
 
 
     glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-    glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
+    //glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    Shaders->Textured_Shader()->Send_Mat4("projection", projection);
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
@@ -101,15 +106,20 @@ int Font::init()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     return 1;
-    GLApp::shdrpgms["font"].UnUse();
 }
 
 
-void Font::RenderText(GLSLShader& s, std::string text, float x, float y, float scale, glm::vec3 color)
+void Font::RenderText(ShaderLibrary& s, std::string text, float x, float y, float scale, glm::vec3 color)
 {
     // activate corresponding render state	
-    s.Use();
-    glUniform3f(glGetUniformLocation(s.GetHandle(), "textColor"), color.x, color.y, color.z);
+    s.Font_Shader()->use();
+    glm::mat3 mat_colours{
+        {color.x, 0, 0},
+        {0,color.y,0},
+        {0,0,color.z}
+    };
+    s.Font_Shader()->Send_Mat4("textColor", mat_colours);
+    //glUniform3f(glGetUniformLocation(s.GetHandle(), "textColor"), color.x, color.y, color.z);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 

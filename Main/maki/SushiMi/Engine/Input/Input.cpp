@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 /******************************************************************************/
 /*!
 \file		Input.h
@@ -14,19 +11,12 @@ Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
->>>>>>> M3-submission-branch
 #include "Input.h"
 
 namespace Core
 {
 	//Input* Input::instance = 0;
 
-<<<<<<< HEAD
-	//constructor to load all the keys
-	Input::Input()
-	{
-		//loop through all keys in ASCII character, set them to default false state(key not pressed)
-=======
 	/******************************************************************************/
 	/*!
 	\brief
@@ -41,7 +31,6 @@ namespace Core
 			loop through all keys in ASCII character, set them to default false state(key not pressed)
 		*/
 		/******************************************************************************/
->>>>>>> M3-submission-branch
 		for (int i = 0; i <= 86; ++i)
 		{
 			keys[(KEY)(i)][KEY_STATE_RELEASE] = false;
@@ -54,16 +43,12 @@ namespace Core
 		keys[(KEY)(999)][KEY_STATE_REPEAT] = false;
 	}
 
-<<<<<<< HEAD
-	//key destructor
-=======
 	/******************************************************************************/
 	/*!
 	\brief
 			key destructor
 	*/
 	/******************************************************************************/
->>>>>>> M3-submission-branch
 	Input::~Input()
 	{
 		keys.clear();
@@ -71,10 +56,6 @@ namespace Core
 
 	void Input::Init()
 	{
-<<<<<<< HEAD
-	}
-
-=======
 
 	}
 
@@ -88,7 +69,6 @@ namespace Core
 				void
 	*/
 	/******************************************************************************/
->>>>>>> M3-submission-branch
 	void Input::UpdateInput(const KEY key, const KEY_STATE action)
 	{
 		if (keyqueue.size() > 0)
@@ -109,9 +89,6 @@ namespace Core
 		}
 	}
 
-<<<<<<< HEAD
-	//return true when checking a key is pressed
-=======
 	/******************************************************************************/
 	/*!
 	\brief
@@ -122,15 +99,11 @@ namespace Core
 				bool
 	*/
 	/******************************************************************************/
->>>>>>> M3-submission-branch
 	bool Input::GetKey(const KEY key, const KEY_STATE action)
 	{
 		return keys[key][action];
 	}
 
-<<<<<<< HEAD
-	//check if a key is held down
-=======
 	/******************************************************************************/
 	/*!
 	\brief
@@ -141,7 +114,6 @@ namespace Core
 				bool
 	*/
 	/******************************************************************************/
->>>>>>> M3-submission-branch
 	bool Input::GetKeyDown(const KEY key)
 	{
 		if (keys[key][KEY_STATE_PRESS] || keys[key][KEY_STATE_REPEAT])
@@ -155,8 +127,6 @@ namespace Core
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/******************************************************************************/
 	/*!
 	\brief
@@ -168,7 +138,6 @@ namespace Core
 				void
 	*/
 	/******************************************************************************/
->>>>>>> M3-submission-branch
 	gfxVector2 Input::GetMouse(GLFWwindow* window, int action)
 	{
 		double xpos, ypos;
@@ -176,11 +145,7 @@ namespace Core
 		{
 			glfwGetCursorPos(window, &xpos, & ypos);
 			gfxVector2 coordinates(xpos, ypos);
-<<<<<<< HEAD
-			//std::cout << "Coursor position at " << xpos << " : " << ypos << std::endl;
-=======
 			//std::cout << "Cursor position at " << xpos << " : " << ypos << std::endl;
->>>>>>> M3-submission-branch
 			return coordinates;
 		}
 		return gfxVector2(0, 0);

@@ -24,21 +24,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
-<<<<<<< HEAD
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-#include "../Engine/Audio/AudioEngine.h"
-========
-=======
->>>>>>> M3-submission-branch
 #include "../Engine/System/TextureSystem.h"
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
 #include "../Engine/TileMap/Map.h"
-<<<<<<< HEAD
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-=======
->>>>>>> M3-submission-branch
 
 //#include "../Mono/Mono.h"
 #include <memory> 
@@ -51,26 +41,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 
 
-<<<<<<< HEAD
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-
-/*                                                      function declarations
------------------------------------------------------------------------------ */
-static void draw();
-static void update();
-static void init();
-static void cleanup();
-
-static Core::MainSystem* CoreSystem = new Core::MainSystem();
-static Core::Object::GameObject* TestObj = new Core::Object::GameObject();
-
-========
 static Core::MainSystem* CoreSystem;
-static Core::Object::GameObject* TestObj;
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-=======
-static Core::MainSystem* CoreSystem;
->>>>>>> M3-submission-branch
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -91,38 +62,19 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-<<<<<<< HEAD
-	//_CrtSetBreakAlloc(1286494); //use this to detect memory leaks, replace the number with mem leak location
-=======
 	//_CrtSetBreakAlloc(28293); //use this to detect memory leaks, replace the number with mem leak location
->>>>>>> M3-submission-branch
 
 #endif
 
 	//systems that were new and not deleted
 	CoreSystem = new Core::MainSystem();
-<<<<<<< HEAD
-	TestObj = new Core::Object::GameObject();
 
 	Core::pseudomain::init();
 
-	/*map init*/
-	std::string level_file = "../TileMap/level1.txt";
-	Core::Map::initMap(level_file);
-=======
-
-	Core::pseudomain::init();
-
->>>>>>> M3-submission-branch
 	/*----------------------------------------------*/
 
 	CoreSystem->windowsystem->Mainloop();
 	
-<<<<<<< HEAD
-
-	delete TestObj;
-=======
->>>>>>> M3-submission-branch
 	Core::pseudomain::cleanup();
 }
 
@@ -203,20 +155,6 @@ void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-<<<<<<< HEAD
-	TestObj->Init();
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-
-	CoreSystem->objfactory->SerializeObjects("../Assets/test.json");
-========
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-
-	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
-
-	/*testing if object container is working*/
-	//loading image&button paths
-	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
-=======
 
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
@@ -228,14 +166,10 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
 
 	//loading image&button paths
->>>>>>> M3-submission-branch
 	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
-<<<<<<< HEAD
-	
-=======
 
 	//loading pause menu & buttons
 	Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
@@ -243,7 +177,6 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
 
->>>>>>> M3-submission-branch
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
@@ -258,15 +191,7 @@ void Core::pseudomain::init() {
 
 	// Part 2
 	GLHelper::print_specs(); //uncommented
-<<<<<<< HEAD
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-	glfwMakeContextCurrent(GLHelper::ptr_window);
-========
 	glfwMakeContextCurrent(Window::window_ptr);
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-=======
-	glfwMakeContextCurrent(Window::window_ptr);
->>>>>>> M3-submission-branch
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
@@ -277,11 +202,7 @@ void Core::pseudomain::init() {
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
-<<<<<<< HEAD
-	AudioManager.LoadSound("WalkSFX.wav");
-=======
 	AudioManager.LoadSFX("WalkSFX.wav");
->>>>>>> M3-submission-branch
 	//play bgm
 	AudioManager.PlayMusic("BGM.wav");
 
@@ -302,33 +223,14 @@ void Core::pseudomain::cleanup() {
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
-<<<<<<< HEAD
-	AudioManager.UnloadMusic("WalkSFX.wav");
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-========
-	AudioManager.UnloadMusic("BGM.wav");
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-=======
 	AudioManager.UnLoadSFX("WalkSFX.wav");
 	AudioManager.UnloadMusic("BGM.wav");
->>>>>>> M3-submission-branch
 
 	////imgui Shutdown
 #if defined(DEBUG) | defined(_DEBUG)
 	Editor::LevelEditor::imguiShutDown();
-<<<<<<< HEAD
-<<<<<<<< HEAD:Main/maki/SushiMi/src/main.cpp
-
-	CoreSystem->clear();
-========
-=======
->>>>>>> M3-submission-branch
 #endif
 
 	CoreSystem->clear();
 	delete CoreSystem;
-<<<<<<< HEAD
->>>>>>>> M3-submission-branch:Backup/maki/SushiMi/src/main.cpp
-=======
->>>>>>> M3-submission-branch
 }

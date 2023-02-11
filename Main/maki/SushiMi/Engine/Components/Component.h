@@ -9,11 +9,8 @@ Description: Header for ECS.cpp
 #include <string>
 #include <vector>
 #include <unordered_map>
-<<<<<<< HEAD
-=======
 #include "../Headers/RapidJSON_Header.h"
 
->>>>>>> M3-submission-branch
 
 namespace Core
 {
@@ -39,15 +36,6 @@ namespace Core
 		friend class Object::GameObjectProperty;
 		
 		Component();
-<<<<<<< HEAD
-		virtual ~Component();
-
-		// Function to initialize the component's owner when it is added to the entity
-		virtual void Init() = 0;
-		virtual void Serialise(const std::string name) = 0;
-		Object::GameObjectProperty* GetOwner();
-		void SetOwner(Object::GameObjectProperty* owner);
-=======
 		virtual ~Component() = 0;
 
 		// Function to initialize the component's owner when it is added to the entity
@@ -57,7 +45,6 @@ namespace Core
 		Object::GameObjectProperty* GetOwner();
 		void SetOwner(Object::GameObjectProperty* owner);
 		void Reset(bool set);
->>>>>>> M3-submission-branch
 
 		virtual bool IsActive();
 		virtual void Activate();

@@ -1,10 +1,4 @@
 #pragma once
-<<<<<<< HEAD
-
-#include "../Headers/STL_Header.h"
-#include "Keys.h"
-#include <glfw/include/GLFW/glfw3.h>
-=======
 /******************************************************************************/
 /*!
 \file		Input.h
@@ -21,7 +15,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/STL_Header.h"
 #include "Keys.h"
 #include <GLFW/glfw3.h>
->>>>>>> M3-submission-branch
 #include "../Engine/System/SystemFrame.h"
 #include "../Headers/Math_Header.h"
 

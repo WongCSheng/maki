@@ -22,15 +22,12 @@ namespace Core
 	public:
 		CameraSystem();
 		virtual ~CameraSystem();
-<<<<<<< HEAD
-=======
 
 		static CameraSystem* GetInstance() {
 			static CameraSystem camerasystem;
 			return &camerasystem;
 		}
 
->>>>>>> M3-submission-branch
 		virtual void Init();
 		void AddinCameras(Object::GameObject* gameobj);
 		virtual void Update(const double dt);
@@ -76,11 +73,8 @@ namespace Core
 
 	private:
 		std::vector<Component*> cameras;
-<<<<<<< HEAD
-=======
 
 		//static CameraSystem* instance;
->>>>>>> M3-submission-branch
 	};
 }
 

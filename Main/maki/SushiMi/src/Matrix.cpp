@@ -1,9 +1,5 @@
 #include "../include/Matrix.h"
-<<<<<<< HEAD
-#include <glm/glm/matrix.hpp>
-=======
 //#include <glm/glm/matrix.hpp>
->>>>>>> M3-submission-branch
 
 /*
 * 3x3 matrix is col major meaning
@@ -192,11 +188,7 @@ void gfxMatrix3::SetTranslation(float tx, float ty)
 	a[7] = ty;
 }
 
-<<<<<<< HEAD
-gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs) const
-=======
 gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs)
->>>>>>> M3-submission-branch
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 3; i++)
@@ -208,12 +200,8 @@ gfxMatrix3 gfxMatrix3::operator*(const gfxMatrix3& rhs)
 	}
 	return temp;
 }
-<<<<<<< HEAD
-gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs) const
-=======
 
 gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs)
->>>>>>> M3-submission-branch
 {
 	float b[3];
 
@@ -224,12 +212,8 @@ gfxVector2 gfxMatrix3::operator*(const gfxVector2& rhs)
 	gfxVector2 temp(b[0], b[1]);
 	return temp;
 }
-<<<<<<< HEAD
-gfxMatrix3 gfxMatrix3::operator*(float value) const
-=======
 
 gfxMatrix3 gfxMatrix3::operator*(float value)
->>>>>>> M3-submission-branch
 {
 	gfxMatrix3 temp;
 	for (int i = 0; i < 9; i++)
@@ -239,11 +223,6 @@ gfxMatrix3 gfxMatrix3::operator*(float value)
 
 	return temp;
 }
-<<<<<<< HEAD
-gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs) const
-{
-	return(
-=======
 
 gfxMatrix3& gfxMatrix3::operator*=(const gfxMatrix3& rhs)
 {
@@ -270,7 +249,6 @@ gfxMatrix3& gfxMatrix3::operator*=(float value)
 gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
 {
 	return gfxMatrix3(
->>>>>>> M3-submission-branch
 		a[0] + rhs.a[0],
 		a[1] + rhs.a[1],
 		a[2] + rhs.a[2],
@@ -280,14 +258,9 @@ gfxMatrix3 gfxMatrix3::operator+(const gfxMatrix3& rhs)
 		a[6] + rhs.a[6],
 		a[7] + rhs.a[7],
 		a[8] + rhs.a[8]
-<<<<<<< HEAD
-		);
-}
-=======
 	);
 }
 
->>>>>>> M3-submission-branch
 gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 {
 	for (int i = 0; i < 9; i++)
@@ -295,8 +268,6 @@ gfxMatrix3& gfxMatrix3::operator=(const gfxMatrix3& rhs)
 		a[i] = rhs.a[i];
 	}
 	return *this;
-<<<<<<< HEAD
-=======
 }
 
 float gfxMatrix3::operator[](int elem) const
@@ -321,5 +292,4 @@ void gfxMatrix3::printMatrix(const gfxMatrix3 thisone)
 			count = 0;
 		}
 	}
->>>>>>> M3-submission-branch
 }

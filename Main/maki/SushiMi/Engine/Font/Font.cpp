@@ -3,10 +3,6 @@
 ----------------------------------------------------------------------------- */
 #include <iostream>
 #include "../Headers/STL_Header.h"
-<<<<<<< HEAD
-#include "../Engine/System/Graphics/glapp.h"
-=======
->>>>>>> M3-submission-branch
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include "fonts.h"

@@ -1,22 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="src\Window.cpp">
-=======
     <ClCompile Include="src\main.cpp">
->>>>>>> M3-submission-branch
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Core\Core.cpp">
       <Filter>GameEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="Window\GameWindow.cpp">
-<<<<<<< HEAD
-      <Filter>Windows</Filter>
-=======
       <Filter>Users\Windows</Filter>
->>>>>>> M3-submission-branch
     </ClCompile>
     <ClCompile Include="Users\User.cpp">
       <Filter>Users</Filter>
@@ -27,12 +19,6 @@
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Camera\Camera2D.cpp">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClCompile>
-=======
->>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Mesh\model.cpp">
       <Filter>GameEngine\Mesh</Filter>
     </ClCompile>
@@ -75,12 +61,6 @@
     <ClCompile Include="Engine\Serialiser\JSONSerializer.cpp">
       <Filter>GameEngine\Serialization</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Serialiser\RTTR.cpp">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClCompile>
-=======
->>>>>>> M3-submission-branch
     <ClCompile Include="Game Object\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
@@ -93,12 +73,6 @@
     <ClCompile Include="Engine\System\Transformer.cpp">
       <Filter>GameEngine\System\Transform</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Components\Transform\Transform.cpp">
-      <Filter>GameEngine\System\Transform</Filter>
-    </ClCompile>
-=======
->>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Components\Component.cpp">
       <Filter>GameEngine\Component</Filter>
     </ClCompile>
@@ -108,15 +82,6 @@
     <ClCompile Include="Editors\LevelEditor.cpp">
       <Filter>Editors</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Components\Physics\collision.cpp">
-      <Filter>GameEngine\System\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Components\Physics\Physics.cpp">
-      <Filter>GameEngine\System\Physics</Filter>
-    </ClCompile>
-=======
->>>>>>> M3-submission-branch
     <ClCompile Include="Engine\System\Linked List\LinkedList.cpp">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClCompile>
@@ -129,12 +94,6 @@
     <ClCompile Include="src\Log.cpp">
       <Filter>GameEngine\Assertion</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Mono.cpp">
-      <Filter>GameEngine\Mono</Filter>
-    </ClCompile>
-=======
->>>>>>> M3-submission-branch
     <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>GameEngine\Input</Filter>
     </ClCompile>
@@ -147,28 +106,6 @@
     <ClCompile Include="Engine\Shaders\ShaderProgram.cpp">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Texture\Rectangle.cpp">
-      <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Texture\Sprite.cpp">
-      <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Texture\Texture.cpp">
-      <Filter>GameEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Game Object\Player.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Camera\Camera.cpp">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SceneManager.cpp">
-      <Filter>GameEngine\SceneManager</Filter>
-=======
     <ClCompile Include="Engine\Components\Transform\Transform.cpp">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClCompile>
@@ -207,7 +144,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Cutscene\Cutscene.cpp">
       <Filter>Cutscene</Filter>
->>>>>>> M3-submission-branch
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,11 +151,7 @@
       <Filter>GameEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="Window\GameWindow.h">
-<<<<<<< HEAD
-      <Filter>Windows</Filter>
-=======
       <Filter>Users\Windows</Filter>
->>>>>>> M3-submission-branch
     </ClInclude>
     <ClInclude Include="Users\User.h">
       <Filter>Users</Filter>
@@ -230,12 +162,6 @@
     <ClInclude Include="Engine\Messaging\Messaging.h">
       <Filter>GameEngine\Messaging</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Camera\Camera2D.h">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClInclude>
-=======
->>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>
     </ClInclude>
@@ -305,12 +231,6 @@
     <ClInclude Include="Engine\Serialiser\JSONSerializer.h">
       <Filter>GameEngine\Serialization</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Serialiser\RTTR.h">
-      <Filter>GameEngine\Serialization</Filter>
-    </ClInclude>
-=======
->>>>>>> M3-submission-branch
     <ClInclude Include="Game Object\GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -323,12 +243,6 @@
     <ClInclude Include="Engine\System\Transformer.h">
       <Filter>GameEngine\System\Transform</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Components\Transform\Transform.h">
-      <Filter>GameEngine\System\Transform</Filter>
-    </ClInclude>
-=======
->>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Components\Component.h">
       <Filter>GameEngine\Component</Filter>
     </ClInclude>
@@ -338,24 +252,9 @@
     <ClInclude Include="Editors\LevelEditor.h">
       <Filter>Editors</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Components\Physics\collision.h">
-      <Filter>GameEngine\System\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Components\Physics\Physics.h">
-      <Filter>GameEngine\System\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\System\Linked List\LinkedList.h">
       <Filter>GameEngine\System\LinkedList</Filter>
     </ClInclude>
-    <ClInclude Include="RTTR_Header.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-=======
-    <ClInclude Include="Engine\System\Linked List\LinkedList.h">
-      <Filter>GameEngine\System\LinkedList</Filter>
-    </ClInclude>
->>>>>>> M3-submission-branch
     <ClInclude Include="Headers\ImGui_Header.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
@@ -377,12 +276,6 @@
     <ClInclude Include="testshader.h">
       <Filter>Editors</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Mono.h">
-      <Filter>GameEngine\Mono</Filter>
-    </ClInclude>
-=======
->>>>>>> M3-submission-branch
     <ClInclude Include="Engine\Input\Input.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
@@ -398,22 +291,6 @@
     <ClInclude Include="Engine\Shaders\ShaderProgram.h">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Texture\Rectangle.h">
-      <Filter>GameEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture\Sprite.h">
-      <Filter>GameEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture\Texture.h">
-      <Filter>GameEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Components\Transform\sTransform.h">
-      <Filter>GameEngine\System\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Game Object\Player.h">
-      <Filter>GameObjects</Filter>
-=======
     <ClInclude Include="include\glm.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h">
       <Filter>GameEngine\Component\Transform</Filter>
@@ -423,18 +300,10 @@
     </ClInclude>
     <ClInclude Include="Engine\Camera\Camera2D.h">
       <Filter>GameEngine\Component\Camera</Filter>
->>>>>>> M3-submission-branch
     </ClInclude>
     <ClInclude Include="src\Window.h">
       <Filter>Main</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Camera\Camera.h">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\SceneManager.h">
-      <Filter>GameEngine\SceneManager</Filter>
-=======
     <ClInclude Include="Game Object\Player.h">
       <Filter>GameEngine\System\Texture</Filter>
     </ClInclude>
@@ -461,7 +330,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Cutscene\Cutscene.hpp">
       <Filter>Cutscene</Filter>
->>>>>>> M3-submission-branch
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -489,21 +357,9 @@
     <Filter Include="GameObjects">
       <UniqueIdentifier>{cb977aa5-ffba-4b16-8801-354450535d2e}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="Windows">
-      <UniqueIdentifier>{00b5f330-e753-466f-90cf-5d7d87e1cef0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine\Mesh">
       <UniqueIdentifier>{48958ec3-f66d-4168-95d7-9f423cbe1dad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Texture">
-      <UniqueIdentifier>{1fea0e2d-2379-427e-81b3-41f6c913e9b3}</UniqueIdentifier>
-    </Filter>
-=======
-    <Filter Include="GameEngine\Mesh">
-      <UniqueIdentifier>{48958ec3-f66d-4168-95d7-9f423cbe1dad}</UniqueIdentifier>
-    </Filter>
->>>>>>> M3-submission-branch
     <Filter Include="Headers">
       <UniqueIdentifier>{284b265e-2048-4431-8032-28d66d1d45c7}</UniqueIdentifier>
     </Filter>
@@ -561,12 +417,6 @@
     <Filter Include="GameEngine\Assertion">
       <UniqueIdentifier>{832a41c7-836c-4581-8e4c-132681ba5090}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="GameEngine\Mono">
-      <UniqueIdentifier>{a6c2f78c-f04c-4135-a2fa-128eee905723}</UniqueIdentifier>
-    </Filter>
-=======
->>>>>>> M3-submission-branch
     <Filter Include="GameEngine\System\Graphics\Animation">
       <UniqueIdentifier>{a05efc85-2883-4089-a70d-27ec6d316c75}</UniqueIdentifier>
     </Filter>
@@ -576,10 +426,6 @@
     <Filter Include="GameEngine\System\Graphics\Fonts">
       <UniqueIdentifier>{6cb8f02b-db0a-4c0b-bbd0-d2a900ddc3f0}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="GameEngine\SceneManager">
-      <UniqueIdentifier>{5c3b890d-9b95-495a-acdc-faac54ee990f}</UniqueIdentifier>
-=======
     <Filter Include="GameEngine\Component\Camera">
       <UniqueIdentifier>{e802cf70-b3a9-453d-820d-d0bebc4917e5}</UniqueIdentifier>
     </Filter>
@@ -612,7 +458,6 @@
     </Filter>
     <Filter Include="Cutscene">
       <UniqueIdentifier>{dac5785e-a57e-4e03-a956-d7d8bc294bdd}</UniqueIdentifier>
->>>>>>> M3-submission-branch
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -622,13 +467,6 @@
     <None Include="..\shaders\SushiMi.vert">
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
-<<<<<<< HEAD
-    <None Include="..\shaders\Font.frag">
-      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
-    </None>
-    <None Include="..\shaders\Font.vert">
-      <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
-=======
     <None Include="..\Data\Bami bottom right.json">
       <Filter>GameEngine\Serialization\Data</Filter>
     </None>
@@ -667,7 +505,6 @@
     </None>
     <None Include="..\Data\TabMenu.json">
       <Filter>GameEngine\Serialization\Data</Filter>
->>>>>>> M3-submission-branch
     </None>
   </ItemGroup>
 </Project>

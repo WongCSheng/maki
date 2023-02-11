@@ -1,6 +1,4 @@
 #pragma once
-<<<<<<< HEAD
-=======
 /******************************************************************************/
 /*!
 \file		Keys.h
@@ -13,7 +11,6 @@ Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
->>>>>>> M3-submission-branch
 #ifndef KEYS_H__
 #define KEYS_H__
 

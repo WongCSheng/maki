@@ -63,7 +63,7 @@ namespace Core
 
 	/*					key  callback function  , helper function for controlling input
 		----------------------------------------------------------------------------- */
-	void keyCallBack(GLFWwindow* pwin, int key, int scancode, int action, int mod)
+	void keyCallBack(int action)
 	{
 		if (GLFW_REPEAT == action)
 		{
@@ -711,7 +711,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::loadWinOverlay(screenwidth * 0.25, screenheight * 0.25);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
@@ -775,7 +775,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::loadWinOverlay(screenwidth * 0.25, screenheight * 0.25);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
@@ -922,7 +922,7 @@ namespace Core
 
 			if (isSettings == true)
 			{
-				SceneManager::loadSettings(0,0);
+				SceneManager::loadSettings();
 				SceneManager::drawSettings();
 				if (ImGui::IsMouseReleased(0))
 				{

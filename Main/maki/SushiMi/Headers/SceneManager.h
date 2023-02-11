@@ -83,7 +83,7 @@ namespace Core
 		static void loadCover2(int x, int y);*/
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
-		static void loadSettings(int x, int y);
+		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene(int x, int y);
 

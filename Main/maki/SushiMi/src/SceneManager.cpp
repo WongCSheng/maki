@@ -160,7 +160,7 @@ namespace Core
 		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
 		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
-	void SceneManager::loadSettings(int x, int y)
+	void SceneManager::loadSettings()
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);

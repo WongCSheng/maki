@@ -63,7 +63,7 @@ namespace Core
 
 	/*					key  callback function  , helper function for controlling input
 		----------------------------------------------------------------------------- */
-	void keyCallBack(int action)
+	void keyCallBack(GLFWwindow* window_ptr, int key, int scancode, int action, int mod)
 	{
 		if (GLFW_REPEAT == action)
 		{
@@ -72,9 +72,10 @@ namespace Core
 			keystate_up = false;
 			keystate_down = false;
 			keystate_R = false;
-			keystate_M = false;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			keystate_paused = false;
-
+			
 		}
 		else if (GLFW_RELEASE == action)
 		{
@@ -83,8 +84,14 @@ namespace Core
 			keystate_up = true;
 			keystate_down = true;
 			keystate_R = true;
-			keystate_M = true;
+			keystate_M = false;
 			keystate_paused = true;
+			keystate_tab = false;
+		}
+		else if (GLFW_PRESS == action)
+		{
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 		}
 	}
 
@@ -111,7 +118,7 @@ namespace Core
 
 		glfwMakeContextCurrent(window_ptr);
 		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
-
+		glfwSetKeyCallback(window_ptr, keyCallBack);
 		/*if (glewInit())
 		{
 			std::cout << "erorr initilize glew" << std::endl;
@@ -233,45 +240,37 @@ namespace Core
 		/*Hi all, I'm testing here to use our own input system. 
 		The original code is commented up above, if anything goes wrong can bring them back */
 
-
-		Core::Input key;
-		std::cout << "value of key is: " << key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) << std::endl;
-		//std::cout << "value of GetKeydown is: " << GetKeyDown(KEY_M);
-
-		if (key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) && isMenuState == false)
+		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
+		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
+		if (keystate_M && isMenuState == false)
 		{
 			//keystate_M = true;
-			std::cout << "you are pressing menu" << std::endl;
+
+
 			if (keystate_M)
 			{
-				//clear all player
-				isLevel1 = false;
-				isLevel2 = false;
-				isMenuState = true;
-				SceneManager::restartLevel();
 
-
-				//keystate_M = false;
+				keystate_M = false;//set to false, makes it only press one time at once
 			}
 		}
 
-		if (ImGui::IsKeyPressed(GLFW_KEY_TAB))
+		if (keystate_tab)
 		{
-			
+			// if i press tab
+			// isquestab(false) = true;
+			// off the tab state
+
+			// if i pres tab again
+			// isquestab(true) = false;
+			// off the tab state
+
 			std::cout << "opening quest tab" << std::endl;
-			if (keystate_tab)
-			{
-				isQuestTab = true;
-				keystate_tab = false;  
-
-			}
-			else
-			{
-				isQuestTab = false;
-				keystate_tab = true;
-			}
-
+			isQuestTab = !isQuestTab;
+			keystate_tab = false;
+			std::cout << isQuestTab << " <-- boolean state for quest tab\n";
 		}
+		
+
 		if (ImGui::IsKeyPressed(GLFW_KEY_1))
 		{
 			keystate_1 = true;
@@ -842,6 +841,7 @@ namespace Core
 
 			if (isQuestTab == true)
 			{
+				//std::cout << "Drawing tabmenu\n";
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -853,7 +853,7 @@ namespace Core
 
 					if (x.first == "TabMenu")
 					{
-						std::cout << "Drawing tabmenu\n";
+						
 						spritecomp->draw();
 					}
 				}

@@ -362,39 +362,39 @@ namespace Core
 			//}
 		}
 
-		//if (keystate_escape)
-		//{
-		//	keystate_escape = !keystate_escape;
-		//	if (keystate_escape && (isLevel1 || isLevel2))
-		//	{
-		//		gameIsPaused = true;
-		//		//std::cout << "game paused, pause screen showing" << std::endl;
-		//		keystate_escape = false;
-		//	}
-		//	else if (!keystate_escape && (isLevel1 || isLevel2) )
-		//	{
-		//		gameIsPaused = false;
-		//		keystate_escape = false;
-		//	}
-		//}
-		////if press escape again, close pause screen
-		//else if (gameIsPaused == true)
-		//{
-		//	if (keystate_escape)
-		//	{
-		//		keystate_escape = true;
-		//		if (keystate_escape)
-		//		{
-		//			gameIsPaused = false;
-		//			//std::cout << "game resume, no more pause screen" << std::endl;
-		//			int screenwidth = 0, screenheight = 0;
-		//			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-		//			//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-		//			//SceneManager::pause_overlay->transformation.Position.y = screenheight;
-		//			keystate_escape = false;
+		if (keystate_escape)
+		{
+			keystate_escape = !keystate_escape;
+			if (keystate_escape && (isLevel1 || isLevel2))
+			{
+				gameIsPaused = true;
+				//std::cout << "game paused, pause screen showing" << std::endl;
+				keystate_escape = false;
+			}
+			else if (!keystate_escape && (isLevel1 || isLevel2) )
+			{
+				gameIsPaused = false;
+				keystate_escape = false;
+			}
+		}
+		//if press escape again, close pause screen
+		else if (gameIsPaused == true)
+		{
+			if (keystate_escape)
+			{
+				keystate_escape = true;
+				if (keystate_escape)
+				{
+					gameIsPaused = false;
+					//std::cout << "game resume, no more pause screen" << std::endl;
+					int screenwidth = 0, screenheight = 0;
+					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+					//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+					//SceneManager::pause_overlay->transformation.Position.y = screenheight;
+					keystate_escape = false;
 
-		//		}
-		//	}
+				}
+			}
 
 		}
 		/**************************************/

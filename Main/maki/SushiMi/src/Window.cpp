@@ -64,7 +64,27 @@ namespace Core
 	static bool mouseLeft = false;
 	Player* player;
 
-	
+	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
+	{
+		switch (button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+			mouseLeft = (button == GLFW_MOUSE_BUTTON_LEFT) ? true : false;
+				break;
+		}
+
+		switch (action)
+		{ 
+			case GLFW_PRESS:
+				mouseLeft = (action == GLFW_PRESS) ? true : false;
+				break;
+			
+			case GLFW_RELEASE:
+				mouseLeft = false;
+				break;
+		}
+	}
+
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
@@ -108,6 +128,7 @@ namespace Core
 			keystate_T = (key == GLFW_KEY_T) ? true : false;
 			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+			keystate_space  = (key == GLFW_KEY_SPACE) ? true : false;
 
 
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
@@ -144,7 +165,10 @@ namespace Core
 
 		glfwMakeContextCurrent(window_ptr);
 		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
+
+		//initialize key&mouse callback functions
 		glfwSetKeyCallback(window_ptr, keyCallBack);
+		glfwSetMouseButtonCallback(window_ptr, mouseCallBack);
 		/*if (glewInit())
 		{
 			std::cout << "erorr initilize glew" << std::endl;
@@ -263,7 +287,7 @@ namespace Core
 		//	}
 		//}
 
-		/*Hi all, I'm testing here to use our own input system. 
+		/*Hi all, I'm testing here to use our own input system.
 		The original code is commented up above, if anything goes wrong can bring them back */
 
 		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
@@ -293,7 +317,7 @@ namespace Core
 			keystate_tab = false;
 			std::cout << isQuestTab << " <-- boolean state for quest tab\n";
 		}
-		
+
 
 		if (keystate_1)
 		{
@@ -352,7 +376,7 @@ namespace Core
 			}
 		}
 
-		if (ImGui::IsMouseReleased(0))
+		if (mouseLeft)
 		{
 			//place_obj = true;
 			//if (place_obj)
@@ -362,10 +386,11 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape)
+		if (keystate_escape && (isLevel1 || isLevel2) )
 		{
-			keystate_escape = !keystate_escape;
-			if (keystate_escape && (isLevel1 || isLevel2))
+			gameIsPaused = !gameIsPaused;
+			keystate_escape = false;
+			/*if (keystate_escape && (isLevel1 || isLevel2))
 			{
 				gameIsPaused = true;
 				//std::cout << "game paused, pause screen showing" << std::endl;
@@ -375,13 +400,11 @@ namespace Core
 			{
 				gameIsPaused = false;
 				keystate_escape = false;
-			}
+			} */
 		}
 		//if press escape again, close pause screen
-		else if (gameIsPaused == true)
+		if (gameIsPaused == false)
 		{
-			if (keystate_escape)
-			{
 				keystate_escape = true;
 				if (keystate_escape)
 				{
@@ -394,15 +417,15 @@ namespace Core
 					keystate_escape = false;
 
 				}
-			}
 
 		}
 		/**************************************/
 		//BUTTONS DISPLAYED AT MAIN MENU
 		/**************************************/
 
-		if (ImGui::IsMouseReleased(0) && isMenuState == true)
+		if (mouseLeft && isMenuState == true)
 		{
+			std::cout << "mouse clicking (windows.cpp)" << std::endl;
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
@@ -443,7 +466,7 @@ namespace Core
 		/**************************************/
 		//BUTTONS DISPLAYED WHEN GAME IS PAUSED
 		/**************************************/
-		if (ImGui::IsMouseReleased(0) && gameIsPaused == true)
+		if (mouseLeft && gameIsPaused == true)
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -652,7 +675,7 @@ namespace Core
 			{
 				SceneManager::loadCutscene(0, 0);
 				SceneManager::drawCutscene();
-				if (ImGui::IsKeyPressed(GLFW_KEY_SPACE) && isMenuState == false )
+				if ( (keystate_space) && isMenuState == false )
 				{
 					keystate_space = true;
 					if (keystate_space)
@@ -739,7 +762,7 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (ImGui::IsMouseReleased(0) && isWinCondition == true)
+				if (mouseLeft && isWinCondition == true)
 				{
 					isLevel1 = false;
 					isLevel2 = true;
@@ -897,7 +920,7 @@ namespace Core
 				
 				SceneManager::loadHowToOverlay(0, 0);
 				SceneManager::drawHowToOverlay();
-				if (ImGui::IsMouseReleased(0) && isMenuState == false)
+				if (mouseLeft && isMenuState == false)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -949,7 +972,7 @@ namespace Core
 			{
 				SceneManager::loadSettings();
 				SceneManager::drawSettings();
-				if (ImGui::IsMouseReleased(0))
+				if (mouseLeft)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -970,7 +993,7 @@ namespace Core
 
 			if (isCredits == true)
 			{
-				if (ImGui::IsMouseReleased(0))
+				if (mouseLeft)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);

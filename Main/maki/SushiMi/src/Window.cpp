@@ -53,8 +53,15 @@ namespace Core
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
 	static bool keystate_T = false;
-	static bool keystate_paused = false;
+	static bool keystate_escape = false;
 	static bool place_obj = false;
+
+	static bool keystate_W = false;
+	static bool keystate_A = false;
+	static bool keystate_S = false;
+	static bool keystate_D = false;
+
+	static bool mouseLeft = false;
 	Player* player;
 
 	
@@ -67,31 +74,50 @@ namespace Core
 	{
 		if (GLFW_REPEAT == action)
 		{
+			keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
+			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
+			keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
+			keystate_up = (key == GLFW_KEY_UP) ? true : false;
+			keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+			keystate_R = (key == GLFW_KEY_R) ? true : false;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+
+			
+		}
+		else if (GLFW_RELEASE == action)
+		{
 			keystate_left = false;
 			keystate_right = false;
 			keystate_up = false;
 			keystate_down = false;
 			keystate_R = false;
-			keystate_M = (key == GLFW_KEY_M) ? true : false;
-			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
-			keystate_paused = false;
-			
-		}
-		else if (GLFW_RELEASE == action)
-		{
-			keystate_left = true;
-			keystate_right = true;
-			keystate_up = true;
-			keystate_down = true;
-			keystate_R = true;
 			keystate_M = false;
-			keystate_paused = true;
+			keystate_escape = false;
 			keystate_tab = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
 			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
+			keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
+			keystate_up = (key == GLFW_KEY_UP) ? true : false;;
+			keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+			keystate_R = (key == GLFW_KEY_R) ? true : false;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_T = (key == GLFW_KEY_T) ? true : false;
 			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
+			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+
+
+			keystate_1 = (key == GLFW_KEY_1) ? true : false;
+			keystate_2 = (key == GLFW_KEY_2) ? true : false;
+
+			keystate_W = (key == GLFW_KEY_W) ? true : false;
+			keystate_A = (key == GLFW_KEY_A) ? true : false;
+			keystate_S = (key == GLFW_KEY_S) ? true : false;
+			keystate_D = (key == GLFW_KEY_D) ? true : false;
+			
 		}
 	}
 
@@ -242,16 +268,14 @@ namespace Core
 
 		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
 		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
-		if (keystate_M && isMenuState == false)
+		if (keystate_M)
 		{
-			//keystate_M = true;
+			isMenuState = true;
+			keystate_M = false;
+			isLevel1 = false;
+			isLevel2 = false;
+			loaded = false;
 
-
-			if (keystate_M)
-			{
-
-				keystate_M = false;//set to false, makes it only press one time at once
-			}
 		}
 
 		if (keystate_tab)
@@ -271,7 +295,7 @@ namespace Core
 		}
 		
 
-		if (ImGui::IsKeyPressed(GLFW_KEY_1))
+		if (keystate_1)
 		{
 			keystate_1 = true;
 			std::cout << "you have loaded level 1" << std::endl;
@@ -291,7 +315,7 @@ namespace Core
 				keystate_1 = false;
 			}
 		}
-		if (ImGui::IsKeyPressed(GLFW_KEY_2))
+		if (keystate_2)
 		{
 			keystate_2 = true;
 			std::cout << "you have loaded level 2" << std::endl;
@@ -311,7 +335,7 @@ namespace Core
 				keystate_2 = false;
 			}
 		}
-		if (ImGui::IsKeyPressed(GLFW_KEY_T) && isMenuState == false)
+		if (keystate_T && isMenuState == false)
 		{
 			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
@@ -337,39 +361,40 @@ namespace Core
 				//place_obj = false;
 			//}
 		}
-		if (gameIsPaused == false)
-		{
-			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) && (isLevel1 || isLevel2))
-			{
-				keystate_paused = true;
-				if (keystate_paused)
-				{
-					gameIsPaused = true;
-					//std::cout << "game paused, pause screen showing" << std::endl;
 
+		//if (keystate_escape)
+		//{
+		//	keystate_escape = !keystate_escape;
+		//	if (keystate_escape && (isLevel1 || isLevel2))
+		//	{
+		//		gameIsPaused = true;
+		//		//std::cout << "game paused, pause screen showing" << std::endl;
+		//		keystate_escape = false;
+		//	}
+		//	else if (!keystate_escape && (isLevel1 || isLevel2) )
+		//	{
+		//		gameIsPaused = false;
+		//		keystate_escape = false;
+		//	}
+		//}
+		////if press escape again, close pause screen
+		//else if (gameIsPaused == true)
+		//{
+		//	if (keystate_escape)
+		//	{
+		//		keystate_escape = true;
+		//		if (keystate_escape)
+		//		{
+		//			gameIsPaused = false;
+		//			//std::cout << "game resume, no more pause screen" << std::endl;
+		//			int screenwidth = 0, screenheight = 0;
+		//			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		//			//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+		//			//SceneManager::pause_overlay->transformation.Position.y = screenheight;
+		//			keystate_escape = false;
 
-					keystate_paused = false;
-				}
-			}
-		}
-		//if press escape again, close pause screen
-		else if (gameIsPaused == true)
-		{
-			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE))
-			{
-				keystate_paused = true;
-				if (keystate_paused)
-				{
-					gameIsPaused = false;
-					//std::cout << "game resume, no more pause screen" << std::endl;
-					int screenwidth = 0, screenheight = 0;
-					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-					//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-					//SceneManager::pause_overlay->transformation.Position.y = screenheight;
-					keystate_paused = false;
-
-				}
-			}
+		//		}
+		//	}
 
 		}
 		/**************************************/
@@ -458,7 +483,7 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_right = true;
 			if (keystate_right)
@@ -470,7 +495,7 @@ namespace Core
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_left = true;
 			//player only move on one press
@@ -484,7 +509,7 @@ namespace Core
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_up = true;
 
@@ -500,7 +525,7 @@ namespace Core
 
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ( (keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false) 
 		{
 			keystate_down = true;
 			if (keystate_down)
@@ -515,7 +540,7 @@ namespace Core
 		/***************************
 			restart key "R" resets the level
 		*******************************/
-		if (ImGui::IsKeyPressed(GLFW_KEY_R) && (gameIsPaused == false && isWinCondition == false))
+		if (keystate_R && (gameIsPaused == false && isWinCondition == false))
 		{
 			keystate_R = true;
 			if (keystate_R)
@@ -529,12 +554,12 @@ namespace Core
 			}
 
 		}
-
-		if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
+		if(keystate_down || keystate_up || keystate_left || keystate_right == true)
+		/*if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;*/
 
 		//if(keystate_down && keystate_up && keystate_left && keystate_right)
 			player->stop();

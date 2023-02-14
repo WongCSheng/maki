@@ -21,5 +21,23 @@
 
 namespace Core
 {
-	
+	class PhysicsSystem : public SystemFrame
+	{
+	public:
+		friend class Map;
+
+		PhysicsSystem();
+		~PhysicsSystem();
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+
+		void collision_check_right(Object::GameObject* first, Object::GameObject* second);
+		void collision_check_left(Object::GameObject* first, Object::GameObject* second);
+		void collision_check_up(Object::GameObject* first, Object::GameObject* second);
+		void collision_check_down(Object::GameObject* first, Object::GameObject* second);
+
+		bool Stuck(Object::GameObject* obj);
+	};
 }

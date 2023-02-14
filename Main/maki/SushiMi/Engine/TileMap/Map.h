@@ -27,21 +27,25 @@ namespace Core
 {
 	class Sprite;
 
-	class Map
+	class Map : public SystemFrame
 	{
 	public:
 		Map();
 		~Map();
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static void initMap(std::string Filename);
 		static void ResetMap();
 		static int LoadMap();
 		static void DrawMap();
 		/*put here temporarily first*/
-		static void collision_check_right();
+		/*static void collision_check_right();
 		static void collision_check_left();
 		static void collision_check_up();
-		static void collision_check_down();
+		static void collision_check_down();*/
 		static void print_map_to_console();
 	
 		static bool isStuck();
@@ -54,27 +58,6 @@ namespace Core
 		static inline int grid_col;
 		static float tile_width, tile_height;
 		static int** gGrids;
-
-
-		//texture names
-		/*static inline Sprite* rice;
-		static inline Sprite* nori;
-		static inline Sprite* inari;
-		static inline Sprite* box;
-		static inline Sprite* boxcover;
-		static inline Sprite* sinkhole;
-		static inline Sprite* tile;
-		static inline Sprite* tile2;
-		static inline Sprite* tile3;
-		static inline Sprite* tile4;
-		static inline Sprite* tile5;
-		static inline Sprite* tile6;
-		static inline Sprite* tile7;
-		static inline Sprite* tile8;
-		static inline Sprite* tile9;
-		static inline Sprite* tile10;
-		static inline Sprite* tile11;
-		static inline Sprite* tile12;*/
 	};
 }
 #endif

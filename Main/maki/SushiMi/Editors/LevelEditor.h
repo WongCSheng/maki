@@ -83,6 +83,8 @@ namespace Core
 			void Init() {}
 			void Update(const double dt) { dt; }
 			void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
+			static inline std::string alphabet;
+			static inline int xgrid, ygrid;
 
 		private:
 

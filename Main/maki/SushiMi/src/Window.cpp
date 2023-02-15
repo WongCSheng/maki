@@ -522,40 +522,46 @@ namespace Core
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_right = true;
-			if (keystate_right)
+			keystate_D = true;
+			if (keystate_right || keystate_D)
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
 
 				keystate_right = false;
+				keystate_D = false;
 			}
 		}
 
 		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_left = true;
+			keystate_A = true;
 			//player only move on one press
 			//holding key or let go key, player stop
-			if (keystate_left)
+			if (keystate_left || keystate_A)
 			{
 				Map::collision_check_left();
 				Map::print_map_to_console();
 
 				keystate_left = false;
+				keystate_A = false;
 			}
 		}
 
 		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_up = true;
+			keystate_W = true;
 
-			if (keystate_up)
+			if (keystate_up || keystate_W)
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX("WalkSFX.wav");
 				//isWalk = true; //play walking sfx
 				keystate_up = false;
+				keystate_W = false;
 
 			}
 
@@ -564,12 +570,14 @@ namespace Core
 		else if ( (keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false) 
 		{
 			keystate_down = true;
-			if (keystate_down)
+			keystate_S = true;
+			if (keystate_down || keystate_S)
 			{
 				Map::collision_check_down();
 				Map::print_map_to_console();
 
 				keystate_down = false;
+				keystate_S = false;
 			}
 		}
 

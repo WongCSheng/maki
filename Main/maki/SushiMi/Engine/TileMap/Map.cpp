@@ -1133,4 +1133,18 @@ namespace Core
 			}
 		}*/
 	}
+	/********************************************
+	 Return the value inside a cell that you click
+	********************************************/
+	int Map::GetValue(int col_x, int row_y)
+	{
+		return gGrids[col_x][row_y];
+	}
+	/********************************************
+	 Set the value inside a cell that you click
+	********************************************/
+	void Map::SetValue(int col_x, int row_y, int value)
+	{
+		gGrids[col_x][row_y] = value;
+	}
 }

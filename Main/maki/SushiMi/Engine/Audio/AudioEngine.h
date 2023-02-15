@@ -18,7 +18,7 @@ using namespace FMOD;
 
 namespace Core
 {
-    /*                                                                   zinstances
+    /*                                                                   instances
     ----------------------------------------------------------------------------- */
 #define AudioManager _audioManager::Instance()
 

@@ -73,7 +73,8 @@ namespace Core
 	{
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 
-		std::string name;
+		std::string name; //name of object we are parsing (under sprite component)
+
 		//Object::GameObject gameObj = ObjectFactory::Create();
 		rapidjson::Document document;
 
@@ -148,10 +149,12 @@ namespace Core
 				//delete spriteComp;
 			}
 
-			/*else if (compJsonObj["type"] == "Music")
-			{
-
-			}*/
+			//else if (compJsonObj["type"] == "Music")
+			//{
+			//	const char* texturePath = compJsonObj["AudioPath"].GetString(); // need to convert the data retrieved to a C++ type
+			//	name = compJsonObj["BGM"].GetString();	//	name of object (under sprite component)
+			//	_audioManager::DeserializeAudio(compJsonObj);
+			//}
 
 		}
 
@@ -161,6 +164,136 @@ namespace Core
 		//delete gameObj;
 	}
 
+	/*										Deserializes multiple components at once
+	-------------------------------------------------------------------------------*/
+	void DeserializeAll(std::string const& filepath, ObjectFactory* objfact)
+	{
+		std::string json_from_file = ReadFileContents(filepath.c_str());
+
+		rapidjson::Document component;
+
+		if (component.Parse(json_from_file.c_str()).HasParseError())
+		{
+			std::cout << "JSONSerializer DeserializeAll: There was a JSON parse error : " << filepath << std::endl;
+			return;
+		}
+		// remember to delete entity if nullptr is returned
+		if (!component.IsObject())
+		{
+			std::cout << "JSONSerializer DeserializeAll: " << filepath << " does not start with a JSON object 1" << std::endl;
+			return;
+		}
+
+		const rapidjson::Value& jsonArr = component["components"];
+		for (rapidjson::size_t i{}; i < jsonArr.Size(); i++)
+		{
+			const rapidjson::Value& object = jsonArr[i];
+
+			if (!object.IsObject())
+			{
+				std::cout << "JSONSerializer DeserializeAll: " << filepath << " is not an object" << std::endl;
+				return;
+			}
+			const char* objName = object["name"].GetString(); // need to convert the data retrieved to a C++ type
+			std::cout << "Deserializing " << objName << std::endl;
+
+			const char* objFilename = object["filename"].GetString();
+			
+			std::string filePathname = std::string("../Data/") + objFilename;
+
+			std::string json_from_file = ReadFileContents(filePathname.c_str());
+
+			std::string name; //name of object we are parsing (under sprite component)
+
+			//Object::GameObject gameObj = ObjectFactory::Create();
+			rapidjson::Document document;
+
+			if (document.Parse(json_from_file.c_str()).HasParseError())
+			{
+				std::cout << "JSONSerializer DeserializeEntity: There was a JSON parse error : " << filepath << std::endl;
+				return;
+			}
+			// remember to delete entity if nullptr is returned
+			if (!document.IsObject())
+			{
+				std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 1" << std::endl;
+				return;
+			}
+
+			/* creating a gameObj inst to store and to be saved into Obj Container */
+			Object::GameObject* gameObj = new Object::GameObject(); //contains characteristics of game objects
+			std::cout << "Managed to parse " << filepath << std::endl;
+
+			if (!document.HasMember("components") || !document["components"].IsArray())
+			{
+				std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 2" << std::endl;
+
+				return;
+			}
+
+			for (rapidjson::SizeType i = 0; i < document["components"].Size(); i++)
+			{
+				rapidjson::Value& compJsonObj = document["components"][i]; // access element inside components array
+
+
+				if (!compJsonObj.IsObject())
+				{
+					std::cout << "JSONSerializer DeserializeEntity: " << filepath << " does not start with a JSON object 3" << std::endl;
+				}
+
+				if (!compJsonObj.HasMember("type") || !compJsonObj["type"].IsString())
+				{
+					std::cout << "JSONSerializer DeserializeLevel: " << filepath << " does not start with a JSON object 4" << std::endl;
+
+					return;
+				}
+
+				if (compJsonObj["type"] == "Transform")
+				{
+					//destructor will  auto destroy? WATCH out for MemLeak!!!
+					Transform* transComp = new Transform();
+					transComp->Deserialize(compJsonObj);
+					gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
+					std::cout << "transform component is : " << transComp << std::endl;
+					//delete transComp;
+				}
+
+				else if (compJsonObj["type"] == "Sprite")
+				{
+					//rapidjson::Value& spritJsonObj = document["Sprite"]; // get the sprite JSON object
+					//if (!spritJsonObj.HasMember("texturepath") || !spritJsonObj["texturepath"].IsString())
+					//{
+					//	std::cout << "JSONSerializer Deserialize Sprite: " << filepath << " does not have 'texturepath'" << std::endl;
+					//	return;
+					//}
+					const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
+					name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
+
+					std::cout << "loading of " << name << "\n";
+					Sprite* object = new Sprite(texturePath);
+					/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
+					Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
+
+					object->Deserialize(compJsonObj);
+					gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
+					//delete spriteComp;
+				}
+
+				//else if (compJsonObj["type"] == "Music")
+				//{
+				//	const char* texturePath = compJsonObj["AudioPath"].GetString(); // need to convert the data retrieved to a C++ type
+				//	name = compJsonObj["BGM"].GetString();	//	name of object (under sprite component)
+				//	_audioManager::DeserializeAudio(compJsonObj);
+				//}
+
+			}
+
+			//td::string name("Object: " + std::to_string(objfact->LastObjectID));
+			objfact->ObjectContainer.insert({ name, gameObj });	//	save everything in gameObj into container
+			objfact->LastObjectID++;
+			//delete gameObj;
+		}
+	}
 
 	Player* Deserialize(std::string const& filepath)
 	{

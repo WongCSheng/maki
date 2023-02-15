@@ -15,7 +15,8 @@
     },
     {
       "type": "Audio",
-      "AudioPath": "../Assets/Audio/Music/BGM.wav"
+      "AudioPath": "../Assets/Audio/Music/BGM.wav",
+      "BGM": "BGM.wav"
     }
   ]
 }

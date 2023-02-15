@@ -159,24 +159,24 @@ void Core::pseudomain::init() {
 	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
-
+	Core::DeserializeAll("../Data/MenuTest.json", CoreSystem->objfactory);
 	//loading main menu
-	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
-	//loading TabMenu
-	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
+	////loading TabMenu
+	//Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
 
-	//loading image&button paths
-	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
+	////loading image&button paths
+	//Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
 
-	//loading pause menu & buttons
-	Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
+	////loading pause menu & buttons
+	//Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
 
 
 	glEnable(GL_DEBUG_OUTPUT);

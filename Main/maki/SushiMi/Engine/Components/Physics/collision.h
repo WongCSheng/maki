@@ -54,6 +54,8 @@ namespace Core
 		std::unordered_map<grid_number, Sprite*> ingredientcontainer;
 		std::unordered_map<grid_number, Sprite*> ingredient_starting_pos;
 		unsigned int x, y;
+
+		bool stuck;
 	};
 }
 

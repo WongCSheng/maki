@@ -59,8 +59,9 @@ namespace Core
 
 	}
 
-	bool PhysicsSystem::Stuck(Object::GameObject* obj)
+	bool PhysicsSystem::isStuck(Object::GameObject* obj)
 	{
+		// if player's grid index is 50, means its STUCK or put all ingr into goals
 		if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole) &&
 			!isWin())
 		{

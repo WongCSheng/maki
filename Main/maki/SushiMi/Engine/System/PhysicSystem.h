@@ -38,6 +38,6 @@ namespace Core
 		void collision_check_up(Object::GameObject* first, Object::GameObject* second);
 		void collision_check_down(Object::GameObject* first, Object::GameObject* second);
 
-		bool Stuck(Object::GameObject* obj);
+		bool isStuck(Object::GameObject* obj);
 	};
 }

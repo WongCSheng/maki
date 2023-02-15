@@ -20,5 +20,58 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 namespace Core
 {
-	
+	collision::collision()
+	{
+
+	}
+
+	collision::~collision()
+	{
+
+	}
+
+	void collision::Init()
+	{
+
+	}
+
+	bool collision::IsActive()
+	{
+
+	}
+
+	void collision::Activate()
+	{
+
+	}
+
+	void collision::Deactivate()
+	{
+
+	}
+
+	void collision::Remove()
+	{
+
+	}
+
+	void collision::checkleft()
+	{
+
+	}
+
+	void collision::checkright()
+	{
+
+	}
+
+	void collision::checkdown()
+	{
+
+	}
+
+	void collision::checkup()
+	{
+
+	}
 }

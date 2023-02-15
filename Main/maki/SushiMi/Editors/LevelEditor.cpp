@@ -72,19 +72,47 @@ namespace Core
 	// create a file browser instance
 	static ImGui::FileBrowser fileDialog;
 	std::filesystem::path m_curr_path;
-	static const std::filesystem::path s_TextureDirectory = "../textures";
+	static const std::filesystem::path s_TextureDirectory = "../TileMap";
 
 	namespace Editor
 	{
 		void LevelEditor::imguiEditorInit(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
+			// Setup Dear ImGui context
 			IMGUI_CHECKVERSION();
 			ImGui::CreateContext();
 			ImGuiIO& io = ImGui::GetIO(); (void)io;
+			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+			//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+			io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+			io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
+			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
+
+			float fontSize = 18.0f;// *2.0f;
+			/*io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", fontSize);
+			io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", fontSize);*/
+
+			// Setup Dear ImGui style
 			ImGui::StyleColorsDark();
-			ImGui_ImplGlfw_InitForOpenGL(Window::window_ptr, true);
-			//ImGui_ImplOpenGL3_Init();
+			//ImGui::StyleColorsClassic();
+
+			// When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
+			ImGuiStyle& style = ImGui::GetStyle();
+			if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+			{
+				style.WindowRounding = 0.0f;
+				style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+			}
+
+			//SetDarkThemeColors();
+
+
+			GLFWwindow* window = static_cast<GLFWwindow*>(Window::window_ptr);
+
+			// Setup Platform/Renderer bindings
+			ImGui_ImplGlfw_InitForOpenGL(window, true);
 			ImGui_ImplOpenGL3_Init("#version 450");
 
 
@@ -112,6 +140,10 @@ namespace Core
 		{
 #if defined(EDITOR) | defined(_EDITOR)
 
+			/*if (m_BlockEvents)
+			{*/
+			//}
+
 			if (fileDialog.HasSelected())
 			{
 				std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
@@ -131,9 +163,11 @@ namespace Core
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
+			
+	
 
-
-			fileDialog.SetTypeFilters({ ".png", ".jpg", ".json" });
+			fileDialog.SetTypeFilters({ ".txt"});
+			fileDialog.SetPwd("../TileMap");
 
 			//in-Editor viewport view:
 			//ImGui::Begin("Screen Viewport FrameBuffer Window");
@@ -320,7 +354,7 @@ namespace Core
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
 
 			ImGui::Text("Select a file below to load a saved level!");
-			ImGui::BulletText("JSON files are in ../Data");
+			ImGui::BulletText("level text files are in ../TileMap");
 
 
 			/******************************
@@ -347,16 +381,19 @@ namespace Core
 				//std::cout << "Selected Load file before conversion " << fileDialog.GetSelected().string() << std::endl;
 				path2 = fileDialog.GetSelected().string();
 				std::replace(path2.begin(), path2.end(), '\\', '/');
-				*Core::LevelLoadPathPtr = path2.c_str();
+				imguiloadedmap = path2.c_str();
 				//std::cout << "Selected Load file AFTER conversion" << *JSONSerializer::LevelLoadPathPtr << std::endl;
 
-				delete Window::player; //delete old player? but it feels so inappropriate to put it here if i need to delete all objects in future to replace them
-				Window::player = Core::Deserialize(*Core::LevelLoadPathPtr);
+				
+				//delete Window::player; //delete old player? but it feels so inappropriate to put it here if i need to delete all objects in future to replace them
+				//Window::player = Core::Deserialize(*Core::LevelLoadPathPtr);
+				Window::loaded = false;
 
-				std::cout << "the level is loaded, JSON file is " << *Core::LevelLoadPathPtr << std::endl;
+				std::cout << "You have loaded Level from text file: " << imguiloadedmap << std::endl;
 
 				fileDialog.ClearSelected();
-				loadnewlevel = false;
+				loadnewlevel = false; 
+				Window::timetodeletegrid = true;
 
 
 			}
@@ -501,9 +538,9 @@ namespace Core
 				{
 					ImGui::Text("Choose file to save level :D ");
 					ImGui::Spacing();
-					ImGui::BulletText("take note that you can only save to \nexisting JSON level files!");
-					ImGui::BulletText("If you want to save to new levels, \nyou will need to manually create a new JSON");
-					if (ImGui::Button("Select JSON filepath in ../Data"))
+					ImGui::BulletText("take note that you can only save to \nexisting level txt files!");
+					ImGui::BulletText("If you want to save to new levels, \nyou will need to manually create a new txt file");
+					if (ImGui::Button("filepath containing levels is '../TileMap' "))
 					{
 						fileDialog.Open();
 					}
@@ -539,8 +576,24 @@ namespace Core
 			ImGui::End(); //end level save window
 
 			ImGui::End(); //end the whole imgui process
+			ImGuiIO& io = ImGui::GetIO();
+			int width, height;
+
+			glfwGetWindowSize(Window::window_ptr, &width, &height);
+
+			io.DisplaySize = ImVec2((float)width, (float)height);
+
+			// Rendering
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+			if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+			{
+				GLFWwindow* backup_current_context = glfwGetCurrentContext();
+				ImGui::UpdatePlatformWindows();
+				ImGui::RenderPlatformWindowsDefault();
+				glfwMakeContextCurrent(backup_current_context);
+			}
 #endif
 		}
 

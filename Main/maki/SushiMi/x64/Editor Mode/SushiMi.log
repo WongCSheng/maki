@@ -1,8 +1,22 @@
-﻿  main.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+﻿  LevelEditor.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(135,14): warning C4100: 'userParam': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(133,10): warning C4100: 'length': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(131,9): warning C4100: 'id': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(129,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(127,40): warning C4459: declaration of 'fileDialog' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(73,28): message : see declaration of 'Core::fileDialog'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(93,10): warning C4189: 'fontSize': local variable is initialized but not referenced
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(377,52): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(417,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(422,24): warning C4458: declaration of 'path' hides class member
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(60,30): message : see declaration of 'Core::Editor::LevelEditor::path'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(580,13): warning C4458: declaration of 'width' hides class member
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(93,22): message : see declaration of 'Core::Editor::LevelEditor::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(580,21): warning C4458: declaration of 'height' hides class member
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(93,29): message : see declaration of 'Core::Editor::LevelEditor::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(417,10): warning C4189: 'columnCount': local variable is initialized but not referenced
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(622,12): warning C4459: declaration of 'i' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(69,6): message : see declaration of 'Core::i'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(642,10): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(643,10): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(664,4): warning C4459: declaration of 'i' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(69,6): message : see declaration of 'Core::i'
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe

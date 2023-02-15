@@ -188,8 +188,14 @@ namespace Core
 		camera = std::make_unique<Camera>(0, 0);
 		
 		timetodeletegrid = false;
-#ifndef EDITOR
+#ifdef EDITOR
+		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
+
+#endif
+
+
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
+#ifndef EDITOR
 
 
 		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
@@ -261,8 +267,8 @@ namespace Core
 		SceneManager::destroyPlayer_Stuck();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
-		delete player;
 #endif
+		delete player;
 
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
@@ -652,12 +658,32 @@ namespace Core
 			*/
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
-#endif
 			/*
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
 			*/
 
+			if (!loaded)
+			{
+				if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+				{
+					Map::ResetMap();
+				}
+
+				std::cout << "current level displayed in editor mode is: " << Editor::LevelEditor::imguiloadedmap << std::endl;
+				Map::initMap(Editor::LevelEditor::imguiloadedmap);
+				Map::LoadMap();
+				loaded = true;
+
+			}
+			if (loaded = true)
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+				player->draw(delta);
+
+			}
+			Map::DrawMap();
+#endif
 
 			//FOR OBJ CONTAINER DEBUGGING
 			// 
@@ -729,7 +755,7 @@ namespace Core
 						Map::ResetMap();
 					}
 					
-					Map::initMap("../TileMap/level1(new).txt");
+					Map::initMap("../TileMap/level1.txt");
 
 					Map::LoadMap();
 					loaded = true;
@@ -789,7 +815,7 @@ namespace Core
 				{
 					Map::ResetMap();
 
-					Map::initMap("../TileMap/level2(new).txt");
+					Map::initMap("../TileMap/level2.txt");
 					Map::LoadMap();
 
 					loaded = true;

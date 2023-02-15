@@ -134,8 +134,10 @@ namespace Core
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
 					Window::player->playerpos_restart.x = Window::player->playerpos.x;
 					Window::player->playerpos_restart.y = Window::player->playerpos.y;
+//#ifndef EDITOR
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
+//#endif
 					/*save player index in grid*/
 					Window::player->player_grid_pos.x = r;
 					Window::player->player_grid_pos.y = c;

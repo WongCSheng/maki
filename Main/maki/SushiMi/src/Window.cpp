@@ -179,7 +179,6 @@ namespace Core
 
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 
 		starttime = 0;
 		endtime = 0;
@@ -188,6 +187,11 @@ namespace Core
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
 		
+		timetodeletegrid = false;
+#ifndef EDITOR
+		player = Core::Deserialize(*Core::LevelLoadPathPtr);
+
+
 		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
@@ -209,7 +213,6 @@ namespace Core
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 
-		timetodeletegrid = false;
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -227,6 +230,7 @@ namespace Core
 		loaded = false;
 		HowToPlayPage = 0;
 		CutscenePage = 0;
+#endif // !EDITOR
 
 		//player = new Player();
 
@@ -248,6 +252,7 @@ namespace Core
 	{
 		timetodeletegrid = true;
 		Map::ResetMap();
+#ifndef EDITOR
 
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
 		SceneManager::destroySettings();
@@ -257,7 +262,7 @@ namespace Core
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 		delete player;
-		
+#endif
 
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
@@ -292,6 +297,8 @@ namespace Core
 
 		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
 		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
+#ifndef EDITOR
+
 		if (keystate_M)
 		{
 			isMenuState = true;
@@ -586,6 +593,7 @@ namespace Core
 
 		//if(keystate_down && keystate_up && keystate_left && keystate_right)
 			player->stop();
+#endif //editor
 	}
 
 	void Window::Resize()
@@ -670,6 +678,7 @@ namespace Core
 			//Sprite::menu->transformation.Position = {0.f,0.f};
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+#ifndef EDITOR
 
 			if (isCutscene)
 			{
@@ -1013,6 +1022,8 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
 			}
+#endif
+
 #endif
 
 			endtime = glfwGetTime();

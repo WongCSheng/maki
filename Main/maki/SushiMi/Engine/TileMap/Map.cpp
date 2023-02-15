@@ -134,8 +134,10 @@ namespace Core
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
 					Window::player->playerpos_restart.x = Window::player->playerpos.x;
 					Window::player->playerpos_restart.y = Window::player->playerpos.y;
+//#ifndef EDITOR
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
+//#endif
 					/*save player index in grid*/
 					Window::player->player_grid_pos.x = r;
 					Window::player->player_grid_pos.y = c;
@@ -367,7 +369,7 @@ namespace Core
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::toprightwall, tile);
-
+					//tile->Add_animation()
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
@@ -1130,5 +1132,19 @@ namespace Core
 				}
 			}
 		}*/
+	}
+	/********************************************
+	 Return the value inside a cell that you click
+	********************************************/
+	int Map::GetValue(int col_x, int row_y)
+	{
+		return gGrids[col_x][row_y];
+	}
+	/********************************************
+	 Set the value inside a cell that you click
+	********************************************/
+	void Map::SetValue(int col_x, int row_y, int value)
+	{
+		gGrids[col_x][row_y] = value;
 	}
 }

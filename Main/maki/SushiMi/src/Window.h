@@ -68,6 +68,8 @@ namespace Core
 		{
 			return gameIsPaused;
 		}
+		//for editor
+		//static inline Sprite* ingredient;
 
 		static inline void ImGuiToObjContainer(ObjectFactory*);
 

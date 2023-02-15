@@ -41,6 +41,8 @@ namespace Core
 		static void ResetMap();
 		static int LoadMap();
 		static void DrawMap();
+		static int GetValue(int col_x, int row_y);
+		static void SetValue(int col_x, int row_y, int value);
 		/*put here temporarily first*/
 		/*static void collision_check_right();
 		static void collision_check_left();

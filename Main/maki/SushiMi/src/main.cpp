@@ -36,6 +36,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 //	testing
 #include "../Headers/Log.h"
+#include "Engine/Font/Font.h"
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
@@ -62,7 +63,7 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(28293); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(3240); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -155,7 +156,7 @@ void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-
+	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 
@@ -195,7 +196,7 @@ void Core::pseudomain::init() {
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
-#if defined(DEBUG) | defined(_DEBUG)
+#if defined(EDITOR) | defined(EDITOR)
 	CoreSystem->leveleditorsystem->imguiEditorInit();
 	
 #endif

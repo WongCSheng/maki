@@ -236,8 +236,16 @@ namespace Core
 		for (auto& ingredient : ingredientcontainer)
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			ingredient.second->draw();
-			//ingredient.second->draw(delta, Idle);
+			
+			if (ingredient.second->isSpriteSheet)
+			{
+				ingredient.second->draw(delta, ingredient.second->curr_anim);
+			}
+			else
+			{
+				ingredient.second->draw();
+			}
+			
 		}
 	}
 

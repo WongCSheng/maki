@@ -169,11 +169,11 @@ namespace Core
 					/*edited this to be bami first to show that Sprites can be animated too, just need the spritesheet*/
 					Sprite* rice = new Sprite("../textures/spritesheet/spritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
-					rice->Add_animation("../textures/spritesheet/Idle.txt");
+					rice->Add_animation("../textures/spritesheet/Run.txt");
 					rice->curr_anim = Idle;
+					rice->isSpriteSheet = 1;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					
 					break;
 				}
 					

@@ -53,19 +53,59 @@ namespace Core
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
 	static bool keystate_T = false;
-	static bool keystate_paused = false;
+	static bool keystate_escape = false;
 	static bool place_obj = false;
+
+	static bool keystate_W = false;
+	static bool keystate_A = false;
+	static bool keystate_S = false;
+	static bool keystate_D = false;
+
+	static bool mouseLeft = false;
 	Player* player;
 
-	
+	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
+	{
+		switch (button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+			mouseLeft = (button == GLFW_MOUSE_BUTTON_LEFT) ? true : false;
+				break;
+		}
+
+		switch (action)
+		{ 
+			case GLFW_PRESS:
+				mouseLeft = (action == GLFW_PRESS) ? true : false;
+				break;
+			
+			case GLFW_RELEASE:
+				mouseLeft = false;
+				break;
+		}
+	}
+
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
 	/*					key  callback function  , helper function for controlling input
 		----------------------------------------------------------------------------- */
-	void keyCallBack(int action)
+	void keyCallBack(GLFWwindow* window_ptr, int key, int scancode, int action, int mod)
 	{
 		if (GLFW_REPEAT == action)
+		{
+			keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
+			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
+			keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
+			keystate_up = (key == GLFW_KEY_UP) ? true : false;
+			keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+			keystate_R = (key == GLFW_KEY_R) ? true : false;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+
+			
+		}
+		else if (GLFW_RELEASE == action)
 		{
 			keystate_left = false;
 			keystate_right = false;
@@ -73,18 +113,32 @@ namespace Core
 			keystate_down = false;
 			keystate_R = false;
 			keystate_M = false;
-			keystate_paused = false;
-
+			keystate_escape = false;
+			keystate_tab = false;
 		}
-		else if (GLFW_RELEASE == action)
+		else if (GLFW_PRESS == action)
 		{
-			keystate_left = true;
-			keystate_right = true;
-			keystate_up = true;
-			keystate_down = true;
-			keystate_R = true;
-			keystate_M = true;
-			keystate_paused = true;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
+			keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
+			keystate_up = (key == GLFW_KEY_UP) ? true : false;;
+			keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
+			keystate_R = (key == GLFW_KEY_R) ? true : false;
+			keystate_M = (key == GLFW_KEY_M) ? true : false;
+			keystate_T = (key == GLFW_KEY_T) ? true : false;
+			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
+			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+			keystate_space  = (key == GLFW_KEY_SPACE) ? true : false;
+
+
+			keystate_1 = (key == GLFW_KEY_1) ? true : false;
+			keystate_2 = (key == GLFW_KEY_2) ? true : false;
+
+			keystate_W = (key == GLFW_KEY_W) ? true : false;
+			keystate_A = (key == GLFW_KEY_A) ? true : false;
+			keystate_S = (key == GLFW_KEY_S) ? true : false;
+			keystate_D = (key == GLFW_KEY_D) ? true : false;
+			
 		}
 	}
 
@@ -112,6 +166,9 @@ namespace Core
 		glfwMakeContextCurrent(window_ptr);
 		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
 
+		//initialize key&mouse callback functions
+		glfwSetKeyCallback(window_ptr, keyCallBack);
+		glfwSetMouseButtonCallback(window_ptr, mouseCallBack);
 		/*if (glewInit())
 		{
 			std::cout << "erorr initilize glew" << std::endl;
@@ -122,7 +179,6 @@ namespace Core
 
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 
 		starttime = 0;
 		endtime = 0;
@@ -131,6 +187,17 @@ namespace Core
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
 		
+		timetodeletegrid = false;
+#ifdef EDITOR
+		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
+
+#endif
+
+
+		player = Core::Deserialize(*Core::LevelLoadPathPtr);
+#ifndef EDITOR
+
+
 		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
@@ -152,7 +219,6 @@ namespace Core
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 
-		timetodeletegrid = false;
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -170,6 +236,7 @@ namespace Core
 		loaded = false;
 		HowToPlayPage = 0;
 		CutscenePage = 0;
+#endif // !EDITOR
 
 		//player = new Player();
 
@@ -191,6 +258,7 @@ namespace Core
 	{
 		timetodeletegrid = true;
 		Map::ResetMap();
+#ifndef EDITOR
 
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
 		SceneManager::destroySettings();
@@ -199,8 +267,8 @@ namespace Core
 		SceneManager::destroyPlayer_Stuck();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
+#endif
 		delete player;
-		
 
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
@@ -230,49 +298,41 @@ namespace Core
 		//	}
 		//}
 
-		/*Hi all, I'm testing here to use our own input system. 
+		/*Hi all, I'm testing here to use our own input system.
 		The original code is commented up above, if anything goes wrong can bring them back */
 
+		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
+		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
+#ifndef EDITOR
 
-		Core::Input key;
-		std::cout << "value of key is: " << key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) << std::endl;
-		//std::cout << "value of GetKeydown is: " << GetKeyDown(KEY_M);
-
-		if (key.IsKeyPressed(KEY_M, KEY_STATE_PRESS) && isMenuState == false)
+		if (keystate_M)
 		{
-			//keystate_M = true;
-			std::cout << "you are pressing menu" << std::endl;
-			if (keystate_M)
-			{
-				//clear all player
-				isLevel1 = false;
-				isLevel2 = false;
-				isMenuState = true;
-				SceneManager::restartLevel();
+			isMenuState = true;
+			keystate_M = false;
+			isLevel1 = false;
+			isLevel2 = false;
+			loaded = false;
 
-
-				//keystate_M = false;
-			}
 		}
 
-		if (ImGui::IsKeyPressed(GLFW_KEY_TAB))
+		if (keystate_tab)
 		{
-			
+			// if i press tab
+			// isquestab(false) = true;
+			// off the tab state
+
+			// if i pres tab again
+			// isquestab(true) = false;
+			// off the tab state
+
 			std::cout << "opening quest tab" << std::endl;
-			if (keystate_tab)
-			{
-				isQuestTab = true;
-				keystate_tab = false;  
-
-			}
-			else
-			{
-				isQuestTab = false;
-				keystate_tab = true;
-			}
-
+			isQuestTab = !isQuestTab;
+			keystate_tab = false;
+			std::cout << isQuestTab << " <-- boolean state for quest tab\n";
 		}
-		if (ImGui::IsKeyPressed(GLFW_KEY_1))
+
+
+		if (keystate_1)
 		{
 			keystate_1 = true;
 			std::cout << "you have loaded level 1" << std::endl;
@@ -292,7 +352,7 @@ namespace Core
 				keystate_1 = false;
 			}
 		}
-		if (ImGui::IsKeyPressed(GLFW_KEY_2))
+		if (keystate_2)
 		{
 			keystate_2 = true;
 			std::cout << "you have loaded level 2" << std::endl;
@@ -312,7 +372,7 @@ namespace Core
 				keystate_2 = false;
 			}
 		}
-		if (ImGui::IsKeyPressed(GLFW_KEY_T) && isMenuState == false)
+		if (keystate_T && isMenuState == false)
 		{
 			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
@@ -329,7 +389,7 @@ namespace Core
 			}
 		}
 
-		if (ImGui::IsMouseReleased(0))
+		if (mouseLeft)
 		{
 			//place_obj = true;
 			//if (place_obj)
@@ -338,28 +398,28 @@ namespace Core
 				//place_obj = false;
 			//}
 		}
-		if (gameIsPaused == false)
+
+		if (keystate_escape && (isLevel1 || isLevel2) )
 		{
-			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) && (isLevel1 || isLevel2))
+			gameIsPaused = !gameIsPaused;
+			keystate_escape = false;
+			/*if (keystate_escape && (isLevel1 || isLevel2))
 			{
-				keystate_paused = true;
-				if (keystate_paused)
-				{
-					gameIsPaused = true;
-					//std::cout << "game paused, pause screen showing" << std::endl;
-
-
-					keystate_paused = false;
-				}
+				gameIsPaused = true;
+				//std::cout << "game paused, pause screen showing" << std::endl;
+				keystate_escape = false;
 			}
+			else if (!keystate_escape && (isLevel1 || isLevel2) )
+			{
+				gameIsPaused = false;
+				keystate_escape = false;
+			} */
 		}
 		//if press escape again, close pause screen
-		else if (gameIsPaused == true)
+		if (gameIsPaused == false)
 		{
-			if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE))
-			{
-				keystate_paused = true;
-				if (keystate_paused)
+				keystate_escape = true;
+				if (keystate_escape)
 				{
 					gameIsPaused = false;
 					//std::cout << "game resume, no more pause screen" << std::endl;
@@ -367,18 +427,18 @@ namespace Core
 					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 					//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
 					//SceneManager::pause_overlay->transformation.Position.y = screenheight;
-					keystate_paused = false;
+					keystate_escape = false;
 
 				}
-			}
 
 		}
 		/**************************************/
 		//BUTTONS DISPLAYED AT MAIN MENU
 		/**************************************/
 
-		if (ImGui::IsMouseReleased(0) && isMenuState == true)
+		if (mouseLeft && isMenuState == true)
 		{
+			std::cout << "mouse clicking (windows.cpp)" << std::endl;
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
@@ -419,7 +479,7 @@ namespace Core
 		/**************************************/
 		//BUTTONS DISPLAYED WHEN GAME IS PAUSED
 		/**************************************/
-		if (ImGui::IsMouseReleased(0) && gameIsPaused == true)
+		if (mouseLeft && gameIsPaused == true)
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -459,64 +519,72 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((ImGui::IsKeyPressed(GLFW_KEY_RIGHT) || ImGui::IsKeyPressed(GLFW_KEY_D)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_right = true;
-			if (keystate_right)
+			keystate_D = true;
+			if (keystate_right || keystate_D)
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
 
 				keystate_right = false;
+				keystate_D = false;
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_LEFT) || ImGui::IsKeyPressed(GLFW_KEY_A)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_left = true;
+			keystate_A = true;
 			//player only move on one press
 			//holding key or let go key, player stop
-			if (keystate_left)
+			if (keystate_left || keystate_A)
 			{
 				Map::collision_check_left();
 				Map::print_map_to_console();
 
 				keystate_left = false;
+				keystate_A = false;
 			}
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_UP) || ImGui::IsKeyPressed(GLFW_KEY_W)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_up = true;
+			keystate_W = true;
 
-			if (keystate_up)
+			if (keystate_up || keystate_W)
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX("WalkSFX.wav");
 				//isWalk = true; //play walking sfx
 				keystate_up = false;
+				keystate_W = false;
 
 			}
 
 		}
 
-		else if ((ImGui::IsKeyPressed(GLFW_KEY_DOWN) || ImGui::IsKeyPressed(GLFW_KEY_S)) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ( (keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false) 
 		{
 			keystate_down = true;
-			if (keystate_down)
+			keystate_S = true;
+			if (keystate_down || keystate_S)
 			{
 				Map::collision_check_down();
 				Map::print_map_to_console();
 
 				keystate_down = false;
+				keystate_S = false;
 			}
 		}
 
 		/***************************
 			restart key "R" resets the level
 		*******************************/
-		if (ImGui::IsKeyPressed(GLFW_KEY_R) && (gameIsPaused == false && isWinCondition == false))
+		if (keystate_R && (gameIsPaused == false && isWinCondition == false))
 		{
 			keystate_R = true;
 			if (keystate_R)
@@ -530,15 +598,16 @@ namespace Core
 			}
 
 		}
-
-		if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
+		if(keystate_down || keystate_up || keystate_left || keystate_right == true)
+		/*if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
 		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;
+		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;*/
 
 		//if(keystate_down && keystate_up && keystate_left && keystate_right)
 			player->stop();
+#endif //editor
 	}
 
 	void Window::Resize()
@@ -595,12 +664,32 @@ namespace Core
 			*/
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
-#endif
 			/*
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
 			ingredient->draw();
 			*/
 
+			if (!loaded)
+			{
+				if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+				{
+					Map::ResetMap();
+				}
+
+				std::cout << "current level displayed in editor mode is: " << Editor::LevelEditor::imguiloadedmap << std::endl;
+				Map::initMap(Editor::LevelEditor::imguiloadedmap);
+				Map::LoadMap();
+				loaded = true;
+
+			}
+			if (loaded = true)
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+				player->draw(delta);
+
+			}
+			Map::DrawMap();
+#endif
 
 			//FOR OBJ CONTAINER DEBUGGING
 			// 
@@ -621,12 +710,13 @@ namespace Core
 			//Sprite::menu->transformation.Position = {0.f,0.f};
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+#ifndef EDITOR
 
 			if (isCutscene)
 			{
 				SceneManager::loadCutscene(0, 0);
 				SceneManager::drawCutscene();
-				if (ImGui::IsKeyPressed(GLFW_KEY_SPACE) && isMenuState == false )
+				if ( (keystate_space) && isMenuState == false )
 				{
 					keystate_space = true;
 					if (keystate_space)
@@ -671,7 +761,8 @@ namespace Core
 						Map::ResetMap();
 					}
 					
-					Map::initMap("../TileMap/level1(new).txt");
+					Map::initMap("../TileMap/level1.txt");
+
 					Map::LoadMap();
 					loaded = true;
 
@@ -711,7 +802,7 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (ImGui::IsMouseReleased(0) && isWinCondition == true)
+				if (mouseLeft && isWinCondition == true)
 				{
 					isLevel1 = false;
 					isLevel2 = true;
@@ -729,7 +820,7 @@ namespace Core
 				{
 					Map::ResetMap();
 
-					Map::initMap("../TileMap/level2(new).txt");
+					Map::initMap("../TileMap/level2.txt");
 					Map::LoadMap();
 
 					loaded = true;
@@ -838,6 +929,7 @@ namespace Core
 
 			if (isQuestTab == true)
 			{
+				//std::cout << "Drawing tabmenu\n";
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -849,7 +941,7 @@ namespace Core
 
 					if (x.first == "TabMenu")
 					{
-						std::cout << "Drawing tabmenu\n";
+						
 						spritecomp->draw();
 					}
 				}
@@ -868,7 +960,7 @@ namespace Core
 				
 				SceneManager::loadHowToOverlay(0, 0);
 				SceneManager::drawHowToOverlay();
-				if (ImGui::IsMouseReleased(0) && isMenuState == false)
+				if (mouseLeft && isMenuState == false)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -920,7 +1012,7 @@ namespace Core
 			{
 				SceneManager::loadSettings();
 				SceneManager::drawSettings();
-				if (ImGui::IsMouseReleased(0))
+				if (mouseLeft)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -941,7 +1033,7 @@ namespace Core
 
 			if (isCredits == true)
 			{
-				if (ImGui::IsMouseReleased(0))
+				if (mouseLeft)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -961,6 +1053,8 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
 			}
+#endif
+
 #endif
 
 			endtime = glfwGetTime();

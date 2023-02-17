@@ -31,6 +31,7 @@ namespace Core
 	static inline std::string LevelLoadPath;
 	static inline std::string* LevelLoadPathPtr = &LevelLoadPath;
 	void DeserializeEntity(std::string const& filepath, ObjectFactory* objfact);
+	void DeserializeAll(std::string const& filepath, ObjectFactory* objfact);
 	void Serialize(const Player& player, std::string const& filepath);
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;

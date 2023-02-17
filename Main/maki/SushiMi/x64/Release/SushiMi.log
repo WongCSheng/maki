@@ -1,177 +1,136 @@
-﻿  Debug.cpp
-  LevelEditor.cpp
-  Animation2D.cpp
+﻿  LevelEditor.cpp
   AudioEngine.cpp
-  Rectangle.cpp
   Sprite.cpp
-  Texture.cpp
-  Transform.cpp
-  Core.cpp
-  Factory.cpp
   JSONSerializer.cpp
-  ShaderLibrary.cpp
-  CameraSystem.cpp
-  Renderer.cpp
-  TextureSystem.cpp
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(49,42): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(100,80): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(107,78): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(121,86): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(145,93): warning C4458: declaration of 'ObjectContainer' hides class member
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.h(29,70): message : see declaration of 'Core::ObjectFactory::ObjectContainer' (compiling source file Engine\Factory\Factory.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Core\Core.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Core\Core.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
-  Transformer.cpp
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(123,28): warning C4459: declaration of 'transComp' hides global declaration
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.h(38,20): message : see declaration of 'Core::transComp' (compiling source file Engine\Serialiser\JSONSerializer.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(230,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(231,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Map.cpp
   Player.cpp
   SceneManager.cpp
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Renderer.cpp(97,37): warning C4100: 'dt': unreferenced formal parameter
   Window.cpp
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\CameraSystem.cpp(60,41): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\TextureSystem.cpp(57,42): warning C4100: 'dt': unreferenced formal parameter
   main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(36,40): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(61,52): warning C4100: 'trans': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(114,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(115,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(128,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(129,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(147,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(147,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(148,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(148,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(159,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(159,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(160,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(160,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(168,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(168,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(169,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(169,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(179,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(179,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(193,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(193,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(206,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(206,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(215,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(215,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(224,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(224,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(234,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(234,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(243,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(243,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(252,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(252,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(262,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(262,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(272,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(272,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(282,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(282,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(292,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(292,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(302,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(302,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(312,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(312,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(322,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(322,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(332,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(332,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(342,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(342,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(364,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(364,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(462,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(462,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(604,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(604,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(739,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(739,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(874,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(874,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(180,53): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Engine\TileMap\Map.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(33,41): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(52,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(53,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(101,66): warning C4100: 'posY': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(101,56): warning C4100: 'posX': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(181,45): warning C4100: 'y': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(181,38): warning C4100: 'x': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(133,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(134,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(147,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(148,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(168,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(168,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(169,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(169,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(180,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(180,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(181,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(181,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(189,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(189,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(190,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(190,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(200,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(200,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(245,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(245,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(255,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(255,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(264,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(264,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(273,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(273,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(283,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(283,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(293,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(293,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(303,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(303,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(313,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(313,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(323,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(323,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(333,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(333,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(343,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(343,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(363,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(363,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(374,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(374,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(385,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(385,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(511,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(511,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(682,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(682,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(845,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(845,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(124,28): warning C4459: declaration of 'transComp' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.h(39,20): message : see declaration of 'Core::transComp' (compiling source file Engine\Serialiser\JSONSerializer.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1008,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1008,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(190,46): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(204,33): warning C4456: declaration of 'json_from_file' hides previous local declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(171,15): message : see declaration of 'json_from_file'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(234,4): warning C4456: declaration of 'i' hides previous local declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(188,26): message : see declaration of 'i'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(254,29): warning C4459: declaration of 'transComp' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.h(39,20): message : see declaration of 'Core::transComp' (compiling source file Engine\Serialiser\JSONSerializer.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(273,23): warning C4456: declaration of 'object' hides previous local declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(190,28): message : see declaration of 'object'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(363,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(364,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(135,14): warning C4100: 'userParam': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(133,10): warning C4100: 'length': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(131,9): warning C4100: 'id': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(129,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(67,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(67,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(496,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(181,53): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(497,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(187,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(188,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(33,41): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(48,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(49,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(100,66): warning C4100: 'posY': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(100,56): warning C4100: 'posX': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(162,45): warning C4100: 'y': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(162,38): warning C4100: 'x': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(180,45): warning C4100: 'y': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(180,38): warning C4100: 'x': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(89): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,76): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,50): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,41): warning C4100: 'key': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(64,31): warning C4100: 'pwin': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(406,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(407,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(683,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(683,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(746,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(746,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp(134,14): warning C4100: 'userParam': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp(132,10): warning C4100: 'length': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp(130,9): warning C4100: 'id': unreferenced formal parameter
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp(128,24): warning C4100: 'source': unreferenced formal parameter
   Generating code
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
-C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
-  4712 of 4716 functions (99.9%) were compiled, the rest were copied from previous compilation.
-    199 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
+  176 of 4251 functions ( 4.1%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    130 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  SushiMi.vcxproj -> C:\Users\Chong Shen\Documents\SiT\CSD2400\maki\Main\maki\x64\Release\SushiMi.exe
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

@@ -63,7 +63,7 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(28293); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(3240); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -160,24 +160,24 @@ void Core::pseudomain::init() {
 	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
-
+	Core::DeserializeAll("../Data/MenuTest.json", CoreSystem->objfactory);
 	//loading main menu
-	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
-	//loading TabMenu
-	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
+	////loading TabMenu
+	//Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
 
-	//loading image&button paths
-	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
+	////loading image&button paths
+	//Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
 
-	//loading pause menu & buttons
-	Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
+	////loading pause menu & buttons
+	//Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
 
 
 	glEnable(GL_DEBUG_OUTPUT);
@@ -197,7 +197,7 @@ void Core::pseudomain::init() {
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
-#if defined(DEBUG) | defined(_DEBUG)
+#if defined(EDITOR) | defined(EDITOR)
 	CoreSystem->leveleditorsystem->imguiEditorInit();
 	
 #endif

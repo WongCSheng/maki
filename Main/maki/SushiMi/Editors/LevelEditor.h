@@ -57,7 +57,7 @@ namespace Core
 			static void imguiShutDown(void);
 			static inline int loadnewlevel = 0;
 			static inline int levelsave = 0;
-			static inline std::string path, path2;
+			static inline std::string path, path2, imguiloadedmap;
 
 			static void imguiCreateObj();
 			static void imguiDestroyObj();
@@ -83,6 +83,8 @@ namespace Core
 			void Init() {}
 			void Update(const double dt) { dt; }
 			void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
+			static inline std::string alphabet;
+			static inline int xgrid, ygrid;
 
 		private:
 
@@ -91,6 +93,7 @@ namespace Core
 			inline static float color[4] = { 0.8f, 0.3f, 0.02f, 1.0f };
 			//inline static GLuint VAO, VBO;
 			inline static int width, height, nrChannels;
+			//static inline bool m_BlockEvents = true;
 
 		};
 	}

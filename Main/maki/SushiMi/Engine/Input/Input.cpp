@@ -151,9 +151,15 @@ namespace Core
 		return gfxVector2(0, 0);
 	}
 
-	bool Input::IsKeyPressed( KEY key, KEY_STATE pressed)
+	bool Input::IsKeyPressed(KEY key)
 	{
-		return key;
+		if (keys[key][KEY_STATE_PRESS])
+		{
+			std::cout << "key " << key << " is pressed\n";
+			return true;
+		}
+		else
+			return false;
 	}
 	
 }

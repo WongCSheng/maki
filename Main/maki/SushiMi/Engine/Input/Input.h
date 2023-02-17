@@ -42,7 +42,7 @@ namespace Core
 		bool GetKey(const KEY key, const KEY_STATE action);
 		bool GetKeyDown(const KEY key);
 		gfxVector2 GetMouse(GLFWwindow* window, int action);
-		bool IsKeyPressed(KEY key, KEY_STATE pressed);
+		bool IsKeyPressed(KEY key);
 
 	private:
 		/*Input();

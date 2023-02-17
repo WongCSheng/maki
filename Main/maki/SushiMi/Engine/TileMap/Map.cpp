@@ -87,6 +87,21 @@ namespace Core
 		fin.close();
 	}
 
+	void Map::saveEditedMap(std::string Filename)
+	{
+		std::ofstream fout(Filename);
+		fout << grid_row << " " << grid_col << std::endl;
+
+		for (int c = 0; c < grid_col; c++)
+		{
+			for (int r = 0; r < grid_row; r++)
+			{
+				fout << static_cast<char>(gGrids[r][c]) << " ";
+			}
+			fout << std::endl;
+		}
+	}
+
 	void Map::ResetMap()
 	{
 		for (int i = 0; i < grid_row; i++)
@@ -134,8 +149,10 @@ namespace Core
 					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
 					Window::player->playerpos_restart.x = Window::player->playerpos.x;
 					Window::player->playerpos_restart.y = Window::player->playerpos.y;
+//#ifndef EDITOR
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
+//#endif
 					/*save player index in grid*/
 					Window::player->player_grid_pos.x = r;
 					Window::player->player_grid_pos.y = c;
@@ -1133,5 +1150,26 @@ namespace Core
 				}
 			}
 		}*/
+	}
+	/********************************************
+	 Return the value inside a cell that you click
+	********************************************/
+	int Map::GetValue(int col_x, int row_y)
+	{
+		//if you are accessing out of the given grid
+		if (col_x > grid_col -1 || row_y > grid_row -1)
+		{
+			return 0; //if you are pressing out of this grid, return 0 as tile value 
+		}
+		return gGrids[col_x][row_y];
+	}
+	/********************************************
+	 Set the value inside a cell that you click
+	********************************************/
+	void Map::SetValue(int col_x, int row_y, int value)
+	{
+		gGrids[col_x][row_y] = value;
+		Window::loaded = false;
+		print_map_to_console(); //debugging
 	}
 }

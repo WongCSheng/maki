@@ -188,125 +188,125 @@ namespace Core
 
 
 			//***************************************DISPLAYING TILES*************************************
-			//if (ImGui::Begin("Tile Selector"))
-			//{
-			//	//start tile selector
-			//	int my_image_width = 0;
-			//	int my_image_height = 0;
-			//	GLuint my_image_texture = 0;
+			if (ImGui::Begin("Tile Selector"))
+			{
+				//start tile selector
+				int my_image_width = 0;
+				int my_image_height = 0;
+				GLuint my_image_texture = 0;
 
-			//	//ImGui::BeginTabBar("Hi");
+				//ImGui::BeginTabBar("Hi");
 
-			//	bool ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_cucumber.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		std::cout << "button for cucumber is pressed" << std::endl;
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
-			//	}
-			//	ImGui::SameLine();
+				bool ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_cucumber.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					std::cout << "button for cucumber is pressed" << std::endl;
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
+				}
+				ImGui::SameLine();
 
-			//	//salmon
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-			//	}
+				//salmon
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+				}
 
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_avocado.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
-			//	}
-
-
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Soya_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Soya_Ingredient.png";
-			//	}
-
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients1_nori.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
-			//	}
-
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tuna.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
-			//	}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_avocado.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
+				}
 
 
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Wasabi_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Wasabi_Ingredient.png";
-			//	}
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
-			//	}
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_roes.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
-			//	}
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Soya_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Soya_Ingredient.png";
+				}
 
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_rice.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
-			//	}
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_inari.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
-			//	}
-			//	ImGui::SameLine();
-			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tofu.png", &my_image_texture, &my_image_width, &my_image_height);
-			//	IM_ASSERT(ret);
-			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-			//	{
-			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
-			//	}
-			//	//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f)); //uncomment if u want to make button bg transparent
-			//	//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
-			//	//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients1_nori.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
+				}
+
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tuna.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
+				}
 
 
-			//	////salmon
-			//	//int my_image_width2 = 0;
-			//	//int my_image_height2 = 0;
-			//	//GLuint my_image_texture2 = 0;
-			//	//bool ret2 = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture2, &my_image_width2, &my_image_height2);
-			//	//IM_ASSERT(ret2);
-			//	//if (ImGui::ImageButton((void*)(intptr_t)my_image_texture2, ImVec2(80, 80)))
-			//	//{
-			//	//	texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-			//	//}
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Wasabi_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Wasabi_Ingredient.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_roes.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
+				}
 
-			//	//ImGui::PopStyleColor(3); //free the custom transparency buttons
-			//}
-			//ImGui::End(); 
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_rice.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_inari.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
+				}
+				ImGui::SameLine();
+				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tofu.png", &my_image_texture, &my_image_width, &my_image_height);
+				IM_ASSERT(ret);
+				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+				{
+					texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
+				}
+				//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f)); //uncomment if u want to make button bg transparent
+				//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
+				//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+
+				////salmon
+				//int my_image_width2 = 0;
+				//int my_image_height2 = 0;
+				//GLuint my_image_texture2 = 0;
+				//bool ret2 = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture2, &my_image_width2, &my_image_height2);
+				//IM_ASSERT(ret2);
+				//if (ImGui::ImageButton((void*)(intptr_t)my_image_texture2, ImVec2(80, 80)))
+				//{
+				//	texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+				//}
+
+				//ImGui::PopStyleColor(3); //free the custom transparency buttons
+			}
+			ImGui::End(); 
 			//******************************************end tile selector****************************
 
 
@@ -352,10 +352,15 @@ namespace Core
 			{
 				glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			}*/
+			ImGui::Begin("Main Dockspace");
 
-			ImGui::Begin("Object Editor - Imgui Window");
+			//Central Dockspace
+			static ImGuiID dockspaceID = 0;
+			dockspaceID = ImGui::GetID("Main Dockspace");
+			ImGui::DockSpace(dockspaceID, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode/*|ImGuiDockNodeFlags_NoResize*/);
 
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
+			ImGui::Begin("Object Editor - Imgui Window");
 			int value = Map::GetValue(xgrid, ygrid);
 			
 			ImGui::SliderInt("Value to set to tile", &value, 'A', 'z');
@@ -612,6 +617,7 @@ namespace Core
 
 			}
 			ImGui::End(); //end level save window
+			ImGui::End(); //end Main Docking window
 
 			ImGui::End(); //end the whole imgui process
 			ImGuiIO& io = ImGui::GetIO();

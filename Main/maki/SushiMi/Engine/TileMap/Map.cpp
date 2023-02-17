@@ -1153,6 +1153,11 @@ namespace Core
 	********************************************/
 	int Map::GetValue(int col_x, int row_y)
 	{
+		//if you are accessing out of the given grid
+		if (col_x > grid_col -1 || row_y > grid_row -1)
+		{
+			return 0; //if you are pressing out of this grid, return 0 as tile value 
+		}
 		return gGrids[col_x][row_y];
 	}
 	/********************************************

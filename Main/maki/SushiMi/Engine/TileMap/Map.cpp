@@ -87,6 +87,21 @@ namespace Core
 		fin.close();
 	}
 
+	void Map::saveEditedMap(std::string Filename)
+	{
+		std::ofstream fout(Filename);
+		fout << grid_row << " " << grid_col << std::endl;
+
+		for (int c = 0; c < grid_col; c++)
+		{
+			for (int r = 0; r < grid_row; r++)
+			{
+				fout << static_cast<char>(gGrids[r][c]) << " ";
+			}
+			fout << std::endl;
+		}
+	}
+
 	void Map::ResetMap()
 	{
 		for (int i = 0; i < grid_row; i++)
@@ -1146,5 +1161,7 @@ namespace Core
 	void Map::SetValue(int col_x, int row_y, int value)
 	{
 		gGrids[col_x][row_y] = value;
+		Window::loaded = false;
+		print_map_to_console(); //debugging
 	}
 }

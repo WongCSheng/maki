@@ -356,6 +356,14 @@ namespace Core
 			ImGui::Begin("Object Editor - Imgui Window");
 
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
+			int value = Map::GetValue(xgrid, ygrid);
+			
+			ImGui::SliderInt("Value to set to tile", &value, 'A', 'z');
+			if (ImGui::Button("Set Value"))
+			{
+				Map::SetValue(xgrid, ygrid, value);
+			}
+
 
 			ImGui::Text("Select a file below to load a saved level!");
 			ImGui::BulletText("level text files are in ../TileMap");
@@ -478,7 +486,11 @@ namespace Core
 
 			//RGB colour selection
 			//ImGui::ColorEdit3("Color", *arr);
+			ImGui::Spacing();
+			ImGui::Text("Currently displaying: ");
+			ImGui::Text(imguiloadedmap.c_str());
 
+			ImGui::Spacing();
 			ImGui::Text("Click on a cell to see its value");
 
 			ImGui::Spacing();
@@ -580,7 +592,8 @@ namespace Core
 						//std::cout << "Selected filename" << *JSONSerializer::LevelSavePathPtr << std::endl;
 						levelsave = 2;
 
-						Core::Serialize(*Window::player, *Core::LevelSavePathPtr);
+						Map::saveEditedMap(*Core::LevelSavePathPtr);
+						/*Core::Serialize(*Window::player, *Core::LevelSavePathPtr);*/
 
 						std::cout << "the level is saved! level save status is " << levelsave << std::endl;
 

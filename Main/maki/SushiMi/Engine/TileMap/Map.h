@@ -34,6 +34,7 @@ namespace Core
 		~Map();
 
 		static void initMap(std::string Filename);
+		static void saveEditedMap(std::string Filename);
 		static void ResetMap();
 		static int LoadMap();
 		static void DrawMap();

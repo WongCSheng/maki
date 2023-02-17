@@ -44,6 +44,11 @@ ShaderProgram::~ShaderProgram()
 	glDeleteShader(ID);
 }
 
+GLuint ShaderProgram::get_hdl()
+{
+	return ID;
+}
+
 void ShaderProgram::use()
 {
 	glUseProgram(ID);

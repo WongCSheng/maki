@@ -46,6 +46,8 @@ namespace Core
 		float SpriteSize[2];
 		Transform transformation;
 
+		AnimationType curr_anim;
+
 		static inline Sprite* menu;
 
 		static inline struct ingr1GridPos

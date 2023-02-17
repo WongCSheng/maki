@@ -12,6 +12,8 @@
 #include <iostream>
 //using namespace std;
 #include "../../glm/glm/mat4x4.hpp"
+#include "../../glew/include/GL/glew.h"
+
 class ShaderProgram
 {
 public:
@@ -23,7 +25,9 @@ public:
 
 	void Send_Mat4(const char* name, glm::mat4 mat);
 
+	GLuint get_hdl();
+
 private:
 	void checkerorr(unsigned int shader_id, std::string type);
-	unsigned int ID;
+	 GLuint ID;
 };

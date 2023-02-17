@@ -115,7 +115,8 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 void Core::pseudomain::draw() 
 {
 	//imGUI Game Editor
-
+	Shaders->Font_Shader()->use();
+	Font::RenderText(*Shaders, to_string(GLHelper::fps), 0.0f, 0.0f, .6f, glm::vec3(0.f, 0.f, 0.f));
 
 	Editor::LevelEditor::imguiEditorDraw();
 

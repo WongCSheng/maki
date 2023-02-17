@@ -18,6 +18,7 @@ namespace Core
 		win_overlay = nullptr;
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
+		SceneManager::starttime = SceneManager::endtime = SceneManager::delta = 0;
 	}
 
 	SceneManager::~SceneManager()
@@ -32,7 +33,8 @@ namespace Core
 
 	void SceneManager::Update(const double dt)
 	{
-
+		endtime = glfwGetTime();
+		delta = (endtime - starttime) / 2;
 	}
 
 	void SceneManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
@@ -88,6 +90,10 @@ namespace Core
 
 	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>&ingredient)
 	{
+		/*
+		int width, height;
+		glfwGetWindowSize(Window::window_ptr, &width, &height);
+		*/
 		ingredient.second->transformation.Position = glm::vec2(x, y);
 		ingredient.second->transformation.Scale = glm::vec2(100, 100);
 
@@ -231,6 +237,7 @@ namespace Core
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			ingredient.second->draw();
+			//ingredient.second->draw(delta, Idle);
 		}
 	}
 

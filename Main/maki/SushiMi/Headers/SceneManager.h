@@ -165,5 +165,7 @@ namespace Core
 
 		unsigned int rows, cols,
 			tileWidth, tileHeight;
+
+		double inline static starttime,endtime,delta;
 	};
 }

@@ -118,7 +118,8 @@ void Font::RenderText(ShaderLibrary& s, std::string text, float x, float y, floa
         {0,color.y,0},
         {0,0,color.z}
     };
-    s.Font_Shader()->Send_Mat4("textColor", mat_colours);
+    //s.Font_Shader()->Send_Mat4("textColor", mat_colours);
+    glUniform3f(glGetUniformLocation(s.Font_Shader()->get_hdl(), "textColor"), color.x, color.y, color.z);
     //glUniform3f(glGetUniformLocation(s.GetHandle(), "textColor"), color.x, color.y, color.z);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);

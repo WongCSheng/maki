@@ -562,10 +562,8 @@ namespace Core
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
-			//Font::RenderText(,"This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 			starttime = glfwGetTime();
 			pseudomain::update();
-
 			//for each frame 
 			Resize();
 			Input();
@@ -674,7 +672,6 @@ namespace Core
 					}
 					
 					Map::initMap("../TileMap/level1(new).txt");
-
 					Map::LoadMap();
 					loaded = true;
 
@@ -687,7 +684,6 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
-
 
 				if (gameIsPaused == false)
 				{

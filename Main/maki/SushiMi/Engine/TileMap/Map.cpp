@@ -148,9 +148,12 @@ namespace Core
 
 				case static_cast<int>(grid_number::rice):
 				{
-					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
+					//Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
+					/*edited this to be bami first to show that Sprites can be animated too, just need the spritesheet*/
+					Sprite* rice = new Sprite("../textures/spritesheet/spritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
-
+					rice->Add_animation("../textures/spritesheet/Idle.txt");
+					rice->curr_anim = Idle;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					

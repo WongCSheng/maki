@@ -20,13 +20,13 @@ Description: Header for Core.cpp
 #ifndef CORE_H_
 #define CORE_H_
 
-#include "../System/Renderer.h"
-#include "../System/Transformer.h"
-#include "../System//CameraSystem.h"
-#include "../System/PhysicSystem.h"
+#include "../System/Graphics/Renderer.h"
+#include "../System/Transform/Transformer.h"
+#include "../System/Camera/CameraSystem.h"
+#include "../System/Physics/PhysicSystem.h"
 #include "../Engine/Input/Input.h"
 #include "../Editors/LevelEditor.h"
-#include "../System/TextureSystem.h"
+#include "../System/Graphics/TextureSystem.h"
 
 #include <vector>
 

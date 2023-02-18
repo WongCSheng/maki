@@ -1,7 +1,5 @@
-#pragma once
 #ifndef SPRITE_H_
 #define SPRITE_H_
-
 
 /*!
 @file		Sprite.h
@@ -11,7 +9,7 @@
 @brief		Drawing of the sprite and animating of it is here
 *//*__________________________________________________________________________*/
 #include "../Engine/Components/Texture/Texture.h"
-#include "../Engine/System/Renderer.h"
+#include "../Engine/System/Graphics/Renderer.h"
 #include "../Engine/Components/Transform/Transform.h" //important as it is the only function that has a get()
 //#include "../Engine/Components/Transform/Transform.h"
 //#include "../Engine/System/Transformer.h"

@@ -8,7 +8,7 @@
 			attach them to the shader programs using their IDs. SendMat4 will
 			set uniform location for their uniform variables(model_matrx or projection).
 *//*__________________________________________________________________________*/
-#include "../../glew/include/GL/glew.h"
+#include <GL/glew.h>
 ShaderProgram::ShaderProgram(const char* vertex_shader, const char* fragment_shader)
 {
 	// compile shader ..

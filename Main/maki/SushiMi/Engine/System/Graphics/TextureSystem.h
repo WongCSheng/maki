@@ -10,8 +10,8 @@
 #include <../stb-master/stb_image.h>
 #include <../glew/include/GL/glew.h>
 #include <iostream>
-#include "../Components/Texture/Texture.h"
-#include "../System/SystemFrame.h"
+#include "../Engine/Components/Texture/Texture.h"
+#include "../SystemFrame.h"
 
 namespace Core
 {

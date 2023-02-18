@@ -6,8 +6,8 @@
 
 @brief		Updated Camera that projects at 0,0 and is able to update its viewport.
 *//*__________________________________________________________________________*/
-#include <../glm/glm/glm.hpp>
-#include <../glm/glm/gtc/matrix_transform.hpp>
+#include <glm/glm/glm.hpp>
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 #include <memory>
 //using namespace std;
@@ -23,6 +23,7 @@ public:
 	void Update_Viewport(int new_width, int new_height);
 
 	glm::mat4 projection;
-};
 
-static std::unique_ptr<Camera> camera;
+private:
+	int width, height;
+};

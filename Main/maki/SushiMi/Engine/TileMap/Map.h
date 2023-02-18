@@ -1,7 +1,10 @@
 #pragma once
-#ifndef Map_H_
-#define Map_H_
+
 #include <string>
+#include <map>
+#include <iostream>
+#include <fstream>
+#include "../Engine/System/SystemFrame.h"
 
 /*set a static grid first*/
 #define GRID_COL 18
@@ -59,7 +62,8 @@ namespace Core
 		static inline int grid_row;
 		static inline int grid_col;
 		static float tile_width, tile_height;
+
 		static int** gGrids;
+		static short** cGrids;
 	};
 }
-#endif

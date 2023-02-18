@@ -23,9 +23,9 @@ program object.
 #include <string>
 #include <string>
 #include <vector>
-#include <../include/glm.h>
+#include "../Engine/Math/glm.h"
 
-#include "../include/Matrix.h"
+#include "../Engine/Math/Matrix.h"
 
 /*  _________________________________________________________________________ */
 class GLSLShader

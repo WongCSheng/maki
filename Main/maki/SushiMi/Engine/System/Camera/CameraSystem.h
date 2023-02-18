@@ -8,8 +8,8 @@ Description: Header for CameraSystem.cpp
 #define CAMERASYSTEM_H_
 
 #include "../Headers/STL_Header.h"
-#include "SystemFrame.h"
-#include "../Components/Component.h"
+#include "../SystemFrame.h"
+#include "../../Components/Component.h"
 
 
 namespace Core

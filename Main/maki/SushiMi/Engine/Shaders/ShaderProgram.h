@@ -11,7 +11,7 @@
 #include <string>
 #include <iostream>
 //using namespace std;
-#include "../../glm/glm/mat4x4.hpp"
+#include <glm/glm/mat4x4.hpp>
 class ShaderProgram
 {
 public:

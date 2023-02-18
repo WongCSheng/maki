@@ -5,7 +5,7 @@ Description: Camera System that takes data stored in Camera2D.h and runs it with
 */
 
 #include "CameraSystem.h"
-#include "../Camera/Camera2D.h"
+#include "../../Camera/Camera2D.h"
 #include "../Window/GameWindow.h"
 #include "../Game Object/GameObject.h"
 

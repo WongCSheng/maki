@@ -1,4 +1,3 @@
-#include "TextureSystem.h"
 /*!
 @file		Texture.cpp
 @author		louishetong.wang@digipen.edu
@@ -6,6 +5,8 @@
 
 @brief		Generating of texture using stbi and mimap. Delete of texture is here too.
 *//*__________________________________________________________________________*/
+
+#include "TextureSystem.h"
 #include <../stb-master/stb_image.h>
 
 namespace Core

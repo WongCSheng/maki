@@ -3,7 +3,7 @@
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
-#include "../Engine/System/SystemFrame.h"
+#include "../System/SystemFrame.h"
 
 
 namespace Core

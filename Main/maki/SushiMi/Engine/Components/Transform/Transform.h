@@ -9,8 +9,8 @@ Description: Header for Transform.cpp
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-#include <../glm/glm/glm.hpp>
-#include <../glm/glm/gtc/matrix_transform.hpp>
+#include <glm/glm/glm.hpp>
+#include <glm/glm/gtc/matrix_transform.hpp>
 #include "../Component.h"
 #include "../Headers/Math_Header.h"
 //#include <vector>

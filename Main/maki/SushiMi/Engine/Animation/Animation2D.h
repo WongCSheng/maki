@@ -8,8 +8,8 @@
 			spritesheet corresponding to each animation. Eg: For animation type Run, it loops through the 7 running
 			sprites in the spritesheet
 *//*__________________________________________________________________________*/
-#include "../Engine/System/Renderer.h"
-#include <../glm/glm/vec4.hpp>
+#include "../Engine/System/Graphics/Renderer.h"
+#include <glm/glm/vec4.hpp>
 #include <vector>
 
 namespace Core

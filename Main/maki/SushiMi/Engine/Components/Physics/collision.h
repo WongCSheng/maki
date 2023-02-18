@@ -29,7 +29,7 @@ namespace Core
 	enum class wall_type;
 	enum class grid_number;
 
-	class Sprite;
+	class Map;
 	
 	class collision : public Component
 	{
@@ -45,17 +45,21 @@ namespace Core
 		void Deactivate();
 		void Remove();
 
-		void checkleft();
-		void checkright();
-		void checkdown();
-		void checkup();
+		bool checkleft();
+		bool checkright();
+		bool checkdown();
+		bool checkup();
 
-		std::unordered_map<wall_type, Sprite*> tilecontainer;
-		std::unordered_map<grid_number, Sprite*> ingredientcontainer;
-		std::unordered_map<grid_number, Sprite*> ingredient_starting_pos;
-		unsigned int x, y;
+		void collided_left(bool result);
+		void collided_right(bool result);
+		void collided_bottom(bool result);
+		void collided_top(bool result);
 
-		bool stuck;
+		unsigned int Grid_Pos_x, Grid_Pos_y;
+
+	private:
+		bool stuck,
+			collide_left, collide_right, collide_bottom, collide_top;
 	};
 }
 

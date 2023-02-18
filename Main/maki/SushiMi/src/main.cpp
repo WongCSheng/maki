@@ -20,11 +20,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
 #include "../Engine/Core/Core.h"
-#include "Window.h"
+#include "../Engine/Window/Window.h"
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
-#include "../Engine/System/TextureSystem.h"
+#include "../Engine/System/Graphics/TextureSystem.h"
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
@@ -36,7 +36,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 //	testing
 #include "../Headers/Log.h"
-#include "Engine/Font/Font.h"
+#include "../Engine/System/Graphics/Font/fonts.h"
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
@@ -100,8 +100,6 @@ void Core::pseudomain::update()
 	CoreSystem->objfactory->Update(GLHelper::delta_time);
 
 	CoreSystem->Update(GLHelper::delta_time);
-
-	
 }
 
 /*  _________________________________________________________________________ */

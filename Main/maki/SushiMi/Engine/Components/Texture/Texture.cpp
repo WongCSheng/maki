@@ -6,7 +6,7 @@
 @brief		Generating of texture using stbi and mimap. Delete of texture is here too.
 *//*__________________________________________________________________________*/
 #include <../stb-master/stb_image.h>
-#include "../Engine/System/TextureSystem.h"
+#include "../Engine/System/Graphics/TextureSystem.h"
 #include "Texture.h"
 
 namespace Core

@@ -9,10 +9,10 @@ email:		fei.x@digipen.edu
 @brief		Drawing of the sprite and animating of it is here
 *//*__________________________________________________________________________*/
 #include "Sprite.h"
-#include"../Engine/System/TextureSystem.h"
+#include"../Engine/System/Graphics/TextureSystem.h"
 #include "../Engine/TileMap/Map.h"
-#include "../Headers/SceneManager.h"
-#include <../glew/include/GL/glew.h>
+#include "../Engine/System/Scene/SceneManager.h"
+#include <glew/include/GL/glew.h>
 
 namespace Core
 {

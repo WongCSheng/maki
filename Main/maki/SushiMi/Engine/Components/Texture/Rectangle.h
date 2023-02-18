@@ -1,5 +1,5 @@
 #pragma once
-#include <../glew/include/GL/glew.h>
+#include <glew/include/GL/glew.h>
 // singlton pattern 
 
 struct Rect

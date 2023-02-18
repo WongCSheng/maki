@@ -19,7 +19,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "Core.h"
 #include "../Engine/Components/Physics/Physics.h"
-#include "../../src/Window.h"
+#include "../Engine/Window/Window.h"
 
 //MainSystem* MainSystem::instance = 0; //Singleton of MainSystem.
 

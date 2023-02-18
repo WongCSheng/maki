@@ -12,9 +12,9 @@
 #include <string>
 #include <sstream>
 #include "../Components/Texture/Texture.h"
-#include "../Engine/System/Renderer.h"
-#include <../glew/include/GL/glew.h>
-#include <../glm/glm/vec2.hpp>
+#include "../Engine/System/Graphics/Renderer.h"
+#include <glew/include/GL/glew.h>
+#include <glm/glm/vec2.hpp>
 
 namespace Core
 {

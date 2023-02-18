@@ -7,10 +7,10 @@
 			, drawing and transformation of player is here too
 *//*__________________________________________________________________________*/
 #include "Player.h"
-#include "../src/Window.h"
+#include "../Engine/Window/Window.h"
 #include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/TileMap/Map.h"
-#include "../Headers/SceneManager.h"
+#include "../Engine/System/Scene/SceneManager.h"
 
 //static Window win; //create a external window variable to pass through data
 

@@ -17,6 +17,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
  /******************************************************************************/
 
 #include "collision.h"
+#include "../Engine/TileMap/Map.h"
 
 namespace Core
 {
@@ -37,41 +38,61 @@ namespace Core
 
 	bool collision::IsActive()
 	{
-
+		return active;
 	}
 
 	void collision::Activate()
 	{
-
+		active = true;
 	}
 
 	void collision::Deactivate()
 	{
-
+		active = false;
 	}
 
 	void collision::Remove()
 	{
-
+		remove = true;
 	}
 
-	void collision::checkleft()
+	bool collision::checkleft()
 	{
-
+		return collide_left;
 	}
 
-	void collision::checkright()
+	bool collision::checkright()
 	{
-
+		return collide_right;
 	}
 
-	void collision::checkdown()
+	bool collision::checkdown()
 	{
-
+		return collide_bottom;
 	}
 
-	void collision::checkup()
+	bool collision::checkup()
 	{
+		return collide_top;
+	}
 
+	void collision::collided_left(bool result)
+	{
+		collide_left = result;
+	}
+
+	void collision::collided_right(bool result)
+	{
+		collide_right = result;
+	}
+
+	void collision::collided_bottom(bool result)
+	{
+		collide_bottom = result;
+	}
+
+	void collision::collided_top(bool result)
+	{
+		collide_top = result;
 	}
 }

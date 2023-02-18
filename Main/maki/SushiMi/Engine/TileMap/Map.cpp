@@ -1,13 +1,9 @@
 #include "Map.h"
-#include <string>
-#include <map>
-#include <iostream>
-#include <fstream>
 
-#include "../../src/Window.h"
+#include "../Window/Window.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
-#include "../Headers/SceneManager.h"
+#include "../System/Scene/SceneManager.h"
 
 /*
  * What each grid number means:
@@ -51,6 +47,7 @@ namespace Core
 	}
 
 	int** Map::gGrids;
+	short** Map::cGrids;
 
 	void Map::initMap(std::string Filename)
 	{
@@ -66,10 +63,12 @@ namespace Core
 		fin >> grid_col;
 
 		gGrids = new int* [grid_row];
+		cGrids = new short* [grid_row];
 
 		for (int i = 0; i < grid_row; i++)
 		{
 			gGrids[i] = new int[grid_col];
+			cGrids[i] = new short[grid_col];
 		}
 
 		char ch;
@@ -80,9 +79,21 @@ namespace Core
 			{
 				fin >> ch;
 				gGrids[r][c] = ch;
+
+				if (ch >= static_cast<char>(wall_type::first) && ch <= static_cast<char>(wall_type::last))
+				{
+					cGrids[r][c] = 1;
+				}
+				else if (ch >= static_cast<char>(grid_number::player) && ch <= static_cast<char>(grid_number::end))
+				{
+					cGrids[r][c] = 2;
+				}
+				else
+				{
+					cGrids[r][c] = 0;
+				}
 			}
 		}
-
 
 		fin.close();
 	}
@@ -94,9 +105,9 @@ namespace Core
 			for (int j = 0; j < grid_col; j++)
 			{
 				gGrids[i][j] = 0;
+				cGrids[i][j] = 0;
 			}
 		}
-
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
@@ -106,8 +117,10 @@ namespace Core
 			for (int i = 0; i < grid_row; i++)
 			{
 				delete gGrids[i];
+				delete cGrids[i];
 			}
 			delete gGrids;
+			delete cGrids;
 		}
 
 		win_amt = 0;
@@ -130,20 +143,23 @@ namespace Core
 				{
 				case static_cast<int>(grid_number::player):
 				{
-					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
-					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
-					Window::player->playerpos_restart.x = Window::player->playerpos.x;
-					Window::player->playerpos_restart.y = Window::player->playerpos.y;
-//#ifndef EDITOR
-					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
-					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
-//#endif
-					/*save player index in grid*/
-					Window::player->player_grid_pos.x = r;
-					Window::player->player_grid_pos.y = c;
-					/*save initial index for restart purposes*/
-					Window::player->player_initial_grid_pos.x = r;
-					Window::player->player_initial_grid_pos.y = c;
+//					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
+//					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
+//					Window::player->playerpos_restart.x = Window::player->playerpos.x;
+//					Window::player->playerpos_restart.y = Window::player->playerpos.y;
+////#ifndef EDITOR
+//					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
+//					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
+////#endif
+//					/*save player index in grid*/
+//					Window::player->player_grid_pos.x = r;
+//					Window::player->player_grid_pos.y = c;
+//					/*save initial index for restart purposes*/
+//					Window::player->player_initial_grid_pos.x = r;
+//					Window::player->player_initial_grid_pos.y = c;
+
+					
+
 					break;
 				}
 					

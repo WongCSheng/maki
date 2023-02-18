@@ -2,14 +2,11 @@
 #define TRANSFORMER_H_
 
 #include <vector>
-#include "SystemFrame.h"
+#include "../SystemFrame.h"
 #include "../Headers/Math_Header.h"
 #include "../Game Object/GameObject.h"
-
 #include "../Headers/STL_Header.h"
-//#include "Graphics/glslshader.h"
 #include "../Engine/Mesh/model.h"
-
 
 #define DEFAULTFORWARD gfxVector2(1.f, 0.f)
 

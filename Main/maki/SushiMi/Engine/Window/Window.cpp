@@ -15,17 +15,16 @@ Description:
 #include "../../imgui/imgui.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Editors/imfilebrowser.h"
-#include "../Headers/SceneManager.h"
+#include "../System/Scene/SceneManager.h"
 #include "../Game Object/Player.h"
 #include "../Engine/Components/Texture/Sprite.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
-#include "../Headers/SceneManager.h"
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Core/Core.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
-#include "Engine/Font/Font.h"
+#include "../System/Graphics/Font/fonts.h"
 
 namespace Core
 {

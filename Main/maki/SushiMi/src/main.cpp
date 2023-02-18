@@ -154,7 +154,7 @@ void Core::pseudomain::init() {
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-	Font::init();
+	//Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 
@@ -203,6 +203,7 @@ void Core::pseudomain::init() {
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("WalkSFX.wav");
 	//play bgm
+	AudioManager.SetMusicVolume(0.8f);
 	AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use

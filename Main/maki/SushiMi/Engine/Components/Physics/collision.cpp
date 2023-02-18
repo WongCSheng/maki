@@ -95,4 +95,14 @@ namespace Core
 	{
 		collide_top = result;
 	}
+
+	void collision::Toggle_Stuck(bool result)
+	{
+		stuck = result;
+	}
+
+	bool collision::Is_it_Stuck()
+	{
+		return stuck;
+	}
 }

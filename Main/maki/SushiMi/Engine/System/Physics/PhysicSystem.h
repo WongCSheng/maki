@@ -24,6 +24,7 @@ namespace Core
 	{
 	public:
 		friend class Map;
+		friend class collision;
 
 		PhysicsSystem();
 		~PhysicsSystem();

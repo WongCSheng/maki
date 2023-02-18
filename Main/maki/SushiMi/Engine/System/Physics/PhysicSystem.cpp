@@ -10,7 +10,8 @@ Description: Physics System which runs data from Physics.cpp into it's logics.
 */
 
 #include "PhysicSystem.h"
-#include "../Engine/Components/Physics/Physics.h"
+#include "../../Core/Core.h"
+//#include "../Engine/Components/Physics/Physics.h"
 
 namespace Core
 {
@@ -31,7 +32,7 @@ namespace Core
 
 	void PhysicsSystem::Update(const double dt)
 	{
-
+		
 	}
 
 	void PhysicsSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
@@ -41,6 +42,7 @@ namespace Core
 
 	void PhysicsSystem::collision_check_down(Object::GameObject* first, Object::GameObject* second)
 	{
+		Transform* firstobj = dynamic_cast<Transform*>(first->GetObjectProperties()->GetComponent(ComponentID::Transform));
 
 	}
 
@@ -61,14 +63,22 @@ namespace Core
 
 	bool PhysicsSystem::isStuck(Object::GameObject* obj)
 	{
-		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole) &&
-			!isWin())
+		if (obj->GetObjectProperties()->GetComponent(ComponentID::Collision)->IsActive())
 		{
-			return true;
+			if (dynamic_cast<collision*>(obj->GetObjectProperties()->GetComponent(ComponentID::Collision)))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
+			assert(!obj->GetObjectProperties()->GetComponent(ComponentID::Collision)->IsActive());
+			std::cout << "No collision component in game object\n";
+
 			return false;
 		}
 	}

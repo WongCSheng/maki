@@ -101,9 +101,9 @@ namespace Core
 			//add obj name
 			tempVal.AddMember("Name", nameVal, doc.GetAllocator());
 			//add obj id
-			tempVal.AddMember("ID", it.second->characteristics->GetID(), doc.GetAllocator());
+			tempVal.AddMember("ID", it.second->GetObjectProperties()->GetID(), doc.GetAllocator());
 
-			tempStr = (it.second->characteristics->GetIDName());
+			tempStr = (it.second->GetObjectProperties()->GetIDName());
 			rapidjson::Value idVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
 			//add obj id name
 			tempVal.AddMember("ID Name", idVal, doc.GetAllocator());

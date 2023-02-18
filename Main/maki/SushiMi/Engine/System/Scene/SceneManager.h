@@ -5,33 +5,52 @@
 
 namespace Core
 {
-	enum class grid_number //Find a better way to identify all textures
+	enum class ingredients //gGrids
 	{
 		start = 96,
-		space = 97,		//a
-		ground1,		//b
-		ground2,		//c
-		ground3,		//d
-		player,			//e
+		ground1,		//a
+		ground2,		//b
+		ground3,		//c
+		player,			//d
 		ingredients,
-		rice,			//g
-		tofu,			//h
-		nori,			//i
-		inari,			//j
+		avocado,		//f
+		corn,			//g
+		cucumber,		//h
+		inari,			//i
+		nori,			//j
+		octopus,		//k
+		rice,			//l
+		roes,			//m
+		salmon,			//n
+		tamago,			//o
+		tofu,			//p
+		tuna,			//q
+		soyasauce,		//r
+		wasabi,			//s
 		items,
-		sinkhole,		//l
-		filledsinkhole,	//m
-		box1,			//n
-		box2,			//o
-		boxcover,		//p
-		temp1,			//q
-		temp,			//r
-		inbox1,			//s
-		inbox2,			//t
+		sinkhole,		//u
+		filledsinkhole,	//v
+		boxcover,		//w
 		end
 	};
 
-	enum class wall_type //: std::uint16_t
+	enum class pods	//pGrids
+	{
+		avocado_pod = 102,  //f
+		corn_pod = 103,		//g
+		cucumber_pod,		//h
+		inari_pod,			//i
+		nori_pod,			//j
+		octopus_pod,		//k
+		rice_pod,			//l
+		roes_pod,			//m
+		salmon_pod,			//n
+		tamago_pod,			//o
+		tofu_pod,			//p
+		tuna_pod			//q
+	};
+
+	enum class wall_type //: std::uint16_t //gGrids
 	{
 		first = 63,
 		left,
@@ -53,16 +72,32 @@ namespace Core
 		last
 	};
 
-	enum class Collsion_Code
+	enum class Collsion_Code //cGrids
 	{
 		Space = 0,
 		Collide = 1,
 		Others = 2
 	};
 
-	enum class Bami //: std::uint16_t
+	enum class RicePlain_Grass //rGrids
 	{
-
+		TopG1_1 = 97,	//a
+		TopG1_2 = 98,	//b
+		TopG1_3,		//c
+		TopG2_1,		//d
+		TopG2_2,		//e
+		TopG2_3,		//f
+		TopG2_4,		//g
+		TopG3_1,		//h
+		TopG3_2,		//i
+		TopG3_3,		//j
+		TopG3_4,		//k
+		TopW0_1,		//l
+		TopW0_2,		//m
+		TopW0_3,		//n
+		TopW0_4,		//o
+		TopW0_5,		//p
+		TopW0_6			//q
 	};
 	
 	class SceneManager : public SystemFrame
@@ -79,8 +114,8 @@ namespace Core
 		static void nextLevel();
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
-		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
-		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition);
+		static void loadIngr(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> &ingredient);
+		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>& ingrposition);
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
@@ -115,13 +150,13 @@ namespace Core
 		unsigned int getTileHeight();
 
 		std::vector<wall_type, Sprite*> tilecontainer;
-		std::vector<grid_number, Sprite*> ingredientcontainer;
-		std::vector<grid_number, Sprite*> ingredient_starting_pos;
+		std::vector<ingredients, Sprite*> ingredientcontainer;
+		std::vector<ingredients, Sprite*> ingredient_starting_pos;
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+		static inline std::vector<std::pair<ingredients, Sprite*>> ingredientcontainer;
 		static inline std::vector<short> ICnum;
-		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
+		static inline std::unordered_multimap<ingredients, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 		static inline Sprite* howtoplay_overlay1;

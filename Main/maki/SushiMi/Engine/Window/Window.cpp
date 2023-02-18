@@ -557,7 +557,6 @@ namespace Core
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("WalkSFX.wav");
 				//isWalk = true; //play walking sfx
 				keystate_up = false;
 				keystate_W = false;
@@ -951,8 +950,10 @@ namespace Core
 
 			if (isWalk == true)
 			{
+				AudioManager.SetAudioVolume(1.1f);
 				AudioManager.PlaySFX("WalkSFX.wav");
 				isWalk = false;
+				AudioManager.StopSFX();
 			}
 
 			if (isHowToPlay == true)

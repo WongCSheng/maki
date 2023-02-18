@@ -27,7 +27,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 namespace Core
 {
 	enum class wall_type;
-	enum class grid_number;
+	enum class ingredients;
 
 	class Map;
 	
@@ -54,6 +54,9 @@ namespace Core
 		void collided_right(bool result);
 		void collided_bottom(bool result);
 		void collided_top(bool result);
+
+		void Toggle_Stuck(bool result);
+		bool Is_it_Stuck();
 
 		unsigned int Grid_Pos_x, Grid_Pos_y;
 

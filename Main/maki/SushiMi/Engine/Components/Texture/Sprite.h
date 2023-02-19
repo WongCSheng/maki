@@ -30,6 +30,8 @@ namespace Core
 
 		void Add_animation(const char* filename);
 
+		Texture* GetTexture();
+
 		void Init();
 		void Serialize(const std::string name);
 		void Deserialize(const rapidjson::Value& jsonObj);

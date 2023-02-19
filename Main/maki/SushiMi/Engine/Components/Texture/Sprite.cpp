@@ -69,6 +69,11 @@ namespace Core
 		anims.push_back(anim);
 	}
 
+	Texture* Sprite::GetTexture()
+	{
+		return &texture;
+	}
+
 	void Sprite::Init()
 	{
 

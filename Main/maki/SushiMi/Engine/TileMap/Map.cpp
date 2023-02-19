@@ -149,7 +149,31 @@ namespace Core
 			{
 				switch (gGrids[r][c])
 				{
-				case static_cast<int>(ingredients::player):
+				case static_cast<int>(ingredients::ground1) :
+					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
+					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+
+				case static_cast<int>(ingredients::ground2):
+					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
+					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+
+				case static_cast<int>(ingredients::ground3):
+					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_2.jpg");
+					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+
+				case static_cast<int>(ingredients::player) :
 				{
 //					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
 //					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
@@ -166,8 +190,12 @@ namespace Core
 //					Window::player->player_initial_grid_pos.x = r;
 //					Window::player->player_initial_grid_pos.y = c;
 
-					
+					Sprite* player = new Sprite("../textures/spritesheet/spritesheet.png");
+					player->transformation.Position = glm::vec2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
+					player->transformation.Scale = glm::vec2(100, 100);
 
+					player->Add_animation("../textures/spritesheet/Idle.txt");
+					player->Add_animation("../textures/spritesheet/Run.txt");
 					break;
 				}
 					
@@ -179,7 +207,6 @@ namespace Core
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					
 					break;
 				}
 					

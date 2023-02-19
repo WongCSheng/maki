@@ -16,7 +16,6 @@ namespace Core
 		cover1 = nullptr;*/
 		howtoplay_overlay1 = nullptr;
 		win_overlay = nullptr;
-		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 	}
 
@@ -71,8 +70,6 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
-	
-
 	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
 	{
 		
@@ -88,14 +85,30 @@ namespace Core
 
 	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>&ingredient)
 	{
-		ingredient.second->transformation.Position = glm::vec2(x, y);
-		ingredient.second->transformation.Scale = glm::vec2(100, 100);
+		if(ingredientcontainer.find(ingredient.first) == ingredientcontainer.end()) //Sprite doesn't exist
+		{
+			ingredient.second->transformation.Position = glm::vec2(x, y);
+			ingredient.second->transformation.Scale = glm::vec2(100, 100);
 
-		ingredient.second->transformation.grid_pos = { posX, posY };
+			ingredient.second->transformation.grid_pos = { posX, posY };
 
-		ingredientcontainer.push_back(ingredient);
-		std::cout << std::endl;
-		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
+			ingredientcontainer.insert( ingredient );
+			ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
+
+			std::cout << std::endl;
+			std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
+		}
+		else //Sprite exists, just store as another set of coordinate
+		{
+			ingredient.second->transformation.Position = glm::vec2(x, y);
+			ingredient.second->transformation.Scale = glm::vec2(100, 100);
+
+			ingredient.second->transformation.grid_pos = { posX, posY };
+
+			ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
+			std::cout << std::endl;
+			std::cout << "****************** Ingredient texture exist, ingredient_pos size: " << ingredient_pos.size() << std::endl;
+		}
 	}
 
 	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>& ingrposition)
@@ -106,44 +119,6 @@ namespace Core
 		ingrposition.second->transformation.grid_pos = { x, y };
 
 		ingredient_starting_pos.insert(ingrposition);
-	}
-
-	/*void SceneManager::loadIngr2(int x, int y)
-	{
-
-		ingredient2->transformation.Position = glm::vec2(x, y);
-		ingredient2->transformation.Scale = glm::vec2(100, 100);
-	}*/
-
-	/*void SceneManager::loadTrap(int x, int y)
-	{
-
-		trap->transformation.Position = glm::vec2(x, y);
-		trap->transformation.Scale = glm::vec2(100, 100);
-	}
-
-	void SceneManager::loadGoal1(int x, int y)
-	{
-
-		goal1->transformation.Position = glm::vec2(x, y);
-		goal1->transformation.Scale = glm::vec2(100, 100);
-	}
-	void SceneManager::loadGoal2(int x, int y)
-	{
-
-		goal2->transformation.Position = glm::vec2(x, y);
-		goal2->transformation.Scale = glm::vec2(100, 100);
-	}
-	void SceneManager::loadCover1(int x, int y)
-	{
-		cover1->transformation.Position = glm::vec2(x, y);
-		cover1->transformation.Scale = glm::vec2(100, 100);
-	}*/
-
-	void SceneManager::loadPlayer_Stuck(int x, int y)
-	{
-		player_stuck->transformation.Position = glm::vec2(x, y);
-		player_stuck->transformation.Scale = glm::vec2(90, 90);
 	}
 	
 	void SceneManager::loadHowToOverlay(int x, int y)
@@ -232,48 +207,6 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			ingredient.second->draw();
 		}
-	}
-
-	/*void SceneManager::drawIngr1()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient1->transformation.Get());
-		ingredient1->draw();
-	}
-
-	void SceneManager::drawIngr2()
-	{
-		for (auto& ingredient : ingredientcontainer)
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
-			ingredient->draw();
-		}
-	}
-
-	void SceneManager::drawTrap()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", trap->transformation.Get());
-		trap->draw();
-	}
-	void SceneManager::drawGoal1()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal1->transformation.Get());
-		goal1->draw();
-	}
-	void SceneManager::drawGoal2()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal2->transformation.Get());
-		goal2->draw();
-	}
-	void SceneManager::drawCover1()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", cover1->transformation.Get());
-		cover1->draw();
-	}*/
-
-	void SceneManager::drawPlayer_Stuck()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player_stuck->transformation.Get());
-		player_stuck->draw();
 	}
 	
 	void SceneManager::drawHowToOverlay()
@@ -410,27 +343,6 @@ namespace Core
 
 		ingredientcontainer.clear();
 	}
-	/*void SceneManager::destroyTrap()
-	{
-		delete trap;
-	}
-	void SceneManager::destroyGoal1()
-	{
-		delete goal1;
-	}
-	void SceneManager::destroyGoal2()
-	{
-		delete goal2;
-	}*/
-
-	/*void SceneManager::destroyCover1()
-	{
-		delete cover1;
-	}
-
-	void SceneManager::destroyCover2()
-	{
-	}*/
 
 	void SceneManager::destroyHowToOverlay()
 	{
@@ -462,10 +374,4 @@ namespace Core
 		delete frame7;
 		delete frame8;
 	}
-
-	void SceneManager::destroyPlayer_Stuck()
-	{
-		delete player_stuck;
-	}
-
 }

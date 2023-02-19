@@ -116,7 +116,6 @@ namespace Core
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> &ingredient);
 		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>& ingrposition);
-		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
@@ -124,7 +123,6 @@ namespace Core
 
 		static void drawTile();
 		static void drawIngr();
-		static void drawPlayer_Stuck();
 		static void drawHowToOverlay();
 		static void drawSettings();
 		static void drawWinOverlay();
@@ -133,13 +131,12 @@ namespace Core
 
 		static void destroyTile();
 		static void destroyIngr();
-		static void destroyPlayer_Stuck();
 		static void destroyHowToOverlay();
 		static void destroySettings();
 		static void destroyWinOverlay();
 		static void destroyCutscene();
 
-		static void Readfile();
+		static void Readfile(std::string filename);
 
 		static void setRowsandCols(unsigned int inRow, unsigned int inCol);
 		static void setTileDimension(unsigned int Width, unsigned int Height);
@@ -148,17 +145,16 @@ namespace Core
 		unsigned int getCols();
 		unsigned int getTileWidth();
 		unsigned int getTileHeight();
-
-		std::vector<wall_type, Sprite*> tilecontainer;
-		std::vector<ingredients, Sprite*> ingredientcontainer;
-		std::vector<ingredients, Sprite*> ingredient_starting_pos;
 	
-		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-		static inline std::vector<std::pair<ingredients, Sprite*>> ingredientcontainer;
+		//Map stuff
+		static inline std::unordered_map<wall_type, Sprite*> tilecontainer;
+		static inline std::unordered_map<ingredients, Sprite*> ingredientcontainer;
 		static inline std::vector<short> ICnum;
-		static inline std::unordered_multimap<ingredients, Sprite*> ingredient_starting_pos;
+		static inline std::vector<std::pair<std::pair<ingredients, int>, Texture*>> ingredient_starting_pos;
+		static inline std::vector<std::pair<ingredients, Transform>> ingredient_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
+
 		static inline Sprite* howtoplay_overlay1;
 		static inline Sprite* howtoplay_overlay2;
 		static inline Sprite* howtoplay_overlay3;
@@ -179,7 +175,6 @@ namespace Core
 
 		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
-		static inline Sprite* player_stuck;
 
 		unsigned int rows, cols,
 			tileWidth, tileHeight;

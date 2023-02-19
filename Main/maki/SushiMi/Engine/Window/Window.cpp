@@ -951,7 +951,7 @@ namespace Core
 			if (isWalk == true)
 			{
 				AudioManager.SetAudioVolume(1.1f);
-				AudioManager.PlaySFX("WalkSFX.wav");
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				isWalk = false;
 				AudioManager.StopSFX();
 			}

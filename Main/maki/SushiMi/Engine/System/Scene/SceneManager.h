@@ -99,12 +99,26 @@ namespace Core
 		TopW0_5,		//p
 		TopW0_6			//q
 	};
+
+	struct Basket
+	{
+		int sub;
+		Transform starting_pos;
+		Transform current_pos;
+		Sprite* ingr;
+	};
 	
 	class SceneManager : public SystemFrame
 	{
 	public:
 		SceneManager();
 		~SceneManager();
+
+		static SceneManager* GetInstance()
+		{
+			static SceneManager scnManager;
+			return &scnManager;
+		}
 
 		void Init();
 		void Update(const double dt);
@@ -113,9 +127,11 @@ namespace Core
 		static void restartLevel();
 		static void nextLevel();
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
-		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
-		static void loadIngr(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> &ingredient);
-		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>& ingrposition);
+		//static void loadTileTex(int x, int y, wall_type type, Texture tex);
+		static void StoreTileCoor(int x, int y, std::pair<wall_type, Sprite*> tile, int counter);
+		//static void loadIngrTex(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> &ingredient, int counter);
+		static void StoreIngrCoor(int x, int y, int posX, int posY, std::pair<ingredients, Sprite*> ingredient, int counter);
+		static void StoreIngr_initPos(int x, int y, int posX, int posY, ingredients ingrposition, int counter);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
@@ -147,11 +163,9 @@ namespace Core
 		unsigned int getTileHeight();
 	
 		//Map stuff
-		static inline std::unordered_map<wall_type, Sprite*> tilecontainer;
-		static inline std::unordered_map<ingredients, Sprite*> ingredientcontainer;
-		static inline std::vector<short> ICnum;
-		static inline std::vector<std::pair<std::pair<ingredients, int>, Texture*>> ingredient_starting_pos;
-		static inline std::vector<std::pair<ingredients, Transform>> ingredient_pos;
+		static inline std::vector<wall_type, Sprite*> tilecontainer;
+		static inline std::vector<Basket> ingredientcontainer;
+		static inline std::vector<std::pair<int, Transform>> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 

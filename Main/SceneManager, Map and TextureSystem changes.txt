@@ -1,0 +1,6 @@
+TextureSystem:
+-Store Texture into container
+
+SceneManager:
+-Store Coordinates into Sprite and find the right texture in TextureSystem::container to use in Sprite
+

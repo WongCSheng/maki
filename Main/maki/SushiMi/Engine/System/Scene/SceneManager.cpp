@@ -7,13 +7,6 @@ namespace Core
 {
 	SceneManager::SceneManager()
 	{
-		/*tile = nullptr;
-		ingredient1 = nullptr;
-		ingredient2 = nullptr;
-		trap = nullptr;
-		goal1 = nullptr;
-		goal2 = nullptr;
-		cover1 = nullptr;*/
 		howtoplay_overlay1 = nullptr;
 		win_overlay = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
@@ -40,7 +33,7 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
-		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0)
 		{
 			Map::ResetMap();
 		}
@@ -56,9 +49,9 @@ namespace Core
 		//missing: restart sinkhole, restart sushi plate pods
 		Window::isPlayerinSinkhole = false;
 		//reset ingredient pos
-		for (auto& ingredient : SceneManager::ingredientcontainer)
+		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->restart();
+			ingredient->restart();
 		}
 
 		
@@ -70,55 +63,59 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
-	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
+	void SceneManager::loadTileTex(int x, int y, wall_type type, Texture tex)
 	{
 		
-		tile.second->transformation.Position = glm::vec2(x, y);
-		tile.second->transformation.Scale = glm::vec2(105, 105);
+	}
 
-		tilecontainer.push_back(tile);
+	void SceneManager::StoreTileCoor(int x, int y, wall_type type, Sprite* item, int counter)
+	{
+		
+		item->transformation.Position = glm::vec2(x, y);
+		item->transformation.Scale = glm::vec2(105, 105);
+
+		tilecontainer.push_back(item);
 		
 		
 		std::cout << std::endl;
 		std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
 	}
 
-	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>&ingredient)
+	/*void SceneManager::loadIngrTex(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>&ingredient, int counter)
 	{
-		if(ingredientcontainer.find(ingredient.first) == ingredientcontainer.end()) //Sprite doesn't exist
-		{
-			ingredient.second->transformation.Position = glm::vec2(x, y);
-			ingredient.second->transformation.Scale = glm::vec2(100, 100);
+		ingredient.second->transformation.Position = glm::vec2(x, y);
+		ingredient.second->transformation.Scale = glm::vec2(100, 100);
 
-			ingredient.second->transformation.grid_pos = { posX, posY };
+		ingredient.second->transformation.grid_pos = { posX, posY };
 
-			ingredientcontainer.insert( ingredient );
-			ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
+		ingredientcontainer.insert(ingredient);
+		ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
 
-			std::cout << std::endl;
-			std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
-		}
-		else //Sprite exists, just store as another set of coordinate
-		{
-			ingredient.second->transformation.Position = glm::vec2(x, y);
-			ingredient.second->transformation.Scale = glm::vec2(100, 100);
+		std::cout << std::endl;
+		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
+	}*/
 
-			ingredient.second->transformation.grid_pos = { posX, posY };
+	void SceneManager::StoreIngrCoor(int x, int y, int posX, int posY, std::pair<ingredients, Sprite*> ingredient, int counter)
+	{
+		ingredient.second->transformation.Position = glm::vec2(x, y);
+		ingredient.second->transformation.Scale = glm::vec2(100, 100);
 
-			ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
-			std::cout << std::endl;
-			std::cout << "****************** Ingredient texture exist, ingredient_pos size: " << ingredient_pos.size() << std::endl;
-		}
+		ingredient.second->transformation.grid_pos = { posX, posY };
+
+		ingredientcontainer.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
+		std::cout << std::endl;
+		std::cout << "****************** Ingredient texture exist, ingredient_pos size: " << ingredient_pos.size() << std::endl;
 	}
 
-	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>& ingrposition)
+	void SceneManager::StoreIngr_initPos(int x, int y, int posX, int posY, ingredients ingrposition)
 	{
-		ingrposition.second->transformation.grid_pos = { x, y };
-		ingrposition.second->transformation.Scale = glm::vec2(100, 100);
+		Transform toStore;
 
-		ingrposition.second->transformation.grid_pos = { x, y };
+		toStore.grid_pos = { x, y };
+		toStore.Scale = glm::vec2(100, 100);
+		toStore.grid_pos = { x, y };
 
-		ingredient_starting_pos.insert(ingrposition);
+		ingredient_starting_pos.push_back(std::make_pair(ingrposition);
 	}
 	
 	void SceneManager::loadHowToOverlay(int x, int y)

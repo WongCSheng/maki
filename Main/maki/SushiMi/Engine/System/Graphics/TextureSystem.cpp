@@ -50,6 +50,16 @@ namespace Core
 		glDeleteTextures(1, &obj.TextureID);
 	}
 
+	void TextureSystem::addIngrTexture(const std::pair<ingredients, Texture> &ingr)
+	{
+		ingr_tex_container.insert(ingr);
+	}
+
+	void TextureSystem::addTileTexture(const std::pair<wall_type, Texture> &tile)
+	{
+		wall_tex_container.insert(tile);
+	}
+
 	void TextureSystem::Init()
 	{
 

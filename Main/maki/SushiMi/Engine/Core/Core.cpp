@@ -18,7 +18,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /******************************************************************************/
 
 #include "Core.h"
-#include "../Engine/Components/Physics/Physics.h"
 #include "../Engine/Window/Window.h"
 
 //MainSystem* MainSystem::instance = 0; //Singleton of MainSystem.
@@ -44,11 +43,14 @@ namespace Core
 
 		texturesystem = TextureSystem::GetInstance();
 		systems.push_back(texturesystem);
+
 #if defined(DEBUG) | defined(_DEBUG)
 		leveleditorsystem = std::make_unique<Editor::LevelEditor>();
 		systems.push_back(leveleditorsystem.get());
 #endif
 
+		scnsystem = SceneManager::GetInstance();
+		systems.push_back(scnsystem);
 
 		objfactory = new ObjectFactory();
 

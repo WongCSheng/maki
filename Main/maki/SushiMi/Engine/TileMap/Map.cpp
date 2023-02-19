@@ -4,6 +4,8 @@
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../System/Scene/SceneManager.h"
+#include "../System/Graphics/TextureSystem.h"
+#include "../Core/Core.h"
 
 namespace Core
 {
@@ -135,12 +137,14 @@ namespace Core
 		SceneManager::amt_of_win_conditions = 0;
 	}
 
-	int Map::LoadMap()
+	void Map::LoadMap()
 	{
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		
 		tile_width = width / grid_row;
 		tile_height = height / grid_col;
+
+		tile_counter = 0;
 		
 		/*Testing whether is loaded correctly*/
 		for (int c = 0; c < grid_col; c++)
@@ -150,11 +154,18 @@ namespace Core
 				switch (gGrids[r][c])
 				{
 				case static_cast<int>(ingredients::ground1) :
-					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
-					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
+					if (TextureSystem::ingr_tex_container.find(ingredients::ground1) == TextureSystem::ingr_tex_container.end())
+					{
+						Texture ground1;
+						ground1.TextureLoadIn("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
+						std::pair<ingredients, Texture> combine = std::make_pair(ingredients::ground1, std::move(ground1));
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+						TextureSystem::addIngrTexture(combine);
+
+						SceneManager::loadIngrTex(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					}
+
+					SceneManager::StoreIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 
 				case static_cast<int>(ingredients::ground2):
@@ -433,8 +444,6 @@ namespace Core
 		}
 
 		print_map_to_console();
-
-		return 1;
 	}
 
 	bool Map::isWin()

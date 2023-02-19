@@ -8,11 +8,9 @@ Description: Transform System which takes data in Transform.h to run in it's log
 
 namespace Core
 {
-	Transformer* Transformer::instance;
-
 	Transformer::Transformer()
 	{
-		instance = nullptr;
+
 	}
 
 	Transformer::~Transformer()

@@ -171,7 +171,7 @@ namespace Core
     */
     void _audioManager::LoadSFX(string name)
     {
-        string pathString = "../Assets/Audio/" + name + '\0';
+        string pathString = "../Assets/Audio/SFX/" + name + '\0';
         char* pathName = new char[pathString.length() + 1];
         copy(pathString.begin(), pathString.end(), pathName);
         Sound* sound = 0;

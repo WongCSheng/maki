@@ -11,6 +11,7 @@
 #include <../glew/include/GL/glew.h>
 #include <iostream>
 #include "../Engine/Components/Texture/Texture.h"
+#include "../Scene/SceneManager.h"
 #include "../SystemFrame.h"
 
 namespace Core
@@ -29,11 +30,15 @@ namespace Core
 
 		Texture Generate(Texture* tex);
 
+		static void addIngrTexture(const std::pair<ingredients, Texture> &ingr);
+		static void addTileTexture(const std::pair<wall_type, Texture> &tile);
+
 		void Delete(Texture& obj);
 
 		void Shutdown();
 
-		std::unordered_map<std::string, Texture> database;
+		static std::unordered_map<wall_type, Texture> wall_tex_container;
+		static std::unordered_map<ingredients, Texture> ingr_tex_container;
 	private:
 		TextureSystem();
 		//static TextureSystem* _instance;

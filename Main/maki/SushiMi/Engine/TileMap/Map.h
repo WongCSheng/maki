@@ -26,7 +26,7 @@ namespace Core
 
 		static void initMap(std::string Filename);
 		static void ResetMap();
-		static int LoadMap();
+		static void LoadMap();
 		static void DrawMap();
 		static int GetValue(int col_x, int row_y);
 		static void SetValue(int col_x, int row_y, int value);
@@ -39,12 +39,11 @@ namespace Core
 	
 		static bool isWin();
 
-		static inline int Map_Height, Map_Width;
-		/*static int** MapData;
-		static int** BinaryData;*/
 		static inline int grid_row;
 		static inline int grid_col;
 		static float tile_width, tile_height;
+
+		static int tile_counter;
 
 		static int** gGrids;
 		static short** cGrids;

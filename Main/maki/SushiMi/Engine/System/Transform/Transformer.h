@@ -55,8 +55,6 @@ namespace Core
 
 	private:
 		std::unordered_map<std::string, Object::GameObject*> Transforms;
-
-		static Transformer* instance;
 	};
 }
 

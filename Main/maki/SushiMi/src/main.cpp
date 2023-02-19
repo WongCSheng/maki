@@ -201,7 +201,7 @@ void Core::pseudomain::init() {
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
-	AudioManager.LoadSFX("WalkSFX.wav");
+	AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 	//play bgm
 	AudioManager.SetMusicVolume(0.8f);
 	AudioManager.PlayMusic("BGM.wav");

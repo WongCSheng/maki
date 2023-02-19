@@ -1,12 +1,12 @@
 18 10
-A O O N N N O O O O N N N N O O O H
-K B I b b b B N N N b b b B N N N O
-K b b b b i b b N b b b b b b b b O
-K b b b n b b b b b b b J H b b b O
-K b b b b b b b D b l b b D b F M O
-O M H b b b b b b b b b b D g O O O
-O O K o b D b b b b b b b b e O O O
-O O O M M O M M M M M M M M M O O O
-O O O O O O O O O O O O O O O O O O
-O O O O O O O O O O O O O O O O O O
-B O O O O O O O O O O O O O O O O I
+c c c c c c c c c c c ` ` c c c c c
+c ` ` ` ` ` ` c ` ` ` " " c ` ` ` c
+c " " " " " " c " " " " " " " " " c
+c " " 8 c c " c " " c c " c c " " c
+c c " c " " " c " 9 " c " " c " c c
+c c " " " 1 " c " " " " " " c , c c
+c c " " c " " " " " c c c c c % c c
+c c c c c c c c c c c c c c c c c c
+c c c c c c c c c c c c c c c c c c
+c c c c c c c c c c c c c c c c c c
+c c c c c c c c c c c c c c c c c I

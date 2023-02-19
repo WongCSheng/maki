@@ -269,6 +269,7 @@ namespace Core
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
+
 		delete player;
 
 		glfwTerminate();
@@ -690,6 +691,21 @@ namespace Core
 
 			}
 			Map::DrawMap();
+
+			//ingredient = new Sprite(Editor::LevelEditor::texpath);
+			//ingredient->transformation.Scale = glm::vec2(100, 100);
+			//ingredient->transformation.Position = glm::vec2(600, 600);
+
+			////display object at imgui cursor
+			//Core::Editor::LevelEditor::imguiObjectCursor();
+
+			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
+			//ingredient->draw();
+
+			//if (ingredient)
+			//{
+			//	delete ingredient;
+			//}
 #endif
 
 			//FOR OBJ CONTAINER DEBUGGING

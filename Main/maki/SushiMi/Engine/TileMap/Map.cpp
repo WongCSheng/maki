@@ -135,6 +135,7 @@ namespace Core
 		
 		tile_width = width / grid_row;
 		tile_height = height / grid_col;
+		SceneManager::setTileDimension(tile_width, tile_height);
 		
 		/*Testing whether is loaded correctly*/
 		for (int c = 0; c < grid_col; c++)
@@ -162,7 +163,55 @@ namespace Core
 					break;
 				}
 					
+				// Ingredients are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori,soya,wasabi,		
 
+				
+				case static_cast<int>(grid_number::avocado):
+				{
+					Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				case static_cast<int>(grid_number::cucumber):
+				{
+					Sprite* cucumber = new Sprite("../textures/Tiles/Ingredients/Ingredients0_cucumber.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::cucumber, cucumber);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				case static_cast<int>(grid_number::corn):
+				{
+					Sprite* corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_corn.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+
+				case static_cast<int>(grid_number::inari):
+				{
+					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				case static_cast<int>(grid_number::octopus):
+				{
+					Sprite* octopus = new Sprite("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 				case static_cast<int>(grid_number::rice):
 				{
 					//Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
@@ -176,8 +225,57 @@ namespace Core
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-					
+				//roes
+				case static_cast<int>(grid_number::roes):
+				{
+					Sprite* roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
 
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				//salmon
+				case static_cast<int>(grid_number::salmon):
+				{
+					Sprite* salmon = new Sprite("../textures/Tiles/Ingredients/Ingredients0_salmon.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::salmon, salmon);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				//tamago
+				case static_cast<int>(grid_number::tamago):
+				{
+					Sprite* tamago = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tamago.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tamago, tamago);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				//tofu
+				case static_cast<int>(grid_number::tofu):
+				{
+					Sprite* tofu = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tofu.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tofu, tofu);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				//tuna
+				case static_cast<int>(grid_number::tuna):
+				{
+					Sprite* tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				//nori
 				case static_cast<int>(grid_number::nori):
 				{
 					Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
@@ -187,16 +285,26 @@ namespace Core
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-				case static_cast<int>(grid_number::inari):
+				//soya
+				case static_cast<int>(grid_number::soya):
 				{
-					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
+					Sprite* soya = new Sprite("../textures/Tiles/Ingredients/Soya_1.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
 
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-					
+				//wasabi
+				case static_cast<int>(grid_number::wasabi):
+				{
+					Sprite* wasabi = new Sprite("../textures/Tiles/Ingredients/Wasabi_1.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::wasabi, wasabi);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 
 				case static_cast<int>(grid_number::box1):
 				{
@@ -261,6 +369,15 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
+				case static_cast<int>(grid_number::ground0):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
+
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::temp, tile);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 				case static_cast<int>(grid_number::ground1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
@@ -270,143 +387,394 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-				case static_cast<int>(wall_type::bottomleftwall):
+				case static_cast<int>(grid_number::ground2):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomleftwall, tile);
+					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_2.jpg");
+
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::temp, tile);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall0):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
-					
-				case static_cast<int>(wall_type::bottomrightwall):
+				case static_cast<int>(wall_type::Wall0_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomrightwall, tile);
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_1, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
-					
-
-				case static_cast<int>(wall_type::bottomwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::bottomwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middlebottomlefttopwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlebottomlefttopwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middleleftbottomrightwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftbottomrightwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middleleftwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middlelefttoprightwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middleleftwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-					
-				case static_cast<int>(wall_type::middlerightwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlerightwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middletopbottomwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletopbottomwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-
-				case static_cast<int>(wall_type::middletoprightbottomwall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middletoprightbottomwall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-				}
-					
-				//most common wall
-				case static_cast<int>(wall_type::middlewall):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::middlewall, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-					break;
-
-				}
-					
-
-				case static_cast<int>(wall_type::topleftwall):
+				case static_cast<int>(wall_type::Wall1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::topleftwall, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
 					
 
+
+				case static_cast<int>(wall_type::Wall2_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
 					
-				case static_cast<int>(wall_type::toprightwall):
+
+				case static_cast<int>(wall_type::Wall2_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall2_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+					
+				case static_cast<int>(wall_type::Wall3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::toprightwall, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+
+				case static_cast<int>(wall_type::Wall3_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1, tile);
 					//tile->Add_animation()
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
-				
 
+				case static_cast<int>(wall_type::Wall3_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_2, tile);
+					//tile->Add_animation()
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+
+
+				case static_cast<int>(wall_type::Wall3_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+
+				case static_cast<int>(wall_type::Wall4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+					
+				case static_cast<int>(wall_type::Wall4_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall4_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall4_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall4_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+					
+
+					
+				case static_cast<int>(wall_type::Wall5):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+					
+					
+				//most common wall
+				case static_cast<int>(wall_type::Wall5_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+					
+				case static_cast<int>(wall_type::Wall5_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall5_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+				
+				case static_cast<int>(wall_type::Wall5_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+				case static_cast<int>(wall_type::Wall6):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall6_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall6_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall6_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall6_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+				//wall 7
+				case static_cast<int>(wall_type::Wall7):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall7_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall7_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall7_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+
+				case static_cast<int>(wall_type::Wall7_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+
+				}
+				//wall 8
+				case static_cast<int>(wall_type::Wall8):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//wall 9
+				case static_cast<int>(wall_type::Wall9):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_1.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_1, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_2.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_2, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_3.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_3, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_4.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_4, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_5):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_5.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_5, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_6):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_6.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_6, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_7):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_7.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_7, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				case static_cast<int>(wall_type::Wall9_8):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_8.jpg");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_8, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
 				default:
 					assert("Texture type not found\n");
 					break;
 				}
 			}
 		}
+		//scale the player according to map size
+		Player::sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
+
 
 		print_map_to_console();
 
@@ -1147,12 +1515,12 @@ namespace Core
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, tile);
 					SceneManager::drawGoal();
 				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletopbottomwall))
+				if (gGrids[r][c] == static_cast<char>(wall_type::Wall5))
 				{
 					SceneManager::loadGoal1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
 					SceneManager::drawGoal1();
 				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletoprightbottomwall))
+				if (gGrids[r][c] == static_cast<char>(wall_type::Wall4))
 				{
 					SceneManager::loadGoal2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
 					SceneManager::drawGoal2();

@@ -7,50 +7,85 @@ namespace Core
 {
 	enum class grid_number //Find a better way to identify all textures
 	{
-		start = 96,
-		space = 97,		//a
-		ground1,		//b
-		ground2,		//c
-		ground3,		//d
-		player,			//e
-		ingredients,
-		rice,			//g
-		tofu,			//h
-		nori,			//i
-		inari,			//j
-		items,
-		sinkhole,		//l
-		filledsinkhole,	//m
-		box1,			//n
-		box2,			//o
-		boxcover,		//p
-		win,			//q
-		temp,			//r
-		inbox1,			//s
-		inbox2,			//t
+		start = 32,
+		space = 33,		//!
+		ground0,		//"
+		ground1,		//#
+		ground2,		//$
+		player,			//%
+		ingredients,	//&
+		avocado,		//'
+		cucumber,		//(
+		corn,			//)
+		inari,			//*
+		octopus,		//+
+		rice,			//, (comma)
+		roes,			//- (minus)
+		salmon,			//. (fullstop)
+		tamago,			// slash (/)
+		tofu,			//0
+		tuna,			//1
+		nori,			//2
+		soya,			//3
+		wasabi,			//4
+		items,			//5
+		sinkhole,		//6
+		filledsinkhole,	//7
+		box1,			//8
+		box2,			//9
+		boxcover,		//:
+		win,			//;
+		temp,			//<
+		inbox1,			//=
+		inbox2,			//>
 		end
 	};
 
 	enum class wall_type //: std::uint16_t
 	{
-		first = 63,
-		left,
-		topleftwall,				//A
-		bottomleftwall,				//B
-		middleleftwall,				//C
-		middlelefttoprightwall,		//D
-		middleleftbottomrightwall,	//E
-		middlebottomlefttopwall,	//F
-		right,
-		toprightwall,				//H
-		bottomrightwall,			//I
-		middletoprightbottomwall,	//J
-		middlerightwall,			//K
-		topbottom,					//M
-		bottomwall,					//N
-		middletopbottomwall,		//O
-		middlewall,					//P
-		last
+		first = 64,
+		Wall0,				//A
+		Wall0_1,			//B
+		Wall1,				//C
+		Wall2,				//D
+		Wall2_1,			//E
+		Wall2_2,			//F
+		Wall2_3,			//G
+		Wall3,				//H
+		Wall3_1,			//I
+		Wall3_2,			//J
+		Wall3_3,			//K
+		Wall4,				//L
+		Wall4_1,			//M
+		Wall4_2,			//N
+		Wall4_3,			//O
+		Wall4_4,			//P
+		Wall5,				//Q
+		Wall5_1,			//R
+		Wall5_2,			//S
+		Wall5_3,			//T
+		Wall5_4,			//U
+		Wall6,				//V
+		Wall6_1,			//W
+		Wall6_2,			//X
+		Wall6_3,			//Y
+		Wall6_4,			//Z
+		Wall7,				//[
+		Wall7_1,			//backslash (\)
+		Wall7_2,			//]
+		Wall7_3,			//^
+		Wall7_4,			//_
+		Wall8,				//`
+		Wall9,				//a
+		Wall9_1,			//b
+		Wall9_2,			//c
+		Wall9_3,			//d
+		Wall9_4,			//e
+		Wall9_5,			//f
+		Wall9_6,			//g
+		Wall9_7,			//h
+		Wall9_8,			//i
+		last				//j
 	};
 
 	enum class Bami //: std::uint16_t
@@ -123,8 +158,8 @@ namespace Core
 
 		unsigned int getRows();
 		unsigned int getCols();
-		unsigned int getTileWidth();
-		unsigned int getTileHeight();
+		static inline unsigned int getTileWidth();
+		static inline unsigned int getTileHeight();
 
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
@@ -163,7 +198,7 @@ namespace Core
 		static inline Sprite* menu;
 		static inline Sprite* player_stuck;
 
-		unsigned int rows, cols,
+		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;
 
 		double inline static starttime,endtime,delta;

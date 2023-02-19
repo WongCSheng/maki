@@ -69,7 +69,11 @@ namespace Core
 			return gameIsPaused;
 		}
 		//for editor
-		//static inline Sprite* ingredient;
+#ifdef EDITOR
+		static inline Sprite* ingredient; //for imguiObjectCursor
+
+
+#endif
 
 		static inline void ImGuiToObjContainer(ObjectFactory*);
 

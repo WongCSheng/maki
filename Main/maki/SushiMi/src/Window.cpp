@@ -213,6 +213,8 @@ namespace Core
 		SceneManager::frame7 = new Sprite("../Textures/Cutscene/frame7.jpg");
 		SceneManager::frame8 = new Sprite("../Textures/Cutscene/frame8.jpg");
 
+		SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
+
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
@@ -228,6 +230,7 @@ namespace Core
 		isHowToPlay = false;
 		isSettings = false;
 		isCredits = false;
+		isLevelSelection = false;
 		isWalk = false;
 		isLevel1 = false;
 		isLevel2 = false;
@@ -269,6 +272,7 @@ namespace Core
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
+
 		delete player;
 
 		glfwTerminate();
@@ -450,7 +454,8 @@ namespace Core
 			{
 
 				isMenuState = false;
-				isCutscene = true;
+				/*isCutscene = true;*/
+				isLevelSelection = true;
 				
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
@@ -511,6 +516,43 @@ namespace Core
 			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
 			{				
 				glfwSetWindowShouldClose(window_ptr, true);
+			}
+		}
+		/**************************************/
+		//BUTTONS DISPLAYED ON LEVEL SELECT
+		/**************************************/
+		if (mouseLeft && isLevelSelection == true)
+		{
+			double xpos = 0, ypos = 0;
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+
+			std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+			//TUTORIAL1 and play cutscene
+			if (xpos > 394 && ypos > 139 && xpos < 472 && ypos < 200)
+			{
+				isLevelSelection = false;
+				isCutscene = true;
+			}
+			//Tutorial2
+			if (xpos > 331 && ypos > 283 && xpos < 405 && ypos < 339)
+			{
+				isLevelSelection = false;
+				
+			}
+			//LEVEL1
+			if (xpos > 474 && ypos > 272 && xpos < 551 && ypos < 333)
+			{
+				isLevelSelection = false;
+				isLevel1 = true;
+				
+			}
+			//LEVEL2
+			if (xpos > 568 && ypos > 163 && xpos < 633 && ypos < 223)
+			{
+				isLevelSelection = false;
+				isLevel2 = true;
+				
 			}
 		}
 		//note: escape should be mapped to pause/menu
@@ -690,6 +732,21 @@ namespace Core
 
 			}
 			Map::DrawMap();
+
+			//ingredient = new Sprite(Editor::LevelEditor::texpath);
+			//ingredient->transformation.Scale = glm::vec2(100, 100);
+			//ingredient->transformation.Position = glm::vec2(600, 600);
+
+			////display object at imgui cursor
+			//Core::Editor::LevelEditor::imguiObjectCursor();
+
+			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
+			//ingredient->draw();
+
+			//if (ingredient)
+			//{
+			//	delete ingredient;
+			//}
 #endif
 
 			//FOR OBJ CONTAINER DEBUGGING
@@ -712,6 +769,15 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 #ifndef EDITOR
+			if (isLevelSelection)
+			{
+				isMenuState = false;
+				isCutscene = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				SceneManager::loadLevelSelect(0, 0);
+				SceneManager::drawLevelSelect();
+			}
 
 			if (isCutscene)
 			{

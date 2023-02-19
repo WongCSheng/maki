@@ -737,14 +737,18 @@ namespace Core
 #if defined(EDITOR) | defined(_EDITOR)
 
 			//display obj to place on cursor
+			int width_ = 0, height_ = 0;
 			double xpos = 0, ypos = 0;
 
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			glfwGetWindowSize(Window::window_ptr, &width_, &height_);
 			//xpos += 100 * 0.5f;
 			//ypos += 100 * 0.5f;
 			xpos = (float)((int)(xpos) / 100 * 100);
 			ypos = (float)((int)(ypos) / 100 * 100);
+			//xpos = (int) xpos/*(float)((int)(xpos / width_ / 18) * (width_ / 18))*/;
+			//ypos = (int)ypos/*(float)((int)(ypos / height_ / 10) * (height_ / 10))*/;
 
 			//Window::ingredient->transformation.Position = glm::vec2(xpos, ypos);
 			//place object on click

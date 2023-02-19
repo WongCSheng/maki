@@ -26,7 +26,7 @@ namespace Core
 
 		sp = new Sprite("../textures/spritesheet/spritesheet.png");
 		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
-		sp->transformation.Scale = glm::vec2(100, 100);
+		sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
 
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");

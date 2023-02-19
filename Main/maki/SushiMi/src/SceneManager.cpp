@@ -79,7 +79,7 @@ namespace Core
 	{
 		
 		tile.second->transformation.Position = glm::vec2(x, y);
-		tile.second->transformation.Scale = glm::vec2(105, 105);
+		tile.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
 
 		tilecontainer.push_back(tile);
 		
@@ -95,7 +95,7 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		*/
 		ingredient.second->transformation.Position = glm::vec2(x, y);
-		ingredient.second->transformation.Scale = glm::vec2(100, 100);
+		ingredient.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
 
 		ingredient.second->transformation.grid_pos = { posX, posY };
 
@@ -107,7 +107,7 @@ namespace Core
 	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition)
 	{
 		ingrposition.second->transformation.grid_pos = { x, y };
-		ingrposition.second->transformation.Scale = glm::vec2(100, 100);
+		ingrposition.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
 
 		ingrposition.second->transformation.grid_pos = { x, y };
 
@@ -219,6 +219,15 @@ namespace Core
 		frame8->transformation.Position = glm::vec2(0, 0);
 		frame8->transformation.Scale = glm::vec2(screenwidth, screenheight);
 
+	}
+
+	void SceneManager::loadLevelSelect(int x, int y)
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		
+		level_select->transformation.Position = glm::vec2(0, 0);
+		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
 	/*draw functions*/
@@ -400,6 +409,12 @@ namespace Core
 		}
 	}
 
+	void SceneManager::drawLevelSelect()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", level_select->transformation.Get());
+		level_select->draw();
+	}
+
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
@@ -476,6 +491,27 @@ namespace Core
 		delete frame6;
 		delete frame7;
 		delete frame8;
+	}
+
+	void SceneManager::destroyLevelSelect()
+	{
+		delete level_select;
+	}
+
+	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)
+	{
+		tileWidth = Width;
+		tileHeight = Height;
+	}
+
+	unsigned int SceneManager::getTileWidth()
+	{
+		return tileWidth;
+	}
+
+	unsigned int SceneManager::getTileHeight()
+	{
+		return tileHeight;
 	}
 
 	void SceneManager::destroyPlayer_Stuck()

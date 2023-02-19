@@ -48,7 +48,7 @@ namespace Core
 
 		
 
-		Sprite* sp;
+		static inline Sprite* sp;
 		AnimationType current_anim;
 
 		static inline struct PlayergridPos

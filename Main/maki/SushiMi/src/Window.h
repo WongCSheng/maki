@@ -40,12 +40,12 @@ namespace Core
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
-		static inline bool isLevel1;
-		static inline bool isLevel2;
+		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3;
 		bool isQuestTab;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;
 		static inline int numQuests;
+
 
 		bool isCutscene;
 		static inline int CutscenePage;
@@ -69,7 +69,11 @@ namespace Core
 			return gameIsPaused;
 		}
 		//for editor
-		//static inline Sprite* ingredient;
+#ifdef EDITOR
+		static inline Sprite* ingredient; //for imguiObjectCursor
+
+
+#endif
 
 		static inline void ImGuiToObjContainer(ObjectFactory*);
 

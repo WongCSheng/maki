@@ -167,7 +167,7 @@ namespace Core
 				{
 					//Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					/*edited this to be bami first to show that Sprites can be animated too, just need the spritesheet*/
-					Sprite* rice = new Sprite("../textures/spritesheet/spritesheet.png");
+					Sprite* rice = new Sprite("../textures/spritesheet/ricespritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
 					rice->Add_animation("../textures/spritesheet/Run.txt");
 					rice->curr_anim = Idle;

@@ -189,6 +189,7 @@ namespace Core
 		
 		timetodeletegrid = false;
 #ifdef EDITOR
+		//the first level displayed on the map's launch
 		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
 
 #endif

@@ -115,6 +115,7 @@ namespace Core
 			//SetDarkThemeColors();
 
 			GLFWwindow* window = static_cast<GLFWwindow*>(Window::window_ptr);
+			//GLFWwindow* windowtest = glfwCreateWindow(400, 200, "TEST", NULL, NULL);/* = static_cast<GLFWwindow*>(Window::window_ptr)*/;
 
 			// Setup Platform/Renderer bindings
 			ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -168,6 +169,9 @@ namespace Core
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
+			//make the whole screen dockable
+			ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+			//ImGui::GetMainViewport();
 
 			fileDialog.SetTypeFilters({ ".txt"});
 			fileDialog.SetPwd("../TileMap"); //current working directory is TileMap

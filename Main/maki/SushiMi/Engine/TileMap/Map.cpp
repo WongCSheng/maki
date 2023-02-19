@@ -261,7 +261,15 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
-					
+				case static_cast<int>(grid_number::ground1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
+
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::temp, tile);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 				case static_cast<int>(wall_type::bottomleftwall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
@@ -391,6 +399,7 @@ namespace Core
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
+				
 
 				default:
 					assert("Texture type not found\n");
@@ -1157,10 +1166,10 @@ namespace Core
 	int Map::GetValue(int col_x, int row_y)
 	{
 		//if you are accessing out of the given grid
-		if (col_x > grid_col -1 || row_y > grid_row -1)
-		{
-			return 0; //if you are pressing out of this grid, return 0 as tile value 
-		}
+		//if (col_x > grid_col -1 || row_y > grid_row -1)
+		//{
+		//	return 0; //if you are pressing out of this grid, return 0 as tile value 
+		//}
 		return gGrids[col_x][row_y];
 	}
 	/********************************************

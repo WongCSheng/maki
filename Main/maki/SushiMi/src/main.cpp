@@ -204,8 +204,8 @@ void Core::pseudomain::init() {
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
-	AudioManager.LoadSFX("WalkSFX.wav");
 	//play bgm
+	AudioManager.SetMusicVolume(0.2f);
 	AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
@@ -225,8 +225,8 @@ void Core::pseudomain::cleanup() {
 	GLHelper::cleanup();
 	//unload music
 	AudioManager.UnloadMusic("BGM.wav");
-	AudioManager.UnLoadSFX("WalkSFX.wav");
-	AudioManager.UnloadMusic("BGM.wav");
+	AudioManager.UnloadMusic("BGM with Forest Day volume test.wav");
+	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.wav");
 
 	////imgui Shutdown
 #if defined(DEBUG) | defined(_DEBUG)

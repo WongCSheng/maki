@@ -496,7 +496,6 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
 				SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
-
 			}
 			//RETURN TO MAIN MENU
 			if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
@@ -505,10 +504,12 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = false;
 				SceneManager::restartLevel();
+				AudioManager.StopMusic();
+				AudioManager.PlayMusic("BGM.wav");
 			}
 			//QUIT GAME
 			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
-			{
+			{				
 				glfwSetWindowShouldClose(window_ptr, true);
 			}
 		}
@@ -528,7 +529,7 @@ namespace Core
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
-
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				keystate_right = false;
 				keystate_D = false;
 			}
@@ -544,7 +545,7 @@ namespace Core
 			{
 				Map::collision_check_left();
 				Map::print_map_to_console();
-
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				keystate_left = false;
 				keystate_A = false;
 			}
@@ -559,13 +560,12 @@ namespace Core
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("WalkSFX.wav");
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				//isWalk = true; //play walking sfx
 				keystate_up = false;
 				keystate_W = false;
 
 			}
-
 		}
 
 		else if ( (keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false) 
@@ -576,7 +576,7 @@ namespace Core
 			{
 				Map::collision_check_down();
 				Map::print_map_to_console();
-
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				keystate_down = false;
 				keystate_S = false;
 			}
@@ -738,6 +738,7 @@ namespace Core
 							isCutscene = false;
 							isLevel1 = true;
 							CutscenePage = 0;
+							AudioManager.StopMusic();
 						}
 						keystate_space = false;
 					}
@@ -767,6 +768,10 @@ namespace Core
 					Map::LoadMap();
 					loaded = true;
 
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 				}
 				
 				//draw lv1 tile map
@@ -825,6 +830,11 @@ namespace Core
 					Map::LoadMap();
 
 					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 				}
 				
 				//draw lv2 tile map
@@ -950,7 +960,7 @@ namespace Core
 
 			if (isWalk == true)
 			{
-				AudioManager.PlaySFX("WalkSFX.wav");
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
 				isWalk = false;
 			}
 

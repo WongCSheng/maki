@@ -221,6 +221,15 @@ namespace Core
 
 	}
 
+	void SceneManager::loadLevelSelect(int x, int y)
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		
+		level_select->transformation.Position = glm::vec2(0, 0);
+		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	}
+
 	/*draw functions*/
 	void SceneManager::drawTile()
 	{
@@ -400,6 +409,12 @@ namespace Core
 		}
 	}
 
+	void SceneManager::drawLevelSelect()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", level_select->transformation.Get());
+		level_select->draw();
+	}
+
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
@@ -476,6 +491,11 @@ namespace Core
 		delete frame6;
 		delete frame7;
 		delete frame8;
+	}
+
+	void SceneManager::destroyLevelSelect()
+	{
+		delete level_select;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

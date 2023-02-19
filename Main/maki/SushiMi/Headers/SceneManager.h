@@ -121,6 +121,7 @@ namespace Core
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene(int x, int y);
+		static void loadLevelSelect(int x, int y);
 
 		static void drawTile();
 		static void drawIngr();
@@ -136,6 +137,7 @@ namespace Core
 		static void drawSettings();
 		static void drawWinOverlay();
 		static void drawCutscene();
+		static void drawLevelSelect();
 
 
 		static void destroyTile();
@@ -150,6 +152,7 @@ namespace Core
 		static void destroySettings();
 		static void destroyWinOverlay();
 		static void destroyCutscene();
+		static void destroyLevelSelect();
 
 		static void Readfile();
 
@@ -190,6 +193,7 @@ namespace Core
 		static inline Sprite* frame7;
 		static inline Sprite* frame8;
 
+		static inline Sprite* level_select;
 
 		static inline Sprite* settings_page;
 		static inline Sprite* credits_page;

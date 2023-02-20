@@ -17,16 +17,16 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(1
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Engine\TileMap\Map.cpp)
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Core\Core.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Core\Core.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Core\Core.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Core\Core.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(95): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(136,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -217,12 +217,12 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(67,33): wa
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,82): warning C4100: 'mod': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,56): warning C4100: 'scancode': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(93,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(502,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(503,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(503,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(504,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -234,8 +234,8 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(15
   Generating code
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
-  38 of 4293 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  16 of 4293 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    28 functions had inline decision re-evaluated but remain unchanged
+    22 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

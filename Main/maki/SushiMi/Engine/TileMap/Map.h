@@ -57,27 +57,6 @@ namespace Core
 		static inline int grid_col;
 		static float tile_width, tile_height;
 		static int** gGrids;
-
-
-		//texture names
-		/*static inline Sprite* rice;
-		static inline Sprite* nori;
-		static inline Sprite* inari;
-		static inline Sprite* box;
-		static inline Sprite* boxcover;
-		static inline Sprite* sinkhole;
-		static inline Sprite* tile;
-		static inline Sprite* tile2;
-		static inline Sprite* tile3;
-		static inline Sprite* tile4;
-		static inline Sprite* tile5;
-		static inline Sprite* tile6;
-		static inline Sprite* tile7;
-		static inline Sprite* tile8;
-		static inline Sprite* tile9;
-		static inline Sprite* tile10;
-		static inline Sprite* tile11;
-		static inline Sprite* tile12;*/
 	};
 }
 #endif

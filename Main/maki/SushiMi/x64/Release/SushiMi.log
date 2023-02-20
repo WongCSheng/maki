@@ -1,251 +1,199 @@
-﻿  LevelEditor.cpp
-  Sprite.cpp
-  Map.cpp
-  Player.cpp
-  SceneManager.cpp
-  Window.cpp
-  main.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Engine\TileMap\Map.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(138,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(139,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(140,46): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(140,34): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(153,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(154,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(176,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(176,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(177,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(177,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(185,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(185,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(186,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(186,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(194,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(194,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(195,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(195,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(204,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(204,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(205,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(205,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(213,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(213,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(226,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(226,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(237,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(237,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(246,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(246,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(247,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(247,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(256,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(256,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(257,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(257,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(266,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(266,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(267,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(267,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(276,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(276,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(277,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(277,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(286,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(286,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(287,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(287,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(296,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(296,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(297,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(297,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(306,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(306,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(307,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(307,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(316,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(316,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(330,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(330,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(344,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(344,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(353,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(363,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(363,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(374,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(374,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(384,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(384,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(393,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(393,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(402,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(402,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(412,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(412,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(421,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(421,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(429,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(429,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(437,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(437,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(445,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(445,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(456,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(456,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(466,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(466,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(474,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(474,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(483,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(483,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  Map.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(105): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(163,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(164,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(165,46): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(165,34): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(179,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(180,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(202,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(202,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(203,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(203,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(211,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(211,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(212,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(212,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(220,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(220,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(221,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(221,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(230,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(230,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(231,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(231,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(239,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(239,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(240,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(240,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(252,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(252,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(253,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(253,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(262,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(262,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(263,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(263,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(272,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(272,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(273,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(273,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(282,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(282,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(283,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(283,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(292,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(292,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(293,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(293,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(302,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(302,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(303,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(303,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(312,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(312,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(313,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(313,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(322,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(322,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(323,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(323,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(332,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(332,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(333,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(333,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(342,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(342,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(356,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(356,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(370,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(370,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(379,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(379,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(389,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(389,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(400,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(400,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(410,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(410,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(419,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(419,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(428,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(428,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(438,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(438,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(447,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(447,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(455,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(455,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(463,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(463,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(471,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(471,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(482,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(482,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(492,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(492,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(501,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(501,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(511,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(511,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(520,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(520,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(529,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(529,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(500,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(500,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(509,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(509,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(518,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(518,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(527,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(527,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(537,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(537,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(545,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(545,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(553,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(553,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(564,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(564,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(575,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(575,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(585,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(585,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(595,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(595,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(605,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(605,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(614,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(614,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(622,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(622,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(632,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(632,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(642,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(642,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(652,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(652,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(662,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(662,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(670,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(670,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(680,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(680,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(690,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(690,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(700,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(700,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(710,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(710,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(719,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(719,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(727,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(727,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(735,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(735,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(743,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(743,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(751,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(751,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(759,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(759,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(767,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(767,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(775,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(775,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(783,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(783,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(792,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(792,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(546,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(546,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(555,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(555,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(563,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(563,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(571,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(571,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(579,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(579,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(590,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(590,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(601,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(601,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(611,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(611,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(621,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(621,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(631,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(631,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(640,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(640,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(648,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(648,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(658,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(658,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(668,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(668,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(678,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(678,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(688,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(688,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(696,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(696,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(706,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(706,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(716,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(716,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(726,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(726,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(736,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(736,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(745,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(745,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(753,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(753,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(761,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(761,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(769,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(769,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(777,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(777,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(785,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(785,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(793,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(793,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(801,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(801,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(810,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(810,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(819,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(819,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(828,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(828,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(837,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(837,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(846,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(846,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(960,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(960,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1147,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1147,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(34,41): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(54,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(55,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1341,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1341,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(136,14): warning C4100: 'userParam': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(134,10): warning C4100: 'length': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(132,9): warning C4100: 'id': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(130,24): warning C4100: 'source': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1521,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1521,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(107,66): warning C4100: 'posY': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(107,56): warning C4100: 'posX': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(187,45): warning C4100: 'y': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(187,38): warning C4100: 'x': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(224,48): warning C4100: 'y': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(224,41): warning C4100: 'x': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(70,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(70,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(96,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(96,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(96,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(578,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(579,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Game Object\Player.cpp(212,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Game Object\Player.cpp(212,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(809,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(809,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(818,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(818,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(827,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(827,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(836,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(836,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(845,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(845,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(854,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(854,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(863,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(863,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(872,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(872,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(987,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(987,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1174,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1174,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1368,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1368,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1562,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1562,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1728,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1728,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
   Generating code
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
-  29 of 4295 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+  16 of 4408 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    25 functions had inline decision re-evaluated but remain unchanged
+    27 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

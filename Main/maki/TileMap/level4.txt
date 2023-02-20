@@ -1,10 +1,10 @@
 22 12
 ! j j j j j j j j j j j j j j j j j j j j j
 ! j j j j j j j j j j j j j j j j j j j j j
-! j j ! ! ! ! j j j j j % 0 ? ! 8 j j j j j
+! j j ! ! ! ! j j j j j % 0 ? ! : j j j j j
 ! j j ! / ? ! j j j j j j j j ! ! j j j j j
 ! j j ! ? ! ! ? ! ! 2 ! ! ! ! ! ! j j j j j
-! j j ! j 8 ! ? ! ! ? ! ! ! ? ( ! j j j j j
+! j j ! j : ! ? ! ! ? ! ! ! ? ( ! j j j j j
 ! j j ! j ! , ! ! j j j ? j ! ! ! j j j j j
 ! j j ! j 9 ! ! ! ! ! ! ! j ! ! ! j j j j j
 ! j j ! j j j j j j j j ? j ! ) ! j j j j j

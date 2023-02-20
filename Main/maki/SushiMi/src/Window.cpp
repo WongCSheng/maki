@@ -55,6 +55,7 @@ namespace Core
 	static bool keystate_3 = false;
 	static bool keystate_4 = false;
 	static bool keystate_5 = false;
+	static bool keystate_6 = false;
 	static bool keystate_T = false;
 	static bool keystate_escape = false;
 	static bool place_obj = false;
@@ -139,6 +140,7 @@ namespace Core
 			keystate_3 = (key == GLFW_KEY_3) ? true : false;
 			keystate_4 = (key == GLFW_KEY_4) ? true : false;
 			keystate_5 = (key == GLFW_KEY_5) ? true : false;
+			keystate_6 = (key == GLFW_KEY_6) ? true : false;
 
 			keystate_W = (key == GLFW_KEY_W) ? true : false;
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
@@ -240,6 +242,11 @@ namespace Core
 		isWalk = false;
 		isLevel1 = false;
 		isLevel2 = false;
+		isLevel3 = false;
+		isLevel4 = false;
+		isLevel5 = false;
+		isLevel6 = false;
+		isLevel7 = false;
 		isQuestTab = false;
 		isWinCondition = false;
 		isPlayerinSinkhole = false;
@@ -357,6 +364,10 @@ namespace Core
 				isLevel1 = true;
 				isLevel2 = false;
 				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				loaded = false;
 
 				SceneManager::restartLevel();
 
@@ -378,6 +389,9 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = true;
 				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -399,6 +413,9 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = false;
 				isLevel3 = true;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -412,14 +429,17 @@ namespace Core
 		if (keystate_4)
 		{
 			keystate_4 = true;
-			std::cout << "you have loaded level 3" << std::endl;
+			std::cout << "you have loaded level 4" << std::endl;
 			if (keystate_4)
 			{
 				isWinCondition = false;
 				isMenuState = false;
 				isLevel1 = false;
 				isLevel2 = false;
+				isLevel3 = false;
 				isLevel4 = true;
+				isLevel5 = false;
+				isLevel6 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -433,14 +453,17 @@ namespace Core
 		if (keystate_5)
 		{
 			keystate_5 = true;
-			std::cout << "you have loaded level 3" << std::endl;
+			std::cout << "you have loaded level 5" << std::endl;
 			if (keystate_5)
 			{
 
 				isMenuState = false;
 				isLevel1 = false;
 				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
 				isLevel5 = true;
+				isLevel6 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -449,6 +472,30 @@ namespace Core
 
 
 				keystate_5 = false;
+			}
+		}
+		if (keystate_6)
+		{
+			keystate_6 = true;
+			std::cout << "you have loaded level 6" << std::endl;
+			if (keystate_6)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = true;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_6 = false;
 			}
 		}
 		if (keystate_T && isMenuState == false)
@@ -462,6 +509,9 @@ namespace Core
 				isLevel1 = false;
 				isLevel2 = false;
 				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
 				isLevelSelection = true;
 				SceneManager::restartLevel();
 
@@ -479,7 +529,7 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape && (isLevel1 || isLevel2) )
+		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6) )
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
@@ -853,6 +903,10 @@ namespace Core
 				isCutscene = false;
 				isLevel1 = false;
 				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
 				SceneManager::loadLevelSelect(0, 0);
 				SceneManager::drawLevelSelect();
 			}
@@ -1323,6 +1377,74 @@ namespace Core
 					isWinCondition = false;
 					isLevel5 = false;
 					isLevel6 = true;
+					loaded = false;
+				}
+			}
+			/*********************************
+				LEVEL 6 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel6 == true)
+			{
+				isCutscene = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isMenuState = false;
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level6.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+				}
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+
+			if (isWinCondition == true && isLevel6 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isLevel6 = false;
+					isLevel7 = true;
 					loaded = false;
 				}
 			}

@@ -29,17 +29,17 @@ namespace Core
 		soya,			//3
 		wasabi,			//4
 		items,			//5
+		boxcover,		//6
 		end
 		
 	};
 
 	enum class wall_type //: std::uint16_t
 	{
-		sinkhole = 54,//6
-		filledsinkhole,	//7
-		box1,			//8
-		box2,			//9
-		boxcover,		//:
+		sinkhole = 55,  //7
+		filledsinkhole,	//8
+		box1,			//9
+		box2,			//:
 		win,			//;
 		temp,			//<
 		inbox1,			//=

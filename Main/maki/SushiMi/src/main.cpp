@@ -205,7 +205,6 @@ void Core::pseudomain::init() {
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	//play bgm
-	AudioManager.SetMusicVolume(0.2f);
 	AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use

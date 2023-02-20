@@ -271,6 +271,7 @@ namespace Core
 		SceneManager::destroyWinOverlay(); //delete Win Overlay
 		SceneManager::destroyCutscene();
 		SceneManager::destroyPlayer_Stuck();
+		SceneManager::destroyLevelSelect();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -1339,7 +1340,6 @@ namespace Core
 
 					if (x.first == "TabMenu")
 					{
-						
 						spritecomp->draw();
 					}
 				}

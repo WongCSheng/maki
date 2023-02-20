@@ -1,21 +1,178 @@
-﻿  Window.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(91): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+﻿  Map.cpp
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
 C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(67,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(67,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(93,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(93,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(93,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(497,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(498,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(138,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(139,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(140,46): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(140,34): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(153,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(154,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(176,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(176,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(177,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(177,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(185,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(185,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(186,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(186,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(194,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(194,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(195,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(195,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(204,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(204,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(205,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(205,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(213,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(213,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(214,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(226,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(226,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(227,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(236,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(237,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(237,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(246,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(246,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(247,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(247,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(256,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(256,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(257,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(257,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(266,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(266,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(267,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(267,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(276,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(276,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(277,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(277,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(286,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(286,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(287,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(287,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(296,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(296,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(297,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(297,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(306,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(306,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(307,112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(307,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(316,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(316,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(330,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(330,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(343,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(343,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(352,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(352,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(361,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(361,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(371,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(371,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(380,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(380,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(389,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(389,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(398,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(398,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(406,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(406,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(414,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(414,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(422,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(422,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(430,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(430,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(441,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(441,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(451,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(451,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(459,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(459,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(468,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(468,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(477,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(477,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(486,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(486,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(496,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(496,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(505,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(505,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(514,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(514,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(522,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(522,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(530,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(530,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(538,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(538,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(549,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(549,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(560,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(560,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(570,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(570,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(580,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(580,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(590,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(590,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(599,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(599,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(607,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(607,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(617,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(617,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(627,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(627,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(637,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(637,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(647,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(647,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(655,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(655,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(665,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(665,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(675,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(675,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(685,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(685,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(695,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(695,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(704,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(704,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(712,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(712,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(720,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(720,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(728,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(728,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(736,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(736,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(744,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(744,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(752,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(752,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(760,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(760,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(768,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(768,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(882,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(882,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1069,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1069,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1263,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1263,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1443,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1443,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1650,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1650,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
   SushiMi.vcxproj -> C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\x64\Debug\SushiMi.exe

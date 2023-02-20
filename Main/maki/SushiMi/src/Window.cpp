@@ -53,6 +53,8 @@ namespace Core
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
 	static bool keystate_3 = false;
+	static bool keystate_4 = false;
+	static bool keystate_5 = false;
 	static bool keystate_T = false;
 	static bool keystate_escape = false;
 	static bool place_obj = false;
@@ -135,6 +137,8 @@ namespace Core
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
 			keystate_2 = (key == GLFW_KEY_2) ? true : false;
 			keystate_3 = (key == GLFW_KEY_3) ? true : false;
+			keystate_4 = (key == GLFW_KEY_4) ? true : false;
+			keystate_5 = (key == GLFW_KEY_5) ? true : false;
 
 			keystate_W = (key == GLFW_KEY_W) ? true : false;
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
@@ -319,6 +323,9 @@ namespace Core
 			keystate_M = false;
 			isLevel1 = false;
 			isLevel2 = false;
+			isLevel3 = false;
+			isLevel4 = false;
+			isLevel5 = false;
 			loaded = false;
 
 		}
@@ -401,6 +408,48 @@ namespace Core
 
 
 				keystate_3 = false;
+			}
+		}
+		if (keystate_4)
+		{
+			keystate_4 = true;
+			std::cout << "you have loaded level 3" << std::endl;
+			if (keystate_4)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel4 = true;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_4 = false;
+			}
+		}
+		if (keystate_5)
+		{
+			keystate_5 = true;
+			std::cout << "you have loaded level 3" << std::endl;
+			if (keystate_5)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel5 = true;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_5 = false;
 			}
 		}
 		if (keystate_T && isMenuState == false)
@@ -707,8 +756,16 @@ namespace Core
 			//for each frame 
 			Resize();
 			Input();
+			if (isTut1 || isLevel1 || isLevel2 || isLevel3)
+			{
+				glClearColor((float)112/255, (float)153/255, (float)49/255, 1.0f);
 
-			glClearColor((float)112/255, (float)153/255, (float)49/255, 1.0f);
+			}
+			else if (isLevel4 || isLevel5 || isLevel6)
+			{
+				glClearColor((float)207 / 255, (float)181 / 255, (float)142 / 255, 1.0f);
+
+			}
 			glClear(GL_COLOR_BUFFER_BIT);
 			Shaders->Textured_Shader()->use();
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/

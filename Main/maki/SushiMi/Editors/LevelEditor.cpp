@@ -406,6 +406,7 @@ namespace Core
 				imguiloadedmap = path2.c_str();
 				//std::cout << "Selected Load file AFTER conversion" << *JSONSerializer::LevelLoadPathPtr << std::endl;
 
+			
 				
 				//delete Window::player; //delete old player? but it feels so inappropriate to put it here if i need to delete all objects in future to replace them
 				//Window::player = Core::Deserialize(*Core::LevelLoadPathPtr);

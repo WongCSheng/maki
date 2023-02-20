@@ -912,22 +912,8 @@ namespace Core
 	{
 		if (!isStuck())
 		{
-			//Check if right tile is a box1
-			if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1))
-			{
-				Window::player->move_left();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-			}
-			//Check if right tile is box2
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
-			{
-				Window::player->move_left();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-			}
 			//Check if left tile is a wall or ingredient
-			else if ((gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
+			if ((gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items)) ||
 				(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last)))
@@ -1047,14 +1033,6 @@ namespace Core
 					Window::player->stop();
 				}
 			}
-			//check with box
-			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1) ||
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
-			{
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				
-				Window::player->move_left();
-			}
 			/*check with covered box*/
 			else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
 			{
@@ -1071,14 +1049,14 @@ namespace Core
 			}
 			else
 			{
-				//Check if up tile is a box1
+				//Check if left tile is a box1
 				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1))
 				{
 					Window::player->move_left();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 				}
-				//Check if up tile is box2
+				//Check if left tile is box2
 				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
 				{
 					Window::player->move_left();
@@ -1295,22 +1273,8 @@ namespace Core
 	{
 		if (!isStuck())
 		{
-			//Check if down tile is a box1
-			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::box1))
-			{
-				Window::player->move_down();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
-			}
-			//Check if down tile is box2
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::box2))
-			{
-				Window::player->move_down();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
-			}
 			//Check if below tile is a wall or ingredient
-			else if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
+			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(grid_number::items)) ||
 				(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last)))
@@ -1489,20 +1453,6 @@ namespace Core
 	{
 		if (!isStuck())
 		{
-			//Check if up tile is a box1
-			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box1))
-			{
-				Window::player->move_up();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
-			}
-			//Check if up tile is box2
-			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box2))
-			{
-				Window::player->move_up();
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
-			}
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(grid_number::items)) ||
@@ -1545,7 +1495,7 @@ namespace Core
 					}
 					//check if tile above of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] > static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] < static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] < static_cast<int>(grid_number::items))
 					{
 						std::cout << "up ingredient ingredient\n";
 						Window::player->stop();

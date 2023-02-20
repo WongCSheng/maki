@@ -49,6 +49,8 @@ namespace Core
 	
 		static bool isStuck();
 		static bool isWin();
+		
+		static void fadeToBlack();
 
 		static inline int Map_Height, Map_Width;
 		/*static int** MapData;

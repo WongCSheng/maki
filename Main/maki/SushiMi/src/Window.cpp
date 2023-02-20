@@ -65,6 +65,8 @@ namespace Core
 	static bool mouseLeft = false;
 	Player* player;
 
+	Sprite* rec;
+
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
 		switch (button)
@@ -847,6 +849,11 @@ namespace Core
 			*********************************/
 			if (isTut1 == true)
 			{
+				/*load rectangle*/
+				rec = new Sprite("../textures/bg.jpg");
+				rec->transformation.Position = glm::vec2(0, 0);
+				rec->transformation.Scale = glm::vec2(1920, 1200);
+
 				isCutscene = false;
 				isMenuState = false;
 				isLevel2 = false;
@@ -898,8 +905,13 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*render black rectangle*/
+				/*draw rectangle*/
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
+				rec->draw();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
+
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
 				if (mouseLeft && isWinCondition == true)
@@ -908,6 +920,8 @@ namespace Core
 					isLevel1 = true;
 					isWinCondition = false;
 					loaded = false;
+
+					
 				}
 
 			}

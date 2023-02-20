@@ -25,7 +25,7 @@
 
 namespace Core
 {
-	
+
 	//int Map::gGrids[GRID_ROW][GRID_COL];
 	int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
@@ -51,6 +51,7 @@ namespace Core
 	}
 
 	int** Map::gGrids;
+
 
 	void Map::initMap(std::string Filename)
 	{
@@ -129,6 +130,30 @@ namespace Core
 		SceneManager::amt_of_win_conditions = 0;
 	}
 
+	void Map::fadeToBlack()
+	{
+		static glm::dvec4
+			startColor{ 1.0,1.0,1.0,0.0 },
+			endColor{ 0.0,0.0,0.0,1.0 },
+			screenColor{ 0 };
+		static double start_time = glfwGetTime();
+		double curr_time = glfwGetTime();
+		const double fade_duration{ 2.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		//linear interpolation
+		screenColor.r = startColor.r + timeDiff * (endColor.r - startColor.r); // screen color for red
+		screenColor.g = startColor.g + timeDiff * (endColor.g - startColor.g); // screen color for green
+		screenColor.b = startColor.b + timeDiff * (endColor.b - startColor.b); // screen color for blue
+
+		if (timeDiff >= 1.0)
+		{
+			// reset the colours
+			std::swap(startColor, endColor);
+			start_time = curr_time;
+
+		}
+		glClearColor(static_cast<float>(screenColor.r), static_cast<float>(screenColor.g), static_cast<float>(screenColor.b), 1.0);
+	}
+
 	int Map::LoadMap()
 	{
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
@@ -136,7 +161,8 @@ namespace Core
 		tile_width = width / grid_row;
 		tile_height = height / grid_col;
 		SceneManager::setTileDimension(tile_width, tile_height);
-		
+	
+
 		/*Testing whether is loaded correctly*/
 		for (int c = 0; c < grid_col; c++)
 		{
@@ -771,6 +797,7 @@ namespace Core
 					break;
 				}
 			}
+
 		}
 		//scale the player according to map size
 		Player::sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
@@ -1486,6 +1513,7 @@ namespace Core
 	{
 		SceneManager::drawTile();
 		SceneManager::drawIngr();
+
 		
 		/*for (int c = 0; c < grid_col; c++)
 		{

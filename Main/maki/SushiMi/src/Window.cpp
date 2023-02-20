@@ -416,7 +416,7 @@ namespace Core
 			std::cout << "you have loaded level 3" << std::endl;
 			if (keystate_4)
 			{
-
+				isWinCondition = false;
 				isMenuState = false;
 				isLevel1 = false;
 				isLevel2 = false;

@@ -18,8 +18,13 @@ namespace Core
 	{
 	public:
 		Window(int width, int height);
-
 		~Window();
+
+		static Window* GetInstance(int width, int height)
+		{
+			Window* instance = new Window(width, height);
+			return instance;
+		}
 
 		void Init() {}
 		void Update(const double dt) {}

@@ -74,7 +74,7 @@ int main() {
 
 	/*----------------------------------------------*/
 
-	CoreSystem->windowsystem->Mainloop();
+	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
 	
 	Core::pseudomain::cleanup();
 }

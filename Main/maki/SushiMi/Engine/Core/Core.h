@@ -32,6 +32,16 @@ Description: Header for Core.cpp
 
 namespace Core
 {
+	enum class SystemID
+	{
+		Transformer = 0,
+		CameraSystem,
+		Renderer,
+		Windows,
+		TextureSystem,
+		LevelEditor
+	};
+
 	class MainSystem : public SystemFrame
 	{
 	private:
@@ -40,7 +50,14 @@ namespace Core
 
 		//static MainSystem* instance;
 
-		std::vector<SystemFrame*> systems;
+		Transformer* transformer;
+		CameraSystem* cameraSystem;
+		Renderer* rendersystem;
+		Window* windowsystem;
+		TextureSystem* texturesystem;
+		Editor::LevelEditor* leveleditorsystem;
+
+		std::unordered_map<SystemID, SystemFrame*> systems;
 
 	public:
 		//static MainSystem& Instance();
@@ -57,14 +74,11 @@ namespace Core
 
 		void AccessObjFactory();
 
-		Transformer* transformer;
-		CameraSystem* cameraSystem;
-		Renderer* rendersystem;
-		std::unique_ptr<Window> windowsystem;
-		TextureSystem* texturesystem;
-		std::unique_ptr<Editor::LevelEditor> leveleditorsystem;
-	
-
+		template<typename T>
+		T* AccessSystem(SystemID wantsys)
+		{
+			return static_cast<T*>(systems[wantsys]);
+		}
 	};
 }
 

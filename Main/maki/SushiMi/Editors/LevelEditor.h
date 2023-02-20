@@ -51,6 +51,12 @@ namespace Core
 		class LevelEditor : public SystemFrame
 		{
 		public:
+			static LevelEditor* GetInstance()
+			{
+				LevelEditor* instance = new LevelEditor();
+				return instance;
+			}
+
 			static void imguiEditorInit(void);
 			static void imguiGraphicsTest(void);
 			static void imguiEditorDraw(void);

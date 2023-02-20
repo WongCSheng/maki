@@ -229,7 +229,10 @@ namespace Core
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
-
+		/*load rectangle*/
+		rec = new Sprite("../textures/bg.jpg");
+		rec->transformation.Position = glm::vec2(0, 0);
+		rec->transformation.Scale = glm::vec2(1920, 1200);
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -283,7 +286,7 @@ namespace Core
 #endif
 
 		delete player;
-
+		delete rec;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -899,10 +902,6 @@ namespace Core
 			*********************************/
 			if (isTut1 == true)
 			{
-				/*load rectangle*/
-				rec = new Sprite("../textures/bg.jpg");
-				rec->transformation.Position = glm::vec2(0, 0);
-				rec->transformation.Scale = glm::vec2(1920, 1200);
 
 				isCutscene = false;
 				isMenuState = false;

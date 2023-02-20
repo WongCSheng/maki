@@ -40,7 +40,12 @@ namespace Core
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
-		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6;
+
+		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3, //Rice Plain Village
+		isLevel4, isLevel5, isLevel6, //gunkan village
+		isLevel7, isLevel8, isLevel9, //fishing village
+		isLevel10; //maki city
+
 		bool isQuestTab;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;

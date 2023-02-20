@@ -52,6 +52,7 @@ namespace Core
 	static bool keystate_space = false;
 	static bool keystate_1 = false;
 	static bool keystate_2 = false;
+	static bool keystate_3 = false;
 	static bool keystate_T = false;
 	static bool keystate_escape = false;
 	static bool place_obj = false;
@@ -133,6 +134,7 @@ namespace Core
 
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
 			keystate_2 = (key == GLFW_KEY_2) ? true : false;
+			keystate_3 = (key == GLFW_KEY_3) ? true : false;
 
 			keystate_W = (key == GLFW_KEY_W) ? true : false;
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
@@ -347,6 +349,7 @@ namespace Core
 				isMenuState = false;
 				isLevel1 = true;
 				isLevel2 = false;
+				isLevel3 = false;
 
 				SceneManager::restartLevel();
 
@@ -367,6 +370,7 @@ namespace Core
 				isMenuState = false;
 				isLevel1 = false;
 				isLevel2 = true;
+				isLevel3 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -375,6 +379,27 @@ namespace Core
 
 
 				keystate_2 = false;
+			}
+		}
+		if (keystate_3)
+		{
+			keystate_3 = true;
+			std::cout << "you have loaded level 3" << std::endl;
+			if (keystate_3)
+			{
+
+				isMenuState = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = true;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_3 = false;
 			}
 		}
 		if (keystate_T && isMenuState == false)
@@ -817,7 +842,9 @@ namespace Core
 
 			}
 
-			//Tutorial Level
+			/*********************************
+				TUTORIAL 1 LOAD & WIN CHECK
+			*********************************/
 			if (isTut1 == true)
 			{
 				isCutscene = false;
@@ -888,6 +915,10 @@ namespace Core
 			//step 1: map
 			//step 2: pause overlay
 			//step 3: main menu
+
+			/*********************************
+				LEVEL 1 LOAD & WIN CHECK
+			*********************************/
 			if (isLevel1 == true)
 			{
 				isCutscene = false;
@@ -947,14 +978,17 @@ namespace Core
 				//press button to undraw level 1, and draw level 2
 				if (mouseLeft && isWinCondition == true)
 				{
-					isLevel1 = false;
-					isLevel2 = true;
-					isWinCondition = false;
-					loaded = false;
+					isLevel1 = false; //unload curr level
+					isLevel2 = true; //load new level
+					isWinCondition = false; //reset win condition
+					loaded = false; //set to load
 				}
 
 			}
 
+			/*********************************
+				LEVEL 2 LOAD & WIN CHECK
+			*********************************/
 			if (isLevel2 == true)
 			{
 				isCutscene = false;
@@ -1004,6 +1038,7 @@ namespace Core
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
+					
 				}
 			}
 
@@ -1015,14 +1050,226 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (Map::isWin())
+				if (mouseLeft && isWinCondition == true)
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = false;
+					isLevel2 = false;
+					isLevel3 = true;
+					loaded = false;
+				}
+			}
+			/*********************************
+				LEVEL 3 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel3 == true)
+			{
+				isCutscene = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel4 = false;
+				isMenuState = false;
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level3.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+				}
+
+				//draw lv3 tile map
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 3
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+
+
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
 					isWinCondition = true;
 				}
 			}
 
-			//Draw Main Menu
+			if (isWinCondition == true && isLevel3 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = false;
+					isLevel3 = false;
+					isLevel4 = true;
+					loaded = false;
+				}
+			}
+			/*********************************
+				LEVEL 4 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel4 == true)
+			{
+				isCutscene = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isMenuState = false;
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level4.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+				}
+
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 4
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+
+			if (isWinCondition == true && isLevel4 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+					isWinCondition = false;
+					isLevel4 = false;
+					isLevel5 = true;
+					loaded = false;
+				}
+			}
+
+			/*********************************
+				LEVEL 5 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel5 == true)
+			{
+				isCutscene = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isMenuState = false;
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level5.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+				}
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+
+			if (isWinCondition == true && isLevel5 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isLevel5 = false;
+					isLevel6 = true;
+					loaded = false;
+				}
+			}
+
+
+
+			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
 				//AudioManager.SetMusicVolume(0.4f);

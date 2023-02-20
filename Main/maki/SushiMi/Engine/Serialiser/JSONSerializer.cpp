@@ -26,22 +26,31 @@ namespace Core
 
 	std::string ReadFileContents(const char* filepath)
 	{
-		static std::fstream fs;
-		fs.open(filepath, std::fstream::in);
+		//static std::fstream fs;
+		//fs.open(filepath, std::fstream::in);
 
-		if (!fs.is_open()) {
-			std::cout << "JSONSerializer ReadFileContents: Failed to open file " << filepath << std::endl;
+		//if (!fs.is_open()) {
+		//	std::cout << "JSONSerializer ReadFileContents: Failed to open file " << filepath << std::endl;
+		//}
+
+		//fs.seekg(0, fs.end); // move cursor to end of file
+		//size_t fs_size = fs.tellg(); // get position of file cursor, which can be assumed as the file's size
+		//fs.seekg(0, fs.beg); // move cursor to beginning of file
+
+		//std::string file_contents(fs_size, ' '); // reserve space for the file contents
+		//fs.read(&file_contents[0], fs_size); // copy from filstream into file_contents
+		//fs.close();
+
+		std::ifstream jFile(filepath);
+
+		if (!jFile.is_open())
+		{
+			std::string error = std::string("Failed to open ") + filepath;
+			return error;
 		}
-
-		fs.seekg(0, fs.end); // move cursor to end of file
-		size_t fs_size = fs.tellg(); // get position of file cursor, which can be assumed as the file's size
-		fs.seekg(0, fs.beg); // move cursor to beginning of file
-
-		std::string file_contents(fs_size, ' '); // reserve space for the file contents
-		fs.read(&file_contents[0], fs_size); // copy from filstream into file_contents
-		fs.close();
-
-		return file_contents;
+		std::stringstream file_contents;
+		file_contents << jFile.rdbuf();
+		return file_contents.str().c_str();
 	}
 
 	//void DeserializeLevel(std::string const& filepath) {
@@ -168,6 +177,7 @@ namespace Core
 	-------------------------------------------------------------------------------*/
 	void DeserializeAll(std::string const& filepath, ObjectFactory* objfact)
 	{
+		
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 
 		rapidjson::Document component;
@@ -197,11 +207,10 @@ namespace Core
 			const char* objName = object["name"].GetString(); // need to convert the data retrieved to a C++ type
 			std::cout << "Deserializing " << objName << std::endl;
 
-			const char* objFilename = object["filename"].GetString();
+			std::string objFilename = object["filename"].GetString();
 			
-			std::string filePathname = std::string("../Data/") + objFilename;
 
-			std::string json_from_file = ReadFileContents(filePathname.c_str());
+			std::string json_from_file = ReadFileContents(objFilename.c_str());
 
 			std::string name; //name of object we are parsing (under sprite component)
 

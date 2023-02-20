@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 1920, 1080 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/StartMenu.jpg",
+      "name": "Menu",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+}

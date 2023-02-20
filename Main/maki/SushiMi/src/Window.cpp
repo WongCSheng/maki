@@ -1519,7 +1519,7 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
-					if (x.first == "TabMenu")
+					if (x.first == "QuestTab")
 					{
 						spritecomp->draw();
 					}

@@ -1489,6 +1489,20 @@ namespace Core
 	{
 		if (!isStuck())
 		{
+			//Check if up tile is a box1
+			if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box1))
+			{
+				Window::player->move_up();
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+			}
+			//Check if up tile is box2
+			else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box2))
+			{
+				Window::player->move_up();
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+			}
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(grid_number::items)) ||
@@ -1688,48 +1702,6 @@ namespace Core
 	{
 		SceneManager::drawTile();
 		SceneManager::drawIngr();
-
-		
-		/*for (int c = 0; c < grid_col; c++)
-		{
-			for (int r = 0; r < grid_row; r++)
-			{
-				if (gGrids[r][c] == static_cast<char>(wall_type::bottomleftwall))
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
-					
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, tile);
-					SceneManager::drawTile();
-				}
-				if (gGrids[r][c] == 3)
-				{
-					SceneManager::loadIngr1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawIngr1();
-				}
-				if (gGrids[r][c] == 4)
-				{
-					SceneManager::loadIngr2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawIngr2();
-				}
-				if (gGrids[r][c] == 50)
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, tile);
-					SceneManager::drawGoal();
-				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::Wall5))
-				{
-					SceneManager::loadGoal1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal1();
-				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::Wall4))
-				{
-					SceneManager::loadGoal2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal2();
-				}
-			}
-		}*/
 	}
 	/********************************************
 	 Return the value inside a cell that you click

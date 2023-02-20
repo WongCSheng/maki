@@ -51,6 +51,47 @@ ShaderLibrary::ShaderLibrary()
 	programs.insert(std::pair<std::string, ShaderProgram*>("Textured", new ShaderProgram(vs, fs)));
 
 
+	vs = R"CODE(
+			#version 450 core
+			layout(location = 0) in vec3 point;
+			layout(location = 1) in vec4 color;
+			layout(location = 2) in vec2 uv;
+
+			uniform mat4 projection;
+			uniform mat4 model_matrx;
+
+			out vec4 vertex_color;
+			out vec2 vertex_uv;
+
+			void main()
+			{
+				gl_Position = projection * model_matrx * vec4(point.x, point.y,point.z, 1.0);
+				vertex_color = color;
+				vertex_uv = uv;
+			};
+)CODE";
+
+	fs = R"CODE(
+
+			#version 450 core
+			out vec4 finalcolor;
+
+			in vec4 vertex_color;
+			in vec2 vertex_uv;
+
+			uniform sampler2D sprite;
+			uniform float alpha;
+
+			void main()
+			{
+				finalcolor = vertex_color * texture(sprite,vertex_uv);
+				finalcolor.a = alpha // Set the alpha value of the color to the uniform variable "alpha"
+			};
+)CODE";
+
+	programs.insert(std::pair<std::string, ShaderProgram*>("Alpha", new ShaderProgram(vs, fs)));
+
+
 	//////////////////////////////////////// colored shader
 	vs = R"CODE(
 			#version 450 core
@@ -142,4 +183,10 @@ ShaderProgram* ShaderLibrary::Font_Shader()
 ShaderProgram* ShaderLibrary::Colored_Shader()
 {
 	return programs["Colored"];
+}
+
+
+ShaderProgram* ShaderLibrary::Alpha_Shader()
+{
+	return programs["Alpha"];
 }

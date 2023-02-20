@@ -25,6 +25,8 @@ public:
 	ShaderProgram* Colored_Shader();
 
 	ShaderProgram* Font_Shader();
+
+	ShaderProgram* Alpha_Shader();
 private:
 
 	std::map<std::string, ShaderProgram*> programs;

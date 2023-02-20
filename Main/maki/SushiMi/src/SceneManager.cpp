@@ -19,6 +19,7 @@ namespace Core
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 		SceneManager::starttime = SceneManager::endtime = SceneManager::delta = 0;
+		rec = nullptr;
 	}
 
 	SceneManager::~SceneManager()
@@ -417,6 +418,30 @@ namespace Core
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", level_select->transformation.Get());
 		level_select->draw();
+	}
+
+	void SceneManager::loadRect(int x, int y)
+	{
+		rec->transformation.Position = glm::vec2(x, y);
+		rec->transformation.Scale = glm::vec2(1920, 1200);
+	}
+
+	void SceneManager::drawRect()
+	{
+		Shaders->Alpha_Shader()->use();
+		float alpha = 0.0f;
+		/*draw rectangle*/
+		//Shaders->Alpha_Shader()->use();
+		Shaders->Alpha_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
+
+		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
+		rec->draw();
+		// Increment the alpha value over time
+		alpha += 0.01;
+		if (alpha > 1.0)
+		{
+			alpha = 1.0;
+		}
 	}
 
 	/*destroy functions*/

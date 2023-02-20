@@ -67,8 +67,6 @@ namespace Core
 	static bool mouseLeft = false;
 	Player* player;
 
-	Sprite* rec;
-
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
 		switch (button)
@@ -229,10 +227,7 @@ namespace Core
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
-		/*load rectangle*/
-		rec = new Sprite("../textures/bg.jpg");
-		rec->transformation.Position = glm::vec2(0, 0);
-		rec->transformation.Scale = glm::vec2(1920, 1200);
+		SceneManager::rec = new Sprite("../textures/bg.jpg");
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -286,7 +281,6 @@ namespace Core
 #endif
 
 		delete player;
-		delete rec;
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -952,12 +946,15 @@ namespace Core
 			}
 			if (isWinCondition == true && isTut1 == true)
 			{
+				float alpha = 0;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				/*render black rectangle*/
-				/*draw rectangle*/
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
-				rec->draw();
+				/*load rectangle*/
+
+				SceneManager::loadRect(static_cast<int>(screenwidth), static_cast<int>(screenheight));
+				SceneManager::drawRect();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 

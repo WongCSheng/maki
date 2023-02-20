@@ -150,6 +150,9 @@ namespace Core
 		static void drawCutscene();
 		static void drawLevelSelect();
 
+		static void loadRect(int x, int y);
+		static void drawRect();
+
 
 		static void destroyTile();
 		static void destroyIngr();
@@ -212,6 +215,8 @@ namespace Core
 		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
 		static inline Sprite* player_stuck;
+
+		static inline Sprite* rec;
 
 		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;

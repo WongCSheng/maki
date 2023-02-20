@@ -29,7 +29,13 @@ namespace Core
 		soya,			//3
 		wasabi,			//4
 		items,			//5
-		sinkhole,		//6
+		end
+		
+	};
+
+	enum class wall_type //: std::uint16_t
+	{
+		sinkhole = 54,//6
 		filledsinkhole,	//7
 		box1,			//8
 		box2,			//9
@@ -38,11 +44,7 @@ namespace Core
 		temp,			//<
 		inbox1,			//=
 		inbox2,			//>
-		end
-	};
-
-	enum class wall_type //: std::uint16_t
-	{
+		sinkhole_gunkan,//?
 		first = 64,
 		Wall0,				//A
 		Wall0_1,			//B
@@ -85,7 +87,15 @@ namespace Core
 		Wall9_6,			//g
 		Wall9_7,			//h
 		Wall9_8,			//i
-		last				//j
+		Wall0_Gunkan,		//j
+		Wall1_Gunkan,		//k
+		Wall1_1_Gunkan,		//l
+		Wall2_Gunkan,		//m
+		Wall2_1_Gunkan,		//n
+		Wall3_Gunkan,		//o
+		Wall3_1_Gunkan,		//p
+		last				//q
+
 	};
 
 	enum class Bami //: std::uint16_t
@@ -124,6 +134,7 @@ namespace Core
 		static void loadLevelSelect(int x, int y);
 
 		static void drawTile();
+		static void drawBox();
 		static void drawIngr();
 		/*static void drawIngr1();
 		static void drawIngr2();

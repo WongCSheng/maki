@@ -14,7 +14,7 @@ ShaderLibrary::ShaderLibrary()
 {
 	const char* vs = R"CODE(
 			#version 450 core
-			layout(location = 0) in vec2 point;
+			layout(location = 0) in vec3 point;
 			layout(location = 1) in vec4 color;
 			layout(location = 2) in vec2 uv;
 
@@ -26,7 +26,7 @@ ShaderLibrary::ShaderLibrary()
 
 			void main()
 			{
-				gl_Position = projection * model_matrx * vec4(point.x, point.y, 0.0, 1.0);
+				gl_Position = projection * model_matrx * vec4(point.x, point.y,point.z, 1.0);
 				vertex_color = color;
 				vertex_uv = uv;
 			};
@@ -54,7 +54,7 @@ ShaderLibrary::ShaderLibrary()
 	//////////////////////////////////////// colored shader
 	vs = R"CODE(
 			#version 450 core
-			layout(location = 0) in vec2 point;
+			layout(location = 0) in vec3 point;
 			layout(location = 1) in vec4 color;
 
 			uniform mat4 projection;
@@ -64,7 +64,7 @@ ShaderLibrary::ShaderLibrary()
 
 			void main()
 			{
-				gl_Position = projection * model_matrx * vec4(point.x, point.y, 0.0, 1.0);
+				gl_Position = projection * model_matrx * vec4(point.x, point.y, point.z, 1.0);
 				vertex_color = color;
 			};
 )CODE";

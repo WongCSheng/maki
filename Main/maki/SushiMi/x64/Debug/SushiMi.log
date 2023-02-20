@@ -1,8 +1,8 @@
 ﻿  main.cpp
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\main.cpp(136,14): warning C4100: 'userParam': unreferenced formal parameter
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\main.cpp(134,10): warning C4100: 'length': unreferenced formal parameter
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\main.cpp(132,9): warning C4100: 'id': unreferenced formal parameter
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\main.cpp(130,24): warning C4100: 'source': unreferenced formal parameter
-  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(100): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(25,28): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(136,14): warning C4100: 'userParam': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(134,10): warning C4100: 'length': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(132,9): warning C4100: 'id': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(130,24): warning C4100: 'source': unreferenced formal parameter
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

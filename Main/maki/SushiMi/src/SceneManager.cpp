@@ -240,6 +240,10 @@ namespace Core
 		}
 	}
 
+	void SceneManager::drawBox()
+	{
+	}
+
 	void SceneManager::drawIngr()
 	{
 		for (auto& ingredient : ingredientcontainer)

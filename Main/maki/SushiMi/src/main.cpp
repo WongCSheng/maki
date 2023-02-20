@@ -63,7 +63,7 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(3240); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(4865); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -205,7 +205,6 @@ void Core::pseudomain::init() {
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	//play bgm
-	AudioManager.SetMusicVolume(0.2f);
 	AudioManager.PlayMusic("BGM.wav");
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use

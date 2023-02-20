@@ -27,7 +27,7 @@ namespace Core
 {
 	
 	//int Map::gGrids[GRID_ROW][GRID_COL];
-	int width, height;
+	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
 
 	Map::Map()
@@ -398,6 +398,16 @@ namespace Core
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
+				//sinkhole_gunkan
+				case static_cast<int>(grid_number::sinkhole_gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
+
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::sinkhole_gunkan, tile);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+				}
 				case static_cast<int>(wall_type::Wall0):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
@@ -764,6 +774,69 @@ namespace Core
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_8.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_8, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall0_Gunkan,		//j
+				case static_cast<int>(wall_type::Wall0_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall0.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall1_Gunkan,		//k
+				case static_cast<int>(wall_type::Wall1_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall1_1_Gunkan,		//l
+				case static_cast<int>(wall_type::Wall1_1_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1_1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_1_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall2_Gunkan,		//m
+				case static_cast<int>(wall_type::Wall2_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall2_1_Gunkan,		//n
+				case static_cast<int>(wall_type::Wall2_1_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2_1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall3_Gunkan,		//o
+				case static_cast<int>(wall_type::Wall3_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				//	Wall3_1_Gunkan,		//p
+				case static_cast<int>(wall_type::Wall3_1_Gunkan):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1_Gunkan, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;

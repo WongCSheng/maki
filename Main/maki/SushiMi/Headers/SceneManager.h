@@ -38,6 +38,7 @@ namespace Core
 		temp,			//<
 		inbox1,			//=
 		inbox2,			//>
+		sinkhole_gunkan,//?
 		end
 	};
 
@@ -85,7 +86,15 @@ namespace Core
 		Wall9_6,			//g
 		Wall9_7,			//h
 		Wall9_8,			//i
-		last				//j
+		Wall0_Gunkan,		//j
+		Wall1_Gunkan,		//k
+		Wall1_1_Gunkan,		//l
+		Wall2_Gunkan,		//m
+		Wall2_1_Gunkan,		//n
+		Wall3_Gunkan,		//o
+		Wall3_1_Gunkan,		//p
+		last				//q
+
 	};
 
 	enum class Bami //: std::uint16_t

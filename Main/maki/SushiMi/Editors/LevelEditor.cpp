@@ -26,6 +26,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
+#include "../Headers/SceneManager.h"
 #include <sstream>
 
 
@@ -735,30 +736,54 @@ namespace Core
 		void LevelEditor::imguiObjectCursor(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
+			Window::ingredient = new Sprite(Editor::LevelEditor::texpath);
 
 			//display obj to place on cursor
 			int width_ = 0, height_ = 0;
 			double xpos = 0, ypos = 0;
+			double gridxpos = 0, gridypos = 0;
 
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 			glfwGetWindowSize(Window::window_ptr, &width_, &height_);
 			//xpos += 100 * 0.5f;
 			//ypos += 100 * 0.5f;
-			xpos = (float)((int)(xpos) / 100 * 100);
-			ypos = (float)((int)(ypos) / 100 * 100);
-			//xpos = (int) xpos/*(float)((int)(xpos / width_ / 18) * (width_ / 18))*/;
-			//ypos = (int)ypos/*(float)((int)(ypos / height_ / 10) * (height_ / 10))*/;
+			//xpos = col number
+			//static_cast<float>(grid_row) * width
+			//xpos = (int)(xpos / SceneManager::getTileWidth()) /** (double)SceneManager::getTileWidth()*/;
+			//ypos = ((int)(ypos / (double)SceneManager::getTileHeight())) * (double)SceneManager::getTileHeight();
+			/*xpos = (int) (float)((int)(xpos / width_ / 18) * (width_ / 18));
+			ypos = (int)(float)((int)(ypos / height_ / 10) * (height_ / 10));*/
+			Window::ingredient->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
+			/*SceneManager::rows*/
+			if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
+			{
+				gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+				gridypos = ((int)(ypos) / SceneManager::getTileHeight());
 
-			//Window::ingredient->transformation.Position = glm::vec2(xpos, ypos);
+				//r / static_cast<float>(grid_row) * width
+				
+				Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::grid_row) * width_ ;
+				Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+			}
+				/*= glm::vec2(xpos, ypos)*/
 			//place object on click
+			std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
+			//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
 
 			if (ImGui::IsMouseClicked(0)) //0 means left
 			{
-				//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
+				std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
 				
 				imguiCreateObj();
 
+			}
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::ingredient->transformation.Get());
+			Window::ingredient->draw();
+
+			if (Window::ingredient)
+			{
+				delete Window::ingredient;
 			}
 #endif
 			

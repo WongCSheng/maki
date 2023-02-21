@@ -29,6 +29,8 @@ namespace Core
 	//int Map::gGrids[GRID_ROW][GRID_COL];
 	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
+	std::vector<std::pair<grid_number, wall_type>> Map::levelWinConditions;
+	int Map::CorrectCombination{};
 
 	Map::Map()
 	{
@@ -164,6 +166,7 @@ namespace Core
 		tile_height = height / grid_col;
 		SceneManager::setTileDimension(tile_width, tile_height);
 	
+		CorrectCombination = 0;
 
 		/*Testing whether is loaded correctly*/
 		for (int c = 0; c < grid_col; c++)
@@ -345,6 +348,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::avocado, wall_type::avocado_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -358,6 +362,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::cucumber, wall_type::cucumber_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -371,6 +376,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::corn, wall_type::corn_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -384,6 +390,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::octopus, wall_type::octopus_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -397,6 +404,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::roes, wall_type::roes_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -410,6 +418,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::salmon , wall_type::salmon_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -423,6 +432,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::tamago, wall_type::tamago_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -436,6 +446,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::tofu, wall_type::tofu_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -449,6 +460,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::tuna, wall_type::tuna_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -462,6 +474,7 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::nori, wall_type::nori_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -474,6 +487,8 @@ namespace Core
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::rice_box, box);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+					levelWinConditions.push_back(std::pair(grid_number::rice, wall_type::rice_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -489,14 +504,12 @@ namespace Core
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
+					levelWinConditions.push_back(std::pair(grid_number::inari, wall_type::inari_box));
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
 					break;
 				}
-
-				
-					
 
 				case static_cast<int>(grid_number::boxcover):
 				{
@@ -1026,6 +1039,34 @@ namespace Core
 
 	bool Map::isWin()
 	{
+		//checking through all loaded box for the current level
+		for (auto& box : SceneManager::tilecontainer)
+		{
+			//checking through all loaded ingredient for the current level
+			for (auto& ingredient : SceneManager::ingredientcontainer)
+			{
+				//convert coordinates back into row and column (dont know why need to plus 1)
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
+				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+
+				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
+				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
+				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+				//checking through level win condition (check if ingredient land on box position)
+				if (ingredientCoordinates == boxCoordinates)
+				{
+					//ingredient row and col matches box row and col
+				    std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+					for (auto& y : levelWinConditions)//suggest to change to map
+					{
+						//check whether is correct ingredient to box
+						if (checkCondition == y)
+							std::cout << "correct ingredient on box\n";
+					}
+				}
+			}
+		}
 		return ((win_amt == SceneManager::amt_of_win_conditions) ? true : false);
 	}
 

@@ -2,7 +2,9 @@
 #ifndef Map_H_
 #define Map_H_
 #include <string>
+#include <vector>
 
+#include "../Headers/SceneManager.h"
 /*set a static grid first*/
 #define GRID_COL 18
 #define GRID_ROW 10
@@ -44,6 +46,9 @@ namespace Core
 		static inline int grid_col;
 		static float tile_width, tile_height;
 		static int** gGrids;
+
+		static std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+		static int CorrectCombination;
 	};
 }
 #endif

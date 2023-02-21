@@ -25,6 +25,8 @@ public:
 
 	void Send_Mat4(const char* name, glm::mat4 mat);
 
+	void Send_Alpha(const char* name, float alpha);
+
 	GLuint get_hdl();
 
 private:

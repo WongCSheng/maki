@@ -432,9 +432,7 @@ namespace Core
 		float alpha = 0.0f;
 		/*draw rectangle*/
 		//Shaders->Alpha_Shader()->use();
-		Shaders->Alpha_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
-
-		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
+		Shaders->Alpha_Shader()->Send_Alpha("alpha", alpha);
 		rec->draw();
 		// Increment the alpha value over time
 		alpha += 0.01;

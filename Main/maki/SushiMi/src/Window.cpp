@@ -1033,8 +1033,8 @@ namespace Core
 				float alpha = 0;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				
-
+				SceneManager::loadRect(screenwidth, screenheight);
+				SceneManager::drawRect();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 

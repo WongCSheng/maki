@@ -11,6 +11,7 @@
 #include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Headers/SceneManager.h"
+#include "../Engine/Timer/Timer.cpp"
 
 //static Window win; //create a external window variable to pass through data
 
@@ -58,8 +59,6 @@ namespace Core
 		if (sp->transformation.Scale.x > 0)
 			sp->transformation.Scale.x *= 1;
 
-		current_anim = Run;
-
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
@@ -76,6 +75,12 @@ namespace Core
 		player_grid_pos.x--;
 		
 		sp->transformation.Position.x -= Map::tile_width;
+		/*this timer does not work
+		StartSecTimer(2);
+		*/
+
+		 
+		current_anim = Idle;
 	}
 
 	void Player::move_right()
@@ -83,7 +88,7 @@ namespace Core
 		if (sp->transformation.Scale.x < 0)
 			sp->transformation.Scale.x *= -1;
 
-		current_anim = Run;
+		current_anim = Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -109,7 +114,7 @@ namespace Core
 			sp->transformation.Scale.y *= 1;
 		//std::cout << "you are pressing up" << std::endl;
 
-		current_anim = Run;
+		current_anim = Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -134,7 +139,7 @@ namespace Core
 		if (sp->transformation.Scale.y < 0)
 			sp->transformation.Scale.y *= -1;
 
-		current_anim = Run;
+		current_anim = Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);

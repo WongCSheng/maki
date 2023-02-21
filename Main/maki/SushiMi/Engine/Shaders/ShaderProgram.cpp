@@ -60,6 +60,12 @@ void ShaderProgram::Send_Mat4(const char* name, glm::mat4 mat)
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
+void ShaderProgram::Send_Alpha(const char* name, float alpha)
+{
+	auto location = glGetUniformLocation(ID, name);
+	glUniform1f(glGetUniformLocation(location, "alpha"), alpha);
+}
+
 void ShaderProgram::checkerorr(unsigned int shader_id, std::string type)
 {
 	int success;

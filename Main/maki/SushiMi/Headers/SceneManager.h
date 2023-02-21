@@ -38,8 +38,8 @@ namespace Core
 	{
 		sinkhole = 55,  //7
 		filledsinkhole,	//8
-		box1,			//9
-		box2,			//:
+		empty,			//9
+		empty2,			//:
 		win,			//;
 		temp,			//<
 		inbox1,			//=
@@ -94,7 +94,21 @@ namespace Core
 		Wall2_1_Gunkan,		//n
 		Wall3_Gunkan,		//o
 		Wall3_1_Gunkan,		//p
-		last				//q
+		last,				//q
+		rice_box,			//r
+		inari_box,			//s
+		avocado_box,		//t
+		corn_box,			//u
+		cucumber_box,		//v
+		salmon_box,			//w total 12 boxes
+		nori_box,			//x
+		octopus_box,		//y
+		roes_box,			//z
+		tamago_box,			//{
+		tofu_box,			//| (bitwise OR)
+		tuna_box			//}
+		
+
 
 	};
 

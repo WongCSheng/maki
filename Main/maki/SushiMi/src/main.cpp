@@ -63,7 +63,7 @@ int main() {
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(4865); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(824); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -199,8 +199,9 @@ void Core::pseudomain::init() {
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
 #if defined(EDITOR) | defined(EDITOR)
-	CoreSystem->leveleditorsystem->imguiEditorInit();
-	
+	//CoreSystem->leveleditorsystem->imguiEditorInit();
+	CoreSystem->AccessSystem<Core::Editor::LevelEditor>(Core::SystemID::LevelEditor)->imguiEditorInit();
+
 #endif
 
 	//load audio files

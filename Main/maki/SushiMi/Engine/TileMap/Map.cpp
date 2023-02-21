@@ -337,11 +337,141 @@ namespace Core
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 				}
+				// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
+				case static_cast<int>(wall_type::avocado_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Avocado.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::avocado_box, box);
 
-				case static_cast<int>(wall_type::box1):
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//cucumber
+				case static_cast<int>(wall_type::cucumber_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Cucumber.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::cucumber_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//corn
+				case static_cast<int>(wall_type::corn_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Corn.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::corn_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//octopus
+				case static_cast<int>(wall_type::octopus_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Octopus.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::octopus_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//roes
+				case static_cast<int>(wall_type::roes_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Roes.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::roes_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//salmon
+				case static_cast<int>(wall_type::salmon_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Salmon.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::salmon_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//tamago
+				case static_cast<int>(wall_type::tamago_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tamago.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tamago_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//tofu
+				case static_cast<int>(wall_type::tofu_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tofu.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tofu_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//tuna
+				case static_cast<int>(wall_type::tuna_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tuna_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+				//nori
+				case static_cast<int>(wall_type::nori_box):
+				{
+					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Nori.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::nori_box, box);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+
+
+					SceneManager::win_condition.push_back(std::make_pair(r, c));
+					SceneManager::amt_of_win_conditions++;
+					break;
+				}
+
+				case static_cast<int>(wall_type::rice_box):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::box1, box);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::rice_box, box);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
@@ -352,10 +482,10 @@ namespace Core
 				}
 					
 
-				case static_cast<int>(wall_type::box2):
+				case static_cast<int>(wall_type::inari_box):
 				{
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::box2, box);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::inari_box, box);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 
@@ -364,6 +494,8 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 					break;
 				}
+
+				
 					
 
 				case static_cast<int>(grid_number::boxcover):
@@ -912,6 +1044,8 @@ namespace Core
 		}
 	}
 
+	grid_number box_stepped_on;
+
 	void Map::collision_check_left()
 	{
 		if (!isStuck())
@@ -965,8 +1099,8 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if it's a box
-					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1) ||
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 
@@ -1001,16 +1135,17 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
-						//check if current grid is box1
+						
+						//check if current grid is rice_box
 						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 						}
-						//check if current grid is box2
-						else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
-						}
+						////check if current grid is inari_box
+						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+						//{
+						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
+						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1053,34 +1188,35 @@ namespace Core
 			}
 			else
 			{
-				//Check if left tile is a box1
-				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1))
+				//Check if left tile is box
+				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box)&& gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 				{
+					box_stepped_on = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 					Window::player->move_left();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 				}
-				//Check if left tile is box2
-				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
-				{
-					Window::player->move_left();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				}
+				////Check if left tile is inari_box
+				//else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inari_box))
+				//{
+				//	Window::player->move_left();
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
+				//	gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+				//}
 				//Check if current tile is inbox1
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 				{
 					Window::player->move_left();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 				}
 				//Check if current tile is inbox2
-				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+				/*else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
 				{
 					Window::player->move_left();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
-				}
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
+				}*/
 				else
 				{
 					Window::player->move_left();
@@ -1145,8 +1281,8 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if it's a box
-					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1) ||
-						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
@@ -1180,16 +1316,16 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
-						//check if current grid is box1
+						//check if current grid is rice_box
 						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 						}
-						//check if current grid is box2
-						else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
-						}
+						////check if current grid is inari_box
+						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+						//{
+						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
+						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1233,15 +1369,16 @@ namespace Core
 			//Just move
 			else
 			{
-				//Check if right tile is a box1
-				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box1))
+				//Check if right tile is a rice_box
+				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) && gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 				{
+					box_stepped_on = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 				}
-				//Check if right tile is box2
-				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::box2))
+				//Check if right tile is inari_box
+				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inari_box))
 				{
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
@@ -1252,14 +1389,14 @@ namespace Core
 				{
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 				}
 				//Check if current tile is inbox2
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
 				{
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
 				}
 				else
 				{
@@ -1325,8 +1462,8 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if it's a box
-					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::box1) ||
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::box2))
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::rice_box) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::tuna_box))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 
@@ -1360,16 +1497,16 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 
-						//check if current grid is box1
+						//check if current grid is rice_box
 						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 						}
-						//check if current grid is box2
-						else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
-						}
+						////check if current grid is inari_box
+						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+						//{
+						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
+						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1413,34 +1550,35 @@ namespace Core
 			//Just move
 			else
 			{
-				//Check if up tile is a box1
-				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::box1))
+				//Check if up tile is a box
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(wall_type::rice_box) && gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(wall_type::tuna_box))
 				{
+					box_stepped_on = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 					Window::player->move_down();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
 				}
-				//Check if up tile is box2
-				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::box2))
-				{
-					Window::player->move_down();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
-				}
+				////Check if up tile is inari_box
+				//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::inari_box))
+				//{
+				//	Window::player->move_down();
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
+				//}
 				//Check if current tile is inbox1
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 				{
 					Window::player->move_down();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(wall_type::box1);
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(box_stepped_on);
 				}
-				//Check if current tile is inbox2
-				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-				{
-					Window::player->move_down();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(wall_type::box2);
-				}
+				////Check if current tile is inbox2
+				//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+				//{
+				//	Window::player->move_down();
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(wall_type::inari_box);
+				//}
 				else
 				{
 					Window::player->move_down();
@@ -1505,8 +1643,8 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if it's a box
-					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::box1) ||
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::box2))
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] >= static_cast<int>(wall_type::rice_box) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(wall_type::tuna_box))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
@@ -1540,16 +1678,16 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 
-						//check if current grid is box1
+						//check if current grid is rice_box
 						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box1);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(box_stepped_on);
 						}
-						//check if current grid is box2
-						else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::box2);
-						}
+						////check if current grid is inari_box
+						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+						//{
+						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
+						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1593,34 +1731,37 @@ namespace Core
 			//Just move
 			else
 			{
-				//Check if up tile is a box1
-				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box1))
+				//Check if up tile is any box
+				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::rice_box)&& gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::tuna_box))
 				{
+					//save the value of the box stepped on
+					box_stepped_on = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+					
 					Window::player->move_up();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox1);
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
 				}
-				//Check if up tile is box2
-				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::box2))
-				{
-					Window::player->move_up();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
-				}
+				////Check if up tile is inari_box
+				//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::inari_box))
+				//{
+				//	Window::player->move_up();
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
+				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+				//}
 				//Check if current tile is inbox1
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox1))
 				{
 					Window::player->move_up();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(wall_type::box1);
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(box_stepped_on);
 				}
 				//Check if current tile is inbox2
-				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
+				/*else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
 				{
 					Window::player->move_up();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(wall_type::box2);
-				}
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(wall_type::inari_box);
+				}*/
 				else
 				{
 					Window::player->move_up();

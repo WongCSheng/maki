@@ -1,3 +1,25 @@
 ﻿  Font.cpp
+  Window.cpp
+D:\maki\Main\maki\SushiMi\src\Window.h(105): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
+D:\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+D:\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
 D:\maki\Main\maki\SushiMi\Engine\Font\Font.cpp(87,33): warning C4838: conversion from 'FT_Pos' to 'unsigned int' requires a narrowing conversion
+D:\maki\Main\maki\SushiMi\src\Window.cpp(71,73): warning C4100: 'mod': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(71,33): warning C4100: 'window_ptr': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(97,82): warning C4100: 'mod': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(97,56): warning C4100: 'scancode': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(97,31): warning C4100: 'window_ptr': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(656,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\maki\Main\maki\SushiMi\src\Window.cpp(657,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\maki\Main\maki\SushiMi\src\Window.cpp(1043,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(1115,11): warning C4189: 'alpha': local variable is initialized but not referenced
   SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

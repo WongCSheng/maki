@@ -1034,12 +1034,14 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				SceneManager::loadRect(0, 0);
-				/*SHOULD USE DELTA TIME HMMMMMMM*/
-				for (float i = 10000; i >= 0; i--) {
-					float alpha = i / 10000.0f;
-					// code here to update the displayed alpha
-					SceneManager::drawRect(alpha);
-				}
+				/*fading works!!!!*/
+				static double start_time = glfwGetTime();
+				double curr_time = glfwGetTime();
+				const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+				float alpha_start = 0.f;
+				float alpha_end = 1.f;
+				float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
+				SceneManager::drawRect(alpha);
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls

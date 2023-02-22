@@ -1097,6 +1097,7 @@ namespace Core
 					//fin.close();
 
 					dialogue_style = static_cast<int>(dialogue::T1);
+					curr_len = 0;
 					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1182,13 +1183,15 @@ namespace Core
 
 
 					dialogue_style = static_cast<int>(dialogue::T2);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
 				//draw lv1 tile map
-				Map::DrawMap();
 				SceneManager::FadeOut();
+				Map::DrawMap();
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
@@ -1272,11 +1275,13 @@ namespace Core
 						return;
 					}
 					std::getline(fin, realstring);
-					//fin.close();
+					
 
 					
 
 					dialogue_style = static_cast<int>(dialogue::L1);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
@@ -1344,7 +1349,21 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl2_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::L2);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1419,7 +1438,21 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl3_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::L3);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1490,7 +1523,21 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl4_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::L4);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1559,7 +1606,21 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl5_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::L5);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1625,7 +1686,21 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl6_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::L6);
+					curr_len = 0;
+
 					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1685,18 +1760,39 @@ namespace Core
 					//std::string realstring = "Before delivery, I need to collect all of the ingredients.";
 					if (curr_len <= realstring.length())
 					{
-						std::string one_by_one = realstring.substr(0, curr_len);
-						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-						Font::RenderText(*Shaders, one_by_one, 280, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
-						if (GLHelper::delta_time * 150 < 2)
+						if (curr_len < 60)
 						{
-							curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-							std::cout << "value of i is : " << curr_len << std::endl;
-							if (curr_len > realstring.length())
+							std::string one_by_one = realstring.substr(0, curr_len);
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
 							{
-								curr_len = realstring.length();
-							}
+								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
+								std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
 
+							}
+						}
+						else if (curr_len >= 60)
+						{
+							std::string first_line = realstring.substr(0, 62);
+							std::string second_line = realstring.substr(62, curr_len);
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
+								std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
 						}
 					}
 
@@ -1709,9 +1805,12 @@ namespace Core
 					//std::cout << "dialogue is displaying" << std::endl;
 					if (keystate_space)
 					{
-						--SceneManager::num_dialogue_clicks;
-						std::getline(fin, realstring);
 						curr_len = 0;
+						--SceneManager::num_dialogue_clicks;
+						if (!fin.eof())
+						{
+							std::getline(fin, realstring);
+						}
 						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}

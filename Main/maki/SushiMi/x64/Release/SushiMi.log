@@ -18,12 +18,14 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(740,67): w
           [
               T=float
           ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1693,48): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1697,39): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1215,11): warning C4189: 'alpha': local variable is initialized but not referenced
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1770,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1774,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1788,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1792,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1218,11): warning C4189: 'alpha': local variable is initialized but not referenced
   Generating code
   1 of 4468 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    22 functions had inline decision re-evaluated but remain unchanged
+    18 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

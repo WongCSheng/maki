@@ -95,7 +95,7 @@ int Font::init()
 
     glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
     //glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-    Shaders->Textured_Shader()->Send_Mat4("projection", projection);
+    Shaders->Font_Shader()->Send_Mat4("projection", projection);
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);

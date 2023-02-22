@@ -5,7 +5,7 @@ co-Author:  thea.sea@digipen.edu
 co-Author:  Aurelia (fei.x@digipen.edu)
 co-Author:  w.chongsheng@digipen.edu
 
-Description: 
+Description:
 */
 
 /*                                                                   includes
@@ -74,18 +74,18 @@ namespace Core
 		{
 		case GLFW_MOUSE_BUTTON_LEFT:
 			mouseLeft = (button == GLFW_MOUSE_BUTTON_LEFT) ? true : false;
-				break;
+			break;
 		}
 
 		switch (action)
-		{ 
-			case GLFW_PRESS:
-				mouseLeft = (action == GLFW_PRESS) ? true : false;
-				break;
-			
-			case GLFW_RELEASE:
-				mouseLeft = false;
-				break;
+		{
+		case GLFW_PRESS:
+			mouseLeft = (action == GLFW_PRESS) ? true : false;
+			break;
+
+		case GLFW_RELEASE:
+			mouseLeft = false;
+			break;
 		}
 	}
 
@@ -107,7 +107,7 @@ namespace Core
 			keystate_M = (key == GLFW_KEY_M) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 
-			
+
 		}
 		else if (GLFW_RELEASE == action)
 		{
@@ -132,7 +132,7 @@ namespace Core
 			keystate_T = (key == GLFW_KEY_T) ? true : false;
 			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
-			keystate_space  = (key == GLFW_KEY_SPACE) ? true : false;
+			keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
 
 
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
@@ -146,7 +146,7 @@ namespace Core
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
 			keystate_S = (key == GLFW_KEY_S) ? true : false;
 			keystate_D = (key == GLFW_KEY_D) ? true : false;
-			
+
 		}
 	}
 
@@ -194,7 +194,7 @@ namespace Core
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
-		
+
 		timetodeletegrid = false;
 #ifdef EDITOR
 		//the first level displayed on the map's launch
@@ -288,6 +288,7 @@ namespace Core
 #endif
 
 		delete player;
+		delete SceneManager::rec; // delete rectangle
 		glfwTerminate();
 		Editor::LevelEditor::imguiDestroyObj();
 	}
@@ -532,7 +533,7 @@ namespace Core
 			{
 				isCutscene = false;
 				isMenuState = false;
-				isTut1 = false; 
+				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
 				isLevel2 = false;
@@ -557,7 +558,7 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6) )
+		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6))
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
@@ -576,18 +577,18 @@ namespace Core
 		//if press escape again, close pause screen
 		if (gameIsPaused == false)
 		{
-				keystate_escape = true;
-				if (keystate_escape)
-				{
-					gameIsPaused = false;
-					//std::cout << "game resume, no more pause screen" << std::endl;
-					int screenwidth = 0, screenheight = 0;
-					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-					//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-					//SceneManager::pause_overlay->transformation.Position.y = screenheight;
-					keystate_escape = false;
+			keystate_escape = true;
+			if (keystate_escape)
+			{
+				gameIsPaused = false;
+				//std::cout << "game resume, no more pause screen" << std::endl;
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
+				//SceneManager::pause_overlay->transformation.Position.y = screenheight;
+				keystate_escape = false;
 
-				}
+			}
 
 		}
 		/**************************************/
@@ -609,7 +610,7 @@ namespace Core
 				isMenuState = false;
 				/*isCutscene = true;*/
 				isLevelSelection = true;
-				
+
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -667,7 +668,7 @@ namespace Core
 			}
 			//QUIT GAME
 			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
-			{				
+			{
 				glfwSetWindowShouldClose(window_ptr, true);
 			}
 		}
@@ -692,21 +693,21 @@ namespace Core
 			{
 				isLevelSelection = false;
 				isTut2 = true;
-				
+
 			}
 			//LEVEL1
 			if (xpos > 474 && ypos > 272 && xpos < 551 && ypos < 333)
 			{
 				isLevelSelection = false;
 				isLevel1 = true;
-				
+
 			}
 			//LEVEL2
 			if (xpos > 568 && ypos > 163 && xpos < 633 && ypos < 223)
 			{
 				isLevelSelection = false;
 				isLevel2 = true;
-				
+
 			}
 		}
 		//note: escape should be mapped to pause/menu
@@ -764,7 +765,7 @@ namespace Core
 			}
 		}
 
-		else if ( (keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false) 
+		else if ((keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -795,14 +796,14 @@ namespace Core
 			}
 
 		}
-		if(keystate_down || keystate_up || keystate_left || keystate_right == true)
-		/*if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
-		if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;*/
+		if (keystate_down || keystate_up || keystate_left || keystate_right == true)
+			/*if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
+			if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
+			if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
+			if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
+			if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;*/
 
-		//if(keystate_down && keystate_up && keystate_left && keystate_right)
+			//if(keystate_down && keystate_up && keystate_left && keystate_right)
 			player->stop();
 #endif //editor
 	}
@@ -863,7 +864,7 @@ namespace Core
 
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
-			
+
 			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
@@ -897,12 +898,12 @@ namespace Core
 			}
 			Map::DrawMap();
 
-			
+
 
 			//display object at imgui cursor
 			Core::Editor::LevelEditor::imguiObjectCursor();
 
-			
+
 #endif
 
 			//FOR OBJ CONTAINER DEBUGGING
@@ -945,7 +946,7 @@ namespace Core
 			{
 				SceneManager::loadCutscene(0, 0);
 				SceneManager::drawCutscene();
-				if ( (keystate_space) && isMenuState == false )
+				if ((keystate_space) && isMenuState == false)
 				{
 					keystate_space = true;
 					if (keystate_space)
@@ -970,7 +971,7 @@ namespace Core
 						}
 						keystate_space = false;
 					}
-					
+
 				}
 
 			}
@@ -1032,11 +1033,15 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-
+				SceneManager::loadRect(0, 0);
+				/*SHOULD USE DELTA TIME HMMMMMMM*/
+				for (float i = 10000; i >= 0; i--) {
+					float alpha = i / 10000.0f;
+					// code here to update the displayed alpha
+					SceneManager::drawRect(alpha);
+				}
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
-				SceneManager::loadRect(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
-				SceneManager::drawRect();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
 				if (mouseLeft && isWinCondition == true)
@@ -1046,7 +1051,7 @@ namespace Core
 					isWinCondition = false;
 					loaded = false;
 
-					
+
 				}
 
 			}
@@ -1108,7 +1113,7 @@ namespace Core
 				float alpha = 0;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				
+
 
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
@@ -1136,14 +1141,14 @@ namespace Core
 			*********************************/
 			if (isLevel1 == true)
 			{
-				
+
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
 					}
-					
+
 					Map::initMap("../TileMap/level1.txt");
 
 					Map::LoadMap();
@@ -1154,7 +1159,7 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 				}
-				
+
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1228,7 +1233,7 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 				}
-				
+
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1237,7 +1242,7 @@ namespace Core
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
-				
+
 				if (gameIsPaused == false)
 				{
 					if (isPlayerinSinkhole)
@@ -1258,7 +1263,7 @@ namespace Core
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
-					
+
 				}
 			}
 
@@ -1659,7 +1664,7 @@ namespace Core
 			{
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
-				
+
 				SceneManager::loadHowToOverlay(0, 0);
 				SceneManager::drawHowToOverlay();
 				if (mouseLeft && isMenuState == false)
@@ -1693,7 +1698,7 @@ namespace Core
 
 
 					//BACK
-					
+
 					if (xpos > 151 && xpos < 339 && ypos > 820 && ypos < 889)
 					{
 
@@ -1704,7 +1709,7 @@ namespace Core
 						std::cout << "return to main menu" << std::endl;
 
 					}
-					
+
 
 				}
 
@@ -1723,7 +1728,7 @@ namespace Core
 					if (xpos > 814 && xpos < 1047 && ypos > 536 && ypos < 612)
 					{
 						isCredits = true;
-						
+
 					}
 					//PRESS BACK
 					if (xpos > 814 && xpos < 1047 && ypos > 635 && ypos < 708)
@@ -1768,7 +1773,7 @@ namespace Core
 
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
-		
+
 		//void Window::ImGuiToObjContainer(ObjectFactory* c)
 		//{
 

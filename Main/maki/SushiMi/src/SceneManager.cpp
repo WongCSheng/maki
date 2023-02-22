@@ -5,6 +5,7 @@
 
 namespace Core
 {
+	float alpha = 1.0f;
 	SceneManager::SceneManager()
 	{
 		/*tile = nullptr;
@@ -65,7 +66,7 @@ namespace Core
 			ingredient.second->restart();
 		}
 
-		
+
 	}
 	//R key for restart
 	// update by thea: i've written a new restart function
@@ -74,22 +75,22 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
-	
 
-	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile)
+
+	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*>& tile)
 	{
-		
+
 		tile.second->transformation.Position = glm::vec2(x, y);
 		tile.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
 
 		tilecontainer.push_back(tile);
-		
-		
+
+
 		std::cout << std::endl;
 		std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
 	}
 
-	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>&ingredient)
+	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingredient)
 	{
 		/*
 		int width, height;
@@ -152,12 +153,12 @@ namespace Core
 		player_stuck->transformation.Position = glm::vec2(x, y);
 		player_stuck->transformation.Scale = glm::vec2(90, 90);
 	}
-	
+
 	void SceneManager::loadHowToOverlay(int x, int y)
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-	
+
 		howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
 		howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
 		howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
@@ -173,7 +174,7 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		//settings
 		settings_page->transformation.Position = glm::vec2(screenwidth * 0.25, screenheight * 0.25);
-		settings_page->transformation.Scale = glm::vec2(screenwidth*0.47, screenheight*0.5);
+		settings_page->transformation.Scale = glm::vec2(screenwidth * 0.47, screenheight * 0.5);
 
 		//credits
 		credits_page->transformation.Position = glm::vec2(0, 0);
@@ -226,7 +227,7 @@ namespace Core
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-		
+
 		level_select->transformation.Position = glm::vec2(0, 0);
 		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
@@ -237,6 +238,7 @@ namespace Core
 		for (auto& tile : tilecontainer)
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			tile.second->draw();
 		}
 	}
@@ -250,7 +252,8 @@ namespace Core
 		for (auto& ingredient : ingredientcontainer)
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+
 			if (ingredient.second->isSpriteSheet)
 			{
 				ingredient.second->draw(delta, ingredient.second->curr_anim);
@@ -259,7 +262,7 @@ namespace Core
 			{
 				ingredient.second->draw();
 			}
-			
+
 		}
 	}
 
@@ -302,37 +305,42 @@ namespace Core
 	void SceneManager::drawPlayer_Stuck()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", player_stuck->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 		player_stuck->draw();
 	}
-	
+
 	void SceneManager::drawHowToOverlay()
 	{
 		switch (Window::HowToPlayPage)
 		{
-			case 0:
-			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
-				howtoplay_overlay1->draw();
-				break;
-			}
-			case 1:
-			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
-				howtoplay_overlay2->draw();
-				break;
-			}
-			case 2:
-			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
-				howtoplay_overlay3->draw();
-				break;
-			}
-			case 3:
-			{
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
-				howtoplay_overlay4->draw();
-				break;
-			}
+		case 0:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay1->draw();
+			break;
+		}
+		case 1:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay2->draw();
+			break;
+		}
+		case 2:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay3->draw();
+			break;
+		}
+		case 3:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay4->draw();
+			break;
+		}
 		}
 	}
 	void SceneManager::drawSettings()
@@ -341,6 +349,7 @@ namespace Core
 		if (Window::isCredits == false)
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", settings_page->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			settings_page->draw();
 
 		}
@@ -348,6 +357,7 @@ namespace Core
 		{
 			//if credits only
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", credits_page->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			credits_page->draw();
 
 		}
@@ -356,6 +366,7 @@ namespace Core
 	{
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 		win_overlay->draw();
 	}
 
@@ -366,58 +377,67 @@ namespace Core
 		case 0:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame1->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame1->draw();
 			break;
 		}
 		case 1:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame2->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame2->draw();
 			break;
 		}
 		case 2:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame3->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame3->draw();
 			break;
 		}
 		case 3:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame4->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame4->draw();
 			break;
 		}
 		case 4:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame5->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame5->draw();
 			break;
 		}
 		case 5:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame6->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame6->draw();
 			break;
 		}
 		case 6:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame7->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame7->draw();
 			break;
 		}
 		case 7:
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame8->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			frame8->draw();
 			break;
 		}
-		
+
 		}
 	}
 
 	void SceneManager::drawLevelSelect()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", level_select->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 		level_select->draw();
 	}
 
@@ -427,14 +447,22 @@ namespace Core
 		rec->transformation.Scale = glm::vec2(1920, 1200);
 	}
 
-	void SceneManager::drawRect()
+	void SceneManager::drawRect(float alpha)
 	{
+		/*This one draws the black background completely fine, but it is without the Alpha variable */
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
+
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		rec->draw();
+		/*
 		Shaders->Alpha_Shader()->use();
-		float alpha = 0.7f;
-		Shaders->Alpha_Shader()->Send_Mat4("model_matrix", rec->transformation.Get());
+		float alpha = 1.f;
+		Shaders->Alpha_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
 		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
 		rec->draw();
-		// Increment the alpha value over time
+		*/
+
+
 	}
 
 	/*destroy functions*/

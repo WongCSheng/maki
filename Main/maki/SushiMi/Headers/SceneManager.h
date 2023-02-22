@@ -165,7 +165,7 @@ namespace Core
 		static void drawLevelSelect();
 
 		static void loadRect(int x, int y);
-		static void drawRect();
+		static void drawRect(float alpha);
 
 
 		static void destroyTile();

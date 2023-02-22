@@ -129,40 +129,29 @@ namespace Core
 
 		static void restartLevel();
 		static void nextLevel();
+
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
 		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition);
-		/*static void loadIngr1(int x, int y);
-		static void loadIngr2(int x, int y);
-		static void loadTrap(int x, int y);
-		static void loadGoal1(int x, int y);
-		static void loadGoal2(int x, int y);
-		static void loadCover1(int x, int y);
-		static void loadCover2(int x, int y);*/
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene(int x, int y);
 		static void loadLevelSelect(int x, int y);
+		static void loadRP_Dialogue(); //RP stands for Rice Plain
 
 		static void drawTile();
 		static void drawBox();
 		static void drawIngr();
-		/*static void drawIngr1();
-		static void drawIngr2();
-		static void drawTrap();
-		static void drawGoal1();
-		static void drawGoal2();
-		static void drawCover1();
-		static void drawCover2();*/
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay();
 		static void drawSettings();
 		static void drawWinOverlay();
 		static void drawCutscene();
 		static void drawLevelSelect();
+		static void drawRP_Dialogue();
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
@@ -170,18 +159,15 @@ namespace Core
 
 		static void destroyTile();
 		static void destroyIngr();
-		/*static void destroyTrap();
-		static void destroyGoal1();
-		static void destroyGoal2();
-		static void destroyCover1();
-		static void destroyCover2();*/
 		static void destroyPlayer_Stuck();
 		static void destroyHowToOverlay();
 		static void destroySettings();
 		static void destroyWinOverlay();
 		static void destroyCutscene();
 		static void destroyLevelSelect();
+		static void destroyRP_Dialogue();
 
+	
 		static void Readfile();
 
 		static void setRowsandCols(unsigned int inRow, unsigned int inCol);
@@ -199,14 +185,11 @@ namespace Core
 		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
-		/*static inline Sprite* tile;
-		static inline Sprite* ingredient1;
-		static inline Sprite* ingredient2;
-		static inline Sprite* trap;
-		static inline Sprite* goal1;
-		static inline Sprite* goal2;
-		static inline Sprite* cover1;
-		static inline Sprite* cover2;*/
+
+		//dialogue
+		static inline Sprite* riceplain_dialogue;
+		static inline int num_dialogue_clicks;
+
 		static inline Sprite* howtoplay_overlay1;
 		static inline Sprite* howtoplay_overlay2;
 		static inline Sprite* howtoplay_overlay3;

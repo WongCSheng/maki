@@ -56,6 +56,8 @@ namespace Core
 	static bool keystate_4 = false;
 	static bool keystate_5 = false;
 	static bool keystate_6 = false;
+	static bool keystate_K = false;
+	static bool keystate_L = false;
 	static bool keystate_T = false;
 	static bool keystate_escape = false;
 	static bool place_obj = false;
@@ -67,6 +69,7 @@ namespace Core
 
 	static bool mouseLeft = false;
 	Player* player;
+	int curr_len = 0;
 
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
@@ -141,6 +144,8 @@ namespace Core
 			keystate_4 = (key == GLFW_KEY_4) ? true : false;
 			keystate_5 = (key == GLFW_KEY_5) ? true : false;
 			keystate_6 = (key == GLFW_KEY_6) ? true : false;
+			keystate_K = (key == GLFW_KEY_K) ? true : false;
+			keystate_L = (key == GLFW_KEY_L) ? true : false;
 
 			keystate_W = (key == GLFW_KEY_W) ? true : false;
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
@@ -226,6 +231,8 @@ namespace Core
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
+		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_.png");
+
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
@@ -283,6 +290,7 @@ namespace Core
 		SceneManager::destroyCutscene();
 		SceneManager::destroyPlayer_Stuck();
 		SceneManager::destroyLevelSelect();
+		SceneManager::destroyRP_Dialogue();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -327,6 +335,8 @@ namespace Core
 		if (keystate_M)
 		{
 			isMenuState = true;
+			isLevelSelection = false;
+			gameIsPaused = false;
 			keystate_M = false;
 			isTut1 = false;
 			isTut2 = false;
@@ -337,11 +347,13 @@ namespace Core
 			isLevel5 = false;
 			isLevel6 = false;
 			loaded = false;
+			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in menu
 
 		}
 
 		if (keystate_tab)
 		{
+			gameIsPaused = false;
 			// if i press tab
 			// isquestab(false) = true;
 			// off the tab state
@@ -356,7 +368,64 @@ namespace Core
 			std::cout << isQuestTab << " <-- boolean state for quest tab\n";
 		}
 
+		if (keystate_K)
+		{
+			keystate_K = true;
+			std::cout << "you have loaded tutorial 1" << std::endl;
+			if (keystate_K)
+			{
 
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = true;
+				isTut2 = false;
+				isLevel1 = true;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_K = false;
+			}
+		}
+		if (keystate_L)
+		{
+			keystate_L = true;
+			std::cout << "you have loaded tutorial 2 (currently a test level)" << std::endl;
+			if (keystate_L)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = true;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+				keystate_L = false;
+			}
+		}
 		if (keystate_1)
 		{
 			keystate_1 = true;
@@ -367,6 +436,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = true;
@@ -396,6 +466,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
@@ -424,6 +495,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
@@ -451,6 +523,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
@@ -479,6 +552,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
@@ -507,6 +581,7 @@ namespace Core
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
+				gameIsPaused = false;
 				isTut1 = false;
 				isTut2 = false;
 				isLevel1 = false;
@@ -525,10 +600,11 @@ namespace Core
 				keystate_6 = false;
 			}
 		}
-		if (keystate_T && isMenuState == false)
+		if (keystate_T)
 		{
 			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
+			
 			if (keystate_T)
 			{
 				isCutscene = false;
@@ -718,7 +794,7 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_right = true;
 			keystate_D = true;
@@ -732,7 +808,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_left = true;
 			keystate_A = true;
@@ -748,7 +824,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_up = true;
 			keystate_W = true;
@@ -765,7 +841,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_down) || (keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false)
+		else if ( (keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -981,13 +1057,10 @@ namespace Core
 			*********************************/
 			if (isTut1 == true)
 			{
-
-				isCutscene = false;
-				isMenuState = false;
-				isLevel2 = false;
-				isLevel1 = false;
 				if (!loaded)
 				{
+					
+
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1002,6 +1075,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::T1);
+					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 
 				//draw lv1 tile map
@@ -1009,8 +1087,6 @@ namespace Core
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-
-				//std::cout << "goals no " << Window::numQuests << std::endl;
 
 				if (gameIsPaused == false)
 				{
@@ -1062,11 +1138,6 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
-
-				isCutscene = false;
-				isMenuState = false;
-				isLevel2 = false;
-				isLevel1 = false;
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1083,6 +1154,10 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					dialogue_style = static_cast<int>(dialogue::T2);
+					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
+					isDialogue = true;
+					//also need dialogue after game end
 				}
 
 				//draw lv1 tile map
@@ -1160,6 +1235,10 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					dialogue_style = static_cast<int>(dialogue::L1);
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					isDialogue = true;
+					//also need dialogue after game end
 				}
 
 				//draw lv1 tile map
@@ -1178,8 +1257,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawHowToOverlay();
-
+					
 				}
 				if (Map::isWin())
 				{
@@ -1211,16 +1289,6 @@ namespace Core
 			*********************************/
 			if (isLevel2 == true)
 			{
-				isCutscene = false;
-				isLevelSelection = false;
-				isTut1 = false;
-				isTut2 = false;
-				isLevel1 = false;
-				isLevel3 = false;
-				isLevel4 = false;
-				isLevel5 = false;
-				isLevel6 = false;
-				isMenuState = false;
 				if (!loaded)
 				{
 					Map::ResetMap();
@@ -1234,6 +1302,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::L2);
+					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 
 				//draw lv2 tile map
@@ -1291,16 +1364,6 @@ namespace Core
 			*********************************/
 			if (isLevel3 == true)
 			{
-				isCutscene = false;
-				isLevelSelection = false;
-				isTut1 = false;
-				isTut2 = false;
-				isLevel1 = false;
-				isLevel2 = false;
-				isLevel4 = false;
-				isLevel5 = false;
-				isLevel6 = false;
-				isMenuState = false;
 				if (!loaded)
 				{
 					Map::ResetMap();
@@ -1314,6 +1377,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::L3);
+					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 
 				//draw lv3 tile map
@@ -1367,16 +1435,6 @@ namespace Core
 			*********************************/
 			if (isLevel4 == true)
 			{
-				isCutscene = false;
-				isLevelSelection = false;
-				isTut1 = false;
-				isTut2 = false;
-				isLevel1 = false;
-				isLevel2 = false;
-				isLevel3 = false;
-				isLevel5 = false;
-				isLevel6 = false;
-				isMenuState = false;
 				if (!loaded)
 				{
 					Map::ResetMap();
@@ -1390,6 +1448,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::L4);
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 
 				Map::DrawMap(); //this will also set numQuests
@@ -1441,16 +1504,6 @@ namespace Core
 			*********************************/
 			if (isLevel5 == true)
 			{
-				isCutscene = false;
-				isLevelSelection = false;
-				isTut1 = false;
-				isTut2 = false;
-				isLevel1 = false;
-				isLevel2 = false;
-				isLevel3 = false;
-				isLevel4 = false;
-				isLevel6 = false;
-				isMenuState = false;
 				if (!loaded)
 				{
 					Map::ResetMap();
@@ -1464,6 +1517,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::L5);
+					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1512,16 +1570,6 @@ namespace Core
 			*********************************/
 			if (isLevel6 == true)
 			{
-				isCutscene = false;
-				isLevelSelection = false;
-				isTut1 = false;
-				isTut2 = false;
-				isLevel1 = false;
-				isLevel2 = false;
-				isLevel3 = false;
-				isLevel4 = false;
-				isLevel5 = false;
-				isMenuState = false;
 				if (!loaded)
 				{
 					Map::ResetMap();
@@ -1535,6 +1583,11 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					dialogue_style = static_cast<int>(dialogue::L6);
+					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
 				}
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1576,6 +1629,53 @@ namespace Core
 					isLevel6 = false;
 					isLevel7 = true;
 					loaded = false;
+				}
+			}
+
+			/**********************************
+				DIALOGUE DISPLAY (riceplain)
+			*************************************/
+			if (isDialogue)
+			{
+				if (dialogue_style >= static_cast<int>(dialogue::T1) && dialogue_style <= static_cast<int>(dialogue::L3))
+				{
+					SceneManager::loadRP_Dialogue();
+					SceneManager::drawRP_Dialogue();
+					std::string realstring = "Before delivery, I need to collect all of the ingredients.";
+					if (curr_len <= realstring.length())
+					{
+						std::string one_by_one = realstring.substr(0, curr_len);
+						Font::RenderText(*Shaders, one_by_one, 280, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
+						if (GLHelper::delta_time * 150 < 2)
+						{
+							curr_len += (GLHelper::delta_time * 200);
+							std::cout << "value of i is : " << curr_len << std::endl;
+							if (curr_len > realstring.length())
+							{
+								curr_len = realstring.length();
+							}
+
+						}
+					}
+
+				}
+
+				//if there are still pages to display
+				if (SceneManager::num_dialogue_clicks > 0)
+				{
+					isDialogue = true;
+					//std::cout << "dialogue is displaying" << std::endl;
+					if (keystate_space)
+					{
+						--SceneManager::num_dialogue_clicks;
+						std::cout << "decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						keystate_space = false;
+					}
+
+				}
+				else
+				{
+					isDialogue = false;
 				}
 			}
 
@@ -1682,7 +1782,7 @@ namespace Core
 							HowToPlayPage++;
 
 							std::cout << "next page" << std::endl;
-
+							mouseLeft = false;
 						}
 					}
 					//PREV PAGE 
@@ -1694,6 +1794,8 @@ namespace Core
 							HowToPlayPage--;
 
 							std::cout << "previous page" << std::endl;
+							mouseLeft = false;
+
 
 						}
 					}

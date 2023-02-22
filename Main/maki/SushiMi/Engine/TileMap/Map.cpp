@@ -30,7 +30,7 @@ namespace Core
 	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
 	std::vector<std::pair<grid_number, wall_type>> Map::levelWinConditions;
-	int Map::CorrectCombination{};
+	int Map::CorrectCombination{}; //redeclaration
 
 	Map::Map()
 	{
@@ -251,13 +251,22 @@ namespace Core
 					rice->Add_animation("../textures/spritesheet/soya.txt");
 					rice->curr_anim = Idle;
 					*/
-					Sprite* rice = new Sprite("../textures/spritesheet/ricespritesheet.png");
+
+					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
+
+					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					break;
+
+					//old rice
+					/*Sprite* rice = new Sprite("../textures/spritesheet/ricespritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
 					rice->Add_animation("../textures/spritesheet/Run.txt");
 					rice->curr_anim = Idle;
 					rice->isSpriteSheet = 1;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);*/
 					break;
 				}
 				//roes

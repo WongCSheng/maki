@@ -232,6 +232,15 @@ namespace Core
 		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
+	void SceneManager::loadRP_Dialogue()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		riceplain_dialogue->transformation.Position = glm::vec2(screenwidth*0.1f, screenheight*0.6f);
+		riceplain_dialogue->transformation.Scale = glm::vec2(screenwidth*0.8f, screenheight *0.4f);
+	}
+
 	/*draw functions*/
 	void SceneManager::drawTile()
 	{
@@ -441,6 +450,13 @@ namespace Core
 		level_select->draw();
 	}
 
+	void SceneManager::drawRP_Dialogue()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
+		riceplain_dialogue->draw();
+		
+	}
+
 	void SceneManager::loadRect(int x, int y)
 	{
 		rec->transformation.Position = glm::vec2(x, y);
@@ -571,6 +587,11 @@ namespace Core
 	void SceneManager::destroyLevelSelect()
 	{
 		delete level_select;
+	}
+
+	void SceneManager::destroyRP_Dialogue()
+	{
+		delete riceplain_dialogue;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

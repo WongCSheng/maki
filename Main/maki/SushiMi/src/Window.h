@@ -51,6 +51,20 @@ namespace Core
 		isLevel7, isLevel8, isLevel9, //fishing village
 		isLevel10; //maki city
 
+		static inline bool isDialogue;
+		static inline int dialogue_style;
+		enum class dialogue
+		{
+			T1 = 0,
+			T2,	//1
+			L1,	//2
+			L2,	//3
+			L3,	//4
+			L4,	//5
+			L5, //6
+			L6	//7
+		};
+
 		bool isQuestTab;
 		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;

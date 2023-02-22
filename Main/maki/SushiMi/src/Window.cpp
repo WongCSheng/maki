@@ -70,6 +70,9 @@ namespace Core
 	static bool mouseLeft = false;
 	Player* player;
 	int curr_len = 0;
+	std::string realstring = "";
+	std::ifstream fin;
+
 
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
@@ -122,6 +125,7 @@ namespace Core
 			keystate_M = false;
 			keystate_escape = false;
 			keystate_tab = false;
+			keystate_space = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -283,7 +287,10 @@ namespace Core
 		timetodeletegrid = true;
 		Map::ResetMap();
 #ifndef EDITOR
-
+		if (fin)
+		{
+			fin.close();
+		}
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
 		SceneManager::destroySettings();
 		SceneManager::destroyWinOverlay(); //delete Win Overlay
@@ -1076,6 +1083,19 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/_tut1_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+					//fin.close();
+
 					dialogue_style = static_cast<int>(dialogue::T1);
 					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
@@ -1141,12 +1161,28 @@ namespace Core
 					Map::LoadMap();
 					loaded = true;
 
+
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/_tut2_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+					
+
+
 					dialogue_style = static_cast<int>(dialogue::T2);
-					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
@@ -1224,6 +1260,22 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl1_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+					//fin.close();
+
+					
+
 					dialogue_style = static_cast<int>(dialogue::L1);
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
@@ -1630,14 +1682,15 @@ namespace Core
 				{
 					SceneManager::loadRP_Dialogue();
 					SceneManager::drawRP_Dialogue();
-					std::string realstring = "Before delivery, I need to collect all of the ingredients.";
+					//std::string realstring = "Before delivery, I need to collect all of the ingredients.";
 					if (curr_len <= realstring.length())
 					{
 						std::string one_by_one = realstring.substr(0, curr_len);
+						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 						Font::RenderText(*Shaders, one_by_one, 280, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
 						if (GLHelper::delta_time * 150 < 2)
 						{
-							curr_len += (GLHelper::delta_time * 200);
+							curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
 							std::cout << "value of i is : " << curr_len << std::endl;
 							if (curr_len > realstring.length())
 							{
@@ -1657,7 +1710,8 @@ namespace Core
 					if (keystate_space)
 					{
 						--SceneManager::num_dialogue_clicks;
-						std::cout << "decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						std::getline(fin, realstring);
+						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}
 

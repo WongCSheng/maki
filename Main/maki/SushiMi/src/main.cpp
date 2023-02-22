@@ -114,9 +114,18 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 void Core::pseudomain::draw() 
 {
+
 	//imGUI Game Editor
 	Shaders->Font_Shader()->use();
-	Font::RenderText(*Shaders, to_string(GLHelper::fps), 0.0f, 0.0f, .6f, glm::vec3(0.f, 0.f, 0.f));
+	if (GLHelper::fps < 60)
+	{
+		Font::RenderText(*Shaders, "fps: " + to_string((int)(GLHelper::fps)), 0.0f, 590.f, .2f, glm::vec3(1.f, 0.f, 0.f));
+	}
+	else
+	{
+		Font::RenderText(*Shaders,"fps: " +  to_string((int)(GLHelper::fps)), 0.0f, 590.f, .2f, glm::vec3(0.f, 1.f, 0.f));
+	}
+
 
 	Editor::LevelEditor::imguiEditorDraw();
 

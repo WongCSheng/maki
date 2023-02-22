@@ -85,7 +85,7 @@ ShaderLibrary::ShaderLibrary()
 			void main()
 			{
 				finalcolor = vertex_color * texture(sprite,vertex_uv);
-				finalcolor.a = alpha // Set the alpha value of the color to the uniform variable "alpha"
+				finalcolor.a = alpha; // Set the alpha value of the color to the uniform variable "alpha"
 			};
 )CODE";
 

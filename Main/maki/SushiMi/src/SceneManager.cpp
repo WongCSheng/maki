@@ -354,6 +354,7 @@ namespace Core
 	}
 	void SceneManager::drawWinOverlay()
 	{
+		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
 		win_overlay->draw();
 	}
@@ -429,17 +430,11 @@ namespace Core
 	void SceneManager::drawRect()
 	{
 		Shaders->Alpha_Shader()->use();
-		float alpha = 0.0f;
-		/*draw rectangle*/
-		//Shaders->Alpha_Shader()->use();
-		Shaders->Alpha_Shader()->Send_Alpha("alpha", alpha);
+		float alpha = 0.7f;
+		Shaders->Alpha_Shader()->Send_Mat4("model_matrix", rec->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
 		rec->draw();
 		// Increment the alpha value over time
-		alpha += 0.01;
-		if (alpha > 1.0)
-		{
-			alpha = 1.0;
-		}
 	}
 
 	/*destroy functions*/

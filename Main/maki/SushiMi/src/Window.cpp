@@ -1030,14 +1030,13 @@ namespace Core
 			}
 			if (isWinCondition == true && isTut1 == true)
 			{
-				float alpha = 0;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::loadRect(screenwidth, screenheight);
-				SceneManager::drawRect();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
-
+				SceneManager::loadRect(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawRect();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
 				if (mouseLeft && isWinCondition == true)

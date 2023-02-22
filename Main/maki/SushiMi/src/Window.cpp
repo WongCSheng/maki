@@ -1152,7 +1152,7 @@ namespace Core
 				}
 				//draw lv1 tile map
 				Map::DrawMap();
-
+				SceneManager::FadeOut();
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 

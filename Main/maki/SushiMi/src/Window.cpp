@@ -1033,15 +1033,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::loadRect(0, 0);
-				/*fading works!!!!*/
-				static double start_time = glfwGetTime();
-				double curr_time = glfwGetTime();
-				const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-				float alpha_start = 0.f;
-				float alpha_end = 1.f;
-				float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
-				SceneManager::drawRect(alpha);
+				SceneManager::FadeIn();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1073,7 +1065,6 @@ namespace Core
 					{
 						Map::ResetMap();
 					}
-
 					Map::initMap("../TileMap/pod_rendering_test.txt");
 
 					Map::LoadMap();
@@ -1084,7 +1075,6 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 				}
-
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1092,7 +1082,6 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
-
 				if (gameIsPaused == false)
 				{
 					player->draw(delta);

@@ -166,6 +166,8 @@ namespace Core
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
+		static void FadeIn();
+		static void FadeOut();
 
 
 		static void destroyTile();

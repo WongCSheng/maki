@@ -465,6 +465,31 @@ namespace Core
 
 	}
 
+	void SceneManager::FadeIn()
+	{
+		SceneManager::loadRect(0, 0);
+		/*fading works!!!!*/
+		static double start_time = glfwGetTime();
+		double curr_time = glfwGetTime();
+		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		float alpha_start = 0.f;
+		float alpha_end = 1.f;
+		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
+		SceneManager::drawRect(alpha);
+	}
+	void SceneManager::FadeOut()
+	{
+		SceneManager::loadRect(0, 0);
+		/*fading works!!!!*/
+		static double start_time = glfwGetTime();
+		double curr_time = glfwGetTime();
+		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		float alpha_start = 1.f;
+		float alpha_end = 0.f;
+		float alpha = alpha_start - timeDiff * (alpha_start - alpha_end);
+		SceneManager::drawRect(alpha);
+	}
+
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{

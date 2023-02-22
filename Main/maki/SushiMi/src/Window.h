@@ -92,6 +92,9 @@ namespace Core
 		{
 			return gameIsPaused;
 		}
+
+		bool checkWin();
+
 		//for editor
 #ifdef EDITOR
 		static inline Sprite* ingredient; //for imguiObjectCursor

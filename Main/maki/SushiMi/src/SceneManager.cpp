@@ -6,6 +6,9 @@
 namespace Core
 {
 	float alpha = 1.0f;
+	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
+	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+
 	SceneManager::SceneManager()
 	{
 		/*tile = nullptr;
@@ -45,7 +48,7 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
-		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0)
 		{
 			Map::ResetMap();
 		}
@@ -61,7 +64,7 @@ namespace Core
 		//missing: restart sinkhole, restart sushi plate pods
 		Window::isPlayerinSinkhole = false;
 		//reset ingredient pos
-		for (auto& ingredient : SceneManager::ingredientcontainer)
+		for (auto& ingredient : ingredientcontainer)
 		{
 			ingredient.second->restart();
 		}

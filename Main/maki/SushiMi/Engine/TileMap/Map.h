@@ -46,10 +46,15 @@ namespace Core
 		static inline int grid_col;
 		static float tile_width, tile_height;
 		static int** gGrids;
+		
 
 		static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
-		static std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+		
 		static int CorrectCombination;
 	};
+	extern int width, height;
+	extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+	extern int grid_row;
+	extern int grid_col;
 }
 #endif

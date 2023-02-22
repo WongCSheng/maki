@@ -176,6 +176,9 @@ void Core::pseudomain::init() {
 
 	////loading TabMenu
 	Core::DeserializeEntity("../Data/QuestTab.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut1/done.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut1/denied.json", CoreSystem->objfactory);
 
 	////loading image&button paths
 	//Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);

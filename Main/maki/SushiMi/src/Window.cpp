@@ -30,7 +30,9 @@ Description:
 namespace Core
 {
 	static Core::MainSystem* CoreSystem;
-
+	static int width, height;
+	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
+	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
 	enum class GameState {
@@ -1077,7 +1079,7 @@ namespace Core
 
 					Map::LoadMap();
 					loaded = true;
-
+					isQuestTab = true;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1105,6 +1107,9 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
+
+				//check if player matches a ingredient to a box
+				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1192,6 +1197,8 @@ namespace Core
 				//draw lv1 tile map
 				SceneManager::FadeOut();
 				Map::DrawMap();
+
+
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
@@ -1289,6 +1296,9 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
+
+				//check if player matches a ingredient to a box
+				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1892,11 +1902,11 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
-					if (x.first == "QuestTab")
+					if (x.first == "QuestTut1")
 					{
 						spritecomp->draw();
 					}
-				}
+				}											
 			}
 
 			if (isWalk == true)
@@ -2026,5 +2036,60 @@ namespace Core
 
 		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
 		//}
+	}
+
+	bool Window::checkWin()
+	{
+		//checking through all loaded box for the current level
+		for (auto& box : SceneManager::tilecontainer)
+		{
+			//checking through all loaded ingredient for the current level
+			for (auto& ingredient : SceneManager::ingredientcontainer)
+			{
+				//convert coordinates back into row and column (dont know why need to plus 1)
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height)) + 1;
+				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+
+				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width) + 1);
+				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height) + 1);
+				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+				//checking through level win condition (check if ingredient land on box position)
+				if (ingredientCoordinates == boxCoordinates)
+				{
+					//ingredient row and col matches box row and col
+					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+					for (auto& y : levelWinConditions)//suggest to change to map
+					{
+						//check whether is correct ingredient to box
+						if (checkCondition == y)
+						{
+							std::cout << "ingredient landed correct box\n";
+							//check if quest tab is open
+							if (isQuestTab)
+							{
+								for (auto& x : CoreSystem->objfactory->ObjectContainer)
+								{
+									Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+									Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+									spritecomp->transformation.Position = transcomp->Position;
+									spritecomp->transformation.Scale = transcomp->Scale;
+									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+									if (x.first == "done")
+									{
+										spritecomp->draw();
+									}
+								}
+							}
+						}
+						else
+							std::cout << "wrong ingredient or box\n";
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

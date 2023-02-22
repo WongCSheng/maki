@@ -27,9 +27,9 @@ namespace Core
 {
 
 	//int Map::gGrids[GRID_ROW][GRID_COL];
-	static inline int width, height;
+    static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
-	std::vector<std::pair<grid_number, wall_type>> Map::levelWinConditions;
+	std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
 	int Map::CorrectCombination{}; //redeclaration
 
 	Map::Map()
@@ -1048,34 +1048,34 @@ namespace Core
 
 	bool Map::isWin()
 	{
-		//checking through all loaded box for the current level
-		for (auto& box : SceneManager::tilecontainer)
-		{
-			//checking through all loaded ingredient for the current level
-			for (auto& ingredient : SceneManager::ingredientcontainer)
-			{
-				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
-				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+		////checking through all loaded box for the current level
+		//for (auto& box : SceneManager::tilecontainer)
+		//{
+		//	//checking through all loaded ingredient for the current level
+		//	for (auto& ingredient : SceneManager::ingredientcontainer)
+		//	{
+		//		//convert coordinates back into row and column (dont know why need to plus 1)
+		//		int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
+		//		int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
+		//		std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
-				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
-				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
-				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
-				//checking through level win condition (check if ingredient land on box position)
-				if (ingredientCoordinates == boxCoordinates)
-				{
-					//ingredient row and col matches box row and col
-				    std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
-					for (auto& y : levelWinConditions)//suggest to change to map
-					{
-						//check whether is correct ingredient to box
-						if (checkCondition == y)
-							std::cout << "correct ingredient on box\n";
-					}
-				}
-			}
-		}
+		//		int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
+		//		int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
+		//		std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+		//		//checking through level win condition (check if ingredient land on box position)
+		//		if (ingredientCoordinates == boxCoordinates)
+		//		{
+		//			//ingredient row and col matches box row and col
+		//		    std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+		//			for (auto& y : levelWinConditions)//suggest to change to map
+		//			{
+		//				//check whether is correct ingredient to box
+		//				if (checkCondition == y)
+		//					std::cout << "correct ingredient on box\n";
+		//			}
+		//		}
+		//	}
+		//}
 		return ((win_amt == SceneManager::amt_of_win_conditions) ? true : false);
 	}
 

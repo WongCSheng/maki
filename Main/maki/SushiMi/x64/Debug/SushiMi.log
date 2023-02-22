@@ -1,24 +1,36 @@
 ﻿  Window.cpp
-D:\maki\Main\maki\SushiMi\src\Window.h(119): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
-D:\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.h(122): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-D:\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-D:\maki\Main\maki\SushiMi\src\Window.cpp(74,73): warning C4100: 'mod': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\Window.cpp(74,33): warning C4100: 'window_ptr': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\Window.cpp(100,82): warning C4100: 'mod': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\Window.cpp(100,56): warning C4100: 'scancode': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\Window.cpp(100,31): warning C4100: 'window_ptr': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\Window.cpp(732,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,18): warning C4211: nonstandard extension used: redefined extern to static
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,26): warning C4211: nonstandard extension used: redefined extern to static
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(79,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(79,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(105,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(105,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(105,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(164,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(164,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(741,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\maki\Main\maki\SushiMi\src\Window.cpp(733,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(742,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\maki\Main\maki\SushiMi\src\Window.cpp(1640,48): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\src\Window.cpp(1644,39): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\src\Window.cpp(1179,11): warning C4189: 'alpha': local variable is initialized but not referenced
-  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(898,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(898,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(1780,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(1784,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(1798,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(1802,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\Window.cpp(1225,11): warning C4189: 'alpha': local variable is initialized but not referenced
+  SushiMi.vcxproj -> C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\x64\Debug\SushiMi.exe

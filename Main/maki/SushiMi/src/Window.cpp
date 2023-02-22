@@ -1711,6 +1711,7 @@ namespace Core
 					{
 						--SceneManager::num_dialogue_clicks;
 						std::getline(fin, realstring);
+						curr_len = 0;
 						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}

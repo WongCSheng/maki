@@ -240,8 +240,8 @@ namespace Core
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-		riceplain_dialogue->transformation.Position = glm::vec2(screenwidth*0.1f, screenheight*0.6f);
-		riceplain_dialogue->transformation.Scale = glm::vec2(screenwidth*0.8f, screenheight *0.4f);
+		riceplain_dialogue->transformation.Position = glm::vec2(screenwidth * 0.1f, screenheight * 0.6f);
+		riceplain_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.8f, screenheight * 0.4f);
 	}
 
 	/*draw functions*/
@@ -457,7 +457,7 @@ namespace Core
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
 		riceplain_dialogue->draw();
-		
+
 	}
 
 	void SceneManager::loadRect(int x, int y)
@@ -483,30 +483,63 @@ namespace Core
 
 
 	}
-
-	void SceneManager::FadeIn()
+	bool SceneManager::FadeIn()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
 		static double start_time = glfwGetTime();
+		static bool resetTime = 0;
 		double curr_time = glfwGetTime();
-		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		if (timeDiff > 1)
+		{
+			timeDiff = 1;
+		}
+
+		if (resetTime == 1) { // on new fade entry
+			start_time = glfwGetTime();
+			timeDiff = (curr_time - start_time) / fade_duration;
+			resetTime = 0;
+		}
+
 		float alpha_start = 0.f;
 		float alpha_end = 1.f;
 		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
 		SceneManager::drawRect(alpha);
+		if (alpha > 0.99) { // on fade finish exit
+			resetTime = 1;
+			return 1;
+		}
+		return 0;
 	}
-	void SceneManager::FadeOut()
+	bool SceneManager::FadeOut()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
 		static double start_time = glfwGetTime();
+		static bool resetTime = 0;
 		double curr_time = glfwGetTime();
-		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		if (timeDiff > 1)
+		{
+			timeDiff = 1;
+		}
+
+		if (resetTime == 1) { // on new fade entry
+			start_time = glfwGetTime();
+			timeDiff = (curr_time - start_time) / fade_duration;
+			resetTime = 0;
+		}
+
 		float alpha_start = 1.f;
 		float alpha_end = 0.f;
-		float alpha = alpha_start - timeDiff * (alpha_start - alpha_end);
+		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
 		SceneManager::drawRect(alpha);
+		if (alpha < 0.1) { // on fade finish exit
+			resetTime = 1;
+			return 1;
+		}
+		return 0;
 	}
 
 	/*destroy functions*/

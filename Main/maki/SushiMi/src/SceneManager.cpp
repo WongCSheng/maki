@@ -483,29 +483,26 @@ namespace Core
 
 
 	}
-
+	constexpr float OPAQUE_ALPHA = 1.0f;
+	constexpr float TRANSPARENT_ALPHA = 0.0f;
+	constexpr float FADE_SPEED = .8f;
 	void SceneManager::FadeIn()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
-		static double start_time = glfwGetTime();
-		double curr_time = glfwGetTime();
-		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-		float alpha_start = 0.f;
-		float alpha_end = 1.f;
-		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
+		float targetAlpha = 0.0f;
+		targetAlpha = 1.0f;
+		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.0f) * FADE_SPEED);
+
 		SceneManager::drawRect(alpha);
 	}
 	void SceneManager::FadeOut()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
-		static double start_time = glfwGetTime();
-		double curr_time = glfwGetTime();
-		const double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-		float alpha_start = 1.f;
-		float alpha_end = 0.f;
-		float alpha = alpha_start - timeDiff * (alpha_start - alpha_end);
+		float targetAlpha = 1.0f;
+		targetAlpha = 0.0f;
+		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.f) * FADE_SPEED);
 		SceneManager::drawRect(alpha);
 	}
 

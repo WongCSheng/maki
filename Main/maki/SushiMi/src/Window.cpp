@@ -75,7 +75,6 @@ namespace Core
 	std::string realstring = "";
 	std::ifstream fin;
 
-
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
 		switch (button)
@@ -1156,6 +1155,7 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
+				SceneManager::FadeOut();
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)

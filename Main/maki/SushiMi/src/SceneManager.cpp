@@ -480,27 +480,63 @@ namespace Core
 
 
 	}
-	constexpr float OPAQUE_ALPHA = 1.0f;
-	constexpr float TRANSPARENT_ALPHA = 0.0f;
-	constexpr float FADE_SPEED = .8f;
-	void SceneManager::FadeIn()
+	bool SceneManager::FadeIn()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
-		float targetAlpha = 0.0f;
-		targetAlpha = 1.0f;
-		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.0f) * FADE_SPEED);
+		static double start_time = glfwGetTime();
+		static bool resetTime = 0;
+		double curr_time = glfwGetTime();
+		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		if (timeDiff > 1)
+		{
+			timeDiff = 1;
+		}
 
+		if (resetTime == 1) { // on new fade entry
+			start_time = glfwGetTime();
+			timeDiff = (curr_time - start_time) / fade_duration;
+			resetTime = 0;
+		}
+
+		float alpha_start = 0.f;
+		float alpha_end = 1.f;
+		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
 		SceneManager::drawRect(alpha);
+		if (alpha > 0.99) { // on fade finish exit
+			resetTime = 1;
+			return 1;
+		}
+		return 0;
 	}
-	void SceneManager::FadeOut()
+	bool SceneManager::FadeOut()
 	{
 		SceneManager::loadRect(0, 0);
 		/*fading works!!!!*/
-		float targetAlpha = 1.0f;
-		targetAlpha = 0.0f;
-		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.f) * FADE_SPEED);
+		static double start_time = glfwGetTime();
+		static bool resetTime = 0;
+		double curr_time = glfwGetTime();
+		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
+		if (timeDiff > 1)
+		{
+			timeDiff = 1;
+		}
+
+		if (resetTime == 1) { // on new fade entry
+			start_time = glfwGetTime();
+			timeDiff = (curr_time - start_time) / fade_duration;
+			resetTime = 0;
+		}
+
+		float alpha_start = 1.f;
+		float alpha_end = 0.f;
+		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
 		SceneManager::drawRect(alpha);
+		if (alpha < 0.1) { // on fade finish exit
+			resetTime = 1;
+			return 1;
+		}
+		return 0;
 	}
 
 	/*destroy functions*/

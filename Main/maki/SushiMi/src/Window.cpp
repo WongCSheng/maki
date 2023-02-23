@@ -71,6 +71,8 @@ namespace Core
 	Player* player;
 	int curr_len = 0;
 
+	bool fadeComplete = 0;
+
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
 		switch (button)
@@ -1109,7 +1111,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::FadeIn();
+				fadeComplete = SceneManager::FadeIn();
+				if (fadeComplete == 0)
+				{
+					SceneManager::FadeIn();
+				}
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1130,7 +1136,11 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
-				SceneManager::FadeOut();
+				fadeComplete = SceneManager::FadeOut();
+				if (fadeComplete == 0)
+				{
+					SceneManager::FadeOut();
+				}
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1181,7 +1191,11 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-
+				fadeComplete = SceneManager::FadeIn();
+				if (fadeComplete == 0)
+				{
+					SceneManager::FadeIn();
+				}
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 

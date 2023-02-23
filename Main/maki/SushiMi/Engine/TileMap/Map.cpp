@@ -29,7 +29,7 @@ namespace Core
 	//int Map::gGrids[GRID_ROW][GRID_COL];
 	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
-	std::vector<std::pair<grid_number, wall_type>> Map::levelWinConditions;
+	std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
 	int Map::CorrectCombination{}; //redeclaration
 
 	Sprite* soya;

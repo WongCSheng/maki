@@ -6,6 +6,9 @@
 namespace Core
 {
 	float alpha = 1.0f;
+	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
+	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+
 	SceneManager::SceneManager()
 	{
 		/*tile = nullptr;
@@ -45,7 +48,7 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
-		if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0)
 		{
 			Map::ResetMap();
 		}
@@ -61,7 +64,7 @@ namespace Core
 		//missing: restart sinkhole, restart sushi plate pods
 		Window::isPlayerinSinkhole = false;
 		//reset ingredient pos
-		for (auto& ingredient : SceneManager::ingredientcontainer)
+		for (auto& ingredient : ingredientcontainer)
 		{
 			ingredient.second->restart();
 		}
@@ -274,21 +277,15 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
-			if (ingredient.first == grid_number::soya) {
-				if (ingredient.second->timer >= 5.f) {
-					ingredient.second->curr_anim = Idle;
-				}
-			}
-
 			if (ingredient.second->isSpriteSheet)
 			{
-				ingredient.second->draw(Window::GetInstance(0,0)->getDelta(), ingredient.second->curr_anim);
+				ingredient.second->draw(delta, ingredient.second->curr_anim);
 			}
 			else
 			{
 				ingredient.second->draw();
 			}
-			ingredient.second->timer += Window::GetInstance(0, 0)->getDelta();
+
 		}
 	}
 
@@ -476,8 +473,6 @@ namespace Core
 
 	void SceneManager::drawRP_Dialogue()
 	{
-		
-
 		if (Window::dialogue_style >= static_cast<int>(Window::dialogue::T1) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L3))
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
@@ -489,13 +484,6 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", gunkan_dialogue->transformation.Get());
 			gunkan_dialogue->draw();
 		}
-		
-		
-		currentAlpha = std::lerp(currentAlpha, targetAlpha,  0.016f);
-		SceneManager::drawRect(currentAlpha);
-		/*
-		std::cout << "Alpha: " << currentAlpha << std::endl;
-		*/
 	}
 
 	void SceneManager::loadRect(int x, int y)
@@ -521,14 +509,27 @@ namespace Core
 
 
 	}
+	constexpr float OPAQUE_ALPHA = 1.0f;
+	constexpr float TRANSPARENT_ALPHA = 0.0f;
+	constexpr float FADE_SPEED = .8f;
 	void SceneManager::FadeIn()
 	{
+		SceneManager::loadRect(0, 0);
+		/*fading works!!!!*/
+		float targetAlpha = 0.0f;
 		targetAlpha = 1.0f;
-	}
+		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.0f) * FADE_SPEED);
 
+		SceneManager::drawRect(alpha);
+	}
 	void SceneManager::FadeOut()
 	{
+		SceneManager::loadRect(0, 0);
+		/*fading works!!!!*/
+		float targetAlpha = 1.0f;
 		targetAlpha = 0.0f;
+		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.f) * FADE_SPEED);
+		SceneManager::drawRect(alpha);
 	}
 
 	/*destroy functions*/

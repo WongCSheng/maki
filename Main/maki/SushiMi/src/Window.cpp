@@ -160,6 +160,60 @@ namespace Core
 		}
 	}
 
+	bool Window::checkWin()
+	{
+		//checking through all loaded box for the current level
+		for (auto& box : SceneManager::tilecontainer)
+		{
+			//checking through all loaded ingredient for the current level
+			for (auto& ingredient : SceneManager::ingredientcontainer)
+			{
+
+				//convert coordinates back into row and column (dont know why need to plus 1)
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / m_width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / m_height)) + 1;
+				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+
+				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / m_width) + 1);
+				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / m_height) + 1);
+				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+
+				//checking through level win condition (check if ingredient land on box position)
+				if (ingredientCoordinates == boxCoordinates)
+				{
+					//ingredient row and col matches box row and col
+					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+					for (auto& y : levelWinConditions)//suggest to change to map
+					{
+						//check whether is correct ingredient to box
+						if (checkCondition == y)
+						{
+							std::cout << "ingredient landed correct box\n";
+							//check if quest tab is open
+							if (isQuestTab)
+							{
+								for (auto& x : CoreSystem->objfactory->ObjectContainer)
+								{
+									Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+									Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+									spritecomp->transformation.Position = transcomp->Position;
+									spritecomp->transformation.Scale = transcomp->Scale;
+
+									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+									if (x.first == "done")
+										spritecomp->draw();
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 	Window::Window(int width, int height)
 		:m_width(width),
 		m_height(height)
@@ -373,10 +427,8 @@ namespace Core
 			// isquestab(true) = false;
 			// off the tab state
 
-			std::cout << "opening quest tab" << std::endl;
 			isQuestTab = !isQuestTab;
 			keystate_tab = false;
-			std::cout << isQuestTab << " <-- boolean state for quest tab\n";
 		}
 
 		if (keystate_K)
@@ -615,7 +667,7 @@ namespace Core
 		{
 			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
-			
+
 			if (keystate_T)
 			{
 				isCutscene = false;
@@ -730,19 +782,33 @@ namespace Core
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			std::cout << xpos << " " << ypos << "\n";
+			for (auto& x : CoreSystem->objfactory->ObjectContainer)
+			{
+				if (x.first == "ResumeButton")
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
+					//RESUME THE GAME BUTTON
+					if (((float)xpos > position.x) &&
+						((float)ypos > position.y) &&
+						((float)xpos < (position.x + scale.x)) &&
+						((float)ypos < (position.y + scale.y)))
+					{
+						gameIsPaused = false;
+						//std::cout << "game resume, no more pause screen" << std::endl;
+						int screenwidth = 0, screenheight = 0;
+						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
+						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
+					}
+				}
+			}
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
-			//RESUME THE GAME BUTTON
-			if (xpos > 600 && ypos > 460 && xpos < 1310 && ypos < 560)
-			{
-				gameIsPaused = false;
-				//std::cout << "game resume, no more pause screen" << std::endl;
-				int screenwidth = 0, screenheight = 0;
-				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
-				SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
-			}
+
 			//RETURN TO MAIN MENU
 			if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
 			{
@@ -852,7 +918,7 @@ namespace Core
 			}
 		}
 
-		else if ( (keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -1070,7 +1136,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					
+
 
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
@@ -1109,9 +1175,6 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
-
-				//check if player matches a ingredient to a box
-				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1179,7 +1242,7 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
-					
+
 					if (fin)
 					{
 						fin.close();
@@ -1191,6 +1254,8 @@ namespace Core
 						return;
 					}
 					std::getline(fin, realstring);
+
+
 
 					dialogue_style = static_cast<int>(dialogue::T2);
 					curr_len = 0;
@@ -1295,9 +1360,9 @@ namespace Core
 						return;
 					}
 					std::getline(fin, realstring);
-					
 
-					
+
+
 
 					dialogue_style = static_cast<int>(dialogue::L1);
 					curr_len = 0;
@@ -1309,9 +1374,6 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
-
-				//check if player matches a ingredient to a box
-				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1326,7 +1388,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					
+
 				}
 				if (Map::isWin())
 				{
@@ -1400,7 +1462,6 @@ namespace Core
 
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
-
 				if (gameIsPaused == false)
 				{
 					if (isPlayerinSinkhole)
@@ -1455,7 +1516,7 @@ namespace Core
 					Map::LoadMap();
 
 					loaded = true;
-
+					
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1530,6 +1591,7 @@ namespace Core
 			/*********************************
 				LEVEL 4 LOAD & WIN CHECK
 			*********************************/
+			std::cout << isLevel4 << "level 4 state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
 			if (isLevel4 == true)
 			{
 				if (!loaded)
@@ -1540,7 +1602,7 @@ namespace Core
 					Map::LoadMap();
 
 					loaded = true;
-
+					isQuestTab = true;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1825,7 +1887,7 @@ namespace Core
 				if (SceneManager::num_dialogue_clicks > 0)
 				{
 					isDialogue = true;
-					isQuestTab = false;
+					//isQuestTab = false; need to check if there is dialogues for level 4 onwards,  turned off to enable questTabs 
 					//std::cout << "dialogue is displaying" << std::endl;
 					if (keystate_space)
 					{
@@ -1908,20 +1970,105 @@ namespace Core
 			if (isQuestTab == true)
 			{
 				//std::cout << "Drawing tabmenu\n";
-				for (auto& x : CoreSystem->objfactory->ObjectContainer)
+				if (isTut1)
 				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestTut1");
 
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					if (x.first == "QuestTut1")
-					{
-						Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-						Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-						spritecomp->transformation.Position = transcomp->Position;
-						spritecomp->transformation.Scale = transcomp->Scale;
-						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-						spritecomp->draw();
-					}
-				}											
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel1)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv1");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel2)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv2");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel3)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv3");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel4)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv4");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel5)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv5");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isLevel6)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv6");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+
 			}
 
 			if (isWalk == true)
@@ -2033,7 +2180,7 @@ namespace Core
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
-			}
+		}
 #endif
 
 #endif
@@ -2043,7 +2190,7 @@ namespace Core
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 
-		}
+	}
 
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
@@ -2053,60 +2200,5 @@ namespace Core
 
 		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
 		//}
-	}
-
-	bool Window::checkWin()
-	{
-		//checking through all loaded box for the current level
-		for (auto& box : SceneManager::tilecontainer)
-		{
-			//checking through all loaded ingredient for the current level
-			for (auto& ingredient : SceneManager::ingredientcontainer)
-			{
-				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height)) + 1;
-				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
-
-				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width) + 1);
-				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height) + 1);
-				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
-				//checking through level win condition (check if ingredient land on box position)
-				if (ingredientCoordinates == boxCoordinates)
-				{
-					//ingredient row and col matches box row and col
-					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
-					for (auto& y : levelWinConditions)//suggest to change to map
-					{
-						//check whether is correct ingredient to box
-						if (checkCondition == y)
-						{
-							std::cout << "ingredient landed correct box\n";
-							//check if quest tab is open
-							if (isQuestTab)
-							{
-								for (auto& x : CoreSystem->objfactory->ObjectContainer)
-								{
-									Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-									Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-									spritecomp->transformation.Position = transcomp->Position;
-									spritecomp->transformation.Scale = transcomp->Scale;
-									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-									if (x.first == "done")
-									{
-										spritecomp->draw();
-									}
-								}
-							}
-						}
-						else
-							std::cout << "wrong ingredient or box\n";
-					}
-				}
-			}
-		}
-		return false;
-	}
+}
 }

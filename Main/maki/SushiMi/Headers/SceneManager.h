@@ -127,6 +127,8 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
+		static std::vector<std::pair<wall_type, Sprite*>> RetreiveTile() { return tilecontainer; };
+		static std::vector<std::pair<grid_number, Sprite*>> RetreiveIngredient() { return ingredientcontainer;};
 		static void restartLevel();
 		static void nextLevel();
 

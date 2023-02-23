@@ -52,9 +52,6 @@ namespace Core
 		
 		static int CorrectCombination;
 	};
-	extern int width, height;
 	extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
-	extern int grid_row;
-	extern int grid_col;
 }
 #endif

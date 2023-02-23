@@ -27,6 +27,7 @@ namespace Core
 		~Sprite();
 
 		void draw();
+		void drawTest();
 
 		void draw(double deltatime, AnimationType type);
 

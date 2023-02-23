@@ -49,6 +49,13 @@ namespace Core
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
 
+	void Sprite::drawTest()
+	{
+		glBindTexture(GL_TEXTURE_2D, texture.TextureID);
+		glBindVertexArray(rectangle.VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+	}
+
 	void Sprite::draw(double deltatime, AnimationType type)
 	{
 

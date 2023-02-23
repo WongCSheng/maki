@@ -1158,7 +1158,12 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
-				SceneManager::FadeOut();
+
+				//fadeComplete = SceneManager::FadeOut();
+				//if (fadeComplete == 0)
+				//{
+				//	SceneManager::FadeOut();
+				//}
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1170,35 +1175,22 @@ namespace Core
 					Map::LoadMap();
 					loaded = true;
 
-
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
-
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/_tut2_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-					
-
-
 					dialogue_style = static_cast<int>(dialogue::T2);
-					curr_len = 0;
-
-					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv1 tile map
-				SceneManager::FadeOut();
 				Map::DrawMap();
 
 
@@ -1211,6 +1203,7 @@ namespace Core
 					player->draw(delta);
 
 				}
+
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
@@ -1229,6 +1222,9 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();

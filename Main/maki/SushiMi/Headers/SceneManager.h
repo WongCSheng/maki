@@ -42,7 +42,7 @@ namespace Core
 		empty2,			//:
 		win,			//;
 		temp,			//<
-		inbox1,			//=
+		insidebox,		//=
 		inbox2,			//>
 		sinkhole_gunkan,//?
 		first = 64,
@@ -152,6 +152,7 @@ namespace Core
 		static void drawCutscene();
 		static void drawLevelSelect();
 		static void drawRP_Dialogue();
+		static void drawBlackOverlay();
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
@@ -223,5 +224,9 @@ namespace Core
 			tileWidth, tileHeight;
 
 		double inline static starttime,endtime,delta;
+		
+		// Black overlay alpha parameters
+		inline static float targetAlpha = 0.0f;
+		inline static float currentAlpha = 0.0f;
 	};
 }

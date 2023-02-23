@@ -254,6 +254,17 @@ namespace Core
 			gunkan_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
 		}
 	}
+	
+	void SceneManager::drawBlackOverlay()
+	{
+		SceneManager::loadRect(0, 0);
+
+		currentAlpha = std::lerp(currentAlpha, targetAlpha, 0.016f);
+		SceneManager::drawRect(currentAlpha);
+		/*
+		std::cout << "Alpha: " << currentAlpha << std::endl;
+		*/
+	}
 
 	/*draw functions*/
 	void SceneManager::drawTile()

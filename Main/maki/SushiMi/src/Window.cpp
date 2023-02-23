@@ -206,6 +206,7 @@ namespace Core
 		camera = std::make_unique<Camera>(0, 0);
 
 		timetodeletegrid = false;
+		isMenuState = true;
 #ifdef EDITOR
 		//the first level displayed on the map's launch
 		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
@@ -221,6 +222,7 @@ namespace Core
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
+		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -236,7 +238,8 @@ namespace Core
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
-		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_.png");
+		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
+		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
 
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
@@ -1078,7 +1081,7 @@ namespace Core
 
 					Map::LoadMap();
 					loaded = true;
-					isQuestTab = true;
+					//isQuestTab = true; //cannot put here, you will have GL error!
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1134,7 +1137,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::FadeIn();
+				//SceneManager::FadeIn();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1155,7 +1158,7 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
-				SceneManager::FadeOut();
+				//SceneManager::FadeOut();
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1195,7 +1198,7 @@ namespace Core
 					//also need dialogue after game end
 				}
 				//draw lv1 tile map
-				SceneManager::FadeOut();
+				//SceneManager::FadeOut();
 				Map::DrawMap();
 
 
@@ -1711,7 +1714,7 @@ namespace Core
 					dialogue_style = static_cast<int>(dialogue::L6);
 					curr_len = 0;
 
-					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
 				}
@@ -1767,18 +1770,18 @@ namespace Core
 				{
 					SceneManager::loadRP_Dialogue();
 					SceneManager::drawRP_Dialogue();
-					//std::string realstring = "Before delivery, I need to collect all of the ingredients.";
+	
 					if (curr_len <= realstring.length())
 					{
-						if (curr_len < 60)
+						if (realstring.length() < 60)
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							if (GLHelper::delta_time * 150 < 2)
 							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
+								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
 									curr_len = realstring.length();
@@ -1786,17 +1789,86 @@ namespace Core
 
 							}
 						}
-						else if (curr_len >= 60)
+						else if (realstring.length() >= 60)
 						{
 							std::string first_line = realstring.substr(0, 62);
 							std::string second_line = realstring.substr(62, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
 							if (GLHelper::delta_time * 150 < 2)
 							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+					}
+
+				}
+				else if (dialogue_style >= static_cast<int>(dialogue::L4) && dialogue_style <= static_cast<int>(dialogue::L6))
+				{
+					SceneManager::loadRP_Dialogue();
+					SceneManager::drawRP_Dialogue();
+
+				
+
+					if (curr_len <= realstring.length())
+					{
+						if (realstring.length() < 55)
+						{
+							std::string one_by_one = realstring.substr(0, curr_len);
+							
+							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 55 && realstring.length() < 107)
+						{
+							std::string first_line = realstring.substr(0, 53);
+							std::string second_line = realstring.substr(53, curr_len);
+
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 107)
+						{
+							//std::cout << "this text is soo long " << std::endl;
+							std::string first_line = realstring.substr(0, 53);
+							std::string second_line = realstring.substr(53, 107-53);
+							std::string third_line = realstring.substr(107, curr_len);
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
 									curr_len = realstring.length();
@@ -1812,6 +1884,7 @@ namespace Core
 				if (SceneManager::num_dialogue_clicks > 0)
 				{
 					isDialogue = true;
+					isQuestTab = false;
 					//std::cout << "dialogue is displaying" << std::endl;
 					if (keystate_space)
 					{
@@ -1821,7 +1894,7 @@ namespace Core
 						{
 							std::getline(fin, realstring);
 						}
-						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						//std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}
 
@@ -1829,6 +1902,7 @@ namespace Core
 				else
 				{
 					isDialogue = false;
+					isQuestTab = true;
 				}
 			}
 
@@ -1838,7 +1912,7 @@ namespace Core
 			if (isMenuState == true)
 			{
 				//AudioManager.SetMusicVolume(0.4f);
-
+				isQuestTab = false;
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -1876,7 +1950,7 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-					if (x.first == "PauseMenu")
+					if (x.first == "PauseMenuJSON")
 						spritecomp->draw();
 
 					if (x.first == "ResumeButton")
@@ -1895,15 +1969,15 @@ namespace Core
 				//std::cout << "Drawing tabmenu\n";
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
 					if (x.first == "QuestTut1")
 					{
+						Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+						Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+						spritecomp->transformation.Position = transcomp->Position;
+						spritecomp->transformation.Scale = transcomp->Scale;
+						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 						spritecomp->draw();
 					}
 				}											
@@ -1927,26 +2001,28 @@ namespace Core
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 					//NEXT PAGE
-					if (HowToPlayPage < 3)
+					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+					if (HowToPlayPage < 4)
 					{
-						if (xpos > 1651 && xpos < 1732 && ypos > 820 && ypos < 889)
+						if (xpos > 1595 && xpos < 1681 && ypos > 811 && ypos < 889)
 						{
 
 							HowToPlayPage++;
 
-							std::cout << "next page" << std::endl;
+							//std::cout << "next page" << std::endl;
 							mouseLeft = false;
 						}
 					}
 					//PREV PAGE 
 					if (HowToPlayPage > 0)
 					{
-						if (xpos > 1525 && xpos < 1608 && ypos > 820 && ypos < 889)
+						if (xpos > 1474 && xpos < 1560 && ypos > 812 && ypos < 888)
 						{
 
 							HowToPlayPage--;
 
-							std::cout << "previous page" << std::endl;
+							//std::cout << "previous page" << std::endl;
 							mouseLeft = false;
 
 
@@ -1956,14 +2032,14 @@ namespace Core
 
 					//BACK
 
-					if (xpos > 151 && xpos < 339 && ypos > 820 && ypos < 889)
+					if (xpos > 223 && xpos < 485 && ypos > 799 && ypos < 890)
 					{
 
 						isMenuState = true;
 						HowToPlayPage = 0;
 						isHowToPlay = false;
 
-						std::cout << "return to main menu" << std::endl;
+						//std::cout << "return to main menu" << std::endl;
 
 					}
 

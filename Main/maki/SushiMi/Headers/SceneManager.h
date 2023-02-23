@@ -190,12 +190,14 @@ namespace Core
 
 		//dialogue
 		static inline Sprite* riceplain_dialogue;
+		static inline Sprite* gunkan_dialogue;
 		static inline int num_dialogue_clicks;
 
 		static inline Sprite* howtoplay_overlay1;
 		static inline Sprite* howtoplay_overlay2;
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
+		static inline Sprite* howtoplay_overlay5;
 
 		static inline Sprite* frame1;
 		static inline Sprite* frame2;

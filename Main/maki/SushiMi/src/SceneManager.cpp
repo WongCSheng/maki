@@ -170,6 +170,8 @@ namespace Core
 		howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
 		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
 		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadSettings()
 	{
@@ -240,8 +242,17 @@ namespace Core
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-		riceplain_dialogue->transformation.Position = glm::vec2(screenwidth*0.1f, screenheight*0.6f);
-		riceplain_dialogue->transformation.Scale = glm::vec2(screenwidth*0.8f, screenheight *0.4f);
+		if (Window::dialogue_style >= static_cast<int>(Window::dialogue::T1) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L3))
+		{
+			riceplain_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
+			riceplain_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
+
+		}
+		else if (Window::dialogue_style >= static_cast<int>(Window::dialogue::L4) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L6))
+		{
+			gunkan_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
+			gunkan_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
+		}
 	}
 
 	/*draw functions*/
@@ -353,6 +364,13 @@ namespace Core
 			howtoplay_overlay4->draw();
 			break;
 		}
+		case 4:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay5->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay5->draw();
+			break;
+		}
 		}
 	}
 	void SceneManager::drawSettings()
@@ -455,8 +473,20 @@ namespace Core
 
 	void SceneManager::drawRP_Dialogue()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
-		riceplain_dialogue->draw();
+		
+
+		if (Window::dialogue_style >= static_cast<int>(Window::dialogue::T1) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L3))
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
+			riceplain_dialogue->draw();
+
+		}
+		else if (Window::dialogue_style >= static_cast<int>(Window::dialogue::L4) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L6))
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", gunkan_dialogue->transformation.Get());
+			gunkan_dialogue->draw();
+		}
+		
 		
 	}
 
@@ -559,6 +589,7 @@ namespace Core
 		delete howtoplay_overlay2;
 		delete howtoplay_overlay3;
 		delete howtoplay_overlay4;
+		delete howtoplay_overlay5;
 	}
 
 	void SceneManager::destroySettings()
@@ -592,6 +623,7 @@ namespace Core
 	void SceneManager::destroyRP_Dialogue()
 	{
 		delete riceplain_dialogue;
+		delete gunkan_dialogue;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

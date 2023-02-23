@@ -1111,11 +1111,16 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				fadeComplete = SceneManager::FadeIn();
-				if (fadeComplete == 0)
-				{
-					SceneManager::FadeIn();
-				}
+				//fadeComplete = SceneManager::FadeIn();
+				//if (fadeComplete == 0)
+				//{
+				//	SceneManager::FadeIn();
+				//}
+
+				SceneManager::FadeIn();
+				
+
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1126,21 +1131,26 @@ namespace Core
 					isTut2 = true;
 					isWinCondition = false;
 					loaded = false;
-
+					SceneManager::FadeOut();
 
 				}
 
 			}
+
+
 			/*********************************
 				TUTORIAL 2 LOAD & WIN CHECK
 			*********************************/
 			if (isTut2 == true)
 			{
-				fadeComplete = SceneManager::FadeOut();
-				if (fadeComplete == 0)
-				{
+				if (!isWinCondition)
 					SceneManager::FadeOut();
-				}
+
+				//fadeComplete = SceneManager::FadeOut();
+				//if (fadeComplete == 0)
+				//{
+				//	SceneManager::FadeOut();
+				//}
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1164,6 +1174,7 @@ namespace Core
 				//draw lv1 tile map
 				Map::DrawMap();
 
+
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
@@ -1173,12 +1184,15 @@ namespace Core
 					player->draw(delta);
 
 				}
+
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
 					SceneManager::drawHowToOverlay();
 
 				}
+
+				SceneManager::drawBlackOverlay();
 				if (Map::isWin())
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
@@ -1191,11 +1205,10 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-				fadeComplete = SceneManager::FadeIn();
-				if (fadeComplete == 0)
-				{
-					SceneManager::FadeIn();
-				}
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 
@@ -1274,6 +1287,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1350,6 +1368,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1421,6 +1444,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls

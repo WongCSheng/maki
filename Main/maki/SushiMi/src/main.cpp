@@ -40,8 +40,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
-
-
 static Core::MainSystem* CoreSystem;
 
 /*                                                      function definitions

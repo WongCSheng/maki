@@ -263,15 +263,21 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
+			if (ingredient.first == grid_number::soya) {
+				if (ingredient.second->timer >= 5.f) {
+					ingredient.second->curr_anim = Idle;
+				}
+			}
+
 			if (ingredient.second->isSpriteSheet)
 			{
-				ingredient.second->draw(delta, ingredient.second->curr_anim);
+				ingredient.second->draw(Window::GetInstance(0,0)->getDelta(), ingredient.second->curr_anim);
 			}
 			else
 			{
 				ingredient.second->draw();
 			}
-
+			ingredient.second->timer += Window::GetInstance(0, 0)->getDelta();
 		}
 	}
 
@@ -457,6 +463,16 @@ namespace Core
 
 	}
 
+
+	void SceneManager::drawBlackOverlay()
+	{
+		SceneManager::loadRect(0, 0);
+		
+		currentAlpha = std::lerp(currentAlpha, targetAlpha,  Window::GetInstance(0, 0)->getDelta());
+		SceneManager::drawRect(currentAlpha);
+		std::cout << "DELTA: " << Window::GetInstance(0, 0)->getDelta() << std::endl;
+	}
+
 	void SceneManager::loadRect(int x, int y)
 	{
 		rec->transformation.Position = glm::vec2(x, y);
@@ -480,63 +496,14 @@ namespace Core
 
 
 	}
-	bool SceneManager::FadeIn()
+	void SceneManager::FadeIn()
 	{
-		SceneManager::loadRect(0, 0);
-		/*fading works!!!!*/
-		static double start_time = glfwGetTime();
-		static bool resetTime = 0;
-		double curr_time = glfwGetTime();
-		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-		if (timeDiff > 1)
-		{
-			timeDiff = 1;
-		}
-
-		if (resetTime == 1) { // on new fade entry
-			start_time = glfwGetTime();
-			timeDiff = (curr_time - start_time) / fade_duration;
-			resetTime = 0;
-		}
-
-		float alpha_start = 0.f;
-		float alpha_end = 1.f;
-		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
-		SceneManager::drawRect(alpha);
-		if (alpha > 0.99) { // on fade finish exit
-			resetTime = 1;
-			return 1;
-		}
-		return 0;
+		targetAlpha = 1.0f;
 	}
-	bool SceneManager::FadeOut()
+
+	void SceneManager::FadeOut()
 	{
-		SceneManager::loadRect(0, 0);
-		/*fading works!!!!*/
-		static double start_time = glfwGetTime();
-		static bool resetTime = 0;
-		double curr_time = glfwGetTime();
-		double fade_duration{ 3.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-		if (timeDiff > 1)
-		{
-			timeDiff = 1;
-		}
-
-		if (resetTime == 1) { // on new fade entry
-			start_time = glfwGetTime();
-			timeDiff = (curr_time - start_time) / fade_duration;
-			resetTime = 0;
-		}
-
-		float alpha_start = 1.f;
-		float alpha_end = 0.f;
-		float alpha = alpha_start + timeDiff * (alpha_end - alpha_start);
-		SceneManager::drawRect(alpha);
-		if (alpha < 0.1) { // on fade finish exit
-			resetTime = 1;
-			return 1;
-		}
-		return 0;
+		targetAlpha = 0.0f;
 	}
 
 	/*destroy functions*/

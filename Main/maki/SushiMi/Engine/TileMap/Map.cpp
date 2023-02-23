@@ -333,6 +333,7 @@ namespace Core
 				//soya
 				case static_cast<int>(grid_number::soya):
 				{
+
 					soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
 					soya->isSpriteSheet = 1;
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
@@ -1171,7 +1172,11 @@ namespace Core
 								break;
 							}
 						}
+
+						soya->timer = 0;
+
 						soya->curr_anim = Run;
+						
 						Window::player->move_left();
 						std::cout << "soya dripped\n";
 					}

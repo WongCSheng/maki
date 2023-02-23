@@ -92,6 +92,8 @@ namespace Core
 			int y;
 		} goal2_Grid_pos;
 
+		float timer;
+
 	private:
 
 		Texture texture;

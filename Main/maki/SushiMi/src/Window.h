@@ -22,7 +22,7 @@ namespace Core
 
 		static Window* GetInstance(int width, int height)
 		{
-			Window* instance = new Window(width, height);
+			static Window* instance = new Window(width, height);
 			return instance;
 		}
 
@@ -117,6 +117,11 @@ namespace Core
 			static inline int screenwidth;
 			static inline int screenheight;
 		};
+
+		float getDelta()
+		{
+			return static_cast<float>(delta * 10.f);
+		}
 
 	private:
 		int m_width, m_height;

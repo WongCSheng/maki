@@ -116,14 +116,6 @@ namespace Core
 	{
 
 	};
-
-	enum class Rice
-	{
-		isJustRice = 0,
-		isSoy = 1,
-		isWasabi = 2,
-		isBoth = 3
-	};
 	
 	class SceneManager : public SystemFrame
 	{
@@ -163,8 +155,8 @@ namespace Core
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
-		static bool FadeIn();
-		static bool FadeOut();
+		static void FadeIn();
+		static void FadeOut();
 
 
 		static void destroyTile();

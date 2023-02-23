@@ -58,6 +58,10 @@ namespace Core
 	static bool keystate_4 = false;
 	static bool keystate_5 = false;
 	static bool keystate_6 = false;
+	static bool keystate_7 = false;
+	static bool keystate_8 = false;
+	static bool keystate_9 = false;
+	static bool keystate_0 = false;
 	static bool keystate_K = false;
 	static bool keystate_L = false;
 	static bool keystate_T = false;
@@ -143,14 +147,18 @@ namespace Core
 			keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
 
 
+			keystate_K = (key == GLFW_KEY_K) ? true : false;
+			keystate_L = (key == GLFW_KEY_L) ? true : false;
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
 			keystate_2 = (key == GLFW_KEY_2) ? true : false;
 			keystate_3 = (key == GLFW_KEY_3) ? true : false;
 			keystate_4 = (key == GLFW_KEY_4) ? true : false;
 			keystate_5 = (key == GLFW_KEY_5) ? true : false;
 			keystate_6 = (key == GLFW_KEY_6) ? true : false;
-			keystate_K = (key == GLFW_KEY_K) ? true : false;
-			keystate_L = (key == GLFW_KEY_L) ? true : false;
+			keystate_7 = (key == GLFW_KEY_7) ? true : false;
+			keystate_8 = (key == GLFW_KEY_8) ? true : false;
+			keystate_9 = (key == GLFW_KEY_9) ? true : false;
+			keystate_0 = (key == GLFW_KEY_0) ? true : false;
 
 			keystate_W = (key == GLFW_KEY_W) ? true : false;
 			keystate_A = (key == GLFW_KEY_A) ? true : false;
@@ -292,8 +300,11 @@ namespace Core
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
+		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
+
 		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
 		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
+		SceneManager::fishingvillage_dialogue = new Sprite("../textures/UI/DialogueBox_FishingVillage.png");
 
 		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
@@ -355,7 +366,8 @@ namespace Core
 		SceneManager::destroyCutscene();
 		SceneManager::destroyPlayer_Stuck();
 		SceneManager::destroyLevelSelect();
-		SceneManager::destroyRP_Dialogue();
+		SceneManager::destroy_Dialogue();
+		SceneManager::destroy_Wood_BG();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -411,6 +423,10 @@ namespace Core
 			isLevel4 = false;
 			isLevel5 = false;
 			isLevel6 = false;
+			isLevel7 = false;
+			isLevel8 = false;
+			isLevel9 = false;
+			isLevel10 = false;
 			loaded = false;
 			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in menu
 
@@ -450,6 +466,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -480,6 +500,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -508,6 +532,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -538,6 +566,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -567,6 +599,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false; 
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -595,6 +631,10 @@ namespace Core
 				isLevel4 = true;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -624,6 +664,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = true;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -653,6 +697,10 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = true;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -661,6 +709,72 @@ namespace Core
 
 
 				keystate_6 = false;
+			}
+		}
+		if (keystate_7)
+		{
+			keystate_7 = true;
+			std::cout << "you have loaded level 7" << std::endl;
+			if (keystate_7)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = true;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_7 = false;
+			}
+		}
+		if (keystate_8)
+		{
+			keystate_8 = true;
+			std::cout << "you have loaded level 8" << std::endl;
+			if (keystate_8)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = true;
+				isLevel9 = false;
+				isLevel10 = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_8 = false;
 			}
 		}
 		if (keystate_T)
@@ -998,9 +1112,19 @@ namespace Core
 
 			}
 			else
+			{
 				glClearColor((float)112 / 255, (float)153 / 255, (float)49 / 255, 1.0f);
+
+			}
 			glClear(GL_COLOR_BUFFER_BIT);
+
 			Shaders->Textured_Shader()->use();
+			if (isLevel7 || isLevel8 || isLevel9)
+			{
+				SceneManager::load_Wood_BG();
+				SceneManager::draw_Wood_BG();
+
+			}
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			//Map::DrawMap(); //shifted into boolean
 
@@ -1259,7 +1383,7 @@ namespace Core
 
 					dialogue_style = static_cast<int>(dialogue::T2);
 					curr_len = 0;
-					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
@@ -1604,9 +1728,9 @@ namespace Core
 					loaded = true;
 					isQuestTab = true;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
-					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
-					AudioManager.SetMusicVolume(0.01f);
-					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					AudioManager.LoadMusic("Forest_bgm.wav");
+					AudioManager.SetMusicVolume(0.01f); 
+					AudioManager.PlayMusic("Forest_bgm.wav");
 
 					if (fin)
 					{
@@ -1687,9 +1811,9 @@ namespace Core
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
-					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f);
-					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					AudioManager.PlayMusic("Forest_bgm.wav");
 
 					if (fin)
 					{
@@ -1767,9 +1891,9 @@ namespace Core
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
-					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f);
-					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					AudioManager.PlayMusic("Forest_bgm.wav");
 
 					if (fin)
 					{
@@ -1833,6 +1957,244 @@ namespace Core
 				}
 			}
 
+			/*********************************
+				LEVEL 7 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel7 == true)
+			{
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level7.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("Fishing_Village.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("Fishing_Village.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl7_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
+					dialogue_style = static_cast<int>(dialogue::L7);
+					curr_len = 0;
+
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
+				}
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+			if (isWinCondition == true && isLevel7 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isLevel7 = false;
+					isLevel8 = true;
+					loaded = false;
+				}
+			}
+			/*********************************
+				LEVEL 8 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel8 == true)
+			{
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level8.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("Fishing_Village.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("Fishing_Village.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl8_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
+					dialogue_style = static_cast<int>(dialogue::L8);
+					curr_len = 0;
+
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
+				}
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+			if (isWinCondition == true && isLevel8 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isLevel8 = false;
+					isLevel9 = true;
+					loaded = false;
+				}
+			}
+			/*********************************
+				LEVEL 9 LOAD & WIN CHECK
+			*********************************/
+			if (isLevel9 == true)
+			{
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/level9.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("Fishing_Village.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("Fishing_Village.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl9_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
+					dialogue_style = static_cast<int>(dialogue::L9);
+					curr_len = 0;
+
+					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
+				}
+				Map::DrawMap(); //this will also set numQuests
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				//std::cout << "goals no " << Window::numQuests << std::endl;
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+			if (isWinCondition == true && isLevel9 == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (mouseLeft && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isLevel9 = false;
+					isLevel10 = true;
+					loaded = false;
+				}
+			}
+
 			/**********************************
 				DIALOGUE DISPLAY (riceplain)
 			*************************************/
@@ -1840,20 +2202,20 @@ namespace Core
 			{
 				if (dialogue_style >= static_cast<int>(dialogue::T1) && dialogue_style <= static_cast<int>(dialogue::L3))
 				{
-					SceneManager::loadRP_Dialogue();
-					SceneManager::drawRP_Dialogue();
-					//std::string realstring = "Before delivery, I need to collect all of the ingredients.";
+					SceneManager::load_Dialogue();
+					SceneManager::draw_Dialogue();
+	
 					if (curr_len <= realstring.length())
 					{
-						if (curr_len < 60)
+						if (curr_len < 54)
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							if (GLHelper::delta_time * 150 < 2)
 							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
+								curr_len += 1; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
 									curr_len = realstring.length();
@@ -1861,17 +2223,17 @@ namespace Core
 
 							}
 						}
-						else if (curr_len >= 60)
+						else if (curr_len >= 54)
 						{
-							std::string first_line = realstring.substr(0, 62);
-							std::string second_line = realstring.substr(62, curr_len);
+							std::string first_line = realstring.substr(0, 54);
+							std::string second_line = realstring.substr(54, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
 							if (GLHelper::delta_time * 150 < 2)
 							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
 									curr_len = realstring.length();
@@ -1881,6 +2243,143 @@ namespace Core
 						}
 					}
 
+				}
+				else if (dialogue_style >= static_cast<int>(dialogue::L4) && dialogue_style <= static_cast<int>(dialogue::L6))
+				{
+					SceneManager::load_Dialogue();
+					SceneManager::draw_Dialogue();
+
+				
+
+					if (curr_len <= realstring.length())
+					{
+						if (realstring.length() < 55)
+						{
+							std::string one_by_one = realstring.substr(0, curr_len);
+							
+							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 55 && realstring.length() < 107)
+						{
+							std::string first_line = realstring.substr(0, 53);
+							std::string second_line = realstring.substr(53, curr_len);
+
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 107)
+						{
+							//std::cout << "this text is soo long " << std::endl;
+							std::string first_line = realstring.substr(0, 53);
+							std::string second_line = realstring.substr(53, 107-53);
+							std::string third_line = realstring.substr(107, curr_len);
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+					}
+
+				}
+				else if (dialogue_style >= static_cast<int>(dialogue::L7) && dialogue_style <= static_cast<int>(dialogue::L9))
+				{
+					SceneManager::load_Dialogue();
+					SceneManager::draw_Dialogue();
+
+
+
+					if (curr_len <= realstring.length())
+					{
+						if (realstring.length() < 55)
+						{
+							std::string one_by_one = realstring.substr(0, curr_len);
+
+							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 55 && realstring.length() < 107)
+						{
+							std::string first_line = realstring.substr(0, 55);
+							std::string second_line = realstring.substr(55, curr_len);
+
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+						else if (realstring.length() >= 107)
+						{
+							//std::cout << "this text is soo long " << std::endl;
+							std::string first_line = realstring.substr(0, 55);
+							std::string second_line = realstring.substr(55, 107 - 55);
+							std::string third_line = realstring.substr(107, curr_len);
+							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
+							if (GLHelper::delta_time * 150 < 2)
+							{
+								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								//std::cout << "value of i is : " << curr_len << std::endl;
+								if (curr_len > realstring.length())
+								{
+									curr_len = realstring.length();
+								}
+
+							}
+						}
+					}
 				}
 
 				//if there are still pages to display

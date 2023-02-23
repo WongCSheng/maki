@@ -345,6 +345,8 @@ namespace Core
 					soya->curr_anim = Idle;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+
+					
 					break;
 				}
 				//wasabi
@@ -967,10 +969,10 @@ namespace Core
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
 				}
-				case static_cast<int>(wall_type::Wall9_8):
+				case static_cast<int>(wall_type::WaterWall):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_8.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_8, tile);
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WaterWall, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;
@@ -1034,6 +1036,24 @@ namespace Core
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1_Gunkan, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}
+				
+				/*case static_cast<int>(wall_type::Water):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Water, tile);
+
+					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					break;
+				}*/
+				//	Wall3_1_Gunkan,		//p
+				case static_cast<int>(wall_type::WoodenPlatform):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
 					break;

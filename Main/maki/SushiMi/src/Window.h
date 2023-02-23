@@ -62,7 +62,10 @@ namespace Core
 			L3,	//4
 			L4,	//5
 			L5, //6
-			L6	//7
+			L6,	//7
+			L7,	//8
+			L8,	//9
+			L9	//10
 		};
 
 		bool isQuestTab;

@@ -306,7 +306,7 @@ namespace Core
 		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
 		SceneManager::fishingvillage_dialogue = new Sprite("../textures/UI/DialogueBox_FishingVillage.png");
 
-		SceneManager::win_overlay = new Sprite("../textures/Victory.jpg");
+		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
@@ -1324,16 +1324,17 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				//SceneManager::FadeIn();
-				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isTut1 = false;
 					isTut2 = true;
 					isWinCondition = false;
 					loaded = false;
+					keystate_space = false;
 
 
 				}
@@ -1390,7 +1391,7 @@ namespace Core
 				/*Fade out effect*/
 				if (!isWinCondition)
 				{
-					SceneManager::FadeOut();
+					//SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
 				//draw lv1 tile map
@@ -1426,7 +1427,7 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 				/*Fade In Effect*/
-				SceneManager::FadeIn();
+				//SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
 
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
@@ -1434,13 +1435,13 @@ namespace Core
 
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isTut2 = false;
 					isLevel1 = true;
 					isWinCondition = false;
 					loaded = false;
-
+					keystate_space = false;
 
 				}
 
@@ -1530,12 +1531,13 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isLevel1 = false; //unload curr level
 					isLevel2 = true; //load new level
 					isWinCondition = false; //reset win condition
 					loaded = false; //set to load
+					keystate_space = false;
 				}
 
 			}
@@ -1618,12 +1620,13 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel2 = false;
 					isLevel3 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 			/*********************************
@@ -1703,13 +1706,14 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = false;
 					isLevel3 = false;
 					isLevel4 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 			/*********************************
@@ -1785,13 +1789,14 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = false;
 					isLevel4 = false;
 					isLevel5 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 
@@ -1868,12 +1873,13 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel5 = false;
 					isLevel6 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 			/*********************************
@@ -1949,12 +1955,13 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel6 = false;
 					isLevel7 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 
@@ -2030,12 +2037,14 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel7 = false;
 					isLevel8 = true;
 					loaded = false;
+					keystate_space = false;
+
 				}
 			}
 			/*********************************
@@ -2108,12 +2117,14 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel8 = false;
 					isLevel9 = true;
 					loaded = false;
+					keystate_space = false;
+
 				}
 			}
 			/*********************************
@@ -2186,12 +2197,13 @@ namespace Core
 				SceneManager::drawWinOverlay();
 				//stop all player controls
 				//press button to undraw level 1, and draw level 2
-				if (mouseLeft && isWinCondition == true)
+				if (keystate_space && isWinCondition == true)
 				{
 					isWinCondition = false;
 					isLevel9 = false;
 					isLevel10 = true;
 					loaded = false;
+					keystate_space = false;
 				}
 			}
 

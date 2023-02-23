@@ -9,7 +9,7 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/levelQuest/Tut1.png",
-      "name": "QuestTut1",
+      "name": "QuestT1",
       "SpriteSheet": false,                           
       "SpriteSize": [ 1280, 703 ]
     }

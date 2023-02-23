@@ -460,7 +460,7 @@ namespace Core
 				gameIsPaused = false;
 				isTut1 = true;
 				isTut2 = false;
-				isLevel1 = true;
+				isLevel1 = false;
 				isLevel2 = false;
 				isLevel3 = false;
 				isLevel4 = false;
@@ -779,7 +779,6 @@ namespace Core
 		}
 		if (keystate_T)
 		{
-			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
 
 			if (keystate_T)
@@ -811,7 +810,7 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6))
+		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8))
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
@@ -861,8 +860,8 @@ namespace Core
 			{
 
 				isMenuState = false;
-				/*isCutscene = true;*/
-				isLevelSelection = true;
+				isCutscene = true;
+				/*isLevelSelection = true;*/
 
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
@@ -1271,7 +1270,7 @@ namespace Core
 
 					Map::LoadMap();
 					loaded = true;
-					isQuestTab = true;
+					isQuestTab = false;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1324,7 +1323,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				SceneManager::FadeIn();
+				//SceneManager::FadeIn();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1357,9 +1356,10 @@ namespace Core
 					{
 						Map::ResetMap();
 					}
-					Map::initMap("../TileMap/pod_rendering_test.txt");
+					Map::initMap("../TileMap/_tut2.txt");
 
 					Map::LoadMap();
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1466,6 +1466,7 @@ namespace Core
 					Map::initMap("../TileMap/level1.txt");
 
 					Map::LoadMap();
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1551,6 +1552,7 @@ namespace Core
 					Map::initMap("../TileMap/level2.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1599,12 +1601,10 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					//SceneManager::drawPauseOverlay();
 
 				}
 				if (Map::isWin())
 				{
-					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
 
 				}
@@ -1620,7 +1620,6 @@ namespace Core
 				//press button to undraw level 1, and draw level 2
 				if (mouseLeft && isWinCondition == true)
 				{
-					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = false;
 					isLevel2 = false;
 					isLevel3 = true;
@@ -1639,6 +1638,7 @@ namespace Core
 					Map::initMap("../TileMap/level3.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 					
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1715,7 +1715,6 @@ namespace Core
 			/*********************************
 				LEVEL 4 LOAD & WIN CHECK
 			*********************************/
-			std::cout << isLevel4 << "level 4 state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
 			if (isLevel4 == true)
 			{
 				if (!loaded)
@@ -1725,8 +1724,8 @@ namespace Core
 					Map::initMap("../TileMap/level4.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
-					isQuestTab = true;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f); 
@@ -1808,6 +1807,7 @@ namespace Core
 					Map::initMap("../TileMap/level5.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1888,6 +1888,7 @@ namespace Core
 					Map::initMap("../TileMap/level6.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -1969,6 +1970,7 @@ namespace Core
 					Map::initMap("../TileMap/level7.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -2048,6 +2050,7 @@ namespace Core
 					Map::initMap("../TileMap/level8.txt");
 					Map::LoadMap();
 
+					isQuestTab = false;
 					loaded = true;
 
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
@@ -2074,12 +2077,10 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-				Map::DrawMap(); //this will also set numQuests
+				Map::DrawMap(); 
 
 				//draw playerpos at lvl 2
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-
-				//std::cout << "goals no " << Window::numQuests << std::endl;
 				if (gameIsPaused == false)
 				{
 					if (isPlayerinSinkhole)
@@ -2153,12 +2154,11 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-				Map::DrawMap(); //this will also set numQuests
+				Map::DrawMap(); 
 
 				//draw playerpos at lvl 2
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
 
-				//std::cout << "goals no " << Window::numQuests << std::endl;
 				if (gameIsPaused == false)
 				{
 					if (isPlayerinSinkhole)
@@ -2396,7 +2396,7 @@ namespace Core
 						{
 							std::getline(fin, realstring);
 						}
-						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						//std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}
 
@@ -2471,7 +2471,21 @@ namespace Core
 				//std::cout << "Drawing tabmenu\n";
 				if (isTut1)
 				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestTut1");
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestT1");
+
+					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+					spritecomp->draw();
+					checkWin();
+				}
+				if (isTut2)
+				{
+					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestT2");
 
 					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
 					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));

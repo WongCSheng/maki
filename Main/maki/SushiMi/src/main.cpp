@@ -178,6 +178,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Tut1/done.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Tut1/denied.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv2/QuestLv2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv3/QuestLv3.json", CoreSystem->objfactory);

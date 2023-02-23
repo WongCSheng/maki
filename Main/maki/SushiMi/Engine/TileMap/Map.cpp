@@ -625,7 +625,7 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -662,7 +662,7 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall2_3):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_3, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -680,7 +680,7 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1, tile);
 					//tile->Add_animation()
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -699,7 +699,7 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3_3):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_3, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -708,7 +708,7 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall4):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -802,7 +802,7 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall6):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -850,7 +850,7 @@ namespace Core
 				//wall 7
 				case static_cast<int>(wall_type::Wall7):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -898,7 +898,7 @@ namespace Core
 				//wall 8
 				case static_cast<int>(wall_type::Wall8):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
@@ -907,7 +907,7 @@ namespace Core
 				//wall 9
 				case static_cast<int>(wall_type::Wall9):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.jpg");
+					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
 
 					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);

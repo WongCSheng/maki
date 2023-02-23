@@ -1,12 +1,13 @@
-18 10
-A O O N N N O O O O N N N N O O O H
-K B I b b a B N N N a a a B N N N O
-K a a a a i a a N a a a a a a a a O
-K a a a n a a a a a a a J H a a a O
-K a a a a a a a D a l a a D a F M O
-O M H a a a a a P a a a a D g O O O
-O O K o a D a a a a a a a a e O O O
-O O O M M O M M M M M M M M M O O O
-O O O O O O O O O O O O O O O O O O
-O O O O O O O O O O O O O O O O O O
-B O O O O O O O O O O O O O O O O I
+22 12
+Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q
+Q Q Q Q ` ` ` Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q
+Q Q Q a ! ! ! L Q Q Q Q Q Q Q Q Q Q Q Q Q Q
+Q Q V ! ! 2 ! L Q Q Q ` ` ` ` Q Q Q Q Q Q Q
+Q Q V ! ! 0 ! L Q Q V | ! ! ! L Q Q Q Q Q Q
+Q Q V ! ! ! ! L Q Q V ! ! ! ! L Q Q Q Q Q Q
+Q Q Q D K ! I ` ` ` ` K ! E ! L Q Q Q Q Q Q
+Q Q Q V ! ! ! ! ! ! ! ! ! G ! L Q Q Q Q Q Q
+Q Q Q V ! ! ! C D D H ! ! ! x L Q Q Q Q Q Q
+Q Q Q V ! ! ! L Q Q Q D D H % L Q Q Q Q Q Q
+Q Q Q Q D D D Q Q Q Q Q Q Q D Q Q Q Q Q Q Q
+Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q

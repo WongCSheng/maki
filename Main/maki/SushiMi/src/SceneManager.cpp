@@ -468,9 +468,11 @@ namespace Core
 	{
 		SceneManager::loadRect(0, 0);
 		
-		currentAlpha = std::lerp(currentAlpha, targetAlpha,  Window::GetInstance(0, 0)->getDelta());
+		currentAlpha = std::lerp(currentAlpha, targetAlpha,  0.016f);
 		SceneManager::drawRect(currentAlpha);
-		std::cout << "DELTA: " << Window::GetInstance(0, 0)->getDelta() << std::endl;
+		/*
+		std::cout << "Alpha: " << currentAlpha << std::endl;
+		*/
 	}
 
 	void SceneManager::loadRect(int x, int y)

@@ -1174,8 +1174,8 @@ namespace Core
 						}
 
 						soya->timer = 0;
-
 						soya->curr_anim = Run;
+
 						
 						Window::player->move_left();
 						std::cout << "soya dripped\n";

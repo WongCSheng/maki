@@ -1154,16 +1154,26 @@ namespace Core
 						Window::player->stop();
 					}
 
-					//check if tile on the left of ingredient is soya
-					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya))
+					//check if tile on the left of rice is soya
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::rice))
 					{
-						soya->curr_anim = Run;
 						// set grid
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::soya);
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.x -= tile_width;
+								break;
+							}
+						}
+						soya->curr_anim = Run;
 						Window::player->move_left();
-						
+						std::cout << "soya dripped\n";
 					}
 
 					//check if it's a box

@@ -199,14 +199,14 @@ D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1026,104): warning C4244: 'argu
 D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1026,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1035,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1035,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1188,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1188,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1369,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1369,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1550,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1550,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1731,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1731,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1900,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1900,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1189,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1189,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1370,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1370,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1551,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1551,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1732,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1732,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1901,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1901,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
   SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

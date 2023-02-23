@@ -1,30 +1,41 @@
 ﻿  Window.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(119): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(122): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(77,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(77,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(103,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(103,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(103,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(739,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,18): warning C4211: nonstandard extension used: redefined extern to static
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,26): warning C4211: nonstandard extension used: redefined extern to static
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(78,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(78,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(104,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(104,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(104,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(163,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(163,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(743,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(740,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(744,67): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1770,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1774,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1788,49): warning C4244: '+=': conversion from 'GLdouble' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1792,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1218,11): warning C4189: 'alpha': local variable is initialized but not referenced
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(900,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(900,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1787,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1805,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1833,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1853,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1874,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1228,11): warning C4189: 'alpha': local variable is initialized but not referenced
   Generating code
-  1 of 4468 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 4461 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     18 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

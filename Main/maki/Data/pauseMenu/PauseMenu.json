@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/pauseMenu.png",
+      "texturepath": "../textures/PauseMenu.png",
       "name": "PauseMenu",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]

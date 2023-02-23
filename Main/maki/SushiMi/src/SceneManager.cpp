@@ -237,7 +237,7 @@ namespace Core
 		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
-	void SceneManager::loadRP_Dialogue()
+	void SceneManager::load_Dialogue()
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -253,6 +253,19 @@ namespace Core
 			gunkan_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
 			gunkan_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
 		}
+		else if (Window::dialogue_style >= static_cast<int>(Window::dialogue::L7) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L9))
+		{
+			fishingvillage_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
+			fishingvillage_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
+		}
+	}
+
+	void SceneManager::load_Wood_BG()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		wooden_bg->transformation.Position = glm::vec2(screenwidth * 0.09f, screenheight * 0.08f);
+		wooden_bg->transformation.Scale = glm::vec2(screenwidth * 0.867f, screenheight * 0.91f);
 	}
 	
 	void SceneManager::drawBlackOverlay()
@@ -482,7 +495,7 @@ namespace Core
 		level_select->draw();
 	}
 
-	void SceneManager::drawRP_Dialogue()
+	void SceneManager::draw_Dialogue()
 	{
 		if (Window::dialogue_style >= static_cast<int>(Window::dialogue::T1) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L3))
 		{
@@ -495,6 +508,19 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", gunkan_dialogue->transformation.Get());
 			gunkan_dialogue->draw();
 		}
+		else if (Window::dialogue_style >= static_cast<int>(Window::dialogue::L7) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L9))
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", fishingvillage_dialogue->transformation.Get());
+			fishingvillage_dialogue->draw();
+		}
+		
+		
+	}
+
+	void SceneManager::draw_Wood_BG()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", wooden_bg->transformation.Get());
+		wooden_bg->draw();
 	}
 
 	void SceneManager::loadRect(int x, int y)
@@ -622,10 +648,16 @@ namespace Core
 		delete level_select;
 	}
 
-	void SceneManager::destroyRP_Dialogue()
+	void SceneManager::destroy_Dialogue()
 	{
 		delete riceplain_dialogue;
 		delete gunkan_dialogue;
+		delete fishingvillage_dialogue;
+	}
+
+	void SceneManager::destroy_Wood_BG()
+	{
+		delete wooden_bg;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

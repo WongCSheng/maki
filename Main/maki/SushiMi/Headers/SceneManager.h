@@ -26,9 +26,9 @@ namespace Core
 		tofu,			//0
 		tuna,			//1
 		nori,			//2
-		soya,			//3
-		wasabi,			//4
-		items,			//5
+		items,			//3
+		soya,			//4
+		wasabi,			//5
 		boxcover,		//6
 		end
 		
@@ -86,7 +86,7 @@ namespace Core
 		Wall9_5,			//f
 		Wall9_6,			//g
 		Wall9_7,			//h
-		Wall9_8,			//i
+		WaterWall,			//i
 		Wall0_Gunkan,		//j
 		Wall1_Gunkan,		//k
 		Wall1_1_Gunkan,		//l
@@ -106,11 +106,14 @@ namespace Core
 		roes_box,			//z
 		tamago_box,			//{
 		tofu_box,			//| (bitwise OR)
-		tuna_box			//}
-		
-
+		tuna_box,			//}
+		//Water,		//� or ~
+		WoodenPlatform,		//~
+		Player_OnWood		//�
 
 	};
+
+	
 
 	enum class Bami //: std::uint16_t
 	{
@@ -140,7 +143,8 @@ namespace Core
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene(int x, int y);
 		static void loadLevelSelect(int x, int y);
-		static void loadRP_Dialogue(); //RP stands for Rice Plain
+		static void load_Dialogue(); //RP stands for Rice Plain
+		static void load_Wood_BG(); //for fishing village
 
 		static void drawTile();
 		static void drawBox();
@@ -151,8 +155,9 @@ namespace Core
 		static void drawWinOverlay();
 		static void drawCutscene();
 		static void drawLevelSelect();
-		static void drawRP_Dialogue();
 		static void drawBlackOverlay();
+		static void draw_Dialogue();
+		static void draw_Wood_BG();
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
@@ -168,7 +173,8 @@ namespace Core
 		static void destroyWinOverlay();
 		static void destroyCutscene();
 		static void destroyLevelSelect();
-		static void destroyRP_Dialogue();
+		static void destroy_Dialogue();
+		static void destroy_Wood_BG();
 
 	
 		static void Readfile();
@@ -190,9 +196,10 @@ namespace Core
 		static unsigned int amt_of_win_conditions;
 
 		//dialogue
-		static inline Sprite* riceplain_dialogue;
-		static inline Sprite* gunkan_dialogue;
+		static inline Sprite* riceplain_dialogue, * gunkan_dialogue, * fishingvillage_dialogue;
 		static inline int num_dialogue_clicks;
+
+		static inline Sprite* wooden_bg;
 
 		static inline Sprite* howtoplay_overlay1;
 		static inline Sprite* howtoplay_overlay2;

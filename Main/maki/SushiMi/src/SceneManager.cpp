@@ -535,12 +535,7 @@ namespace Core
 	}
 	void SceneManager::FadeOut()
 	{
-		SceneManager::loadRect(0, 0);
-		/*fading works!!!!*/
-		float targetAlpha = 1.0f;
 		targetAlpha = 0.0f;
-		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.f) * FADE_SPEED);
-		SceneManager::drawRect(alpha);
 	}
 
 	/*destroy functions*/

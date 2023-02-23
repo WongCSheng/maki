@@ -36,6 +36,8 @@ namespace Core
 
 	wall_type ex_box;
 
+	Sprite* soya;
+
 	Map::Map()
 	{
 	}
@@ -333,9 +335,14 @@ namespace Core
 				//soya
 				case static_cast<int>(grid_number::soya):
 				{
-					Sprite* soya = new Sprite("../textures/Tiles/Ingredients/Soya_1.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
 
+					soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
+					soya->isSpriteSheet = 1;
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
+					//animate soy sauce
+					soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
+					soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
+					soya->curr_anim = Idle;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
@@ -1147,6 +1154,33 @@ namespace Core
 						std::cout << "left ingredient ingredient\n";
 						Window::player->stop();
 					}
+
+					//check if tile on the left of rice is soya
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::rice))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.x -= tile_width;
+								break;
+							}
+						}
+
+						soya->timer = 0;
+						soya->curr_anim = Run;
+
+
+						Window::player->move_left();
+						std::cout << "soya dripped\n";
+					}
+
 					//check if it's a box
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
@@ -1160,7 +1194,15 @@ namespace Core
 						SceneManager::loadIngr(Window::player->playerpos.x - (2 * tile_width + 5), Window::player->playerpos.y, Window::player->player_grid_pos.x - 2, Window::player->player_grid_pos.y, combine);
 
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
 
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
@@ -1190,11 +1232,6 @@ namespace Core
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 						}
-						////check if current grid is inari_box
-						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						//{
-						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
-						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1245,13 +1282,6 @@ namespace Core
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 				}
-				////Check if left tile is inari_box
-				//else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inari_box))
-				//{
-				//	Window::player->move_left();
-				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-				//	gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				//}
 				//Check if current tile is insidebox
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 				{
@@ -1259,13 +1289,6 @@ namespace Core
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 				}
-				//Check if current tile is inbox2
-				/*else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-				{
-					Window::player->move_left();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
-				}*/
 				else
 				{
 					Window::player->move_left();
@@ -1341,7 +1364,15 @@ namespace Core
 						SceneManager::loadIngr(Window::player->playerpos.x + (2 * tile_width), Window::player->playerpos.y, Window::player->player_grid_pos.x + 2, Window::player->player_grid_pos.y, combine);
 
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
 
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
@@ -1365,16 +1396,11 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
-						//check if current grid is rice_box
+						//check if current grid is box
 						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 						}
-						////check if current grid is inari_box
-						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						//{
-						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
-						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
@@ -1424,13 +1450,6 @@ namespace Core
 					ex_box = static_cast<wall_type>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-				}
-				//Check if right tile is inari_box
-				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inari_box))
-				{
-					Window::player->move_right();
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 				}
 				//Check if current tile is insidebox
@@ -1522,7 +1541,15 @@ namespace Core
 						SceneManager::loadIngr(Window::player->playerpos.x, Window::player->playerpos.y + (2 * tile_height), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
 
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
@@ -1607,13 +1634,6 @@ namespace Core
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
 				}
-				////Check if up tile is inari_box
-				//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::inari_box))
-				//{
-				//	Window::player->move_down();
-				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inbox2);
-				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
-				//}
 				//Check if current tile is insidebox
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 				{
@@ -1621,13 +1641,6 @@ namespace Core
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(ex_box);
 				}
-				////Check if current tile is inbox2
-				//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-				//{
-				//	Window::player->move_down();
-				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-				//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(wall_type::inari_box);
-				//}
 				else
 				{
 					Window::player->move_down();
@@ -1740,11 +1753,6 @@ namespace Core
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 						}
-						////check if current grid is inari_box
-						//else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::inbox2))
-						//{
-						//	gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::inari_box);
-						//}
 						else
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);

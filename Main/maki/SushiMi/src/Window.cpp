@@ -1077,7 +1077,7 @@ namespace Core
 						Map::ResetMap();
 					}
 
-					Map::initMap("../TileMap/_tut1.txt");
+					Map::initMap("../TileMap/old_tut1.txt");
 
 					Map::LoadMap();
 					loaded = true;
@@ -1179,7 +1179,21 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/_tut2_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
 					dialogue_style = static_cast<int>(dialogue::T2);
+					curr_len = 0;
 					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end

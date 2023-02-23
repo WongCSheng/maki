@@ -30,9 +30,7 @@ Description:
 namespace Core
 {
 	static Core::MainSystem* CoreSystem;
-	static int width, height;
-	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
 	enum class GameState {
@@ -72,8 +70,8 @@ namespace Core
 	static bool mouseLeft = false;
 	Player* player;
 	int curr_len = 0;
-	std::string realstring = "";
-	std::ifstream fin;
+
+	bool fadeComplete = 0;
 
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
@@ -126,7 +124,6 @@ namespace Core
 			keystate_M = false;
 			keystate_escape = false;
 			keystate_tab = false;
-			keystate_space = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -288,10 +285,7 @@ namespace Core
 		timetodeletegrid = true;
 		Map::ResetMap();
 #ifndef EDITOR
-		if (fin)
-		{
-			fin.close();
-		}
+
 		SceneManager::destroyHowToOverlay(); //delete How to play overlay
 		SceneManager::destroySettings();
 		SceneManager::destroyWinOverlay(); //delete Win Overlay
@@ -612,7 +606,7 @@ namespace Core
 		{
 			keystate_T = true;
 			std::cout << "you are in level selection screen" << std::endl;
-			
+
 			if (keystate_T)
 			{
 				isCutscene = false;
@@ -849,7 +843,7 @@ namespace Core
 			}
 		}
 
-		else if ( (keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -1067,7 +1061,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					
+
 
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
@@ -1078,27 +1072,13 @@ namespace Core
 
 					Map::LoadMap();
 					loaded = true;
-					isQuestTab = true;
+
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/_tut1_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-					//fin.close();
-
 					dialogue_style = static_cast<int>(dialogue::T1);
-					curr_len = 0;
 					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
@@ -1106,9 +1086,6 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
-
-				//check if player matches a ingredient to a box
-				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1134,7 +1111,15 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				//fadeComplete = SceneManager::FadeIn();
+				//if (fadeComplete == 0)
+				//{
+				//	SceneManager::FadeIn();
+				//}
+				/*Fade in function, comes together*/
 				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1146,16 +1131,22 @@ namespace Core
 					isWinCondition = false;
 					loaded = false;
 
-
 				}
 
 			}
+
+
 			/*********************************
 				TUTORIAL 2 LOAD & WIN CHECK
 			*********************************/
 			if (isTut2 == true)
 			{
-				SceneManager::FadeOut();
+
+				//fadeComplete = SceneManager::FadeOut();
+				//if (fadeComplete == 0)
+				//{
+				//	SceneManager::FadeOut();
+				//}
 				if (!loaded)
 				{
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
@@ -1167,35 +1158,22 @@ namespace Core
 					Map::LoadMap();
 					loaded = true;
 
-
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
-
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/_tut2_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-					
-
-
 					dialogue_style = static_cast<int>(dialogue::T2);
-					curr_len = 0;
-
-					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv1 tile map
-				SceneManager::FadeOut();
 				Map::DrawMap();
 
 
@@ -1208,6 +1186,7 @@ namespace Core
 					player->draw(delta);
 
 				}
+
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
@@ -1226,6 +1205,9 @@ namespace Core
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
@@ -1270,35 +1252,19 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
-
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl1_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-					
-
-					
-
 					dialogue_style = static_cast<int>(dialogue::L1);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv1 tile map
 				Map::DrawMap();
-
-				//check if player matches a ingredient to a box
-				//checkWin();
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1313,7 +1279,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					
+
 				}
 				if (Map::isWin())
 				{
@@ -1326,6 +1292,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1359,26 +1330,17 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl2_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-
 					dialogue_style = static_cast<int>(dialogue::L2);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1416,6 +1378,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade In Effect*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1448,26 +1415,17 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl3_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-
 					dialogue_style = static_cast<int>(dialogue::L3);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv3 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1491,6 +1449,10 @@ namespace Core
 				{
 					player->draw(0); //draw stationary player
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+					SceneManager::drawBlackOverlay();
+
 				if (Map::isWin())
 				{
 					isWinCondition = true;
@@ -1501,6 +1463,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1533,24 +1496,16 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl4_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-
 					dialogue_style = static_cast<int>(dialogue::L4);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
 				}
 
 				Map::DrawMap(); //this will also set numQuests
@@ -1583,6 +1538,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1616,24 +1576,16 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl5_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-
 					dialogue_style = static_cast<int>(dialogue::L5);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
 				}
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1655,6 +1607,9 @@ namespace Core
 				{
 					player->draw(0); //draw stationary player
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+					SceneManager::drawBlackOverlay();
 				if (Map::isWin())
 				{
 					isWinCondition = true;
@@ -1665,6 +1620,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1696,24 +1656,16 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
-					if (fin)
-					{
-						fin.close();
-					}
-					fin.open("../Data/Dialogue/lvl6_dialogue.txt");
-					if (!fin)
-					{
-						std::cout << "Unable to open dialogue file!";
-						return;
-					}
-					std::getline(fin, realstring);
-
 					dialogue_style = static_cast<int>(dialogue::L6);
-					curr_len = 0;
-
 					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
 				}
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1735,6 +1687,9 @@ namespace Core
 				{
 					player->draw(0); //draw stationary player
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+					SceneManager::drawBlackOverlay();
 				if (Map::isWin())
 				{
 					isWinCondition = true;
@@ -1745,6 +1700,11 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1767,42 +1727,20 @@ namespace Core
 				{
 					SceneManager::loadRP_Dialogue();
 					SceneManager::drawRP_Dialogue();
-					//std::string realstring = "Before delivery, I need to collect all of the ingredients.";
+					std::string realstring = "Before delivery, I need to collect all of the ingredients.";
 					if (curr_len <= realstring.length())
 					{
-						if (curr_len < 60)
+						std::string one_by_one = realstring.substr(0, curr_len);
+						Font::RenderText(*Shaders, one_by_one, 280, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
+						if (GLHelper::delta_time * 150 < 2)
 						{
-							std::string one_by_one = realstring.substr(0, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2)
+							curr_len += (GLHelper::delta_time * 200);
+							std::cout << "value of i is : " << curr_len << std::endl;
+							if (curr_len > realstring.length())
 							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
+								curr_len = realstring.length();
 							}
-						}
-						else if (curr_len >= 60)
-						{
-							std::string first_line = realstring.substr(0, 62);
-							std::string second_line = realstring.substr(62, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2)
-							{
-								curr_len += (GLHelper::delta_time * 150); // dialogue render speed is 200 * delta time
-								std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
 
-							}
 						}
 					}
 
@@ -1815,13 +1753,8 @@ namespace Core
 					//std::cout << "dialogue is displaying" << std::endl;
 					if (keystate_space)
 					{
-						curr_len = 0;
 						--SceneManager::num_dialogue_clicks;
-						if (!fin.eof())
-						{
-							std::getline(fin, realstring);
-						}
-						std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						std::cout << "decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
 						keystate_space = false;
 					}
 
@@ -1902,11 +1835,11 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
-					if (x.first == "QuestTut1")
+					if (x.first == "QuestTab")
 					{
 						spritecomp->draw();
 					}
-				}											
+				}
 			}
 
 			if (isWalk == true)
@@ -2036,60 +1969,5 @@ namespace Core
 
 		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
 		//}
-	}
-
-	bool Window::checkWin()
-	{
-		//checking through all loaded box for the current level
-		for (auto& box : SceneManager::tilecontainer)
-		{
-			//checking through all loaded ingredient for the current level
-			for (auto& ingredient : SceneManager::ingredientcontainer)
-			{
-				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height)) + 1;
-				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
-
-				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / width) + 1);
-				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / height) + 1);
-				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
-				//checking through level win condition (check if ingredient land on box position)
-				if (ingredientCoordinates == boxCoordinates)
-				{
-					//ingredient row and col matches box row and col
-					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
-					for (auto& y : levelWinConditions)//suggest to change to map
-					{
-						//check whether is correct ingredient to box
-						if (checkCondition == y)
-						{
-							std::cout << "ingredient landed correct box\n";
-							//check if quest tab is open
-							if (isQuestTab)
-							{
-								for (auto& x : CoreSystem->objfactory->ObjectContainer)
-								{
-									Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-									Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-									spritecomp->transformation.Position = transcomp->Position;
-									spritecomp->transformation.Scale = transcomp->Scale;
-									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-									if (x.first == "done")
-									{
-										spritecomp->draw();
-									}
-								}
-							}
-						}
-						else
-							std::cout << "wrong ingredient or box\n";
-					}
-				}
-			}
-		}
-		return false;
 	}
 }

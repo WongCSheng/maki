@@ -27,10 +27,12 @@ namespace Core
 {
 
 	//int Map::gGrids[GRID_ROW][GRID_COL];
-    static inline int width, height;
+	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
-	std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+	std::vector<std::pair<grid_number, wall_type>> Map::levelWinConditions;
 	int Map::CorrectCombination{}; //redeclaration
+
+	Sprite* soya;
 
 	Map::Map()
 	{
@@ -254,7 +256,6 @@ namespace Core
 
 					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
-
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
@@ -332,9 +333,14 @@ namespace Core
 				//soya
 				case static_cast<int>(grid_number::soya):
 				{
-					Sprite* soya = new Sprite("../textures/Tiles/Ingredients/Soya_1.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
 
+					soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
+					soya->isSpriteSheet = 1;
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
+					//animate soy sauce
+					soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
+					soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
+					soya->curr_anim = Idle;
 					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
@@ -1048,34 +1054,34 @@ namespace Core
 
 	bool Map::isWin()
 	{
-		////checking through all loaded box for the current level
-		//for (auto& box : SceneManager::tilecontainer)
-		//{
-		//	//checking through all loaded ingredient for the current level
-		//	for (auto& ingredient : SceneManager::ingredientcontainer)
-		//	{
-		//		//convert coordinates back into row and column (dont know why need to plus 1)
-		//		int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
-		//		int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
-		//		std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+		//checking through all loaded box for the current level
+		for (auto& box : SceneManager::tilecontainer)
+		{
+			//checking through all loaded ingredient for the current level
+			for (auto& ingredient : SceneManager::ingredientcontainer)
+			{
+				//convert coordinates back into row and column (dont know why need to plus 1)
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
+				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
-		//		int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
-		//		int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
-		//		std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
-		//		//checking through level win condition (check if ingredient land on box position)
-		//		if (ingredientCoordinates == boxCoordinates)
-		//		{
-		//			//ingredient row and col matches box row and col
-		//		    std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
-		//			for (auto& y : levelWinConditions)//suggest to change to map
-		//			{
-		//				//check whether is correct ingredient to box
-		//				if (checkCondition == y)
-		//					std::cout << "correct ingredient on box\n";
-		//			}
-		//		}
-		//	}
-		//}
+				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
+				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
+				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+				//checking through level win condition (check if ingredient land on box position)
+				if (ingredientCoordinates == boxCoordinates)
+				{
+					//ingredient row and col matches box row and col
+				    std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+					for (auto& y : levelWinConditions)//suggest to change to map
+					{
+						//check whether is correct ingredient to box
+						if (checkCondition == y)
+							std::cout << "correct ingredient on box\n";
+					}
+				}
+			}
+		}
 		return ((win_amt == SceneManager::amt_of_win_conditions) ? true : false);
 	}
 
@@ -1143,11 +1149,38 @@ namespace Core
 					}
 					//check if tile on the left of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::soya))
 					{
 						std::cout << "left ingredient ingredient\n";
 						Window::player->stop();
 					}
+
+					//check if tile on the left of rice is soya
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::rice))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.x -= tile_width;
+								break;
+							}
+						}
+
+						soya->timer = 0;
+						soya->curr_anim = Run;
+
+						
+						Window::player->move_left();
+						std::cout << "soya dripped\n";
+					}
+
 					//check if it's a box
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))

@@ -1,11 +1,11 @@
 18 10
 c c c c c c c c c c c c c c c c c c
-c c c ! ! ! c c c c c c c c c c c c
-c c c ! % ! c c c c c c c c c c c c
-c c c ! ! ! c ! ! ! c c c c c c c c
-c c c ! c c c ! c ! c c c c c c c c
-c c c ! c ! ! ! c ! c c c c c c c c
-c c c ! c ! c c c ! ! , ! ! r c c c
+c c ! ! ! ! ! c c c c c c c c c c c
+! r 3 , % ! ! c c c c c c c c c c c
+c c ! ! ! ! ! ! ! ! c c c c c c c c
+c c ! ! ! ! ! ! c ! c c c c c c c c
+c c c ! ! ! ! ! c ! c c c c c c c c
+c c c ! ! ! c c c ! ! ! ! ! c c c c
 c c c ! ! ! c c c c c c c c c c c c
 c c c c c c c c c c c c c c c c c c
 c c c c c c c c c c c c c c c c c c

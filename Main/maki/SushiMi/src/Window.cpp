@@ -1264,7 +1264,7 @@ namespace Core
 						Map::ResetMap();
 					}
 
-					Map::initMap("../TileMap/pod_rendering_test.txt");
+					Map::initMap("../TileMap/_tut1.txt");
 
 					Map::LoadMap();
 					loaded = true;

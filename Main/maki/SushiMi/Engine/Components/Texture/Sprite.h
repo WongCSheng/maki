@@ -95,6 +95,8 @@ namespace Core
 
 		float timer;
 
+		float alpha;
+
 	private:
 
 		Texture texture;

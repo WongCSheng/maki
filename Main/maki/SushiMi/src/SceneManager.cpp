@@ -314,8 +314,17 @@ namespace Core
 	{
 		for (auto& ingredient : ingredientcontainer)
 		{
+			if (ingredient.first == grid_number::boxcover)
+			{
+				ingredient.second->alpha = 0.5f;
+			}
+			else
+			{
+				ingredient.second->alpha = 1.f;
+			}
+			
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
 
 			if (ingredient.second->isSpriteSheet)
 			{
@@ -325,7 +334,6 @@ namespace Core
 			{
 				ingredient.second->draw();
 			}
-
 		}
 	}
 

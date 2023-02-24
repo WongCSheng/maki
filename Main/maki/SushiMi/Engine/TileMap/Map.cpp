@@ -1246,6 +1246,12 @@ namespace Core
 						std::cout << "left ingredient box\n";
 						Window::player->move_left();
 					}
+					//check if it's a covered box
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+					{
+						std::cout << "left ingredient box\n";
+						Window::player->stop();
+					}
 					//Otherwise, it is a space
 					else
 					{
@@ -1429,6 +1435,12 @@ namespace Core
 
 						std::cout << "right ingredient box\n";
 						Window::player->move_right();
+					}
+					//check if it's a covered box
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+					{
+						std::cout << "right ingredient box\n";
+						Window::player->stop();
 					}
 					//Otherwise, it is a space
 					else
@@ -1620,6 +1632,12 @@ namespace Core
 						std::cout << "down ingredient box\n";
 						Window::player->move_down();
 					}
+					//check if it's a covered box
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::boxcover))
+					{
+						std::cout << "down ingredient box\n";
+						Window::player->stop();
+					}
 					//Otherwise, it is a space
 					else
 					{
@@ -1807,6 +1825,12 @@ namespace Core
 
 						std::cout << "up ingredient box\n";
 						Window::player->move_up();
+					}
+					//check if it's a covered box
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::boxcover))
+					{
+						std::cout << "up ingredient box\n";
+						Window::player->stop();
 					}
 					//Otherwise, it is a space
 					else

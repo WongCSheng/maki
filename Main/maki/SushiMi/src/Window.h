@@ -22,9 +22,14 @@ namespace Core
 
 		static Window* GetInstance(int width, int height)
 		{
-			static Window* instance = new Window(width, height);
-			return instance;
+			/*static Window* instance = new Window(width, height); //MEM LEAK!
+			return instance;*/
+			
+			//DO THIS INSTEAD
+			static Window instance(width,height);
+			return &instance;
 		}
+
 
 		float getDelta()
 		{

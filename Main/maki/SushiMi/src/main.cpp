@@ -70,7 +70,7 @@ int WINAPI WinMain([[maybe_unused]]HINSTANCE hInstance, [[maybe_unused]] HINSTAN
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(824); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(1231); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -84,6 +84,8 @@ int WINAPI WinMain([[maybe_unused]]HINSTANCE hInstance, [[maybe_unused]] HINSTAN
 	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
 	
 	Core::pseudomain::cleanup();
+
+	return 0;
 	
 }
 

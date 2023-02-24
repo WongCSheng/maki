@@ -2781,7 +2781,7 @@ namespace Core
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
-#if DEBUG
+#if EDITOR
 			for (auto test : Editor::LevelEditor::newobjarr)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());

@@ -53,8 +53,12 @@ namespace Core
 		public:
 			static LevelEditor* GetInstance()
 			{
-				LevelEditor* instance = new LevelEditor();
-				return instance;
+				//LevelEditor* instance = new LevelEditor(); //mem leak!!
+				//return instance;
+
+				//do this instead
+				static LevelEditor instance;
+				return &instance;
 			}
 
 			static void imguiEditorInit(void);
@@ -73,6 +77,9 @@ namespace Core
 
 			static inline const char* texpath = "../textures/Tiles/Wall/RicePlain_Wall3_2.jpg";
 
+#ifdef  EDITOR
+
+
 			struct addedobjinfo
 			{
 				Sprite* spritepath;
@@ -82,6 +89,7 @@ namespace Core
 
 			}add_obj_info_here;
 			static inline  std::vector<addedobjinfo> newobjarr;
+#endif //  EDITOR
 			//obj placing
 			static inline bool objplace = false;
 			static void imguiObjectCursor(void);

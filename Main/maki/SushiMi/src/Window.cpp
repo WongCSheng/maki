@@ -1323,7 +1323,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				//SceneManager::FadeIn();
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1391,7 +1393,7 @@ namespace Core
 				/*Fade out effect*/
 				if (!isWinCondition)
 				{
-					//SceneManager::FadeOut();
+					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
 				//draw lv1 tile map
@@ -1497,7 +1499,12 @@ namespace Core
 					isDialogue = true;
 					//also need dialogue after game end
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1527,6 +1534,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1581,7 +1591,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv2 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1616,6 +1631,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1668,7 +1686,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				//draw lv3 tile map
 				Map::DrawMap(); //this will also set numQuests
 
@@ -1702,6 +1725,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1754,7 +1780,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
-
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); //this will also set numQuests
 
 				//draw playerpos at lvl 4
@@ -1785,6 +1816,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1839,6 +1873,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); //this will also set numQuests
 
 				//draw playerpos at lvl 2
@@ -1869,6 +1909,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1921,6 +1964,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); //this will also set numQuests
 
 				//draw playerpos at lvl 2
@@ -1951,6 +2000,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -2004,6 +2056,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); //this will also set numQuests
 
 				//draw playerpos at lvl 2
@@ -2033,6 +2091,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -2086,6 +2147,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); 
 
 				//draw playerpos at lvl 2
@@ -2113,6 +2180,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -2165,6 +2235,12 @@ namespace Core
 					//also need dialogue after game end
 					isDialogue = true;
 				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
 				Map::DrawMap(); 
 
 				//draw playerpos at lvl 2
@@ -2193,6 +2269,9 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls

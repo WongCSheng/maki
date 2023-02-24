@@ -267,6 +267,24 @@ namespace Core
 		wooden_bg->transformation.Position = glm::vec2(screenwidth * 0.09f, screenheight * 0.08f);
 		wooden_bg->transformation.Scale = glm::vec2(screenwidth * 0.867f, screenheight * 0.91f);
 	}
+
+	void SceneManager::drawRect(float alpha)
+	{
+		/*This one draws the black background completely fine, but it is without the Alpha variable */
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
+
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		rec->draw();
+		/*
+		Shaders->Alpha_Shader()->use();
+		float alpha = 1.f;
+		Shaders->Alpha_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
+		rec->draw();
+		*/
+
+
+	}
 	
 	void SceneManager::drawBlackOverlay()
 	{
@@ -274,9 +292,7 @@ namespace Core
 
 		currentAlpha = std::lerp(currentAlpha, targetAlpha, 0.016f);
 		SceneManager::drawRect(currentAlpha);
-		/*
 		std::cout << "Alpha: " << currentAlpha << std::endl;
-		*/
 	}
 
 	/*draw functions*/
@@ -529,36 +545,11 @@ namespace Core
 		rec->transformation.Scale = glm::vec2(1920, 1200);
 	}
 
-	void SceneManager::drawRect(float alpha)
-	{
-		/*This one draws the black background completely fine, but it is without the Alpha variable */
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
-
-		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-		rec->draw();
-		/*
-		Shaders->Alpha_Shader()->use();
-		float alpha = 1.f;
-		Shaders->Alpha_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
-		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
-		rec->draw();
-		*/
-
-
-	}
-	constexpr float OPAQUE_ALPHA = 1.0f;
-	constexpr float TRANSPARENT_ALPHA = 0.0f;
-	constexpr float FADE_SPEED = .8f;
 	void SceneManager::FadeIn()
 	{
-		SceneManager::loadRect(0, 0);
-		/*fading works!!!!*/
-		float targetAlpha = 0.0f;
 		targetAlpha = 1.0f;
-		alpha = std::lerp(alpha, targetAlpha, (1.0f / 60.0f) * FADE_SPEED);
-
-		SceneManager::drawRect(alpha);
 	}
+
 	void SceneManager::FadeOut()
 	{
 		targetAlpha = 0.0f;

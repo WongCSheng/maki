@@ -38,6 +38,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Headers/Log.h"
 #include "Engine/Font/Font.h"
 
+
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
@@ -57,8 +58,14 @@ Indicates how the program existed. Normal exit is signaled by a return value of
 0. Abnormal termination is signaled by a non-zero return value.
 Note that the C++ compiler will insert a return 0 statement if one is missing.
 */
-int main() {
 
+//int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow);
+
+
+int WINAPI WinMain([[maybe_unused]]HINSTANCE hInstance, [[maybe_unused]] HINSTANCE hPrevInstance,
+	[[maybe_unused]] LPSTR lpCmdLine, [[maybe_unused]] int nCmdShow)
+{
+	
 	// Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -77,8 +84,14 @@ int main() {
 	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
 	
 	Core::pseudomain::cleanup();
+	
 }
 
+int main() {
+
+	return WinMain(GetModuleHandle(NULL), NULL, GetCommandLineA(), SW_SHOWNORMAL);
+
+}
 /*  _________________________________________________________________________ */
 /*! update
 @param none

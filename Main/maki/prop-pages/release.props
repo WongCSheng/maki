@@ -9,6 +9,7 @@
   <ItemDefinitionGroup>
     <Link>
       <AdditionalDependencies>"opengl32.lib";"glew32.lib";"glfw3dll.lib";"freetype.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y

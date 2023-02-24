@@ -36,10 +36,8 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2449,40): 
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2470,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1431,11): warning C4189: 'alpha': local variable is initialized but not referenced
   Generating code
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
-C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
-  171 of 4503 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
+  1 of 4503 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    20 functions had inline decision re-evaluated but remain unchanged
+    18 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

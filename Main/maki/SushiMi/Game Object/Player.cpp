@@ -32,7 +32,7 @@ namespace Core
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
@@ -44,7 +44,7 @@ namespace Core
 			sp->Add_animation(animFilepath.c_str());
 		}
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	Player::~Player()
@@ -80,7 +80,7 @@ namespace Core
 		*/
 
 		 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	void Player::move_right()
@@ -88,7 +88,7 @@ namespace Core
 		if (sp->transformation.Scale.x < 0)
 			sp->transformation.Scale.x *= -1;
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -114,7 +114,7 @@ namespace Core
 			sp->transformation.Scale.y *= 1;
 		//std::cout << "you are pressing up" << std::endl;
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -139,7 +139,7 @@ namespace Core
 		if (sp->transformation.Scale.y < 0)
 			sp->transformation.Scale.y *= -1;
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -201,7 +201,7 @@ namespace Core
 
 	void Player::stop()
 	{
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	glm::mat4 Player::Transformation()

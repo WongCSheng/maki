@@ -37,7 +37,7 @@ namespace Core
 		}
 
 		void Init() {}
-		void Update(const double dt) {}
+		void Update(const double) {}
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		void Input();
@@ -129,7 +129,7 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		//void ImGuiToObjContainer(ObjectFactory* c);
 	
-		static inline struct ScreenDimensions {
+		struct ScreenDimensions {
 			static inline int screenwidth;
 			static inline int screenheight;
 		};

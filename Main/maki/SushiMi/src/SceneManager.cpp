@@ -36,7 +36,7 @@ namespace Core
 
 	}
 
-	void SceneManager::Update(const double dt)
+	void SceneManager::Update(const double)
 	{
 		endtime = glfwGetTime();
 		delta = (endtime - starttime) / 2;
@@ -56,8 +56,8 @@ namespace Core
 		//SceneManager::tilecontainer.clear();
 		//SceneManager::ingredientcontainer.clear();
 		Window::player->restart();
-		Window::player->playerpos.x = Window::player->playerpos_restart.x;
-		Window::player->playerpos.y = Window::player->playerpos_restart.y;
+		Window::player->playerpos.x = static_cast<float>(Window::player->playerpos_restart.x);
+		Window::player->playerpos.y = static_cast<float>(Window::player->playerpos_restart.y);
 		Window::gameIsPaused = false;
 		Window::questProgress = 0;
 		amt_of_win_conditions = 0;
@@ -107,7 +107,7 @@ namespace Core
 		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
 
-	void SceneManager::loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition)
+	void SceneManager::loadIngr_initPos(int x, int y, int /*posX*/, int /*posY*/, const std::pair<grid_number, Sprite*>& ingrposition)
 	{
 		ingrposition.second->transformation.grid_pos = { x, y };
 		ingrposition.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
@@ -189,7 +189,7 @@ namespace Core
 		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
 
-	void SceneManager::loadCutscene(int x, int y)
+	void SceneManager::loadCutscene()
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -231,7 +231,7 @@ namespace Core
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-		level_select->transformation.Position = glm::vec2(0, 0);
+		level_select->transformation.Position = glm::vec2(x, y);
 		level_select->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
@@ -266,12 +266,12 @@ namespace Core
 		wooden_bg->transformation.Scale = glm::vec2(screenwidth * 0.867f, screenheight * 0.91f);
 	}
 
-	void SceneManager::drawRect(float alpha)
+	void SceneManager::drawRect(float alpha_)
 	{
 		/*This one draws the black background completely fine, but it is without the Alpha variable */
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", rec->transformation.Get());
 
-		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha_);
 		rec->draw();
 		/*
 		Shaders->Alpha_Shader()->use();

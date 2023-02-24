@@ -2,34 +2,26 @@
   LevelEditor.cpp
   Sprite.cpp
   Core.cpp
-  JSONSerializer.cpp
   Map.cpp
   Player.cpp
   SceneManager.cpp
   Window.cpp
   main.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\EditorLayer.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\EditorLayer.cpp)
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\main.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\main.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Core\Core.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Core\Core.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Editors\LevelEditor.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Editors\LevelEditor.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Game Object\Player.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Game Object\Player.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\TileMap\Map.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file Engine\Components\Texture\Sprite.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file Engine\Components\Texture\Sprite.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Game Object\Player.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Game Object\Player.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared (compiling source file src\SceneManager.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter (compiling source file src\SceneManager.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(39,41): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(59,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(60,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(110,66): warning C4100: 'posY': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(110,56): warning C4100: 'posX': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(192,45): warning C4100: 'y': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(192,38): warning C4100: 'x': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(229,48): warning C4100: 'y': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(229,41): warning C4100: 'x': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(269,36): warning C4459: declaration of 'alpha' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(8,8): message : see declaration of 'Core::alpha'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(163,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(164,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(165,46): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
@@ -116,11 +108,8 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(50
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(503,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(519,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(519,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(39,41): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(59,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(533,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(533,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(60,66): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(542,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(542,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(552,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -173,8 +162,6 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(76
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(764,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(774,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(774,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(112,66): warning C4100: 'posY': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(112,56): warning C4100: 'posX': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(784,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(784,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(794,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -195,20 +182,14 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(85
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(859,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(869,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(869,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(194,45): warning C4100: 'y': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(879,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(194,38): warning C4100: 'x': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(879,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(889,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(231,48): warning C4100: 'y': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(231,41): warning C4100: 'x': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(889,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(899,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(899,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(908,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(271,36): warning C4459: declaration of 'alpha' hides global declaration
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(908,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(8,8): message : see declaration of 'Core::alpha'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(916,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(916,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(924,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -241,52 +222,30 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(10
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1035,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1053,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1053,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(133,28): warning C4459: declaration of 'transComp' hides global declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.h(39,20): message : see declaration of 'Core::transComp' (compiling source file Engine\Serialiser\JSONSerializer.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1222,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1222,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(200,46): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(213,33): warning C4456: declaration of 'json_from_file' hides previous local declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(181,15): message : see declaration of 'json_from_file'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1412,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1412,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(243,4): warning C4456: declaration of 'i' hides previous local declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(198,26): message : see declaration of 'i'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(263,29): warning C4459: declaration of 'transComp' hides global declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.h(39,20): message : see declaration of 'Core::transComp' (compiling source file Engine\Serialiser\JSONSerializer.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(282,23): warning C4456: declaration of 'object' hides previous local declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(200,28): message : see declaration of 'object'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1608,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1608,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(372,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(373,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1802,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1802,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(134,40): warning C4459: declaration of 'fileDialog' hides global declaration
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(80,28): message : see declaration of 'Core::fileDialog'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(100,10): warning C4189: 'fontSize': local variable is initialized but not referenced
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1608,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1608,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(399,52): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(440,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(445,24): warning C4458: declaration of 'path' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(66,30): message : see declaration of 'Core::Editor::LevelEditor::path' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(70,30): message : see declaration of 'Core::Editor::LevelEditor::path' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1802,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1802,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(630,13): warning C4458: declaration of 'width' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(101,22): message : see declaration of 'Core::Editor::LevelEditor::width' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,22): message : see declaration of 'Core::Editor::LevelEditor::width' (compiling source file Editors\LevelEditor.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(630,21): warning C4458: declaration of 'height' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(101,29): message : see declaration of 'Core::Editor::LevelEditor::height' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,29): message : see declaration of 'Core::Editor::LevelEditor::height' (compiling source file Editors\LevelEditor.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(440,10): warning C4189: 'columnCount': local variable is initialized but not referenced
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(679,12): warning C4459: declaration of 'i' hides global declaration
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(699,10): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(700,10): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(67,22): warning C4100: 'nCmdShow': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(67,7): warning C4100: 'lpCmdLine': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(66,51): warning C4100: 'hPrevInstance': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(82,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(66,30): warning C4100: 'hInstance': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(82,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,31): warning C4100: 'window_ptr': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(721,4): warning C4459: declaration of 'i' hides global declaration
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(767,99): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
@@ -299,12 +258,17 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(7
           [
               T=float
           ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(160,14): warning C4100: 'userParam': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(158,10): warning C4100: 'length': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(156,9): warning C4100: 'id': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(154,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(82,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(82,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(108,31): warning C4100: 'window_ptr': unreferenced formal parameter
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(177,61): warning C4458: declaration of 'ingredient' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(108,25): message : see declaration of 'Core::Window::ingredient' (compiling source file src\Window.cpp)
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(157,14): warning C4100: 'userParam': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(155,10): warning C4100: 'length': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(153,9): warning C4100: 'id': unreferenced formal parameter
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp(151,24): warning C4100: 'source': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(113,25): message : see declaration of 'Core::Window::ingredient' (compiling source file src\Window.cpp)
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(225,21): warning C4459: declaration of 'width' hides global declaration
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(225,32): warning C4459: declaration of 'height' hides global declaration
@@ -322,5 +286,4 @@ C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(19
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(794,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(794,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
 C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1169): warning C4706: assignment within conditional expression
-  LINK : C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe not found or not built by the last incremental link; performing full link
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe

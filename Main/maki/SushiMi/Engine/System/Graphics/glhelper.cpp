@@ -192,7 +192,7 @@ were held down
 This function is called when keyboard buttons are pressed.
 When the ESC key is pressed, the close flag of the window is set.
 */
-void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod) {
+void GLHelper::key_cb(GLFWwindow* , int key, int , int action, int ) {
 	
 	/* for object physics implementation*/
 	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
@@ -301,7 +301,7 @@ were held down
 
 This function is called when mouse buttons are pressed.
 */
-void GLHelper::mousebutton_cb(GLFWwindow* pwin, int button, int action, int mod) {
+void GLHelper::mousebutton_cb(GLFWwindow* , int , int , int ) {
 
 }
 
@@ -322,7 +322,7 @@ new cursor y-coordinate, relative to the top edge of the client area
 This functions receives the cursor position, measured in screen coordinates but
 relative to the top-left corner of the window client area.
 */
-void GLHelper::mousepos_cb(GLFWwindow* pwin, double xpos, double ypos) {
+void GLHelper::mousepos_cb(GLFWwindow* /*pwin*/, double /*xpos*/, double /*ypos*/) {
 #ifdef _DEBUG
 	//std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
 #endif
@@ -342,7 +342,7 @@ Human-readable description of the code
 The error callback receives a human-readable description of the error and
 (when possible) its cause.
 */
-void GLHelper::error_cb(int error, char const* description) {
+void GLHelper::error_cb(int /*error*/, char const* description) {
 #ifdef _DEBUG
 	std::cerr << "GLFW error: " << description << std::endl;
 #endif
@@ -365,12 +365,12 @@ Height in pixels of new window size
 This function is called when the window is resized - it receives the new size
 of the window in pixels.
 */
-void GLHelper::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
+void GLHelper::fbsize_cb(GLFWwindow* /*ptr_win*/, int width_, int height_) {
 #ifdef _DEBUG
 	std::cout << "fbsize_cb getting called!!!" << std::endl;
 #endif
 	// use the entire framebuffer as drawing region
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, width_, height_);
 	// later, if working in 3D, we'll have to set the projection matrix here ...
 }
 

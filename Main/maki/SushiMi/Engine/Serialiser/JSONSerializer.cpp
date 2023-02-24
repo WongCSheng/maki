@@ -130,7 +130,7 @@ namespace Core
 			if (compJsonObj["type"] == "Transform")
 			{
 				//destructor will  auto destroy? WATCH out for MemLeak!!!
-				Transform* transComp = new Transform();
+				transComp = new Transform();
 				transComp->Deserialize(compJsonObj);
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
 				std::cout << "transform component is : " << transComp << std::endl;
@@ -197,7 +197,7 @@ namespace Core
 		const rapidjson::Value& jsonArr = component["components"];
 		for (rapidjson::size_t i{}; i < jsonArr.Size(); i++)
 		{
-			const rapidjson::Value& object = jsonArr[i];
+			const rapidjson::Value& object = jsonArr[static_cast<rapidjson::SizeType>(i)];
 
 			if (!object.IsObject())
 			{
@@ -210,7 +210,7 @@ namespace Core
 			std::string objFilename = object["filename"].GetString();
 			
 
-			std::string json_from_file = ReadFileContents(objFilename.c_str());
+			std::string json_from_file_ = ReadFileContents(objFilename.c_str());
 
 			std::string name; //name of object we are parsing (under sprite component)
 
@@ -240,9 +240,9 @@ namespace Core
 				return;
 			}
 
-			for (rapidjson::SizeType i = 0; i < document["components"].Size(); i++)
+			for (rapidjson::SizeType _i = 0; _i < document["components"].Size(); _i++)
 			{
-				rapidjson::Value& compJsonObj = document["components"][i]; // access element inside components array
+				rapidjson::Value& compJsonObj = document["components"][static_cast<rapidjson::SizeType>(i)]; // access element inside components array
 
 
 				if (!compJsonObj.IsObject())
@@ -260,10 +260,10 @@ namespace Core
 				if (compJsonObj["type"] == "Transform")
 				{
 					//destructor will  auto destroy? WATCH out for MemLeak!!!
-					Transform* transComp = new Transform();
-					transComp->Deserialize(compJsonObj);
-					gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
-					std::cout << "transform component is : " << transComp << std::endl;
+					Transform* transComp_ = new Transform();
+					transComp_->Deserialize(compJsonObj);
+					gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp_);
+					std::cout << "transform component is : " << transComp_ << std::endl;
 					//delete transComp;
 				}
 
@@ -279,12 +279,12 @@ namespace Core
 					name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
 
 					std::cout << "loading of " << name << "\n";
-					Sprite* object = new Sprite(texturePath);
+					Sprite* _object = new Sprite(texturePath);
 					/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
 					Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
 
-					object->Deserialize(compJsonObj);
-					gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
+					_object->Deserialize(compJsonObj);
+					gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, _object);
 					//delete spriteComp;
 				}
 

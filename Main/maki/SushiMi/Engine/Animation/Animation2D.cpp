@@ -61,7 +61,7 @@ namespace Core
 
 	}
 
-	void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double deltatime)
+	void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double )
 	{
 		anim_cursor += 1/60.f;
 

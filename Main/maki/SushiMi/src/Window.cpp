@@ -224,7 +224,14 @@ namespace Core
 
 	Window::Window(int width, int height)
 		:m_width(width),
-		m_height(height)
+		m_height(height),
+		isCutscene(0),
+		isHowToPlay(0),
+		isLevelSelection(0),
+		isMenuState(1),
+		isSettings(0),
+		isWalk(0),
+		isWinCondition(0)
 
 	{
 		starttime = endtime = delta = 0;
@@ -856,7 +863,7 @@ namespace Core
 			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
-			if (xpos > 275 && xpos < (275 + 266) && ypos > 349 && ypos < (349 + 96))
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96))
 			{
 
 				isMenuState = false;
@@ -871,18 +878,18 @@ namespace Core
 
 			}
 			//HOW TO PLAY
-			if (xpos > 275 && xpos < (275 + 266) && ypos > 520 && ypos < (520 + 96))
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
 			{
 				isHowToPlay = true;
 				//std::cout << "in how to play screen" << std::endl;
 			}
 			//SETTINGS
-			if (xpos > 275 && xpos < (275 + 266) && ypos > 700 && ypos < (700 + 96))
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96))
 			{
 				isSettings = true;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
-			if (xpos > 275 && xpos < (275 + 266) && ypos > 890 && ypos < (890 + 96))
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
 			{
 				glfwSetWindowShouldClose(window_ptr, true);
 			}
@@ -1220,7 +1227,7 @@ namespace Core
 
 			if (isCutscene)
 			{
-				SceneManager::loadCutscene(0, 0);
+				SceneManager::loadCutscene();
 				SceneManager::drawCutscene();
 				if ((keystate_space) && isMenuState == false)
 				{

@@ -127,7 +127,7 @@ namespace Core
 		~SceneManager();
 
 		void Init();
-		void Update(const double dt);
+		void Update(const double );
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static std::vector<std::pair<wall_type, Sprite*>> RetreiveTile() { return tilecontainer; };
@@ -143,7 +143,7 @@ namespace Core
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
-		static void loadCutscene(int x, int y);
+		static void loadCutscene();
 		static void loadLevelSelect(int x, int y);
 		static void load_Dialogue(); //RP stands for Rice Plain
 		static void load_Wood_BG(); //for fishing village

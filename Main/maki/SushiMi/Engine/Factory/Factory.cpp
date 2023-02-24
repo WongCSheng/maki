@@ -46,7 +46,7 @@ namespace Core
 		DeleteList.clear();
 	}
 
-	void ObjectFactory::Update(const double dt)
+	void ObjectFactory::Update(const double )
 	{
 		/*for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
 		{

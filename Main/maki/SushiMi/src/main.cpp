@@ -62,7 +62,7 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow);
 
 
-int WINAPI WinMain([[maybe_unused]]HINSTANCE hInstance, [[maybe_unused]] HINSTANCE hPrevInstance,
+int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout_ HINSTANCE hPrevInstance,
 	[[maybe_unused]] LPSTR lpCmdLine, [[maybe_unused]] int nCmdShow)
 {
 	
@@ -151,13 +151,13 @@ void Core::pseudomain::draw()
 }
 
 void GLAPIENTRY
-MessageCallback(GLenum source,
+MessageCallback(GLenum /*source*/,
 	GLenum type,
-	GLuint id,
+	GLuint /*id*/,
 	GLenum severity,
-	GLsizei length,
+	GLsizei /*length*/,
 	const GLchar* message,
-	const void* userParam)
+	const void* /*userParam*/)
 {
 	if (type == GL_DEBUG_TYPE_ERROR) {
 		fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",

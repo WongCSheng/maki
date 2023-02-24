@@ -160,9 +160,9 @@ namespace Core
 	{
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		
-		tile_width = width / grid_row;
-		tile_height = height / grid_col;
-		SceneManager::setTileDimension(tile_width, tile_height);
+		tile_width = static_cast<float>(width / grid_row);
+		tile_height = static_cast<float>(height / grid_col);
+		SceneManager::setTileDimension(static_cast<unsigned int>(tile_width), static_cast<unsigned int>(tile_height));
 	
 		CorrectCombination = 0;
 
@@ -171,14 +171,16 @@ namespace Core
 		{
 			for (int r = 0; r < grid_row; r++)
 			{
+				int grid_to_coord_x = static_cast<int>(r / static_cast<float>(grid_row) * width);
+				int grid_to_coord_y = static_cast<int>(c / static_cast<float>(grid_col) * height);
 				switch (gGrids[r][c])
 				{
 				case static_cast<int>(grid_number::player):
 				{
-					Window::player->playerpos.x = r / static_cast<float>(grid_row) * width;
-					Window::player->playerpos.y = c / static_cast<float>(grid_col) * height;
-					Window::player->playerpos_restart.x = Window::player->playerpos.x;
-					Window::player->playerpos_restart.y = Window::player->playerpos.y;
+					Window::player->playerpos.x = static_cast<float>(grid_to_coord_x);
+					Window::player->playerpos.y = static_cast<float>(grid_to_coord_y);
+					Window::player->playerpos_restart.x = static_cast<int>(Window::player->playerpos.x);
+					Window::player->playerpos_restart.y = static_cast<int>(Window::player->playerpos.y);
 //#ifndef EDITOR
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
@@ -200,8 +202,8 @@ namespace Core
 					Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::cucumber):
@@ -209,8 +211,8 @@ namespace Core
 					Sprite* cucumber = new Sprite("../textures/Tiles/Ingredients/Ingredients0_cucumber.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::cucumber, cucumber);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::corn):
@@ -218,8 +220,8 @@ namespace Core
 					Sprite* corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 
@@ -228,8 +230,8 @@ namespace Core
 					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::octopus):
@@ -237,8 +239,8 @@ namespace Core
 					Sprite* octopus = new Sprite("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::rice):
@@ -253,8 +255,8 @@ namespace Core
 					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 
 					//old rice
@@ -273,8 +275,8 @@ namespace Core
 					Sprite* roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//salmon
@@ -283,8 +285,8 @@ namespace Core
 					Sprite* salmon = new Sprite("../textures/Tiles/Ingredients/Ingredients0_salmon.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::salmon, salmon);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tamago
@@ -293,8 +295,8 @@ namespace Core
 					Sprite* tamago = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tamago.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tamago, tamago);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tofu
@@ -303,8 +305,8 @@ namespace Core
 					Sprite* tofu = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tofu.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tofu, tofu);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tuna
@@ -313,8 +315,8 @@ namespace Core
 					Sprite* tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//nori
@@ -323,8 +325,8 @@ namespace Core
 					Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//soya
@@ -337,10 +339,9 @@ namespace Core
 					//animate soy sauce
 					soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
 					soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
-					soya->curr_anim = Idle;
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-
+					soya->curr_anim = AnimationType::Idle;
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					
 					break;
 				}
@@ -350,8 +351,8 @@ namespace Core
 					Sprite* wasabi = new Sprite("../textures/Tiles/Ingredients/Wasabi_1.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::wasabi, wasabi);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
@@ -360,7 +361,7 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Avocado.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::avocado_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					levelWinConditions.push_back(std::pair(grid_number::avocado, wall_type::avocado_box));
 
@@ -374,7 +375,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Cucumber.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::cucumber_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::cucumber, wall_type::cucumber_box));
 
@@ -388,7 +390,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Corn.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::corn_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::corn, wall_type::corn_box));
 
@@ -402,7 +405,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Octopus.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::octopus_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::octopus, wall_type::octopus_box));
 
@@ -416,7 +420,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Roes.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::roes_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::roes, wall_type::roes_box));
 
@@ -430,7 +435,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Salmon.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::salmon_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::salmon , wall_type::salmon_box));
 
@@ -444,7 +450,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tamago.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tamago_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::tamago, wall_type::tamago_box));
 
@@ -458,7 +465,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tofu.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tofu_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::tofu, wall_type::tofu_box));
 
@@ -472,7 +480,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tuna_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::tuna, wall_type::tuna_box));
 
@@ -486,7 +495,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Nori.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::nori_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::nori, wall_type::nori_box));
 
@@ -500,7 +510,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::rice_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::rice, wall_type::rice_box));
 
@@ -516,7 +527,8 @@ namespace Core
 					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::inari_box, box);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					levelWinConditions.push_back(std::pair(grid_number::inari, wall_type::inari_box));
 
@@ -530,7 +542,8 @@ namespace Core
 					Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
 					break;
 				}
 
@@ -539,7 +552,8 @@ namespace Core
 					Sprite* sinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole, sinkhole);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					break;
 				}
@@ -549,7 +563,8 @@ namespace Core
 					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::filledsinkhole, filledsinkhole);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					break;
 				}
@@ -560,7 +575,8 @@ namespace Core
 					Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::temp, foodinsinkhole);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					break;
 				}
@@ -570,7 +586,8 @@ namespace Core
 
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground0, tile);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
 					break;
 				}
 				case static_cast<int>(grid_number::ground1):
@@ -579,7 +596,8 @@ namespace Core
 
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground1, tile);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
 					break;
 				}
 				case static_cast<int>(grid_number::ground2):
@@ -588,7 +606,8 @@ namespace Core
 
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground2, tile);
 
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
 					break;
 				}
 				//sinkhole_gunkan
@@ -598,7 +617,8 @@ namespace Core
 
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole_gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 
 					break;
 				}
@@ -607,7 +627,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall0_1):
@@ -615,7 +636,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall1):
@@ -623,7 +645,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall2):
@@ -631,7 +654,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -642,7 +666,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -652,7 +677,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall2_3):
@@ -660,7 +686,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -669,7 +696,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 
@@ -678,7 +706,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1, tile);
 					//tile->Add_animation()
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 
@@ -687,7 +716,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_2, tile);
 					//tile->Add_animation()
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 
@@ -697,7 +727,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 
@@ -706,7 +737,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -715,7 +747,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall4_2):
@@ -723,7 +756,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall4_3):
@@ -731,7 +765,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall4_4):
@@ -739,7 +774,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -750,7 +786,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 					
@@ -761,7 +798,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -771,7 +809,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -781,7 +820,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -791,7 +831,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -800,7 +841,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall6_1):
@@ -808,7 +850,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -818,7 +861,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -828,7 +872,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -838,7 +883,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -848,7 +894,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall7_1):
@@ -856,7 +903,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -866,7 +914,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -876,7 +925,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -886,7 +936,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 
 				}
@@ -896,7 +947,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//wall 9
@@ -905,7 +957,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_1):
@@ -913,7 +966,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_1.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_1, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_2):
@@ -921,7 +975,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_2.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_2, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_3):
@@ -929,7 +984,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_3.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_3, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_4):
@@ -937,7 +993,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_4.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_4, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_5):
@@ -945,7 +1002,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_5.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_5, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_6):
@@ -953,7 +1011,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_6.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_6, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::Wall9_7):
@@ -961,7 +1020,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_7.jpg");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_7, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				case static_cast<int>(wall_type::WaterWall):
@@ -969,7 +1029,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WaterWall, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall0_Gunkan,		//j
@@ -978,7 +1039,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall0.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall1_Gunkan,		//k
@@ -987,7 +1049,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall1_1_Gunkan,		//l
@@ -996,7 +1059,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_1_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall2_Gunkan,		//m
@@ -1005,7 +1069,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall2_1_Gunkan,		//n
@@ -1014,7 +1079,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall3_Gunkan,		//o
@@ -1023,7 +1089,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				//	Wall3_1_Gunkan,		//p
@@ -1032,7 +1099,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1_Gunkan, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				
@@ -1050,7 +1118,8 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
 					break;
 				}
 				default:
@@ -1202,7 +1271,7 @@ namespace Core
 						}
 
 						soya->timer = 0;
-						soya->curr_anim = Run;
+						soya->curr_anim = AnimationType::Run;
 
 
 						Window::player->move_left();
@@ -1219,7 +1288,7 @@ namespace Core
 
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(Window::player->playerpos.x - (2 * tile_width + 5), Window::player->playerpos.y, Window::player->player_grid_pos.x - 2, Window::player->player_grid_pos.y, combine);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
 
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
@@ -1409,7 +1478,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(Window::player->playerpos.x + (2 * tile_width), Window::player->playerpos.y, Window::player->player_grid_pos.x + 2, Window::player->player_grid_pos.y, combine);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) + (2 * static_cast<int>(tile_width)), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->player_grid_pos.x) + 2, static_cast<int>(Window::player->player_grid_pos.y), combine);
 
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
@@ -1605,7 +1674,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::boxcover);
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(Window::player->playerpos.x, Window::player->playerpos.y + (2 * tile_height), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) + (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 
@@ -1799,7 +1868,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::boxcover);
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(Window::player->playerpos.x, Window::player->playerpos.y - (2 * tile_height), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y - 2, combine);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) - (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y - 2, combine);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 

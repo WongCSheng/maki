@@ -16,7 +16,7 @@ email:		fei.x@digipen.edu
 
 namespace Core
 {
-	Sprite::Sprite(const char* filename)
+	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}
 	{
 		//mem leak here?
 		auto tex_sys = Core::TextureSystem::GetInstance();
@@ -59,9 +59,9 @@ namespace Core
 	void Sprite::draw(double deltatime, AnimationType type)
 	{
 
-		if (anims[type])
+		if (anims[static_cast<int>(type)])
 		{
-			anims[type]->play(texture, rectangle, deltatime);
+			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime);
 		}
 
 		glBindTexture(GL_TEXTURE_2D, texture.TextureID);

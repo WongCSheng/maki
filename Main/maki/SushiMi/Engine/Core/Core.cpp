@@ -114,7 +114,7 @@ namespace Core
 			sys->second->Update(dt);
 		}
 
-		int mousestate = glfwGetMouseButton(Window::window_ptr, MOUSE_BUTTON_LEFT);
+		int mousestate = glfwGetMouseButton(Window::window_ptr, static_cast<int>(MOUSE::MOUSE_BUTTON_LEFT));
 
 		gfxVector2 mousePos = inputsystem->GetMouse(Window::window_ptr, mousestate);
 	}

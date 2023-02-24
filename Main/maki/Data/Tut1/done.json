@@ -10,7 +10,7 @@
       "type": "Sprite",
       "texturepath": "../textures/levelQuest/done.png",
       "name": "done",
-      "SpriteSheet": false,                           
+      "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }
   ]

@@ -1429,7 +1429,7 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 				/*Fade In Effect*/
-				//SceneManager::FadeIn();
+				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
 
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
@@ -2303,7 +2303,7 @@ namespace Core
 							std::string one_by_one = realstring.substr(0, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2)
+							if (Window::GetInstance(0, 0)->getDelta() * 150 < 2)
 							{
 								curr_len += 1; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;

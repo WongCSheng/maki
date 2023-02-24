@@ -1,6 +1,6 @@
 ﻿  Window.cpp
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(125): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(30,28): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(130): warning C4091: 'inline static ': ignored on left of 'Core::Window::ScreenDimensions' when no variable is declared
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.h(35,28): warning C4100: 'dt': unreferenced formal parameter
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
 C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(82,73): warning C4100: 'mod': unreferenced formal parameter

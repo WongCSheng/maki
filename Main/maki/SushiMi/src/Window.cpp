@@ -1259,14 +1259,12 @@ namespace Core
 			{
 				if (!loaded)
 				{
-
-
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
 					}
 
-					Map::initMap("../TileMap/old_tut1.txt");
+					Map::initMap("../TileMap/pod_rendering_test.txt");
 
 					Map::LoadMap();
 					loaded = true;
@@ -1287,13 +1285,19 @@ namespace Core
 						return;
 					}
 					std::getline(fin, realstring);
-					//fin.close();
 
 					dialogue_style = static_cast<int>(dialogue::T1);
 					curr_len = 0;
 					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+				}
+
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
 				}
 
 				//draw lv1 tile map
@@ -1347,7 +1351,6 @@ namespace Core
 			*********************************/
 			if (isTut2 == true)
 			{
-
 				//fadeComplete = SceneManager::FadeOut();
 				//if (fadeComplete == 0)
 				//{
@@ -1396,6 +1399,7 @@ namespace Core
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
+
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1429,10 +1433,9 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 				/*Fade In Effect*/
-				SceneManager::FadeIn();
+				//SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
-
-				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 
 				//stop all player controls
@@ -2408,7 +2411,6 @@ namespace Core
 				{
 					SceneManager::load_Dialogue();
 					SceneManager::draw_Dialogue();
-
 
 
 					if (curr_len <= realstring.length())

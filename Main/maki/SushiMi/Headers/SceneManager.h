@@ -151,6 +151,7 @@ namespace Core
 		static void drawTile();
 		static void drawBox();
 		static void drawIngr();
+		static void drawInsideSinkHole();
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay();
 		static void drawSettings();
@@ -169,6 +170,7 @@ namespace Core
 
 		static void destroyTile();
 		static void destroyIngr();
+		static void destroyInsideSinkHole();
 		static void destroyPlayer_Stuck();
 		static void destroyHowToOverlay();
 		static void destroySettings();
@@ -192,6 +194,7 @@ namespace Core
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+		static inline std::vector<std::pair<grid_number, Sprite*>> in_sinkhole;
 		static inline std::vector<short> ICnum;
 		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;

@@ -292,7 +292,7 @@ namespace Core
 
 		currentAlpha = std::lerp(currentAlpha, targetAlpha, 0.016f);
 		SceneManager::drawRect(currentAlpha);
-		std::cout << "Alpha: " << currentAlpha << std::endl;
+		//std::cout << "Alpha: " << currentAlpha << std::endl;
 	}
 
 	/*draw functions*/
@@ -329,41 +329,24 @@ namespace Core
 		}
 	}
 
-	/*void SceneManager::drawIngr1()
+	void SceneManager::drawInsideSinkHole()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient1->transformation.Get());
-		ingredient1->draw();
-	}
-
-	void SceneManager::drawIngr2()
-	{
-		for (auto& ingredient : ingredientcontainer)
+		for (auto& sink : in_sinkhole)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient->transformation.Get());
-			ingredient->draw();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+
+			if (sink.second->isSpriteSheet)
+			{
+				sink.second->draw(delta, sink.second->curr_anim);
+			}
+			else
+			{
+				sink.second->draw();
+			}
+
 		}
 	}
-
-	void SceneManager::drawTrap()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", trap->transformation.Get());
-		trap->draw();
-	}
-	void SceneManager::drawGoal1()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal1->transformation.Get());
-		goal1->draw();
-	}
-	void SceneManager::drawGoal2()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", goal2->transformation.Get());
-		goal2->draw();
-	}
-	void SceneManager::drawCover1()
-	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", cover1->transformation.Get());
-		cover1->draw();
-	}*/
 
 	void SceneManager::drawPlayer_Stuck()
 	{
@@ -580,27 +563,19 @@ namespace Core
 
 		ingredientcontainer.clear();
 	}
-	/*void SceneManager::destroyTrap()
+	
+	void SceneManager::destroyInsideSinkHole()
 	{
-		delete trap;
-	}
-	void SceneManager::destroyGoal1()
-	{
-		delete goal1;
-	}
-	void SceneManager::destroyGoal2()
-	{
-		delete goal2;
-	}*/
+		if (in_sinkhole.size() != 0)
+		{
+			for (auto it : in_sinkhole)
+			{
+				delete it.second;
+			}
+		}
 
-	/*void SceneManager::destroyCover1()
-	{
-		delete cover1;
+		in_sinkhole.clear();
 	}
-
-	void SceneManager::destroyCover2()
-	{
-	}*/
 
 	void SceneManager::destroyHowToOverlay()
 	{

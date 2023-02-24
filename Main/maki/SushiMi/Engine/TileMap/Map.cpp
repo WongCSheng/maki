@@ -49,16 +49,10 @@ namespace Core
 			delete gGrids[i];
 		}
 		delete gGrids;
-		//this does deleting of textures
-		/*SceneManager::destroyTile();
-		SceneManager::destroyGoal1();
-		SceneManager::destroyGoal2();
-		SceneManager::destroyCover1();
-		SceneManager::destroyIngr();
-		SceneManager::destroyIngr();*/
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
+		SceneManager::destroyInsideSinkHole();
 	}
 
 	void Map::initMap(std::string Filename)
@@ -123,6 +117,7 @@ namespace Core
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
+		SceneManager::destroyInsideSinkHole();
 
 		if (Window::timetodeletegrid)
 		{
@@ -1153,15 +1148,28 @@ namespace Core
 						//Set grid
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::temp);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
+
+						unsigned short it = 0;
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.first == check)
 							{
 								ingredient.second->transformation.Position.x -= tile_width;
+
+								SceneManager::in_sinkhole.push_back(ingredient);
+								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
 								break;
 							}
+							it++;
 						}
 
 						std::cout << "left ingredient sinkhole\n";
@@ -1349,17 +1357,31 @@ namespace Core
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
+						//Set grid
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::temp);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
+
+						unsigned short it = 0;
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.first == check)
 							{
 								ingredient.second->transformation.Position.x += tile_width;
+
+								SceneManager::in_sinkhole.push_back(ingredient);
+								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
 								break;
 							}
+							it++;
 						}
 
 						std::cout << "right ingredient sinkhole\n";
@@ -1528,15 +1550,28 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(wall_type::temp);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
+
+						unsigned short it = 0;
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.first == check)
 							{
 								ingredient.second->transformation.Position.y += tile_height;
+
+								SceneManager::in_sinkhole.push_back(ingredient);
+								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
 								break;
 							}
+							it++;
 						}
 
 						std::cout << "down ingredient sinkhole\n";
@@ -1703,15 +1738,28 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(wall_type::temp);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
+						if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
+
+						unsigned short it = 0;
 						for (auto ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.first == check)
 							{
 								ingredient.second->transformation.Position.y -= tile_height;
+
+								SceneManager::in_sinkhole.push_back(ingredient);
+								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
 								break;
 							}
+							it++;
 						}
 
 						std::cout << "up ingredient sinkhole\n";
@@ -1867,6 +1915,7 @@ namespace Core
 	void Map::DrawMap()
 	{
 		SceneManager::drawTile();
+		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
 	}
 	/********************************************

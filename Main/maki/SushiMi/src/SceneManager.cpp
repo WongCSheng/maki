@@ -68,8 +68,6 @@ namespace Core
 		{
 			ingredient.second->restart();
 		}
-
-
 	}
 	//R key for restart
 	// update by thea: i've written a new restart function

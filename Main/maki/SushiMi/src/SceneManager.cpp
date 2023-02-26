@@ -67,6 +67,7 @@ namespace Core
 		for (auto& ingredient : ingredientcontainer)
 		{
 			ingredient.second->restart();
+			ingredient.second->count = 0;
 		}
 	}
 	//R key for restart
@@ -102,10 +103,24 @@ namespace Core
 
 		ingredient.second->transformation.grid_pos = { posX, posY };
 
+		//set all counters to 0 first, because soya might be activated twice
+		ingredient.second->count = 0;
+
 		ingredientcontainer.push_back(ingredient);
 		std::cout << std::endl;
 		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
+	/*
+	void SceneManager::loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient)
+	{
+		ingredient.second->transformation.Position = glm::vec2(x, y);
+		ingredient.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
+
+		ingredient.second->transformation.grid_pos = { posX, posY };
+		ricecontainer.push_back(ingredient);
+	}
+	*/
+
 
 	void SceneManager::loadIngr_initPos(int x, int y, int /*posX*/, int /*posY*/, const std::pair<grid_number, Sprite*>& ingrposition)
 	{
@@ -312,6 +327,7 @@ namespace Core
 	{
 		for (auto& ingredient : ingredientcontainer)
 		{
+			/*
 			if (ingredient.first == grid_number::boxcover)
 			{
 				ingredient.second->alpha = 0.5f;
@@ -320,19 +336,54 @@ namespace Core
 			{
 				ingredient.second->alpha = 1.f;
 			}
-			
+			*/
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+				if (ingredient.first == grid_number::soya)
+				{
+					//std::cout << ingredient.second->timer << std::endl;
+					if (ingredient.second->timer > 5.f)
+					{
 
-			if (ingredient.second->isSpriteSheet)
-			{
-				ingredient.second->draw(delta, ingredient.second->curr_anim);
-			}
-			else
-			{
-				ingredient.second->draw();
-			}
+						ingredient.second->curr_anim = AnimationType::Idle;
+						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+					}
+				}
+				if (ingredient.second->isSpriteSheet)
+				{
+					ingredient.second->draw(Window::GetInstance(0, 0)->getDelta(), ingredient.second->curr_anim);
+				}
+				else
+				{
+					ingredient.second->draw();
+				}
+
+				ingredient.second->timer += Window::GetInstance(0, 0)->getDelta();
+			
 		}
+	}
+	/*
+	void SceneManager::drawRice()
+	{
+		for (auto& ingredient : ricecontainer)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			ingredient.second->draw();
+		}
+	}
+	*/
+
+
+	void SceneManager::activateSoya(Sprite* soya)
+	{
+			if (soya->timer < 5.f)
+			{
+				soya->transformation.Position.x = soya->transformation.Position.x - 30;
+				soya->transformation.Position.y = soya->transformation.Position.y - 30;
+				soya->curr_anim = AnimationType::Run;
+				soya->count++;
+			}
 	}
 
 	void SceneManager::drawInsideSinkHole()
@@ -566,7 +617,16 @@ namespace Core
 				delete it.second;
 			}
 		}
-
+		/*
+		if (ricecontainer.size() != 0)
+		{
+			for (auto it : ricecontainer)
+			{
+				delete it.second;
+			}
+		}
+		ricecontainer.clear();
+		*/
 		ingredientcontainer.clear();
 	}
 	

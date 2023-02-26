@@ -37,6 +37,8 @@ namespace Core
 	wall_type ex_box;
 
 	Sprite* soya;
+	Sprite* rice;
+
 
 	Map::Map()
 	{
@@ -132,29 +134,6 @@ namespace Core
 		SceneManager::amt_of_win_conditions = 0;
 	}
 
-	void Map::fadeToBlack()
-	{
-		static glm::dvec4
-			startColor{ 1.0,1.0,1.0,0.0 },
-			endColor{ 0.0,0.0,0.0,1.0 },
-			screenColor{ 0 };
-		static double start_time = glfwGetTime();
-		double curr_time = glfwGetTime();
-		const double fade_duration{ 2.0 }, timeDiff{ (curr_time - start_time) / fade_duration };
-		//linear interpolation
-		screenColor.r = startColor.r + timeDiff * (endColor.r - startColor.r); // screen color for red
-		screenColor.g = startColor.g + timeDiff * (endColor.g - startColor.g); // screen color for green
-		screenColor.b = startColor.b + timeDiff * (endColor.b - startColor.b); // screen color for blue
-
-		if (timeDiff >= 1.0)
-		{
-			// reset the colours
-			std::swap(startColor, endColor);
-			start_time = curr_time;
-
-		}
-		glClearColor(static_cast<float>(screenColor.r), static_cast<float>(screenColor.g), static_cast<float>(screenColor.b), 1.0);
-	}
 
 	int Map::LoadMap()
 	{
@@ -252,7 +231,7 @@ namespace Core
 					rice->curr_anim = Idle;
 					*/
 
-					Sprite* rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
+					rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
@@ -1122,6 +1101,7 @@ namespace Core
 
 					break;
 				}
+
 				default:
 					assert("Texture type not found\n");
 					break;
@@ -1258,7 +1238,7 @@ namespace Core
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::rice);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						for (auto ingredient : SceneManager::ingredientcontainer)
@@ -1269,11 +1249,21 @@ namespace Core
 								break;
 							}
 						}
-
+						/*
+						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::RiceSoy, rice_soy);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (1 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
+							static_cast<int>(Window::player->playerpos.x) - 1, static_cast<int>(Window::player->playerpos.y), combine);
+							*/
 						soya->timer = 0;
-						soya->curr_anim = AnimationType::Run;
-
-
+						SceneManager::activateSoya(soya);
+						/*
+						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
+						
+						std::pair<Rice, Sprite*> combine = std::make_pair(Rice::riceSoya, rice_soy);
+						SceneManager::loadRice(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
+							static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
+						*/
 						Window::player->move_left();
 						std::cout << "soya dripped\n";
 					}
@@ -1288,7 +1278,8 @@ namespace Core
 
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), 
+							static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
 
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
@@ -2010,6 +2001,7 @@ namespace Core
 		SceneManager::drawTile();
 		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
+		//SceneManager::drawRice();
 	}
 	/********************************************
 	 Return the value inside a cell that you click

@@ -119,6 +119,14 @@ namespace Core
 	{
 
 	};
+	/*
+	enum class Rice
+	{
+		riceSoya = 130,
+		riceWasabi,
+		riceBoth
+	};
+	*/
 	
 	class SceneManager : public SystemFrame
 	{
@@ -138,6 +146,9 @@ namespace Core
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
+		//static void loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient);
+
+		 
 		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition);
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
@@ -151,6 +162,8 @@ namespace Core
 		static void drawTile();
 		static void drawBox();
 		static void drawIngr();
+		//static void drawRice();
+		static void activateSoya(Sprite* soya);
 		static void drawInsideSinkHole();
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay();
@@ -194,6 +207,7 @@ namespace Core
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+		//static inline std::vector<std::pair<Rice, Sprite*>> ricecontainer;
 		static inline std::vector<std::pair<grid_number, Sprite*>> in_sinkhole;
 		static inline std::vector<short> ICnum;
 		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;

@@ -1,4 +1,2 @@
-﻿  JSONSerializer.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(372,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(373,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  SceneManager.cpp
+  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

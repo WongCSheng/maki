@@ -94,7 +94,7 @@ namespace Core
 		} goal2_Grid_pos;
 
 		float timer;
-
+		int count;
 		float alpha;
 
 	private:

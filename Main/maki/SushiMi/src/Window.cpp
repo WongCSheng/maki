@@ -31,6 +31,9 @@ namespace Core
 {
 	static Core::MainSystem* CoreSystem;
 	static int width, height;
+
+	std::vector<std::pair<grid_number, Sprite*>> CurrentIngredients; // retreive the curent level loaded ingredients
+
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	/*                                                             game states
@@ -176,7 +179,6 @@ namespace Core
 			//checking through all loaded ingredient for the current level
 			for (auto& ingredient : SceneManager::ingredientcontainer)
 			{
-
 				//convert coordinates back into row and column (dont know why need to plus 1)
 				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / m_width)) + 1;
 				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / m_height)) + 1;
@@ -609,7 +611,7 @@ namespace Core
 				isLevel7 = false;
 				isLevel8 = false;
 				isLevel9 = false;
-				isLevel10 = false; 
+				isLevel10 = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -1138,8 +1140,6 @@ namespace Core
 			//Sprite::menu->transformation.Position = glm::vec2(0, 0);
 			//Sprite::menu->transformation.Scale = glm::vec2(1000, 800);
 
-
-
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
 
 			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
@@ -1298,6 +1298,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 7; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 
 				/*Fade out effect*/
@@ -1399,9 +1401,11 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 5; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
 					//also need dialogue after game end
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+					                                                        // for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
-				if (!isWinCondition)
+				if (isWinCondition)
 				{
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
@@ -1432,6 +1436,7 @@ namespace Core
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
 				}
+				
 			}
 			if (isWinCondition == true && isTut2 == true)
 			{
@@ -1507,6 +1512,8 @@ namespace Core
 
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 					//also need dialogue after game end
 				}
 				/*Fade out effect*/
@@ -1600,6 +1607,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -1671,7 +1680,7 @@ namespace Core
 
 					isQuestTab = false;
 					loaded = true;
-					
+
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
@@ -1695,6 +1704,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -1768,7 +1779,7 @@ namespace Core
 					loaded = true;
 					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 					AudioManager.LoadMusic("Forest_bgm.wav");
-					AudioManager.SetMusicVolume(0.01f); 
+					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Forest_bgm.wav");
 
 					if (fin)
@@ -1789,6 +1800,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -1882,6 +1895,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -1973,6 +1988,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -2065,6 +2082,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -2156,6 +2175,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -2163,7 +2184,7 @@ namespace Core
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
-				Map::DrawMap(); 
+				Map::DrawMap();
 
 				//draw playerpos at lvl 2
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -2244,6 +2265,8 @@ namespace Core
 					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (!isWinCondition)
@@ -2251,7 +2274,7 @@ namespace Core
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
-				Map::DrawMap(); 
+				Map::DrawMap();
 
 				//draw playerpos at lvl 2
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -2305,7 +2328,7 @@ namespace Core
 				{
 					SceneManager::load_Dialogue();
 					SceneManager::draw_Dialogue();
-	
+
 					if (curr_len <= realstring.length())
 					{
 						if (curr_len < 54)
@@ -2350,14 +2373,14 @@ namespace Core
 					SceneManager::load_Dialogue();
 					SceneManager::draw_Dialogue();
 
-				
+
 
 					if (curr_len <= realstring.length())
 					{
 						if (realstring.length() < 55)
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
-							
+
 							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							if (GLHelper::delta_time * 150 < 2)
 							{
@@ -2394,7 +2417,7 @@ namespace Core
 						{
 							//std::cout << "this text is soo long " << std::endl;
 							std::string first_line = realstring.substr(0, 53);
-							std::string second_line = realstring.substr(53, 107-53);
+							std::string second_line = realstring.substr(53, 107 - 53);
 							std::string third_line = realstring.substr(107, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
@@ -2513,32 +2536,43 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
+				//	std::cout << "Drawing of Menu\n";
 				//AudioManager.SetMusicVolume(0.4f);
-				isQuestTab = false;
-				for (auto& x : CoreSystem->objfactory->ObjectContainer)
-				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
+				//for (auto& x : CoreSystem->objfactory->ObjectContainer)
+				//{
+				//	Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				//	Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-					if (x.first == "Menu") //draw menu
-						spritecomp->draw();
+				//	spritecomp->transformation.Position = transcomp->Position;
+				//	spritecomp->transformation.Scale = transcomp->Scale;
 
-					if (x.first == "StartButton")
-						spritecomp->draw();
+				//	Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+				//	if (x.first == "Menu") //draw menu
+				//		spritecomp->draw();
 
-					if (x.first == "HowToPlay")
-						spritecomp->draw();
+				//	if (x.first == "StartButton")
+				//		spritecomp->draw();
 
-					if (x.first == "SettingsButton")
-						spritecomp->draw();
+				//	if (x.first == "HowToPlay")
+				//		spritecomp->draw();
 
-					if (x.first == "ExitButton")
-						spritecomp->draw();
-				}
+				//	if (x.first == "SettingsButton")
+				//		spritecomp->draw();
+
+				//	if (x.first == "ExitButton")
+				//		spritecomp->draw();
+				//}
+
+				Core::Object::GameObject* menu = CoreSystem->objfactory->ObjectContainer.at("Menu");
+				Transform* transcomp = static_cast<Transform*>(menu->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp = static_cast<Sprite*>(menu->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+				spritecomp->transformation.Position = transcomp->Position;
+				spritecomp->transformation.Scale = transcomp->Scale;
+
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+				spritecomp->draw();
 			}
 
 			if (gameIsPaused == true)
@@ -2566,24 +2600,67 @@ namespace Core
 				}
 			}
 
-			if (isQuestTab == true)
+			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
+			if (isQuestTab == true && !isWinCondition)
 			{
-				//std::cout << "Drawing tabmenu\n";
-				if (isTut1)
+				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
+				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+				spritecomp1->transformation.Position = transcomp1->Position;
+				spritecomp1->transformation.Scale = transcomp1->Scale;
+
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+				spritecomp1->draw();
+
+				std::map<std::string, gfxVector2> loadedIngredients;    // mapping of ingredients to position based on how many ingredients loaded
+				size_t numOfLoadedIngredient = CurrentIngredients.size();    // number of ingredients loaded for current level
+
+				float increment = 0.f;    // increment to position each ingredient onto quest tab
+
+				//checking through all loaded ingredient for the current level
+  				for (auto& ingredient : CurrentIngredients)
 				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestT1");
+					std::string loadedIngredient = Map::EnumToString(ingredient.first);    // convert enum to string
 
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					// determine each ingredient location based on number of ingredient loaded
+					switch (numOfLoadedIngredient)
+					{
+					case(1):
+						//loading 1 ingredient
+						loadedIngredients.insert({ loadedIngredient, {50.0f, 140.0f} });
+						break;
 
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+					case(2):
+						//loading 2 ingredients
+						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						break;
 
-					spritecomp->draw();
-					checkWin();
+					case(3):
+						//loading 3 ingredients
+						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						break;
+
+					//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//
+					}
+					increment += 100.0f;
 				}
-				if (isTut2)
+
+				// drawing of loaded ingredients using new positions
+				for (auto& ingredient : loadedIngredients)
+				{
+					Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
+					Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
+					spritecomp2->transformation.Scale = transcomp2->Scale;
+
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
+					spritecomp2->draw();
+				}
+
+				/*if (isTut2)
 				{
 					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestT2");
 
@@ -2597,91 +2674,20 @@ namespace Core
 					spritecomp->draw();
 					checkWin();
 				}
-				if (isLevel1)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv1");
+				*/
+			}
+			// quest tab shift to left side
+			else
+			{
+				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
+				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+				spritecomp1->transformation.Position = { transcomp1->Position.x - 387.f, transcomp1->Position.y };
+				spritecomp1->transformation.Scale = transcomp1->Scale;
 
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-				if (isLevel2)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv2");
-
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-				if (isLevel3)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv3");
-
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-				if (isLevel4)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv4");
-
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-				if (isLevel5)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv5");
-
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-				if (isLevel6)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestLv6");
-
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-					spritecomp->draw();
-					checkWin();
-				}
-
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+				spritecomp1->draw();
 			}
 
 			if (isWalk == true)
@@ -2782,9 +2788,9 @@ namespace Core
 					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
 					{
 						isCredits = false;
-					}
 				}
 			}
+		}
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
@@ -2796,7 +2802,7 @@ namespace Core
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", test.spritepath->transformation.Get());
 				test.spritepath->draw();
-		}
+			}
 #endif
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;

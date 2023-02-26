@@ -2,14 +2,14 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 0.0, 0.0 ],
+      "position": [ 150.0, 140.0 ],
       "rotation": 0.0,
-      "scale": [ 500, 350 ]
+      "scale": [ 80, 80 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/QuestTab.png",
-      "name": "QuestTab",
+      "texturepath": "../textures/levelQuest/Quest_Inari.png",
+      "name": "Inari",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

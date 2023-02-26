@@ -2024,4 +2024,62 @@ namespace Core
 		Window::loaded = false;
 		print_map_to_console(); //debugging
 	}
+
+
+	/**************************************************************
+	 Helper function to convert enum in sceneManager.h to string
+	**************************************************************/
+	std::string Map::EnumToString(grid_number ingredient)
+	{
+		switch (ingredient)
+		{
+		case(grid_number::avocado):
+			return ("Avocado");
+			break;
+
+		case(grid_number::corn):
+			return ("Corn");
+			break;
+
+		case(grid_number::cucumber):
+			return ("Cucumber");
+			break;
+
+		case(grid_number::inari):
+			return ("Inari");
+			break;
+
+		case(grid_number::nori):
+			return ("Nori");
+			break;
+
+		case(grid_number::octopus):
+			return ("Octopus");
+			break;
+
+		case(grid_number::rice):
+			return ("Rice");
+			break;
+
+		case(grid_number::roes):
+			return ("Roes");
+			break;
+
+		case(grid_number::salmon):
+			return ("Salmon");
+			break;
+
+		case(grid_number::tamago):
+			return ("Tamago");
+			break;
+
+		case(grid_number::tofu):
+			return ("Tofu");
+			break;
+
+		case(grid_number::tuna):
+			return ("Tuna");
+			break;
+		}
+	}
 }

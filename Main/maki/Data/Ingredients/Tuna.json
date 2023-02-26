@@ -2,20 +2,16 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 0.0, 0.0 ],
+      "position": [ 150.0, 140.0 ],
       "rotation": 0.0,
-      "scale": [ 1920, 1080 ]
+      "scale": [ 80, 80 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Tuna.png",
+      "texturepath": "../textures/levelQuest/Quest_Tuna.png",
       "name": "Tuna",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
-    },
-    {
-      "type": "Audio",
-      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

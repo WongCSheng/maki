@@ -38,6 +38,8 @@ namespace Core
 		static bool isWin();
 		
 		static void fadeToBlack();
+		static std::string EnumToString(grid_number ingredient);
+
 		//static inline Core::grid_number box_stepped_on;
 		static inline int Map_Height, Map_Width;
 		/*static int** MapData;

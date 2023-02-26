@@ -2,7 +2,7 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 275, 700],
+      "position": [ 275, 700 ],
       "rotation": 0.0,
       "scale": [ 266, 96 ]
     },
@@ -13,6 +13,5 @@
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     }
- 
   ]
 }

@@ -664,50 +664,63 @@ namespace Core
 #if defined(EDITOR) | defined(_EDITOR)
 
 			double xpos = 0, ypos = 0;
+			double gridxpos = 0, gridypos = 0;
+
 			int width_, height_ = 0;
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 			glfwGetWindowSize(Window::window_ptr, &width_, &height_);
 
-			std::cout << "You are clicking at grid position X: " << (int)(xpos/ width_*18) << " Y: " << (int)(ypos/height_*10) << std::endl;
+			/*std::cout << "You are clicking at grid position X: " << (int)(xpos/ width_*18) << " Y: " << (int)(ypos/height_*10) << std::endl;
 			std::cout << "the object in the grid is: " << static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10))) << std::endl;
 			alphabet = static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10)));
 			xgrid = (int)(xpos / width_ * 18);
-			ygrid = (int)(ypos / height_ * 10);
+			ygrid = (int)(ypos / height_ * 10);*/
 
 
 			int i = imguiPlacedObjs;
 
 			//newobjarr[i].spritevector = new Sprite(texpath); replace with pushing back a struct
-			/*Window::a = new Sprite(texpath);*/
-			xpos = (float)((int)(xpos) / 100 * 100);
-			ypos = (float)((int)(ypos) / 100 * 100);
 
-			/**************************
-			* Step 1: set ur spritepath
-			* 1a) set scale,
-			* 1b) set pos
-			* Step 2: set ur name given to object
-			* Step 3: save your pos into x and y so that Object Container can read it
-			* Step 4: push back the whole struct
-			****************************************************/
-			addedobjinfo a;
-			a.spritepath = new Sprite(texpath); //1
-			a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
-			a.spritepath->transformation.Scale = glm::vec2(100, 100); //1b
-			a.objname = "path"; //2
-			a.x = xpos;
-			a.y = ypos; //3
-			newobjarr.push_back(a); //push back the whole struct
-			//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
-			//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
-			//if (texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png")
-			//{
-			//	newobjarr[i].objname = "salmon";//you placed a salmon!
-			//}
-			//else
-			//	newobjarr[i].objname = "unknown";
-			std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
+			if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
+			{
+				gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+				gridypos = ((int)(ypos) / SceneManager::getTileHeight());
+
+				//r / static_cast<float>(grid_row) * width
+
+				xpos = gridxpos / static_cast<float>(Map::grid_row) * width_;
+				ypos = gridypos / static_cast<float>(Map::grid_col) * height_;
+				/**************************
+				* Step 1: set ur spritepath
+				* 1a) set scale,
+				* 1b) set pos
+				* Step 2: set ur name given to object
+				* Step 3: save your pos into x and y so that Object Container can read it
+				* Step 4: push back the whole struct
+				****************************************************/
+				addedobjinfo a;
+				a.spritepath = new Sprite(texpath); //1
+				a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
+				a.spritepath->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());//1b
+				a.objname = "path"; //2
+				a.x = xpos;
+				a.y = ypos; //3
+				newobjarr.push_back(a); //push back the whole struct
+				//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
+				//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
+				//if (texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png")
+				//{
+				//	newobjarr[i].objname = "salmon";//you placed a salmon!
+				//}
+				//else
+				//	newobjarr[i].objname = "unknown";
+				std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
+			}
+			/*Window::a = new Sprite(texpath);*/
+			/*xpos = (float)((int)(xpos) / 100 * 100);
+			ypos = (float)((int)(ypos) / 100 * 100);*/
+
 
 			
 			++imguiPlacedObjs;
@@ -769,7 +782,7 @@ namespace Core
 			}
 				/*= glm::vec2(xpos, ypos)*/
 			//place object on click
-			std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
+			//std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
 			//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
 
 			if (ImGui::IsMouseClicked(0)) //0 means left

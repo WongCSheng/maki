@@ -1,0 +1,8 @@
+{
+  "components": [
+    {
+      "name": "BGM_ForestDay",
+      "filename": "./Audio/Music/BGM_ForestDay.json"
+    }
+  ]
+}

@@ -491,7 +491,7 @@ namespace Core
 		if (keystate_L)
 		{
 			keystate_L = true;
-			std::cout << "you have loaded tutorial 2 (currently a test level)" << std::endl;
+			std::cout << "you have loaded tutorial 2" << std::endl;
 			if (keystate_L)
 			{
 
@@ -2788,6 +2788,9 @@ namespace Core
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
+
+#endif
+
 #if EDITOR
 			for (auto test : Editor::LevelEditor::newobjarr)
 			{
@@ -2795,9 +2798,6 @@ namespace Core
 				test.spritepath->draw();
 		}
 #endif
-
-#endif
-
 			endtime = glfwGetTime();
 			delta = (endtime - starttime) / 2;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below

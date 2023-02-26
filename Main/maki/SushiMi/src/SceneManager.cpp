@@ -82,7 +82,7 @@ namespace Core
 	{
 
 		tile.second->transformation.Position = glm::vec2(x, y);
-		tile.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
+		tile.second->transformation.Scale = glm::vec2(getTileWidth()*1.01f, getTileHeight() * 1.01f);
 
 		tilecontainer.push_back(tile);
 

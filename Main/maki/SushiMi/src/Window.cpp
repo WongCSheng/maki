@@ -65,6 +65,7 @@ namespace Core
 	static bool keystate_8 = false;
 	static bool keystate_9 = false;
 	static bool keystate_0 = false;
+	static bool keystate_J = false;
 	static bool keystate_K = false;
 	static bool keystate_L = false;
 	static bool keystate_T = false;
@@ -150,6 +151,7 @@ namespace Core
 			keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
 
 
+			keystate_J = (key == GLFW_KEY_J) ? true : false;
 			keystate_K = (key == GLFW_KEY_K) ? true : false;
 			keystate_L = (key == GLFW_KEY_L) ? true : false;
 			keystate_1 = (key == GLFW_KEY_1) ? true : false;
@@ -457,6 +459,41 @@ namespace Core
 			keystate_tab = false;
 		}
 
+		if (keystate_J)
+		{
+			keystate_J = true;
+			std::cout << "you have loaded test level for debugging" << std::endl;
+			if (keystate_J)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
+				isTestLevel = true;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				//SceneManager::tilecontainer.clear();
+				//SceneManager::ingredientcontainer.clear();
+
+
+				keystate_J = false;
+			}
+		}
 		if (keystate_K)
 		{
 			keystate_K = true;
@@ -645,6 +682,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -678,6 +716,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -711,6 +750,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -744,6 +784,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -777,6 +818,7 @@ namespace Core
 				isLevel8 = true;
 				isLevel9 = false;
 				isLevel10 = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -804,6 +846,11 @@ namespace Core
 				isLevel4 = false;
 				isLevel5 = false;
 				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
+				isTestLevel = false;
 				isLevelSelection = true;
 				SceneManager::restartLevel();
 
@@ -2321,6 +2368,96 @@ namespace Core
 				}
 			}
 
+			/*********************************
+				TEST LEVEL LOAD & WIN CHECK
+			*********************************/
+			if (isTestLevel == true)
+			{
+				if (!loaded)
+				{
+					Map::ResetMap();
+
+					Map::initMap("../TileMap/_tut1_bak.txt");
+					Map::LoadMap();
+
+					loaded = true;
+
+					AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+					AudioManager.LoadMusic("Fishing_Village.wav");
+					AudioManager.SetMusicVolume(0.01f);
+					AudioManager.PlayMusic("Fishing_Village.wav");
+
+					if (fin)
+					{
+						fin.close();
+					}
+					fin.open("../Data/Dialogue/lvl9_dialogue.txt");
+					if (!fin)
+					{
+						std::cout << "Unable to open dialogue file!";
+						return;
+					}
+					std::getline(fin, realstring);
+
+					dialogue_style = static_cast<int>(dialogue::L9);
+					curr_len = 0;
+
+					SceneManager::num_dialogue_clicks = 0; //num of dialogue pages BEFORE game starts
+					//also need dialogue after game end
+					isDialogue = true;
+					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
+																			// for quest tab drawing of ingredients
+				}
+				/*Fade out effect*/
+				if (!isWinCondition)
+				{
+					SceneManager::FadeOut();
+					SceneManager::drawBlackOverlay();
+				}
+				Map::DrawMap();
+
+				//draw playerpos at lvl 2
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
+
+				if (gameIsPaused == false)
+				{
+					if (isPlayerinSinkhole)
+					{
+
+					}
+					else
+						player->draw(delta);
+
+				}
+				else if (gameIsPaused == true)
+				{
+					player->draw(0); //draw stationary player
+				}
+				if (Map::isWin())
+				{
+					isWinCondition = true;
+				}
+			}
+			if (isWinCondition == true && isTestLevel == true)
+			{
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
+				SceneManager::drawWinOverlay();
+				//stop all player controls
+				//press button to undraw level 1, and draw level 2
+				if (keystate_space && isWinCondition == true)
+				{
+					isWinCondition = false;
+					isTestLevel = false;
+					isTut1 = true;
+					loaded = false;
+					keystate_space = false;
+				}
+			}
 			/**********************************
 				DIALOGUE DISPLAY (riceplain)
 			*************************************/

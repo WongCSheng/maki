@@ -148,9 +148,6 @@
     <ClCompile Include="Engine\Font\Font.cpp">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
-    <ClCompile Include="Editors\EditorLayer.cpp">
-      <Filter>Editors</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -339,9 +336,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Font\Font.h">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
-    </ClInclude>
-    <ClInclude Include="Editors\EditorLayer.h">
-      <Filter>Editors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

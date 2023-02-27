@@ -206,6 +206,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tamago.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tofu.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tuna.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
 
 	/*Loading of quest chop*/
 	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);

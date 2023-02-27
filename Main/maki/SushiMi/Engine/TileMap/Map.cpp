@@ -2021,8 +2021,8 @@ namespace Core
 	void Map::SetValue(int col_x, int row_y, int value)
 	{
 		gGrids[col_x][row_y] = value;
-		Window::loaded = false;
-		print_map_to_console(); //debugging
+		//Window::loaded = false;
+		//print_map_to_console(); //debugging
 	}
 
 
@@ -2079,6 +2079,10 @@ namespace Core
 
 		case(grid_number::tuna):
 			return ("Tuna");
+			break;
+
+		case(grid_number::wasabi):
+			return ("Wasabi");
 			break;
 		}
 	}

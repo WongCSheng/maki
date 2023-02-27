@@ -38,7 +38,7 @@ namespace Core
 	{
 		sinkhole = 55,  //7
 		filledsinkhole,	//8
-		empty,			//9
+		tea,			//9
 		empty2,			//:
 		win,			//;
 		temp,			//<

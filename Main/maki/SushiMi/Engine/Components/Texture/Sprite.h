@@ -96,6 +96,13 @@ namespace Core
 		float timer;
 		int count;
 		float alpha;
+		/*for salmon to toggle between the sprites
+		status 1 = normal
+		status 2 = soya
+		status 3 = wasabi
+		status 4 = both
+		*/
+		int status;
 
 	private:
 

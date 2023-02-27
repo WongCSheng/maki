@@ -20,7 +20,9 @@ namespace Core
 	{
 		Idle,
 		Run,
-		Jump
+		Jump,
+		Soya,
+		Wasabi
 	};
 
 	class Animation2D

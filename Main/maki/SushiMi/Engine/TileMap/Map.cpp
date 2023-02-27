@@ -38,7 +38,7 @@ namespace Core
 
 	Sprite* soya;
 	Sprite* rice;
-
+	Sprite* salmon;
 
 	Map::Map()
 	{
@@ -261,9 +261,16 @@ namespace Core
 				//salmon
 				case static_cast<int>(grid_number::salmon):
 				{
-					Sprite* salmon = new Sprite("../textures/Tiles/Ingredients/Ingredients0_salmon.png");
+					salmon = new Sprite("../textures/spritesheet/salmonspritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::salmon, salmon);
-
+					salmon->status = 1;
+					salmon->isSpriteSheet = 1;
+					/*add salmon sprites*/
+					salmon->Add_animation("../textures/spritesheet/salmon_normal.txt");
+					salmon->Add_animation("../textures/spritesheet/salmon_soy.txt");
+					salmon->Add_animation("../textures/spritesheet/salmon_wasabi.txt");
+					salmon->Add_animation("../textures/spritesheet/salmon_both.txt");
+					salmon->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
@@ -327,9 +334,13 @@ namespace Core
 				//wasabi
 				case static_cast<int>(grid_number::wasabi):
 				{
-					Sprite* wasabi = new Sprite("../textures/Tiles/Ingredients/Wasabi_1.png");
+					Sprite* wasabi = new Sprite("../textures/spritesheet/wasabispritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::wasabi, wasabi);
-
+					//animate soy sauce
+					wasabi->isSpriteSheet = 1;
+					soya->Add_animation("../textures/spritesheet/wasabi_Idle.txt");
+					soya->Add_animation("../textures/spritesheet/wasabi_Pour.txt");
+					soya->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
@@ -468,6 +479,19 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 					break;
 				}
+				//tea
+				case static_cast<int>(wall_type::tea):
+				{
+					Sprite* tea = new Sprite("../textures/spritesheet/teaspritesheet.png");
+					tea->isSpriteSheet = 1;
+					tea->Add_animation("../textures/spritesheet/tea_Idle.txt");
+					tea->Add_animation("../textures/spritesheet/tea_Pour.txt");
+					tea->curr_anim = AnimationType::Idle;
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tea, tea);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					break;
+				}
 				//nori
 				case static_cast<int>(wall_type::nori_box):
 				{
@@ -541,18 +565,6 @@ namespace Core
 				{
 					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::filledsinkhole, filledsinkhole);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-					break;
-				}
-
-				//Temporary placeholder for food in sinkhole
-				case static_cast<int>(wall_type::temp):
-				{
-					Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::temp, foodinsinkhole);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -1232,13 +1244,13 @@ namespace Core
 						Window::player->stop();
 					}
 
-					//check if tile on the left of rice is soya
+					//check if tile on the left of salmon is soya
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
-						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::rice))
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::rice);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						for (auto ingredient : SceneManager::ingredientcontainer)
@@ -1257,6 +1269,10 @@ namespace Core
 							*/
 						soya->timer = 0;
 						SceneManager::activateSoya(soya);
+
+						/*change salmon sprite to with soya*/
+						salmon->status = 1;
+						salmon->curr_anim = AnimationType::Run;
 						/*
 						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
 						
@@ -1460,6 +1476,34 @@ namespace Core
 						std::cout << "right ingredient ingredient\n";
 						Window::player->stop();
 					}
+
+					//check if tile on the right of salmon is soya
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.x += tile_width;
+								break;
+							}
+						}
+						soya->timer = 0;
+						SceneManager::activateSoya(soya);
+
+						/*change salmon sprite to with soya*/
+						salmon->status = 1;
+						salmon->curr_anim = AnimationType::Run;
+						Window::player->move_right();
+						std::cout << "soya dripped\n";
+					}
+
 					//check if it's a box
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
@@ -1656,6 +1700,34 @@ namespace Core
 						std::cout << "down ingredient ingredient\n";
 						Window::player->stop();
 					}
+
+					//check if tile on the bottom of salmon is soya
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.y += tile_height;
+								break;
+							}
+						}
+						soya->timer = 0;
+						SceneManager::activateSoya(soya);
+
+						/*change salmon sprite to with soya*/
+						salmon->status = 1;
+						salmon->curr_anim = AnimationType::Run;
+						Window::player->move_down();
+						std::cout << "soya dripped\n";
+					}
+
 					//check if it's a box
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::rice_box) &&
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::tuna_box))
@@ -1850,6 +1922,34 @@ namespace Core
 						std::cout << "up ingredient ingredient\n";
 						Window::player->stop();
 					}
+
+					//check if tile on the top of salmon is soya
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::soya) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.y -= tile_height;
+								break;
+							}
+						}
+						soya->timer = 0;
+						SceneManager::activateSoya(soya);
+
+						/*change salmon sprite to with soya*/
+						salmon->status = 1;
+						salmon->curr_anim = AnimationType::Run;
+						Window::player->move_up();
+						std::cout << "soya dripped\n";
+					}
+
 					//check if it's a box
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] >= static_cast<int>(wall_type::rice_box) &&
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(wall_type::tuna_box))
@@ -2083,6 +2183,13 @@ namespace Core
 
 		case(grid_number::wasabi):
 			return ("Wasabi");
+			break;
+
+		case(grid_number::soya):
+			return ("Soya");
+			break;
+		case(static_cast<grid_number>(wall_type::tea)):
+			return ("Tea");
 			break;
 		}
 	}

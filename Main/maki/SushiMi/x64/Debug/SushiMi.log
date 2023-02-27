@@ -1,4 +1,7 @@
-﻿  main.cpp
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
-  SushiMi.vcxproj -> C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  Map.cpp
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2191,3): warning C4063: case '57' is not a valid value for switch of enum 'Core::grid_number'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Headers\SceneManager.h(8): message : see declaration of 'Core::grid_number'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2197,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2197,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2195): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe

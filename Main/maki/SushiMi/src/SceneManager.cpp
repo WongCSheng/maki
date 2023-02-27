@@ -342,7 +342,7 @@ namespace Core
 				if (ingredient.first == grid_number::soya)
 				{
 					//std::cout << ingredient.second->timer << std::endl;
-					if (ingredient.second->timer > 5.f)
+					if (ingredient.second->timer > 2.f)
 					{
 
 						ingredient.second->curr_anim = AnimationType::Idle;

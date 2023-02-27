@@ -39,6 +39,8 @@ namespace Core
 	Sprite* soya;
 	Sprite* rice;
 	Sprite* salmon;
+	Sprite* wasabi;
+	Sprite* tea;
 
 	Map::Map()
 	{
@@ -334,13 +336,13 @@ namespace Core
 				//wasabi
 				case static_cast<int>(grid_number::wasabi):
 				{
-					Sprite* wasabi = new Sprite("../textures/spritesheet/wasabispritesheet.png");
+					wasabi = new Sprite("../textures/spritesheet/wasabispritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::wasabi, wasabi);
 					//animate soy sauce
 					wasabi->isSpriteSheet = 1;
-					soya->Add_animation("../textures/spritesheet/wasabi_Idle.txt");
-					soya->Add_animation("../textures/spritesheet/wasabi_Pour.txt");
-					soya->curr_anim = AnimationType::Idle;
+					wasabi->Add_animation("../textures/spritesheet/wasabi_Idle.txt");
+					wasabi->Add_animation("../textures/spritesheet/wasabi_Pour.txt");
+					wasabi->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
@@ -482,7 +484,7 @@ namespace Core
 				//tea
 				case static_cast<int>(wall_type::tea):
 				{
-					Sprite* tea = new Sprite("../textures/spritesheet/teaspritesheet.png");
+					tea = new Sprite("../textures/spritesheet/teaspritesheet.png");
 					tea->isSpriteSheet = 1;
 					tea->Add_animation("../textures/spritesheet/tea_Idle.txt");
 					tea->Add_animation("../textures/spritesheet/tea_Pour.txt");
@@ -1244,6 +1246,7 @@ namespace Core
 						Window::player->stop();
 					}
 
+					/*------------------------------Salmon and soya/Wasabi/Tea Checks HERE----------------------------------------------------------------------------------------*/
 					//check if tile on the left of salmon is soya
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
@@ -1282,6 +1285,34 @@ namespace Core
 						*/
 						Window::player->move_left();
 						std::cout << "soya dripped\n";
+					}
+
+					//check if tile on left of salmon is Wasabi
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::wasabi) &&
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					{
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::wasabi);
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.first == check)
+							{
+								ingredient.second->transformation.Position.x -= tile_width;
+								break;
+							}
+						}
+						wasabi->timer = 0;
+						SceneManager::activateWasabi(wasabi);
+
+						/*change salmon sprite to with wasabi*/
+						salmon->status = 2;
+						salmon->curr_anim = AnimationType::Jump;
+
+						Window::player->move_left();
+						std::cout << "Wasabi dripped\n";
 					}
 
 					//check if it's a box

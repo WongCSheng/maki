@@ -391,33 +391,6 @@ namespace Core
 
 	void Window::Input()
 	{
-		//display main menu
-		/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
-		Sprite::menu->transformation.Scale = glm::vec2(1920, 1080);*/
-
-
-		//if (ImGui::IsKeyPressed(GLFW_KEY_M) && isMenuState == false)
-		//{
-		//	keystate_M = true;
-		//	std::cout << "you are pressing menu" << std::endl;
-		//	if (keystate_M)
-		//	{
-		//		//clear all player
-		//		isLevel1 = false;
-		//		isLevel2 = false;
-		//		isMenuState = true;
-		//		SceneManager::restartLevel();
-
-
-		//		keystate_M = false;
-		//	}
-		//}
-
-		/*Hi all, I'm testing here to use our own input system.
-		The original code is commented up above, if anything goes wrong can bring them back */
-
-		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
-		//std::cout << "value of key is: " << key.IsKeyPressed(M) << std::endl;
 #ifndef EDITOR
 
 		if (keystate_M)
@@ -868,7 +841,7 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape && (isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8))
+		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8))
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
@@ -884,7 +857,7 @@ namespace Core
 				keystate_escape = false;
 			} */
 		}
-		//if press escape again, close pause screen
+		//game is paused
 		if (gameIsPaused == false)
 		{
 			keystate_escape = true;
@@ -897,9 +870,7 @@ namespace Core
 				//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
 				//SceneManager::pause_overlay->transformation.Position.y = screenheight;
 				keystate_escape = false;
-
 			}
-
 		}
 		/**************************************/
 		//BUTTONS DISPLAYED AT MAIN MENU
@@ -1121,14 +1092,8 @@ namespace Core
 
 		}
 		if (keystate_down || keystate_up || keystate_left || keystate_right == true)
-			/*if (ImGui::IsKeyReleased(GLFW_KEY_DOWN)) keystate_down = true;
-			if (ImGui::IsKeyReleased(GLFW_KEY_UP)) keystate_up = true;
-			if (ImGui::IsKeyReleased(GLFW_KEY_LEFT)) keystate_left = true;
-			if (ImGui::IsKeyReleased(GLFW_KEY_RIGHT)) keystate_right = true;
-			if (ImGui::IsKeyReleased(GLFW_KEY_R)) keystate_R = true;*/
-
-			//if(keystate_down && keystate_up && keystate_left && keystate_right)
 			player->stop();
+
 #endif //editor
 	}
 
@@ -1451,7 +1416,7 @@ namespace Core
 					isDialogue = true;
 					//also need dialogue after game end
 					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
-					                                                        // for quest tab drawing of ingredients
+																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
 				if (isWinCondition)
@@ -1485,7 +1450,7 @@ namespace Core
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
 				}
-				
+
 			}
 			if (isWinCondition == true && isTut2 == true)
 			{
@@ -2675,43 +2640,33 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
-				//	std::cout << "Drawing of Menu\n";
-				//AudioManager.SetMusicVolume(0.4f);
+				std::cout << "Drawing of Menu\n";
+				AudioManager.SetMusicVolume(0.4f);
 
-				//for (auto& x : CoreSystem->objfactory->ObjectContainer)
-				//{
-				//	Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				//	Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+				for (auto& x : CoreSystem->objfactory->ObjectContainer)
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-				//	spritecomp->transformation.Position = transcomp->Position;
-				//	spritecomp->transformation.Scale = transcomp->Scale;
+					spritecomp->transformation.Position = transcomp->Position;
+					spritecomp->transformation.Scale = transcomp->Scale;
 
-				//	Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-				//	if (x.first == "Menu") //draw menu
-				//		spritecomp->draw();
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+					if (x.first == "Menu") //draw menu
+						spritecomp->draw();
 
-				//	if (x.first == "StartButton")
-				//		spritecomp->draw();
+					if (x.first == "StartButton")
+						spritecomp->draw();
 
-				//	if (x.first == "HowToPlay")
-				//		spritecomp->draw();
+					if (x.first == "HowToPlay")
+						spritecomp->draw();
 
-				//	if (x.first == "SettingsButton")
-				//		spritecomp->draw();
+					if (x.first == "SettingsButton")
+						spritecomp->draw();
 
-				//	if (x.first == "ExitButton")
-				//		spritecomp->draw();
-				//}
-
-				Core::Object::GameObject* menu = CoreSystem->objfactory->ObjectContainer.at("Menu");
-				Transform* transcomp = static_cast<Transform*>(menu->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp = static_cast<Sprite*>(menu->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-				spritecomp->transformation.Position = transcomp->Position;
-				spritecomp->transformation.Scale = transcomp->Scale;
-
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-				spritecomp->draw();
+					if (x.first == "ExitButton")
+						spritecomp->draw();
+				}
 			}
 
 			if (gameIsPaused == true)
@@ -2725,7 +2680,7 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-					if (x.first == "PauseMenuJSON")
+					if (x.first == "PauseMenu")
 						spritecomp->draw();
 
 					if (x.first == "ResumeButton")
@@ -2740,7 +2695,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab == true && !isWinCondition)
+			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2758,7 +2713,7 @@ namespace Core
 				float increment = 0.f;    // increment to position each ingredient onto quest tab
 
 				//checking through all loaded ingredient for the current level
-  				for (auto& ingredient : CurrentIngredients)
+				for (auto& ingredient : CurrentIngredients)
 				{
 					std::string loadedIngredient = Map::EnumToString(ingredient.first);    // convert enum to string
 
@@ -2780,7 +2735,7 @@ namespace Core
 						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
 						break;
 
-					//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//
+						//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//
 					}
 					increment += 100.0f;
 				}
@@ -2815,8 +2770,11 @@ namespace Core
 				}
 				*/
 			}
-			// quest tab shift to left side
-			else
+
+			/*	quest tab shift to left side */
+			/*	disable quest tab in all the listed cases in the else-if condition	*/
+			/*	so that quest tab will only shown in levels	*/
+			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2870,8 +2828,6 @@ namespace Core
 
 							//std::cout << "previous page" << std::endl;
 							mouseLeft = false;
-
-
 						}
 					}
 
@@ -2927,9 +2883,9 @@ namespace Core
 					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
 					{
 						isCredits = false;
+					}
 				}
 			}
-		}
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
@@ -2948,7 +2904,7 @@ namespace Core
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 
-	}
+		}
 
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
@@ -2958,5 +2914,5 @@ namespace Core
 
 		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
 		//}
-}
+	}
 }

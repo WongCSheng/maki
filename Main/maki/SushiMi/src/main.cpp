@@ -186,7 +186,7 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
-	//Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
+	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
 	//loading main menu
 	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 

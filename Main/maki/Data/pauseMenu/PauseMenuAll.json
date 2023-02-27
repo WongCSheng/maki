@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "name": "PauseMenuJSON",
+      "name": "PauseMenu",
       "filename": "../Data/pauseMenu/PauseMenu.json"
     },
     {

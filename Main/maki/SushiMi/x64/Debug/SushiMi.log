@@ -1,2 +1,8 @@
-﻿  SceneManager.cpp
-  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  Map.cpp
+  SceneManager.cpp
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2307,3): warning C4063: case '57' is not a valid value for switch of enum 'Core::grid_number'
+D:\maki\Main\maki\SushiMi\Headers\SceneManager.h(8): message : see declaration of 'Core::grid_number'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2313,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2313,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2311): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

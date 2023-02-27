@@ -97,10 +97,10 @@ namespace Core
 		int count;
 		float alpha;
 		/*for salmon to toggle between the sprites
-		status 1 = normal
-		status 2 = soya
-		status 3 = wasabi
-		status 4 = both
+		status 0 = normal
+		status 1 = soya
+		status 2 = wasabi
+		status 3 = both
 		*/
 		int status;
 

@@ -1,35 +1,51 @@
 ﻿  LevelEditor.cpp
+  Map.cpp
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2222,3): warning C4063: case '57' is not a valid value for switch of enum 'Core::grid_number'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Headers\SceneManager.h(8): message : see declaration of 'Core::grid_number'
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(134,40): warning C4459: declaration of 'fileDialog' hides global declaration
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(80,28): message : see declaration of 'Core::fileDialog'
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(100,10): warning C4189: 'fontSize': local variable is initialized but not referenced
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(399,52): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(440,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(445,24): warning C4458: declaration of 'path' hides class member
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(70,30): message : see declaration of 'Core::Editor::LevelEditor::path'
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(630,13): warning C4458: declaration of 'width' hides class member
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,22): message : see declaration of 'Core::Editor::LevelEditor::width'
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(630,21): warning C4458: declaration of 'height' hides class member
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,29): message : see declaration of 'Core::Editor::LevelEditor::height'
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(440,10): warning C4189: 'columnCount': local variable is initialized but not referenced
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(681,12): warning C4459: declaration of 'i' hides global declaration
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(398,52): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(439,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(444,24): warning C4458: declaration of 'path' hides class member
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(70,30): message : see declaration of 'Core::Editor::LevelEditor::path' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(629,13): warning C4458: declaration of 'width' hides class member
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,22): message : see declaration of 'Core::Editor::LevelEditor::width' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(629,21): warning C4458: declaration of 'height' hides class member
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,29): message : see declaration of 'Core::Editor::LevelEditor::height' (compiling source file Editors\LevelEditor.cpp)
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(439,10): warning C4189: 'columnCount': local variable is initialized but not referenced
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(679,12): warning C4459: declaration of 'i' hides global declaration
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(688,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(688,19): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(706,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(707,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(708,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(734,4): warning C4459: declaration of 'i' hides global declaration
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(733,4): warning C4459: declaration of 'i' hides global declaration
 C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(785,100): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1359,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1360,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1362,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1362,31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1362,30): warning C4244: 'argument': conversion from 'int' to 'const _Elem', possible loss of data
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1377,13): warning C4551: function call missing argument list
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1384,98): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(786,99): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1385,98): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(798,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(798,20): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(799,11): warning C4551: function call missing argument list
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(816,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(816,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2228,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2228,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1407,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1407,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2226): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+  LINK : C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe not found or not built by the last incremental link; performing full link
   SushiMi.vcxproj -> C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe

@@ -367,8 +367,7 @@ namespace Core
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
 			ImGui::Begin("Object Editor - Imgui Window");
 			//int value = Map::GetValue(xgrid, ygrid);
-			
-			ImGui::SliderInt("Value to set to tile", &value, '!', '~');
+			ImGui::SliderInt("ASCII Value to set to tile", &value, '!', '~');
 			/*if (ImGui::Button("Set Value"))
 			{
 				Map::SetValue(xgrid, ygrid, value);
@@ -528,10 +527,10 @@ namespace Core
 
 			/*ImGui::ImageButton("gfx/image.png", 64, 64, 8, 0xffffff, 1, 0xff0000, 0.5);*/
 
-			if (ImGui::Button("Cucumber"))
+			/*if (ImGui::Button("Cucumber"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
-			}
+			}*/
 
 			//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f));
 			//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
@@ -543,7 +542,7 @@ namespace Core
 			//}
 			//ImGui::PopStyleColor(3);
 
-			if (ImGui::Button("Salmon"))
+			/*if (ImGui::Button("Salmon"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
 				
@@ -562,7 +561,7 @@ namespace Core
 			if (ImGui::Button("Return to Main Menu"))
 			{
 				texpath = "../textures/menu.jpg";
-			}
+			}*/
 
 			if (ImGui::Button("+"))
 			{
@@ -673,7 +672,6 @@ namespace Core
 
 			/*std::cout << "You are clicking at grid position X: " << (int)(xpos/ width_*18) << " Y: " << (int)(ypos/height_*10) << std::endl;
 			std::cout << "the object in the grid is: " << static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10))) << std::endl;
-			alphabet = static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10)));
 			xgrid = (int)(xpos / width_ * 18);
 			ygrid = (int)(ypos / height_ * 10);*/
 
@@ -687,6 +685,7 @@ namespace Core
 				gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
 				gridypos = ((int)(ypos) / SceneManager::getTileHeight());
 
+				Map::SetValue(gridxpos, gridypos, value);
 				//r / static_cast<float>(grid_row) * width
 
 				xpos = gridxpos / static_cast<float>(Map::grid_row) * width_;
@@ -751,935 +750,8 @@ namespace Core
 		/**************************
 		VALUES FOR EACH TEXTURE
 		*************************/
-
-		//case static_cast<int>(grid_number::player):
-		//{
-		//	texpath = "../textures/Bami"
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::avocado):
-		//{
-		//	Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::cucumber):
-		//{
-		//	Sprite* cucumber = new Sprite("../textures/Tiles/Ingredients/Ingredients0_cucumber.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::cucumber, cucumber);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::corn):
-		//{
-		//	Sprite* corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-
-		//case static_cast<int>(grid_number::inari):
-		//{
-		//	Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::octopus):
-		//{
-		//	Sprite* octopus = new Sprite("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::rice):
-		//{
-		//	/*Soya if you want to test out the animation
-		//	Sprite* rice = new Sprite("../textures/spritesheet/soyaspritesheet.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
-		//	rice->Add_animation("../textures/spritesheet/soya.txt");
-		//	rice->curr_anim = Idle;
-		//	*/
-
-		//	rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
-
-		//	
-
-		//	//old rice
-		//	/*Sprite* rice = new Sprite("../textures/spritesheet/ricespritesheet.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, std::move(rice));
-		//	rice->Add_animation("../textures/spritesheet/Run.txt");
-		//	rice->curr_anim = Idle;
-		//	rice->isSpriteSheet = 1;
-		//	SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-		//	SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);*/
-		//	break;
-		//}
-		////roes
-		//case static_cast<int>(grid_number::roes):
-		//{
-		//	Sprite* roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////salmon
-		//case static_cast<int>(grid_number::salmon):
-		//{
-		//	Sprite* salmon = new Sprite("../textures/Tiles/Ingredients/Ingredients0_salmon.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::salmon, salmon);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////tamago
-		//case static_cast<int>(grid_number::tamago):
-		//{
-		//	Sprite* tamago = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tamago.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tamago, tamago);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////tofu
-		//case static_cast<int>(grid_number::tofu):
-		//{
-		//	Sprite* tofu = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tofu.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tofu, tofu);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////tuna
-		//case static_cast<int>(grid_number::tuna):
-		//{
-		//	Sprite* tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////nori
-		//case static_cast<int>(grid_number::nori):
-		//{
-		//	Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		////soya
-		//case static_cast<int>(grid_number::soya):
-		//{
-
-		//	soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
-		//	soya->isSpriteSheet = 1;
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
-		//	//animate soy sauce
-		//	soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
-		//	soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
-		//	soya->curr_anim = AnimationType::Idle;
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-		//	break;
-		//}
-		////wasabi
-		//case static_cast<int>(grid_number::wasabi):
-		//{
-		//	Sprite* wasabi = new Sprite("../textures/Tiles/Ingredients/Wasabi_1.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::wasabi, wasabi);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-		//	break;
-		//}
-		//// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
-		//case static_cast<int>(wall_type::avocado_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Avocado.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::avocado_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	levelWinConditions.push_back(std::pair(grid_number::avocado, wall_type::avocado_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////cucumber
-		//case static_cast<int>(wall_type::cucumber_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Cucumber.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::cucumber_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::cucumber, wall_type::cucumber_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////corn
-		//case static_cast<int>(wall_type::corn_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Corn.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::corn_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::corn, wall_type::corn_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////octopus
-		//case static_cast<int>(wall_type::octopus_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Octopus.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::octopus_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::octopus, wall_type::octopus_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////roes
-		//case static_cast<int>(wall_type::roes_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Roes.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::roes_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::roes, wall_type::roes_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////salmon
-		//case static_cast<int>(wall_type::salmon_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Salmon.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::salmon_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::salmon, wall_type::salmon_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////tamago
-		//case static_cast<int>(wall_type::tamago_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tamago.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tamago_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::tamago, wall_type::tamago_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////tofu
-		//case static_cast<int>(wall_type::tofu_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tofu.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tofu_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::tofu, wall_type::tofu_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////tuna
-		//case static_cast<int>(wall_type::tuna_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tuna_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::tuna, wall_type::tuna_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-		////nori
-		//case static_cast<int>(wall_type::nori_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Nori.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::nori_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::nori, wall_type::nori_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::rice_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Rice.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::rice_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::rice, wall_type::rice_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-
-		//}
-
-
-		//case static_cast<int>(wall_type::inari_box):
-		//{
-		//	Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::inari_box, box);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	levelWinConditions.push_back(std::pair(grid_number::inari, wall_type::inari_box));
-
-		//	SceneManager::win_condition.push_back(std::make_pair(r, c));
-		//	SceneManager::amt_of_win_conditions++;
-		//	break;
-		//}
-
-		//case static_cast<int>(grid_number::boxcover):
-		//{
-		//	Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::sinkhole):
-		//{
-		//	Sprite* sinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole, sinkhole);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::filledsinkhole):
-		//{
-		//	Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::filledsinkhole, filledsinkhole);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	break;
-		//}
-
-		////Temporary placeholder for food in sinkhole
-		//case static_cast<int>(wall_type::temp):
-		//{
-		//	Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::temp, foodinsinkhole);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::ground0):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
-
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground0, tile);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::ground1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
-
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground1, tile);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(grid_number::ground2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_2.jpg");
-
-		//	std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground2, tile);
-
-		//	SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-		//	break;
-		//}
-		////sinkhole_gunkan
-		//case static_cast<int>(wall_type::sinkhole_gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
-
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole_gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall0):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall0_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-
-
-		//case static_cast<int>(wall_type::Wall2_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-
-		//case static_cast<int>(wall_type::Wall2_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall2_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::Wall3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::Wall3_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1, tile);
-		//	//tile->Add_animation()
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::Wall3_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_2, tile);
-		//	//tile->Add_animation()
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-
-		//case static_cast<int>(wall_type::Wall3_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::Wall4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		//case static_cast<int>(wall_type::Wall4_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall4_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall4_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall4_4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-
-
-		//case static_cast<int>(wall_type::Wall5):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-
-		////most common wall
-		//case static_cast<int>(wall_type::Wall5_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall5_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall5_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall5_4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_4.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-		//case static_cast<int>(wall_type::Wall6):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall6_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall6_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall6_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall6_4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_4.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-		////wall 7
-		//case static_cast<int>(wall_type::Wall7):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall7_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall7_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall7_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-
-		//case static_cast<int>(wall_type::Wall7_4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-
-		//}
-		////wall 8
-		//case static_cast<int>(wall_type::Wall8):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////wall 9
-		//case static_cast<int>(wall_type::Wall9):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_1):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_1.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_1, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_2):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_2.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_2, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_3):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_3.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_3, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_4):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_4.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_4, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_5):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_5.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_5, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_6):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_6.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_6, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::Wall9_7):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_7.jpg");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_7, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		//case static_cast<int>(wall_type::WaterWall):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WaterWall, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall0_Gunkan,		//j
-		//case static_cast<int>(wall_type::Wall0_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall0.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall1_Gunkan,		//k
-		//case static_cast<int>(wall_type::Wall1_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall1_1_Gunkan,		//l
-		//case static_cast<int>(wall_type::Wall1_1_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1_1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_1_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall2_Gunkan,		//m
-		//case static_cast<int>(wall_type::Wall2_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall2_1_Gunkan,		//n
-		//case static_cast<int>(wall_type::Wall2_1_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2_1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall3_Gunkan,		//o
-		//case static_cast<int>(wall_type::Wall3_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-		////	Wall3_1_Gunkan,		//p
-		//case static_cast<int>(wall_type::Wall3_1_Gunkan):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1_Gunkan, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
-
-		///*case static_cast<int>(wall_type::Water):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Water, tile);
-
-		//	SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
-		//	break;
-		//}*/
-		////	Wall3_1_Gunkan,		//p
-		//case static_cast<int>(wall_type::WoodenPlatform):
-		//{
-		//	Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
-		//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
-
-		//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-		//	break;
-		//}
+		
+		
 
 		void LevelEditor::imguiObjectCursor(void)
 		{
@@ -1688,7 +760,579 @@ namespace Core
 			ImGuiIO& io = ImGui::GetIO(); (void)io;
 			if (io.WantCaptureMouseUnlessPopupClose == false)
 			{
+				switch (value)
+				{
 
+
+					case static_cast<int>(grid_number::player):
+					{
+						texpath = "../textures/Bami/Idle/BaMi_Idle_New_1.png";
+						break;
+					}
+					case static_cast<int>(grid_number::avocado):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
+						break;
+					}
+					case static_cast<int>(grid_number::cucumber):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
+						break;
+					}
+					case static_cast<int>(grid_number::corn):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
+						
+						break;
+					}
+
+					case static_cast<int>(grid_number::inari):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
+						break;
+					}
+					case static_cast<int>(grid_number::octopus):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_octopus.png";
+
+						break;
+					}
+					case static_cast<int>(grid_number::rice):
+					{
+
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
+						
+						break;
+					}
+					//roes
+					case static_cast<int>(grid_number::roes):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
+						break;
+					}
+					//salmon
+					case static_cast<int>(grid_number::salmon):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+						break;
+					}
+					//tamago
+					case static_cast<int>(grid_number::tamago):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_tamago.png";
+						break;
+					}
+					//tofu
+					case static_cast<int>(grid_number::tofu):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
+						break;
+					}
+					//tuna
+					case static_cast<int>(grid_number::tuna):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
+						break;
+					}
+					//nori
+					case static_cast<int>(grid_number::nori):
+					{
+						texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
+						break;
+					}
+					//soya
+					case static_cast<int>(grid_number::soya):
+					{
+						texpath = "..textures/Tiles/Ingredients/Soya_1.png";
+						//soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
+						//soya->isSpriteSheet = 1;
+						//std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
+						////animate soy sauce
+						//soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
+						//soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
+						//soya->curr_anim = AnimationType::Idle;
+
+						break;
+					}
+					//wasabi
+					case static_cast<int>(grid_number::wasabi):
+					{
+						texpath = "../textures/Tiles/Ingredients/Wasabi_1.png";
+						break;
+					}
+					// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
+					case static_cast<int>(wall_type::avocado_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Avocado.png";
+						break;
+					}
+					//cucumber
+					case static_cast<int>(wall_type::cucumber_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Cucumber.png";
+						break;
+					}
+					//corn
+					case static_cast<int>(wall_type::corn_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Corn.png";
+						break;
+					}
+					//octopus
+					case static_cast<int>(wall_type::octopus_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Octopus.png";
+						break;
+					}
+					//roes
+					case static_cast<int>(wall_type::roes_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Roes.png";
+						break;
+					}
+					//salmon
+					case static_cast<int>(wall_type::salmon_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Salmon.png";
+						break;
+					}
+					//tamago
+					case static_cast<int>(wall_type::tamago_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Tamago.png";
+						break;
+					}
+					//tofu
+					case static_cast<int>(wall_type::tofu_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Tofu.png";
+						break;
+					}
+					//tuna
+					case static_cast<int>(wall_type::tuna_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Tuna.png";
+						break;
+					}
+					//nori
+					case static_cast<int>(wall_type::nori_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Nori.png";
+						break;
+					}
+
+					case static_cast<int>(wall_type::rice_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Rice.png";
+						break;
+
+					}
+
+
+					case static_cast<int>(wall_type::inari_box):
+					{
+						texpath = "../textures/Tiles/Pods/Pod_Inari.png";
+						break;
+					}
+
+					/*case static_cast<int>(grid_number::boxcover):
+					{
+						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
+
+						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+						break;
+					}*/
+
+					case static_cast<int>(wall_type::sinkhole):
+					{
+						texpath = "../textures/Tiles/Trap/Sinkhole0_1.png";
+
+
+						break;
+					}
+
+					//case static_cast<int>(wall_type::filledsinkhole):
+					//{
+					//	Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
+
+
+					//	break;
+					//}
+
+					////Temporary placeholder for food in sinkhole
+					//case static_cast<int>(wall_type::temp):
+					//{
+					//	Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
+
+
+					//	break;
+					//}
+					case static_cast<int>(grid_number::ground0):
+					{
+						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_0.jpg";
+
+						break;
+					}
+					case static_cast<int>(grid_number::ground1):
+					{
+						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_1.jpg";
+						break;
+					}
+					case static_cast<int>(grid_number::ground2):
+					{
+						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_2.jpg";
+
+
+						break;
+					}
+					//sinkhole_gunkan
+					case static_cast<int>(wall_type::sinkhole_gunkan):
+					{
+						texpath = "../textures/Tiles/Ground_GunkanVillage/Sinkhole.png";
+
+
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall0):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall0.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall0_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall0_1.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall1.png";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall2.jpg";
+
+						break;
+					}
+
+
+
+					case static_cast<int>(wall_type::Wall2_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_1.jpg";
+
+						break;
+					}
+
+
+					case static_cast<int>(wall_type::Wall2_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_2.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall2_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_3.png";
+
+						break;
+					}
+
+					case static_cast<int>(wall_type::Wall3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall3.jpg";
+
+						break;
+					}
+
+					case static_cast<int>(wall_type::Wall3_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_1.png";
+
+						break;
+					}
+
+					case static_cast<int>(wall_type::Wall3_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_2.jpg";
+
+						break;
+					}
+
+
+					case static_cast<int>(wall_type::Wall3_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_3.png";
+
+						break;
+					}
+
+					case static_cast<int>(wall_type::Wall4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall4.png";
+
+						break;
+					}
+
+					case static_cast<int>(wall_type::Wall4_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_1.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall4_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_2.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall4_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_3.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall4_4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_4.jpg";
+
+						break;
+					}
+
+
+
+					case static_cast<int>(wall_type::Wall5):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall5.jpg";
+
+						break;
+					}
+
+
+					//most common wall
+					case static_cast<int>(wall_type::Wall5_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_1.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall5_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_2.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall5_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_3.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall5_4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_4.jpg";
+
+						break;
+
+					}
+					case static_cast<int>(wall_type::Wall6):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall6.png";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall6_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_1.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall6_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_2.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall6_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_3.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall6_4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_4.jpg";
+
+						break;
+
+					}
+					//wall 7
+					case static_cast<int>(wall_type::Wall7):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall7.png";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall7_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_1.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall7_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_2.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall7_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_3.jpg";
+
+						break;
+
+					}
+
+					case static_cast<int>(wall_type::Wall7_4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_4.jpg";
+
+						break;
+
+					}
+					//wall 8
+					case static_cast<int>(wall_type::Wall8):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall8.png";
+						break;
+					}
+					//wall 9
+					case static_cast<int>(wall_type::Wall9):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9.png";
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_1):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_1.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_2):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_2.jpg";
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_3):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_3.jpg";
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_4):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_4.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_5):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_5.jpg";
+
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_6):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_6.jpg";
+						break;
+					}
+					case static_cast<int>(wall_type::Wall9_7):
+					{
+						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_7.jpg";
+						break;
+					}
+					case static_cast<int>(wall_type::WaterWall):
+					{
+						texpath = "../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png";
+
+						break;
+					}
+					//	Wall0_Gunkan,		//j
+					case static_cast<int>(wall_type::Wall0_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall0.png";
+
+						break;
+					}
+					//	Wall1_Gunkan,		//k
+					case static_cast<int>(wall_type::Wall1_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1.png";
+
+						break;
+					}
+					//	Wall1_1_Gunkan,		//l
+					case static_cast<int>(wall_type::Wall1_1_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1_1.png";
+
+						break;
+					}
+					//	Wall2_Gunkan,		//m
+					case static_cast<int>(wall_type::Wall2_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2.png";
+
+						break;
+					}
+					//	Wall2_1_Gunkan,		//n
+					case static_cast<int>(wall_type::Wall2_1_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2_1.png";
+						break;
+					}
+					//	Wall3_Gunkan,		//o
+					case static_cast<int>(wall_type::Wall3_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3.png";
+						
+
+						break;
+					}
+					//	Wall3_1_Gunkan,		//p
+					case static_cast<int>(wall_type::Wall3_1_Gunkan):
+					{
+						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3_1.png";
+						
+						break;
+					}
+					/*case static_cast<int>(wall_type::WoodenPlatform):
+					{
+						texpath = "../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png";
+						break;
+					}*/
+				}
 				Window::ingredient = new Sprite(Editor::LevelEditor::texpath);
 
 				//display obj to place on cursor
@@ -1699,6 +1343,8 @@ namespace Core
 				//grid snapping logic
 				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 				glfwGetWindowSize(Window::window_ptr, &width_, &height_);
+				//r / static_cast<float>(grid_row) * width
+
 				//xpos += 100 * 0.5f;
 				//ypos += 100 * 0.5f;
 				//xpos = col number
@@ -1708,31 +1354,42 @@ namespace Core
 				/*xpos = (int) (float)((int)(xpos / width_ / 18) * (width_ / 18));
 				ypos = (int)(float)((int)(ypos / height_ / 10) * (height_ / 10));*/
 				Window::ingredient->transformation.Scale = glm::vec2(SceneManager::getTileWidth()*1.01f, SceneManager::getTileHeight()*1.01f);
-				/*SceneManager::rows*/
 				if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
 				{
-					gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
-					gridypos = ((int)(ypos) / SceneManager::getTileHeight());
+					xgrid = gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+					ygrid = gridypos = ((int)(ypos) / SceneManager::getTileHeight());
+					
+					alphabet = Map::GetValue(gridxpos, gridypos);
+					std::cout << "x value is : " << gridxpos << " and y value is: " << gridypos << std::endl;
+					if (ImGui::IsMouseClicked(0)) //0 means left
+					{
+						
+							/*gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+							gridypos = ((int)(ypos) / SceneManager::getTileHeight());*/
 
-					//r / static_cast<float>(grid_row) * width
-				
-					Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::grid_row) * width_ ;
-					Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+							//r / static_cast<float>(grid_row) * width
+
+							//Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::grid_row) * width_ ;
+							//Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+							imguiCreateObj();
+							
+							//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
+							Map::print_map_to_console;
+						
+
+
+					}
 				}
+
+				Window::ingredient->transformation.Position.x = gridxpos / static_cast<float>(Map::grid_row) * width_;
+				Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+				/*SceneManager::rows*/
 					/*= glm::vec2(xpos, ypos)*/
 				//place object on click
 				//std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
 				//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
 
-				if (ImGui::IsMouseClicked(0)) //0 means left
-				{
-					std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
 				
-					imguiCreateObj();
-					Map::SetValue(gridxpos, gridypos, value);
-					Map::print_map_to_console;
-
-				}
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::ingredient->transformation.Get());
 				Window::ingredient->draw();
 

@@ -1,7 +1,15 @@
-﻿  Sprite.cpp
+﻿  LevelEditor.cpp
+  Map.cpp
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2222,3): warning C4063: case '57' is not a valid value for switch of enum 'Core::grid_number'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Headers\SceneManager.h(8): message : see declaration of 'Core::grid_number'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2228,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2228,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
   Generating code
-  2 of 4607 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    21 functions had inline decision re-evaluated but remain unchanged
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2226): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(61): warning C4723: potential divide by 0
+C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\lib\glm\glm\ext\matrix_clip_space.inl(58): warning C4723: potential divide by 0
+  200 of 4608 functions ( 4.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    53 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

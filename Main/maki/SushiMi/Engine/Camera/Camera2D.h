@@ -17,12 +17,13 @@ class Camera
 public:
 	Camera(int window_width, int window_height);
 	~Camera();
+	
 
 	glm::mat4 Get_Projection();
+	static void Update_Viewport(int new_width, int new_height);
 
-	void Update_Viewport(int new_width, int new_height);
-
-	glm::mat4 projection;
+	static inline glm::mat4 projection;
+	
 };
 
 static std::unique_ptr<Camera> camera;

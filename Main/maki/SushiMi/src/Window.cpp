@@ -182,12 +182,12 @@ namespace Core
 			for (auto& ingredient : SceneManager::ingredientcontainer)
 			{
 				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / m_width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / m_height)) + 1;
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
 				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
-				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::grid_row) / m_width) + 1);
-				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::grid_col) / m_height) + 1);
+				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
+				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height) + 1);
 				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
 
 				//checking through level win condition (check if ingredient land on box position)
@@ -281,6 +281,7 @@ namespace Core
 		timetodeletegrid = false;
 		isMenuState = true;
 #ifdef EDITOR
+		
 		//the first level displayed on the map's launch
 		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
 
@@ -1161,7 +1162,7 @@ namespace Core
 
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
-
+			Camera::Update_Viewport(2560, 1200);
 			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);

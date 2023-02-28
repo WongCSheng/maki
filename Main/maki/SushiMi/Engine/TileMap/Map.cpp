@@ -48,7 +48,7 @@ namespace Core
 
 	Map::~Map()
 	{
-		for (int i = 0; i < grid_row; i++)
+		for (int i = 0; i < max_grid_cols_x; i++)
 		{
 			delete gGrids[i];
 		}
@@ -69,21 +69,21 @@ namespace Core
 			return;
 		}
 		/*store the row and col of the tile*/
-		fin >> grid_row;
-		fin >> grid_col;
+		fin >> max_grid_cols_x;
+		fin >> max_grid_rows_y;
 
-		gGrids = new int* [grid_row];
+		gGrids = new int* [max_grid_cols_x];
 
-		for (int i = 0; i < grid_row; i++)
+		for (int i = 0; i < max_grid_cols_x; i++)
 		{
-			gGrids[i] = new int[grid_col];
+			gGrids[i] = new int[max_grid_rows_y];
 		}
 
 		char ch;
 
-		for (int c = 0; c < grid_col; c++)
+		for (int c = 0; c < max_grid_rows_y; c++)
 		{
-			for (int r = 0; r < grid_row; r++)
+			for (int r = 0; r < max_grid_cols_x; r++)
 			{
 				fin >> ch;
 				gGrids[r][c] = ch;
@@ -97,11 +97,11 @@ namespace Core
 	void Map::saveEditedMap(std::string Filename)
 	{
 		std::ofstream fout(Filename);
-		fout << grid_row << " " << grid_col << std::endl;
+		fout << max_grid_cols_x << " " << max_grid_rows_y << std::endl;
 
-		for (int c = 0; c < grid_col; c++)
+		for (int c = 0; c < max_grid_rows_y; c++)
 		{
-			for (int r = 0; r < grid_row; r++)
+			for (int r = 0; r < max_grid_cols_x; r++)
 			{
 				fout << static_cast<char>(gGrids[r][c]) << " ";
 			}
@@ -111,9 +111,9 @@ namespace Core
 
 	void Map::ResetMap()
 	{
-		for (int i = 0; i < grid_row; i++)
+		for (int i = 0; i < max_grid_cols_x; i++)
 		{
-			for (int j = 0; j < grid_col; j++)
+			for (int j = 0; j < max_grid_rows_y; j++)
 			{
 				gGrids[i][j] = 0;
 			}
@@ -125,7 +125,7 @@ namespace Core
 
 		if (Window::timetodeletegrid)
 		{
-			for (int i = 0; i < grid_row; i++)
+			for (int i = 0; i < max_grid_cols_x; i++)
 			{
 				delete gGrids[i];
 			}
@@ -141,19 +141,19 @@ namespace Core
 	{
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
 		
-		tile_width = static_cast<float>(width / grid_row);
-		tile_height = static_cast<float>(height / grid_col);
+		tile_width = static_cast<float>(width / max_grid_cols_x);
+		tile_height = static_cast<float>(height / max_grid_rows_y);
 		SceneManager::setTileDimension(static_cast<unsigned int>(tile_width), static_cast<unsigned int>(tile_height));
 	
 		CorrectCombination = 0;
 
 		/*Testing whether is loaded correctly*/
-		for (int c = 0; c < grid_col; c++)
+		for (int c = 0; c < max_grid_rows_y; c++)
 		{
-			for (int r = 0; r < grid_row; r++)
+			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				int grid_to_coord_x = static_cast<int>(r / static_cast<float>(grid_row) * width);
-				int grid_to_coord_y = static_cast<int>(c / static_cast<float>(grid_col) * height);
+				int grid_to_coord_x = static_cast<int>(r / static_cast<float>(max_grid_cols_x) * width);
+				int grid_to_coord_y = static_cast<int>(c / static_cast<float>(max_grid_rows_y) * height);
 				switch (gGrids[r][c])
 				{
 				case static_cast<int>(grid_number::player):
@@ -163,8 +163,8 @@ namespace Core
 					Window::player->playerpos_restart.x = static_cast<int>(Window::player->playerpos.x);
 					Window::player->playerpos_restart.y = static_cast<int>(Window::player->playerpos.y);
 //#ifndef EDITOR
-					Window::player->sp->transformation.Position.x = r / static_cast<float>(grid_row) * width;
-					Window::player->sp->transformation.Position.y = c / static_cast<float>(grid_col) * height;
+					Window::player->sp->transformation.Position.x = r / static_cast<float>(max_grid_cols_x) * width;
+					Window::player->sp->transformation.Position.y = c / static_cast<float>(max_grid_rows_y) * height;
 //#endif
 					/*save player index in grid*/
 					Window::player->player_grid_pos.x = r;
@@ -246,8 +246,8 @@ namespace Core
 					rice->Add_animation("../textures/spritesheet/Run.txt");
 					rice->curr_anim = Idle;
 					rice->isSpriteSheet = 1;
-					SceneManager::loadIngr(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
-					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);*/
+					SceneManager::loadIngr(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, r, c, combine);
+					SceneManager::loadIngr_initPos(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, r, c, combine);*/
 					break;
 				}
 				//roes
@@ -1103,7 +1103,7 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Water, tile);
 
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, combine);
+					SceneManager::loadTile(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, combine);
 					break;
 				}*/
 				//	Wall3_1_Gunkan,		//p
@@ -1142,12 +1142,12 @@ namespace Core
 		//	for (auto& ingredient : SceneManager::ingredientcontainer)
 		//	{
 		//		//convert coordinates back into row and column (dont know why need to plus 1)
-		//		int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(grid_row) / width)) + 1;
-		//		int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(grid_col) / height)) + 1;
+		//		int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(max_grid_cols_x) / width)) + 1;
+		//		int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(max_grid_rows_y) / height)) + 1;
 		//		std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
-		//		int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(grid_row) / width) + 1);
-		//		int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(grid_col) / height) + 1);
+		//		int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(max_grid_cols_x) / width) + 1);
+		//		int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(max_grid_rows_y) / height) + 1);
 		//		std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
 		//		//checking through level win condition (check if ingredient land on box position)
 		//		if (ingredientCoordinates == boxCoordinates)
@@ -2197,9 +2197,9 @@ namespace Core
 	{
 		std::cout << "**************************** MAP LAYOUT ************************************" << std::endl;
 
-		for (int c = 0; c < grid_col; c++)
+		for (int c = 0; c < max_grid_rows_y; c++)
 		{
-			for (int r = 0; r < grid_row; r++)
+			for (int r = 0; r < max_grid_cols_x; r++)
 			{
 				std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
 			}
@@ -2225,10 +2225,12 @@ namespace Core
 	int Map::GetValue(int col_x, int row_y)
 	{
 		//if you are accessing out of the given grid
-		if (col_x > grid_col -1 || row_y > grid_row -1)
-		{
-			return 0; //if you are pressing out of this grid, return 0 as tile value 
-		}
+		//if (col_x -1 > (max_grid_rows_y) || row_y -1 > (max_grid_cols_x))
+		//{
+		//	std::cout << "you are out of range!" << std::endl;
+		//	return 3; //if you are pressing out of this grid, return 0 as tile value 
+		//}
+		//else
 		return gGrids[col_x][row_y];
 	}
 	/********************************************

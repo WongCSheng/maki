@@ -94,7 +94,7 @@ namespace Core
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
-		if ((player_grid_pos.x + 1) >= Map::grid_row)
+		if ((player_grid_pos.x + 1) >= Map::max_grid_cols_x)
 		{
 			std::cout << "out of grid on the right" << std::endl;
 			return;

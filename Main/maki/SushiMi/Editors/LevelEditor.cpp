@@ -504,13 +504,13 @@ namespace Core
 			ImGui::Text("Click on a cell to see its value");
 
 			ImGui::Spacing();
-			ImGui::Text("Grid row: ");
+			ImGui::Text("Grid column (X): ");
 			ImGui::SameLine();
 			std::stringstream xstring;
 			xstring << xgrid;
 			ImGui::Text(xstring.str().c_str());
 
-			ImGui::Text("Grid col: ");
+			ImGui::Text("Grid row (Y): ");
 			ImGui::SameLine();
 			std::stringstream ystring;
 			ystring << ygrid;
@@ -686,10 +686,10 @@ namespace Core
 				gridypos = ((int)(ypos) / SceneManager::getTileHeight());
 
 				Map::SetValue(gridxpos, gridypos, value);
-				//r / static_cast<float>(grid_row) * width
+				//r / static_cast<float>(max_grid_cols_x) * width
 
-				xpos = gridxpos / static_cast<float>(Map::grid_row) * width_;
-				ypos = gridypos / static_cast<float>(Map::grid_col) * height_;
+				xpos = gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_;
+				ypos = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
 				/**************************
 				* Step 1: set ur spritepath
 				* 1a) set scale,
@@ -715,6 +715,7 @@ namespace Core
 				//else
 				//	newobjarr[i].objname = "unknown";
 				std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
+				Map::print_map_to_console();
 			}
 			/*Window::a = new Sprite(texpath);*/
 			/*xpos = (float)((int)(xpos) / 100 * 100);
@@ -1343,12 +1344,14 @@ namespace Core
 				//grid snapping logic
 				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 				glfwGetWindowSize(Window::window_ptr, &width_, &height_);
-				//r / static_cast<float>(grid_row) * width
+				//r / static_cast<float>(max_grid_cols_x) * width
+				/*width = SceneManager::getTileWidth() * Map::max_grid_cols_x;
+				height = SceneManager::getTileHeight() * Map::max_grid_rows_y;*/
 
 				//xpos += 100 * 0.5f;
 				//ypos += 100 * 0.5f;
 				//xpos = col number
-				//static_cast<float>(grid_row) * width
+				//static_cast<float>(max_grid_cols_x) * width
 				//xpos = (int)(xpos / SceneManager::getTileWidth()) /** (double)SceneManager::getTileWidth()*/;
 				//ypos = ((int)(ypos / (double)SceneManager::getTileHeight())) * (double)SceneManager::getTileHeight();
 				/*xpos = (int) (float)((int)(xpos / width_ / 18) * (width_ / 18));
@@ -1358,36 +1361,49 @@ namespace Core
 				{
 					xgrid = gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
 					ygrid = gridypos = ((int)(ypos) / SceneManager::getTileHeight());
+					std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
+					std::cout << " Max Grid col x is: " << Map::max_grid_rows_y << " and Max Grid row y is: " << Map::max_grid_cols_x << std::endl;
 					
-					alphabet = Map::GetValue(gridxpos, gridypos);
-					std::cout << "x value is : " << gridxpos << " and y value is: " << gridypos << std::endl;
-					if (ImGui::IsMouseClicked(0)) //0 means left
+					//if you are in an invalid grid range of the map
+					if (gridxpos >= Map::max_grid_cols_x || gridxpos < 0 || gridypos < 0 || gridypos >= Map::max_grid_rows_y)
 					{
-						
+						alphabet = "out of range";
+
+					}
+					else
+					{
+						//std::cout << "you are out of range!" << std::endl;
+						//return 3; //if you are pressing out of this grid, return 0 as tile value 
+						alphabet = Map::GetValue(gridxpos, gridypos);
+						//std::cout << "x value is : " << gridxpos << " and y value is: " << gridypos << std::endl;
+						if (ImGui::IsMouseClicked(0)) //0 means left
+						{
+
 							/*gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
 							gridypos = ((int)(ypos) / SceneManager::getTileHeight());*/
 
-							//r / static_cast<float>(grid_row) * width
+							//r / static_cast<float>(max_grid_cols_x) * width
 
-							//Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::grid_row) * width_ ;
-							//Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+							//Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_ ;
+							//Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
 							imguiCreateObj();
-							
+
 							//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
 							Map::print_map_to_console;
-						
 
 
+
+						}
 					}
+					
 				}
 
-				Window::ingredient->transformation.Position.x = gridxpos / static_cast<float>(Map::grid_row) * width_;
-				Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::grid_col) * height_;
+				Window::ingredient->transformation.Position.x = gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_;
+				Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
 				/*SceneManager::rows*/
 					/*= glm::vec2(xpos, ypos)*/
 				//place object on click
 				//std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
-				//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
 
 				
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::ingredient->transformation.Get());

@@ -44,8 +44,8 @@ namespace Core
 		static inline int Map_Height, Map_Width;
 		/*static int** MapData;
 		static int** BinaryData;*/
-		static inline int grid_row;
-		static inline int grid_col;
+		static inline int max_grid_cols_x;
+		static inline int max_grid_rows_y;
 		static float tile_width, tile_height;
 		static int** gGrids;
 		

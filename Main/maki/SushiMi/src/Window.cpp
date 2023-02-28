@@ -1591,7 +1591,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level2.txt");
 					Map::LoadMap();
@@ -1688,7 +1691,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level3.txt");
 					Map::LoadMap();
@@ -1785,7 +1791,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level4.txt");
 					Map::LoadMap();
@@ -1879,7 +1888,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level5.txt");
 					Map::LoadMap();
@@ -1972,7 +1984,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level6.txt");
 					Map::LoadMap();
@@ -2066,7 +2081,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level7.txt");
 					Map::LoadMap();
@@ -2159,7 +2177,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level8.txt");
 					Map::LoadMap();
@@ -2250,7 +2271,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level9.txt");
 					Map::LoadMap();
@@ -2341,7 +2365,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/_tut1_bak.txt");
 					Map::LoadMap();

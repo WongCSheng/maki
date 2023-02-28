@@ -123,14 +123,14 @@ namespace Core
 		SceneManager::destroyIngr();
 		SceneManager::destroyInsideSinkHole();
 
-		if (Window::timetodeletegrid)
-		{
+		/*if (Window::timetodeletegrid)
+		{*/
 			for (int i = 0; i < max_grid_cols_x; i++)
 			{
 				delete gGrids[i];
 			}
 			delete gGrids;
-		}
+		//}
 
 		win_amt = 0;
 		SceneManager::amt_of_win_conditions = 0;

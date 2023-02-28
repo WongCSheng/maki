@@ -1,5 +1,2 @@
-﻿  Map.cpp
-C:\Users\louishetong.wang\source\repos\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2516,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\louishetong.wang\source\repos\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2516,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-C:\Users\louishetong.wang\source\repos\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2514): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
-  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  SceneManager.cpp
+  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe

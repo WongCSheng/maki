@@ -340,7 +340,7 @@ namespace Core
 			*/
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-				if (ingredient.first == grid_number::soya || ingredient.first == grid_number::wasabi || ingredient.first == static_cast<grid_number>(wall_type::tea))
+				if (ingredient.first == grid_number::soya || ingredient.first == grid_number::wasabi || ingredient.first == grid_number::tea)
 				{
 					//std::cout << ingredient.second->timer << std::endl;
 					if (ingredient.second->timer > 2.f)

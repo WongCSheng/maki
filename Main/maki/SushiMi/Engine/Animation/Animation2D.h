@@ -21,8 +21,7 @@ namespace Core
 		Idle,
 		Run,
 		Jump,
-		Soya,
-		Wasabi
+		Both
 	};
 
 	class Animation2D

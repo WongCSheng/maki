@@ -347,6 +347,20 @@ namespace Core
 					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
+				//tea
+				case static_cast<int>(grid_number::tea):
+				{
+					tea = new Sprite("../textures/spritesheet/teaspritesheet.png");
+					tea->isSpriteSheet = 1;
+					tea->Add_animation("../textures/spritesheet/tea_Idle.txt");
+					tea->Add_animation("../textures/spritesheet/tea_Pour.txt");
+					tea->curr_anim = AnimationType::Idle;
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tea, tea);
+
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					break;
+				}
 
 				// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
 				case static_cast<int>(wall_type::avocado_box):
@@ -450,19 +464,6 @@ namespace Core
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
-					break;
-				}
-				//tea
-				case static_cast<int>(wall_type::tea):
-				{
-					tea = new Sprite("../textures/spritesheet/teaspritesheet.png");
-					tea->isSpriteSheet = 1;
-					tea->Add_animation("../textures/spritesheet/tea_Idle.txt");
-					tea->Add_animation("../textures/spritesheet/tea_Pour.txt");
-					tea->curr_anim = AnimationType::Idle;
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tea, tea);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 					break;
 				}
 				//tofu
@@ -1187,13 +1188,13 @@ namespace Core
 		{
 			//Check if left tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items)) ||
+				gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori)) ||
 				(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last)))
 			{
 				//check if left tile is ingredient
 				if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items))
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 				{
 					std::cout << "left ingredient\n";
 					
@@ -1241,7 +1242,7 @@ namespace Core
 					}
 					//check if tile on the left of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "left ingredient ingredient\n";
 						Window::player->stop();
@@ -1307,13 +1308,53 @@ namespace Core
 						}
 						wasabi->timer = 0;
 						SceneManager::activateWasabi(wasabi);
+						if (salmon->status == 0)
+						{
+							/*change salmon sprite to with wasabi*/
+							salmon->status = 2;
+							salmon->curr_anim = AnimationType::Jump;
+						}
+						else if (salmon->status == 1)
+						{
+							/*if has soya on it, change to both*/
+							salmon->status = 3;
+							salmon->curr_anim = AnimationType::Both;
+						}
 
-						/*change salmon sprite to with wasabi*/
-						salmon->status = 2;
-						salmon->curr_anim = AnimationType::Jump;
 
 						Window::player->move_left();
 						std::cout << "Wasabi dripped\n";
+					}
+					//check if tile on left of salmon is tea
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::tea) &&
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					{
+						/*If salmon has either wasabi/soya/both on it*/
+						if (salmon->status != 0)
+						{
+							// set grid
+							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+							gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+								if (ingredient.first == check)
+								{
+									ingredient.second->transformation.Position.x -= tile_width;
+									break;
+								}
+							}
+							tea->timer = 0;
+							SceneManager::activateTea(tea);
+
+							/*change salmon sprite to with wasabi*/
+							salmon->status = 0;
+							salmon->curr_anim = AnimationType::Idle;
+
+							Window::player->move_left();
+							std::cout << "Wasabi dripped\n";
+						}
 					}
 
 					//check if it's a box
@@ -1449,13 +1490,13 @@ namespace Core
 		{
 			//Check if right tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items)) ||
+				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori)) ||
 				(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last)))
 			{
 				//check if right tile is ingredient
 				if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items))
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 				{
 					std::cout << "right ingredient\n";
 
@@ -1503,7 +1544,7 @@ namespace Core
 					}
 					//check if tile on the right of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] < static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "right ingredient ingredient\n";
 						Window::player->stop();
@@ -1702,13 +1743,13 @@ namespace Core
 		{
 			//Check if below tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(grid_number::items)) ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::nori)) ||
 				(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last)))
 			{
 				//check if below tile is ingredient
 				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] < static_cast<int>(grid_number::items))
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::nori))
 				{
 					std::cout << "down ingredient\n";
 
@@ -1755,7 +1796,7 @@ namespace Core
 					}
 					//check if tile below of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "down ingredient ingredient\n";
 						Window::player->stop();
@@ -1952,13 +1993,13 @@ namespace Core
 		{
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(grid_number::items)) ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::nori)) ||
 				(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last)))
 			{
 				//check if above tile is ingredient
 				if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(grid_number::items))
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::nori))
 				{
 					std::cout << "up ingredient\n";
 
@@ -2005,7 +2046,7 @@ namespace Core
 					}
 					//check if tile above of ingredient is another food
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] > static_cast<int>(grid_number::ingredients) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] < static_cast<int>(grid_number::items))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "up ingredient ingredient\n";
 						Window::player->stop();
@@ -2306,7 +2347,7 @@ namespace Core
 		case(grid_number::soya):
 			return ("Soya");
 			break;
-		case(static_cast<grid_number>(wall_type::tea)):
+		case(grid_number::tea):
 			return ("Tea");
 			break;
 		}

@@ -26,7 +26,8 @@ namespace Core
 		tofu,			//0
 		tuna,			//1
 		nori,			//2
-		items,			//3
+						//no more start, replaced by tea
+		tea,			//3
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6

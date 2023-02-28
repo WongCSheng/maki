@@ -2,6 +2,7 @@
 #include "../Engine//Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/TileMap/Map.h"
+#include "../Graphics/TextureSystem.h"
 
 namespace Core
 {
@@ -51,7 +52,7 @@ namespace Core
 		//reset ingredient pos
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient->restart();
+			ingredient.restart();
 		}
 
 		
@@ -63,59 +64,54 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
-	void SceneManager::loadTileTex(int x, int y, wall_type type, Texture tex)
+	void SceneManager::loadTileTex(wall_type type, Texture tex)
 	{
-		
+		TextureSystem::addTileTexture(std::make_pair(type, tex));
 	}
 
-	void SceneManager::StoreTileCoor(int x, int y, wall_type type, Sprite* item, int counter)
+	void SceneManager::StoreTileCoor(int x, int y, const std::pair<wall_type, Sprite*> item, int counter)
 	{
-		
-		item->transformation.Position = glm::vec2(x, y);
-		item->transformation.Scale = glm::vec2(105, 105);
+		Wall to_input;
 
-		tilecontainer.push_back(item);
-		
+		item.second->transformation.Position = glm::vec2(x, y);
+		item.second->transformation.Scale = glm::vec2(105, 105);
+
+		to_input.subscript = counter;
+		to_input.type = item.first;
+		to_input.wallpaper = item.second;
+
+		tilecontainer.push_back(to_input);
 		
 		std::cout << std::endl;
 		std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
 	}
 
-	/*void SceneManager::loadIngrTex(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*>&ingredient, int counter)
+	template<typename name>
+	void SceneManager::loadIngrTex(const std::pair<name, Sprite*> &ingredient)
 	{
-		ingredient.second->transformation.Position = glm::vec2(x, y);
-		ingredient.second->transformation.Scale = glm::vec2(100, 100);
-
-		ingredient.second->transformation.grid_pos = { posX, posY };
-
-		ingredientcontainer.insert(ingredient);
-		ingredient_pos.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
+		TextureSystem::addIngrTexture(ingredient);
 
 		std::cout << std::endl;
 		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
-	}*/
-
-	void SceneManager::StoreIngrCoor(int x, int y, int posX, int posY, std::pair<ingredients, Sprite*> ingredient, int counter)
-	{
-		ingredient.second->transformation.Position = glm::vec2(x, y);
-		ingredient.second->transformation.Scale = glm::vec2(100, 100);
-
-		ingredient.second->transformation.grid_pos = { posX, posY };
-
-		ingredientcontainer.push_back(std::make_pair(ingredient.first, ingredient.second->transformation));
-		std::cout << std::endl;
-		std::cout << "****************** Ingredient texture exist, ingredient_pos size: " << ingredient_pos.size() << std::endl;
 	}
 
-	void SceneManager::StoreIngr_initPos(int x, int y, int posX, int posY, ingredients ingrposition)
+	void SceneManager::StoreIngrCoor(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> ingredient, int counter)
 	{
-		Transform toStore;
+		Basket to_add;
+		
+		ingredient.second->transformation.Position = glm::vec2(x, y);
+		ingredient.second->transformation.Scale = glm::vec2(100, 100);
+		 
+		ingredient.second->transformation.grid_pos = { posX, posY };
 
-		toStore.grid_pos = { x, y };
-		toStore.Scale = glm::vec2(100, 100);
-		toStore.grid_pos = { x, y };
+		to_add.subscript = counter;
+		to_add.starting_pos.Position = glm::vec2(x, y);
+		to_add.ingr = ingredient.second;
 
-		ingredient_starting_pos.push_back(std::make_pair(ingrposition);
+		ingredientcontainer.push_back(to_add);
+
+		std::cout << std::endl;
+		std::cout << "****************** Ingredient texture exist, ingredient_pos size: " << ingredientcontainer.size() << std::endl;
 	}
 	
 	void SceneManager::loadHowToOverlay(int x, int y)
@@ -188,21 +184,18 @@ namespace Core
 	}
 
 	/*draw functions*/
-	void SceneManager::drawTile()
+	void SceneManager::drawItems()
 	{
 		for (auto& tile : tilecontainer)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile.second->transformation.Get());
-			tile.second->draw();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", tile.wallpaper->transformation.Get());
+			tile.wallpaper->draw();
 		}
-	}
 
-	void SceneManager::drawIngr()
-	{
 		for (auto& ingredient : ingredientcontainer)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			ingredient.second->draw();
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.ingr->transformation.Get());
+			ingredient.ingr->draw();
 		}
 	}
 	

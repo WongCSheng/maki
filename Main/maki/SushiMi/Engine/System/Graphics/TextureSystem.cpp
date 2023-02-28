@@ -60,6 +60,16 @@ namespace Core
 		wall_tex_container.insert(tile);
 	}
 
+	Texture TextureSystem::GetIngrTexture(ingredients order)
+	{
+		return ingr_tex_container[order];
+	}
+
+	Texture TextureSystem::GetTileTexture(wall_type order)
+	{
+		return wall_tex_container[order];
+	}
+
 	void TextureSystem::Init()
 	{
 

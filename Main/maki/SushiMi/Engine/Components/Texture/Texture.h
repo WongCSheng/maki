@@ -38,5 +38,7 @@ namespace Core
 		unsigned int TextureID;
 
 		unsigned char* data;
+
+		float alpha;
 	};
 }

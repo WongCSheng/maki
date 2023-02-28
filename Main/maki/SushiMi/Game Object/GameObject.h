@@ -3,6 +3,8 @@
 #include "../Headers/STL_Header.h"
 #include "../Engine/Components/Component.h"
 #include "../Engine/Factory/Factory.h"
+#include "../Engine/Components/Texture/Sprite.h"
+#include "../Engine/Components/Physics/collision.h"
 #include "../Engine/System/Linked List/LinkedList.h"
 
 namespace Core
@@ -59,11 +61,14 @@ namespace Core
 			virtual ~GameObject();
 			friend class ObjectFactory;
 			//LinkedList<Component*> HeadOfList;
-			
 
 			virtual void Init();
 
 			GameObjectProperty* GetObjectProperties();
+
+			void CreateIngredientProperty(ingredients ID);
+			void CreateTileProperty();
+			void CreateAnimatedObjectProperty();
 		};
 	}
 }

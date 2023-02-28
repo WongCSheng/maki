@@ -20,7 +20,7 @@ namespace Core
 	class Sprite :public Component
 	{
 	public:
-		Sprite(const char* filename);
+		Sprite();
 
 		~Sprite();
 
@@ -30,6 +30,8 @@ namespace Core
 
 		void Add_animation(const char* filename);
 
+		void InsertTexture(const char* filename);
+		void InsertTexture(Texture tex);
 		Texture* GetTexture();
 
 		void Init();

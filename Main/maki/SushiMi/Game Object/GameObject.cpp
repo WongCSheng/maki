@@ -3,6 +3,7 @@ GameObject.cpp
 */
 
 #include "GameObject.h"
+#include "../Engine/System/Scene/SceneManager.h"
 
 namespace Core
 {
@@ -94,11 +95,25 @@ namespace Core
 		void GameObject::Init()
 		{
 			
-		}
+		} 
+
 
 		GameObjectProperty* GameObject::GetObjectProperties()
 		{
 			return characteristics;
 		}
+
+		void GameObject::CreateIngredientProperty(ingredients ID)
+		{
+			Sprite* addsprite = new Sprite();
+			collision* addcollision = new collision();
+
+			
+			characteristics->AddComponent(ComponentID::Sprite, addsprite);
+			characteristics->AddComponent(ComponentID::Collision, addcollision);
+
+			characteristics->SetID(static_cast<int>(ID));
+			characteristics->SetIDName(static_cast<std::string>(ID));
+		}
 	}
-}
+} 

@@ -37,6 +37,14 @@ namespace Core
 	private:
 		//static MainSystem* instance;
 
+		Transformer* transformer;
+		CameraSystem* cameraSystem;
+		Renderer* rendersystem;
+		std::unique_ptr<Window> windowsystem;
+		TextureSystem* texturesystem;
+		std::unique_ptr<Editor::LevelEditor> leveleditorsystem;
+		SceneManager* scnsystem;
+
 		std::vector<SystemFrame*> systems;
 
 	public:
@@ -54,15 +62,8 @@ namespace Core
 
 		void AccessObjFactory();
 
-		Transformer* transformer;
-		CameraSystem* cameraSystem;
-		Renderer* rendersystem;
-		std::unique_ptr<Window> windowsystem;
-		TextureSystem* texturesystem;
-		std::unique_ptr<Editor::LevelEditor> leveleditorsystem;
-		SceneManager* scnsystem;
-	
-
+		template<typename T>
+		T* AccessSystem(T wantsystem);
 	};
 }
 

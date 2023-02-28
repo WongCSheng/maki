@@ -153,22 +153,29 @@ namespace Core
 			{
 				switch (gGrids[r][c])
 				{
-				case static_cast<int>(ingredients::ground1) :
-					if (TextureSystem::ingr_tex_container.find(ingredients::ground1) == TextureSystem::ingr_tex_container.end())
+				case static_cast<int>(wall_type::rice_ground0) :
+					if (TextureSystem::GetTileTexture(wall_type::rice_ground0)) //if no such texture exists
 					{
-						Texture ground1;
+						/*Texture ground1;
 						ground1.TextureLoadIn("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
 						std::pair<ingredients, Texture> combine = std::make_pair(ingredients::ground1, std::move(ground1));
 
 						TextureSystem::addIngrTexture(combine);
 
-						SceneManager::loadIngrTex(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
+						SceneManager::loadIngrTex(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);*/
+
+						Texture tex;
+						tex.TextureLoadIn("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
+
+						SceneManager::loadTileTex(wall_type::ground0, tex);
+
+						SceneManager::StoreTileCoor()
 					}
 
 					SceneManager::StoreIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 
-				case static_cast<int>(ingredients::ground2):
+				case static_cast<int>(ingredients::rice_ground1):
 					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
 					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
 
@@ -176,7 +183,7 @@ namespace Core
 					SceneManager::loadIngr_initPos(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, r, c, combine);
 					break;
 
-				case static_cast<int>(ingredients::ground3):
+				case static_cast<int>(ingredients::rice_ground2):
 					Sprite* ground1 = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_2.jpg");
 					std::pair<ingredients, Sprite*> combine = std::make_pair(ingredients::ground1, std::move(ground1));
 
@@ -1136,47 +1143,6 @@ namespace Core
 	{
 		SceneManager::drawTile();
 		SceneManager::drawIngr();
-		
-		/*for (int c = 0; c < grid_col; c++)
-		{
-			for (int r = 0; r < grid_row; r++)
-			{
-				if (gGrids[r][c] == static_cast<char>(wall_type::bottomleftwall))
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
-					
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, tile);
-					SceneManager::drawTile();
-				}
-				if (gGrids[r][c] == 3)
-				{
-					SceneManager::loadIngr1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawIngr1();
-				}
-				if (gGrids[r][c] == 4)
-				{
-					SceneManager::loadIngr2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawIngr2();
-				}
-				if (gGrids[r][c] == 50)
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-
-					SceneManager::loadTile(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height, tile);
-					SceneManager::drawGoal();
-				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletopbottomwall))
-				{
-					SceneManager::loadGoal1(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal1();
-				}
-				if (gGrids[r][c] == static_cast<char>(wall_type::middletoprightbottomwall))
-				{
-					SceneManager::loadGoal2(r / static_cast<float>(grid_row) * width, c / static_cast<float>(grid_col) * height);
-					SceneManager::drawGoal2();
-				}
-			}
-		}*/
 	}
 	/********************************************
 	 Return the value inside a cell that you click
@@ -1192,4 +1158,4 @@ namespace Core
 	{
 		gGrids[col_x][row_y] = value;
 	}
-}
+}  

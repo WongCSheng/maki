@@ -139,12 +139,13 @@ namespace Core
 				name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
 
 				std::cout << "loading of " << name << "\n";
-				Sprite* object = new Sprite(texturePath);
+				Sprite* object = new Sprite();
+				object->InsertTexture(texturePath);
 				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
 				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
 
 				object->Deserialize(compJsonObj);
-				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
+				gameObj->GetObjectProperties()->AddComponent(ComponentID::Sprite, object);
 				//delete spriteComp;
 			}
 

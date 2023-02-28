@@ -8,34 +8,28 @@ namespace Core
 	enum class ingredients //gGrids
 	{
 		start = 96,
-		ground1,		//a
-		ground2,		//b
-		ground3,		//c
-		player,			//d
-		ingredients,
-		avocado,		//f
-		corn,			//g
-		cucumber,		//h
-		inari,			//i
-		nori,			//j
-		octopus,		//k
-		rice,			//l
-		roes,			//m
-		salmon,			//n
-		tamago,			//o
-		tofu,			//p
-		tuna,			//q
-		soyasauce,		//r
-		wasabi,			//s
-		items,
-		sinkhole,		//u
-		filledsinkhole,	//v
-		boxcover,		//w
+		player,			//a
+		ingredients,	
+		avocado,		//c
+		corn,			//d
+		cucumber,		//e
+		inari,			//f
+		nori,			//g
+		octopus,		//h
+		rice,			//i
+		roes,			//j
+		salmon,			//k
+		tamago,			//l
+		tofu,			//m
+		tuna,			//n
+		items,			
+		boxcover,		//p
 		end
 	};
 
 	enum class pods	//pGrids
 	{
+		first = 101,
 		avocado_pod = 102,  //f
 		corn_pod = 103,		//g
 		cucumber_pod,		//h
@@ -47,7 +41,10 @@ namespace Core
 		salmon_pod,			//n
 		tamago_pod,			//o
 		tofu_pod,			//p
-		tuna_pod			//q
+		tuna_pod,			//q
+		sinkhole,			//r
+		filledsinkhole,		//s
+		last
 	};
 
 	enum class wall_type //: std::uint16_t //gGrids
@@ -69,6 +66,10 @@ namespace Core
 		bottomwall,					//N
 		middletopbottomwall,		//O
 		middlewall,					//P
+		rice_ground0,
+		rice_ground1,
+		rice_ground2,
+		fishing_ground,
 		last
 	};
 
@@ -79,8 +80,9 @@ namespace Core
 		Others = 2
 	};
 
-	enum class RicePlain_Grass //rGrids
+	enum class animated_obj //rGrids
 	{
+		first = 96,
 		TopG1_1 = 97,	//a
 		TopG1_2 = 98,	//b
 		TopG1_3,		//c
@@ -97,15 +99,35 @@ namespace Core
 		TopW0_3,		//n
 		TopW0_4,		//o
 		TopW0_5,		//p
-		TopW0_6			//q
+		TopW0_6,		//q
+		soyasauce,		//r
+		wasabi,			//s
+		last
 	};
 
+	//Component for ingredients
 	struct Basket
 	{
-		int sub;
+		int subscript;
 		Transform starting_pos;
-		Transform current_pos;
+		union name_tag
+		{
+			ingredients ingre;
+			pods pod;
+			animated_obj animobj;
+		};
 		Sprite* ingr;
+		void restart()
+		{
+			ingr->transformation.Position = starting_pos.Position;
+		}
+	};
+	//Component for wall
+	struct Wall
+	{
+		int subscript;
+		wall_type type;
+		Sprite* wallpaper;
 	};
 	
 	class SceneManager : public SystemFrame
@@ -126,19 +148,20 @@ namespace Core
 
 		static void restartLevel();
 		static void nextLevel();
-		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
-		//static void loadTileTex(int x, int y, wall_type type, Texture tex);
+
+		static void loadTileTex(wall_type type, Texture tex);
 		static void StoreTileCoor(int x, int y, std::pair<wall_type, Sprite*> tile, int counter);
-		//static void loadIngrTex(int x, int y, int posX, int posY, const std::pair<ingredients, Sprite*> &ingredient, int counter);
+
+		template<typename name>
+		static void loadIngrTex(const std::pair<name, Sprite*> &ingredient);
+
 		static void StoreIngrCoor(int x, int y, int posX, int posY, std::pair<ingredients, Sprite*> ingredient, int counter);
-		static void StoreIngr_initPos(int x, int y, int posX, int posY, ingredients ingrposition, int counter);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene(int x, int y);
 
-		static void drawTile();
-		static void drawIngr();
+		static void drawItems();
 		static void drawHowToOverlay();
 		static void drawSettings();
 		static void drawWinOverlay();
@@ -163,7 +186,7 @@ namespace Core
 		unsigned int getTileHeight();
 	
 		//Map stuff
-		static inline std::vector<wall_type, Sprite*> tilecontainer;
+		static inline std::vector<Wall> tilecontainer;
 		static inline std::vector<Basket> ingredientcontainer;
 		static inline std::vector<std::pair<int, Transform>> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
@@ -189,8 +212,5 @@ namespace Core
 
 		static inline Sprite* win_overlay;
 		static inline Sprite* menu;
-
-		unsigned int rows, cols,
-			tileWidth, tileHeight;
 	};
 }

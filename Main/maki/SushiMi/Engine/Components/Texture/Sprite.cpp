@@ -16,17 +16,9 @@ email:		fei.x@digipen.edu
 
 namespace Core
 {
-	Sprite::Sprite(const char* filename)
+	Sprite::Sprite()
 	{
-		//mem leak here?
-		auto tex_sys = Core::TextureSystem::GetInstance();
-		texture.TextureLoadIn(filename);
-		tex_sys->Generate(&texture);
-
-		auto rect_sys = Core::Renderer::GetInstance();
-		rectangle = rect_sys->Generate();
-
-		//std::cout << "Texture loaded: " << filename << " Texture ID: a" << texture.TextureID << "\n";
+		
 	}
 
 	Sprite::~Sprite()
@@ -67,6 +59,24 @@ namespace Core
 		auto anim = new Animation2D(filename);
 		anim->set_animation_speed(0.05f);
 		anims.push_back(anim);
+	}
+
+	void Sprite::InsertTexture(const char* filename)
+	{
+		//mem leak here?
+		auto tex_sys = Core::TextureSystem::GetInstance();
+		texture.TextureLoadIn(filename);
+		tex_sys->Generate(&texture);
+
+		auto rect_sys = Core::Renderer::GetInstance();
+		rectangle = rect_sys->Generate();
+
+		//std::cout << "Texture loaded: " << filename << " Texture ID: a" << texture.TextureID << "\n";
+	}
+
+	void Sprite::InsertTexture(Texture tex)
+	{
+
 	}
 
 	Texture* Sprite::GetTexture()

@@ -1121,23 +1121,21 @@ namespace Core
 			/*--------------------------*/
 			starttime = glfwGetTime();
 			pseudomain::update();
+			AudioManager.Update();
 			//for each frame 
 			Resize();
 			Input();
 			if (isTut1 || isLevel1 || isLevel2 || isLevel3)
 			{
 				glClearColor((float)112 / 255, (float)153 / 255, (float)49 / 255, 1.0f);
-
 			}
 			else if (isLevel4 || isLevel5 || isLevel6)
 			{
 				glClearColor((float)207 / 255, (float)181 / 255, (float)142 / 255, 1.0f);
-
 			}
 			else
 			{
 				glClearColor((float)112 / 255, (float)153 / 255, (float)49 / 255, 1.0f);
-
 			}
 			glClear(GL_COLOR_BUFFER_BIT);
 

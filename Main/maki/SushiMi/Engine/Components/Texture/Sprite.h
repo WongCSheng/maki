@@ -22,6 +22,7 @@ namespace Core
 	class Sprite :public Component
 	{
 	public:
+
 		Sprite(const char* filename);
 
 		~Sprite();

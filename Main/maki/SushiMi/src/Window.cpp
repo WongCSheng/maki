@@ -1418,12 +1418,11 @@ namespace Core
 																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
-				if (isWinCondition)
+				if (!isWinCondition)
 				{
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
-
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1458,7 +1457,7 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 				/*Fade In Effect*/
-				//SceneManager::FadeIn();
+				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();

@@ -102,6 +102,7 @@ namespace Core
 		status 1 = soya
 		status 2 = wasabi
 		status 3 = both
+		status 4 = cleanse
 		*/
 		int status;
 

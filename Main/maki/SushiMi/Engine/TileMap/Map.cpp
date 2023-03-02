@@ -36,11 +36,7 @@ namespace Core
 
 	wall_type ex_box;
 
-	Sprite* soya;
-	Sprite* rice;
-	Sprite* salmon;
-	Sprite* wasabi;
-	Sprite* tea;
+
 
 	Map::Map()
 	{
@@ -1270,7 +1266,7 @@ namespace Core
 							static_cast<int>(Window::player->playerpos.x) - 1, static_cast<int>(Window::player->playerpos.y), combine);
 							*/
 						soya->timer = 0;
-						SceneManager::activateSoya(soya);
+						SceneManager::activateSoya();
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
@@ -1312,7 +1308,7 @@ namespace Core
 							}
 						}
 						wasabi->timer = 0;
-						SceneManager::activateWasabi(wasabi);
+						SceneManager::activateWasabi();
 						/*check salmon status*/
 						if (salmon->status == 0)
 						{
@@ -1352,7 +1348,7 @@ namespace Core
 								}
 							}
 							tea->timer = 0;
-							SceneManager::activateTea(tea);
+							SceneManager::activateTea();
 
 							/*change salmon sprite to nothing*/
 							salmon->status = 0;
@@ -1574,7 +1570,7 @@ namespace Core
 							}
 						}
 						soya->timer = 0;
-						SceneManager::activateSoya(soya);
+						SceneManager::activateSoya();
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -1609,7 +1605,7 @@ namespace Core
 							}
 						}
 						wasabi->timer = 0;
-						SceneManager::activateWasabi(wasabi);
+						SceneManager::activateWasabi();
 
 						/*check salmon status*/
 						if (salmon->status == 0)
@@ -1650,10 +1646,10 @@ namespace Core
 								}
 							}
 							tea->timer = 0;
-							SceneManager::activateTea(tea);
+							SceneManager::activateTea();
 
 							/*change salmon sprite to with wasabi*/
-							salmon->status = 0;
+							salmon->status = 4;
 							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_right();
@@ -1876,7 +1872,7 @@ namespace Core
 							}
 						}
 						soya->timer = 0;
-						SceneManager::activateSoya(soya);
+						SceneManager::activateSoya();
 
 						/*check soya status*/
 						if (salmon->status == 0)
@@ -1912,7 +1908,7 @@ namespace Core
 							}
 						}
 						wasabi->timer = 0;
-						SceneManager::activateWasabi(wasabi);
+						SceneManager::activateWasabi();
 
 						/*check salmon status*/
 						if (salmon->status == 0)
@@ -1953,7 +1949,7 @@ namespace Core
 								}
 							}
 							tea->timer = 0;
-							SceneManager::activateTea(tea);
+							SceneManager::activateTea();
 
 							/*change salmon sprite to with wasabi*/
 							salmon->status = 0;
@@ -2177,7 +2173,7 @@ namespace Core
 							}
 						}
 						soya->timer = 0;
-						SceneManager::activateSoya(soya);
+						SceneManager::activateSoya();
 
 						/*check soya status*/
 						if (salmon->status == 0)
@@ -2213,7 +2209,7 @@ namespace Core
 							}
 						}
 						wasabi->timer = 0;
-						SceneManager::activateWasabi(wasabi);
+						SceneManager::activateWasabi();
 
 						/*check salmon status*/
 						if (salmon->status == 0)
@@ -2253,7 +2249,7 @@ namespace Core
 							}
 						}
 						tea->timer = 0;
-						SceneManager::activateTea(tea);
+						SceneManager::activateTea();
 
 						/*change salmon sprite to nothing*/
 						salmon->status = 0;

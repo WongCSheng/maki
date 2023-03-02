@@ -325,7 +325,6 @@ namespace Core
 
 	void SceneManager::drawIngr()
 	{
-		std::cout << "salmon status: " << Map::salmon->status << std::endl;
 		for (auto& ingredient : ingredientcontainer)
 		{
 
@@ -363,34 +362,38 @@ namespace Core
 						}
 					}
 					*/
-			
-					if (Map::wasabi->timer > 2.f)
+			if (Map::wasabi != nullptr || Map::tea != nullptr || Map::soya != nullptr)
+			{
+				if (Map::wasabi->timer > 2.f)
+				{
+					Map::wasabi->curr_anim = AnimationType::Idle;
+					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::wasabi->curr_anim = AnimationType::Idle;
-						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-						{
-							Map::wasabi->alpha = 0.f;
-						}
+						Map::wasabi->alpha = 0.f;
 					}
-					if (Map::tea->timer > 2.f)
+				}
+				if (Map::tea->timer > 2.f)
+				{
+					Map::tea->curr_anim = AnimationType::Idle;
+					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::tea->curr_anim = AnimationType::Idle;
-						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-						{
-							Map::tea->alpha = 0.f;
-						}
+						Map::tea->alpha = 0.f;
 					}
-					if (Map::soya->timer > 2.f)
+				}
+				if (Map::soya->timer > 2.f)
+				{
+					Map::soya->curr_anim = AnimationType::Idle;
+					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::soya->curr_anim = AnimationType::Idle;
-						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-						{
-							Map::soya->alpha = 0.f;
-						}
+						Map::soya->alpha = 0.f;
 					}
+				}
+
+			}
+
 					
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
@@ -404,8 +407,10 @@ namespace Core
 				}
 
 				ingredient.second->timer += Window::GetInstance(0, 0)->getDelta();
-			
+
 		}
+
+
 	}
 	/*
 	void SceneManager::drawRice()

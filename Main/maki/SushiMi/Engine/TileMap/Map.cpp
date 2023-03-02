@@ -1273,6 +1273,11 @@ namespace Core
 							salmon->status = 1;
 							salmon->curr_anim = AnimationType::Run;
 						}
+						else if (salmon->status == 5)
+						{
+							salmon->status = 7;
+							salmon->curr_anim = AnimationType::Run;
+						}
 						else if (salmon->status == 2)
 						{
 							salmon->status = 3;
@@ -1310,10 +1315,10 @@ namespace Core
 						wasabi->timer = 0;
 						SceneManager::activateWasabi();
 						/*check salmon status*/
-						if (salmon->status == 0)
+						if (salmon->status == 0 || salmon->status == 4)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
+							salmon->status += 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -1351,7 +1356,18 @@ namespace Core
 							SceneManager::activateTea();
 
 							/*change salmon sprite to nothing*/
-							salmon->status = 0;
+							if (salmon->status == 1)
+							{
+								salmon->status = 4;
+							}
+							else if (salmon->status == 2)
+							{
+								salmon->status = 5;
+							}
+							else if (salmon->status == 3)
+							{
+								salmon->status = 8;
+							}
 							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_left();
@@ -1578,6 +1594,11 @@ namespace Core
 							salmon->status = 1;
 							salmon->curr_anim = AnimationType::Run;
 						}
+						else if (salmon->status == 5)
+						{
+							salmon->status = 7;
+							salmon->curr_anim = AnimationType::Run;
+						}
 						else if (salmon->status == 2)
 						{
 							salmon->status = 3;
@@ -1608,10 +1629,10 @@ namespace Core
 						SceneManager::activateWasabi();
 
 						/*check salmon status*/
-						if (salmon->status == 0)
+						if (salmon->status == 0 || salmon->status == 4)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
+							salmon->status += 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -1648,8 +1669,19 @@ namespace Core
 							tea->timer = 0;
 							SceneManager::activateTea();
 
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 4;
+							/*change salmon sprite to nothing*/
+							if (salmon->status == 1)
+							{
+								salmon->status = 4;
+							}
+							else if (salmon->status == 2)
+							{
+								salmon->status = 5;
+							}
+							else if (salmon->status == 3)
+							{
+								salmon->status = 8;
+							}
 							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_right();
@@ -1881,6 +1913,11 @@ namespace Core
 							salmon->status = 1;
 							salmon->curr_anim = AnimationType::Run;
 						}
+						else if (salmon->status == 5)
+						{
+							salmon->status = 7;
+							salmon->curr_anim = AnimationType::Run;
+						}
 						else if (salmon->status == 2)
 						{
 							salmon->status = 3;
@@ -1911,10 +1948,10 @@ namespace Core
 						SceneManager::activateWasabi();
 
 						/*check salmon status*/
-						if (salmon->status == 0)
+						if (salmon->status == 0 || salmon->status == 4)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
+							salmon->status += 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -1951,8 +1988,19 @@ namespace Core
 							tea->timer = 0;
 							SceneManager::activateTea();
 
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 0;
+							/*change salmon sprite to nothing*/
+							if (salmon->status == 1)
+							{
+								salmon->status = 4;
+							}
+							else if (salmon->status == 2)
+							{
+								salmon->status = 5;
+							}
+							else if (salmon->status == 3)
+							{
+								salmon->status = 8;
+							}
 							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_down();
@@ -2182,6 +2230,11 @@ namespace Core
 							salmon->status = 1;
 							salmon->curr_anim = AnimationType::Run;
 						}
+						else if (salmon->status == 5)
+						{
+							salmon->status = 7;
+							salmon->curr_anim = AnimationType::Run;
+						}
 						else if (salmon->status == 2)
 						{
 							salmon->status = 3;
@@ -2212,10 +2265,10 @@ namespace Core
 						SceneManager::activateWasabi();
 
 						/*check salmon status*/
-						if (salmon->status == 0)
+						if (salmon->status == 0 || salmon->status == 4)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
+							salmon->status += 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -2252,7 +2305,18 @@ namespace Core
 						SceneManager::activateTea();
 
 						/*change salmon sprite to nothing*/
-						salmon->status = 0;
+						if (salmon->status == 1)
+						{
+							salmon->status = 4;
+						}
+						else if (salmon->status == 2)
+						{
+							salmon->status = 5;
+						}
+						else if (salmon->status == 3)
+						{
+							salmon->status = 8;
+						}
 						salmon->curr_anim = AnimationType::Idle;
 
 						Window::player->move_up();

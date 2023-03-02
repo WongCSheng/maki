@@ -325,6 +325,7 @@ namespace Core
 
 	void SceneManager::drawIngr()
 	{
+		std::cout << "salmon status: " << Map::salmon->status << std::endl;
 		for (auto& ingredient : ingredientcontainer)
 		{
 
@@ -367,19 +368,28 @@ namespace Core
 					{
 						Map::wasabi->curr_anim = AnimationType::Idle;
 						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						Map::wasabi->alpha = 0.5f;
+						if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
+						{
+							Map::wasabi->alpha = 0.f;
+						}
 					}
 					if (Map::tea->timer > 2.f)
 					{
 						Map::tea->curr_anim = AnimationType::Idle;
 						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						Map::tea->alpha = 0.5f;
+						if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
+						{
+							Map::tea->alpha = 0.f;
+						}
 					}
 					if (Map::soya->timer > 2.f)
 					{
 						Map::soya->curr_anim = AnimationType::Idle;
 						//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-						Map::soya->alpha = 0.5f;
+						if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
+						{
+							Map::soya->alpha = 0.f;
+						}
 					}
 					
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());

@@ -362,7 +362,7 @@ namespace Core
 						}
 					}
 					*/
-			if (Map::wasabi != nullptr || Map::tea != nullptr || Map::soya != nullptr)
+			if (Map::wasabi != nullptr)
 			{
 				if (Map::wasabi->timer > 2.f)
 				{
@@ -373,6 +373,10 @@ namespace Core
 						Map::wasabi->alpha = 0.f;
 					}
 				}
+			}
+			if (Map::tea != nullptr)
+			{
+
 				if (Map::tea->timer > 2.f)
 				{
 					Map::tea->curr_anim = AnimationType::Idle;
@@ -382,6 +386,10 @@ namespace Core
 						Map::tea->alpha = 0.f;
 					}
 				}
+			}
+			if (Map::soya != nullptr)
+			{
+
 				if (Map::soya->timer > 2.f)
 				{
 					Map::soya->curr_anim = AnimationType::Idle;
@@ -391,7 +399,6 @@ namespace Core
 						Map::soya->alpha = 0.f;
 					}
 				}
-
 			}
 
 					

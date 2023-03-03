@@ -1,8 +1,8 @@
 18 10
 c c c c c c c c c c c c c c c c c c
 c c ! ! ! ! ! c c c c c c c c c c c
-! 3 5 4 . % ! c c c c c c c c c c c
-c c ! ! ! ! ! ! ! ! c c c c c c c c
+! ! ! ! ! ! ! c c c c c c c c c c c
+c c % . 5 3 4 ! ! ! c c c c c c c c
 c c ! ! ! ! ! ! c ! c c c c c c c c
 c c c ! ! ! ! ! c ! c c c c c c c c
 c c c ! ! ! c c c ! ! ! ! ! r c c c

@@ -1121,23 +1121,21 @@ namespace Core
 			/*--------------------------*/
 			starttime = glfwGetTime();
 			pseudomain::update();
+			AudioManager.Update();
 			//for each frame 
 			Resize();
 			Input();
 			if (isTut1 || isLevel1 || isLevel2 || isLevel3)
 			{
 				glClearColor((float)112 / 255, (float)153 / 255, (float)49 / 255, 1.0f);
-
 			}
 			else if (isLevel4 || isLevel5 || isLevel6)
 			{
 				glClearColor((float)207 / 255, (float)181 / 255, (float)142 / 255, 1.0f);
-
 			}
 			else
 			{
 				glClearColor((float)112 / 255, (float)153 / 255, (float)49 / 255, 1.0f);
-
 			}
 			glClear(GL_COLOR_BUFFER_BIT);
 
@@ -1420,12 +1418,11 @@ namespace Core
 																			// for quest tab drawing of ingredients
 				}
 				/*Fade out effect*/
-				if (isWinCondition)
+				if (!isWinCondition)
 				{
 					SceneManager::FadeOut();
 					SceneManager::drawBlackOverlay();
 				}
-
 				//draw lv1 tile map
 				Map::DrawMap();
 
@@ -1460,7 +1457,7 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 				/*Fade In Effect*/
-				//SceneManager::FadeIn();
+				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
@@ -1591,7 +1588,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level2.txt");
 					Map::LoadMap();
@@ -1688,7 +1688,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level3.txt");
 					Map::LoadMap();
@@ -1785,7 +1788,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level4.txt");
 					Map::LoadMap();
@@ -1879,7 +1885,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level5.txt");
 					Map::LoadMap();
@@ -1972,7 +1981,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level6.txt");
 					Map::LoadMap();
@@ -2066,7 +2078,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level7.txt");
 					Map::LoadMap();
@@ -2159,7 +2174,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level8.txt");
 					Map::LoadMap();
@@ -2250,7 +2268,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/level9.txt");
 					Map::LoadMap();
@@ -2341,7 +2362,10 @@ namespace Core
 			{
 				if (!loaded)
 				{
-					Map::ResetMap();
+					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+					{
+						Map::ResetMap();
+					}
 
 					Map::initMap("../TileMap/_tut1_bak.txt");
 					Map::LoadMap();

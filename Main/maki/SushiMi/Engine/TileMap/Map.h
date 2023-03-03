@@ -48,7 +48,11 @@ namespace Core
 		static inline int max_grid_rows_y;
 		static float tile_width, tile_height;
 		static int** gGrids;
-		
+		static inline Sprite* soya;
+		static inline Sprite* rice;
+		static inline Sprite* salmon;
+		static inline Sprite* wasabi;
+		static inline Sprite* tea;
 
 		static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
 		

@@ -26,6 +26,69 @@ GLdouble GLHelper::fps;
 GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
+
+#define FRAME_TIME_MIN   1.0/60.0
+
+bool GLHelper::init(GLint w, GLint h, std::string t) {
+	GLHelper::width = w;
+	GLHelper::height = h;
+	GLHelper::title = t;
+
+	// Part 1
+	if (!glfwInit()) {
+		std::cout << "GLFW init has failed - abort program!!!" << std::endl;
+		return false;
+	}
+
+	// In case a GLFW function fails, an error is reported to callback function
+	glfwSetErrorCallback(GLHelper::error_cb);
+
+	// Before asking GLFW to create an OpenGL context, we specify the minimum constraints
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // major ver 4 (4.x)
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5); //minor ver 5 (x.5)
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // show that opengl is forward compatible
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // opengl profile
+	glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE); // enable double buffer
+	glfwWindowHint(GLFW_RED_BITS, 8); glfwWindowHint(GLFW_GREEN_BITS, 8); // red and green both 8 bits each
+	glfwWindowHint(GLFW_BLUE_BITS, 8); glfwWindowHint(GLFW_ALPHA_BITS, 8); // blue and alpha both 8 bits each
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // window dimensions are static
+
+	GLHelper::ptr_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL); // create window and context using variables from GLHelper::init
+	if (!GLHelper::ptr_window) {
+		std::cerr << "GLFW unable to create OpenGL context - abort program\n";
+		glfwTerminate();
+		return false;
+	}
+
+	glfwMakeContextCurrent(GLHelper::ptr_window); // make current window the context
+
+	// first parameter represent the handle to the window (ptr_window) while 2nd paramter is the callback function
+
+	glfwSetFramebufferSizeCallback(GLHelper::ptr_window, GLHelper::fbsize_cb);
+	glfwSetCursorPosCallback(GLHelper::ptr_window, GLHelper::mousepos_cb);
+
+	// this is the default setting ...
+	glfwSetInputMode(GLHelper::ptr_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+	// Part 2: Initialize entry points to OpenGL functions and extensions
+	GLenum err = glewInit();
+	if (GLEW_OK != err) {
+		std::cerr << "Unable to initialize GLEW - error: "
+			<< glewGetErrorString(err) << " abort program" << std::endl;
+		return false;
+	}
+	if (GLEW_VERSION_4_3) {
+		std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
+		std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
+	}
+	else {
+		std::cerr << "Driver doesn't support OpenGL 4.5 - abort program" << std::endl;
+		return false;
+	}
+
+	return true;
+}
+/*  _________________________________________________________________________ */
 /*  _________________________________________________________________________ */
 /*! print_specs()
 
@@ -162,35 +225,20 @@ void GLHelper::fbsize_cb(GLFWwindow* /*ptr_win*/, int width_, int height_) {
 }
 
 /*  _________________________________________________________________________*/
-/*! update_time
+/*! getDelta
 
-@param double
-fps_calc_interval: the interval (in seconds) at which fps is to be
-calculated
-
-This function must be called once per game loop. It uses GLFW's time functions
-to compute:
-1. the interval in seconds between each frame
-2. the frames per second every "fps_calc_interval" seconds
+This function gets calculates and get the delta time.
 */
-void GLHelper::update_time(double fps_calc_interval) {
+float GLHelper::getDelta() {
 	// get elapsed time (in seconds) between previous and current frames
-	static double prev_time = glfwGetTime();
+	double new_time = glfwGetTime();
 	double curr_time = glfwGetTime();
-	delta_time = curr_time - prev_time;
-	prev_time = curr_time;
-
-	// fps calculations
-	static double count = 0.0; // number of game loop iterations
-	static double start_time = glfwGetTime();
-	// get elapsed time since very beginning (in seconds) ...
-	double elapsed_time = curr_time - start_time;
-
-	++count;
-
-	if (elapsed_time > 1/60) {
-		GLHelper::fps = count / elapsed_time;
-		start_time = curr_time;
-		count = 0.0;
-	}
+	delta_time = new_time - curr_time;
+	curr_time = new_time;
+	do
+	{
+		new_time = glfwGetTime();
+		delta_time = new_time - curr_time;
+	} while (delta_time < FRAME_TIME_MIN); // FRAME_TIME_MIN = 1.0/60.0
+	return delta_time;
 }

@@ -15,13 +15,15 @@
 #include "../Engine/System/Renderer.h"
 #include <../glew/include/GL/glew.h>
 #include <../glm/glm/vec2.hpp>
+#include <../Engine/System/Graphics/glhelper.h>
+
 
 namespace Core
 {
 	Animation2D::Animation2D(const char* filename)
 		: anim_cursor(0),
 		current_frame_indx(0),
-		speed(0.05f)
+		speed(0.5f)
 	{
 		FILE* fp = nullptr;
 		const int bufferlen = 255;
@@ -63,7 +65,7 @@ namespace Core
 
 	void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double )
 	{
-		anim_cursor += 1/60.f;
+		anim_cursor += GLHelper::getDelta();
 
 		if (anim_cursor > speed)
 		{

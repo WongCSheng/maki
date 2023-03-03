@@ -26,6 +26,8 @@ objects participating in the application.
 /*  _________________________________________________________________________ */
 struct GLHelper
 {
+
+	static bool init(GLint w, GLint h, std::string t);
 	/*  _________________________________________________________________________ */
 	/*! cleanup
 
@@ -103,7 +105,7 @@ struct GLHelper
 	1. the interval in seconds between each frame
 	2. the frames per second every "fps_calc_interval" seconds
 	*/
-	static void update_time(double fpsCalcInt = 1.0);
+	static float getDelta();
 
 	static GLint width, height;
 	static GLdouble fps;

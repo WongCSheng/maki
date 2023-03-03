@@ -10,6 +10,7 @@
       "type": "Sprite",
       "texturepath": "../textures/Buttons/Button_Options.png",
       "name": "SettingsButton",
+      "alpha" : 1.0,
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     }

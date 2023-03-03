@@ -46,8 +46,8 @@ ShaderLibrary::ShaderLibrary()
 			void main()
 			{
 				finalcolor = vertex_color * texture(sprite,vertex_uv);
-				if(finalcolor.a < 0.6) discard;
-				finalcolor.a = alpha;
+				finalcolor.a = finalcolor.a *alpha;
+				if(finalcolor.a < 0.0000016) discard;
 
 			};
 )CODE";

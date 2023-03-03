@@ -2677,6 +2677,8 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+					glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), spritecomp->alpha);
+					
 					if (x.first == "Menu") //draw menu
 						spritecomp->draw();
 

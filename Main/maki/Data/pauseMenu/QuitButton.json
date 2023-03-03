@@ -10,6 +10,7 @@
       "type": "Sprite",
       "texturepath": "../textures/Buttons/Button_Quit.png",
       "name": "QuitButton",
+      "alpha" : 1.0,
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
     }

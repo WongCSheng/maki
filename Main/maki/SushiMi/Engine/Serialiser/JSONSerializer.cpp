@@ -84,6 +84,7 @@ namespace Core
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 
 		std::string name; //name of object we are parsing (under sprite component)
+		float alpha;	  //alpha component of Sprite
 
 		//Object::GameObject gameObj = ObjectFactory::Create();
 		rapidjson::Document document;
@@ -153,6 +154,13 @@ namespace Core
 				Sprite* object = new Sprite(texturePath);
 				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
 				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
+				if (compJsonObj.HasMember("alpha"))
+				{
+					alpha = compJsonObj["alpha"].GetFloat();
+					object->alpha = alpha;
+				}
+
+
 
 				object->Deserialize(compJsonObj);
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
@@ -208,6 +216,7 @@ namespace Core
 			}
 			const char* objName = object["name"].GetString(); // need to convert the data retrieved to a C++ type
 			std::cout << "Deserializing " << objName << std::endl;
+			//const char* objAlpa = object["alpha"].GetString();
 
 			std::string objFilePath = object["filename"].GetString();
 			DeserializeEntity(objFilePath, objfact);

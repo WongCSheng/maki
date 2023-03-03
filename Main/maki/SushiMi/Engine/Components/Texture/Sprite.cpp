@@ -61,7 +61,7 @@ namespace Core
 
 		if (anims[static_cast<int>(type)])
 		{
-			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime);
+			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime * 100);
 		}
 
 		glBindTexture(GL_TEXTURE_2D, texture.TextureID);

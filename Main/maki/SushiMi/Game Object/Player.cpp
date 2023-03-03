@@ -211,6 +211,6 @@ namespace Core
 
 	void Player::draw(double deltatime)
 	{
-		sp->draw(deltatime, current_anim);
+		sp->draw(deltatime * 100, current_anim);
 	}
 }

@@ -63,9 +63,9 @@ namespace Core
 
 	}
 
-	void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double )
+	void Animation2D::play(Texture& spritetexture, Core::vtx rectangle, double deltatime)
 	{
-		anim_cursor += GLHelper::getDelta();
+		anim_cursor += deltatime;
 
 		if (anim_cursor > speed)
 		{

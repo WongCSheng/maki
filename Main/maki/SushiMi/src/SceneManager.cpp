@@ -335,7 +335,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::wasabi->alpha -= 0.016f;
+						Map::wasabi->alpha -= GLHelper::getDelta();
 					}
 				}
 			}
@@ -348,7 +348,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::tea->alpha -= 0.016f;
+						Map::tea->alpha -= GLHelper::getDelta();
 					}
 				}
 			}
@@ -361,14 +361,14 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::soya->alpha -= 0.016f;
+						Map::soya->alpha -= GLHelper::getDelta();
 					}
 				}
 			}
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += Window::GetInstance(0, 0)->getDelta();
+			ingredient.second->timer += GLHelper::getDelta();
 			
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -408,7 +408,7 @@ namespace Core
 				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
 				if (ingredient.second->isSpriteSheet)
 				{
-					ingredient.second->draw(Window::GetInstance(0, 0)->getDelta(), ingredient.second->curr_anim);
+					ingredient.second->draw(GLHelper::getDelta(), ingredient.second->curr_anim);
 				}
 				else
 				{

@@ -2205,7 +2205,7 @@ namespace Core
 					dialogue_style = static_cast<int>(dialogue::L8);
 					curr_len = 0;
 
-					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
 					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
@@ -2298,7 +2298,7 @@ namespace Core
 					dialogue_style = static_cast<int>(dialogue::L9);
 					curr_len = 0;
 
-					SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+					SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
 					//also need dialogue after game end
 					isDialogue = true;
 					CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
@@ -2574,7 +2574,7 @@ namespace Core
 
 					if (curr_len <= realstring.length())
 					{
-						if (realstring.length() < 55)
+						if (realstring.length() < 56)
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 
@@ -2590,10 +2590,10 @@ namespace Core
 
 							}
 						}
-						else if (realstring.length() >= 55 && realstring.length() < 107)
+						else if (realstring.length() >= 56 && realstring.length() < 107)
 						{
-							std::string first_line = realstring.substr(0, 55);
-							std::string second_line = realstring.substr(55, curr_len);
+							std::string first_line = realstring.substr(0, 56);
+							std::string second_line = realstring.substr(56, curr_len);
 
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
@@ -2613,8 +2613,8 @@ namespace Core
 						else if (realstring.length() >= 107)
 						{
 							//std::cout << "this text is soo long " << std::endl;
-							std::string first_line = realstring.substr(0, 55);
-							std::string second_line = realstring.substr(55, 107 - 55);
+							std::string first_line = realstring.substr(0, 56);
+							std::string second_line = realstring.substr(56, 107 - 56);
 							std::string third_line = realstring.substr(107, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));

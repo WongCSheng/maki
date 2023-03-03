@@ -1,44 +1,21 @@
-﻿  LevelEditor.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(134,40): warning C4459: declaration of 'fileDialog' hides global declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(80,28): message : see declaration of 'Core::fileDialog'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(100,10): warning C4189: 'fontSize': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(398,52): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(439,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(444,24): warning C4458: declaration of 'path' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(70,30): message : see declaration of 'Core::Editor::LevelEditor::path'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(629,13): warning C4458: declaration of 'width' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,22): message : see declaration of 'Core::Editor::LevelEditor::width'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(629,21): warning C4458: declaration of 'height' hides class member
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.h(109,29): message : see declaration of 'Core::Editor::LevelEditor::height'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(439,10): warning C4189: 'columnCount': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(679,12): warning C4459: declaration of 'i' hides global declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(688,29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(688,19): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(706,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(707,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(734,4): warning C4459: declaration of 'i' hides global declaration
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(76,6): message : see declaration of 'Core::i'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1362,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1363,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1377,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1377,32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1377,31): warning C4244: 'argument': conversion from 'int' to 'const _Elem', possible loss of data
-          with
-          [
-              _Elem=char
-          ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1392,13): warning C4551: function call missing argument list
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1401,105): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1402,105): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1423,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Editors\LevelEditor.cpp(1423,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+﻿  SceneManager.cpp
+  Window.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(86,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(86,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(112,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(112,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(112,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(182,61): warning C4458: declaration of 'ingredient' hides class member
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.h(114,25): message : see declaration of 'Core::Window::ingredient' (compiling source file src\Window.cpp)
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(229,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(229,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1103,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1103,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1191): warning C4706: assignment within conditional expression
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe

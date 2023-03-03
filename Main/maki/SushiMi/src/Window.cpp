@@ -270,7 +270,6 @@ namespace Core
 
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-
 		starttime = 0;
 		endtime = 0;
 		delta = 0;
@@ -291,12 +290,13 @@ namespace Core
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
 
+		//SceneManager::loadHowToOverlay(0, 0);
 
-		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
+		/*SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
-		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
+		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");*/
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -946,6 +946,9 @@ namespace Core
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
 						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
+
+				
+
 					}
 				}
 			}
@@ -1222,6 +1225,7 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 #ifndef EDITOR
+
 			if (isLevelSelection)
 			{
 				//star is complete quest 
@@ -1336,7 +1340,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawHowToOverlay();
+					//SceneManager::drawHowToOverlay();
 
 				}
 				if (Map::isWin())
@@ -1440,7 +1444,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawHowToOverlay();
+					//SceneManager::drawHowToOverlay();
 
 				}
 				if (Map::isWin())
@@ -2722,7 +2726,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
+			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2732,7 +2736,7 @@ namespace Core
 				spritecomp1->transformation.Scale = transcomp1->Scale;
 
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
-				spritecomp1->draw();
+				//spritecomp1->draw();
 
 				std::map<std::string, gfxVector2> loadedIngredients;    // mapping of ingredients to position based on how many ingredients loaded
 				size_t numOfLoadedIngredient = CurrentIngredients.size();    // number of ingredients loaded for current level
@@ -2743,6 +2747,7 @@ namespace Core
 				for (auto& ingredient : CurrentIngredients)
 				{
 					std::string loadedIngredient = Map::EnumToString(ingredient.first);    // convert enum to string
+					std::cout << "loading in " << loadedIngredient << "\n";
 
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
@@ -2801,7 +2806,7 @@ namespace Core
 			/*	quest tab shift to left side */
 			/*	disable quest tab in all the listed cases in the else-if condition	*/
 			/*	so that quest tab will only shown in levels	*/
-			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
+			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2825,8 +2830,9 @@ namespace Core
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
 
-				SceneManager::loadHowToOverlay(0, 0);
-				SceneManager::drawHowToOverlay();
+				//SceneManager::loadHowToOverlay(0, 0);
+				std::cout << HowToPlayPage << "current page\n";
+				SceneManager::drawHowToOverlay(HowToPlayPage);
 				if (mouseLeft && isMenuState == false)
 				{
 					double xpos = 0, ypos = 0;

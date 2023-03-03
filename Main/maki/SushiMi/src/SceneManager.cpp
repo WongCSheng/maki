@@ -1,10 +1,14 @@
 #include "../Headers/SceneManager.h"
 #include "../Engine//Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
+#include "../Engine/Core/Core.h"
 #include "../Engine/TileMap/Map.h"
+//#include "."
+
 
 namespace Core
 {
+	extern Core::MainSystem* CoreSystem;
 	float alpha = 1.0f;
 	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
@@ -170,21 +174,24 @@ namespace Core
 		player_stuck->transformation.Scale = glm::vec2(90, 90);
 	}
 
+	/* adjust screensize */
 	void SceneManager::loadHowToOverlay(int x, int y)
 	{
-		int screenwidth = 0, screenheight = 0;
-		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-
-		howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
-		howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
-		howtoplay_overlay2->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		howtoplay_overlay3->transformation.Position = glm::vec2(x, y);
-		howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
-		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
-		howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		//!!! Code has been modified. Refer to drawhowtooverlay function for rendering of how to play pages
+		
+		//int screenwidth = 0, screenheight = 0;
+		//glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		//
+		//howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
+		//howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		//howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
+		//howtoplay_overlay2->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		//howtoplay_overlay3->transformation.Position = glm::vec2(x, y);
+		//howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		//howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
+		//howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		//howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
+		//howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadSettings()
 	{
@@ -495,46 +502,43 @@ namespace Core
 		player_stuck->draw();
 	}
 
-	void SceneManager::drawHowToOverlay()
+	void SceneManager::drawHowToOverlay(int page)
 	{
-		switch (Window::HowToPlayPage)
-		{
-		case 0:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay1->transformation.Get());
+			/* resize the window before the overlay is drawn. */
+			int screenwidth = 0, screenheight = 0;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			// object pointer to retreive from object factory container
+			Core::Object::GameObject* obj{};
+
+			// retreive how to play overlay from object container using page
+			switch (page)
+			{
+			case 0:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_1");
+				break;
+			case 1:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_2");
+				break;
+			case 2:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_3");
+				break;
+			case 3:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_4");
+				break;
+			case 4:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_5");
+				break;
+			}
+
+			Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+			Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+			spritecomp->transformation.Position = transcomp->Position;
+			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight); 
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			howtoplay_overlay1->draw();
-			break;
-		}
-		case 1:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay2->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			howtoplay_overlay2->draw();
-			break;
-		}
-		case 2:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay3->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			howtoplay_overlay3->draw();
-			break;
-		}
-		case 3:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay4->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			howtoplay_overlay4->draw();
-			break;
-		}
-		case 4:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay5->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			howtoplay_overlay5->draw();
-			break;
-		}
-		}
+			spritecomp->draw();
 	}
 	void SceneManager::drawSettings()
 	{

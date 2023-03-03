@@ -169,7 +169,7 @@ namespace Core
 		static bool activateTea();
 		static void drawInsideSinkHole();
 		static void drawPlayer_Stuck();
-		static void drawHowToOverlay();
+		static void drawHowToOverlay(int page);
 		static void drawSettings();
 		static void drawWinOverlay();
 		static void drawCutscene();

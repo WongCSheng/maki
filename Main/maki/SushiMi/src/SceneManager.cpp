@@ -303,7 +303,7 @@ namespace Core
 	{
 		SceneManager::loadRect(0, 0);
 
-		currentAlpha = std::lerp(currentAlpha, targetAlpha, 0.016f);
+		currentAlpha = std::lerp(currentAlpha, targetAlpha, GLHelper::getDelta() * 10);
 		SceneManager::drawRect(currentAlpha);
 		//std::cout << "Alpha: " << currentAlpha << std::endl;
 	}
@@ -329,46 +329,46 @@ namespace Core
 		{
 			if (Map::wasabi != nullptr)
 			{
-				if (Map::wasabi->timer > 3.f)
+				if (Map::wasabi->timer > 1.f)
 				{
 					Map::wasabi->curr_anim = AnimationType::Idle;
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::wasabi->alpha -= GLHelper::getDelta();
+						Map::wasabi->alpha -= (GLHelper::getDelta() * 10);
 					}
 				}
 			}
 			if (Map::tea != nullptr)
 			{
 
-				if (Map::tea->timer > 3.f)
+				if (Map::tea->timer > 1.f)
 				{
 					Map::tea->curr_anim = AnimationType::Idle;
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::tea->alpha -= GLHelper::getDelta();
+						Map::tea->alpha -= (GLHelper::getDelta() * 10);
 					}
 				}
 			}
 			if (Map::soya != nullptr)
 			{
 
-				if (Map::soya->timer > 3.f)
+				if (Map::soya->timer > 1.f)
 				{
 					Map::soya->curr_anim = AnimationType::Idle;
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::soya->alpha -= GLHelper::getDelta();
+						Map::soya->alpha -= (GLHelper::getDelta() * 10);
 					}
 				}
 			}
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += GLHelper::getDelta();
+			ingredient.second->timer += (GLHelper::getDelta()* 10);
 			
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -408,7 +408,7 @@ namespace Core
 				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
 				if (ingredient.second->isSpriteSheet)
 				{
-					ingredient.second->draw(GLHelper::getDelta(), ingredient.second->curr_anim);
+					ingredient.second->draw(GLHelper::getDelta() * 100, ingredient.second->curr_anim);
 				}
 				else
 				{

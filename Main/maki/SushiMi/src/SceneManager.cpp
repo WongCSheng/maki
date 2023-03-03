@@ -48,7 +48,7 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
-		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0)
 		{
 			Map::ResetMap();
 		}

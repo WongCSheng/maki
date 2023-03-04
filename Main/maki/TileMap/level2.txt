@@ -1,13 +1,26 @@
 22 12
+# # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # ! ! # # # # # # # # # #
+# # ! ! ! ! ! # # # ! ! ! ! ! ! ! ! ! # # #
+# # ! * ! ! ! ! # # # ! ! # # ! ! ! ! # # #
+# # ! ! # ! ! ! # # # # ! ! # ! # 2 # # # #
+# # # ! ! # ! ! ! ! ! ! ! ! # x ! ! # # # #
+# # # ! ! ! ! ! # # # # ! # # ! # # # # # #
+# # # # # ! # ! # # ! 0 ! # a ! 3 # # # # #
+# # # # # ! ! ! ! # ! ! ! ! ! ! ! # # # # #
+# # # # # ! | ! ! # # # # # ! ! ! % # # # #
+# # # # # s ! ! # # # # # # # # # 3 # # # #
+# # # # # # # # # # # # # # # # # # # # # #
+
 Q Q Q Q Q Q Q Q Q Q ` ` Q Q Q Q Q Q Q Q Q Q
 Q Q ` ` ` ` ` Q Q V ! ! [ ` ` ` ` ` ` Q Q Q
 Q V ! ! ! ! ! [ Q V ! ! ! ! ! ! ! ! ! L Q Q
-Q V ! * ! ! ! ! L Q H ! ! I H ! ! ! ! L Q Q
-Q V ! ! A ! ! ! [ ` ` K ! ! F ! A 2 C Q Q Q
+Q V ! ! ! ! ! ! L Q H ! ! I H ! ! ! ! L Q Q
+Q V ! ! A ! ! ! [ ` ` K ! ! F ! A ! C Q Q Q
 Q Q H ! ! A ! ! ! ! ! ! ! ! F x ! ! L Q Q Q
 Q Q V ! ! ! ! ! C D J K ! C V ! C D Q Q Q Q
-Q Q Q D H ! A ! [ V ! 0 ! [ a ! [ Q Q Q Q Q
+Q Q Q D H ! A ! [ V ! ! ! [ a ! [ Q Q Q Q Q
 Q Q Q Q V ! ! ! ! F ! ! ! ! ! ! ! [ Q Q Q Q
-Q Q Q Q V ! | ! ! L D D D H ! ! ! % L Q Q Q
+Q Q Q Q V ! | ! ! L D D D H ! ! ! ! L Q Q Q
 Q Q Q Q V s ! ! C Q Q Q Q Q D D D D Q Q Q Q
 Q Q Q Q Q D D D Q Q Q Q Q Q Q Q Q Q Q Q Q Q

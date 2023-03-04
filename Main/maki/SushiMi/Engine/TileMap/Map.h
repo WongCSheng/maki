@@ -5,10 +5,6 @@
 #include <vector>
 
 #include "../Headers/SceneManager.h"
-/*set a static grid first*/
-#define GRID_COL 18
-#define GRID_ROW 10
-
 
 namespace Core
 {
@@ -23,6 +19,7 @@ namespace Core
 		static void initMap(std::string Filename);
 		static void saveEditedMap(std::string Filename);
 		static void ResetMap();
+		static void RestartMap();
 		static int LoadMap();
 		static void DrawMap();
 		static int GetValue(int col_x, int row_y);
@@ -48,11 +45,16 @@ namespace Core
 		static inline int max_grid_rows_y;
 		static float tile_width, tile_height;
 		static int** gGrids;
+
 		static inline Sprite* soya;
 		static inline Sprite* rice;
 		static inline Sprite* salmon;
 		static inline Sprite* wasabi;
 		static inline Sprite* tea;
+
+		static int** wGrids;
+		static int** aGrids;
+		static int** RestartGrids;
 
 		static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
 		

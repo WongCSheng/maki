@@ -107,7 +107,10 @@ void Core::pseudomain::update()
 {
 	glfwPollEvents();
 
+	GLHelper::getDelta();
+
 	Editor::LevelEditor::imguiGraphicsTest();
+
 
 	CoreSystem->objfactory->Update(GLHelper::delta_time);
 

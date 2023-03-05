@@ -252,6 +252,7 @@ namespace Core
 		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;
 
+		double inline static starttime,endtime,delta;
 		
 		// Black overlay alpha parameters
 		inline static float targetAlpha = 0.0f;

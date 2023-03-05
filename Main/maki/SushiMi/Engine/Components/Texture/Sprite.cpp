@@ -122,13 +122,10 @@ namespace Core
 
 	void Sprite::restart()
 	{
-		for (auto& ingredient : SceneManager::ingredientcontainer)
+		/*for (auto& ingredient : SceneManager::ingredientcontainer)
 		{
-			for (auto& start : SceneManager::ingredient_starting_pos)
-			{
-				ingredient.second->transformation.Position = start.second->transformation.Position;
-			}
-		}
+			ingredient.spr.second->transformation.Position = SceneManager::ingredient_starting_pos[ingredient.first]
+		}*/
 		
 		/**************
 		INGREDIENT 1

@@ -32,7 +32,7 @@ namespace Core
 	static Core::MainSystem* CoreSystem;
 	static int width, height;
 
-	std::vector<std::pair<grid_number, Sprite*>> CurrentIngredients; // retreive the curent level loaded ingredients
+	std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
@@ -182,8 +182,8 @@ namespace Core
 			for (auto& ingredient : SceneManager::ingredientcontainer)
 			{
 				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
+				int ingredientRow = static_cast<int>(ingredient.spr.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.spr.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
 				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
 				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
@@ -194,7 +194,7 @@ namespace Core
 				if (ingredientCoordinates == boxCoordinates)
 				{
 					//ingredient row and col matches box row and col
-					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
+					std::pair<grid_number, wall_type> checkCondition(ingredient.spr.first, box.first);
 					for (auto& y : levelWinConditions)//suggest to change to map
 					{
 						//check whether is correct ingredient to box
@@ -270,7 +270,6 @@ namespace Core
 
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-
 		starttime = 0;
 		endtime = 0;
 		delta = 0;
@@ -291,12 +290,13 @@ namespace Core
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
 
+		//SceneManager::loadHowToOverlay(0, 0);
 
-		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
+		/*SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
-		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
+		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");*/
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -946,6 +946,9 @@ namespace Core
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
 						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
+
+				
+
 					}
 				}
 			}
@@ -1084,7 +1087,7 @@ namespace Core
 			if (keystate_R)
 			{
 				//restart
-				SceneManager::restartLevel();
+				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
 
@@ -1222,6 +1225,7 @@ namespace Core
 			//Sprite::menu->transformation.Scale = { 50,50 };
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 #ifndef EDITOR
+
 			if (isLevelSelection)
 			{
 				//star is complete quest 
@@ -1336,7 +1340,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawHowToOverlay();
+					//SceneManager::drawHowToOverlay();
 
 				}
 				if (Map::isWin())
@@ -1440,7 +1444,7 @@ namespace Core
 				else if (gameIsPaused == true)
 				{
 					player->draw(0);
-					SceneManager::drawHowToOverlay();
+					//SceneManager::drawHowToOverlay();
 
 				}
 				if (Map::isWin())
@@ -1494,6 +1498,7 @@ namespace Core
 					}
 
 					Map::initMap("../TileMap/level1.txt");
+					//Map::initMap("../TileMap/pod_rendering_test.txt");
 
 					Map::LoadMap();
 					isQuestTab = false;
@@ -2665,7 +2670,6 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
-				std::cout << "Drawing of Menu\n";
 				AudioManager.SetMusicVolume(0.4f);
 
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
@@ -2722,7 +2726,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
+			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2732,7 +2736,7 @@ namespace Core
 				spritecomp1->transformation.Scale = transcomp1->Scale;
 
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
-				spritecomp1->draw();
+				//spritecomp1->draw();
 
 				std::map<std::string, gfxVector2> loadedIngredients;    // mapping of ingredients to position based on how many ingredients loaded
 				size_t numOfLoadedIngredient = CurrentIngredients.size();    // number of ingredients loaded for current level
@@ -2742,7 +2746,8 @@ namespace Core
 				//checking through all loaded ingredient for the current level
 				for (auto& ingredient : CurrentIngredients)
 				{
-					std::string loadedIngredient = Map::EnumToString(ingredient.first);    // convert enum to string
+					std::string loadedIngredient = Map::EnumToString(ingredient.spr.first);    // convert enum to string
+					std::cout << "loading in " << loadedIngredient << "\n";
 
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
@@ -2801,7 +2806,7 @@ namespace Core
 			/*	quest tab shift to left side */
 			/*	disable quest tab in all the listed cases in the else-if condition	*/
 			/*	so that quest tab will only shown in levels	*/
-			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
+			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -2825,8 +2830,9 @@ namespace Core
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
 
-				SceneManager::loadHowToOverlay(0, 0);
-				SceneManager::drawHowToOverlay();
+				//SceneManager::loadHowToOverlay(0, 0);
+				std::cout << HowToPlayPage << "current page\n";
+				SceneManager::drawHowToOverlay(HowToPlayPage);
 				if (mouseLeft && isMenuState == false)
 				{
 					double xpos = 0, ypos = 0;

@@ -77,6 +77,9 @@ namespace Core
 	static bool keystate_S = false;
 	static bool keystate_D = false;
 
+	/*key state for toggling fps, press F*/
+	static bool keystate_fps = false;
+
 	static bool mouseLeft = false;
 	Player* player;
 	int curr_len = 0;
@@ -121,6 +124,7 @@ namespace Core
 			keystate_R = (key == GLFW_KEY_R) ? true : false;
 			keystate_M = (key == GLFW_KEY_M) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
+			keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
 
 		}
@@ -135,6 +139,7 @@ namespace Core
 			keystate_escape = false;
 			keystate_tab = false;
 			keystate_space = false;
+			keystate_fps = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -149,6 +154,7 @@ namespace Core
 			keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 			keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
+			keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
 
 			keystate_J = (key == GLFW_KEY_J) ? true : false;
@@ -393,6 +399,18 @@ namespace Core
 	void Window::Input()
 	{
 #ifndef EDITOR
+
+		if (keystate_fps)
+		{
+			if (show_fps == false)
+			{
+				show_fps = true;
+			}
+			else if (show_fps == true)
+			{
+				show_fps = false;
+			}
+		}
 
 		if (keystate_M)
 		{
@@ -1452,7 +1470,6 @@ namespace Core
 			}
 			if (isWinCondition == true && isTut2 == true)
 			{
-				float alpha = 0;
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 

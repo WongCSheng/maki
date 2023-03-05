@@ -1,4 +1,4 @@
-﻿  SceneManager.cpp
-D:\maki\Main\maki\SushiMi\src\SceneManager.cpp(171,49): warning C4100: 'y': unreferenced formal parameter
-D:\maki\Main\maki\SushiMi\src\SceneManager.cpp(171,42): warning C4100: 'x': unreferenced formal parameter
+﻿  main.cpp
+D:\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition
+D:\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
   SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

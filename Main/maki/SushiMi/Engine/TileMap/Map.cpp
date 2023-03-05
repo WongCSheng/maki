@@ -1233,6 +1233,7 @@ namespace Core
 			!isWin())
 		{
 			return true;
+			Window::player->isStuck();
 		}
 		else
 		{

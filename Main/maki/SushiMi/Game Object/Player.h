@@ -30,6 +30,8 @@ namespace Core
 		void move_down();
 		void restart();
 
+		void isStuck();
+
 		void stop();
 
 		glm::mat4 Transformation();

@@ -238,7 +238,7 @@ namespace Core
 		isWinCondition(0)
 
 	{
-		starttime = endtime = delta = 0;
+		starttime = endtime = delta = fps = 0;
 
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -270,9 +270,6 @@ namespace Core
 
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
-		starttime = 0;
-		endtime = 0;
-		delta = 0;
 
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
@@ -2470,7 +2467,7 @@ namespace Core
 							std::string one_by_one = realstring.substr(0, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (/*Window::GetInstance(0, 0)->getDelta() * 150 < 2*/ GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if (/*Window::GetInstance(0, 0)->getDelta() * 150 < 2*/ (Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2488,7 +2485,7 @@ namespace Core
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2516,7 +2513,7 @@ namespace Core
 							std::string one_by_one = realstring.substr(0, curr_len);
 
 							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2536,7 +2533,7 @@ namespace Core
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
 
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2557,7 +2554,7 @@ namespace Core
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2584,7 +2581,7 @@ namespace Core
 							std::string one_by_one = realstring.substr(0, curr_len);
 
 							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2604,7 +2601,7 @@ namespace Core
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
 
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2625,7 +2622,7 @@ namespace Core
 							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
 							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
-							if (GLHelper::delta_time * 150 < 2 || GLHelper::delta_time * 100 < 2)
+							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
@@ -2933,6 +2930,7 @@ namespace Core
 			}
 #endif
 			endtime = glfwGetTime();
+			fps++;
 			delta = (endtime - starttime);
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 

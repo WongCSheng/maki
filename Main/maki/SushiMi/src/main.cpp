@@ -109,9 +109,9 @@ void Core::pseudomain::update()
 
 	Editor::LevelEditor::imguiGraphicsTest();
 
-	CoreSystem->objfactory->Update(GLHelper::delta_time);
+	CoreSystem->objfactory->Update((Get_Delta()));
 
-	CoreSystem->Update(GLHelper::delta_time);
+	CoreSystem->Update((Get_Delta()));
 
 	
 }

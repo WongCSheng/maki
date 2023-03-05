@@ -134,6 +134,11 @@ namespace Core
 		Player::player_grid_pos.y--;
 	}
 
+	void Player::isStuck()
+	{
+		current_anim = AnimationType::Run;
+	}
+
 	void Player::move_down()
 	{
 		if (sp->transformation.Scale.y < 0)

@@ -137,7 +137,7 @@ namespace Core
 
 	private:
 		int m_width, m_height;
-		double starttime, endtime, delta;
+		double starttime, endtime, delta, fps;
 	};
 
 	class pseudomain

@@ -334,7 +334,7 @@ namespace Core
 		{
 			if (Map::wasabi != nullptr)
 			{
-				//std::cout << Map::wasabi->timer << std::endl;
+				std::cout << Map::wasabi->timer << std::endl;
 				if (Map::wasabi->timer > .2f)
 				{
 					Map::wasabi->curr_anim = AnimationType::Idle;

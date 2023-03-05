@@ -22,7 +22,6 @@ namespace Core
 		win_overlay = nullptr;
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
-		SceneManager::starttime = SceneManager::endtime = SceneManager::delta = 0;
 		rec = nullptr;
 	}
 
@@ -37,8 +36,7 @@ namespace Core
 
 	void SceneManager::Update(const double)
 	{
-		endtime = glfwGetTime();
-		delta = (endtime - starttime) / 2;
+
 	}
 
 	void SceneManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
@@ -47,7 +45,7 @@ namespace Core
 	}
 	void SceneManager::restartLevel()
 	{
-		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size() > 0)
 		{
 			Map::ResetMap();
 		}
@@ -82,7 +80,7 @@ namespace Core
 	{
 
 		tile.second->transformation.Position = glm::vec2(x, y);
-		tile.second->transformation.Scale = glm::vec2(getTileWidth()*1.01f, getTileHeight() * 1.01f);
+		tile.second->transformation.Scale = glm::vec2(getTileWidth() * 1.01f, getTileHeight() * 1.01f);
 
 		tilecontainer.push_back(tile);
 
@@ -298,12 +296,12 @@ namespace Core
 
 
 	}
-	
+
 	void SceneManager::drawBlackOverlay()
 	{
 		SceneManager::loadRect(0, 0);
 
-		currentAlpha = std::lerp(currentAlpha, targetAlpha, GLHelper::getDelta() * 10);
+		currentAlpha = std::lerp(currentAlpha, targetAlpha, (Get_Delta()) * 10);
 		SceneManager::drawRect(currentAlpha);
 		//std::cout << "Alpha: " << currentAlpha << std::endl;
 	}
@@ -335,7 +333,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::wasabi->alpha -= (GLHelper::getDelta() * 10);
+						Map::wasabi->alpha -= ((Get_Delta()) * 10);
 					}
 				}
 			}
@@ -348,7 +346,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::tea->alpha -= (GLHelper::getDelta() * 10);
+						Map::tea->alpha -= ((Get_Delta()) * 10);
 					}
 				}
 			}
@@ -361,15 +359,15 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::soya->alpha -= (GLHelper::getDelta() * 10);
+						Map::soya->alpha -= ((Get_Delta()) * 10);
 					}
 				}
 			}
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += (GLHelper::getDelta()* 10);
-			
+			ingredient.second->timer += ((Get_Delta()) * 10);
+
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
 					{
@@ -403,17 +401,17 @@ namespace Core
 					*/
 
 
-					
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
-				if (ingredient.second->isSpriteSheet)
-				{
-					ingredient.second->draw(GLHelper::getDelta() * 100, ingredient.second->curr_anim);
-				}
-				else
-				{
-					ingredient.second->draw();
-				}
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
+			if (ingredient.second->isSpriteSheet)
+			{
+				ingredient.second->draw((Get_Delta()), ingredient.second->curr_anim);
+			}
+			else
+			{
+				ingredient.second->draw();
+			}
 
 		}
 
@@ -478,7 +476,7 @@ namespace Core
 
 			if (sink.second->isSpriteSheet)
 			{
-				sink.second->draw(delta, sink.second->curr_anim);
+				sink.second->draw((Get_Delta()), sink.second->curr_anim);
 			}
 			else
 			{
@@ -652,8 +650,8 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", fishingvillage_dialogue->transformation.Get());
 			fishingvillage_dialogue->draw();
 		}
-		
-		
+
+
 	}
 
 	void SceneManager::draw_Wood_BG()
@@ -712,7 +710,7 @@ namespace Core
 		*/
 		ingredientcontainer.clear();
 	}
-	
+
 	void SceneManager::destroyInsideSinkHole()
 	{
 		if (in_sinkhole.size() != 0)

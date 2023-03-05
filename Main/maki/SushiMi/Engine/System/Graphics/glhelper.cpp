@@ -22,8 +22,6 @@ pointers to OpenGL implementations.
 // static data members declared in GLHelper
 GLint GLHelper::width;
 GLint GLHelper::height;
-GLdouble GLHelper::fps;
-GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
 
@@ -222,23 +220,4 @@ void GLHelper::fbsize_cb(GLFWwindow* /*ptr_win*/, int width_, int height_) {
 	// use the entire framebuffer as drawing region
 	glViewport(0, 0, width_, height_);
 	// later, if working in 3D, we'll have to set the projection matrix here ...
-}
-
-/*  _________________________________________________________________________*/
-/*! getDelta
-
-This function gets calculates and get the delta time.
-*/
-float GLHelper::getDelta() {
-	// get elapsed time (in seconds) between previous and current frames
-	double new_time = glfwGetTime();
-	double curr_time = glfwGetTime();
-	delta_time = new_time - curr_time;
-	curr_time = new_time;
-	do
-	{
-		new_time = glfwGetTime();
-		delta_time = new_time - curr_time;
-	} while (delta_time < FRAME_TIME_MIN); // FRAME_TIME_MIN = 1.0/60.0
-	return delta_time;
 }

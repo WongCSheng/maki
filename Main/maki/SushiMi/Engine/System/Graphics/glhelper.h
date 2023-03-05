@@ -93,23 +93,8 @@ struct GLHelper
 	relative to the top-left corner of the window client area.
 	*/
 	static void mousepos_cb(GLFWwindow* pwin, double xpos, double ypos);
-	/*  _________________________________________________________________________*/
-	/*! update_time
-
-	@param double
-	fps_calc_interval: the interval (in seconds) at which fps is to be
-	calculated
-
-	This function must be called once per game loop. It uses GLFW's time functions
-	to compute:
-	1. the interval in seconds between each frame
-	2. the frames per second every "fps_calc_interval" seconds
-	*/
-	static float getDelta();
 
 	static GLint width, height;
-	static GLdouble fps;
-	static GLdouble delta_time; // time taken to complete most recent game loop
 	static std::string title;
 	static GLFWwindow* ptr_window;
 	/*  _________________________________________________________________________ */
@@ -122,6 +107,7 @@ struct GLHelper
 	To print the specs of vendors, versions etc
 	*/
 	static void print_specs();
+
 };
 
 #endif /* GLHELPER_H */

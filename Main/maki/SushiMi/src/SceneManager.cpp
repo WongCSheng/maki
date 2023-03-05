@@ -330,7 +330,7 @@ namespace Core
 		{
 			if (Map::wasabi != nullptr)
 			{
-				std::cout << Map::wasabi->timer << std::endl;
+				//std::cout << Map::wasabi->timer << std::endl;
 				if (Map::wasabi->timer > .2f)
 				{
 					Map::wasabi->curr_anim = AnimationType::Idle;
@@ -369,7 +369,7 @@ namespace Core
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += (Get_Delta());
+			ingredient.spr.second->timer += (Get_Delta());
 			
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -409,7 +409,7 @@ namespace Core
 				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr.second->alpha);
 				if (ingredient.spr.second->isSpriteSheet)
 				{
-					ingredient.second->draw(Get_Delta(), ingredient.second->curr_anim);
+					ingredient.spr.second->draw(Get_Delta(), ingredient.spr.second->curr_anim);
 				}
 				else
 				{
@@ -479,7 +479,7 @@ namespace Core
 
 			if (sink.spr.second->isSpriteSheet)
 			{
-				sink.second->draw(Get_Delta(), sink.second->curr_anim);
+				sink.spr.second->draw(Get_Delta(), sink.spr.second->curr_anim);
 			}
 			else
 			{

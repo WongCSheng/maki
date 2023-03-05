@@ -1330,7 +1330,7 @@ namespace Core
 
 				if (gameIsPaused == false)
 				{
-					player->draw(GLHelper::getDelta());
+					player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -1433,7 +1433,7 @@ namespace Core
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 				if (gameIsPaused == false)
 				{
-					player->draw(GLHelper::getDelta());
+					player->draw(Get_Delta());
 
 				}
 
@@ -1544,7 +1544,7 @@ namespace Core
 
 				if (gameIsPaused == false)
 				{
-					player->draw(GLHelper::getDelta());
+					player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -1646,7 +1646,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -1747,7 +1747,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -1843,7 +1843,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -1941,7 +1941,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2037,7 +2037,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2134,7 +2134,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2228,7 +2228,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2322,7 +2322,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2416,7 +2416,7 @@ namespace Core
 
 					}
 					else
-						player->draw(GLHelper::getDelta());
+						player->draw(Get_Delta());
 
 				}
 				else if (gameIsPaused == true)
@@ -2927,7 +2927,7 @@ namespace Core
 			}
 #endif
 			endtime = glfwGetTime();
-			delta = (endtime - starttime) / 2;
+			delta = (endtime - starttime);
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 

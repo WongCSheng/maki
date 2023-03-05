@@ -33,7 +33,7 @@ namespace Core
 
 		float getDelta()
 		{
-			return static_cast<float>(delta * 10.f);
+			return static_cast<float>(delta);
 		}
 
 		void Init() {}
@@ -148,4 +148,5 @@ namespace Core
 		static void init();
 		static void cleanup();
 	};
+#define Get_Delta()				Window::GetInstance(0, 0)->getDelta()
 }

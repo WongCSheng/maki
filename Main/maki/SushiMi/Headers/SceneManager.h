@@ -9,8 +9,10 @@ namespace Core
 	{
 		start = 32,
 		space = 33,		//!
-		its_a_wall = 35,//#
-		player = 37,	//%
+		ground0,		//"
+		ground1,		//#
+		ground2,		//$
+		player,			//%
 		ingredients,	//&
 		avocado,		//'
 		cucumber,		//(
@@ -24,6 +26,7 @@ namespace Core
 		tofu,			//0
 		tuna,			//1
 		nori,			//2
+						//no more start, replaced by tea
 		tea,			//3
 		soya,			//4
 		wasabi,			//5
@@ -36,8 +39,12 @@ namespace Core
 	{
 		sinkhole = 55,  //7
 		filledsinkhole,	//8
+		tea,			//9
+		empty2,			//:
 		win,			//;
+		temp,			//<
 		insidebox,		//=
+		inbox2,			//>
 		sinkhole_gunkan,//?
 		first = 64,
 		Wall0,				//A
@@ -101,46 +108,26 @@ namespace Core
 		tamago_box,			//{
 		tofu_box,			//| (bitwise OR)
 		tuna_box,			//}
+		//Water,		//� or ~
 		WoodenPlatform,		//~
-		Player_OnWood,		//�
-		ground0,			//"
-		ground1,			//#
-		ground2				//$
+		Player_OnWood		//�
+
 	};
 
-	enum class animated
-	{
-		RicePlant1 = 45,	//0
-		RicePlant2,
-		RicePlant3,
-		RicePlant4,
-		RicePlant5,
-		RiceWater1,
-		RiceWater2,
-		GunkanSign_Right,
-		GunkanSign_Left,
-		GunkanCorn,
-		GunkanCarrot = 65, //A
-		GunkanCrow_Left,   //B
-		GunkanCrow_Right,  //C
-		FishingBoat,	   //D
-		FishingLog,		   //E
-		FishingSotong,
-		FishingNoot,
-		FishingCrab
-	};
+	
 
-	struct Basket
+	enum class Bami //: std::uint16_t
 	{
-		glm::vec2 init_Pos;
-		std::pair<int, int> init_Grid_Pos;
-		std::pair<grid_number, Sprite*> spr;
-		void Restart()
-		{
-			spr.second->transformation.Position = init_Pos;
-			spr.second->transformation.grid_pos = init_Grid_Pos;
-		}
+
 	};
+	/*
+	enum class Rice
+	{
+		riceSoya = 130,
+		riceWasabi,
+		riceBoth
+	};
+	*/
 	
 	class SceneManager : public SystemFrame
 	{
@@ -153,15 +140,17 @@ namespace Core
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static std::vector<std::pair<wall_type, Sprite*>> RetreiveTile() { return tilecontainer; };
-		static std::vector<Basket> RetreiveIngredient() { return ingredientcontainer;};
+		static std::vector<std::pair<grid_number, Sprite*>> RetreiveIngredient() { return ingredientcontainer;};
 		static void restartLevel();
 		static void nextLevel();
 
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
-		//static void loadAnim(const std::pair<animated, Sprite*>& animate);
 		//static void loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient);
+
+		 
+		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition);
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
@@ -220,11 +209,11 @@ namespace Core
 
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-		static inline std::vector<Basket> ingredientcontainer;
-		static inline std::vector<std::pair<animated, Sprite*>> animatedcontainer;
+		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 		//static inline std::vector<std::pair<Rice, Sprite*>> ricecontainer;
-		static inline std::vector<Basket> in_sinkhole;
+		static inline std::vector<std::pair<grid_number, Sprite*>> in_sinkhole;
 		static inline std::vector<short> ICnum;
+		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 

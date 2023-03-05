@@ -1,22 +1,11 @@
 18 10
-# # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # ! ! # # # # #
-# ! ! ! ! ! ! # ! ! ! ! ! ! ! ! ! #
-# ! ! r # # ! # ! ! # # ! # # ! ! #
-# # ! # ! ! ! # ! x ! # ! ! # ! # #
-# # ! ! ! , ! # ! ! ! ! ! ! # 2 # #
-# # ! ! # ! ! ! ! ! # # # # # % # #
-# # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # #
-
-Q Q Q Q Q Q Q Q Q Q Q ` ` Q Q Q Q Q
-Q ` ` ` ` ` ` Q ` ` a ! ! [ ` ` ` Q
-V ! ! ! ! ! ! F ! ! ! ! ! ! ! ! ! L
-V ! ! r I K ! F ! ! I H ! I H ! ! L
-Q H ! A ! ! ! F ! x ! G ! ! F ! C Q
-Q V ! ! ! , ! G ! ! ! ! ! ! F ! L Q
-Q V ! ! E ! ! ! ! ! C D D D V ! L Q
-Q Q D D Q D D D D D Q Q Q Q Q D Q Q
-Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q
-Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q
+Q Q Q Q Q Q Q Q Q Q Q ` ` Q Q Q Q Q 
+Q ` ` ` ` ` ` Q ` ` a ! ! [ ` ` ` Q 
+V ! ! ! ! ! ! F ! ! ! ! ! ! ! ! ! L 
+V ! ! r I K ! F ! ! I H ! I H ! ! L 
+Q H ! A ! ! ! F ! x ! G ! ! F ! C Q 
+Q V ! ! ! , ! G ! ! ! ! ! ! F 2 L Q 
+Q V ! ! E ! ! ! ! ! C D D D V % L Q 
+Q Q D D Q D D D D D Q Q Q Q Q D Q Q 
+Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q 
+Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q Q 

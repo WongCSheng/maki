@@ -31,7 +31,7 @@ namespace Core
 
 	SceneManager::~SceneManager()
 	{
-		
+
 	}
 
 	void SceneManager::Init()
@@ -46,7 +46,6 @@ namespace Core
 	{
 
 	}
-
 	void SceneManager::restartLevel()
 	{
 		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0)
@@ -65,11 +64,11 @@ namespace Core
 		//missing: restart sinkhole, restart sushi plate pods
 		Window::isPlayerinSinkhole = false;
 		//reset ingredient pos
-		/*for (auto& ingredient : ingredientcontainer)
+		for (auto& ingredient : ingredientcontainer)
 		{
 			ingredient.second->restart();
 			ingredient.second->count = 0;
-		}*/
+		}
 	}
 	//R key for restart
 	// update by thea: i've written a new restart function
@@ -108,13 +107,7 @@ namespace Core
 		ingredient.second->count = 0;
 		ingredient.second->alpha = 1.f;
 
-		Basket input;
-
-		input.init_Pos = glm::vec2(x, y);
-		input.spr = ingredient;
-		input.init_Grid_Pos = { posX, posY };
-
-		ingredientcontainer.push_back(input);
+		ingredientcontainer.push_back(ingredient);
 		std::cout << std::endl;
 		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
@@ -128,6 +121,17 @@ namespace Core
 		ricecontainer.push_back(ingredient);
 	}
 	*/
+
+
+	void SceneManager::loadIngr_initPos(int x, int y, int /*posX*/, int /*posY*/, const std::pair<grid_number, Sprite*>& ingrposition)
+	{
+		ingrposition.second->transformation.grid_pos = { x, y };
+		ingrposition.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
+
+		ingrposition.second->transformation.grid_pos = { x, y };
+
+		ingredient_starting_pos.insert(ingrposition);
+	}
 
 	/*void SceneManager::loadIngr2(int x, int y)
 	{
@@ -369,7 +373,7 @@ namespace Core
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.spr.second->timer += (Get_Delta());
+			ingredient.second->timer += (Get_Delta());
 			
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -405,15 +409,15 @@ namespace Core
 
 
 					
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr.second->transformation.Get());
-				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr.second->alpha);
-				if (ingredient.spr.second->isSpriteSheet)
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
+				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
+				if (ingredient.second->isSpriteSheet)
 				{
-					ingredient.spr.second->draw(Get_Delta(), ingredient.spr.second->curr_anim);
+					ingredient.second->draw(Get_Delta(), ingredient.second->curr_anim);
 				}
 				else
 				{
-					ingredient.spr.second->draw();
+					ingredient.second->draw();
 				}
 
 		}
@@ -474,16 +478,16 @@ namespace Core
 	{
 		for (auto& sink : in_sinkhole)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr.second->transformation.Get());
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.second->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
-			if (sink.spr.second->isSpriteSheet)
+			if (sink.second->isSpriteSheet)
 			{
-				sink.spr.second->draw(Get_Delta(), sink.spr.second->curr_anim);
+				sink.second->draw(Get_Delta(), sink.second->curr_anim);
 			}
 			else
 			{
-				sink.spr.second->draw();
+				sink.second->draw();
 			}
 
 		}
@@ -679,9 +683,9 @@ namespace Core
 	/*destroy functions*/
 	void SceneManager::destroyTile()
 	{
-		if (tilecontainer.size() > 0)
+		if (tilecontainer.size() != 0)
 		{
-			for (auto &it : tilecontainer)
+			for (auto it : tilecontainer)
 			{
 				delete it.second;
 			}
@@ -691,14 +695,13 @@ namespace Core
 	}
 	void SceneManager::destroyIngr()
 	{
-		if (ingredientcontainer.size() > 0)
+		if (ingredientcontainer.size() != 0)
 		{
-			for (auto &it : ingredientcontainer)
+			for (auto it : ingredientcontainer)
 			{
-				delete it.spr.second;
+				delete it.second;
 			}
 		}
-
 		/*
 		if (ricecontainer.size() != 0)
 		{
@@ -714,11 +717,11 @@ namespace Core
 	
 	void SceneManager::destroyInsideSinkHole()
 	{
-		if (in_sinkhole.size() > 0)
+		if (in_sinkhole.size() != 0)
 		{
-			for (auto &it : in_sinkhole)
+			for (auto it : in_sinkhole)
 			{
-				delete it.spr.second;
+				delete it.second;
 			}
 		}
 

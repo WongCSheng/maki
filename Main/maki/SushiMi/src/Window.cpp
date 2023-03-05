@@ -32,7 +32,7 @@ namespace Core
 	static Core::MainSystem* CoreSystem;
 	static int width, height;
 
-	std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
+	std::vector<std::pair<grid_number, Sprite*>> CurrentIngredients; // retreive the curent level loaded ingredients
 
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
@@ -182,8 +182,8 @@ namespace Core
 			for (auto& ingredient : SceneManager::ingredientcontainer)
 			{
 				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.spr.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.spr.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
+				int ingredientRow = static_cast<int>(ingredient.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
 				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
 				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
@@ -194,7 +194,7 @@ namespace Core
 				if (ingredientCoordinates == boxCoordinates)
 				{
 					//ingredient row and col matches box row and col
-					std::pair<grid_number, wall_type> checkCondition(ingredient.spr.first, box.first);
+					std::pair<grid_number, wall_type> checkCondition(ingredient.first, box.first);
 					for (auto& y : levelWinConditions)//suggest to change to map
 					{
 						//check whether is correct ingredient to box
@@ -1087,7 +1087,7 @@ namespace Core
 			if (keystate_R)
 			{
 				//restart
-				Map::RestartMap();
+				SceneManager::restartLevel();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
 
@@ -1498,7 +1498,6 @@ namespace Core
 					}
 
 					Map::initMap("../TileMap/level1.txt");
-					//Map::initMap("../TileMap/pod_rendering_test.txt");
 
 					Map::LoadMap();
 					isQuestTab = false;
@@ -2670,6 +2669,7 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
+				std::cout << "Drawing of Menu\n";
 				AudioManager.SetMusicVolume(0.4f);
 
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
@@ -2746,7 +2746,7 @@ namespace Core
 				//checking through all loaded ingredient for the current level
 				for (auto& ingredient : CurrentIngredients)
 				{
-					std::string loadedIngredient = Map::EnumToString(ingredient.spr.first);    // convert enum to string
+					std::string loadedIngredient = Map::EnumToString(ingredient.first);    // convert enum to string
 					std::cout << "loading in " << loadedIngredient << "\n";
 
 					// determine each ingredient location based on number of ingredient loaded

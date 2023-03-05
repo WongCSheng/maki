@@ -154,13 +154,6 @@ namespace Core
 
 	void Player::restart()
 	{
-		player_grid_pos.x = player_initial_grid_pos.x;
-		player_grid_pos.y = player_initial_grid_pos.y;
-		playerpos.x = playerpos_restart.x;
-		playerpos.y = playerpos_restart.y;
-		sp->transformation.Position.x = playerpos_restart.x;
-		sp->transformation.Position.y = playerpos_restart.y;
-		
 		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
 
 		SceneManager::destroyTile();
@@ -200,7 +193,10 @@ namespace Core
 		//sp->transformation.Position.y = playerpos_restart.y;
 		//Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 		//Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
+
 		}
+
+
 	}
 
 	void Player::stop()

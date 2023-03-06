@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Tiles/Ingredients/Octupus_Wasabi.png",
-      "name": "Octupus_Wasabi",
+      "texturepath": "../textures/levelQuest/Tuna_Soya.png",
+      "name": "Tuna_Soya",
       "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }

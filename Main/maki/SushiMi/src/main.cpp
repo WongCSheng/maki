@@ -217,10 +217,10 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
 
-	/*	Loading all ingredients	(ingredients from lv7-lv10)*/
-	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
-	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
-	Core::DeserializeEntity("../Data/Ingredients/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
+	/*	Loading quests lv7-lv10)*/
+	Core::DeserializeEntity("../Data/Quests/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
+	Core::DeserializeEntity("../Data/Quests/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
+	Core::DeserializeEntity("../Data/Quests/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
 	
 	/*Loading of quest chop*/
 	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);

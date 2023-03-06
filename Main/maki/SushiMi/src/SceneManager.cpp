@@ -325,7 +325,7 @@ namespace Core
 
 	void SceneManager::drawIngr()
 	{
-		std::cout << (Get_Delta()) << std::endl;
+		//std::cout << "Delta time is: " << (Get_Delta()) << std::endl;
 		if (Map::salmon != nullptr)
 		{
 			if (Map::wasabi != nullptr)

@@ -970,7 +970,7 @@ namespace Core
 
 					//	break;
 					//}
-					case static_cast<int>(grid_number::ground0):
+					/*case static_cast<int>(grid_number::ground0):
 					{
 						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_0.jpg";
 
@@ -987,7 +987,7 @@ namespace Core
 
 
 						break;
-					}
+					}*/
 					//sinkhole_gunkan
 					case static_cast<int>(wall_type::sinkhole_gunkan):
 					{

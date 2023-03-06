@@ -876,7 +876,7 @@ namespace Core
 
 		if (mouseLeft && isMenuState == true)
 		{
-			std::cout << "mouse clicking (windows.cpp)" << std::endl;
+			//std::cout << "mouse clicking (windows.cpp)" << std::endl;
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
@@ -922,7 +922,7 @@ namespace Core
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			std::cout << xpos << " " << ypos << "\n";
+			//std::cout << xpos << " " << ypos << "\n";
 			for (auto& x : CoreSystem->objfactory->ObjectContainer)
 			{
 				if (x.first == "ResumeButton")
@@ -976,7 +976,7 @@ namespace Core
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
-			std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
 			//TUTORIAL1 and play cutscene
 			if (xpos > 394 && ypos > 139 && xpos < 472 && ypos < 200)
@@ -1256,7 +1256,7 @@ namespace Core
 
 							CutscenePage++;
 
-							std::cout << "next page" << std::endl;
+							//std::cout << "next page" << std::endl;
 
 						}
 						if (CutscenePage == 7)
@@ -2466,7 +2466,7 @@ namespace Core
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, one_by_one, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, one_by_one, 190, 90, .25f, glm::vec3(0.f, 0.f, 0.f));
 							if (/*Window::GetInstance(0, 0)->getDelta() * 150 < 2*/ (Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1; // dialogue render speed is 200 * delta time
@@ -2483,8 +2483,8 @@ namespace Core
 							std::string first_line = realstring.substr(0, 54);
 							std::string second_line = realstring.substr(54, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 270, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 270, 70, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 190, 90, .25f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 190, 70, .25f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
@@ -2512,7 +2512,7 @@ namespace Core
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 
-							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, one_by_one, 190, 90, .22f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
@@ -2530,8 +2530,8 @@ namespace Core
 							std::string second_line = realstring.substr(53, curr_len);
 
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 190, 90, .22f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 190, 70, .22f, glm::vec3(0.f, 0.f, 0.f));
 
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
@@ -2551,9 +2551,9 @@ namespace Core
 							std::string second_line = realstring.substr(53, 107 - 53);
 							std::string third_line = realstring.substr(107, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 190, 90, .22f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 190, 70, .22f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, third_line, 190, 50, .22f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
@@ -2580,7 +2580,7 @@ namespace Core
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 
-							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, one_by_one, 190, 90, .21f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
@@ -2598,8 +2598,8 @@ namespace Core
 							std::string second_line = realstring.substr(56, curr_len);
 
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 190, 90, .21f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 190, 70, .21f, glm::vec3(0.f, 0.f, 0.f));
 
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
@@ -2619,9 +2619,9 @@ namespace Core
 							std::string second_line = realstring.substr(56, 107 - 56);
 							std::string third_line = realstring.substr(107, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, 250, 90, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, second_line, 250, 70, .29f, glm::vec3(0.f, 0.f, 0.f));
-							Font::RenderText(*Shaders, third_line, 250, 50, .29f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, first_line, 190, 90, .2f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, second_line, 190, 70, .2f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, third_line, 190, 50, .2f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
 								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
@@ -2744,7 +2744,7 @@ namespace Core
 				for (auto& ingredient : CurrentIngredients)
 				{
 					std::string loadedIngredient = Map::EnumToString(ingredient.spr.first);    // convert enum to string
-					std::cout << "loading in " << loadedIngredient << "\n";
+					//std::cout << "loading in " << loadedIngredient << "\n";
 
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
@@ -2828,14 +2828,14 @@ namespace Core
 				gameIsPaused = false;
 
 				//SceneManager::loadHowToOverlay(0, 0);
-				std::cout << HowToPlayPage << "current page\n";
+				//std::cout << HowToPlayPage << "current page\n";
 				SceneManager::drawHowToOverlay(HowToPlayPage);
 				if (mouseLeft && isMenuState == false)
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 					//NEXT PAGE
-					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+					//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 
 					if (HowToPlayPage < 4)
 					{
@@ -2909,7 +2909,7 @@ namespace Core
 				{
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+					//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
 					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
 					{
 						isCredits = false;

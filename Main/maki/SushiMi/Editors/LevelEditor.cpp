@@ -988,7 +988,7 @@ namespace Core
 
 						break;
 					}*/
-					//sinkhole_gunkan
+					//no_longer_used
 					case static_cast<int>(wall_type::sinkhole_gunkan):
 					{
 						texpath = "../textures/Tiles/Ground_GunkanVillage/Sinkhole.png";
@@ -1286,34 +1286,34 @@ namespace Core
 
 						break;
 					}
-					//	Wall1_Gunkan,		//k
+					//	Gunkan_Ground_2_2,		//k
 					case static_cast<int>(wall_type::Wall1_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1.png";
 
 						break;
 					}
-					//	Wall1_1_Gunkan,		//l
+					//	Gunkan_Ground_1_1,		//l
 					case static_cast<int>(wall_type::Wall1_1_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1_1.png";
 
 						break;
 					}
-					//	Wall2_Gunkan,		//m
+					//	Gunkan_Ground_1_2,		//m
 					case static_cast<int>(wall_type::Wall2_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2.png";
 
 						break;
 					}
-					//	Wall2_1_Gunkan,		//n
+					//	Gunkan_Ground_1_3,		//n
 					case static_cast<int>(wall_type::Wall2_1_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2_1.png";
 						break;
 					}
-					//	Wall3_Gunkan,		//o
+					//	Gunkan_Ground_1_4,		//o
 					case static_cast<int>(wall_type::Wall3_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3.png";
@@ -1321,7 +1321,7 @@ namespace Core
 
 						break;
 					}
-					//	Wall3_1_Gunkan,		//p
+					//	Gunkan_Ground_2_1,		//p
 					case static_cast<int>(wall_type::Wall3_1_Gunkan):
 					{
 						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3_1.png";

@@ -1,12 +1,23 @@
 18 10
-c c c c c c c c c c c c c c c c c c
-c c ! ! ! ! ! c c c c c c c c c c c
-! ! ! ! ! ! ! c c c c c c c c c c c
-c c ! % . 5 3 4 ! ! c c c c c c c c
-c c ! ! ! ! ! ! c ! c c c c c c c c
-c c c ! ! ! ! ! c ! c c c c c c c c
-c c c ! ! ! c c c ! ! ! ! ! r c c c
-c c c ! ! ! c c c c c c c c c c c c
-c c c c c c c c c c c c c c c c c c
-c c c c c c c c c c c c c c c c c c
-c c c c c c c c c c c c c c c c c c
+M M M M M M M M M M M M M M M M M M
+M M ! ! ! ! ! M M M M M M M M M M M
+! ! ! ! ! ! ! M M M M M M M M M M M
+M M ! % . 5 3 4 ! ! M M M M M M M M
+M M ! ! ! ! ! ! M ! M M M M M M M M
+M M M ! ! ! ! ! M ! M M M M M M M M
+M M M ! ! ! M M M ! ! ! ! ! [ M M M
+M M M ! ! ! M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M
+
+M M M M M M M M M M M M M M M M M M
+M M ! ! ! ! ! M M M M M M M M M M M
+! ! ! ! ! ! ! M M M M M M M M M M M
+M M ! % . ! ! ! ! ! M M M M M M M M
+M M ! ! ! ! ! ! M ! M M M M M M M M
+M M M ! ! ! ! ! M ! M M M M M M M M
+M M M ! ! ! M M M ! ! ! ! ! [ M M M
+M M M ! ! ! M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M

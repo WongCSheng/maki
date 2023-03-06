@@ -1162,7 +1162,8 @@ namespace Core
 #if defined(EDITOR) | defined(_EDITOR)
 			Camera::Update_Viewport(2560, 1200);
 			/*
-			ingredient = new Sprite(Editor::LevelEditor::texpath);
+			ingredient = 
+			Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
 			ingredient->transformation.Position = glm::vec2(600,600);
 			*/
@@ -1489,6 +1490,7 @@ namespace Core
 
 				if (!loaded)
 				{
+					
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();

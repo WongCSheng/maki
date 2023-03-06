@@ -53,10 +53,13 @@ namespace Core
 			delete gGrids[i];
 			delete aGrids[i];
 			delete wGrids[i];
+			delete RestartGrids[i];
 		}
 		delete gGrids;
 		delete aGrids;
 		delete wGrids;
+		delete RestartGrids;
+
 
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
@@ -615,7 +618,7 @@ namespace Core
 
 				case static_cast<int>(wall_type::sinkhole):
 				{
-					Sprite* sinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole0_1.png");
+					Sprite* sinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole, sinkhole);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -626,7 +629,7 @@ namespace Core
 
 				case static_cast<int>(wall_type::filledsinkhole):
 				{
-					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
+					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole_Filled.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::filledsinkhole, filledsinkhole);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -634,16 +637,7 @@ namespace Core
 
 					break;
 				}
-				case static_cast<int>(wall_type::ground0):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
-
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::ground0, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
+				
 				case static_cast<int>(wall_type::ground1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
@@ -664,12 +658,12 @@ namespace Core
 
 					break;
 				}
-				//sinkhole_gunkan
-				case static_cast<int>(wall_type::sinkhole_gunkan):
+				//no_longer_used
+				case static_cast<int>(wall_type::no_longer_used):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
 
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::sinkhole_gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::no_longer_used, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -796,37 +790,37 @@ namespace Core
 					break;
 				}
 
-				case static_cast<int>(wall_type::Wall4_1):
+				case static_cast<int>(wall_type::Gunkan_Ground_2_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_1, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall4_2):
+				case static_cast<int>(wall_type::Gunkan_Ground_3_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_2, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall4_3):
+				case static_cast<int>(wall_type::Gunkan_Ground_3_2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_3, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall4_4):
+				case static_cast<int>(wall_type::Gunkan_Ground_3_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4_4, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -847,10 +841,10 @@ namespace Core
 
 
 				//most common wall
-				case static_cast<int>(wall_type::Wall5_1):
+				case static_cast<int>(wall_type::Gunkan_Ground_6_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_1, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -858,10 +852,10 @@ namespace Core
 
 				}
 
-				case static_cast<int>(wall_type::Wall5_2):
+				case static_cast<int>(wall_type::Gunkan_Ground_6_2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_2, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -869,10 +863,10 @@ namespace Core
 
 				}
 
-				case static_cast<int>(wall_type::Wall5_3):
+				case static_cast<int>(wall_type::Gunkan_Ground_6_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_3, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -880,10 +874,10 @@ namespace Core
 
 				}
 
-				case static_cast<int>(wall_type::Wall5_4):
+				case static_cast<int>(wall_type::Gunkan_Ground_6_4):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5_4, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_4, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -1097,61 +1091,51 @@ namespace Core
 
 					break;
 				}
-				//	Wall1_Gunkan,		//k
-				case static_cast<int>(wall_type::Wall1_Gunkan):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_Gunkan, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				//	Wall1_1_Gunkan,		//l
-				case static_cast<int>(wall_type::Wall1_1_Gunkan):
+				//	Gunkan_Ground_1_1,		//l
+				case static_cast<int>(wall_type::Gunkan_Ground_1_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1_1.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1_1_Gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				//	Wall2_Gunkan,		//m
-				case static_cast<int>(wall_type::Wall2_Gunkan):
+				//	Gunkan_Ground_1_2,		//m
+				case static_cast<int>(wall_type::Gunkan_Ground_1_2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_Gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				//	Wall2_1_Gunkan,		//n
-				case static_cast<int>(wall_type::Wall2_1_Gunkan):
+				//	Gunkan_Ground_1_3,		//n
+				case static_cast<int>(wall_type::Gunkan_Ground_1_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2_1.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1_Gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				//	Wall3_Gunkan,		//o
-				case static_cast<int>(wall_type::Wall3_Gunkan):
+				//	Gunkan_Ground_1_4,		//o
+				case static_cast<int>(wall_type::Gunkan_Ground_1_4):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_Gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_4, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				//	Wall3_1_Gunkan,		//p
-				case static_cast<int>(wall_type::Wall3_1_Gunkan):
+				//	Gunkan_Ground_2_1,		//p
+				case static_cast<int>(wall_type::Gunkan_Ground_2_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1_Gunkan, tile);
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
@@ -1166,7 +1150,7 @@ namespace Core
 					SceneManager::loadTile(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, combine);
 					break;
 				}*/
-				//	Wall3_1_Gunkan,		//p
+				//	Gunkan_Ground_2_1,		//p
 				case static_cast<int>(wall_type::WoodenPlatform):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
@@ -1229,7 +1213,7 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan)) &&
+		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used)) &&
 			!isWin())
 		{
 			return true;
@@ -1265,7 +1249,7 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile on the left of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan))
+					else if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 
@@ -1532,7 +1516,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan))
+			else if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -1603,7 +1587,7 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile on the right of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan))
+					else if (wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
@@ -1854,7 +1838,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan))
+			else if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -1933,7 +1917,7 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile below of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::sinkhole_gunkan))
+					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::no_longer_used))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 
@@ -2184,7 +2168,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::sinkhole_gunkan))
+			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::no_longer_used))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -2255,7 +2239,7 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile above of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::sinkhole_gunkan))
+					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::no_longer_used))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
@@ -2505,7 +2489,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::sinkhole_gunkan))
+			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::no_longer_used))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 

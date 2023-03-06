@@ -23,12 +23,28 @@ namespace Core
 		tamago,			// slash (/)
 		tofu,			//0
 		tuna,			//1
-		nori,			//2
+		nori,			//2 //the end of pushable ingredients
 		tea,			//3
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6
-		end
+		//fishing tops must be rendered above Bami and above fishing ground, hence it is on the same level as ingredient
+		Fishing_Top_0_0,	//7
+		Fishing_Top_1_1,	//8
+		Fishing_Top_1_2,	//9
+		Fishing_Top_1_3,	//:
+		Fishing_Top_1_4,	//;
+		Fishing_Top_2_1,	//<
+		Fishing_Top_2_2,	//=
+		Fishing_Top_2_3,	//>
+		Fishing_Top_2_4,	//?
+		Fishing_Top_3_1,	//@
+		Fishing_Top_3_2,	//A
+		Fishing_Top_3_3,	//B
+		Fishing_Top_3_4,	//C
+		Fishing_Top_3_5,	//D
+		Fishing_Top_3_6,	//E
+		
 		
 	};
 
@@ -36,9 +52,9 @@ namespace Core
 	{
 		sinkhole = 55,  //7
 		filledsinkhole,	//8
-		win,			//;
-		insidebox,		//=
-		sinkhole_gunkan,//?
+		win = 59,			//;
+		insidebox = 61,		//=
+		no_longer_used = 63,//?
 		first = 64,
 		Wall0,				//A
 		Wall0_1,			//B
@@ -52,27 +68,51 @@ namespace Core
 		Wall3_2,			//J
 		Wall3_3,			//K
 		Wall4,				//L
-		Wall4_1,			//M to replace as it is repetitive
-		Wall4_2,			//N to replace as it is repetitive
-		Wall4_3,			//O to replace as it is repetitive
-		Wall4_4,			//P to replace as it is repetitive
-		Wall5,				//Q
-		Wall5_1,			//R to replace as it is repetitive
-		Wall5_2,			//S to replace as it is repetitive
-		Wall5_3,			//T to replace as it is repetitive
-		Wall5_4,			//U to replace as it is repetitive
-		Wall6,				//V
+		Wall5,				//Q = M
+		Wall6,				//V = N
+		Wall7,				//[ = O
+		Wall8,				//` = P
+		Wall9,				//a = Q
+		WaterWall,			//i = R
+		Wall0_Gunkan,		//j = S
+		last,				//k = T
+		Gunkan_Ground_1_1,	//l = U
+		Gunkan_Ground_1_2,		//m = V
+		Gunkan_Ground_1_3,		//n = W
+		Gunkan_Ground_1_4,		//o = X
+		Gunkan_Ground_2_1,		//p = Y
+		Gunkan_Ground_2_2,				//q = Z
+		rice_box,			//r = [
+		inari_box,			//s = backslash (\)
+		avocado_box,		//t = ]
+		corn_box,			//u = ^
+		cucumber_box,		//v = _
+		salmon_box,			//w = `
+		nori_box,			//x = a
+		octopus_box,		//y = b
+		roes_box,			//z = c
+		tamago_box,			//{ = d
+		tofu_box,			//| (bitwise OR) = e
+		tuna_box,			//} = f
+		WoodenPlatform,		//~ = g
+		ground1,			//# = j
+		ground2,			//$ = k
+		Gunkan_Ground_2_3,	//l
+		Gunkan_Ground_3_1,	//m 
+		Gunkan_Ground_3_2,	//n
+		Gunkan_Ground_3_3,	//o
+		Gunkan_Ground_6_1,	//p
+		Gunkan_Ground_6_2,	//q
+		Gunkan_Ground_6_3,	//r
+		Gunkan_Ground_6_4,	//s
 		Wall6_1,			//W to replace as it is repetitive
 		Wall6_2,			//X to replace as it is repetitive
 		Wall6_3,			//Y to replace as it is repetitive
 		Wall6_4,			//Z to replace as it is repetitive
-		Wall7,				//[
 		Wall7_1,			//backslash (\) to replace as it is repetitive
 		Wall7_2,			//] to replace as it is repetitive
 		Wall7_3,			//^ to replace as it is repetitive
 		Wall7_4,			//_ to replace as it is repetitive
-		Wall8,				//`
-		Wall9,				//a
 		Wall9_1,			//b to replace as it is repetitive
 		Wall9_2,			//c to replace as it is repetitive
 		Wall9_3,			//d to replace as it is repetitive
@@ -80,32 +120,6 @@ namespace Core
 		Wall9_5,			//f (to replace as it is repetitive)
 		Wall9_6,			//g  (to replace as it is repetitive)
 		Wall9_7,			//h (to replace as it is repetitive)
-		WaterWall,			//i
-		Wall0_Gunkan,		//j
-		Wall1_Gunkan,		//k
-		Wall1_1_Gunkan,		//l
-		Wall2_Gunkan,		//m
-		Wall2_1_Gunkan,		//n
-		Wall3_Gunkan,		//o
-		Wall3_1_Gunkan,		//p
-		last,				//q
-		rice_box,			//r
-		inari_box,			//s
-		avocado_box,		//t
-		corn_box,			//u
-		cucumber_box,		//v
-		salmon_box,			//w total 12 boxes
-		nori_box,			//x
-		octopus_box,		//y
-		roes_box,			//z
-		tamago_box,			//{
-		tofu_box,			//| (bitwise OR)
-		tuna_box,			//}
-		WoodenPlatform,		//~
-		Player_OnWood,		//�
-		ground0,			//"
-		ground1,			//#
-		ground2				//$
 	};
 
 	enum class animated

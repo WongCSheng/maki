@@ -189,15 +189,18 @@ void Core::pseudomain::init() {
 	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
+	//loading the entire main_menu which consists of all the buttons
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
+	//loading the entire pause_menu which consists of all the buttons
 	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
+
 	//loading main menu
 	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
-	/*	Loading QuestTab base	*/
+	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Quests/questBase.json", CoreSystem->objfactory); 
 
-	/*	Loading of ingredients	*/
+	/*	Loading all ingredients	(ingredients from tut1-lv6)*/
 	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Cucumber.json", CoreSystem->objfactory);
@@ -214,10 +217,16 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
 
+	/*	Loading all ingredients	(ingredients from lv7-lv10)*/
+	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
+	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
+	Core::DeserializeEntity("../Data/Ingredients/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
+	
 	/*Loading of quest chop*/
 	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Quests/denied.json", CoreSystem->objfactory);
 
+	/* Loading of all quests in the desinated level*/
 	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
@@ -226,6 +235,8 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Lv4/QuestLv4.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv5/QuestLv5.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv7/QuestLv7.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv8/QuestLv8.json", CoreSystem->objfactory);
 
 
 	////loading image&button paths

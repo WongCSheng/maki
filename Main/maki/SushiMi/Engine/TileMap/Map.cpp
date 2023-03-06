@@ -2869,9 +2869,24 @@ namespace Core
 		case(grid_number::soya):
 			return ("Soya");
 			break;
+
 		case(grid_number::tea):
 			return ("Tea");
 			break;
+
+		case(grid_number::salmon_wasabi):
+			return ("Salmon_Wasabi");
+			break;
+
+		case(grid_number::tuna_soya):
+			return ("Tuna_Soya");
+			break;
+
+		case(grid_number::octupus_wasabi):
+			return ("Octupus_Wasabi");
+			break;
+
+			
 		}
 	}
 }

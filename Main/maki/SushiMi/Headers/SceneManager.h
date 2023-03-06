@@ -31,6 +31,11 @@ namespace Core
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6
+
+		salmon_wasabi, ///Lv7 & 8 
+		tuna_soya,	//Lv8
+		octupus_wasabi,	//Lv8
+
 		end
 		
 	};

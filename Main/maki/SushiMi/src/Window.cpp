@@ -2836,9 +2836,10 @@ namespace Core
 				case(GameState::LEVEL8):
 					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv8");
 					break;
-				case(GameState::LEVEL9):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv9");
-					break;
+
+				//case(GameState::LEVEL9):
+				//	ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv9");
+				//	break;
 				}
 				
 

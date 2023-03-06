@@ -3036,7 +3036,7 @@ namespace Core
 			endtime = glfwGetTime();
 			delta = (endtime - starttime);
 			starttime = endtime;
-			std::cout << delta << std::endl;
+			//std::cout << delta << std::endl;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 

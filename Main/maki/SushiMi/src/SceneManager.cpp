@@ -372,6 +372,42 @@ namespace Core
 
 		if (Map::salmon != nullptr)
 		{
+			for (auto& ingredient : ingredientcontainer)
+			{
+				/*check which sprite has set animation to true*/
+				if (ingredient.spr->animeMe == true)
+				{
+					/*check wasabi, soya and tea*/
+					if (ingredient.nametag == grid_number::wasabi)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+					if (ingredient.nametag == grid_number::tea)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+					if (ingredient.nametag == grid_number::soya)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+				}
+			}
+		}
+		/*
+		if (Map::salmon != nullptr)
+		{
 			if (Map::wasabi != nullptr)
 			{
 				if (Map::wasabi->timer > 1.f)
@@ -411,7 +447,7 @@ namespace Core
 				}
 			}
 		}
-
+		*/
 
 	}
 	/*

@@ -2845,13 +2845,9 @@ namespace Core
 				//checking through all loaded ingredient for the current level
 				for (auto& ingredient : ingredientforlevel)
 				{
-<<<<<<< Updated upstream
-					std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
-					std::cout << "loading in " << loadedIngredient << "\n";
 
-=======
-					std::cout << "loading of this ingredient >>>>>>>>>>>>>>>>>> " << ingredient << "\n";
->>>>>>> Stashed changes
+					//std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
+
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
 					{

@@ -361,6 +361,7 @@ namespace Core
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
+
 			if (ingredient.second->isSpriteSheet)
 			{
 				ingredient.second->draw((Get_Delta()), ingredient.second->curr_anim);
@@ -429,38 +430,38 @@ namespace Core
 	*/
 
 
-	bool SceneManager::activateSoya()
+	bool SceneManager::activateSoya(Sprite* soya)
 	{
-		if (Map::soya->timer < 5.f)
+		if (soya->timer < 5.f)
 		{
-			Map::soya->transformation.Position.x = Map::soya->transformation.Position.x - 30;
-			Map::soya->transformation.Position.y = Map::soya->transformation.Position.y - 30;
-			Map::soya->curr_anim = AnimationType::Run;
-			Map::soya->count++;
+			soya->transformation.Position.x = soya->transformation.Position.x - 30;
+			soya->transformation.Position.y = soya->transformation.Position.y - 30;
+			soya->curr_anim = AnimationType::Run;
+			soya->count++;
 			return 1;
 		}
 		return 0;
 	}
 
-	bool SceneManager::activateWasabi()
+	bool SceneManager::activateWasabi(Sprite* wasabi)
 	{
-		if (Map::wasabi->timer < 5.f)
+		if (wasabi->timer < 5.f)
 		{
-			Map::wasabi->transformation.Position.y = Map::wasabi->transformation.Position.y - 100;
-			Map::wasabi->curr_anim = AnimationType::Run;
-			Map::wasabi->count++;
+			wasabi->transformation.Position.y = wasabi->transformation.Position.y - 100;
+			wasabi->curr_anim = AnimationType::Run;
+			wasabi->count++;
 			return 1;
 		}
 		return 0;
 	}
-	bool SceneManager::activateTea()
+	bool SceneManager::activateTea(Sprite* tea)
 	{
-		if (Map::tea->timer < 5.f)
+		if (tea->timer < 5.f)
 		{
-			Map::tea->transformation.Position.x = Map::tea->transformation.Position.x - 50;
-			Map::tea->transformation.Position.y = Map::tea->transformation.Position.y - 50;
-			Map::tea->curr_anim = AnimationType::Run;
-			Map::tea->count++;
+			tea->transformation.Position.x = tea->transformation.Position.x - 50;
+			tea->transformation.Position.y = tea->transformation.Position.y - 50;
+			tea->curr_anim = AnimationType::Run;
+			tea->count++;
 			return 1;
 		}
 		return 0;

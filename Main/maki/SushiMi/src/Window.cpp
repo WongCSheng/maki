@@ -1132,12 +1132,13 @@ namespace Core
 
 	void Window::Mainloop()
 	{
+		starttime = glfwGetTime();
 		while (!glfwWindowShouldClose(window_ptr))
 		{
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
-			starttime = glfwGetTime();
+			
 			pseudomain::update();
 			AudioManager.Update();
 			//for each frame 
@@ -1343,6 +1344,8 @@ namespace Core
 
 				//draw lv1 tile map
 				Map::DrawMap();
+
+				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -2967,6 +2970,7 @@ namespace Core
 #endif
 			endtime = glfwGetTime();
 			delta = (endtime - starttime);
+			starttime = endtime;
 			std::cout << delta << std::endl;
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 

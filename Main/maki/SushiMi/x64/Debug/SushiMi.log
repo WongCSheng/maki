@@ -1,5 +1,34 @@
 ﻿  Map.cpp
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2621,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2621,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2619): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
-  SushiMi.vcxproj -> C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe
+  Player.cpp
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Game Object\Player.cpp)
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Game Object\Player.cpp)
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1266,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1267,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1334,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1335,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1389,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1390,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1650,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1651,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1705,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1706,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1759,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1760,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2022,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2023,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2075,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2076,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2129,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2130,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2389,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2390,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2443,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2444,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2496,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2497,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2790,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2790,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2788): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe

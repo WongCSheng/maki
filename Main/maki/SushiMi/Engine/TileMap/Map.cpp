@@ -1257,14 +1257,29 @@ break;
 								break;
 							}
 						}
+
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x - 2)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateSoya(ingredient.second);
+								//ingredient.second.animateMe = true;
+								break;
+							}
+						}
 						/*
 						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::RiceSoy, rice_soy);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (1 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
 							static_cast<int>(Window::player->playerpos.x) - 1, static_cast<int>(Window::player->playerpos.y), combine);
 							*/
-						soya->timer = 0;
-						SceneManager::activateSoya();
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
@@ -1310,8 +1325,23 @@ break;
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x - 2)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateWasabi(ingredient.second);
+								break;
+							}
+						}
+						
 						/*check salmon status*/
 						if (salmon->status == 0 || salmon->status == 4)
 						{
@@ -1350,8 +1380,23 @@ break;
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.second->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								inx = inx / tile_width;
+								iny = iny / tile_height;
+								if (iny == Window::player->player_grid_pos.y
+									&& inx == Window::player->player_grid_pos.x - 2)
+								{
+									ingredient.second->timer = 0;
+									SceneManager::activateTea(ingredient.second);
+									//ingredient.second.animateMe = true;
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
 							if (salmon->status == 1)
@@ -1596,8 +1641,24 @@ break;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x + 2)
+							{
+								// start some animations
+								ingredient.second->timer = 0;
+								SceneManager::activateSoya(ingredient.second);
+								//ingredient.second.animateMe = true;
+								break;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -1636,8 +1697,21 @@ break;
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x + 2)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateWasabi(ingredient.second);
+								break;
+							}
+						}
 
 						/*check salmon status*/
 						if (salmon->status == 0 || salmon->status == 4)
@@ -1677,8 +1751,21 @@ break;
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.second->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								inx = inx / tile_width;
+								iny = iny / tile_height;
+								if (iny == Window::player->player_grid_pos.y
+									&& inx == Window::player->player_grid_pos.x + 2)
+								{
+									ingredient.second->timer = 0;
+									SceneManager::activateTea(ingredient.second);
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
 							if (salmon->status == 1)
@@ -1927,9 +2014,21 @@ break;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
 
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y + 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateSoya(ingredient.second);
+								break;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -1968,8 +2067,21 @@ break;
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y + 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateWasabi(ingredient.second);
+								break;
+							}
+						}
 
 						/*check salmon status*/
 						if (salmon->status == 0 || salmon->status == 4)
@@ -2009,8 +2121,21 @@ break;
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.second->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								inx = inx / tile_width;
+								iny = iny / tile_height;
+								if (iny == Window::player->player_grid_pos.y + 2
+									&& inx == Window::player->player_grid_pos.x)
+								{
+									ingredient.second->timer = 0;
+									SceneManager::activateTea(ingredient.second);
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
 							if (salmon->status == 1)
@@ -2256,8 +2381,21 @@ break;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateSoya(ingredient.second);
+								break;
+							}
+						}
 
 						/*check soya status*/
 						if (salmon->status == 0)
@@ -2297,8 +2435,21 @@ break;
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateWasabi(ingredient.second);
+								break;
+							}
+						}
 
 						/*check salmon status*/
 						if (salmon->status == 0 || salmon->status == 4)
@@ -2337,8 +2488,21 @@ break;
 								break;
 							}
 						}
-						tea->timer = 0;
-						SceneManager::activateTea();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.second->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							inx = inx / tile_width;
+							iny = iny / tile_height;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.second->timer = 0;
+								SceneManager::activateTea(ingredient.second);
+								break;
+							}
+						}
 
 						/*change salmon sprite to nothing*/
 						if (salmon->status == 1)
@@ -2520,9 +2684,14 @@ break;
 
 	void Map::DrawMap()
 	{
+		/*move draw here first, have to set alpha to 1 after draw map if want to move this below,
+		* as soya's alphs is affecting the other sprites' alpha too
+		*/
+
 		SceneManager::drawTile();
 		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
 		//SceneManager::drawRice();
 	}
 	/********************************************

@@ -52,34 +52,34 @@ namespace Core
 		Wall3_2,			//J
 		Wall3_3,			//K
 		Wall4,				//L
-		Wall4_1,			//M
-		Wall4_2,			//N
-		Wall4_3,			//O
-		Wall4_4,			//P
+		Wall4_1,			//M to replace as it is repetitive
+		Wall4_2,			//N to replace as it is repetitive
+		Wall4_3,			//O to replace as it is repetitive
+		Wall4_4,			//P to replace as it is repetitive
 		Wall5,				//Q
-		Wall5_1,			//R
-		Wall5_2,			//S
-		Wall5_3,			//T
-		Wall5_4,			//U
+		Wall5_1,			//R to replace as it is repetitive
+		Wall5_2,			//S to replace as it is repetitive
+		Wall5_3,			//T to replace as it is repetitive
+		Wall5_4,			//U to replace as it is repetitive
 		Wall6,				//V
-		Wall6_1,			//W
-		Wall6_2,			//X
-		Wall6_3,			//Y
-		Wall6_4,			//Z
+		Wall6_1,			//W to replace as it is repetitive
+		Wall6_2,			//X to replace as it is repetitive
+		Wall6_3,			//Y to replace as it is repetitive
+		Wall6_4,			//Z to replace as it is repetitive
 		Wall7,				//[
-		Wall7_1,			//backslash (\)
-		Wall7_2,			//]
-		Wall7_3,			//^
-		Wall7_4,			//_
+		Wall7_1,			//backslash (\) to replace as it is repetitive
+		Wall7_2,			//] to replace as it is repetitive
+		Wall7_3,			//^ to replace as it is repetitive
+		Wall7_4,			//_ to replace as it is repetitive
 		Wall8,				//`
 		Wall9,				//a
-		Wall9_1,			//b
-		Wall9_2,			//c
-		Wall9_3,			//d
-		Wall9_4,			//e
-		Wall9_5,			//f
-		Wall9_6,			//g
-		Wall9_7,			//h
+		Wall9_1,			//b to replace as it is repetitive
+		Wall9_2,			//c to replace as it is repetitive
+		Wall9_3,			//d to replace as it is repetitive
+		Wall9_4,			//e to replace as it is repetitive
+		Wall9_5,			//f (to replace as it is repetitive)
+		Wall9_6,			//g  (to replace as it is repetitive)
+		Wall9_7,			//h (to replace as it is repetitive)
 		WaterWall,			//i
 		Wall0_Gunkan,		//j
 		Wall1_Gunkan,		//k

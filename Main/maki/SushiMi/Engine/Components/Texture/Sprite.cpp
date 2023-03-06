@@ -16,6 +16,8 @@ email:		fei.x@digipen.edu
 
 namespace Core
 {
+	std::map<std::string, std::vector<std::string>> Sprite::levelCorrectIngredients;
+
 	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}
 	{
 		//mem leak here?
@@ -90,6 +92,9 @@ namespace Core
 	void Sprite::Deserialize(const rapidjson::Value& jsonObj)
 	{
 		//checking file exist/no
+		if (jsonObj.HasMember("name"))
+			levelname = jsonObj["name"].GetString();
+
 		if (!jsonObj.HasMember("SpriteSheet"))
 		{
 			std::cout << "Component of type SpriteSheet cannot be read" << std::endl;
@@ -114,6 +119,22 @@ namespace Core
 			else
 				SpriteSize[i] = value; 
 		}
+
+		if (jsonObj.HasMember("CorrectIngredient"))
+		{
+			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
+			for (int i{}; i < SpriteArr2.Size(); ++i)
+			{
+				const rapidjson::Value& ingredient = SpriteArr2[i];
+				
+				if (std::find(CorrectIngredients.begin(), CorrectIngredients.end(), ingredient.GetString()) != CorrectIngredients.end())
+					continue;
+				else
+					CorrectIngredients.push_back(ingredient.GetString());
+			}
+		}
+		levelCorrectIngredients.insert({levelname, CorrectIngredients});
+
 		std::cout << "SpriteSize X: " << SpriteSize[0] << "        " << "SpriteSize Y: " << SpriteSize[1] << "\n";
 
 		std::cout << "Deserializing Sprite Component! \n";

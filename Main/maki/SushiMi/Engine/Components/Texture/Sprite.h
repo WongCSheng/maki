@@ -46,6 +46,10 @@ namespace Core
 		void Remove();
 		bool isSpriteSheet;
 		float SpriteSize[2];
+
+		std::string levelname;
+		std::vector<std::string> CorrectIngredients;
+		static std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 		Transform transformation;
 
 		AnimationType curr_anim;

@@ -31,6 +31,7 @@ namespace Core
 {
 	static Core::MainSystem* CoreSystem;
 	static int width, height;
+	
 
 	std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 
@@ -39,11 +40,22 @@ namespace Core
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
 	enum class GameState {
+		TUT1 = 0,
+		TUT2,
 		LEVEL1,
+		LEVEL2,
+		LEVEL3,
+		LEVEL4,
+		LEVEL5,
+		LEVEL6,
+		LEVEL7,
+		LEVEL8,
+		LEVEL9,
+		LEVEL10,
+		LEVEL11, //maki city
 		MENU
-
 	};
-
+	static GameState level;
 
 	/*                                                             input key states
 	----------------------------------------------------------------------------- */
@@ -1312,6 +1324,7 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					level = GameState::TUT1;
 
 					if (fin)
 					{
@@ -1415,6 +1428,7 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+					level = GameState::TUT2;
 
 					if (fin)
 					{
@@ -1525,6 +1539,7 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					level = GameState::LEVEL1;
 					if (fin)
 					{
 						fin.close();
@@ -1626,6 +1641,7 @@ namespace Core
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
 
+					level = GameState::LEVEL2;
 					if (fin)
 					{
 						fin.close();
@@ -1726,7 +1742,7 @@ namespace Core
 					AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
-
+					level = GameState::LEVEL3;
 					if (fin)
 					{
 						fin.close();
@@ -1827,7 +1843,7 @@ namespace Core
 					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Forest_bgm.wav");
-
+					level = GameState::LEVEL4;
 					if (fin)
 					{
 						fin.close();
@@ -1927,7 +1943,7 @@ namespace Core
 					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Forest_bgm.wav");
-
+					level = GameState::LEVEL5;
 					if (fin)
 					{
 						fin.close();
@@ -2025,7 +2041,7 @@ namespace Core
 					AudioManager.LoadMusic("Forest_bgm.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Forest_bgm.wav");
-
+					level = GameState::LEVEL6;
 					if (fin)
 					{
 						fin.close();
@@ -2124,7 +2140,7 @@ namespace Core
 					AudioManager.LoadMusic("Fishing_Village.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Fishing_Village.wav");
-
+					level = GameState::LEVEL7;
 					if (fin)
 					{
 						fin.close();
@@ -2222,7 +2238,7 @@ namespace Core
 					AudioManager.LoadMusic("Fishing_Village.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Fishing_Village.wav");
-
+					level = GameState::LEVEL8;
 					if (fin)
 					{
 						fin.close();
@@ -2317,7 +2333,7 @@ namespace Core
 					AudioManager.LoadMusic("Fishing_Village.wav");
 					AudioManager.SetMusicVolume(0.01f);
 					AudioManager.PlayMusic("Fishing_Village.wav");
-
+					level = GameState::LEVEL9;
 					if (fin)
 					{
 						fin.close();
@@ -2772,33 +2788,86 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 				spritecomp1->draw();
 
-				std::map<std::string, gfxVector2> loadedIngredients;    // mapping of ingredients to position based on how many ingredients loaded
-				size_t numOfLoadedIngredient = CurrentIngredients.size();    // number of ingredients loaded for current level
+				std::vector<std::string> ingredientforlevel{};
+				std::map<std::string, gfxVector2>loadedIngredients;
+
+				switch (level)
+				{
+				case(GameState::TUT1):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut1");
+					break;
+
+				case(GameState::TUT2):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut2");
+					break;
+
+				case(GameState::LEVEL1):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv1");
+					break;
+
+				case(GameState::LEVEL2):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv2");
+					break;
+
+				case(GameState::LEVEL3):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv3");
+					break;
+
+				case(GameState::LEVEL4):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv4");
+					break;
+
+				case(GameState::LEVEL5):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv5");
+					break;
+
+				case(GameState::LEVEL6):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv6");
+					break;
+
+				case(GameState::LEVEL7):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv7");
+					break;
+
+				case(GameState::LEVEL8):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv8");
+					break;
+				case(GameState::LEVEL9):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv9");
+					break;
+				}
+				
+
+				size_t numOfLoadedIngredient = ingredientforlevel.size();    // number of ingredients loaded for current level
 
 				float increment = 0.f;    // increment to position each ingredient onto quest tab
 
 				//checking through all loaded ingredient for the current level
-				for (auto& ingredient : CurrentIngredients)
+				for (auto& ingredient : ingredientforlevel)
 				{
+<<<<<<< Updated upstream
 					std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
 					std::cout << "loading in " << loadedIngredient << "\n";
 
+=======
+					std::cout << "loading of this ingredient >>>>>>>>>>>>>>>>>> " << ingredient << "\n";
+>>>>>>> Stashed changes
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
 					{
 					case(1):
 						//loading 1 ingredient
-						loadedIngredients.insert({ loadedIngredient, {50.0f, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f, 140.0f} });
 						break;
 
 					case(2):
 						//loading 2 ingredients
-						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
 						break;
 
 					case(3):
 						//loading 3 ingredients
-						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
 						break;
 
 						//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//

@@ -179,6 +179,8 @@ namespace Core
 		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
 		howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
 		howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay6->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay6->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadSettings()
 	{
@@ -565,6 +567,13 @@ namespace Core
 			howtoplay_overlay5->draw();
 			break;
 		}
+		case 5:
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", howtoplay_overlay6->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			howtoplay_overlay6->draw();
+			break;
+		}
 		}
 	}
 	void SceneManager::drawSettings()
@@ -764,6 +773,7 @@ namespace Core
 		delete howtoplay_overlay3;
 		delete howtoplay_overlay4;
 		delete howtoplay_overlay5;
+		delete howtoplay_overlay6;
 	}
 
 	void SceneManager::destroySettings()

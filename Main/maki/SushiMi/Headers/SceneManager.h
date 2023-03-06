@@ -114,12 +114,20 @@ namespace Core
 
 	};
 
-	
-
-	enum class Bami //: std::uint16_t
+	struct Basket
 	{
-
+		int IC{};
+		grid_number nametag{};
+		glm::vec2 init_pos{};
+		std::pair<int, int> grid_init_pos{};
+		Sprite* spr;
+		void restart()
+		{
+			spr->transformation.Position = init_pos;
+			spr->transformation.grid_pos = grid_init_pos;
+		}
 	};
+
 	/*
 	enum class Rice
 	{
@@ -140,7 +148,7 @@ namespace Core
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static std::vector<std::pair<wall_type, Sprite*>> RetreiveTile() { return tilecontainer; };
-		static std::vector<std::pair<grid_number, Sprite*>> RetreiveIngredient() { return ingredientcontainer;};
+		static std::vector<Basket> RetreiveIngredient() { return ingredientcontainer;};
 		static void restartLevel();
 		static void nextLevel();
 
@@ -150,7 +158,6 @@ namespace Core
 		//static void loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient);
 
 		 
-		static void loadIngr_initPos(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingrposition);
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
@@ -209,11 +216,11 @@ namespace Core
 
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-		static inline std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+		static inline std::vector<Basket> ingredientcontainer;
+		static inline std::unordered_map<grid_number, int> counter;
 		//static inline std::vector<std::pair<Rice, Sprite*>> ricecontainer;
-		static inline std::vector<std::pair<grid_number, Sprite*>> in_sinkhole;
-		static inline std::vector<short> ICnum;
-		static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
+		static inline std::vector<Basket> in_sinkhole;
+		//static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 

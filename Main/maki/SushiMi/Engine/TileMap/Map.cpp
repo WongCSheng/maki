@@ -177,8 +177,16 @@ namespace Core
 					Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 
+					if (SceneManager::counter.find(grid_number::avocado) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::avocado] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::avocado]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::cucumber):
@@ -186,8 +194,16 @@ namespace Core
 					Sprite* cucumber = new Sprite("../textures/Tiles/Ingredients/Ingredients0_cucumber.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::cucumber, cucumber);
 
+					if (SceneManager::counter.find(grid_number::cucumber) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::cucumber] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::cucumber]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::corn):
@@ -195,8 +211,16 @@ namespace Core
 					Sprite* corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
 
+					if (SceneManager::counter.find(grid_number::corn) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::corn] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::corn]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 
@@ -205,8 +229,16 @@ namespace Core
 					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
 
+					if (SceneManager::counter.find(grid_number::inari) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::inari] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::inari]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::octopus):
@@ -214,8 +246,16 @@ namespace Core
 					Sprite* octopus = new Sprite("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
 
+					if (SceneManager::counter.find(grid_number::octopus) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::octopus] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::octopus]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::rice):
@@ -230,8 +270,16 @@ namespace Core
 					rice = new Sprite("../textures/Tiles/Ingredients/Ingredients0_rice.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
 
+					if (SceneManager::counter.find(grid_number::rice) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::rice] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::rice]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 
 					//old rice
@@ -250,8 +298,16 @@ namespace Core
 					Sprite* roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
 
+					if (SceneManager::counter.find(grid_number::roes) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::roes] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::roes]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//salmon
@@ -267,8 +323,17 @@ namespace Core
 					salmon->Add_animation("../textures/spritesheet/salmon_wasabi.txt");
 					salmon->Add_animation("../textures/spritesheet/salmon_both.txt");
 					salmon->curr_anim = AnimationType::Idle;
+
+					if (SceneManager::counter.find(grid_number::salmon) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::salmon] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::salmon]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tamago
@@ -277,8 +342,16 @@ namespace Core
 					Sprite* tamago = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tamago.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tamago, tamago);
 
+					if (SceneManager::counter.find(grid_number::tamago) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::tamago] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::tamago]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tofu
@@ -287,8 +360,16 @@ namespace Core
 					Sprite* tofu = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tofu.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tofu, tofu);
 
+					if (SceneManager::counter.find(grid_number::tofu) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::tofu] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::tofu]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tuna
@@ -297,8 +378,16 @@ namespace Core
 					Sprite* tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
 
+					if (SceneManager::counter.find(grid_number::tuna) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::tuna] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::tuna]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//nori
@@ -307,14 +396,21 @@ namespace Core
 					Sprite* nori = new Sprite("../textures/Tiles/Ingredients/Ingredients1_nori.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
 
+					if (SceneManager::counter.find(grid_number::nori) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::nori] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::nori]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//soya
 				case static_cast<int>(grid_number::soya):
 				{
-
 					soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
 					soya->isSpriteSheet = 1;
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
@@ -322,8 +418,17 @@ namespace Core
 					soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
 					soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
 					soya->curr_anim = AnimationType::Idle;
+
+					if (SceneManager::counter.find(grid_number::soya) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::soya] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::soya]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					
 					break;
 				}
@@ -337,8 +442,17 @@ namespace Core
 					wasabi->Add_animation("../textures/spritesheet/wasabi_Idle.txt");
 					wasabi->Add_animation("../textures/spritesheet/wasabi_Pour.txt");
 					wasabi->curr_anim = AnimationType::Idle;
+
+					if (SceneManager::counter.find(grid_number::wasabi) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::wasabi] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::wasabi]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				//tea
@@ -351,8 +465,16 @@ namespace Core
 					tea->curr_anim = AnimationType::Idle;
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tea, tea);
 
+					if (SceneManager::counter.find(grid_number::tea) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::tea] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::tea]++;
+					}
+
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					SceneManager::loadIngr_initPos(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 
@@ -521,7 +643,6 @@ namespace Core
 					break;
 
 				}
-					
 
 				case static_cast<int>(wall_type::inari_box):
 				{
@@ -543,8 +664,16 @@ namespace Core
 					Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 
-					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					if (SceneManager::counter.find(grid_number::boxcover) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::boxcover] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::boxcover]++;
+					}
 
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 
@@ -569,31 +698,54 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(grid_number::ground0):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_0.jpg");
-
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground0, tile);
 
-					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					if (SceneManager::counter.find(grid_number::ground0) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::ground0] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::ground0]++;
+					}
 
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::ground1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_1.jpg");
-
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground1, tile);
 
-					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					if (SceneManager::counter.find(grid_number::ground1) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::ground1] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::ground1]++;
+					}
 
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
 				}
 				case static_cast<int>(grid_number::ground2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Ground/RicePlain_Ground0_2.jpg");
-
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::ground2, tile);
+
+					if (SceneManager::counter.find(grid_number::ground2) == SceneManager::counter.end())
+					{
+						SceneManager::counter[grid_number::ground2] = 1;
+					}
+					else
+					{
+						SceneManager::counter[grid_number::ground2]++;
+					}
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
@@ -611,6 +763,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall0):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
@@ -620,6 +773,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall0_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
@@ -629,6 +783,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
@@ -638,6 +793,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
@@ -647,8 +803,6 @@ namespace Core
 
 					break;
 				}
-					
-
 
 				case static_cast<int>(wall_type::Wall2_1):
 				{
@@ -659,7 +813,6 @@ namespace Core
 
 					break;
 				}
-					
 
 				case static_cast<int>(wall_type::Wall2_2):
 				{
@@ -670,6 +823,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall2_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_3.png");
@@ -679,7 +833,7 @@ namespace Core
 
 					break;
 				}
-					
+
 				case static_cast<int>(wall_type::Wall3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
@@ -710,7 +864,6 @@ namespace Core
 					break;
 				}
 
-
 				case static_cast<int>(wall_type::Wall3_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
@@ -740,6 +893,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall4_2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
@@ -749,6 +903,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall4_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
@@ -758,6 +913,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall4_4):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
@@ -767,9 +923,7 @@ namespace Core
 
 					break;
 				}
-					
 
-					
 				case static_cast<int>(wall_type::Wall5):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
@@ -779,8 +933,6 @@ namespace Core
 
 					break;
 				}
-					
-					
 				//most common wall
 				case static_cast<int>(wall_type::Wall5_1):
 				{
@@ -825,6 +977,7 @@ namespace Core
 					break;
 
 				}
+
 				case static_cast<int>(wall_type::Wall6):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
@@ -834,6 +987,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall6_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_1.jpg");
@@ -887,6 +1041,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall7_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_1.jpg");
@@ -950,6 +1105,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_1):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_1.jpg");
@@ -959,6 +1115,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_2):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_2.jpg");
@@ -968,6 +1125,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_3):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_3.jpg");
@@ -977,6 +1135,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_4):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_4.jpg");
@@ -986,6 +1145,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_5):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_5.jpg");
@@ -995,6 +1155,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_6):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_6.jpg");
@@ -1004,6 +1165,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::Wall9_7):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_7.jpg");
@@ -1013,6 +1175,7 @@ namespace Core
 
 					break;
 				}
+
 				case static_cast<int>(wall_type::WaterWall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
@@ -1092,15 +1255,7 @@ break;
 
 					break;
 				}
-
-				/*case static_cast<int>(wall_type::Water):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Water, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, combine);
-					break;
-				}*/
+				
 				//	Wall3_1_Gunkan,		//p
 				case static_cast<int>(wall_type::WoodenPlatform):
 				{
@@ -1215,11 +1370,11 @@ break;
 						}
 
 						unsigned short it = 0;
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x -= tile_width;
+								ingredient.spr->transformation.Position.x -= tile_width;
 
 								SceneManager::in_sinkhole.push_back(ingredient);
 								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
@@ -1249,11 +1404,12 @@ break;
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x -= tile_width;
+								ingredient.spr->transformation.Position.x -= tile_width;
 								break;
 							}
 						}
@@ -1263,8 +1419,23 @@ break;
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (1 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
 							static_cast<int>(Window::player->playerpos.x) - 1, static_cast<int>(Window::player->playerpos.y), combine);
 							*/
-						soya->timer = 0;
-						SceneManager::activateSoya();
+
+						for (auto& ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.nametag == grid_number::soya)
+							{
+								if (ingredient.spr->transformation.grid_pos.first == Window::player->player_grid_pos.x - 2 &&
+									ingredient.spr->transformation.grid_pos.second == Window::player->player_grid_pos.y)
+								{
+									soya->timer = 0;
+									SceneManager::activateSoya();
+								}
+							}
+							else
+							{
+								continue;
+							}
+						}
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
@@ -1302,11 +1473,11 @@ break;
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x -= tile_width;
+								ingredient.spr->transformation.Position.x -= tile_width;
 								break;
 							}
 						}
@@ -1342,11 +1513,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 							gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							for (auto ingredient : SceneManager::ingredientcontainer)
+							for (auto &ingredient : SceneManager::ingredientcontainer)
 							{
-								if (ingredient.first == check)
+								if (ingredient.nametag == check)
 								{
-									ingredient.second->transformation.Position.x -= tile_width;
+									ingredient.spr->transformation.Position.x -= tile_width;
 									break;
 								}
 							}
@@ -1397,11 +1568,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x -= tile_width + 5;
+								ingredient.spr->transformation.Position.x -= tile_width + 5;
 								break;
 							}
 						}
@@ -1436,11 +1607,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x -= tile_width;
+								ingredient.spr->transformation.Position.x -= tile_width;
 								break;
 							}
 						}
@@ -1555,11 +1726,11 @@ break;
 						}
 
 						unsigned short it = 0;
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x += tile_width;
+								ingredient.spr->transformation.Position.x += tile_width;
 
 								SceneManager::in_sinkhole.push_back(ingredient);
 								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
@@ -1588,16 +1759,30 @@ break;
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x += tile_width;
+								ingredient.spr->transformation.Position.x += tile_width;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto& ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.nametag == grid_number::soya)
+							{
+								if (ingredient.spr->transformation.grid_pos.first == Window::player->player_grid_pos.x + 2 &&
+									ingredient.spr->transformation.grid_pos.second == Window::player->player_grid_pos.y)
+								{
+									soya->timer = 0;
+									SceneManager::activateSoya();
+								}
+							}
+							else
+							{
+								continue;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -1628,11 +1813,11 @@ break;
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x += tile_width;
+								ingredient.spr->transformation.Position.x += tile_width;
 								break;
 							}
 						}
@@ -1669,11 +1854,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
 							gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							for (auto ingredient : SceneManager::ingredientcontainer)
+							for (auto &ingredient : SceneManager::ingredientcontainer)
 							{
-								if (ingredient.first == check)
+								if (ingredient.nametag == check)
 								{
-									ingredient.second->transformation.Position.x += tile_width;
+									ingredient.spr->transformation.Position.x += tile_width;
 									break;
 								}
 							}
@@ -1722,11 +1907,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x += tile_width;
+								ingredient.spr->transformation.Position.x += tile_width;
 								break;
 							}
 						}
@@ -1760,11 +1945,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.x += tile_width;
+								ingredient.spr->transformation.Position.x += tile_width;
 								break;
 							}
 						}
@@ -1886,11 +2071,11 @@ break;
 						}
 
 						unsigned short it = 0;
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y += tile_height;
+								ingredient.spr->transformation.Position.y += tile_height;
 
 								SceneManager::in_sinkhole.push_back(ingredient);
 								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
@@ -1919,17 +2104,31 @@ break;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y += tile_height;
+								ingredient.spr->transformation.Position.y += tile_height;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
-
+						for (auto& ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.nametag == grid_number::soya)
+							{
+								if (ingredient.spr->transformation.grid_pos.first == Window::player->player_grid_pos.x &&
+									ingredient.spr->transformation.grid_pos.second == Window::player->player_grid_pos.y + 2)
+								{
+									soya->timer = 0;
+									SceneManager::activateSoya();
+								}
+							}
+							else
+							{
+								continue;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -1960,11 +2159,12 @@ break;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y += tile_height;
+								ingredient.spr->transformation.Position.y += tile_height;
 								break;
 							}
 						}
@@ -2001,11 +2201,12 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							for (auto ingredient : SceneManager::ingredientcontainer)
+
+							for (auto &ingredient : SceneManager::ingredientcontainer)
 							{
-								if (ingredient.first == check)
+								if (ingredient.nametag == check)
 								{
-									ingredient.second->transformation.Position.y += tile_height;
+									ingredient.spr->transformation.Position.y += tile_height;
 									break;
 								}
 							}
@@ -2054,11 +2255,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y += tile_height;
+								ingredient.spr->transformation.Position.y += tile_height;
 								break;
 							}
 						}
@@ -2097,11 +2298,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y += tile_height;
+								ingredient.spr->transformation.Position.y += tile_height;
 								break;
 							}
 						}
@@ -2215,11 +2416,11 @@ break;
 						}
 
 						unsigned short it = 0;
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 
 								SceneManager::in_sinkhole.push_back(ingredient);
 								SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + it);
@@ -2248,17 +2449,30 @@ break;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
-
+						for (auto& ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.nametag == grid_number::soya)
+							{
+								if (ingredient.spr->transformation.grid_pos.first == Window::player->player_grid_pos.x &&
+									ingredient.spr->transformation.grid_pos.second == Window::player->player_grid_pos.y - 2)
+								{
+									soya->timer = 0;
+									SceneManager::activateSoya();
+								}
+							}
+							else
+							{
+								continue;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
@@ -2289,11 +2503,11 @@ break;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 								break;
 							}
 						}
@@ -2329,11 +2543,11 @@ break;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 								break;
 							}
 						}
@@ -2382,11 +2596,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 								break;
 							}
 						}
@@ -2420,11 +2634,11 @@ break;
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
-							if (ingredient.first == check)
+							if (ingredient.nametag == check)
 							{
-								ingredient.second->transformation.Position.y -= tile_height;
+								ingredient.spr->transformation.Position.y -= tile_height;
 								break;
 							}
 						}

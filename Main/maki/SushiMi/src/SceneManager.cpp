@@ -63,8 +63,8 @@ namespace Core
 		//reset ingredient pos
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->restart();
-			ingredient.second->count = 0;
+			ingredient.restart();
+			ingredient.spr->count = 0;
 		}
 	}
 	//R key for restart
@@ -104,7 +104,14 @@ namespace Core
 		ingredient.second->count = 0;
 		ingredient.second->alpha = 1.f;
 
-		ingredientcontainer.push_back(ingredient);
+		Basket to_add;
+		to_add.IC = counter[ingredient.first];
+		to_add.nametag = ingredient.first;
+		to_add.spr = std::move(ingredient.second);
+		to_add.grid_init_pos = { posX, posY };
+		to_add.init_pos = glm::vec2{ x, y };
+
+		ingredientcontainer.push_back(to_add);
 		std::cout << std::endl;
 		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
@@ -118,17 +125,6 @@ namespace Core
 		ricecontainer.push_back(ingredient);
 	}
 	*/
-
-
-	void SceneManager::loadIngr_initPos(int x, int y, int /*posX*/, int /*posY*/, const std::pair<grid_number, Sprite*>& ingrposition)
-	{
-		ingrposition.second->transformation.grid_pos = { x, y };
-		ingrposition.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
-
-		ingrposition.second->transformation.grid_pos = { x, y };
-
-		ingredient_starting_pos.insert(ingrposition);
-	}
 
 	/*void SceneManager::loadIngr2(int x, int y)
 	{
@@ -325,7 +321,7 @@ namespace Core
 	{
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += ((Get_Delta()));
+			ingredient.spr->timer += ((Get_Delta()));
 
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -359,16 +355,17 @@ namespace Core
 					}
 					*/
 
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
 
-			if (ingredient.second->isSpriteSheet)
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr->alpha);
+			if (ingredient.spr->isSpriteSheet)
 			{
-				ingredient.second->draw((Get_Delta()), ingredient.second->curr_anim);
+				ingredient.spr->draw((Get_Delta()), ingredient.spr->curr_anim);
 			}
 			else
 			{
-				ingredient.second->draw();
+				ingredient.spr->draw();
 			}
 
 		}
@@ -471,16 +468,16 @@ namespace Core
 	{
 		for (auto& sink : in_sinkhole)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.second->transformation.Get());
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
-			if (sink.second->isSpriteSheet)
+			if (sink.spr->isSpriteSheet)
 			{
-				sink.second->draw((Get_Delta()), sink.second->curr_anim);
+				sink.spr->draw((Get_Delta()), sink.spr->curr_anim);
 			}
 			else
 			{
-				sink.second->draw();
+				sink.spr->draw();
 			}
 
 		}
@@ -681,7 +678,7 @@ namespace Core
 	{
 		if (tilecontainer.size() != 0)
 		{
-			for (auto it : tilecontainer)
+			for (auto &it : tilecontainer)
 			{
 				delete it.second;
 			}
@@ -693,9 +690,9 @@ namespace Core
 	{
 		if (ingredientcontainer.size() != 0)
 		{
-			for (auto it : ingredientcontainer)
+			for (auto &it : ingredientcontainer)
 			{
-				delete it.second;
+				delete it.spr;
 			}
 		}
 		/*
@@ -715,9 +712,9 @@ namespace Core
 	{
 		if (in_sinkhole.size() != 0)
 		{
-			for (auto it : in_sinkhole)
+			for (auto &it : in_sinkhole)
 			{
-				delete it.second;
+				delete it.spr;
 			}
 		}
 

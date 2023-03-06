@@ -218,14 +218,14 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Quests/denied.json", CoreSystem->objfactory);
 
-	/*Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv2/QuestLv2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv3/QuestLv3.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv4/QuestLv4.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv5/QuestLv5.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);*/
+	Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);
 
 
 	////loading image&button paths

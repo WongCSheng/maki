@@ -23,6 +23,7 @@ chosen game object.
 namespace Core
 {
 	ObjectFactory* MainSystem::objfactory;
+	std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 
 	std::string ReadFileContents(const char* filepath)
 	{
@@ -160,9 +161,9 @@ namespace Core
 					object->alpha = alpha;
 				}
 
-
-
+				
 				object->Deserialize(compJsonObj);
+
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
 				//delete spriteComp;
 			}

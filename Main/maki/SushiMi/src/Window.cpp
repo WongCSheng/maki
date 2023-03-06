@@ -124,7 +124,6 @@ namespace Core
 			keystate_R = (key == GLFW_KEY_R) ? true : false;
 			keystate_M = (key == GLFW_KEY_M) ? true : false;
 			keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
-			keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
 
 		}
@@ -410,6 +409,7 @@ namespace Core
 			{
 				show_fps = false;
 			}
+			keystate_fps = false;
 		}
 
 		if (keystate_M)

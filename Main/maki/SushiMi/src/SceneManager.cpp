@@ -323,6 +323,55 @@ namespace Core
 
 	void SceneManager::drawIngr()
 	{
+		for (auto& ingredient : ingredientcontainer)
+		{
+			ingredient.second->timer += ((Get_Delta()));
+
+			/*
+					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
+					{
+						if (Map::salmon->status == 1)
+						{
+							ingredient.second->curr_anim = AnimationType::Idle;
+							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+							ingredient.second->alpha = 0.5f;
+						}
+					}
+					if (Map::wasabi->timer >2.f && ingredient.first == grid_number::wasabi)
+					{
+
+						if (Map::salmon->status == 2)
+						{
+							ingredient.second->curr_anim = AnimationType::Idle;
+							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+							ingredient.second->alpha = 0.5f;
+						}
+					}
+					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::tea)
+					{
+
+						if (Map::salmon->status == 4)
+						{
+							ingredient.second->curr_anim = AnimationType::Idle;
+							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
+							ingredient.second->alpha = 0.5f;
+						}
+					}
+					*/
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
+			if (ingredient.second->isSpriteSheet)
+			{
+				ingredient.second->draw((Get_Delta()), ingredient.second->curr_anim);
+			}
+			else
+			{
+				ingredient.second->draw();
+			}
+
+		}
+
 		if (Map::salmon != nullptr)
 		{
 			if (Map::wasabi != nullptr)
@@ -363,56 +412,6 @@ namespace Core
 					}
 				}
 			}
-		}
-		for (auto& ingredient : ingredientcontainer)
-		{
-			ingredient.second->timer += ((Get_Delta()));
-
-			/*
-					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
-					{
-						if (Map::salmon->status == 1)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					if (Map::wasabi->timer >2.f && ingredient.first == grid_number::wasabi)
-					{
-
-						if (Map::salmon->status == 2)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::tea)
-					{
-
-						if (Map::salmon->status == 4)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					*/
-
-
-
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.second->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.second->alpha);
-			if (ingredient.second->isSpriteSheet)
-			{
-				ingredient.second->draw((Get_Delta()), ingredient.second->curr_anim);
-			}
-			else
-			{
-				ingredient.second->draw();
-			}
-
 		}
 
 

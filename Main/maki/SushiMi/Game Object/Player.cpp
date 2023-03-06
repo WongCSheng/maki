@@ -22,18 +22,7 @@ float Core::Map::tile_height = 0;
 namespace Core
 {
 
-	Player::Player()
-	{
 
-		sp = new Sprite("../textures/spritesheet/spritesheet.png");
-		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
-		sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
-
-		sp->Add_animation("../textures/spritesheet/Idle.txt");
-		sp->Add_animation("../textures/spritesheet/Run.txt");
-
-		current_anim = AnimationType::Idle;
-	}
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
 		sp = new Sprite(spriteFilepath);

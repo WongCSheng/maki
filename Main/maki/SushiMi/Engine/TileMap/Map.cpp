@@ -1078,9 +1078,9 @@ namespace Core
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_Gunkan, tile);
 
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
-					break;
+break;
 				}
 				//	Wall3_1_Gunkan,		//p
 				case static_cast<int>(wall_type::Wall3_1_Gunkan):
@@ -1092,7 +1092,7 @@ namespace Core
 
 					break;
 				}
-				
+
 				/*case static_cast<int>(wall_type::Water):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
@@ -1165,15 +1165,12 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan)) &&
+		if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole_gunkan)) &&
 			!isWin())
 		{
 			return true;
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 
 	void Map::collision_check_left()
@@ -1473,6 +1470,8 @@ namespace Core
 
 				std::cout << "left sinkhole\n";
 				Window::player->move_left();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2 (90, 90);
 			}
 			else
 			{
@@ -1795,6 +1794,8 @@ namespace Core
 
 				std::cout << "right sinkhole\n";
 				Window::player->move_right();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(90, 90);
 			}
 			//Just move
 			else
@@ -2130,6 +2131,8 @@ namespace Core
 
 				std::cout << "down sinkhole\n";
 				Window::player->move_down();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(90, 90);
 			}
 			//Just move
 			else
@@ -2451,6 +2454,8 @@ namespace Core
 
 				std::cout << "up sinkhole\n";
 				Window::player->move_up();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(90, 90);
 			}
 			//Just move
 			else

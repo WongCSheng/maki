@@ -1297,6 +1297,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1367,9 +1368,10 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				/*Fade in function, comes together*/
+				/*Fade In Effect*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
+				Window::player->current_anim = AnimationType::Run;
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 				//stop all player controls
@@ -1398,6 +1400,7 @@ namespace Core
 				//}
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1447,7 +1450,6 @@ namespace Core
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 				if (gameIsPaused == false)
 				{
@@ -1476,6 +1478,7 @@ namespace Core
 				/*Fade In Effect*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
+				Window::player->current_anim = AnimationType::Run;
 				SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.2), static_cast<int>(screenheight * 0.25));
 				SceneManager::drawWinOverlay();
 
@@ -1505,6 +1508,7 @@ namespace Core
 
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1556,7 +1560,6 @@ namespace Core
 
 				//draw playerpos at lvl 1
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
-
 				//std::cout << "goals no " << Window::numQuests << std::endl;
 
 				if (gameIsPaused == false)
@@ -1573,6 +1576,7 @@ namespace Core
 				{
 					//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -1605,6 +1609,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1674,7 +1679,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
-
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -1705,6 +1710,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1774,6 +1780,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -1805,6 +1812,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1870,6 +1878,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -1902,6 +1911,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -1968,6 +1978,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -1998,6 +2009,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -2064,6 +2076,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 
@@ -2095,6 +2108,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -2161,6 +2175,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 			if (isWinCondition == true && isLevel7 == true)
@@ -2191,6 +2206,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -2255,6 +2271,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 			if (isWinCondition == true && isLevel8 == true)
@@ -2285,6 +2302,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -2349,6 +2367,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 			if (isWinCondition == true && isLevel9 == true)
@@ -2379,6 +2398,7 @@ namespace Core
 			{
 				if (!loaded)
 				{
+					Window::player->current_anim = AnimationType::Idle;
 					if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 					{
 						Map::ResetMap();
@@ -2443,6 +2463,7 @@ namespace Core
 				if (Map::isWin())
 				{
 					isWinCondition = true;
+					Window::player->current_anim = AnimationType::Run;
 				}
 			}
 			if (isWinCondition == true && isTestLevel == true)

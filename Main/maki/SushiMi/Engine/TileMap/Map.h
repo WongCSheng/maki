@@ -37,7 +37,6 @@ namespace Core
 		static bool isStuck();
 		static bool isWin();
 		
-		static void fadeToBlack();
 		static std::string EnumToString(grid_number ingredient);
 
 		//static inline Core::grid_number box_stepped_on;

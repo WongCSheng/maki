@@ -301,7 +301,7 @@ namespace Core
 	{
 		SceneManager::loadRect(0, 0);
 
-		currentAlpha = std::lerp(currentAlpha, targetAlpha, (Get_Delta()) * 10);
+		currentAlpha = std::lerp(currentAlpha, targetAlpha, (Get_Delta()));
 		SceneManager::drawRect(currentAlpha);
 		//std::cout << "Alpha: " << currentAlpha << std::endl;
 	}
@@ -333,7 +333,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::wasabi->alpha -= ((Get_Delta()) * 10);
+						Map::wasabi->alpha -= ((Get_Delta()));
 					}
 				}
 			}
@@ -346,7 +346,7 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::tea->alpha -= ((Get_Delta()) * 10);
+						Map::tea->alpha -= ((Get_Delta()));
 					}
 				}
 			}
@@ -359,14 +359,14 @@ namespace Core
 					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
 					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
 					{
-						Map::soya->alpha -= ((Get_Delta()) * 10);
+						Map::soya->alpha -= ((Get_Delta()));
 					}
 				}
 			}
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.second->timer += ((Get_Delta()) * 10);
+			ingredient.second->timer += ((Get_Delta()));
 
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)

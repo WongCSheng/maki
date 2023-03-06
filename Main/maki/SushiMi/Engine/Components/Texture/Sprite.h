@@ -101,6 +101,8 @@ namespace Core
 		float timer;
 		int count;
 		float alpha;
+		bool animeMe;
+
 		/*for salmon to toggle between the sprites
 		status 0 = normal
 		status 1 = soya

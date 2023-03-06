@@ -1,112 +1,35 @@
-﻿  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Debug.cpp
-  LevelEditor.cpp
-  Animation2D.cpp
-  AudioEngine.cpp
-  Camera2D.cpp
-  Component.cpp
-  collision.cpp
-  Physics.cpp
-  Rectangle.cpp
-  Sprite.cpp
-  Texture.cpp
-  Transform.cpp
-  Core.cpp
-  Cutscene.cpp
-  Factory.cpp
-  Font.cpp
-  Input.cpp
-  model.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(100,80): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(107,78): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(121,86): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(145,93): warning C4458: declaration of 'ObjectContainer' hides class member
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Factory\Factory.h(29,70): message : see declaration of 'Core::ObjectFactory::ObjectContainer' (compiling source file Engine\Factory\Factory.cpp)
-  Messaging.cpp
-  JSONSerializer.cpp
-  ShaderLibrary.cpp
-  ShaderProgram.cpp
-  CameraSystem.cpp
-  glhelper.cpp
-  glslshader.cpp
-  LinkedList.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Font\Font.cpp(87,33): warning C4838: conversion from 'FT_Pos' to 'unsigned int' requires a narrowing conversion
-  PhysicSystem.cpp
-  Renderer.cpp
-  SystemFrame.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Mesh\model.cpp(68,14): warning C4458: declaration of 'vaoid' hides class member
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Mesh\model.h(12,9): message : see declaration of 'Model::vaoid' (compiling source file Engine\Mesh\model.cpp)
-  TextureSystem.cpp
-  Transformer.cpp
-  Map.cpp
-  Timer.cpp
-  GameObject.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(387,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(388,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\TextureSystem.cpp(57,42): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Renderer.cpp(97,37): warning C4100: 'dt': unreferenced formal parameter
-  Player.cpp
-  Log.cpp
-  main.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(36,40): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(61,52): warning C4100: 'trans': unreferenced formal parameter
-  Matrix.cpp
-  SceneManager.cpp
-  Window.cpp
-  User.cpp
-  GameWindow.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Engine\Timer\Timer.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Engine\Timer\Timer.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\Log.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Log.cpp : message : see previous definition of 'DEBUG'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2835,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2835,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2833): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\main.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(89,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(89,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(115,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(115,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(115,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(234,21): warning C4459: declaration of 'width' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(234,32): warning C4459: declaration of 'height' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(965,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+﻿  Window.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(101,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(101,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(246,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(246,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(978,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(966,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(979,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1121,12): warning C4459: declaration of 'width' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1121,20): warning C4459: declaration of 'height' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2512,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2530,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2558,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2578,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2599,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2626,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2646,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(2667,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
-  SushiMi.vcxproj -> C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\x64\Debug\SushiMi.exe
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1134,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1134,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2529,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2547,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2575,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2595,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2616,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2643,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2663,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2684,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

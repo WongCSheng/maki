@@ -314,6 +314,7 @@ namespace Core
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
 		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
+		SceneManager::howtoplay_overlay6 = new Sprite("../textures/How To Play/HowToPlayBox_6.png");
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -1044,7 +1045,7 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_right = true;
 			keystate_D = true;
@@ -1058,7 +1059,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_left = true;
 			keystate_A = true;
@@ -1074,7 +1075,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_up = true;
 			keystate_W = true;
@@ -1091,7 +1092,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -2928,57 +2929,36 @@ namespace Core
 			{
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
+				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isTestLevel = false;
 
 				SceneManager::loadHowToOverlay(0, 0);
 				SceneManager::drawHowToOverlay();
-				if (mouseLeft && isMenuState == false)
+				
+				if (keystate_escape)
 				{
-					double xpos = 0, ypos = 0;
-					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-					//NEXT PAGE
-					std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-
-					if (HowToPlayPage < 4)
+					isMenuState = true;
+					HowToPlayPage = 0;
+					isHowToPlay = false;
+					keystate_escape = false;
+				}
+				else if (keystate_right)
+				{
+					if (HowToPlayPage < 5)
 					{
-						if (xpos > 1595 && xpos < 1681 && ypos > 811 && ypos < 889)
-						{
-
-							HowToPlayPage++;
-
-							//std::cout << "next page" << std::endl;
-							mouseLeft = false;
-						}
+						HowToPlayPage++;
+						keystate_right = false;
+					
 					}
+				}
+				else if (keystate_left)
+				{
 					//PREV PAGE 
 					if (HowToPlayPage > 0)
 					{
-						if (xpos > 1474 && xpos < 1560 && ypos > 812 && ypos < 888)
-						{
-
-							HowToPlayPage--;
-
-							//std::cout << "previous page" << std::endl;
-							mouseLeft = false;
-						}
+						HowToPlayPage--;
+						keystate_left = false;
 					}
-
-
-					//BACK
-
-					if (xpos > 223 && xpos < 485 && ypos > 799 && ypos < 890)
-					{
-
-						isMenuState = true;
-						HowToPlayPage = 0;
-						isHowToPlay = false;
-
-						//std::cout << "return to main menu" << std::endl;
-
-					}
-
-
 				}
-
 			}
 
 			if (isSettings == true)

@@ -235,6 +235,7 @@ namespace Core
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
 		static inline Sprite* howtoplay_overlay5;
+		static inline Sprite* howtoplay_overlay6;
 
 		static inline Sprite* frame1;
 		static inline Sprite* frame2;

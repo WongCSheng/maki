@@ -83,6 +83,8 @@ namespace Core
 	std::string realstring = "";
 	std::ifstream fin;
 
+	float volume{ 1.f };
+
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
 		switch (button)
@@ -182,8 +184,8 @@ namespace Core
 			for (auto& ingredient : SceneManager::ingredientcontainer)
 			{
 				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient.spr.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient.spr.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
+				int ingredientRow = static_cast<int>(ingredient.spr->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
+				int ingredientCol = static_cast<int>(ingredient.spr->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
 				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
 
 				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
@@ -194,7 +196,7 @@ namespace Core
 				if (ingredientCoordinates == boxCoordinates)
 				{
 					//ingredient row and col matches box row and col
-					std::pair<grid_number, wall_type> checkCondition(ingredient.spr.first, box.first);
+					std::pair<grid_number, wall_type> checkCondition(ingredient.nametag, box.first);
 					for (auto& y : levelWinConditions)//suggest to change to map
 					{
 						//check whether is correct ingredient to box
@@ -2745,7 +2747,7 @@ namespace Core
 				//checking through all loaded ingredient for the current level
 				for (auto& ingredient : CurrentIngredients)
 				{
-					std::string loadedIngredient = Map::EnumToString(ingredient.spr.first);    // convert enum to string
+					std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
 					//std::cout << "loading in " << loadedIngredient << "\n";
 
 					// determine each ingredient location based on number of ingredient loaded

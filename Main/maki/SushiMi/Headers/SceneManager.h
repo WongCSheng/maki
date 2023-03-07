@@ -146,13 +146,15 @@ namespace Core
 
 	struct Basket
 	{
+		int IC;
+		grid_number nametag;
 		glm::vec2 init_Pos;
 		std::pair<int, int> init_Grid_Pos;
-		std::pair<grid_number, Sprite*> spr;
+		Sprite* spr;
 		void Restart()
 		{
-			spr.second->transformation.Position = init_Pos;
-			spr.second->transformation.grid_pos = init_Grid_Pos;
+			spr->transformation.Position = init_Pos;
+			spr->transformation.grid_pos = init_Grid_Pos;
 		}
 	};
 	
@@ -174,8 +176,6 @@ namespace Core
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
-		//static void loadAnim(const std::pair<animated, Sprite*>& animate);
-		//static void loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient);
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
@@ -188,7 +188,6 @@ namespace Core
 		static void drawTile();
 		static void drawBox();
 		static void drawIngr();
-		//static void drawRice();
 		static bool activateSoya();
 		static bool activateWasabi();
 		static bool activateTea();
@@ -235,8 +234,8 @@ namespace Core
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<Basket> ingredientcontainer;
+		static inline std::unordered_map<grid_number, int> counter;
 		static inline std::vector<std::pair<animated, Sprite*>> animatedcontainer;
-		//static inline std::vector<std::pair<Rice, Sprite*>> ricecontainer;
 		static inline std::vector<Basket> in_sinkhole;
 		static inline std::vector<short> ICnum;
 		static inline std::vector<std::pair<int, int>> win_condition;

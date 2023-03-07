@@ -95,10 +95,15 @@ namespace Core
 
 	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingredient)
 	{
-		/*
-		int width, height;
-		glfwGetWindowSize(Window::window_ptr, &width, &height);
-		*/
+		if (counter.find(ingredient.first) == counter.end())
+		{
+			counter[ingredient.first] = 1;
+		}
+		else
+		{
+			counter[ingredient.first]++;
+		}
+
 		ingredient.second->transformation.Position = glm::vec2(x, y);
 		ingredient.second->transformation.Scale = glm::vec2(getTileWidth(), getTileHeight());
 
@@ -110,8 +115,10 @@ namespace Core
 
 		Basket input;
 
+		input.IC = counter[ingredient.first];
+		input.nametag = ingredient.first;
 		input.init_Pos = glm::vec2(x, y);
-		input.spr = ingredient;
+		input.spr = ingredient.second;
 		input.init_Grid_Pos = { posX, posY };
 
 		ingredientcontainer.push_back(input);
@@ -369,7 +376,7 @@ namespace Core
 		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.spr.second->timer += (Get_Delta());
+			ingredient.spr->timer += (Get_Delta());
 			
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
@@ -405,15 +412,15 @@ namespace Core
 
 
 					
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr.second->transformation.Get());
-				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr.second->alpha);
-				if (ingredient.spr.second->isSpriteSheet)
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr->transformation.Get());
+				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr->alpha);
+				if (ingredient.spr->isSpriteSheet)
 				{
-					ingredient.spr.second->draw(Get_Delta(), ingredient.spr.second->curr_anim);
+					ingredient.spr->draw(Get_Delta(), ingredient.spr->curr_anim);
 				}
 				else
 				{
-					ingredient.spr.second->draw();
+					ingredient.spr->draw();
 				}
 
 		}
@@ -474,16 +481,16 @@ namespace Core
 	{
 		for (auto& sink : in_sinkhole)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr.second->transformation.Get());
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
-			if (sink.spr.second->isSpriteSheet)
+			if (sink.spr->isSpriteSheet)
 			{
-				sink.spr.second->draw(Get_Delta(), sink.spr.second->curr_anim);
+				sink.spr->draw(Get_Delta(), sink.spr->curr_anim);
 			}
 			else
 			{
-				sink.spr.second->draw();
+				sink.spr->draw();
 			}
 
 		}
@@ -695,20 +702,10 @@ namespace Core
 		{
 			for (auto &it : ingredientcontainer)
 			{
-				delete it.spr.second;
+				delete it.spr;
 			}
 		}
 
-		/*
-		if (ricecontainer.size() != 0)
-		{
-			for (auto it : ricecontainer)
-			{
-				delete it.second;
-			}
-		}
-		ricecontainer.clear();
-		*/
 		ingredientcontainer.clear();
 	}
 	
@@ -718,7 +715,7 @@ namespace Core
 		{
 			for (auto &it : in_sinkhole)
 			{
-				delete it.spr.second;
+				delete it.spr;
 			}
 		}
 

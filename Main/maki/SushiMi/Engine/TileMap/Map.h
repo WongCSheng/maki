@@ -21,6 +21,8 @@ namespace Core
 		static void ResetMap();
 		static void RestartMap();
 		static int LoadMap();
+		static void LoadWMap();
+		static void LoadGMap();
 		static void DrawMap();
 		static int GetValue(int col_x, int row_y);
 		static void SetValue(int col_x, int row_y, int value);

@@ -1,4 +1,35 @@
-﻿  main.cpp
-C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition
-C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
-  SushiMi.vcxproj -> C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  Window.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\theas\Documents\GitHub\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(101,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(101,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(127,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(246,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(246,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(979,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(980,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1135,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(1135,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2533,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2551,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2579,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2599,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2620,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2647,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2667,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(2688,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

@@ -429,6 +429,7 @@ namespace Core
 		{
 			isMenuState = true;
 			isQuestTab = false;
+			isHowToPlay = false;
 			isLevelSelection = false;
 			gameIsPaused = false;
 			keystate_M = false;
@@ -889,10 +890,10 @@ namespace Core
 				keystate_escape = false;
 			} */
 		}
-		//game is paused
-		if (gameIsPaused == false)
+		//if game is NOT paused
+		if (gameIsPaused == false && isHowToPlay == false)
 		{
-			keystate_escape = true;
+			/*keystate_escape = true;*/
 			if (keystate_escape)
 			{
 				gameIsPaused = false;
@@ -2723,7 +2724,7 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
-				std::cout << "Drawing of Menu\n";
+				//std::cout << "Drawing of Menu\n";
 				AudioManager.SetMusicVolume(0.4f);
 
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
@@ -2934,6 +2935,7 @@ namespace Core
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
 				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isTestLevel = false;
+				isQuestTab = false;
 
 				SceneManager::loadHowToOverlay(0, 0);
 				SceneManager::drawHowToOverlay();

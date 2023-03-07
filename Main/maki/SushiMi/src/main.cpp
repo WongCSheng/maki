@@ -277,6 +277,7 @@ void Core::pseudomain::init() {
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
+	AudioManager.LoadSFX("Closing container.wav");
 	//play bgm
 	AudioManager.PlayMusic("BGM.wav");
 

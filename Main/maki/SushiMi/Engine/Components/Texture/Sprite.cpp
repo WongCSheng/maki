@@ -16,6 +16,8 @@ email:		fei.x@digipen.edu
 
 namespace Core
 {
+	std::map<std::string, std::vector<std::string>> Sprite::levelCorrectIngredients;
+
 	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}
 	{
 		//mem leak here?
@@ -61,7 +63,7 @@ namespace Core
 
 		if (anims[static_cast<int>(type)])
 		{
-			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime * 10);
+			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime);
 		}
 
 		glBindTexture(GL_TEXTURE_2D, texture.TextureID);
@@ -90,6 +92,9 @@ namespace Core
 	void Sprite::Deserialize(const rapidjson::Value& jsonObj)
 	{
 		//checking file exist/no
+		if (jsonObj.HasMember("name"))
+			levelname = jsonObj["name"].GetString();
+
 		if (!jsonObj.HasMember("SpriteSheet"))
 		{
 			std::cout << "Component of type SpriteSheet cannot be read" << std::endl;
@@ -114,6 +119,22 @@ namespace Core
 			else
 				SpriteSize[i] = value; 
 		}
+
+		if (jsonObj.HasMember("CorrectIngredient"))
+		{
+			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
+			for (int i{}; i < SpriteArr2.Size(); ++i)
+			{
+				const rapidjson::Value& ingredient = SpriteArr2[i];
+				
+				if (std::find(CorrectIngredients.begin(), CorrectIngredients.end(), ingredient.GetString()) != CorrectIngredients.end())
+					continue;
+				else
+					CorrectIngredients.push_back(ingredient.GetString());
+			}
+		}
+		levelCorrectIngredients.insert({levelname, CorrectIngredients});
+
 		std::cout << "SpriteSize X: " << SpriteSize[0] << "        " << "SpriteSize Y: " << SpriteSize[1] << "\n";
 
 		std::cout << "Deserializing Sprite Component! \n";
@@ -124,7 +145,10 @@ namespace Core
 	{
 		/*for (auto& ingredient : SceneManager::ingredientcontainer)
 		{
-			ingredient.spr.second->transformation.Position = SceneManager::ingredient_starting_pos[ingredient.first]
+			for (auto& start : SceneManager::ingredient_starting_pos)
+			{
+				ingredient.second->transformation.Position = start.second->transformation.Position;
+			}
 		}*/
 		
 		/**************

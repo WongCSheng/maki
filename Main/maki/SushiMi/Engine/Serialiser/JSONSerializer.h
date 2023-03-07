@@ -35,6 +35,7 @@ namespace Core
 	void Serialize(const Player& player, std::string const& filepath);
 	static inline std::string LevelSavePath;
 	static inline std::string* LevelSavePathPtr = &LevelSavePath;
+	
 	static Transform* transComp;
 }
 

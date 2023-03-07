@@ -22,7 +22,18 @@ float Core::Map::tile_height = 0;
 namespace Core
 {
 
+	Player::Player()
+	{
 
+		sp = new Sprite("../textures/spritesheet/spritesheet.png");
+		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
+		sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
+
+		sp->Add_animation("../textures/spritesheet/Idle.txt");
+		sp->Add_animation("../textures/spritesheet/Run.txt");
+
+		current_anim = AnimationType::Idle;
+	}
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
 		sp = new Sprite(spriteFilepath);
@@ -148,6 +159,13 @@ namespace Core
 
 	void Player::restart()
 	{
+		player_grid_pos.x = player_initial_grid_pos.x;
+		player_grid_pos.y = player_initial_grid_pos.y;
+		playerpos.x = playerpos_restart.x;
+		playerpos.y = playerpos_restart.y;
+		sp->transformation.Position.x = playerpos_restart.x;
+		sp->transformation.Position.y = playerpos_restart.y;
+		
 		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
 
 		SceneManager::destroyTile();
@@ -187,10 +205,7 @@ namespace Core
 		//sp->transformation.Position.y = playerpos_restart.y;
 		//Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 		//Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
-
 		}
-
-
 	}
 
 	void Player::stop()

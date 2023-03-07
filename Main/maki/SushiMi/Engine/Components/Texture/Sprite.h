@@ -46,10 +46,6 @@ namespace Core
 		void Remove();
 		bool isSpriteSheet;
 		float SpriteSize[2];
-
-		std::string levelname;
-		std::vector<std::string> CorrectIngredients;
-		static std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 		Transform transformation;
 
 		AnimationType curr_anim;
@@ -101,13 +97,16 @@ namespace Core
 		float timer;
 		int count;
 		float alpha;
-		bool animeMe;
-
 		/*for salmon to toggle between the sprites
 		status 0 = normal
 		status 1 = soya
 		status 2 = wasabi
 		status 3 = both
+		status 4 = soya clense
+		status 5 = wasabi clense
+		status 6 = soya clense go to wasabi
+		status 7 = wasabi clense go to soya
+		status 8 = cleanse all
 		*/
 		int status;
 

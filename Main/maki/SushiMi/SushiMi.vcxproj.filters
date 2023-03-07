@@ -148,6 +148,48 @@
     <ClCompile Include="Engine\Font\Font.cpp">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
+    <ClCompile Include="Level State\Level1.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level2.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level3.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level4.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level5.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level6.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level7.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level8.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level9.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level10.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level11.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\TestLevel.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Tutorial1.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Tutorial2.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -337,6 +379,9 @@
     <ClInclude Include="Engine\Font\Font.h">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClInclude>
+    <ClInclude Include="Level State\LevelsHeader.h">
+      <Filter>Level State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -464,6 +509,9 @@
     </Filter>
     <Filter Include="Cutscene">
       <UniqueIdentifier>{dac5785e-a57e-4e03-a956-d7d8bc294bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level State">
+      <UniqueIdentifier>{30489099-e3f1-47cf-be59-70234cee0a85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

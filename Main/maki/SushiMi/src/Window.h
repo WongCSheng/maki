@@ -46,7 +46,39 @@ namespace Core
 
 		void Mainloop();
 
-
+		/*                                                             input key states
+		----------------------------------------------------------------------------- */
+		static inline bool keystate_left;
+		static inline bool keystate_right;
+		static inline bool keystate_up;
+		static inline bool keystate_down;
+		static inline bool keystate_R;
+		static inline bool keystate_M;
+		static inline bool keystate_tab;
+		static inline bool keystate_space;
+		static inline bool keystate_1;
+		static inline bool keystate_2;
+		static inline bool keystate_3;
+		static inline bool keystate_4;
+		static inline bool keystate_5;
+		static inline bool keystate_6;
+		static inline bool keystate_7;
+		static inline bool keystate_8;
+		static inline bool keystate_9;
+		static inline bool keystate_0;
+		static inline bool keystate_J;
+		static inline bool keystate_K;
+		static inline bool keystate_L;
+		static inline bool keystate_T;
+		static inline bool keystate_escape;
+		static inline bool place_obj;
+		static inline bool keystate_W;
+		static inline bool keystate_A;
+		static inline bool keystate_S;
+		static inline bool keystate_D;
+		static inline bool mouseLeft;
+		static inline int curr_len = 0;
+		static inline std::string realstring = "";
 
 		static inline bool gameIsPaused;
 		bool isMenuState;
@@ -79,8 +111,8 @@ namespace Core
 			L9	//10
 		};
 
-		bool isQuestTab;
-		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
+		static inline bool isQuestTab;
+		static inline bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;
 		static inline int numQuests;
 

@@ -22,10 +22,6 @@ namespace Core
 
 		static Window* GetInstance(int width, int height)
 		{
-			/*static Window* instance = new Window(width, height); //MEM LEAK!
-			return instance;*/
-			
-			//DO THIS INSTEAD
 			static Window instance(width,height);
 			return &instance;
 		}
@@ -76,6 +72,7 @@ namespace Core
 		static inline bool keystate_A;
 		static inline bool keystate_S;
 		static inline bool keystate_D;
+		static inline bool keystate_fps;
 		static inline bool mouseLeft;
 		static inline int curr_len = 0;
 		static inline std::string realstring = "";
@@ -96,6 +93,7 @@ namespace Core
 
 		static inline bool isDialogue;
 		static inline int dialogue_style;
+		static inline bool show_fps;
 		enum class dialogue
 		{
 			T1 = 0,

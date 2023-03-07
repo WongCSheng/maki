@@ -40,10 +40,22 @@ namespace Core
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
 	enum class GameState {
+		TUT1 = 0,
+		TUT2,
 		LEVEL1,
+		LEVEL2,
+		LEVEL3,
+		LEVEL4,
+		LEVEL5,
+		LEVEL6,
+		LEVEL7,
+		LEVEL8,
+		LEVEL9,
+		LEVEL10,
+		LEVEL11, //maki city
 		MENU
-
 	};
+	static GameState level;
 
 	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
 	{
@@ -83,8 +95,6 @@ namespace Core
 			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
 			Window::keystate_M = (key == GLFW_KEY_M) ? true : false;
 			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
-
-
 		}
 		else if (GLFW_RELEASE == action)
 		{
@@ -97,6 +107,7 @@ namespace Core
 			Window::keystate_escape = false;
 			Window::keystate_tab = false;
 			Window::keystate_space = false;
+			Window::keystate_fps = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -111,7 +122,7 @@ namespace Core
 			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 			Window::keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
-
+			Window::keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
 			Window::keystate_J = (key == GLFW_KEY_J) ? true : false;
 			Window::keystate_K = (key == GLFW_KEY_K) ? true : false;
@@ -232,6 +243,10 @@ namespace Core
 
 		Core::LevelLoadPath = "../Data/generated.json"; //initialise Bami position
 
+		starttime = 0;
+		endtime = 0;
+
+		delta = 0;
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
 
@@ -248,13 +263,12 @@ namespace Core
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
 
-		//SceneManager::loadHowToOverlay(0, 0);
-
-		/*SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
+		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
 		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
 		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
 		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
-		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");*/
+		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
+		SceneManager::howtoplay_overlay6 = new Sprite("../textures/How To Play/HowToPlayBox_6.png");
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -352,10 +366,24 @@ namespace Core
 	{
 #ifndef EDITOR
 
+		if (keystate_fps)
+		{
+			if (show_fps == false)
+			{
+				show_fps = true;
+			}
+			else if (show_fps == true)
+			{
+				show_fps = false;
+			}
+			keystate_fps = false;
+		}
+
 		if (keystate_M)
 		{
 			isMenuState = true;
 			isQuestTab = false;
+			isHowToPlay = false;
 			isLevelSelection = false;
 			gameIsPaused = false;
 			keystate_M = false;
@@ -804,22 +832,10 @@ namespace Core
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
-			/*if (keystate_escape && (isLevel1 || isLevel2))
-			{
-				gameIsPaused = true;
-				//std::cout << "game paused, pause screen showing" << std::endl;
-				keystate_escape = false;
-			}
-			else if (!keystate_escape && (isLevel1 || isLevel2) )
-			{
-				gameIsPaused = false;
-				keystate_escape = false;
-			} */
 		}
-		//game is paused
-		if (gameIsPaused == false)
+		//if game is NOT paused
+		if (gameIsPaused == false && isHowToPlay == false)
 		{
-			keystate_escape = true;
 			if (keystate_escape)
 			{
 				gameIsPaused = false;
@@ -975,7 +991,7 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_right = true;
 			keystate_D = true;
@@ -989,7 +1005,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_left = true;
 			keystate_A = true;
@@ -1005,7 +1021,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_up = true;
 			keystate_W = true;
@@ -1022,7 +1038,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false)
+		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
 			keystate_down = true;
 			keystate_S = true;
@@ -1075,12 +1091,13 @@ namespace Core
 
 	void Window::Mainloop()
 	{
+		starttime = glfwGetTime();
+
 		while (!glfwWindowShouldClose(window_ptr))
 		{
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
-			starttime = glfwGetTime();
 			pseudomain::update();
 			AudioManager.Update();
 			//for each frame 
@@ -1123,7 +1140,7 @@ namespace Core
 #if defined(EDITOR) | defined(_EDITOR)
 			Camera::Update_Viewport(2560, 1200);
 			/*
-			ingredient = 
+			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			Sprite(Editor::LevelEditor::texpath);
 			ingredient->transformation.Scale = glm::vec2(100, 100);
 			ingredient->transformation.Position = glm::vec2(600,600);
@@ -1289,7 +1306,7 @@ namespace Core
 							Font::RenderText(*Shaders, second_line, 190, 70, .25f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1317,7 +1334,7 @@ namespace Core
 							Font::RenderText(*Shaders, one_by_one, 190, 90, .22f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1337,7 +1354,7 @@ namespace Core
 
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1358,7 +1375,7 @@ namespace Core
 							Font::RenderText(*Shaders, third_line, 190, 50, .22f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1382,10 +1399,10 @@ namespace Core
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 
-							Font::RenderText(*Shaders, one_by_one, 190, 90, .21f, glm::vec3(0.f, 0.f, 0.f));
+							Font::RenderText(*Shaders, one_by_one, 260, 90, .3f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/* (GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1405,7 +1422,7 @@ namespace Core
 
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1426,7 +1443,7 @@ namespace Core
 							Font::RenderText(*Shaders, third_line, 190, 50, .2f, glm::vec3(0.f, 0.f, 0.f));
 							if ((Get_Delta()) * 150 < 2 || (Get_Delta()) * 100 < 2)
 							{
-								curr_len += 1/*(GLHelper::delta_time * 150)*/; // dialogue render speed is 200 * delta time
+								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
 								//std::cout << "value of i is : " << curr_len << std::endl;
 								if (curr_len > realstring.length())
 								{
@@ -1525,7 +1542,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
+			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -1535,35 +1552,84 @@ namespace Core
 				spritecomp1->transformation.Scale = transcomp1->Scale;
 
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
-				//spritecomp1->draw();
+				spritecomp1->draw();
 
-				std::map<std::string, gfxVector2> loadedIngredients;    // mapping of ingredients to position based on how many ingredients loaded
-				size_t numOfLoadedIngredient = CurrentIngredients.size();    // number of ingredients loaded for current level
+				std::vector<std::string> ingredientforlevel{};
+				std::map<std::string, gfxVector2>loadedIngredients;
+
+				switch (level)
+				{
+				case(GameState::TUT1):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut1");
+					break;
+
+				case(GameState::TUT2):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut2");
+					break;
+
+				case(GameState::LEVEL1):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv1");
+					break;
+
+				case(GameState::LEVEL2):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv2");
+					break;
+
+				case(GameState::LEVEL3):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv3");
+					break;
+
+				case(GameState::LEVEL4):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv4");
+					break;
+
+				case(GameState::LEVEL5):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv5");
+					break;
+
+				case(GameState::LEVEL6):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv6");
+					break;
+
+				case(GameState::LEVEL7):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv7");
+					break;
+
+				case(GameState::LEVEL8):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv8");
+					break;
+
+					//case(GameState::LEVEL9):
+					//	ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv9");
+					//	break;
+				}
+				
+				size_t numOfLoadedIngredient = ingredientforlevel.size();    // number of ingredients loaded for current level
 
 				float increment = 0.f;    // increment to position each ingredient onto quest tab
 
 				//checking through all loaded ingredient for the current level
-				for (auto& ingredient : CurrentIngredients)
+				for (auto& ingredient : ingredientforlevel)
 				{
-					std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
-					//std::cout << "loading in " << loadedIngredient << "\n";
+
+					//std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
 
 					// determine each ingredient location based on number of ingredient loaded
 					switch (numOfLoadedIngredient)
 					{
 					case(1):
 						//loading 1 ingredient
-						loadedIngredients.insert({ loadedIngredient, {50.0f, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f, 140.0f} });
 						break;
 
 					case(2):
 						//loading 2 ingredients
-						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
 						break;
 
 					case(3):
 						//loading 3 ingredients
-						loadedIngredients.insert({ loadedIngredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
 						break;
 
 						//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//
@@ -1629,57 +1695,37 @@ namespace Core
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
 
+				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isTestLevel = false;
+				isQuestTab = false;
+
 				//SceneManager::loadHowToOverlay(0, 0);
 				//std::cout << HowToPlayPage << "current page\n";
 				SceneManager::drawHowToOverlay(HowToPlayPage);
-				if (mouseLeft && isMenuState == false)
+				if (keystate_escape)
 				{
-					double xpos = 0, ypos = 0;
-					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-					//NEXT PAGE
-					//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-
-					if (HowToPlayPage < 4)
+					isMenuState = true;
+					HowToPlayPage = 0;
+					isHowToPlay = false;
+					keystate_escape = false;
+				}
+				else if (keystate_right)
+				{
+					if (HowToPlayPage < 5)
 					{
-						if (xpos > 1595 && xpos < 1681 && ypos > 811 && ypos < 889)
-						{
+						HowToPlayPage++;
+						keystate_right = false;
 
-							HowToPlayPage++;
-
-							//std::cout << "next page" << std::endl;
-							mouseLeft = false;
-						}
 					}
+				}
+				else if (keystate_left)
+				{
 					//PREV PAGE 
 					if (HowToPlayPage > 0)
 					{
-						if (xpos > 1474 && xpos < 1560 && ypos > 812 && ypos < 888)
-						{
-
-							HowToPlayPage--;
-
-							//std::cout << "previous page" << std::endl;
-							mouseLeft = false;
-						}
+						HowToPlayPage--;
+						keystate_left = false;
 					}
-
-
-					//BACK
-
-					if (xpos > 223 && xpos < 485 && ypos > 799 && ypos < 890)
-					{
-
-						isMenuState = true;
-						HowToPlayPage = 0;
-						isHowToPlay = false;
-
-						//std::cout << "return to main menu" << std::endl;
-
-					}
-
-
 				}
-
 			}
 
 			if (isSettings == true)
@@ -1732,8 +1778,9 @@ namespace Core
 			}
 #endif
 			endtime = glfwGetTime();
-			fps++;
 			delta = (endtime - starttime);
+			starttime = endtime;
+
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
 
 

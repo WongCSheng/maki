@@ -166,7 +166,7 @@ namespace Core
 
 		void Init();
 		void Update(const double );
-		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+		void RegisterGameObjects(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
 		static std::vector<std::pair<wall_type, Sprite*>> RetreiveTile() { return tilecontainer; };
 		static std::vector<Basket> RetreiveIngredient() { return ingredientcontainer;};
@@ -252,6 +252,7 @@ namespace Core
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
 		static inline Sprite* howtoplay_overlay5;
+		static inline Sprite* howtoplay_overlay6;
 
 		static inline Sprite* frame1;
 		static inline Sprite* frame2;

@@ -15,6 +15,7 @@ namespace Core
 {
 	ObjectFactory::ObjectFactory()
 	{
+		LastObjectID = 0;
 	}
 
 	ObjectFactory::~ObjectFactory()
@@ -140,7 +141,6 @@ namespace Core
 		doc.Accept(writer);
 		fclose(fp);
 	}
-
 
 	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{

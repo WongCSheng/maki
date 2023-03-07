@@ -45,6 +45,10 @@ namespace Core
 		void Deactivate();
 		void Remove();
 		bool isSpriteSheet;
+
+		std::string levelname;
+		std::vector<std::string> CorrectIngredients;
+		static std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 		float SpriteSize[2];
 		Transform transformation;
 
@@ -97,6 +101,7 @@ namespace Core
 		float timer;
 		int count;
 		float alpha;
+		bool animeMe;
 		/*for salmon to toggle between the sprites
 		status 0 = normal
 		status 1 = soya

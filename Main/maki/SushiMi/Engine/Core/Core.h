@@ -39,7 +39,8 @@ namespace Core
 		Renderer,
 		Windows,
 		TextureSystem,
-		LevelEditor
+		LevelEditor,
+		AudioSyytem
 	};
 
 	class MainSystem : public SystemFrame

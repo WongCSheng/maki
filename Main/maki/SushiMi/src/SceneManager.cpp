@@ -42,7 +42,7 @@ namespace Core
 	{
 	}
 
-	void SceneManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	void SceneManager::RegisterGameObjects(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
 
 	}

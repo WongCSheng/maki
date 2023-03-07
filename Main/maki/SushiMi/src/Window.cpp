@@ -878,17 +878,6 @@ namespace Core
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
-			/*if (keystate_escape && (isLevel1 || isLevel2))
-			{
-				gameIsPaused = true;
-				//std::cout << "game paused, pause screen showing" << std::endl;
-				keystate_escape = false;
-			}
-			else if (!keystate_escape && (isLevel1 || isLevel2) )
-			{
-				gameIsPaused = false;
-				keystate_escape = false;
-			} */
 		}
 		//if game is NOT paused
 		if (gameIsPaused == false && isHowToPlay == false)
@@ -909,7 +898,7 @@ namespace Core
 		//BUTTONS DISPLAYED AT MAIN MENU
 		/**************************************/
 
-		if (mouseLeft && isMenuState == true)
+		if ((mouseLeft && isMenuState) == true)
 		{
 			std::cout << "mouse clicking (windows.cpp)" << std::endl;
 			double xpos = 0, ypos = 0;
@@ -953,7 +942,7 @@ namespace Core
 		/**************************************/
 		//BUTTONS DISPLAYED WHEN GAME IS PAUSED
 		/**************************************/
-		if (mouseLeft && gameIsPaused == true)
+		if ((mouseLeft && gameIsPaused) == true)
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);

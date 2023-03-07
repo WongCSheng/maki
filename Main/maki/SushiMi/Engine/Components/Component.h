@@ -68,3 +68,142 @@ namespace Core
 		std::unordered_map<ComponentID, Component*> ComponentContainer;
 	};
 }
+
+//class Entity
+	//{
+	//private:
+	//	int id;
+	//	bool active;
+
+	//	std::vector<Component*> components;
+
+	//	static int entity_count;
+
+	//public:
+	//	Entity();
+	//	~Entity();
+
+	//	// Compulsory component
+	//	Transform* transform;
+
+	//	const int GetID(void);
+	//	bool IsActive(void);
+	//	void Activate(void);
+	//	void Deactivate(void);
+	//	void AddChild(Entity* child);
+	//	void DetachChild(Entity* child);
+	//	void DetachChild(int number);
+	//	void DetachAllChild(void);
+	//	void DetachParent(void);
+
+	//	template <typename T>
+	//	T* AddComponent()
+	//	{
+	//		if (!GetComponent<T>())
+	//		{
+	//			T* comp = new T();
+	//			components.push_back(comp);
+	//			comp->Init(this);
+	//			return comp;
+	//		}
+	//		return NULL;
+	//	}
+
+	//	template <typename T>
+	//	T* GetComponent()
+	//	{
+	//		for (auto c : components)
+	//		{
+	//			if (typeid(*c) == typeid(T))
+	//			{
+	//				return reinterpret_cast<T*>(c);
+	//			}
+	//		}
+	//		return NULL;
+	//	}
+
+	//	template <typename T>
+	//	bool RemoveComponent()
+	//	{
+	//		for (auto& c : components)
+	//		{
+	//			if (typeid(*c) == typeid(T))
+	//			{
+	//				c->remove = true;
+	//				return true;
+	//			}
+	//		}
+	//		return false;
+	//	}
+	//	bool remove;
+	//};
+
+
+
+
+
+
+
+//#include "../Headers/STL_Header.h"
+//
+//#define Add true
+//#define Remove false
+//
+////Forward Declaration
+//class Entity;
+//
+//namespace Core
+//{
+//	enum class ComponentID
+//	{
+//		Gameobject = 0,
+//		Physics,
+//		Player,
+//		Enemy
+//	};
+//
+//	class Component
+//	{
+//	protected:
+//		Entity* original;
+//		uint16_t part_number;
+//		bool active;
+//
+//	public:
+//		Component();
+//		//Component(Entity* init) : original(init) {}
+//		~Component() {}
+//
+//		bool isActive();
+//		void Activate();
+//		void Deactivate();
+//
+//	};
+//
+//	class Entity
+//	{
+//	private:
+//
+//		bool active{};
+//		std::pair<std::string, uint8_t> ID{}; // ID number
+//		std::unordered_map<uint8_t, Component*> components; //Array of component pointers
+//
+//		unsigned int max_size{};
+//
+//	public:
+//
+//		Entity() {};
+//		Entity(std::string str, int x) { ID = std::make_pair(str, x); }
+//		~Entity();
+//
+//		//Getting ECS info
+//		int getECSID();
+//
+//		std::string getECSName(Component* components);
+//
+//		void addComponents(Component* newcomp, std::pair<std::string, int> identity);
+//
+//		void removeComponents(std::pair<std::string, int> identity);
+//
+//	};
+//}

@@ -4,18 +4,14 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 0, 0 ]
+      "scale": [ 500, 350 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/bg.jpg",
+      "texturepath": "../textures/levelQuest/Lv1.png",
       "name": "QuestLv1",
-      "SpriteSheet": false,
-      "SpriteSize": [ 0, 0 ],
-      "CorrectIngredient": [
-        "Rice",
-        "Nori"
-      ]
+      "SpriteSheet": false,                           
+      "SpriteSize": [ 1280, 703 ]
     }
   ]
 } 

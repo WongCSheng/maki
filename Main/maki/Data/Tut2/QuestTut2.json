@@ -4,18 +4,14 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 0, 0 ]
+      "scale": [ 500, 350 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/bg.jpg",
-      "name": "QuestTut2",
-      "SpriteSheet": false,
-      "SpriteSize": [ 0, 0 ],
-      "CorrectIngredient": [
-        "Tofu",
-        "Nori"
-      ]
+      "texturepath": "../textures/levelQuest/Tut2.png",
+      "name": "QuestT2",
+      "SpriteSheet": false,                           
+      "SpriteSize": [ 1280, 703 ]
     }
   ]
 } 

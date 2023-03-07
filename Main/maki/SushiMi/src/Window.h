@@ -64,8 +64,6 @@ namespace Core
 
 		static inline bool isDialogue;
 		static inline int dialogue_style;
-
-		static inline bool show_fps;
 		enum class dialogue
 		{
 			T1 = 0,
@@ -150,6 +148,5 @@ namespace Core
 		static void init();
 		static void cleanup();
 	};
-	#define Get_Delta()			Window::GetInstance(0,0)->getDelta()
+#define Get_Delta()				Window::GetInstance(0, 0)->getDelta()
 }
-

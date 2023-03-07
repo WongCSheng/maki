@@ -22,9 +22,9 @@ pointers to OpenGL implementations.
 // static data members declared in GLHelper
 GLint GLHelper::width;
 GLint GLHelper::height;
-std::string GLHelper::title; 
 GLdouble GLHelper::fps;
-GLdouble GLHelper::delta_time; // time taken to complete most recent game loop
+GLdouble GLHelper::delta_time;
+std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
 
 #define FRAME_TIME_MIN   1.0/60.0
@@ -222,29 +222,4 @@ void GLHelper::fbsize_cb(GLFWwindow* /*ptr_win*/, int width_, int height_) {
 	// use the entire framebuffer as drawing region
 	glViewport(0, 0, width_, height_);
 	// later, if working in 3D, we'll have to set the projection matrix here ...
-}
-
-void GLHelper::update_time(double fps_calc_interval) {
-	// get elapsed time (in seconds) between previous and current frames
-	static double prev_time = glfwGetTime();
-	double curr_time = glfwGetTime();
-	delta_time = curr_time - prev_time;
-	prev_time = curr_time;
-
-	// fps calculations
-	static double count = 0.0; // number of game loop iterations
-	static double start_time = glfwGetTime();
-	// get elapsed time since very beginning (in seconds) ...
-	double elapsed_time = curr_time - start_time;
-
-	++count;
-
-	// update fps at least every 10 seconds ...
-	fps_calc_interval = (fps_calc_interval < 0.0) ? 0.0 : fps_calc_interval;
-	fps_calc_interval = (fps_calc_interval > 10.0) ? 10.0 : fps_calc_interval;
-	if (elapsed_time > fps_calc_interval) {
-		GLHelper::fps = count / elapsed_time;
-		start_time = curr_time;
-		count = 0.0;
-	}
 }

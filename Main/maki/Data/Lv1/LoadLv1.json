@@ -7,6 +7,11 @@
     {
       "name": "TileMap",
       "filename": "../Data/Lv1/Lv1Tile.json"
+    },
+    {
+      "name": "Music",
+      "filename": "placeholder.json"
     }
+    
   ]
 }

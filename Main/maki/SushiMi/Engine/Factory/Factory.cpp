@@ -146,4 +146,29 @@ namespace Core
 	{
 
 	}
+
+	void AssetsManager::Init()
+	{
+
+	}
+
+	void AssetsManager::Update(const double dt)
+	{
+
+	}
+
+	void AssetsManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	{
+
+	}
+	
+	void AssetsManager::Add_Assets(const std::string file)
+	{
+
+	}
+
+	void AssetsManager::Remove_Assets(const std::string file)
+	{
+
+	}
 }

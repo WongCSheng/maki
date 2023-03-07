@@ -93,7 +93,7 @@ int Font::init()
     FT_Done_FreeType(ft);
 
 
-    glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
+    glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
     //glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     Shaders->Font_Shader()->Send_Mat4("projection", projection);
     glGenVertexArrays(1, &VAO);
@@ -118,7 +118,11 @@ void Font::RenderText(ShaderLibrary& s, std::string text, float x, float y, floa
         {0,color.y,0},
         {0,0,color.z}
     };
-    float alpha = 1.f;
+    float alpha = 0.6f;
+
+    glm::mat4 projection = glm::ortho(0.0f, 600.0f, 0.0f, 600.0f);
+    //glUniformMatrix4fv(glGetUniformLocation(GLApp::shdrpgms["font"].GetHandle(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    Shaders->Font_Shader()->Send_Mat4("projection", projection);
     //s.Font_Shader()->Send_Mat4("textColor", mat_colours);
     glUniform3f(glGetUniformLocation(s.Font_Shader()->get_hdl(), "textColor"), color.x, color.y, color.z);
     glUniform1f(glGetUniformLocation(s.Font_Shader()->get_hdl(), "alpha"), alpha);

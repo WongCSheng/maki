@@ -4,19 +4,14 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 0, 0 ]
+      "scale": [ 500, 350 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/doge.jpg",
+      "texturepath": "../textures/levelQuest/Lv2.png",
       "name": "QuestLv2",
-      "SpriteSheet": false,
-      "SpriteSize": [ 0, 0 ],
-      "CorrectIngredient": [
-        "Tofu",
-        "Inari",
-        "Nori"
-      ]
+      "SpriteSheet": false,                           
+      "SpriteSize": [ 1280, 703 ]
     }
   ]
 } 

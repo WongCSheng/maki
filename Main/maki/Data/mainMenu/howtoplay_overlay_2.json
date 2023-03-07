@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0, 0 ],
+      "rotation": 0.0,
+      "scale": [ 266, 96 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/How To Play/HowToPlayBox_2.png",
+      "name": "HowToPlay_overlay_2",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    }
+  ]
+}

@@ -45,4 +45,18 @@ namespace Core
 	
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 	};
+
+	class AssetsManager : public SystemFrame
+	{
+	public:
+		AssetsManager();
+		virtual ~AssetsManager();
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+
+		void Add_Assets(const std::string file);
+		void Remove_Assets(const std::string file);
+	};
 }

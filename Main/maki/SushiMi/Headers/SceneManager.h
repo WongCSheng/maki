@@ -9,8 +9,10 @@ namespace Core
 	{
 		start = 32,
 		space = 33,		//!
-		its_a_wall = 35,//#
-		player = 37,	//%
+		ground0,		//"
+		ground1,		//#
+		ground2,		//$
+		player,			//%
 		ingredients,	//&
 		avocado,		//'
 		cucumber,		//(
@@ -23,28 +25,18 @@ namespace Core
 		tamago,			// slash (/)
 		tofu,			//0
 		tuna,			//1
-		nori,			//2 //the end of pushable ingredients
+		nori,			//2
+						//no more start, replaced by tea
 		tea,			//3
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6
-		//fishing tops must be rendered above Bami and above fishing ground, hence it is on the same level as ingredient
-		Fishing_Top_0_0,	//7
-		Fishing_Top_1_1,	//8
-		Fishing_Top_1_2,	//9
-		Fishing_Top_1_3,	//:
-		Fishing_Top_1_4,	//;
-		Fishing_Top_2_1,	//<
-		Fishing_Top_2_2,	//=
-		Fishing_Top_2_3,	//>
-		Fishing_Top_2_4,	//?
-		Fishing_Top_3_1,	//@
-		Fishing_Top_3_2,	//A
-		Fishing_Top_3_3,	//B
-		Fishing_Top_3_4,	//C
-		Fishing_Top_3_5,	//D
-		Fishing_Top_3_6,	//E
-		
+
+		salmon_wasabi, ///Lv7 & 8 
+		tuna_soya,	//Lv8
+		octupus_wasabi,	//Lv8
+
+		end
 		
 	};
 
@@ -52,9 +44,13 @@ namespace Core
 	{
 		sinkhole = 55,  //7
 		filledsinkhole,	//8
-		win = 59,			//;
-		insidebox = 61,		//=
-		no_longer_used = 63,//?
+		tea,			//9
+		empty2,			//:
+		win,			//;
+		temp,			//<
+		insidebox,		//=
+		inbox2,			//>
+		sinkhole_gunkan,//?
 		first = 64,
 		Wall0,				//A
 		Wall0_1,			//B
@@ -68,93 +64,83 @@ namespace Core
 		Wall3_2,			//J
 		Wall3_3,			//K
 		Wall4,				//L
-		Wall5,				//Q = M
-		Wall6,				//V = N
-		Wall7,				//[ = O
-		Wall8,				//` = P
-		Wall9,				//a = Q
-		WaterWall,			//i = R
-		Wall0_Gunkan,		//j = S
-		last,				//k = T
-		Gunkan_Ground_1_1,	//l = U
-		Gunkan_Ground_1_2,		//m = V
-		Gunkan_Ground_1_3,		//n = W
-		Gunkan_Ground_1_4,		//o = X
-		Gunkan_Ground_2_1,		//p = Y
-		Gunkan_Ground_2_2,				//q = Z
-		rice_box,			//r = [
-		inari_box,			//s = backslash (\)
-		avocado_box,		//t = ]
-		corn_box,			//u = ^
-		cucumber_box,		//v = _
-		salmon_box,			//w = `
-		nori_box,			//x = a
-		octopus_box,		//y = b
-		roes_box,			//z = c
-		tamago_box,			//{ = d
-		tofu_box,			//| (bitwise OR) = e
-		tuna_box,			//} = f
-		WoodenPlatform,		//~ = g
-		ground1,			//# = j
-		ground2,			//$ = k
-		Gunkan_Ground_2_3,	//l
-		Gunkan_Ground_3_1,	//m 
-		Gunkan_Ground_3_2,	//n
-		Gunkan_Ground_3_3,	//o
-		Gunkan_Ground_6_1,	//p
-		Gunkan_Ground_6_2,	//q
-		Gunkan_Ground_6_3,	//r
-		Gunkan_Ground_6_4,	//s
-		Wall6_1,			//W to replace as it is repetitive
-		Wall6_2,			//X to replace as it is repetitive
-		Wall6_3,			//Y to replace as it is repetitive
-		Wall6_4,			//Z to replace as it is repetitive
-		Wall7_1,			//backslash (\) to replace as it is repetitive
-		Wall7_2,			//] to replace as it is repetitive
-		Wall7_3,			//^ to replace as it is repetitive
-		Wall7_4,			//_ to replace as it is repetitive
-		Wall9_1,			//b to replace as it is repetitive
-		Wall9_2,			//c to replace as it is repetitive
-		Wall9_3,			//d to replace as it is repetitive
-		Wall9_4,			//e to replace as it is repetitive
-		Wall9_5,			//f (to replace as it is repetitive)
-		Wall9_6,			//g  (to replace as it is repetitive)
-		Wall9_7,			//h (to replace as it is repetitive)
-	};
+		Wall4_1,			//M
+		Wall4_2,			//N
+		Wall4_3,			//O
+		Wall4_4,			//P
+		Wall5,				//Q
+		Wall5_1,			//R
+		Wall5_2,			//S
+		Wall5_3,			//T
+		Wall5_4,			//U
+		Wall6,				//V
+		Wall6_1,			//W
+		Wall6_2,			//X
+		Wall6_3,			//Y
+		Wall6_4,			//Z
+		Wall7,				//[
+		Wall7_1,			//backslash (\)
+		Wall7_2,			//]
+		Wall7_3,			//^
+		Wall7_4,			//_
+		Wall8,				//`
+		Wall9,				//a
+		Wall9_1,			//b
+		Wall9_2,			//c
+		Wall9_3,			//d
+		Wall9_4,			//e
+		Wall9_5,			//f
+		Wall9_6,			//g
+		Wall9_7,			//h
+		WaterWall,			//i
+		Wall0_Gunkan,		//j
+		Wall1_Gunkan,		//k
+		Wall1_1_Gunkan,		//l
+		Wall2_Gunkan,		//m
+		Wall2_1_Gunkan,		//n
+		Wall3_Gunkan,		//o
+		Wall3_1_Gunkan,		//p
+		last,				//q
+		rice_box,			//r
+		inari_box,			//s
+		avocado_box,		//t
+		corn_box,			//u
+		cucumber_box,		//v
+		salmon_box,			//w total 12 boxes
+		nori_box,			//x
+		octopus_box,		//y
+		roes_box,			//z
+		tamago_box,			//{
+		tofu_box,			//| (bitwise OR)
+		tuna_box,			//}
+		//Water,		//� or ~
+		WoodenPlatform,		//~
+		Player_OnWood		//�
 
-	enum class animated
-	{
-		RicePlant1 = 45,	//0
-		RicePlant2,
-		RicePlant3,
-		RicePlant4,
-		RicePlant5,
-		RiceWater1,
-		RiceWater2,
-		GunkanSign_Right,
-		GunkanSign_Left,
-		GunkanCorn,
-		GunkanCarrot = 65, //A
-		GunkanCrow_Left,   //B
-		GunkanCrow_Right,  //C
-		FishingBoat,	   //D
-		FishingLog,		   //E
-		FishingSotong,
-		FishingNoot,
-		FishingCrab
 	};
 
 	struct Basket
 	{
-		glm::vec2 init_Pos;
-		std::pair<int, int> init_Grid_Pos;
-		std::pair<grid_number, Sprite*> spr;
-		void Restart()
+		int IC{};
+		grid_number nametag{};
+		glm::vec2 init_pos{};
+		std::pair<int, int> grid_init_pos{};
+		Sprite* spr;
+		void restart()
 		{
-			spr.second->transformation.Position = init_Pos;
-			spr.second->transformation.grid_pos = init_Grid_Pos;
+			spr->transformation.Position = init_pos;
+			spr->transformation.grid_pos = grid_init_pos;
 		}
 	};
+
+	/*
+	enum class Rice
+	{
+		riceSoya = 130,
+		riceWasabi,
+		riceBoth
+	};
+	*/
 	
 	class SceneManager : public SystemFrame
 	{
@@ -174,8 +160,9 @@ namespace Core
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
-		//static void loadAnim(const std::pair<animated, Sprite*>& animate);
 		//static void loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient);
+
+		 
 		static void loadPlayer_Stuck(int x, int y);
 		static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
@@ -189,12 +176,12 @@ namespace Core
 		static void drawBox();
 		static void drawIngr();
 		//static void drawRice();
-		static bool activateSoya();
-		static bool activateWasabi();
-		static bool activateTea();
+		static bool activateSoya(Sprite* soya);
+		static bool activateWasabi(Sprite* wasabi);
+		static bool activateTea(Sprite* tea);
 		static void drawInsideSinkHole();
 		static void drawPlayer_Stuck();
-		static void drawHowToOverlay(int page);
+		static void drawHowToOverlay();
 		static void drawSettings();
 		static void drawWinOverlay();
 		static void drawCutscene();
@@ -235,10 +222,10 @@ namespace Core
 	
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<Basket> ingredientcontainer;
-		static inline std::vector<std::pair<animated, Sprite*>> animatedcontainer;
+		static inline std::unordered_map<grid_number, int> counter;
 		//static inline std::vector<std::pair<Rice, Sprite*>> ricecontainer;
 		static inline std::vector<Basket> in_sinkhole;
-		static inline std::vector<short> ICnum;
+		//static inline std::unordered_multimap<grid_number, Sprite*> ingredient_starting_pos;
 		static inline std::vector<std::pair<int, int>> win_condition;
 		static unsigned int amt_of_win_conditions;
 
@@ -253,6 +240,7 @@ namespace Core
 		static inline Sprite* howtoplay_overlay3;
 		static inline Sprite* howtoplay_overlay4;
 		static inline Sprite* howtoplay_overlay5;
+		static inline Sprite* howtoplay_overlay6;
 
 		static inline Sprite* frame1;
 		static inline Sprite* frame2;
@@ -276,7 +264,6 @@ namespace Core
 
 		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;
-
 		
 		// Black overlay alpha parameters
 		inline static float targetAlpha = 0.0f;

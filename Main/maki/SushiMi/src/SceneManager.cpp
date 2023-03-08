@@ -60,6 +60,7 @@ namespace Core
 		Window::player->playerpos.x = static_cast<float>(Window::player->playerpos_restart.x);
 		Window::player->playerpos.y = static_cast<float>(Window::player->playerpos_restart.y);
 		Window::gameIsPaused = false;
+		Window::player->current_anim = AnimationType::Idle;
 		Window::questProgress = 0;
 		amt_of_win_conditions = 0;
 		//missing: restart sinkhole, restart sushi plate pods

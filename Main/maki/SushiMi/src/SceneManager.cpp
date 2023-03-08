@@ -218,6 +218,7 @@ namespace Core
 	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
+		Window::player->current_anim = AnimationType::Run;
 		win_overlay->transformation.Position = glm::vec2(x, y);
 		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
@@ -343,52 +344,10 @@ namespace Core
 
 	void SceneManager::drawIngr()
 	{
-		//std::cout << "Delta time is: " << (Get_Delta()) << std::endl;
-		if (Map::salmon != nullptr)
-		{
-			if (Map::wasabi != nullptr)
-			{
-				//std::cout << Map::wasabi->timer << std::endl;
-				if (Map::wasabi->timer > .5f)
-				{
-					Map::wasabi->curr_anim = AnimationType::Idle;
-					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-					if (Map::salmon->status == 2 || Map::salmon->status == 3 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-					{
-						Map::wasabi->alpha -= (Get_Delta());
-					}
-				}
-			}
-			if (Map::tea != nullptr)
-			{
-				if (Map::tea->timer > .5f)
-				{
-					Map::tea->curr_anim = AnimationType::Idle;
-					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-					if (Map::salmon->status == 4 || Map::salmon->status == 5 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-					{
-						Map::tea->alpha -= (Get_Delta());
-					}
-				}
-			}
-			if (Map::soya != nullptr)
-			{
-
-				if (Map::soya->timer > .5f)
-				{
-					Map::soya->curr_anim = AnimationType::Idle;
-					//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-					if (Map::salmon->status == 1 || Map::salmon->status == 3 || Map::salmon->status == 4 || Map::salmon->status == 6 || Map::salmon->status == 7 || Map::salmon->status == 8)
-					{
-						Map::soya->alpha -= (Get_Delta());
-					}
-				}
-			}
-		}
 		for (auto& ingredient : ingredientcontainer)
 		{
-			ingredient.spr->timer += (Get_Delta());
-			
+			ingredient.spr->timer += ((Get_Delta()));
+
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
 					{
@@ -422,21 +381,55 @@ namespace Core
 					*/
 
 
-					
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr->transformation.Get());
-				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr->alpha);
-				if (ingredient.spr->isSpriteSheet)
-				{
-					ingredient.spr->draw(Get_Delta(), ingredient.spr->curr_anim);
-				}
-				else
-				{
-					ingredient.spr->draw();
-				}
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr->alpha);
+			if (ingredient.spr->isSpriteSheet)
+			{
+				ingredient.spr->draw((Get_Delta()), ingredient.spr->curr_anim);
+			}
+			else
+			{
+				ingredient.spr->draw();
+			}
 
 		}
-		
 
+		if (Map::salmon != nullptr)
+		{
+			for (auto& ingredient : ingredientcontainer)
+			{
+				/*check which sprite has set animation to true*/
+				if (ingredient.spr->animeMe == true)
+				{
+					/*check wasabi, soya and tea*/
+					if (ingredient.nametag == grid_number::wasabi)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+					if (ingredient.nametag == grid_number::tea)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+					if (ingredient.nametag == grid_number::soya)
+					{
+						if (ingredient.spr->timer > 1.f)
+						{
+							ingredient.spr->curr_anim = AnimationType::Idle;
+							ingredient.spr->alpha -= ((Get_Delta()));
+						}
+					}
+				}
+			}
+		}
 	}
 	/*
 	void SceneManager::drawRice()
@@ -450,27 +443,26 @@ namespace Core
 	}
 	*/
 
-
-	bool SceneManager::activateSoya()
+	bool SceneManager::activateSoya(Sprite* soya)
 	{
-		if (Map::soya->timer < 5.f)
+		if (soya->timer < 5.f)
 		{
-			Map::soya->transformation.Position.x = Map::soya->transformation.Position.x - 30;
-			Map::soya->transformation.Position.y = Map::soya->transformation.Position.y - 30;
-			Map::soya->curr_anim = AnimationType::Run;
-			Map::soya->count++;
+			soya->transformation.Position.x = soya->transformation.Position.x - 30;
+			soya->transformation.Position.y = soya->transformation.Position.y - 30;
+			soya->curr_anim = AnimationType::Run;
+			soya->count++;
 			return 1;
 		}
 		return 0;
 	}
 
-	bool SceneManager::activateWasabi()
+	bool SceneManager::activateWasabi(Sprite* wasabi)
 	{
-		if (Map::wasabi->timer < 5.f)
+		if (wasabi->timer < 5.f)
 		{
-			Map::wasabi->transformation.Position.y = Map::wasabi->transformation.Position.y - 100;
-			Map::wasabi->curr_anim = AnimationType::Run;
-			Map::wasabi->count++;
+			wasabi->transformation.Position.y = wasabi->transformation.Position.y - 100;
+			wasabi->curr_anim = AnimationType::Run;
+			wasabi->count++;
 			return 1;
 		}
 		return 0;
@@ -484,14 +476,14 @@ namespace Core
 			top.second->draw(Get_Delta(), AnimationType::Idle);
 		}
 	}
-	bool SceneManager::activateTea()
+	bool SceneManager::activateTea(Sprite* tea)
 	{
-		if (Map::tea->timer < 5.f)
+		if (tea->timer < 5.f)
 		{
-			Map::tea->transformation.Position.x = Map::tea->transformation.Position.x - 50;
-			Map::tea->transformation.Position.y = Map::tea->transformation.Position.y - 50;
-			Map::tea->curr_anim = AnimationType::Run;
-			Map::tea->count++;
+			tea->transformation.Position.x = tea->transformation.Position.x - 50;
+			tea->transformation.Position.y = tea->transformation.Position.y - 50;
+			tea->curr_anim = AnimationType::Run;
+			tea->count++;
 			return 1;
 		}
 		return 0;

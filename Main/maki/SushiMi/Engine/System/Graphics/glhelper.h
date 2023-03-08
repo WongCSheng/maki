@@ -108,7 +108,7 @@ struct GLHelper
 	static void update_time(double fps_calc_interval);
 
 	static GLint width, height;
-	static GLdouble fps;
+	static GLint fps;
 	static GLdouble delta_time; // time taken to complete most recent game loop
 	static std::string title;
 	static GLFWwindow* ptr_window;

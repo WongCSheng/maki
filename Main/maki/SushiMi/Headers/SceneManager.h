@@ -192,9 +192,9 @@ namespace Core
 		static void drawBox();
 		static void drawTop();
 		static void drawIngr();
-		static bool activateSoya();
-		static bool activateWasabi();
-		static bool activateTea();
+		static bool activateSoya(Sprite* soya);
+		static bool activateWasabi(Sprite* wasabi);
+		static bool activateTea(Sprite* tea);
 		static void drawInsideSinkHole();
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay(int page);

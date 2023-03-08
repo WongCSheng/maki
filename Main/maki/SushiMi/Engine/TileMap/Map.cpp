@@ -1321,23 +1321,24 @@ namespace Core
 								break;
 							}
 						}
-						/*
-						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
-						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::RiceSoy, rice_soy);
-						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (1 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
-							static_cast<int>(Window::player->playerpos.x) - 1, static_cast<int>(Window::player->playerpos.y), combine);
-							*/
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x - 2)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateSoya(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
 							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 5)
-						{
-							salmon->status = 7;
 							salmon->curr_anim = AnimationType::Run;
 						}
 						else if (salmon->status == 2)
@@ -1345,14 +1346,6 @@ namespace Core
 							salmon->status = 3;
 							salmon->curr_anim = AnimationType::Both;
 						}
-
-						/*
-						Sprite* rice_soy = new Sprite("../textures/Rice/RiceSoy.png");
-						
-						std::pair<Rice, Sprite*> combine = std::make_pair(Rice::riceSoya, rice_soy);
-						SceneManager::loadRice(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
-							static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
-						*/
 						Window::player->move_left();
 						std::cout << "soya dripped\n";
 					}
@@ -1374,13 +1367,26 @@ namespace Core
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x - 2)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateWasabi(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
+
 						/*check salmon status*/
-						if (salmon->status == 0 || salmon->status == 4)
+						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status += 2;
+							salmon->status = 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -1389,7 +1395,6 @@ namespace Core
 							salmon->status = 3;
 							salmon->curr_anim = AnimationType::Both;
 						}
-
 
 						Window::player->move_left();
 						std::cout << "Wasabi dripped\n";
@@ -1414,21 +1419,25 @@ namespace Core
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.spr->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								if (iny == Window::player->player_grid_pos.y
+									&& inx == Window::player->player_grid_pos.x - 2)
+								{
+									ingredient.spr->timer = 0;
+									SceneManager::activateTea(ingredient.spr);
+									ingredient.spr->animeMe = true;
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
-							if (salmon->status == 1)
+							if (salmon->status != 0)
 							{
-								salmon->status = 4;
-							}
-							else if (salmon->status == 2)
-							{
-								salmon->status = 5;
-							}
-							else if (salmon->status == 3)
-							{
-								salmon->status = 8;
+								salmon->status = 0;
 							}
 							salmon->curr_anim = AnimationType::Idle;
 
@@ -1534,6 +1543,8 @@ namespace Core
 
 				std::cout << "left sinkhole\n";
 				Window::player->move_left();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
 			}
 			else
 			{
@@ -1560,6 +1571,11 @@ namespace Core
 				{
 					Window::player->move_left();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
+					if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::space))
+					{
+						wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					}
+					else
 					wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 				}
 
@@ -1579,6 +1595,7 @@ namespace Core
 	{
 		if (!isStuck())
 		{
+			ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 			//Check if right tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori)) ||
@@ -1659,18 +1676,26 @@ namespace Core
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x + 2)
+							{
+								// start some animations
+								ingredient.spr->timer = 0;
+								SceneManager::activateSoya(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
 							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 5)
-						{
-							salmon->status = 7;
 							salmon->curr_anim = AnimationType::Run;
 						}
 						else if (salmon->status == 2)
@@ -1699,14 +1724,26 @@ namespace Core
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y
+								&& inx == Window::player->player_grid_pos.x + 2)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateWasabi(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 
 						/*check salmon status*/
-						if (salmon->status == 0 || salmon->status == 4)
+						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status += 2;
+							salmon->status = 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -1740,21 +1777,25 @@ namespace Core
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.spr->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								if (iny == Window::player->player_grid_pos.y
+									&& inx == Window::player->player_grid_pos.x + 2)
+								{
+									ingredient.spr->timer = 0;
+									SceneManager::activateTea(ingredient.spr);
+									ingredient.spr->animeMe = true;
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
-							if (salmon->status == 1)
+							if (salmon->status != 0)
 							{
-								salmon->status = 4;
-							}
-							else if (salmon->status == 2)
-							{
-								salmon->status = 5;
-							}
-							else if (salmon->status == 3)
-							{
-								salmon->status = 8;
+								salmon->status = 0;
 							}
 							salmon->curr_anim = AnimationType::Idle;
 
@@ -1773,7 +1814,6 @@ namespace Core
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) + (2 * static_cast<int>(tile_width)), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->player_grid_pos.x) + 2, static_cast<int>(Window::player->player_grid_pos.y), combine);
-
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -1857,6 +1897,8 @@ namespace Core
 
 				std::cout << "right sinkhole\n";
 				Window::player->move_right();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
 			}
 			//Just move
 			else
@@ -1884,7 +1926,12 @@ namespace Core
 				{
 					Window::player->move_right();
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
-					wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+					if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::space))
+					{
+						wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					}
+					else
+						wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 				}
 
 				//Check if current tile is inbox2
@@ -1910,6 +1957,7 @@ namespace Core
 	{
 		if (!isStuck())
 		{
+			ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 			//Check if below tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::nori)) ||
@@ -1989,19 +2037,25 @@ namespace Core
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
 
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y + 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateSoya(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
 							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 5)
-						{
-							salmon->status = 7;
 							salmon->curr_anim = AnimationType::Run;
 						}
 						else if (salmon->status == 2)
@@ -2030,14 +2084,26 @@ namespace Core
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y + 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateWasabi(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 
 						/*check salmon status*/
-						if (salmon->status == 0 || salmon->status == 4)
+						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status += 2;
+							salmon->status = 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -2071,21 +2137,25 @@ namespace Core
 									break;
 								}
 							}
-							tea->timer = 0;
-							SceneManager::activateTea();
+							for (auto ingredient : SceneManager::ingredientcontainer)
+							{
+
+								auto& ing_transform = ingredient.spr->transformation.grid_pos;
+								auto [inx, iny] = ing_transform;
+								if (iny == Window::player->player_grid_pos.y + 2
+									&& inx == Window::player->player_grid_pos.x)
+								{
+									ingredient.spr->timer = 0;
+									SceneManager::activateTea(ingredient.spr);
+									ingredient.spr->animeMe = true;
+									break;
+								}
+							}
 
 							/*change salmon sprite to nothing*/
-							if (salmon->status == 1)
+							if (salmon->status != 0)
 							{
-								salmon->status = 4;
-							}
-							else if (salmon->status == 2)
-							{
-								salmon->status = 5;
-							}
-							else if (salmon->status == 3)
-							{
-								salmon->status = 8;
+								salmon->status = 0;
 							}
 							salmon->curr_anim = AnimationType::Idle;
 
@@ -2093,7 +2163,6 @@ namespace Core
 							std::cout << "tea dripped\n";
 						}
 					}
-
 					//check if it's a box
 					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::rice_box) &&
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::tuna_box))
@@ -2188,6 +2257,8 @@ namespace Core
 
 				std::cout << "down sinkhole\n";
 				Window::player->move_down();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
 			}
 			//Just move
 			else
@@ -2233,6 +2304,7 @@ namespace Core
 	{
 		if (!isStuck())
 		{
+			ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::nori )) ||
@@ -2312,19 +2384,26 @@ namespace Core
 								break;
 							}
 						}
-						soya->timer = 0;
-						SceneManager::activateSoya();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateSoya(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 
 						/*check soya status*/
 						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with soya*/
 							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 5)
-						{
-							salmon->status = 7;
 							salmon->curr_anim = AnimationType::Run;
 						}
 						else if (salmon->status == 2)
@@ -2353,14 +2432,26 @@ namespace Core
 								break;
 							}
 						}
-						wasabi->timer = 0;
-						SceneManager::activateWasabi();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateWasabi(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 
 						/*check salmon status*/
-						if (salmon->status == 0 || salmon->status == 4)
+						if (salmon->status == 0)
 						{
 							/*change salmon sprite to with wasabi*/
-							salmon->status += 2;
+							salmon->status = 2;
 							salmon->curr_anim = AnimationType::Jump;
 						}
 						else if (salmon->status == 1)
@@ -2393,21 +2484,25 @@ namespace Core
 								break;
 							}
 						}
-						tea->timer = 0;
-						SceneManager::activateTea();
+						for (auto ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto [inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateTea(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
 
 						/*change salmon sprite to nothing*/
-						if (salmon->status == 1)
+						if (salmon->status != 0)
 						{
-							salmon->status = 4;
-						}
-						else if (salmon->status == 2)
-						{
-							salmon->status = 5;
-						}
-						else if (salmon->status == 3)
-						{
-							salmon->status = 8;
+							salmon->status = 0;
 						}
 						salmon->curr_anim = AnimationType::Idle;
 
@@ -2510,6 +2605,8 @@ namespace Core
 
 				std::cout << "up sinkhole\n";
 				Window::player->move_up();
+				Window::player->current_anim = AnimationType::Jump;
+				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
 			}
 			//Just move
 			else

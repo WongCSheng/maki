@@ -95,7 +95,7 @@ namespace Core
 		{
 			if (Window::isPlayerinSinkhole)
 			{
-
+				Window::player->stop();
 			}
 			else
 				Window::player->draw(Get_Delta());

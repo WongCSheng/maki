@@ -62,11 +62,11 @@ namespace Core
 		Wall0_Gunkan,		//j = S
 		last,				//k = T
 		Gunkan_Ground_1_1,	//l = U
-		Gunkan_Ground_1_2,		//m = V
-		Gunkan_Ground_1_3,		//n = W
-		Gunkan_Ground_1_4,		//o = X
-		Gunkan_Ground_2_1,		//p = Y
-		Gunkan_Ground_2_2,				//q = Z
+		Gunkan_Ground_1_2,	//m = V
+		Gunkan_Ground_1_3,	//n = W
+		Gunkan_Ground_1_4,	//o = X
+		Gunkan_Ground_2_1,	//p = Y
+		Gunkan_Ground_2_2,	//q = Z
 		rice_box,			//r = [
 		inari_box,			//s = backslash (\)
 		avocado_box,		//t = ]
@@ -80,16 +80,16 @@ namespace Core
 		tofu_box,			//| (bitwise OR) = e
 		tuna_box,			//} = f
 		WoodenPlatform,		//~ = g
-		ground1,			//# = j
-		ground2,			//$ = k
-		Gunkan_Ground_2_3,	//l
-		Gunkan_Ground_3_1,	//m 
-		Gunkan_Ground_3_2,	//n
-		Gunkan_Ground_3_3,	//o
-		Gunkan_Ground_6_1,	//p
-		Gunkan_Ground_6_2,	//q
-		Gunkan_Ground_6_3,	//r
-		Gunkan_Ground_6_4,	//s
+		ground1,			//# = h
+		ground2,			//$ = i
+		Gunkan_Ground_2_3,	//j
+		Gunkan_Ground_3_1,	//k 
+		Gunkan_Ground_3_2,	//l
+		Gunkan_Ground_3_3,	//m
+		Gunkan_Ground_6_1,	//n
+		Gunkan_Ground_6_2,	//o
+		Gunkan_Ground_6_3,	//p
+		Gunkan_Ground_6_4,	//q
 		Wall6_1,			//W to replace as it is repetitive
 		Wall6_2,			//X to replace as it is repetitive
 		Wall6_3,			//Y to replace as it is repetitive
@@ -187,6 +187,7 @@ namespace Core
 		static void loadLevelSelect(int x, int y);
 		static void load_Dialogue(); //RP stands for Rice Plain
 		static void load_Wood_BG(); //for fishing village
+		static void load_Bami_End_Room(); //Ending Cutscene
 
 		static void drawTile();
 		static void drawBox();
@@ -205,6 +206,7 @@ namespace Core
 		static void drawBlackOverlay();
 		static void draw_Dialogue();
 		static void draw_Wood_BG();
+		static void draw_Bami_End_Room();
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
@@ -224,6 +226,7 @@ namespace Core
 		static void destroyLevelSelect();
 		static void destroy_Dialogue();
 		static void destroy_Wood_BG();
+		static void destroy_Bami_End_Room();
 
 	
 		static void Readfile();
@@ -278,6 +281,9 @@ namespace Core
 		static inline Sprite* player_stuck;
 
 		static inline Sprite* rec;
+
+		static inline Sprite* Bami_End_Room_Cutscene;
+
 
 		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;

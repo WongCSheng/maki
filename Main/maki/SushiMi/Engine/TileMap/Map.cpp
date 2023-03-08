@@ -838,43 +838,7 @@ namespace Core
 					break;
 				}
 
-				case static_cast<int>(wall_type::Gunkan_Ground_2_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Gunkan_Ground_3_1):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_1, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Gunkan_Ground_3_2):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_2, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Gunkan_Ground_3_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-
+				
 
 
 				case static_cast<int>(wall_type::Wall5):
@@ -888,50 +852,7 @@ namespace Core
 				}
 
 
-				//most common wall
-				case static_cast<int>(wall_type::Gunkan_Ground_6_1):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_1, tile);
 
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Gunkan_Ground_6_2):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_2, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Gunkan_Ground_6_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Gunkan_Ground_6_4):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_4, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
 				case static_cast<int>(wall_type::Wall6):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
@@ -1142,7 +1063,7 @@ namespace Core
 				//	Gunkan_Ground_1_1,		//l
 				case static_cast<int>(wall_type::Gunkan_Ground_1_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall1_1.png");
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_1_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1152,7 +1073,7 @@ namespace Core
 				//	Gunkan_Ground_1_2,		//m
 				case static_cast<int>(wall_type::Gunkan_Ground_1_2):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2.png");
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_1_2.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1162,7 +1083,7 @@ namespace Core
 				//	Gunkan_Ground_1_3,		//n
 				case static_cast<int>(wall_type::Gunkan_Ground_1_3):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall2_1.png");
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_1_3.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1172,7 +1093,7 @@ namespace Core
 				//	Gunkan_Ground_1_4,		//o
 				case static_cast<int>(wall_type::Gunkan_Ground_1_4):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3.png");
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_1_4.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_1_4, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1182,7 +1103,7 @@ namespace Core
 				//	Gunkan_Ground_2_1,		//p
 				case static_cast<int>(wall_type::Gunkan_Ground_2_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_GunkanVillage/Wall3_1.png");
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_2_1.png");
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1190,24 +1111,110 @@ namespace Core
 					break;
 				}
 
-				/*case static_cast<int>(wall_type::Water):
+				//	Gunkan_Ground_2_2,		
+				case static_cast<int>(wall_type::Gunkan_Ground_2_2):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Water, tile);
-
-					SceneManager::loadTile(r / static_cast<float>(max_grid_cols_x) * width, c / static_cast<float>(max_grid_rows_y) * height, combine);
-					break;
-				}*/
-				//	Gunkan_Ground_2_1,		//p
-				case static_cast<int>(wall_type::WoodenPlatform):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_2_2.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
+
+				//	Gunkan_Ground_2_3,	
+				case static_cast<int>(wall_type::Gunkan_Ground_2_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_2_3.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_2_3, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_3_1,	
+				case static_cast<int>(wall_type::Gunkan_Ground_3_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_3_1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_1, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_3_2,	
+				case static_cast<int>(wall_type::Gunkan_Ground_3_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_3_2.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_2, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_3_3,	
+				case static_cast<int>(wall_type::Gunkan_Ground_3_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_3_3.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_3_3, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_6_1,	
+				case static_cast<int>(wall_type::Gunkan_Ground_6_1):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_6_1.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_1, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_6_2,	
+				case static_cast<int>(wall_type::Gunkan_Ground_6_2):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_6_2.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_2, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_6_3,	
+				case static_cast<int>(wall_type::Gunkan_Ground_6_3):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_6_3.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_3, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+				//	Gunkan_Ground_6_4,	
+				case static_cast<int>(wall_type::Gunkan_Ground_6_4):
+				{
+					Sprite* tile = new Sprite("../textures/Tiles/Ground_GunkanVillage/Gunkan_Ground_6_4.png");
+					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Gunkan_Ground_6_4, tile);
+
+					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+					break;
+				}
+
+
+				
+				////	Wood,		//p
+				//case static_cast<int>(wall_type::WoodenPlatform):
+				//{
+				//	Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
+				//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
+
+				//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+
+				//	break;
+				//}
 
 				default:
 					assert("Texture type not found\n");

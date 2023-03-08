@@ -117,13 +117,13 @@ namespace Core
 			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;;
 			Window::keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
 			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
-			Window::keystate_M = (key == GLFW_KEY_M) ? true : false;
 			Window::keystate_T = (key == GLFW_KEY_T) ? true : false;
 			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 			Window::keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
 			Window::keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
+			Window::keystate_P = (key == GLFW_KEY_P) ? true : false;
 			Window::keystate_J = (key == GLFW_KEY_J) ? true : false;
 			Window::keystate_K = (key == GLFW_KEY_K) ? true : false;
 			Window::keystate_L = (key == GLFW_KEY_L) ? true : false;
@@ -295,6 +295,12 @@ namespace Core
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
 
+		SceneManager::Bami_End_Room_Cutscene = new Sprite("../textures/spritesheet/ricespritesheet.png"); //placeholder
+		//SceneManager::Bami_End_Room_Cutscene->isSpriteSheet = 0;
+		//SceneManager::Bami_End_Room_Cutscene->Add_animation("../textures/spritesheet/Bami_Idle.txt");
+		//SceneManager::Bami_End_Room_Cutscene->curr_anim = AnimationType::Idle;
+
+
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
@@ -352,6 +358,7 @@ namespace Core
 		SceneManager::destroyLevelSelect();
 		SceneManager::destroy_Dialogue();
 		SceneManager::destroy_Wood_BG();
+		SceneManager::destroy_Bami_End_Room();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -399,8 +406,40 @@ namespace Core
 			isLevel8 = false;
 			isLevel9 = false;
 			isLevel10 = false;
+			isTestLevel = false;
 			loaded = false;
 			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in menu
+
+		}
+
+		//Play End Cutscene
+		if (keystate_P)
+		{
+			isEndingCutscene = true;
+			isCutscene = false;
+			isMenuState = false;
+			gameIsPaused = false;
+			isQuestTab = false;
+			isHowToPlay = false;
+			isLevelSelection = false;
+			gameIsPaused = false;
+			keystate_M = false;
+			isTut1 = false;
+			isTut2 = false;
+			isLevel1 = false;
+			isLevel2 = false;
+			isLevel3 = false;
+			isLevel4 = false;
+			isLevel5 = false;
+			isLevel6 = false;
+			isLevel7 = false;
+			isLevel8 = false;
+			isLevel9 = false;
+			isLevel10 = false;
+			isTestLevel = false;
+			loaded = false;
+			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in end cutscene
+
 
 		}
 
@@ -1776,6 +1815,13 @@ namespace Core
 						isSettings = false;
 					}
 				}
+			}
+
+			if (isEndingCutscene == true)
+			{
+				SceneManager::load_Bami_End_Room();
+				SceneManager::draw_Bami_End_Room();
+				
 			}
 
 			if (isCredits == true)

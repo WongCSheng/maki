@@ -36,8 +36,8 @@ namespace Core
 		
 		if (!Window::loaded)
 		{
-			Window::player->current_anim = AnimationType::Idle;
-			if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+
+			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size()>0)
 			{
 				Map::ResetMap();
 			}
@@ -71,7 +71,7 @@ namespace Core
 			Window::dialogue_style = static_cast<int>(Window::dialogue::L1);
 			Window::curr_len = 0;
 
-			SceneManager::num_dialogue_clicks = 3; //num of dialogue pages BEFORE game starts
+			SceneManager::num_dialogue_clicks = 4; //num of dialogue pages BEFORE game starts
 			Window::isDialogue = true;
 			CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
 																	// for quest tab drawing of ingredients

@@ -74,7 +74,7 @@ namespace Core
 		static inline bool keystate_D;
 		static inline bool keystate_fps;
 		static inline bool mouseLeft;
-		static inline int curr_len = 0;
+		static inline size_t curr_len = 0;
 		static inline std::string realstring = "";
 
 		static inline bool gameIsPaused;

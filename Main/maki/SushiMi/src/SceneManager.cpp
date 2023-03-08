@@ -49,7 +49,7 @@ namespace Core
 
 	void SceneManager::restartLevel()
 	{
-		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0)
+		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0 && topcontainer.size()>0)
 		{
 			Map::ResetMap();
 		}
@@ -78,7 +78,18 @@ namespace Core
 	//					to create a new one (this is very resource intensive
 	//					and prone to memory leaks)
 
+	void SceneManager::loadTopAnimation(int x, int y, const std::pair<animated, Sprite*>& tile)
+	{
 
+		tile.second->transformation.Position = glm::vec2(x, y);
+		tile.second->transformation.Scale = glm::vec2(getTileWidth() * 1.01f, getTileHeight() * 1.01f);
+
+		topcontainer.push_back(tile);
+
+
+		std::cout << std::endl;
+		//std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
+	}
 
 	void SceneManager::loadTile(int x, int y, const std::pair<wall_type, Sprite*>& tile)
 	{
@@ -90,7 +101,7 @@ namespace Core
 
 
 		std::cout << std::endl;
-		std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
+		//std::cout << "****************** added a tile! tilecontainer size: " << tilecontainer.size() << std::endl;
 	}
 
 	void SceneManager::loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*>& ingredient)
@@ -123,7 +134,7 @@ namespace Core
 
 		ingredientcontainer.push_back(input);
 		std::cout << std::endl;
-		std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
+		//std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
 	/*
 	void SceneManager::loadRice(int x, int y, int posX, int posY, const std::pair<Rice, Sprite*>& ingredient)
@@ -456,6 +467,15 @@ namespace Core
 		}
 		return 0;
 	}
+	void SceneManager::drawTop()
+	{
+		for (auto& top : topcontainer)
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", top.second->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			top.second->draw(Get_Delta(), AnimationType::Idle);
+		}
+	}
 	bool SceneManager::activateTea(Sprite* tea)
 	{
 		if (tea->timer < 5.f)
@@ -520,6 +540,9 @@ namespace Core
 				break;
 			case 4:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_5");
+				break;
+			case 5:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("HowToPlay_overlay_6");
 				break;
 			}
 
@@ -713,6 +736,18 @@ namespace Core
 
 		in_sinkhole.clear();
 	}
+	void SceneManager::destroyTop()
+	{
+		if (topcontainer.size() > 0)
+		{
+			for (auto& it : topcontainer)
+			{
+				delete it.second;
+			}
+		}
+
+		topcontainer.clear();
+	}
 
 	void SceneManager::destroyHowToOverlay()
 	{
@@ -721,6 +756,7 @@ namespace Core
 		delete howtoplay_overlay3;
 		delete howtoplay_overlay4;
 		delete howtoplay_overlay5;
+		delete howtoplay_overlay6;
 	}
 
 	void SceneManager::destroySettings()

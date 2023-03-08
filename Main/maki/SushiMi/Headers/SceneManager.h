@@ -5,6 +5,7 @@
 
 namespace Core
 {
+	//note: grid_number enums cannot overlap with animated enums
 	enum class grid_number //Find a better way to identify all textures
 	{
 		start = 32,
@@ -28,23 +29,7 @@ namespace Core
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6
-		//fishing tops must be rendered above Bami and above fishing ground, hence it is on the same level as ingredient
-		Fishing_Top_0_0,	//7
-		Fishing_Top_1_1,	//8
-		Fishing_Top_1_2,	//9
-		Fishing_Top_1_3,	//:
-		Fishing_Top_1_4,	//;
-		Fishing_Top_2_1,	//<
-		Fishing_Top_2_2,	//=
-		Fishing_Top_2_3,	//>
-		Fishing_Top_2_4,	//?
-		Fishing_Top_3_1,	//@
-		Fishing_Top_3_2,	//A
-		Fishing_Top_3_3,	//B
-		Fishing_Top_3_4,	//C
-		Fishing_Top_3_5,	//D
-		Fishing_Top_3_6,	//E
-		
+		sinkhole_layer1	//7
 		
 	};
 
@@ -124,24 +109,41 @@ namespace Core
 
 	enum class animated
 	{
-		RicePlant1 = 45,	//0
-		RicePlant2,
-		RicePlant3,
-		RicePlant4,
-		RicePlant5,
-		RiceWater1,
-		RiceWater2,
-		GunkanSign_Right,
-		GunkanSign_Left,
-		GunkanCorn,
-		GunkanCarrot = 65, //A
-		GunkanCrow_Left,   //B
-		GunkanCrow_Right,  //C
-		FishingBoat,	   //D
-		FishingLog,		   //E
-		FishingSotong,
-		FishingNoot,
-		FishingCrab
+		RicePlant1 = 56,	//8 (should start from 7 since 5 is the last grid_number enum
+		RicePlant2,			//9 and we are reading both animations and ingredients on the 1st layer
+		RicePlant3,			//:
+		RicePlant4,			//;
+		RicePlant5,			//<
+		RiceWater1,			//=
+		RiceWater2,			//>
+		GunkanSign_Right,	//?
+		GunkanSign_Left,	//@
+		GunkanCorn,			//A
+		GunkanCarrot,		//B
+		GunkanCrow_Left,	//C
+		GunkanCrow_Right,	//D
+		FishingBoat,		//E
+		FishingLog,			//F
+		FishingSotong,		//G
+		FishingNoot,		//H
+		FishingCrab,		//I
+		//fishing tops must be rendered above Bami and above fishing ground, hence it is on the same level as ingredient
+		RicePlain_TopG2_1,  //J
+		Fishing_Top_0_0,	//7
+		Fishing_Top_1_1,	//8
+		Fishing_Top_1_2,	//9
+		Fishing_Top_1_3,	//:
+		Fishing_Top_1_4,	//;
+		Fishing_Top_2_1,	//<
+		Fishing_Top_2_2,	//=
+		Fishing_Top_2_3,	//>
+		Fishing_Top_2_4,	//?
+		Fishing_Top_3_1,	//@
+		Fishing_Top_3_2,	//A
+		Fishing_Top_3_3,	//B
+		Fishing_Top_3_4,	//C
+		Fishing_Top_3_5,	//D
+		Fishing_Top_3_6	//E
 	};
 
 	struct Basket
@@ -174,6 +176,7 @@ namespace Core
 		static void nextLevel();
 
 		/*HARD CODE FOR NOW, WILL MAKE IT COMPONENT BASED*/
+		static void loadTopAnimation(int x, int y, const std::pair<animated, Sprite*>& tile);
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
 		static void loadPlayer_Stuck(int x, int y);
@@ -187,6 +190,7 @@ namespace Core
 
 		static void drawTile();
 		static void drawBox();
+		static void drawTop();
 		static void drawIngr();
 		static bool activateSoya(Sprite* soya);
 		static bool activateWasabi(Sprite* wasabi);
@@ -211,6 +215,7 @@ namespace Core
 		static void destroyTile();
 		static void destroyIngr();
 		static void destroyInsideSinkHole();
+		static void destroyTop();
 		static void destroyPlayer_Stuck();
 		static void destroyHowToOverlay();
 		static void destroySettings();
@@ -231,7 +236,7 @@ namespace Core
 		static inline unsigned int getTileWidth();
 		static inline unsigned int getTileHeight();
 
-	
+		static inline std::vector<std::pair<animated, Sprite*>> topcontainer;
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<Basket> ingredientcontainer;
 		static inline std::unordered_map<grid_number, int> counter;

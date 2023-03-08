@@ -811,6 +811,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isTestLevel = false;
+				isDialogue = false;
 				isLevelSelection = true;
 				SceneManager::restartLevel();
 
@@ -828,25 +829,12 @@ namespace Core
 			//}
 		}
 
-		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8))
+		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isTestLevel ) && isDialogue == false)
 		{
 			gameIsPaused = !gameIsPaused;
 			keystate_escape = false;
 		}
-		//if game is NOT paused
-		if (gameIsPaused == false && isHowToPlay == false)
-		{
-			if (keystate_escape)
-			{
-				gameIsPaused = false;
-				//std::cout << "game resume, no more pause screen" << std::endl;
-				int screenwidth = 0, screenheight = 0;
-				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				//SceneManager::pause_overlay->transformation.Position.x = screenwidth;
-				//SceneManager::pause_overlay->transformation.Position.y = screenheight;
-				keystate_escape = false;
-			}
-		}
+		
 		/**************************************/
 		//BUTTONS DISPLAYED AT MAIN MENU
 		/**************************************/
@@ -918,8 +906,8 @@ namespace Core
 						//std::cout << "game resume, no more pause screen" << std::endl;
 						int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
-						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
+						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
 
 				
 
@@ -931,19 +919,17 @@ namespace Core
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
-					//RESUME THE GAME BUTTON
+					//Level Selection
 					if (((float)xpos > position.x) &&
 						((float)ypos > position.y) &&
 						((float)xpos < (position.x + scale.x)) &&
 						((float)ypos < (position.y + scale.y)))
 					{
-						gameIsPaused = false;
-						//std::cout << "game resume, no more pause screen" << std::endl;
+						keystate_T = true;
 						int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
-						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
-
+						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
 
 
 					}
@@ -1118,14 +1104,14 @@ namespace Core
 
 	void Window::Resize()
 	{
-		int width, height;
-		glfwGetWindowSize(window_ptr, &width, &height);
-		if (width != m_width || height != m_height)
+		int width_, height_;
+		glfwGetWindowSize(window_ptr, &width_, &height_);
+		if (width_ != m_width || height_ != m_height)
 		{
-			m_width = width;
-			m_height = height;
-			glViewport(0, 0, width, height);
-			camera->Update_Viewport(width, height);
+			m_width = width_;
+			m_height = height_;
+			glViewport(0, 0, width_, height_);
+			camera->Update_Viewport(width_, height_);
 			printf("resized \n");
 		}
 	}

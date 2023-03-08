@@ -51,6 +51,7 @@ namespace Core
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
 		SceneManager::destroyInsideSinkHole();
+		SceneManager::destroyTop();
 	}
 
 	void Map::initMap(std::string Filename)
@@ -87,14 +88,14 @@ namespace Core
 			{
 				fin >> ch;
 
-				if (ch >= '!' && ch <= '5')
+				if (ch >= '!' && ch <= '7')
 				{
 					gGrids[r][c] = ch;
 					RestartGrids[r][c] = ch;
 				}
 				else
 				{
-					//aGrids[r][c] = ch;
+					aGrids[r][c] = ch;
 				}
 			}
 		}
@@ -160,6 +161,7 @@ namespace Core
 		SceneManager::destroyTile();
 		SceneManager::destroyIngr();
 		SceneManager::destroyInsideSinkHole();
+		SceneManager::destroyTop();
 
 		for (int i = 0; i < max_grid_rows_y; i++)
 		{
@@ -219,6 +221,7 @@ namespace Core
 		CorrectCombination = 0;
 
 		/*Testing whether is loaded correctly*/
+		LoadAMap();
 		LoadGMap();
 		LoadWMap();
 		//scale the player according to map size
@@ -228,6 +231,55 @@ namespace Core
 		print_map_to_console();
 
 		return 1;
+	}
+
+	void Map::LoadAMap()
+	{
+		for (int c = 0; c < max_grid_rows_y; c++)
+		{
+			for (int r = 0; r < max_grid_cols_x; r++)
+			{
+				int grid_to_coord_x = static_cast<int>(r / static_cast<float>(max_grid_cols_x) * width);
+				int grid_to_coord_y = static_cast<int>(c / static_cast<float>(max_grid_rows_y) * height);
+				switch (aGrids[r][c])
+				{
+					case static_cast<int>(animated::RicePlant1):
+					{
+						Sprite* rice = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
+						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(rice));
+						rice->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice->curr_anim = AnimationType::Idle;
+						rice->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
+
+						
+					}
+					case static_cast<int>(animated::RicePlant2):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant2.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant2, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+
+
+					}
+					/*case static_cast<int>(animated::RicePlain_TopG2_1):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Top/RicePlain_TopG2_1.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlain_TopG2_1, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+
+
+					}*/
+				}
+
+			}
+		}
 	}
 
 	void Map::LoadGMap()
@@ -1174,8 +1226,7 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used)) &&
-			!isWin())
+		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole)))
 		{
 			return true;
 			Window::player->isStuck();
@@ -1211,12 +1262,13 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile on the left of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
+					else if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole_layer1))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 
 						//Set grid
 						wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::filledsinkhole);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::filledsinkhole);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -1494,7 +1546,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
+			else if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole_layer1))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -1580,12 +1632,13 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile on the right of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
+					else if (wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole_layer1))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
 						//Set grid
 						wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::filledsinkhole);
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::filledsinkhole);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -1875,7 +1928,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::no_longer_used))
+			else if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole_layer1))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -1970,11 +2023,12 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile below of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::no_longer_used))
+					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::sinkhole_layer1))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(wall_type::filledsinkhole);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(wall_type::filledsinkhole);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2263,7 +2317,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::no_longer_used))
+			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::sinkhole_layer1))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -2346,11 +2400,12 @@ namespace Core
 						Window::player->stop();
 					}
 					//check if tile above of ingredient is a sinkhole
-					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::no_longer_used))
+					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::sinkhole_layer1))
 					{
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(wall_type::filledsinkhole);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(wall_type::filledsinkhole);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2640,7 +2695,7 @@ namespace Core
 				Window::player->stop();
 			}
 			/*check for sinkhole*/
-			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::sinkhole) || wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::no_longer_used))
+			else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(wall_type::sinkhole) || gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::sinkhole_layer1))
 			{
 				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 
@@ -2735,6 +2790,7 @@ namespace Core
 		SceneManager::drawTile();
 		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
+		SceneManager::drawTop();
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
 		//SceneManager::drawRice();
 	}

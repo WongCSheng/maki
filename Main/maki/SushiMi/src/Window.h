@@ -65,6 +65,7 @@ namespace Core
 		static inline bool keystate_J;
 		static inline bool keystate_K;
 		static inline bool keystate_L;
+		static inline bool keystate_P;
 		static inline bool keystate_T;
 		static inline bool keystate_escape;
 		static inline bool place_obj;
@@ -90,6 +91,8 @@ namespace Core
 		isLevel7, isLevel8, isLevel9, //fishing village
 		isLevel10, //maki city
 		isTestLevel;
+
+		bool isEndingCutscene;
 
 		static inline bool isDialogue;
 		static inline int dialogue_style;
@@ -160,6 +163,8 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		//void ImGuiToObjContainer(ObjectFactory* c);
 	
+
+
 		struct ScreenDimensions {
 			static inline int screenwidth;
 			static inline int screenheight;

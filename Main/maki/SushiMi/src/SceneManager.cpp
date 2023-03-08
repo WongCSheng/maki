@@ -300,6 +300,14 @@ namespace Core
 		wooden_bg->transformation.Scale = glm::vec2(screenwidth * 0.867f, screenheight * 0.91f);
 	}
 
+	void SceneManager::load_Bami_End_Room()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		Bami_End_Room_Cutscene->transformation.Position = glm::vec2(0, 0);
+		Bami_End_Room_Cutscene->transformation.Scale = glm::vec2(screenwidth, screenheight);
+	}
+
 	void SceneManager::drawRect(float alpha_)
 	{
 		/*This one draws the black background completely fine, but it is without the Alpha variable */
@@ -682,6 +690,13 @@ namespace Core
 		wooden_bg->draw();
 	}
 
+	void SceneManager::draw_Bami_End_Room()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Bami_End_Room_Cutscene->transformation.Get());
+		Bami_End_Room_Cutscene->draw();
+		
+	}
+
 	void SceneManager::loadRect(int x, int y)
 	{
 		rec->transformation.Position = glm::vec2(x, y);
@@ -797,6 +812,11 @@ namespace Core
 	void SceneManager::destroy_Wood_BG()
 	{
 		delete wooden_bg;
+	}
+
+	void SceneManager::destroy_Bami_End_Room()
+	{
+		delete Bami_End_Room_Cutscene;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

@@ -1236,7 +1236,6 @@ namespace Core
 		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole)))
 		{
 			return true;
-			Window::player->isStuck();
 		}
 		else
 		{

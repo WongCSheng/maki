@@ -22,7 +22,7 @@ pointers to OpenGL implementations.
 // static data members declared in GLHelper
 GLint GLHelper::width;
 GLint GLHelper::height;
-GLint GLHelper::fps;
+double GLHelper::fps;
 GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;

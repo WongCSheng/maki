@@ -33,6 +33,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 //#include "../Mono/Mono.h"
 #include <memory> 
 #include <crtdbg.h> 
+#include <WinBase.h>
 
 //	testing
 #include "../Headers/Log.h"

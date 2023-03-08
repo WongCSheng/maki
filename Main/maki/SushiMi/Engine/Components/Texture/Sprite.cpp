@@ -18,7 +18,7 @@ namespace Core
 {
 	std::map<std::string, std::vector<std::string>> Sprite::levelCorrectIngredients;
 
-	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}
+	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}, animeMe{}, count{}, status{}
 	{
 		//mem leak here?
 		auto tex_sys = Core::TextureSystem::GetInstance();
@@ -123,7 +123,7 @@ namespace Core
 		if (jsonObj.HasMember("CorrectIngredient"))
 		{
 			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
-			for (int i{}; i < SpriteArr2.Size(); ++i)
+			for (size_t i{}; i < SpriteArr2.Size(); ++i)
 			{
 				const rapidjson::Value& ingredient = SpriteArr2[i];
 

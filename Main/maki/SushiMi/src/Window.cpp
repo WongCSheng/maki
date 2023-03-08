@@ -207,7 +207,8 @@ namespace Core
 		isLevelSelection(0),
 		isMenuState(1),
 		isSettings(0),
-		isWalk(0)
+		isWalk(0),
+		isEndingCutscene(0)
 
 	{
 		starttime = endtime = delta = fps = 0;

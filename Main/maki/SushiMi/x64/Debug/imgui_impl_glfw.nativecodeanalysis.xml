@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\imgui\</FILEPATH>
+      <FILENAME>imgui_impl_glfw.cpp</FILENAME>
+      <LINE>245</LINE>
+      <COLUMN>27</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'ImGuiKey' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>ImGui_ImplGlfw_KeyToImGuiKey</FUNCTION>
+    <DECORATED>?ImGui_ImplGlfw_KeyToImGuiKey@@YA?AW4ImGuiKey@@H@Z</DECORATED>
+    <FUNCLINE>137</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\imgui\</FILEPATH>
+      <FILENAME>imgui_impl_glfw.cpp</FILENAME>
+      <LINE>449</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'GlfwClientApi' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>ImGui_ImplGlfw_Init</FUNCTION>
+    <DECORATED>?ImGui_ImplGlfw_Init@@YA_NPEAUGLFWwindow@@_NW4GlfwClientApi@@@Z</DECORATED>
+    <FUNCLINE>449</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

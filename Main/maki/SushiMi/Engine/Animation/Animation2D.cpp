@@ -28,7 +28,6 @@ namespace Core
 		FILE* fp = nullptr;
 		const int bufferlen = 255;
 		char line[bufferlen];
-
 		fopen_s(&fp, filename, "r");
 
 		if (fp == nullptr)
@@ -54,8 +53,11 @@ namespace Core
 		}
 
 		frames_count = (int)frames.size();
+		if (fp != NULL)
+		{
+			fclose(fp);
+		}
 
-		fclose(fp);
 	}
 
 	Animation2D::~Animation2D()

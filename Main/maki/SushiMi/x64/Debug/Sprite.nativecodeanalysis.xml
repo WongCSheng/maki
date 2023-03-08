@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\internal\</FILEPATH>
+      <FILENAME>ieee754.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidjson::internal::Double::&lt;unnamed-tag&gt;::d_' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidjson::internal::Double::{ctor}</FUNCTION>
+    <DECORATED>??0Double@internal@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>rapidjson::internal::Double::&lt;unnamed-tag&gt;::d_</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\internal\</FILEPATH>
+      <FILENAME>ieee754.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidjson::internal::Double::&lt;unnamed-tag&gt;::u_' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidjson::internal::Double::{ctor}</FUNCTION>
+    <DECORATED>??0Double@internal@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>rapidjson::internal::Double::&lt;unnamed-tag&gt;::u_</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\error\</FILEPATH>
+      <FILENAME>error.h</FILENAME>
+      <LINE>111</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::ParseErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::ParseResult::{ctor}</FUNCTION>
+    <DECORATED>??0ParseResult@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>111</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\error\</FILEPATH>
+      <FILENAME>en.h</FILENAME>
+      <LINE>76</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::ValidateErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::GetValidateError_En</FUNCTION>
+    <DECORATED>?GetValidateError_En@rapidjson@@YAPEBDW4ValidateErrorCode@1@@Z</DECORATED>
+    <FUNCLINE>76</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\SushiMi\Engine\Components\Texture\</FILEPATH>
+      <FILENAME>Sprite.cpp</FILENAME>
+      <LINE>21</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Core::Sprite::count' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Core::Sprite::{ctor}</FUNCTION>
+    <DECORATED>??0Sprite@Core@@QEAA@PEBD@Z</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Core::Sprite::count</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\SushiMi\Engine\Components\Texture\</FILEPATH>
+      <FILENAME>Sprite.cpp</FILENAME>
+      <LINE>21</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Core::Sprite::animeMe' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Core::Sprite::{ctor}</FUNCTION>
+    <DECORATED>??0Sprite@Core@@QEAA@PEBD@Z</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Core::Sprite::animeMe</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\SushiMi\Engine\Components\Texture\</FILEPATH>
+      <FILENAME>Sprite.cpp</FILENAME>
+      <LINE>21</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Core::Sprite::status' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Core::Sprite::{ctor}</FUNCTION>
+    <DECORATED>??0Sprite@Core@@QEAA@PEBD@Z</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Core::Sprite::status</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

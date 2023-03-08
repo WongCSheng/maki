@@ -13,7 +13,7 @@ Description: Contains data for every type of transform. From meshes, bounding bo
 
 namespace Core
 {
-	Transform::Transform()
+	Transform::Transform() : Position{}, Rotation{}, RotationMat{}, Scale{}, ScaleMat{}, TranslateMat{}, owner{}
 	{
 		
 	}

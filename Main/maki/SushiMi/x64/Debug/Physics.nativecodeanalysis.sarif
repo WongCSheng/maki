@@ -1,0 +1,583 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'rapidjson::internal::Double::<unnamed-tag>::d_' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/internal/ieee754.h"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 5,
+                  "endLine": 25,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Double@internal@rapidjson@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "rapidjson::internal::Double::<unnamed-tag>::d_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'rapidjson::internal::Double::<unnamed-tag>::u_' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/internal/ieee754.h"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 5,
+                  "endLine": 25,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Double@internal@rapidjson@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "rapidjson::internal::Double::<unnamed-tag>::u_"
+          }
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'rapidjson::ParseErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/error/error.h"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 26,
+                  "endLine": 111,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0ParseResult@rapidjson@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'rapidjson::ValidateErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/error/en.h"
+                },
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 40,
+                  "endLine": 76,
+                  "endColumn": 40
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?GetValidateError_En@rapidjson@@YAPEBDW4ValidateErrorCode@1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30146.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x006FC1B0 -il C:\\Users\\Rui\\AppData\\Local\\Temp\\_CL_1ab53e31ast -typedil -f Engine\\Components\\Physics\\Physics.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930146 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -I D:\\maki\\Main\\maki\\SushiMi\\imgui -I D:\\maki\\Main\\maki\\SushiMi\\Fmod -I D:\\maki\\Main\\maki\\lib\\rttr\\src -I D:\\maki\\Main\\maki\\lib\\rttr\\src\\rttr -nologo -W 4 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -DGLFW_DLL -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DDEBUGGER -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -std:c++20 -Fox64\\Debug\\Physics.obj -Fdx64\\Debug\\vc142.pdb -external:W 4 -Gd -analyze:projectdirectory D:\\maki\\Main\\maki\\SushiMi -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib\\glfw-3.3.7.bin.WIN32\\include -I D:\\maki\\Main\\maki\\lib\\glew-2.2.0\\include -I D:\\maki\\Main\\maki\\lib\\glm-0.9.9.8 -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\lib\\glfw\\include -I D:\\maki\\Main\\maki\\lib\\glew\\include -I D:\\maki\\Main\\maki\\lib\\glm\\glm -I D:\\maki\\Main\\maki\\lib\\rapidJSON\\ -I D:\\maki\\Main\\maki\\lib\\freetype\\include -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\SushiMi -I D:\\maki\\Main\\maki\\lib\\Fmod -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -MPdiagMutex 00000000000001E4",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "27b371814134bf870e99db66514c170a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "md5": "db2ca36fa33b543cb978289a34068c59"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "md5": "623d61093b99dae49babe1c51cf226ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_internal.h"
+          },
+          "hashes": {
+            "md5": "357207103c2dc232e04f1a651cb44aad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imstb_textedit.h"
+          },
+          "hashes": {
+            "md5": "833291444cdcb4a7ceff4d359e403125"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/engine/audio/audioengine.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "efb444fd83960f26f29562d78eca368d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/engine/audio/audioengine.h"
+          },
+          "hashes": {
+            "md5": "352e944bcb990f7e0142285cb5778aff"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod.hpp"
+          },
+          "hashes": {
+            "md5": "778239038a04378fe90e517693197392"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_common.h"
+          },
+          "hashes": {
+            "md5": "16fef74e3b02cf05f62ff63ac7bfce15"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_codec.h"
+          },
+          "hashes": {
+            "md5": "8c19e79b392bc9de0e82e82f0ac76416"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_dsp.h"
+          },
+          "hashes": {
+            "md5": "269eac2b3ce76b23f83f1502192e6e67"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_dsp_effects.h"
+          },
+          "hashes": {
+            "md5": "e0cd1cf5c5a2e9ef1ba1ccf8708d89ae"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_output.h"
+          },
+          "hashes": {
+            "md5": "79207b0106e8919c8bcf666ab8ac91b1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod.h"
+          },
+          "hashes": {
+            "md5": "be68af66e3b0ff89332a5013dd07e3cc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/fmod/inc/fmod_errors.h"
+          },
+          "hashes": {
+            "md5": "7f7f4735f592b9d6173c96cb42ce3c56"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/internal/ieee754.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "c266f1c056c8808ccb3f511709bc3275"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/error/error.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "b5d76a416f47d4ba49b22d543708e837"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/rapidJSON/error/en.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "d28bcf93ed2d96a415e69fea781c6a33"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/engine/components/physics/physics.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "b02c0e89cf3e62f016cef77d25839ad1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/engine/components/physics/physics.h"
+          },
+          "hashes": {
+            "md5": "3472ebec020b36dd55dfbf13999eaa94"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/headers/stl_header.h"
+          },
+          "hashes": {
+            "md5": "f72e09b7d6e45b44d08089a544c9fc75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/engine/components/component.h"
+          },
+          "hashes": {
+            "md5": "3e71c2f02e7ca1182c7a58f01c3fdb0e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/headers/rapidjson_header.h"
+          },
+          "hashes": {
+            "md5": "cfd5c7e36e459c6eb5af82bf277cada7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/rapidjson.h"
+          },
+          "hashes": {
+            "md5": "7a1b98906f0f11bbdfaea207faa0732b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/istreamwrapper.h"
+          },
+          "hashes": {
+            "md5": "ad6760f7432aa064b687fcf41ec57c37"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/stream.h"
+          },
+          "hashes": {
+            "md5": "c6119b78b3e011704e56cfc1b95e96d9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/encodings.h"
+          },
+          "hashes": {
+            "md5": "68eb4f2f5b24dc93cc84fac4d332d63a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/filereadstream.h"
+          },
+          "hashes": {
+            "md5": "298b69116de56243a90ce17cbc63841c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/filewritestream.h"
+          },
+          "hashes": {
+            "md5": "b109c3002d132535df004141ebae63d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/reader.h"
+          },
+          "hashes": {
+            "md5": "cd65882d9c5a053a55eb28ed154aeca6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/allocators.h"
+          },
+          "hashes": {
+            "md5": "978e6949825f686c35631c430662c35f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/meta.h"
+          },
+          "hashes": {
+            "md5": "520e07c5a73cc7fb723afce7a22b846d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/encodedstream.h"
+          },
+          "hashes": {
+            "md5": "c00b770254cb48085415946ca9a2318b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/memorystream.h"
+          },
+          "hashes": {
+            "md5": "3178482113d4e8aa86d0507f07a1db41"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/clzll.h"
+          },
+          "hashes": {
+            "md5": "c96feeec22df6f366525e3be47d76d6e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/stack.h"
+          },
+          "hashes": {
+            "md5": "aeca49d6ed8fbeae073a53ee69a243a9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/swap.h"
+          },
+          "hashes": {
+            "md5": "e11758832cde0e551c76dd5e0b56f3d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/strtod.h"
+          },
+          "hashes": {
+            "md5": "306845b7a7dd782a83d5bf2ec971d986"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/biginteger.h"
+          },
+          "hashes": {
+            "md5": "25b7b6bb9694c3b6249fe992e020838e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/diyfp.h"
+          },
+          "hashes": {
+            "md5": "1b271a327fa2963c894522cce02cb347"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/pow10.h"
+          },
+          "hashes": {
+            "md5": "3717d536389f2cc017d761ff5728935f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/prettywriter.h"
+          },
+          "hashes": {
+            "md5": "ddf3e0504f3dc9c7a1edc09a258ad914"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/writer.h"
+          },
+          "hashes": {
+            "md5": "6c4e5d5f8f3ea4e55dd2923e6115747c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/strfunc.h"
+          },
+          "hashes": {
+            "md5": "e9ec50dfbc1766bd43b2351af3753ebb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/dtoa.h"
+          },
+          "hashes": {
+            "md5": "5b84a892c6305e18b078fe8346a5f3b7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/internal/itoa.h"
+          },
+          "hashes": {
+            "md5": "e83359e83e7221ee64eb92aef15dad98"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/stringbuffer.h"
+          },
+          "hashes": {
+            "md5": "0afbaf194fc7ea875e551b41f430c16d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/rapidjson/document.h"
+          },
+          "hashes": {
+            "md5": "5b1186fe5c1d7dfc2e3962437dfbabea"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/headers/math_header.h"
+          },
+          "hashes": {
+            "md5": "e4985ff1dcf5de1039f85371851e2a67"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/include/math.h"
+          },
+          "hashes": {
+            "md5": "3d822f054e85032d4434f1ea6c448476"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/include/matrix.h"
+          },
+          "hashes": {
+            "md5": "f4032ece1ed93d9350fdb78f32805a13"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/include/vector.h"
+          },
+          "hashes": {
+            "md5": "0876c3c9b5063ffc4a7e55f26290b335"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/sushimi/include/vector3.h"
+          },
+          "hashes": {
+            "md5": "3508db7777b9dc9ec0906633300a3207"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'ImGui::TableMergeDrawChannels::MergeGroup::ChannelsMask' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_tables.cpp"
+                },
+                "region": {
+                  "startLine": 2389,
+                  "startColumn": 5,
+                  "endLine": 2389,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0MergeGroup@?1??TableMergeDrawChannels@ImGui@@YAXPEAUImGuiTable@@@Z@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "ImGui::TableMergeDrawChannels::MergeGroup::ChannelsMask"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'ImGui::TableMergeDrawChannels::MergeGroup::ChannelsCount' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_tables.cpp"
+                },
+                "region": {
+                  "startLine": 2389,
+                  "startColumn": 5,
+                  "endLine": 2389,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0MergeGroup@?1??TableMergeDrawChannels@ImGui@@YAXPEAUImGuiTable@@@Z@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "ImGui::TableMergeDrawChannels::MergeGroup::ChannelsCount"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30146.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x006FC1B0 -il C:\\Users\\Rui\\AppData\\Local\\Temp\\_CL_0ef9923east -typedil -f ..\\lib\\imgui\\imgui_tables.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930146 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -I D:\\maki\\Main\\maki\\SushiMi\\imgui -I D:\\maki\\Main\\maki\\SushiMi\\Fmod -I D:\\maki\\Main\\maki\\lib\\rttr\\src -I D:\\maki\\Main\\maki\\lib\\rttr\\src\\rttr -nologo -W 4 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -DGLFW_DLL -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DDEBUGGER -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -std:c++20 -Fox64\\Debug\\imgui_tables.obj -Fdx64\\Debug\\vc142.pdb -external:W 4 -Gd -analyze:projectdirectory D:\\maki\\Main\\maki\\SushiMi -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib\\glfw-3.3.7.bin.WIN32\\include -I D:\\maki\\Main\\maki\\lib\\glew-2.2.0\\include -I D:\\maki\\Main\\maki\\lib\\glm-0.9.9.8 -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\lib\\glfw\\include -I D:\\maki\\Main\\maki\\lib\\glew\\include -I D:\\maki\\Main\\maki\\lib\\glm\\glm -I D:\\maki\\Main\\maki\\lib\\rapidJSON\\ -I D:\\maki\\Main\\maki\\lib\\freetype\\include -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\SushiMi -I D:\\maki\\Main\\maki\\lib\\Fmod -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -MPdiagMutex 00000000000001E4",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_demo.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "514bff99f69ea6e52a4c69bf0e9a2989"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "md5": "db2ca36fa33b543cb978289a34068c59"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "md5": "623d61093b99dae49babe1c51cf226ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_tables.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "b94ac901a1cc518adcfd146d262c04c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_internal.h"
+          },
+          "hashes": {
+            "md5": "357207103c2dc232e04f1a651cb44aad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/maki/main/maki/lib/imgui/imstb_textedit.h"
+          },
+          "hashes": {
+            "md5": "833291444cdcb4a7ceff4d359e403125"
+          }
+        }
+      ]
+    }
+  ]
+}

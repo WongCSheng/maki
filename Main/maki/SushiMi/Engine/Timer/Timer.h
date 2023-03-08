@@ -13,7 +13,7 @@ namespace Core
 		std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<float> duration;
 
-		Timer() {
+		Timer() : duration( 0.f ) {
 			using namespace std;
 			auto start = chrono::high_resolution_clock::now();
 		}

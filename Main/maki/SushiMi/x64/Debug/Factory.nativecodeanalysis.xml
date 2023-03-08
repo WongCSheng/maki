@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\internal\</FILEPATH>
+      <FILENAME>ieee754.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidjson::internal::Double::&lt;unnamed-tag&gt;::u_' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidjson::internal::Double::{ctor}</FUNCTION>
+    <DECORATED>??0Double@internal@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>rapidjson::internal::Double::&lt;unnamed-tag&gt;::u_</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\internal\</FILEPATH>
+      <FILENAME>ieee754.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidjson::internal::Double::&lt;unnamed-tag&gt;::d_' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidjson::internal::Double::{ctor}</FUNCTION>
+    <DECORATED>??0Double@internal@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>rapidjson::internal::Double::&lt;unnamed-tag&gt;::d_</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\error\</FILEPATH>
+      <FILENAME>error.h</FILENAME>
+      <LINE>111</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::ParseErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::ParseResult::{ctor}</FUNCTION>
+    <DECORATED>??0ParseResult@rapidjson@@QEAA@XZ</DECORATED>
+    <FUNCLINE>111</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\error\</FILEPATH>
+      <FILENAME>en.h</FILENAME>
+      <LINE>76</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::ValidateErrorCode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::GetValidateError_En</FUNCTION>
+    <DECORATED>?GetValidateError_En@rapidjson@@YAPEBDW4ValidateErrorCode@1@@Z</DECORATED>
+    <FUNCLINE>76</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>prettywriter.h</FILENAME>
+      <LINE>59</LINE>
+      <COLUMN>94</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::PrettyFormatOptions' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::PrettyWriter&lt;rapidjson::FileWriteStream,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$PrettyWriter@VFileWriteStream@rapidjson@@U?$UTF8@D@2@U32@VCrtAllocator@2@$0A@@rapidjson@@QEAA@AEAVFileWriteStream@1@PEAVCrtAllocator@1@_K@Z</DECORATED>
+    <FUNCLINE>58</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>document.h</FILENAME>
+      <LINE>720</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'rapidjson::Type' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>rapidjson::GenericValue&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::MemoryPoolAllocator&lt;rapidjson::CrtAllocator&gt; &gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$GenericValue@U?$UTF8@D@rapidjson@@V?$MemoryPoolAllocator@VCrtAllocator@rapidjson@@@2@@rapidjson@@QEAA@W4Type@1@@Z</DECORATED>
+    <FUNCLINE>720</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>document.h</FILENAME>
+      <LINE>726</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>33010</DEFECTCODE>
+    <DESCRIPTION>Unchecked lower bound for enum type used as index..</DESCRIPTION>
+    <FUNCTION>rapidjson::GenericValue&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::MemoryPoolAllocator&lt;rapidjson::CrtAllocator&gt; &gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$GenericValue@U?$UTF8@D@rapidjson@@V?$MemoryPoolAllocator@VCrtAllocator@rapidjson@@@2@@rapidjson@@QEAA@W4Type@1@@Z</DECORATED>
+    <FUNCLINE>720</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>document.h</FILENAME>
+      <LINE>2451</LINE>
+      <COLUMN>63</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>rapidjson::GenericValue&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::MemoryPoolAllocator&lt;rapidjson::CrtAllocator&gt; &gt;::SetStringRaw</FUNCTION>
+    <DECORATED>?SetStringRaw@?$GenericValue@U?$UTF8@D@rapidjson@@V?$MemoryPoolAllocator@VCrtAllocator@rapidjson@@@2@@rapidjson@@AEAAXU?$GenericStringRef@D@2@AEAV?$MemoryPoolAllocator@VCrtAllocator@rapidjson@@@2@@Z</DECORATED>
+    <FUNCLINE>2442</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>writer.h</FILENAME>
+      <LINE>392</LINE>
+      <COLUMN>31</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>rapidjson::Writer&lt;rapidjson::FileWriteStream,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::WriteString</FUNCTION>
+    <DECORATED>?WriteString@?$Writer@VFileWriteStream@rapidjson@@U?$UTF8@D@2@U32@VCrtAllocator@2@$0A@@rapidjson@@IEAA_NPEBDI@Z</DECORATED>
+    <FUNCLINE>377</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\maki\Main\maki\lib\rapidJSON\</FILEPATH>
+      <FILENAME>writer.h</FILENAME>
+      <LINE>394</LINE>
+      <COLUMN>31</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>rapidjson::Writer&lt;rapidjson::FileWriteStream,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::WriteString</FUNCTION>
+    <DECORATED>?WriteString@?$Writer@VFileWriteStream@rapidjson@@U?$UTF8@D@2@U32@VCrtAllocator@2@$0A@@rapidjson@@IEAA_NPEBDI@Z</DECORATED>
+    <FUNCLINE>377</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

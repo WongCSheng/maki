@@ -44,8 +44,8 @@ namespace Core
 		} playerpos;
 
 		static inline struct PlayerInitialPos {
-			int x;
-			int y;
+			float x;
+			float y;
 		} playerpos_restart;
 
 		

@@ -161,10 +161,10 @@ namespace Core
 	{
 		player_grid_pos.x = player_initial_grid_pos.x;
 		player_grid_pos.y = player_initial_grid_pos.y;
-		playerpos.x = playerpos_restart.x;
-		playerpos.y = playerpos_restart.y;
-		sp->transformation.Position.x = playerpos_restart.x;
-		sp->transformation.Position.y = playerpos_restart.y;
+		playerpos.x = static_cast<float>(playerpos_restart.x);
+		playerpos.y = static_cast<float>(playerpos_restart.y);
+		sp->transformation.Position.x = static_cast<float>(playerpos_restart.x);
+		sp->transformation.Position.y = static_cast<float>(playerpos_restart.y);
 		
 		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
 

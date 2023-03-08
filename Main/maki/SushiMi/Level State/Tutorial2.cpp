@@ -33,7 +33,7 @@ namespace Core
 	extern std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 	void Levels::Tutorial2()
 	{
-
+		Window::player->current_anim = AnimationType::Idle;
 		if (!Window::loaded)
 		{
 

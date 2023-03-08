@@ -36,7 +36,7 @@ namespace Core
 		
 		if (!Window::loaded)
 		{
-
+			Window::player->current_anim = AnimationType::Idle;
 			if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
 			{
 				Map::ResetMap();
@@ -95,7 +95,7 @@ namespace Core
 		{
 			if (Window::isPlayerinSinkhole)
 			{
-
+				Window::player->stop();
 			}
 			else
 				Window::player->draw(Get_Delta());

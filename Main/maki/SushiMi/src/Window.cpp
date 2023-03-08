@@ -34,7 +34,7 @@ namespace Core
 	static int width, height;
 	std::ifstream fin;						// retrieve the current level dialogue file
 	std::vector<Basket> CurrentIngredients; // retreive the current level loaded ingredients
-
+	static bool keystate_fps = false;
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	/*                                                             game states

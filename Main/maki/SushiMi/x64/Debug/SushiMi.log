@@ -1,106 +1,38 @@
-﻿  LevelEditor.cpp
-  Sprite.cpp
-  Core.cpp
-  Map.cpp
-  Player.cpp
-  Level1.cpp
-  Level2.cpp
-  Level3.cpp
-  Level4.cpp
-  Level5.cpp
-  Level6.cpp
-  Level7.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level7.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level7.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level6.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level6.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level1.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level1.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level4.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level4.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level3.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level3.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level2.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level2.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level5.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level5.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(164,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(165,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(166,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(167,52): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Components\Texture\Sprite.cpp(126,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(226,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Game Object\Player.cpp(226,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-  Level8.cpp
-  Level9.cpp
-  TestLevel.cpp
-  Tutorial1.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2645,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2645,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-  Tutorial2.cpp
-  main.cpp
-  SceneManager.cpp
+﻿  SceneManager.cpp
   Window.cpp
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(1193): warning C4702: unreachable code
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2643): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\TestLevel.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\TestLevel.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level9.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level9.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Tutorial1.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Tutorial1.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Level8.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Level8.cpp)
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file Level State\Tutorial2.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file Level State\Tutorial2.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(178,49): warning C4100: 'y': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\SceneManager.cpp(178,42): warning C4100: 'x': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\main.cpp)
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(60,73): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(60,33): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(86,82): warning C4100: 'mod': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(86,56): warning C4100: 'scancode': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(86,31): warning C4100: 'window_ptr': unreferenced formal parameter
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(202,21): warning C4459: declaration of 'width' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(34,13): message : see declaration of 'Core::width'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(202,32): warning C4459: declaration of 'height' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(34,20): message : see declaration of 'Core::height'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(921,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(60,73): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(60,33): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(86,82): warning C4100: 'mod': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(86,56): warning C4100: 'scancode': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(86,31): warning C4100: 'window_ptr': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\SceneManager.cpp(178,49): warning C4100: 'y': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\SceneManager.cpp(178,42): warning C4100: 'x': unreferenced formal parameter
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(202,21): warning C4459: declaration of 'width' hides global declaration
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(34,13): message : see declaration of 'Core::width'
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(202,32): warning C4459: declaration of 'height' hides global declaration
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(34,20): message : see declaration of 'Core::height'
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(921,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(922,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(922,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1080,12): warning C4459: declaration of 'width' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(34,13): message : see declaration of 'Core::width'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1080,20): warning C4459: declaration of 'height' hides global declaration
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(34,20): message : see declaration of 'Core::height'
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1295,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1313,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1341,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1361,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1382,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1409,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1429,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\SushiMi\src\Window.cpp(1450,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  LINK : C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
-  SushiMi.vcxproj -> C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\x64\Debug\SushiMi.exe
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1080,12): warning C4459: declaration of 'width' hides global declaration
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(34,13): message : see declaration of 'Core::width'
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1080,20): warning C4459: declaration of 'height' hides global declaration
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(34,20): message : see declaration of 'Core::height'
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1295,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1313,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1341,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1361,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1382,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1409,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1429,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Window.cpp(1450,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  SushiMi.vcxproj -> C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe

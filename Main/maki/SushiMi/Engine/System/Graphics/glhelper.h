@@ -105,7 +105,7 @@ struct GLHelper
 	1. the interval in seconds between each frame
 	2. the frames per second every "fps_calc_interval" seconds
 	*/
-	static float getDelta();
+	static void update_time(double fps_calc_interval);
 
 	static GLint width, height;
 	static GLdouble fps;

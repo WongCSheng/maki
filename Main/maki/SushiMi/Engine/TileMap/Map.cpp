@@ -2547,6 +2547,7 @@ namespace Core
 		SceneManager::drawTile();
 		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
 		//SceneManager::drawRice();
 	}
 	/********************************************

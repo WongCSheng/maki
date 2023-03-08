@@ -109,6 +109,8 @@ void Core::pseudomain::update()
 
 	Editor::LevelEditor::imguiGraphicsTest();
 
+	GLHelper::update_time(1.0);
+
 	CoreSystem->objfactory->Update((Get_Delta()));
 
 	CoreSystem->Update((Get_Delta()));
@@ -126,18 +128,21 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 void Core::pseudomain::draw() 
 {
+	if (Window::show_fps)
+	{
+		Shaders->Font_Shader()->use();
+		if (GLHelper::fps < 60)
+		{
 
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 747.0f, 590.f, .2f, glm::vec3(1.f, 0.f, 0.f));
+		}
+		else
+		{
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 747.0f, 590.f, .2f, glm::vec3(0.f, 1.f, 0.f));
+		}
+	}
 	//imGUI Game Editor
-	Shaders->Font_Shader()->use();
-	if (GLHelper::fps < 60)
-	{
-		
-		Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 747.0f, 590.f, .2f, glm::vec3(1.f, 0.f, 0.f));
-	}
-	else
-	{
-		Font::RenderText(*Shaders,"FPS: " +  to_string(GLHelper::fps), 747.0f, 590.f, .2f, glm::vec3(0.f, 1.f, 0.f));
-	}
+
 
 
 	Editor::LevelEditor::imguiEditorDraw();

@@ -21,6 +21,7 @@ namespace Core
 		static void ResetMap();
 		static void RestartMap();
 		static int LoadMap();
+		static void LoadAMap();
 		static void LoadWMap();
 		static void LoadGMap();
 		static void DrawMap();

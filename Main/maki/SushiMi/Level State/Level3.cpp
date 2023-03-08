@@ -36,7 +36,7 @@ namespace Core
 		if (!Window::loaded)
 		{
 
-			if (SceneManager::tilecontainer.size() > 0 && SceneManager::ingredientcontainer.size() > 0)
+			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
 				Map::ResetMap();
 			}

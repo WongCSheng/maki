@@ -264,6 +264,12 @@ void Core::pseudomain::init() {
 	// Part 2
 	GLHelper::print_specs(); //uncommented
 	glfwMakeContextCurrent(Window::window_ptr);
+#if defined(RELEASE)| defined(RELEASE)
+	//make fullscreen
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+	glfwSetWindowMonitor(Window::window_ptr, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+#endif
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem

@@ -925,25 +925,66 @@ namespace Core
 
 					}
 				}
-			}
-			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+				else if (x.first == "MenuButton")
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
+
+					//RESUME THE GAME BUTTON
+					if (((float)xpos > position.x) &&
+						((float)ypos > position.y) &&
+						((float)xpos < (position.x + scale.x)) &&
+						((float)ypos < (position.y + scale.y)))
+					{
+						gameIsPaused = false;
+						//std::cout << "game resume, no more pause screen" << std::endl;
+						int screenwidth = 0, screenheight = 0;
+						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.x = screenwidth;
+						SceneManager::howtoplay_overlay1->transformation.Position.y = screenheight;
 
 
-			//RETURN TO MAIN MENU
-			if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
-			{
-				isMenuState = true;
-				isLevel1 = false;
-				isLevel2 = false;
-				SceneManager::restartLevel();
-				AudioManager.StopMusic();
-				AudioManager.PlayMusic("BGM.wav");
+
+					}
+				}
+				else if (x.first == "QuitButton")
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
+
+					//QUIT THE GAME BUTTON
+					if (((float)xpos > position.x) &&
+						((float)ypos > position.y) &&
+						((float)xpos < (position.x + scale.x)) &&
+						((float)ypos < (position.y + scale.y)))
+					{
+						glfwSetWindowShouldClose(window_ptr, true);
+
+
+
+					}
+				}
 			}
-			//QUIT GAME
-			if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
-			{
-				glfwSetWindowShouldClose(window_ptr, true);
-			}
+			////std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+
+
+			////RETURN TO MAIN MENU
+			//if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
+			//{
+			//	isMenuState = true;
+			//	isLevel1 = false;
+			//	isLevel2 = false;
+			//	SceneManager::restartLevel();
+			//	AudioManager.StopMusic();
+			//	AudioManager.PlayMusic("BGM.wav");
+			//}
+			////QUIT GAME
+			//if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
+			//{
+			//	glfwSetWindowShouldClose(window_ptr, true);
+			//}
 		}
 		/**************************************/
 		//BUTTONS DISPLAYED ON LEVEL SELECT

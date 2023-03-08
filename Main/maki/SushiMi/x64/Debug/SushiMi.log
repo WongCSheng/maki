@@ -1,5 +1,83 @@
-﻿  Map.cpp
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2881,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2881,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
-C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2879): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
-  SushiMi.vcxproj -> C:\Users\louishetong.wang\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  LevelEditor.cpp
+  Animation2D.cpp
+  Component.cpp
+  Physics.cpp
+  collision.cpp
+  Sprite.cpp
+  Texture.cpp
+  Transform.cpp
+D:\maki\Main\maki\SushiMi\Engine\Components\Texture\Sprite.cpp(126,20): warning C4018: '<': signed/unsigned mismatch
+  Core.cpp
+  Factory.cpp
+  Font.cpp
+  Input.cpp
+D:\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(100,80): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(107,78): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(121,86): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(145,93): warning C4458: declaration of 'ObjectContainer' hides class member
+D:\maki\Main\maki\SushiMi\Engine\Factory\Factory.h(29,70): message : see declaration of 'Core::ObjectFactory::ObjectContainer' (compiling source file Engine\Factory\Factory.cpp)
+D:\maki\Main\maki\SushiMi\Engine\Font\Font.cpp(87,33): warning C4838: conversion from 'FT_Pos' to 'unsigned int' requires a narrowing conversion
+  JSONSerializer.cpp
+  CameraSystem.cpp
+  glhelper.cpp
+  Renderer.cpp
+D:\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(388,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\Serialiser\JSONSerializer.cpp(389,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\System\Renderer.cpp(97,37): warning C4100: 'dt': unreferenced formal parameter
+  SystemFrame.cpp
+  TextureSystem.cpp
+  Transformer.cpp
+  Map.cpp
+  GameObject.cpp
+D:\maki\Main\maki\SushiMi\Engine\System\TextureSystem.cpp(57,42): warning C4100: 'dt': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(36,40): warning C4100: 'dt': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\Engine\System\Transformer.cpp(61,52): warning C4100: 'trans': unreferenced formal parameter
+  Player.cpp
+  GameWindow.cpp
+  SceneManager.cpp
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(3000,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(3000,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2998): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
+  Window.cpp
+D:\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Game Object\Player.cpp)
+D:\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Game Object\Player.cpp)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
+D:\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
+D:\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
+D:\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed (compiling source file Game Object\Player.cpp)
+  main.cpp
+D:\maki\Main\maki\SushiMi\src\Window.cpp(101,73): warning C4100: 'mod': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(101,33): warning C4100: 'window_ptr': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(127,82): warning C4100: 'mod': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(127,56): warning C4100: 'scancode': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(127,31): warning C4100: 'window_ptr': unreferenced formal parameter
+D:\maki\Main\maki\SushiMi\src\Window.cpp(246,21): warning C4459: declaration of 'width' hides global declaration
+D:\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+D:\maki\Main\maki\SushiMi\src\Window.cpp(246,32): warning C4459: declaration of 'height' hides global declaration
+D:\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+D:\maki\Main\maki\SushiMi\src\Window.cpp(968,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\maki\Main\maki\SushiMi\src\Window.cpp(969,69): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\maki\Main\maki\SushiMi\src\Window.cpp(1124,12): warning C4459: declaration of 'width' hides global declaration
+D:\maki\Main\maki\SushiMi\src\Window.cpp(33,13): message : see declaration of 'Core::width'
+D:\maki\Main\maki\SushiMi\src\Window.cpp(1124,20): warning C4459: declaration of 'height' hides global declaration
+D:\maki\Main\maki\SushiMi\src\Window.cpp(33,20): message : see declaration of 'Core::height'
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2522,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2540,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2568,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2588,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2609,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2636,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2656,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\src\Window.cpp(2677,40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\main.cpp)
+D:\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
+  LINK : D:\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
+  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

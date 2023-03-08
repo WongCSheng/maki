@@ -1,4 +1,9 @@
-﻿  main.cpp
-D:\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition
-D:\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
+﻿  Map.cpp
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(248,22): warning C4458: declaration of 'rice' hides class member
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.h(53,25): message : see declaration of 'Core::Map::rice'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(300,86): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(301,86): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2902,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileWidth(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2902,1): warning C4506: no definition for inline function 'unsigned int Core::SceneManager::getTileHeight(void)'
+D:\maki\Main\maki\SushiMi\Engine\TileMap\Map.cpp(2900): warning C4715: 'Core::Map::EnumToString': not all control paths return a value
   SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe

@@ -422,6 +422,8 @@ namespace Core
 				/*check which sprite has set animation to true*/
 
 					/*check wasabi, soya and tea*/
+				if (ingredient.spr->animeMe == true)
+				{
 					if (ingredient.nametag == grid_number::wasabi)
 					{
 						if (ingredient.spr->timer > 1.f)
@@ -446,6 +448,8 @@ namespace Core
 							ingredient.spr->alpha -= ((Get_Delta()));
 						}
 					}
+				}
+					
 			}
 		}
 	}

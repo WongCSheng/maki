@@ -270,7 +270,6 @@
     <ClInclude Include="Level State\LevelsHeader.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\Window.h" />
-    <ClInclude Include="testshader.h" />
     <ClInclude Include="Users\User.h" />
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>

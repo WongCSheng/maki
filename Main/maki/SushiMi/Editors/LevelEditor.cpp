@@ -21,7 +21,6 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "LevelEditor.h"
 #include "imfilebrowser.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
-#include "../testshader.h"
 #include "../src/Window.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
@@ -946,13 +945,13 @@ namespace Core
 						break;
 					}*/
 
-					case static_cast<int>(wall_type::sinkhole):
+					/*case static_cast<int>(wall_type::sinkhole):
 					{
 						texpath = "../textures/Tiles/Trap/Sinkhole0_1.png";
 
 
 						break;
-					}
+					}*/
 
 					//case static_cast<int>(wall_type::filledsinkhole):
 					//{

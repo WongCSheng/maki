@@ -1,2 +1,0 @@
-C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Editor Mode\SushiMi.exe.lastcodeanalysissucceeded
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\x64\Editor Mode\NativeCodeAnalysis.read.1.tlog

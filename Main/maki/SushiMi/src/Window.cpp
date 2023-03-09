@@ -1796,6 +1796,11 @@ namespace Core
 						HowToPlayPage--;
 						keystate_left = false;
 					}
+					else if (HowToPlayPage <= 0)
+					{
+						HowToPlayPage = 5;
+						keystate_left = false;
+					}
 				}
 			}
 

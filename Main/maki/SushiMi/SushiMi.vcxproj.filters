@@ -312,9 +312,6 @@
     <ClInclude Include="Editors\imfilebrowser.h">
       <Filter>Editors</Filter>
     </ClInclude>
-    <ClInclude Include="testshader.h">
-      <Filter>Editors</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Input\Input.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>

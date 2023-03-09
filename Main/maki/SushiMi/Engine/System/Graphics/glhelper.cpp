@@ -192,7 +192,7 @@ Human-readable description of the code
 The error callback receives a human-readable description of the error and
 (when possible) its cause.
 */
-void GLHelper::error_cb(int /*error*/, char const* description) {
+void GLHelper::error_cb(int /*error*/, [[maybe_unused]] char const* description) {
 #ifdef _DEBUG
 	std::cerr << "GLFW error: " << description << std::endl;
 #endif

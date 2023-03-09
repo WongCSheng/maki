@@ -1,0 +1,2 @@
+C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe.lastcodeanalysissucceeded
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\x64\Release\NativeCodeAnalysis.read.1.tlog

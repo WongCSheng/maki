@@ -852,6 +852,7 @@ namespace Core
 				isLevel10 = false;
 				isTestLevel = false;
 				isDialogue = false;
+				isHowToPlay = false;
 				isLevelSelection = true;
 				SceneManager::restartLevel();
 

@@ -20,11 +20,19 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
+		ObjectFactory* Instance;
+
 		std::set<Object::GameObject*> DeleteList;
 
 	public:		
 		ObjectFactory();
 		virtual ~ObjectFactory();
+
+		static ObjectFactory* GetInstance()
+		{
+			static ObjectFactory Instance;
+			return &Instance;
+		}
 
 		static inline std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 		unsigned int LastObjectID;
@@ -56,7 +64,16 @@ namespace Core
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 
+		void Add_files(std::string path);
+		void Go_Deeper(std::filesystem::path path);
+
 		void Add_Assets(const std::string file);
 		void Remove_Assets(const std::string file);
+
+		std::vector<std::filesystem::path>& GetFiles();
+		void ClearFileContainer();
+
+	private:
+		std::vector<std::filesystem::path> files;
 	};
 }

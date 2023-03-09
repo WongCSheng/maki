@@ -127,7 +127,7 @@ ShaderLibrary::ShaderLibrary()
 }
 ShaderLibrary::~ShaderLibrary()
 {
-	for (const auto& x : programs)
+	for (auto& x : programs)
 	{
 		delete x.second; //memory leak 3
 	}

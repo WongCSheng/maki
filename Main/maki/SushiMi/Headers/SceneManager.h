@@ -29,14 +29,12 @@ namespace Core
 		soya,			//4
 		wasabi,			//5
 		boxcover,		//6
-		sinkhole_layer1	//7
-		
+		sinkhole,		//7
+		filledsinkhole	//8
 	};
 
 	enum class wall_type //: std::uint16_t
 	{
-		sinkhole = 55,  //7
-		filledsinkhole,	//8
 		win = 59,			//;
 		insidebox = 61,		//=
 		no_longer_used = 63,//?
@@ -53,35 +51,35 @@ namespace Core
 		Wall3_2,			//J
 		Wall3_3,			//K
 		Wall4,				//L
-		Wall5,				//Q = M
-		Wall6,				//V = N
-		Wall7,				//[ = O
-		Wall8,				//` = P
-		Wall9,				//a = Q
-		WaterWall,			//i = R
-		Wall0_Gunkan,		//j = S
-		last,				//k = T
-		Gunkan_Ground_1_1,	//l = U
-		Gunkan_Ground_1_2,	//m = V
-		Gunkan_Ground_1_3,	//n = W
-		Gunkan_Ground_1_4,	//o = X
-		Gunkan_Ground_2_1,	//p = Y
-		Gunkan_Ground_2_2,	//q = Z
-		rice_box,			//r = [
-		inari_box,			//s = backslash (\)
-		avocado_box,		//t = ]
-		corn_box,			//u = ^
-		cucumber_box,		//v = _
-		salmon_box,			//w = `
-		nori_box,			//x = a
-		octopus_box,		//y = b
-		roes_box,			//z = c
-		tamago_box,			//{ = d
+		Wall5,				//M
+		Wall6,				//N
+		Wall7,				//O
+		Wall8,				//P
+		Wall9,				//Q
+		WaterWall,			//R
+		Wall0_Gunkan,		//S
+		last,				//T
+		Gunkan_Ground_1_1,	//U
+		Gunkan_Ground_1_2,	//V
+		Gunkan_Ground_1_3,	//W
+		Gunkan_Ground_1_4,	//X
+		Gunkan_Ground_2_1,	//Y
+		Gunkan_Ground_2_2,	//Z
+		rice_box,			//[
+		inari_box,			//backslash (\)
+		avocado_box,		//]
+		corn_box,			//^
+		cucumber_box,		//_
+		salmon_box,			//`
+		nori_box,			//a
+		octopus_box,		//b
+		roes_box,			//c
+		tamago_box,			//d
 		tofu_box,			//| (bitwise OR) = e
-		tuna_box,			//} = f
-		WoodenPlatform,		//~ = g
-		ground1,			//# = h
-		ground2,			//$ = i
+		tuna_box,			//}f
+		WoodenPlatform,		//~g
+		ground1,			//#h
+		ground2,			//$i
 		Gunkan_Ground_2_3,	//j
 		Gunkan_Ground_3_1,	//k 
 		Gunkan_Ground_3_2,	//l
@@ -150,13 +148,12 @@ namespace Core
 	{
 		int IC;
 		grid_number nametag;
-		glm::vec2 init_Pos;
+		Transform init_value;
 		std::pair<int, int> init_Grid_Pos;
 		Sprite* spr;
 		void Restart()
 		{
-			spr->transformation.Position = init_Pos;
-			spr->transformation.grid_pos = init_Grid_Pos;
+			spr->transformation = init_value;
 		}
 	};
 	
@@ -197,6 +194,7 @@ namespace Core
 		static bool activateWasabi(Sprite* wasabi);
 		static bool activateTea(Sprite* tea);
 		static void drawInsideSinkHole();
+		static void drawSinkHole();
 		static void drawPlayer_Stuck();
 		static void drawHowToOverlay(int page);
 		static void drawSettings();

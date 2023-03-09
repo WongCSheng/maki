@@ -19,6 +19,10 @@
     {
       "name": "howtoplay_overlay_5",
       "filename": "../Data/mainMenu/howtoplay_overlay_5.json"
+    },
+    {
+      "name": "howtoplay_overlay_6",
+      "filename": "../Data/mainMenu/howtoplay_overlay_6.json"
     }
   ]
 }

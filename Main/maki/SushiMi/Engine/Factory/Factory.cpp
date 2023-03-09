@@ -43,8 +43,6 @@ namespace Core
 			//erase from ObjectContainer
 			delete *it;
 		}
-
-		DeleteList.clear();
 	}
 
 	void ObjectFactory::Update(const double )
@@ -147,6 +145,18 @@ namespace Core
 
 	}
 
+	//ASSETS MANAGER
+
+	AssetsManager::AssetsManager()
+	{
+
+	}
+
+	AssetsManager::~AssetsManager()
+	{
+
+	}
+
 	void AssetsManager::Init()
 	{
 
@@ -161,6 +171,36 @@ namespace Core
 	{
 
 	}
+
+	void AssetsManager::Add_files(std::string path)
+	{
+		for (auto& entry : std::filesystem::directory_iterator(path))
+		{
+			if (entry.is_directory())
+			{
+				Go_Deeper(entry.path());
+			}
+			else
+			{
+				files.push_back(entry.path());
+			}
+		}
+	}
+
+	void AssetsManager::Go_Deeper(std::filesystem::path path)
+	{
+		for (auto& sub : std::filesystem::directory_iterator(path))
+		{
+			if (sub.is_directory())
+			{
+				Go_Deeper(sub.path());
+			}
+			else
+			{
+				files.push_back(sub.path());
+			}
+		}
+	}
 	
 	void AssetsManager::Add_Assets(const std::string file)
 	{
@@ -170,5 +210,15 @@ namespace Core
 	void AssetsManager::Remove_Assets(const std::string file)
 	{
 
+	}
+
+	std::vector<std::filesystem::path>& AssetsManager::GetFiles()
+	{
+		return files;
+	}
+
+	void AssetsManager::ClearFileContainer()
+	{
+		files.clear();
 	}
 }

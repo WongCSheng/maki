@@ -69,7 +69,6 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 	
 	// Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
 	//_CrtSetBreakAlloc(5294); //use this to detect memory leaks, replace the number with mem leak location
 
@@ -83,7 +82,7 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 	/*----------------------------------------------*/
 
 	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
-	
+
 	Core::pseudomain::cleanup();
 
 	return 0;
@@ -193,6 +192,9 @@ void Core::pseudomain::init() {
 	//loading the entire pause_menu which consists of all the buttons
 	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
 
+	//How to play screens
+	DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
+
 	//loading main menu
 	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
@@ -280,11 +282,18 @@ void Core::pseudomain::init() {
 
 #endif
 
+	float volume{ 1.f };
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
 	//play bgm
+	AudioManager.GetMusicChannel()->getVolume(&volume);
+	std::cout << "BGM volume: " << volume << std::endl;
+
+	AudioManager.SetMusicVolume(0.1f);
+	AudioManager.GetMusicChannel()->getVolume(&volume);
 	AudioManager.PlayMusic("BGM.wav");
+	std::cout << "BGM volume: " << volume << std::endl;
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }

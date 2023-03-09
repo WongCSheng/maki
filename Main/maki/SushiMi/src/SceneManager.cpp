@@ -23,6 +23,19 @@ namespace Core
 		goal2 = nullptr;
 		cover1 = nullptr;*/
 		howtoplay_overlay1 = nullptr;
+		howtoplay_overlay2 = nullptr;
+		howtoplay_overlay3 = nullptr;
+		howtoplay_overlay4 = nullptr;
+		howtoplay_overlay5 = nullptr;
+		howtoplay_overlay6 = nullptr;
+		frame1 = nullptr;
+		frame2 = nullptr;
+		frame3 = nullptr;
+		frame4 = nullptr;
+		frame5 = nullptr;
+		frame6 = nullptr;
+		frame7 = nullptr;
+		frame8 = nullptr;
 		win_overlay = nullptr;
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
@@ -129,11 +142,18 @@ namespace Core
 
 		input.IC = counter[ingredient.first];
 		input.nametag = ingredient.first;
-		input.init_Pos = glm::vec2(x, y);
+		input.init_value = ingredient.second->transformation;
 		input.spr = ingredient.second;
 		input.init_Grid_Pos = { posX, posY };
 
-		ingredientcontainer.push_back(input);
+		if (input.nametag == grid_number::sinkhole)
+		{
+			in_sinkhole.push_back(input);
+		}
+		else
+		{
+			ingredientcontainer.push_back(input);
+		}
 		std::cout << std::endl;
 		//std::cout << "****************** added an ingredient! ingredientcontainer size: " << ingredientcontainer.size() << std::endl;
 	}
@@ -192,19 +212,19 @@ namespace Core
 	{
 		//!!! Code has been modified. Refer to drawhowtooverlay function for rendering of how to play pages
 		
-		//int screenwidth = 0, screenheight = 0;
-		//glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-		//
-		//howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
-		//howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		//howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
-		//howtoplay_overlay2->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		//howtoplay_overlay3->transformation.Position = glm::vec2(x, y);
-		//howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		//howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
-		//howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
-		//howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
-		//howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		/*int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		
+		howtoplay_overlay1->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay1->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay2->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay2->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay3->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay3->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay4->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay4->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
+		howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	*/
 	void SceneManager::loadSettings()
@@ -515,18 +535,34 @@ namespace Core
 	{
 		for (auto& sink : in_sinkhole)
 		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			if (sink.nametag != grid_number::sinkhole)
+			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr->transformation.Get());
+				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 
-			if (sink.spr->isSpriteSheet)
-			{
-				sink.spr->draw(Get_Delta(), sink.spr->curr_anim);
+				if (sink.spr->isSpriteSheet)
+				{
+					sink.spr->draw(Get_Delta(), sink.spr->curr_anim);
+				}
+				else
+				{
+					sink.spr->draw();
+				}
 			}
-			else
+		}
+	}
+	
+	void SceneManager::drawSinkHole()
+	{
+		for (auto& sink : in_sinkhole)
+		{
+			if (sink.nametag == grid_number::sinkhole)
 			{
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", sink.spr->transformation.Get());
+				glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+
 				sink.spr->draw();
 			}
-
 		}
 	}
 
@@ -750,6 +786,7 @@ namespace Core
 
 		tilecontainer.clear();
 	}
+
 	void SceneManager::destroyIngr()
 	{
 		if (ingredientcontainer.size() > 0)
@@ -775,6 +812,7 @@ namespace Core
 
 		in_sinkhole.clear();
 	}
+
 	void SceneManager::destroyTop()
 	{
 		if (topcontainer.size() > 0)

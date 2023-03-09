@@ -30,6 +30,24 @@ namespace Core
 {
 	MainSystem::MainSystem()
 	{
+		/*systems.insert({ SystemID::CameraSystem, std::unique_ptr<CameraSystem>(CameraSystem::GetInstance()) });
+
+		systems.insert({ SystemID::Transformer, std::unique_ptr<Transformer>(Transformer::GetInstance()) });
+
+		systems.insert({ SystemID::Windows, std::unique_ptr<Window>(Window::GetInstance(800, 600)) });
+
+		systems.insert({ SystemID::Renderer, std::unique_ptr<Renderer>(Renderer::GetInstance()) });
+
+		systems.insert({ SystemID::TextureSystem, std::unique_ptr<TextureSystem>(TextureSystem::GetInstance()) });
+
+#if defined(DEBUG) | defined(_DEBUG)
+		systems.insert({ SystemID::LevelEditor, std::unique_ptr<Editor::LevelEditor>(Editor::LevelEditor::GetInstance()) });
+#endif
+
+		systems.insert({ SystemID::Factory, std::unique_ptr<ObjectFactory>(ObjectFactory::GetInstance()) });
+
+		inputsystem = new Input();*/
+
 		cameraSystem = CameraSystem::GetInstance();
 		systems.insert({ SystemID::CameraSystem, cameraSystem });
 		// -
@@ -60,19 +78,10 @@ namespace Core
 	*/
 	MainSystem::~MainSystem()
 	{
-		/*for (auto& sys : systems)
+		/*for (auto& [name, ptr] : systems)
 		{
-			if (sys != NULL)
-			{
-				delete sys;
-				sys = NULL;
-			}
+			delete ptr;
 		}*/
-		//To shift into cleanup
-		
-		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
-
-		//delete windowsystem;
 	}
 
 	/*
@@ -99,7 +108,6 @@ namespace Core
 		for (auto sys = systems.begin(); sys != systems.end(); sys++)
 		{
 			sys->second->Init();
-
 		}
 	}
 
@@ -143,11 +151,10 @@ namespace Core
 
 		TextureSystem::GetInstance()->Shutdown();
 
-		delete objfactory;
-
 		delete inputsystem;
 	}
-	void MainSystem::AccessObjFactory()
+
+	void MainSystem::AddtoObjFactory()
 	{
 		Editor::LevelEditor::AddToFactory(objfactory);
 	}

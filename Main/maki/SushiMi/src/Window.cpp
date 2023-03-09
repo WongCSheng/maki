@@ -1781,7 +1781,11 @@ namespace Core
 					{
 						HowToPlayPage++;
 						keystate_right = false;
-
+					}
+					else if (HowToPlayPage >= 5)
+					{
+						HowToPlayPage = 0;
+						keystate_right = false;
 					}
 				}
 				else if (keystate_left)

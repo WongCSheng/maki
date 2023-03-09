@@ -1323,17 +1323,17 @@ namespace Core
 				LEVELS LOAD & WIN CHECK
 			*********************************/
 			
-			if (isTut1 == true) { Levels::Tutorial1(); }
-			if (isTut2 == true) { Levels::Tutorial2(); }
-			if (isLevel1 == true) { Levels::Level1(); }
-			if (isLevel2 == true) { Levels::Level2(); }
-			if (isLevel3 == true) { Levels::Level3(); }
-			if (isLevel4 == true) { Levels::Level4(); }
-			if (isLevel5 == true) { Levels::Level5(); }
-			if (isLevel6 == true) { Levels::Level6(); }
-			if (isLevel7 == true) { Levels::Level7(); }
-			if (isLevel8 == true) { Levels::Level8(); }
-			if (isLevel9 == true) { Levels::Level9(); }
+			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); }
+			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); }
+			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); }
+			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); }
+			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); }
+			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); }
+			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); }
+			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); }
+			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); }
+			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); }
+			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); }
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************

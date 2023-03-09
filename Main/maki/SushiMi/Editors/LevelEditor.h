@@ -65,7 +65,7 @@ namespace Core
 			static void imguiGraphicsTest(void);
 			static void imguiEditorDraw(void);
 			static void imguiShutDown(void);
-			static inline int loadnewlevel = 0;
+			static inline bool loadnewlevel = 0;
 			static inline int levelsave = 0;
 			static inline std::string path, path2, imguiloadedmap;
 

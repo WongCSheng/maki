@@ -25,8 +25,8 @@ namespace Core
 		static void LoadWMap();
 		static void LoadGMap();
 		static void DrawMap();
-		static int GetValue(int col_x, int row_y);
-		static void SetValue(int col_x, int row_y, int value);
+		static int GetValue(double col_x, double row_y);
+		static void SetValue(double col_x, double row_y, int value);
 		/*put here temporarily first*/
 		static void collision_check_right();
 		static void collision_check_left();

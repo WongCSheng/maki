@@ -97,7 +97,7 @@ namespace Core
 			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
 			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
 
-			float fontSize = 18.0f;// *2.0f;
+			//float fontSize = 18.0f;// *2.0f;
 			/*io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", fontSize);
 			io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", fontSize);*/
 
@@ -131,7 +131,7 @@ namespace Core
 			}*/
 
 			// create a file browser instance
-			static ImGui::FileBrowser fileDialog;
+			//static ImGui::FileBrowser fileDialog;
 			
 
 			m_curr_path = s_TextureDirectory;
@@ -433,19 +433,19 @@ namespace Core
 			}
 			float padding = 10.f;
 			float thumbnail_size = 128;
-			float cellSize = thumbnail_size + padding;
+			//float cellSize = thumbnail_size + padding;
 
-			float panelWidth = ImGui::GetContentRegionAvail().x;
-			float columnCount = (int)(panelWidth / cellSize);
+			//float panelWidth = ImGui::GetContentRegionAvail().x;
+			//float columnCount = (int)(panelWidth / cellSize);
 			ImGui::Columns(5, 0, false);
 
 			for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
 			{
-				std::string path = directory_entry.path().string();
+				std::string path1 = directory_entry.path().string();
 				auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
 
-				ImGui::Button(path.c_str(), { thumbnail_size, thumbnail_size });
-				ImGui::Text(path.c_str());
+				ImGui::Button(path1.c_str(), { thumbnail_size, thumbnail_size });
+				ImGui::Text(path1.c_str());
 
 				if (directory_entry.is_directory())
 				{
@@ -626,11 +626,11 @@ namespace Core
 
 			ImGui::End(); //end the whole imgui process
 			ImGuiIO& io = ImGui::GetIO();
-			int width, height;
+			int width__, height__;
 
-			glfwGetWindowSize(Window::window_ptr, &width, &height);
+			glfwGetWindowSize(Window::window_ptr, &width__, &height__);
 
-			io.DisplaySize = ImVec2((float)width, (float)height);
+			io.DisplaySize = ImVec2((float)width__, (float)height__);
 
 			// Rendering
 			ImGui::Render();
@@ -676,7 +676,7 @@ namespace Core
 			ygrid = (int)(ypos / height_ * 10);*/
 
 
-			int i = imguiPlacedObjs;
+			i = imguiPlacedObjs;
 
 			//newobjarr[i].spritevector = new Sprite(texpath); replace with pushing back a struct
 
@@ -703,8 +703,8 @@ namespace Core
 				a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
 				a.spritepath->transformation.Scale = glm::vec2(SceneManager::getTileWidth()*1.01f, SceneManager::getTileHeight()*1.01f);//1b
 				a.objname = "path"; //2
-				a.x = xpos;
-				a.y = ypos; //3
+				a.x = static_cast<int>(xpos);
+				a.y = static_cast<int>(ypos); //3
 				newobjarr.push_back(a); //push back the whole struct
 				//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
 				//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
@@ -731,7 +731,7 @@ namespace Core
 		{
 #if defined(EDITOR) | defined(_EDITOR)
 
-			for (int i = 0; i < imguiPlacedObjs; ++i)
+			for (i = 0; i < imguiPlacedObjs; ++i)
 			{
 				delete newobjarr[i].spritepath;
 			}
@@ -989,14 +989,14 @@ namespace Core
 						break;
 					}*/
 					//no_longer_used
-					case static_cast<int>(wall_type::sinkhole_gunkan):
+					/*case static_cast<int>(wall_type::sinkhole_gunkan):
 					{
 						texpath = "../textures/Tiles/Ground_GunkanVillage/Sinkhole.png";
 
 
 
 						break;
-					}
+					}*/
 					case static_cast<int>(wall_type::Wall0):
 					{
 						texpath = "../textures/Tiles/Wall/RicePlain_Wall0.jpg";
@@ -1081,7 +1081,7 @@ namespace Core
 						break;
 					}
 
-					case static_cast<int>(wall_type::Wall4_1):
+					/*case static_cast<int>(wall_type::Wall4_1):
 					{
 						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_1.jpg";
 
@@ -1104,7 +1104,7 @@ namespace Core
 						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_4.jpg";
 
 						break;
-					}
+					}*/
 
 
 
@@ -1116,38 +1116,38 @@ namespace Core
 					}
 
 
-					//most common wall
-					case static_cast<int>(wall_type::Wall5_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_1.jpg";
+					////most common wall
+					//case static_cast<int>(wall_type::Wall5_1):
+					//{
+					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_1.jpg";
 
-						break;
+					//	break;
 
-					}
+					//}
 
-					case static_cast<int>(wall_type::Wall5_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_2.jpg";
+					//case static_cast<int>(wall_type::Wall5_2):
+					//{
+					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_2.jpg";
 
-						break;
+					//	break;
 
-					}
+					//}
 
-					case static_cast<int>(wall_type::Wall5_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_3.jpg";
+					//case static_cast<int>(wall_type::Wall5_3):
+					//{
+					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_3.jpg";
 
-						break;
+					//	break;
 
-					}
+					//}
 
-					case static_cast<int>(wall_type::Wall5_4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall5_4.jpg";
+					//case static_cast<int>(wall_type::Wall5_4):
+					//{
+					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_4.jpg";
 
-						break;
+					//	break;
 
-					}
+					//}
 					case static_cast<int>(wall_type::Wall6):
 					{
 						texpath = "../textures/Tiles/Wall/RicePlain_Wall6.png";
@@ -1286,48 +1286,48 @@ namespace Core
 
 						break;
 					}
-					//	Gunkan_Ground_2_2,		//k
-					case static_cast<int>(wall_type::Wall1_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1.png";
+					////	Gunkan_Ground_2_2,		//k
+					//case static_cast<int>(wall_type::Wall1_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1.png";
 
-						break;
-					}
-					//	Gunkan_Ground_1_1,		//l
-					case static_cast<int>(wall_type::Wall1_1_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1_1.png";
+					//	break;
+					//}
+					////	Gunkan_Ground_1_1,		//l
+					//case static_cast<int>(wall_type::Wall1_1_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1_1.png";
 
-						break;
-					}
-					//	Gunkan_Ground_1_2,		//m
-					case static_cast<int>(wall_type::Wall2_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2.png";
+					//	break;
+					//}
+					////	Gunkan_Ground_1_2,		//m
+					//case static_cast<int>(wall_type::Wall2_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2.png";
 
-						break;
-					}
-					//	Gunkan_Ground_1_3,		//n
-					case static_cast<int>(wall_type::Wall2_1_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2_1.png";
-						break;
-					}
-					//	Gunkan_Ground_1_4,		//o
-					case static_cast<int>(wall_type::Wall3_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3.png";
-						
+					//	break;
+					//}
+					////	Gunkan_Ground_1_3,		//n
+					//case static_cast<int>(wall_type::Wall2_1_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2_1.png";
+					//	break;
+					//}
+					////	Gunkan_Ground_1_4,		//o
+					//case static_cast<int>(wall_type::Wall3_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3.png";
+					//	
 
-						break;
-					}
-					//	Gunkan_Ground_2_1,		//p
-					case static_cast<int>(wall_type::Wall3_1_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3_1.png";
-						
-						break;
-					}
+					//	break;
+					//}
+					////	Gunkan_Ground_2_1,		//p
+					//case static_cast<int>(wall_type::Wall3_1_Gunkan):
+					//{
+					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3_1.png";
+					//	
+					//	break;
+					//}
 					/*case static_cast<int>(wall_type::WoodenPlatform):
 					{
 						texpath = "../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png";
@@ -1359,10 +1359,12 @@ namespace Core
 				Window::ingredient->transformation.Scale = glm::vec2(SceneManager::getTileWidth()*1.01f, SceneManager::getTileHeight()*1.01f);
 				if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
 				{
-					xgrid = gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
-					ygrid = gridypos = ((int)(ypos) / SceneManager::getTileHeight());
-					std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
-					std::cout << " Max Grid col x is: " << Map::max_grid_rows_y << " and Max Grid row y is: " << Map::max_grid_cols_x << std::endl;
+					gridxpos = static_cast<double>((int)(xpos) / SceneManager::getTileWidth()); 
+					gridypos = static_cast<double>((int)(ypos) / SceneManager::getTileHeight());
+					xgrid = ((int)(xpos) / SceneManager::getTileWidth());
+					ygrid = ((int)(ypos) / SceneManager::getTileHeight());
+					//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
+					//std::cout << " Max Grid col x is: " << Map::max_grid_rows_y << " and Max Grid row y is: " << Map::max_grid_cols_x << std::endl;
 					
 					//if you are in an invalid grid range of the map
 					if (gridxpos >= Map::max_grid_cols_x || gridxpos < 0 || gridypos < 0 || gridypos >= Map::max_grid_rows_y)
@@ -1374,7 +1376,7 @@ namespace Core
 					{
 						//std::cout << "you are out of range!" << std::endl;
 						//return 3; //if you are pressing out of this grid, return 0 as tile value 
-						alphabet = Map::GetValue(gridxpos, gridypos);
+						alphabet = static_cast<char>(Map::GetValue(gridxpos, gridypos));
 						//std::cout << "x value is : " << gridxpos << " and y value is: " << gridypos << std::endl;
 						if (ImGui::IsMouseClicked(0)) //0 means left
 						{
@@ -1389,7 +1391,7 @@ namespace Core
 							imguiCreateObj();
 
 							//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
-							Map::print_map_to_console;
+							Map::print_map_to_console();
 
 
 
@@ -1398,8 +1400,8 @@ namespace Core
 					
 				}
 
-				Window::ingredient->transformation.Position.x = gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_;
-				Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
+				Window::ingredient->transformation.Position.x = static_cast<float>(gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_);
+				Window::ingredient->transformation.Position.y = static_cast<float>(gridypos / static_cast<float>(Map::max_grid_rows_y) * height_);
 				/*SceneManager::rows*/
 					/*= glm::vec2(xpos, ypos)*/
 				//place object on click

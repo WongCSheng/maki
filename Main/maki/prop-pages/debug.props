@@ -21,7 +21,7 @@ copy "$(SolutionDir)lib\Fmod\fmod.dll" "$(TargetDir)" /Y</Command>
       <PrecompiledHeaderFile />
       <WarningLevel>Level4</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>33011;28253</DisableSpecificWarnings>
+      <DisableSpecificWarnings>28253;33011;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>

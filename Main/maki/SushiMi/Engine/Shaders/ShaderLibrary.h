@@ -10,6 +10,12 @@
 #include "ShaderProgram.h"
 #include <map>
 #include <memory>
+#include <algorithm> 
+#include <iostream> 
+#include <filesystem>
+#include<fstream>
+#include <sstream>
+#include<string>
 //using namespace std;
 
 
@@ -25,6 +31,7 @@ public:
 	ShaderProgram* Colored_Shader();
 
 	ShaderProgram* Font_Shader();
+
 private:
 
 	std::map<std::string, ShaderProgram*> programs;

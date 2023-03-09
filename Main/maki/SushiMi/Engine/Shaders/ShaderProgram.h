@@ -17,7 +17,7 @@
 class ShaderProgram
 {
 public:
-	ShaderProgram(const char* vertex_shader, const char* fragment_shader);
+	ShaderProgram(std::string vertex_shader, std::string fragment_shader);
 
 	~ShaderProgram();
 

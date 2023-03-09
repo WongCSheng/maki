@@ -181,7 +181,6 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 void Core::pseudomain::init() {
-
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
 	Font::init();

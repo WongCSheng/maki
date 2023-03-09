@@ -9,20 +9,22 @@
 			set uniform location for their uniform variables(model_matrx or projection).
 *//*__________________________________________________________________________*/
 #include "../../glew/include/GL/glew.h"
-ShaderProgram::ShaderProgram(const char* vertex_shader, const char* fragment_shader)
+ShaderProgram::ShaderProgram(std::string vertex_shader, std::string fragment_shader)
 {
 	// compile shader ..
 	unsigned int vertex, fragment;
 
 	// vertex shader
 	vertex = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertex, 1, &vertex_shader, NULL);
+	const char* vtx_source_ptr = vertex_shader.c_str();
+	glShaderSource(vertex, 1, &vtx_source_ptr, NULL);
 	glCompileShader(vertex);
 	checkerorr(vertex, "VERTEX");
 
 	// fragment shader
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragment, 1, &fragment_shader, NULL);
+	const char* fs_source_ptr = fragment_shader.c_str();
+	glShaderSource(fragment, 1, &fs_source_ptr, NULL);
 	glCompileShader(fragment);
 	checkerorr(vertex, "FRAGMENT");
 

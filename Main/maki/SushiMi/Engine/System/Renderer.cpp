@@ -96,6 +96,7 @@ namespace Core
 
 	void Renderer::Update(const double dt)
 	{
+		dt;
 	}
 
 	void Renderer::Delete(Core::vtx& obj)

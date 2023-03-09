@@ -17,7 +17,6 @@ written consent of DigiPen Institute of Technology is prohibited.
 *******************************************************************************/
 
 #include "LevelsHeader.h"
-#include "../src/Window.h"
 #include "../Headers/SceneManager.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Audio/AudioEngine.h"
@@ -36,7 +35,7 @@ namespace Core
 
 		if (!Window::loaded)
 		{
-
+			Window::player->current_anim = AnimationType::Idle;
 			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
 				Map::ResetMap();

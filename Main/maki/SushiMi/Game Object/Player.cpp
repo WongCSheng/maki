@@ -11,7 +11,6 @@
 #include "../Engine/System/Graphics/glhelper.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Headers/SceneManager.h"
-#include "../Engine/Timer/Timer.cpp"
 
 //static Window win; //create a external window variable to pass through data
 

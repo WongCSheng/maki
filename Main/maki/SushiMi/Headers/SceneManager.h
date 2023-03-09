@@ -180,7 +180,7 @@ namespace Core
 		static void loadTile(int x, int y, const std::pair<wall_type, Sprite*> &tile);
 		static void loadIngr(int x, int y, int posX, int posY, const std::pair<grid_number, Sprite*> &ingredient);
 		static void loadPlayer_Stuck(int x, int y);
-		static void loadHowToOverlay(int x, int y);
+		//static void loadHowToOverlay(int x, int y);
 		static void loadSettings();
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene();
@@ -236,8 +236,14 @@ namespace Core
 
 		unsigned int getRows();
 		unsigned int getCols();
-		static inline unsigned int getTileWidth();
-		static inline unsigned int getTileHeight();
+		static inline unsigned int getTileWidth()
+		{
+			return tileWidth;
+		}
+		static inline unsigned int getTileHeight()
+		{
+			return tileHeight;
+		}
 
 		static inline std::vector<std::pair<animated, Sprite*>> topcontainer;
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;

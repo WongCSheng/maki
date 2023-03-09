@@ -65,7 +65,7 @@ Model Model::init(std::string mesh_filepath)
 	glNamedBufferStorage(vbo_hdl, sizeof(gfxVector2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
 	glNamedBufferSubData(vbo_hdl, 0, sizeof(gfxVector2) * pos_vtx.size(), pos_vtx.data());
 
-	GLuint vaoid;
+	this->vaoid;
 	glCreateVertexArrays(1, &vaoid);
 	glEnableVertexArrayAttrib(vaoid, 0);
 	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(gfxVector2));

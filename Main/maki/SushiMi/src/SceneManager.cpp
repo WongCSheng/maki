@@ -187,6 +187,7 @@ namespace Core
 	}
 
 	/* adjust screensize */
+	/*
 	void SceneManager::loadHowToOverlay(int x, int y)
 	{
 		//!!! Code has been modified. Refer to drawhowtooverlay function for rendering of how to play pages
@@ -205,6 +206,7 @@ namespace Core
 		//howtoplay_overlay5->transformation.Position = glm::vec2(x, y);
 		//howtoplay_overlay5->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
+	*/
 	void SceneManager::loadSettings()
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -826,15 +828,6 @@ namespace Core
 		tileHeight = Height;
 	}
 
-	unsigned int SceneManager::getTileWidth()
-	{
-		return tileWidth;
-	}
-
-	unsigned int SceneManager::getTileHeight()
-	{
-		return tileHeight;
-	}
 
 	void SceneManager::destroyPlayer_Stuck()
 	{

@@ -245,11 +245,11 @@ namespace Core
 				{
 					case static_cast<int>(animated::RicePlant1):
 					{
-						Sprite* rice = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
-						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(rice));
-						rice->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice->curr_anim = AnimationType::Idle;
-						rice->isSpriteSheet = 1;
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
+						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
 
 						
@@ -297,8 +297,8 @@ namespace Core
 				{
 					Window::player->playerpos.x = static_cast<float>(grid_to_coord_x);
 					Window::player->playerpos.y = static_cast<float>(grid_to_coord_y);
-					Window::player->playerpos_restart.x = static_cast<int>(Window::player->playerpos.x);
-					Window::player->playerpos_restart.y = static_cast<int>(Window::player->playerpos.y);
+					Window::player->playerpos_restart.x = Window::player->playerpos.x;
+					Window::player->playerpos_restart.y = Window::player->playerpos.y;
 					//#ifndef EDITOR
 					Window::player->sp->transformation.Position.x = r / static_cast<float>(max_grid_cols_x) * width;
 					Window::player->sp->transformation.Position.y = c / static_cast<float>(max_grid_rows_y) * height;
@@ -2893,8 +2893,13 @@ namespace Core
 		case(grid_number::soya):
 			return ("Soya");
 			break;
+
 		case(grid_number::tea):
 			return ("Tea");
+			break;
+		
+		default:
+			return ("Rice");
 			break;
 		}
 	}

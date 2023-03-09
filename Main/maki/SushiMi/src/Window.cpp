@@ -57,7 +57,7 @@ namespace Core
 	};
 	static GameState level;
 
-	void mouseCallBack(GLFWwindow* window_ptr, int button, int action, int mod)
+	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
 	{
 		switch (button)
 		{
@@ -83,7 +83,7 @@ namespace Core
 
 	/*					key  callback function  , helper function for controlling input
 		----------------------------------------------------------------------------- */
-	void keyCallBack(GLFWwindow* window_ptr, int key, int scancode, int action, int mod)
+	void keyCallBack([[maybe_unused]] GLFWwindow* window_ptr, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mod)
 	{
 		if (GLFW_REPEAT == action)
 		{
@@ -199,9 +199,9 @@ namespace Core
 		return false;
 	}
 
-	Window::Window(int width, int height)
-		:m_width(width),
-		m_height(height),
+	Window::Window(int _width, int _height)
+		:m_width(_width),
+		m_height(_height),
 		isCutscene(0),
 		isHowToPlay(0),
 		isLevelSelection(0),
@@ -220,7 +220,7 @@ namespace Core
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 		glfwWindowHint(GLFW_MAXIMIZED, true);
 
-		window_ptr = glfwCreateWindow(width, height, "SushiMi", NULL, NULL);
+		window_ptr = glfwCreateWindow(_width, _height, "SushiMi", NULL, NULL);
 		if (window_ptr == nullptr)
 		{
 			std::cout << "erorr initilize glfw" << std::endl;

@@ -14,7 +14,7 @@
       <Filter>Users</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Messaging\Messaging.cpp">
-      <Filter>GameEngine\Messaging</Filter>
+      <Filter>Cutscene\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
@@ -205,7 +205,7 @@
       <Filter>GameEngine\System</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
-      <Filter>GameEngine\Messaging</Filter>
+      <Filter>Cutscene\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>
@@ -396,9 +396,6 @@
     <Filter Include="GameEngine\Core">
       <UniqueIdentifier>{57bcac02-779c-4cfe-8147-57a957306be9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Messaging">
-      <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine\UI">
       <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
     </Filter>
@@ -512,6 +509,9 @@
     </Filter>
     <Filter Include="Level State">
       <UniqueIdentifier>{30489099-e3f1-47cf-be59-70234cee0a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cutscene\Messaging">
+      <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

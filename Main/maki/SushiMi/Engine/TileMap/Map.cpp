@@ -36,7 +36,7 @@ namespace Core
 
 	Map::~Map()
 	{
-		for (int i = 0; i < max_grid_rows_y; i++)
+		for (int i = 0; i < max_grid_cols_x; i++)
 		{
 			delete gGrids[i];
 			delete aGrids[i];
@@ -163,7 +163,7 @@ namespace Core
 		SceneManager::destroyInsideSinkHole();
 		SceneManager::destroyTop();
 
-		for (int i = 0; i < max_grid_rows_y; i++)
+		for (int i = 0; i < max_grid_cols_x; i++)
 		{
 			delete gGrids[i];
 			delete aGrids[i];
@@ -2831,7 +2831,7 @@ namespace Core
 	/********************************************
 	 Return the value inside a cell that you click
 	********************************************/
-	int Map::GetValue(int col_x, int row_y)
+	int Map::GetValue(double col_x, double row_y)
 	{
 		//if you are accessing out of the given grid
 		//if (col_x -1 > (max_grid_rows_y) || row_y -1 > (max_grid_cols_x))
@@ -2840,14 +2840,14 @@ namespace Core
 		//	return 3; //if you are pressing out of this grid, return 0 as tile value 
 		//}
 		//else
-		return gGrids[col_x][row_y];
+		return gGrids[static_cast<int>(col_x)][static_cast<int>(row_y)];
 	}
 	/********************************************
 	 Set the value inside a cell that you click
 	********************************************/
-	void Map::SetValue(int col_x, int row_y, int value)
+	void Map::SetValue(double col_x, double row_y, int value)
 	{
-		gGrids[col_x][row_y] = value;
+		gGrids[static_cast<int>(col_x)][static_cast<int>(row_y)] = value;
 		//Window::loaded = false;
 		//print_map_to_console(); //debugging
 	}

@@ -212,7 +212,8 @@ namespace Core
 		static void drawRect(float alpha);
 		static void FadeIn();
 		static void FadeOut();
-
+		static void set_target_pos(Sprite* boxcover);
+		static void set_curr_pos(Sprite* boxcover);
 
 		static void destroyTile();
 		static void destroyIngr();
@@ -298,5 +299,9 @@ namespace Core
 		// Black overlay alpha parameters
 		inline static float targetAlpha = 0.0f;
 		inline static float currentAlpha = 0.0f;
+
+		// Boxcover targetpos and currpos
+		inline static float currpos;
+		inline static float targetpos;
 	};
 }

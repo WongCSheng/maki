@@ -51,7 +51,8 @@ namespace Core
 		static std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 		float SpriteSize[2];
 		Transform transformation;
-
+		float curr_pos;
+		float target_pos;
 		AnimationType curr_anim;
 
 		static inline Sprite* menu;

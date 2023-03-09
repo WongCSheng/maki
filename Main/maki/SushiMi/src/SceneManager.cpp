@@ -358,7 +358,16 @@ namespace Core
 		for (auto& ingredient : ingredientcontainer)
 		{
 			ingredient.spr->timer += ((Get_Delta()));
-
+			if (ingredient.spr->animeMe == true)
+			{
+				if (ingredient.nametag == grid_number::boxcover)
+				{
+					if (ingredient.spr->timer < 1.f)
+					{
+					ingredient.spr->transformation.Position.y = std::lerp(currpos, targetpos, ingredient.spr->timer);
+					}
+				}
+			}
 			/*
 					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
 					{
@@ -411,8 +420,7 @@ namespace Core
 			for (auto& ingredient : ingredientcontainer)
 			{
 				/*check which sprite has set animation to true*/
-				if (ingredient.spr->animeMe == true)
-				{
+
 					/*check wasabi, soya and tea*/
 					if (ingredient.nametag == grid_number::wasabi)
 					{
@@ -438,7 +446,6 @@ namespace Core
 							ingredient.spr->alpha -= ((Get_Delta()));
 						}
 					}
-				}
 			}
 		}
 	}
@@ -714,6 +721,16 @@ namespace Core
 	void SceneManager::FadeOut()
 	{
 		targetAlpha = 0.0f;
+	}
+
+	void SceneManager::set_target_pos(Sprite* boxcover)
+	{
+		targetpos = boxcover->target_pos;
+	}
+
+	void SceneManager::set_curr_pos(Sprite* boxcover)
+	{
+		currpos = boxcover->curr_pos;
 	}
 
 	/*destroy functions*/

@@ -76,12 +76,6 @@ namespace Core
 																	// for quest tab drawing of ingredients
 			//also need dialogue after game end
 		}
-		/*Fade out effect*/
-		if (!Window::isWinCondition)
-		{
-			SceneManager::FadeOut();
-			SceneManager::drawBlackOverlay();
-		}
 		//draw lv1 tile map
 		Map::DrawMap();
 

@@ -1488,7 +1488,12 @@ namespace Core
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), 
 							static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
+						boxcover->target_pos = boxcover->transformation.Position.y;
+						boxcover->curr_pos = boxcover->transformation.Position.y - 20;
 
+						SceneManager::set_target_pos(boxcover);
+						SceneManager::set_curr_pos(boxcover);
+						boxcover->animeMe = true;
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -1868,6 +1873,12 @@ namespace Core
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) + (2 * static_cast<int>(tile_width)), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->player_grid_pos.x) + 2, static_cast<int>(Window::player->player_grid_pos.y), combine);
+						boxcover->target_pos = boxcover->transformation.Position.y;
+						boxcover->curr_pos = boxcover->transformation.Position.y - 20;
+
+						SceneManager::set_target_pos(boxcover);
+						SceneManager::set_curr_pos(boxcover);
+						boxcover->animeMe = true;
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2251,7 +2262,12 @@ namespace Core
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) + (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
+						boxcover->target_pos = boxcover->transformation.Position.y;
+						boxcover->curr_pos = boxcover->transformation.Position.y - 20;
 
+						SceneManager::set_target_pos(boxcover);
+						SceneManager::set_curr_pos(boxcover);
+						boxcover->animeMe = true;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2630,7 +2646,12 @@ namespace Core
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) - (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y - 2, combine);
+						boxcover->target_pos = boxcover->transformation.Position.y;
+						boxcover->curr_pos = boxcover->transformation.Position.y - 20;
 
+						SceneManager::set_target_pos(boxcover);
+						SceneManager::set_curr_pos(boxcover);
+						boxcover->animeMe = true;
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))

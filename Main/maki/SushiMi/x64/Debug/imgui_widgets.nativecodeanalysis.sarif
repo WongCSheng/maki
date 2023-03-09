@@ -14,94 +14,14 @@
       },
       "invocations": [
         {
-          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x006FC1B0 -il C:\\Users\\Rui\\AppData\\Local\\Temp\\_CL_d533c0ecast -typedil -f ..\\lib\\imgui\\imgui_widgets.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930146 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -I D:\\maki\\Main\\maki\\SushiMi\\imgui -I D:\\maki\\Main\\maki\\SushiMi\\Fmod -I D:\\maki\\Main\\maki\\lib\\rttr\\src -I D:\\maki\\Main\\maki\\lib\\rttr\\src\\rttr -nologo -W 4 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -DGLFW_DLL -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DDEBUGGER -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -std:c++20 -Fox64\\Debug\\imgui_widgets.obj -Fdx64\\Debug\\vc142.pdb -external:W 4 -Gd -analyze:projectdirectory D:\\maki\\Main\\maki\\SushiMi -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib\\glfw-3.3.7.bin.WIN32\\include -I D:\\maki\\Main\\maki\\lib\\glew-2.2.0\\include -I D:\\maki\\Main\\maki\\lib\\glm-0.9.9.8 -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\lib\\glfw\\include -I D:\\maki\\Main\\maki\\lib\\glew\\include -I D:\\maki\\Main\\maki\\lib\\glm\\glm -I D:\\maki\\Main\\maki\\lib\\rapidJSON\\ -I D:\\maki\\Main\\maki\\lib\\freetype\\include -I D:\\maki\\Main\\maki\\lib\\Fmod\\inc -I D:\\maki\\Main\\maki\\lib -I D:\\maki\\Main\\maki\\SushiMi -I D:\\maki\\Main\\maki\\lib\\Fmod -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -I D:\\maki\\Main\\maki\\SushiMi\\Include\\um -MPdiagMutex 00000000000001E4",
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00D7C1B0 -il C:\\Users\\theas\\AppData\\Local\\Temp\\_CL_023b0d90ast -typedil -f ..\\lib\\imgui\\imgui_widgets.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930146 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi\\imgui -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi\\Fmod -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\rttr\\src -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\rttr\\src\\rttr -nologo -W 4 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_CONSOLE -DGLFW_DLL -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DDEBUGGER -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -std:c++20 -Fox64\\Debug\\imgui_widgets.obj -Fdx64\\Debug\\vc142.pdb -external:W 4 -Gd -wd 4005 -wd 26451 -wd 6011 -wd 28182 -wd 6262 -wd 28252 -wd 26812 -wd 6031 -wd 33010 -wd 26495 -wd 28253 -wd 33011 -analyze:projectdirectory C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\Fmod\\inc -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glfw-3.3.7.bin.WIN32\\include -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glew-2.2.0\\include -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glm-0.9.9.8 -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glfw\\include -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glew\\include -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\glm\\glm -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\rapidJSON\\ -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\freetype\\include -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\Fmod\\inc -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\lib\\Fmod -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi\\Include\\um -I C:\\Users\\theas\\Documents\\GitHub\\maki\\Main\\maki\\SushiMi\\Include\\um -MPdiagMutex 0000000000000730",
           "executionSuccessful": true
         }
       ],
       "artifacts": [
         {
           "location": {
-            "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_impl_glfw.cpp"
-          },
-          "roles": [
-            "analysisTarget",
-            "resultFile"
-          ],
-          "hashes": {
-            "md5": "f5200635f2f29b3381b131559beab8f0"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui.h"
-          },
-          "hashes": {
-            "md5": "db2ca36fa33b543cb978289a34068c59"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imconfig.h"
-          },
-          "hashes": {
-            "md5": "623d61093b99dae49babe1c51cf226ad"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_impl_glfw.h"
-          },
-          "hashes": {
-            "md5": "2ce73f86ce25b015d84fa2407f79fed2"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/glfw/include/glfw/glfw3.h"
-          },
-          "hashes": {
-            "md5": "3e5129f05ba93cd6bca1f159544b53b6"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/glfw/include/glfw/glfw3native.h"
-          },
-          "hashes": {
-            "md5": "4d4f240b4d6b414657e1b940e77b75e2"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///D:/maki/Main/maki/lib/imgui/imgui_impl_opengl3.cpp"
-          },
-          "roles": [
-            "analysisTarget",
-            "resultFile"
-          ],
-          "hashes": {
-            "md5": "d654ff9c26069a1a402d10a7d3c806b2"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_impl_opengl3.h"
-          },
-          "hashes": {
-            "md5": "c45efb6e9c228700d5f05a6da86f487a"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/glew/include/gl/glew.h"
-          },
-          "hashes": {
-            "md5": "ed03b570ce4f82b44f8f05414b55d9a9"
-          }
-        },
-        {
-          "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_widgets.cpp"
+            "uri": "file:///c:/users/theas/documents/github/maki/main/maki/lib/imgui/imgui_widgets.cpp"
           },
           "roles": [
             "analysisTarget"
@@ -112,7 +32,23 @@
         },
         {
           "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imgui_internal.h"
+            "uri": "file:///c:/users/theas/documents/github/maki/main/maki/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "md5": "db2ca36fa33b543cb978289a34068c59"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/theas/documents/github/maki/main/maki/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "md5": "623d61093b99dae49babe1c51cf226ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/theas/documents/github/maki/main/maki/lib/imgui/imgui_internal.h"
           },
           "hashes": {
             "md5": "357207103c2dc232e04f1a651cb44aad"
@@ -120,7 +56,7 @@
         },
         {
           "location": {
-            "uri": "file:///d:/maki/main/maki/lib/imgui/imstb_textedit.h"
+            "uri": "file:///c:/users/theas/documents/github/maki/main/maki/lib/imgui/imstb_textedit.h"
           },
           "hashes": {
             "md5": "833291444cdcb4a7ceff4d359e403125"

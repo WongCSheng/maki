@@ -245,11 +245,11 @@ namespace Core
 				{
 					case static_cast<int>(animated::RicePlant1):
 					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
-						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
+						Sprite* riceplant = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
+						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(riceplant));
+						riceplant->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						riceplant->curr_anim = AnimationType::Idle;
+						riceplant->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
 
 						
@@ -1235,6 +1235,7 @@ namespace Core
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
 		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::sinkhole)))
 		{
+			Window::player->isStuck();
 			return true;
 		}
 		else
@@ -2897,10 +2898,8 @@ namespace Core
 		case(grid_number::tea):
 			return ("Tea");
 			break;
-		
 		default:
-			return ("Rice");
-			break;
+			return("");
 		}
 	}
 }

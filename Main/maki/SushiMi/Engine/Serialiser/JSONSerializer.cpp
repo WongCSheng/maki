@@ -385,9 +385,7 @@ namespace Core
 		}
 		//setting player pos from JSON into custom variable
 		//set your custom variable!!!! important
-		Player::playerpos_restart.x = Player::playerpos.x = pos[0];
-		Player::playerpos_restart.y = Player::playerpos.y = pos[0];
-
+		
 
 		/*playerpos_restart.x = pos[0];
 		player->playerpos_restart.y = pos[1];

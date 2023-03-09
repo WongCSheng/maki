@@ -54,9 +54,9 @@ namespace Core
 
 	}
 
-	void TextureSystem::Update(const double dt)
+	void TextureSystem::Update(const double )
 	{
-		dt;
+		
 	}
 
 	void TextureSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)

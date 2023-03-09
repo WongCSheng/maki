@@ -15,9 +15,9 @@ namespace Core
 
 		Timer() : duration( 0.f ) {
 			using namespace std;
-			auto start = chrono::high_resolution_clock::now();
+			auto start_ = chrono::high_resolution_clock::now();
 		}
-
+		
 		~Timer() {
 			using namespace std;
 			end = chrono::high_resolution_clock::now();
@@ -26,6 +26,8 @@ namespace Core
 			float ms = duration.count() * 1000.0f;
 			cout << "Time passed: " << ms << "ms" << endl;
 		}
+		void StartSecTimer(int timeInSeconds);
+		void StartMilTimer(int timeInMil);
 	};
 }
 

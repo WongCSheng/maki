@@ -92,6 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>imgui;Fmod;$(SolutionDir)lib\rttr\src;$(SolutionDir)lib\rttr\src\rttr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4005;26451;6011;28182;6262;28252;26812;6031;33010;26495;28253;33011</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -184,7 +185,6 @@
     <ClCompile Include="Engine\System\TextureSystem.cpp" />
     <ClCompile Include="Engine\System\Transformer.cpp" />
     <ClCompile Include="Engine\TileMap\Map.cpp" />
-    <ClCompile Include="Engine\Timer\Timer.cpp" />
     <ClCompile Include="Game Object\GameObject.cpp" />
     <ClCompile Include="Game Object\Player.cpp" />
     <ClCompile Include="Level State\Level1.cpp" />
@@ -253,7 +253,6 @@
     <ClInclude Include="Engine\System\TextureSystem.h" />
     <ClInclude Include="Engine\System\Transformer.h" />
     <ClInclude Include="Engine\TileMap\Map.h" />
-    <ClInclude Include="Engine\Timer\Timer.h" />
     <ClInclude Include="Game Object\GameObject.h" />
     <ClInclude Include="Game Object\Player.h" />
     <ClInclude Include="Headers\Assertion.h" />

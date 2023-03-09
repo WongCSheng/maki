@@ -2,7 +2,7 @@
 #include "Timer.h"
 namespace Core
 {
-	static void StartSecTimer(int timeInSeconds) {
+	void Timer::StartSecTimer(int timeInSeconds) {
 		// this counts in seconds, can use without header
 		using namespace std::literals;
 		using namespace std;
@@ -15,7 +15,7 @@ namespace Core
 		cout << duration.count() << "s" << endl;
 	}
 
-	static void StartMilTimer(int timeInMil) {
+	void Timer::StartMilTimer(int timeInMil) {
 		// this counts in seconds, can use without header
 		using namespace std::literals;
 		using namespace std;

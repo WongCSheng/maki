@@ -98,14 +98,14 @@ namespace Core
 
 			//copy string for obj name
 			tempStr = it.first;
-			rapidjson::Value nameVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			rapidjson::Value nameVal(tempStr.c_str(), static_cast<rapidjson::SizeType>(tempStr.size()), doc.GetAllocator());
 			//add obj name
 			tempVal.AddMember("Name", nameVal, doc.GetAllocator());
 			//add obj id
 			tempVal.AddMember("ID", it.second->characteristics->GetID(), doc.GetAllocator());
 
 			tempStr = (it.second->characteristics->GetIDName());
-			rapidjson::Value idVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			rapidjson::Value idVal(tempStr.c_str(), static_cast<rapidjson::SizeType>(tempStr.size()), doc.GetAllocator());
 			//add obj id name
 			tempVal.AddMember("ID Name", idVal, doc.GetAllocator());
 
@@ -119,7 +119,7 @@ namespace Core
 
 			//add to top lvl object
 			std::string objCountStr = std::to_string(objCount);
-			rapidjson::Value index(objCountStr.c_str(), objCountStr.size(), doc.GetAllocator());
+			rapidjson::Value index(objCountStr.c_str(), static_cast<rapidjson::SizeType>(objCountStr.size()), doc.GetAllocator());
 			doc.AddMember(index, tempVal, doc.GetAllocator());
 			objCount++;
 
@@ -142,7 +142,7 @@ namespace Core
 		fclose(fp);
 	}
 
-	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> )
 	{
 
 	}
@@ -152,7 +152,7 @@ namespace Core
 
 	}
 
-	void AssetsManager::Update(const double dt)
+	void AssetsManager::Update(const double )
 	{
 
 	}

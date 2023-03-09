@@ -33,9 +33,9 @@ namespace Core
 		}*/
 	}
 
-	void Transformer::Update(const double dt)
+	void Transformer::Update(const double )
 	{
-		dt;
+		
 		std::unordered_map<std::string, Object::GameObject*>::iterator it = Transforms.begin();
 
 		for (it; it != Transforms.end(); ++it)
@@ -59,8 +59,8 @@ namespace Core
 
 	}
 
-	void Transformer::UpdateTransformation(Transform* trans)
+	void Transformer::UpdateTransformation(Transform* )
 	{
-		trans;
+		
 	}
 }

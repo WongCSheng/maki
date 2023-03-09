@@ -49,9 +49,6 @@
     <ClCompile Include="Engine\Factory\Factory.cpp">
       <Filter>GameEngine\Factory</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Timer\Timer.cpp">
-      <Filter>GameEngine\Timer</Filter>
-    </ClCompile>
     <ClCompile Include="Debugger\Debug.cpp">
       <Filter>Debugger</Filter>
     </ClCompile>
@@ -264,9 +261,6 @@
     <ClInclude Include="Headers\RapidJSON_Header.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Timer\Timer.h">
-      <Filter>GameEngine\Timer</Filter>
-    </ClInclude>
     <ClInclude Include="Debugger\Debug.h">
       <Filter>Debugger</Filter>
     </ClInclude>
@@ -425,9 +419,6 @@
     </Filter>
     <Filter Include="GameEngine\Factory">
       <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Timer">
-      <UniqueIdentifier>{9e02925b-088d-41f8-a125-0ca2355f73c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Debugger">
       <UniqueIdentifier>{8a2a5263-9510-4a91-9728-cf360999f289}</UniqueIdentifier>

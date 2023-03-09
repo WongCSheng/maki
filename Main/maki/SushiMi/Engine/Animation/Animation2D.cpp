@@ -54,10 +54,7 @@ namespace Core
 
 		frames_count = (int)frames.size();
 		if (fp != NULL)
-		{
-			fclose(fp);
-		}
-
+		fclose(fp);
 	}
 
 	Animation2D::~Animation2D()

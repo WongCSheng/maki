@@ -827,8 +827,7 @@ namespace Core
 		tileWidth = Width;
 		tileHeight = Height;
 	}
-
-
+	
 	void SceneManager::destroyPlayer_Stuck()
 	{
 		delete player_stuck;

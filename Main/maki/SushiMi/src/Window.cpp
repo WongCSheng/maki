@@ -31,7 +31,7 @@ Description:
 namespace Core
 {
 	static Core::MainSystem* CoreSystem;
-	static int width, height;
+	//static int width, height;
 	std::ifstream fin;						// retrieve the current level dialogue file
 	std::vector<Basket> CurrentIngredients; // retreive the current level loaded ingredients
 	static bool keystate_fps = false;

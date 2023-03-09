@@ -23,13 +23,6 @@
   Font.cpp
   Input.cpp
   model.cpp
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(101,80): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(108,78): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(122,86): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(145,93): warning C4458: declaration of 'ObjectContainer' hides class member
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.h(29,70): message : see declaration of 'Core::ObjectFactory::ObjectContainer' (compiling source file Engine\Factory\Factory.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Factory\Factory.cpp(155,42): warning C4100: 'dt': unreferenced formal parameter
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Font\Font.cpp(87,33): warning C4838: conversion from 'FT_Pos' to 'unsigned int' requires a narrowing conversion
   Messaging.cpp
   JSONSerializer.cpp
   ShaderLibrary.cpp
@@ -44,13 +37,8 @@ C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Font\Font.c
   TextureSystem.cpp
   Transformer.cpp
   Map.cpp
-  Timer.cpp
   GameObject.cpp
   Player.cpp
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(18,1): warning C4458: declaration of 'start' hides class member (compiling source file Engine\Timer\Timer.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.h(12,54): message : see declaration of 'Core::Timer::start' (compiling source file Engine\Timer\Timer.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(5,14): warning C4505: 'Core::StartSecTimer': unreferenced function with internal linkage has been removed
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer.cpp(18,14): warning C4505: 'Core::StartMilTimer': unreferenced function with internal linkage has been removed
   Level1.cpp
   Level10.cpp
   Level11.cpp
@@ -66,16 +54,10 @@ C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Engine\Timer\Timer
   Tutorial1.cpp
   Tutorial2.cpp
   Log.cpp
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\Log.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\Log.cpp : message : see previous definition of 'DEBUG'
   main.cpp
   Matrix.cpp
   SceneManager.cpp
   Window.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition (compiling source file src\Window.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\lib\glfw\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY' (compiling source file src\Window.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\Headers\Log.h(185,1): warning C4005: 'DEBUG': macro redefinition (compiling source file src\main.cpp)
-C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\SushiMi\src\main.cpp : message : see previous definition of 'DEBUG'
   User.cpp
   GameWindow.cpp
-  SushiMi.vcxproj -> C:\Users\louis\source\repos\WongCSheng\maki\Main\maki\x64\Debug\SushiMi.exe
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

@@ -123,7 +123,7 @@ namespace Core
 		if (jsonObj.HasMember("CorrectIngredient"))
 		{
 			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
-			for (rapidjson::SizeType i{}; i < SpriteArr2.Size(); ++i)
+			for (int i{}; i < static_cast<int>(SpriteArr2.Size()); ++i)
 			{
 				const rapidjson::Value& ingredient = SpriteArr2[i];
 

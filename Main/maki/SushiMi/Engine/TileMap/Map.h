@@ -3,6 +3,7 @@
 #define Map_H_
 #include <string>
 #include <vector>
+#include "../../src/Window.h"
 
 #include "../Headers/SceneManager.h"
 

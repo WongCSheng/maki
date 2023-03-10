@@ -136,7 +136,7 @@ namespace Core
 	void Player::isStuck()
 	{
 		current_anim = AnimationType::Run;
-		Window::keystate_left
+		Window::keystate_left;
 	}
 
 	void Player::move_down()

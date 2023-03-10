@@ -538,6 +538,7 @@ namespace Core
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
+
 					levelWinConditions.emplace(std::pair(std::pair(grid_number::avocado, wall_type::avocado_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::avocado_box },box });
 

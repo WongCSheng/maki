@@ -178,74 +178,64 @@ namespace Core
 				std::pair<int, int> boxCoordinates(boxX, boxY);
 
 				//checking through level win condition (check if ingredient land on box position)
-				if (ingredientCoordinates == boxCoordinates)
+				if (ingredientCoordinates == boxCoordinates && (int)ingredient1.nametag != 54)
 				{
 					//ingredient row and col matches box row and col (2 ingredients check against 1 box)
 					std::pair<grid_number, wall_type> checkCondition(ingredient1.nametag, box.first);
 					//std::cout << "what's in ingredient1		" << static_cast<int>(ingredient1.nametag ) << std::endl;
 					
-					//std::cout << "checking current >>>>>> " << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
+					std::cout << "checking Ingredient" << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
 					//------------------------------------------------------
 					bool check = false;
 					for (const auto& it : Map::levelWinConditions) {
 						std::cout << "Level Win Cond:  " << (int)it.first.first << " " << (int)it.first.second << "\n";
 						if (it.first == checkCondition) {
 							check = true;
+							break;
 						}
 					}
 					//------------------------------------------------------
 					if (check)
 					{
-
 						std::cout << "ingredient landed correct box\n";
 						//check if quest tab is open
 						if (isQuestTab)
 						{
-								//check for how many times the chop has to draw, base on ingredientCount
-								for (int i = 0; i < Map::levelWinConditions.size(); i++)
-								{
-									Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
-									Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-									Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-									spritecomp->transformation.Position = transcomp->Position;
-									spritecomp->transformation.Scale = transcomp->Scale;
+							//check for how many times the chop has to draw, base on ingredientCount
+							Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+							//need to adjust the transform component of the done button to the right position
+							//get the set that is matched
+							//check the quest tab position of the matched set
+							//change transcomp position to correct matched quest tab location
+							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+							spritecomp->transformation.Position = transcomp->Position;
+							spritecomp->transformation.Scale = transcomp->Scale;
 
-									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-									spritecomp->draw();
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							spritecomp->draw();
 
-									//std::cout << "pls show me the done stuff\n";
-								}
-								
-								
+							//std::cout << "pls show me the done stuff\n";
 						}
-
 					}
 					else
 					{
 						if (isQuestTab)
 						{
 							//check for how many times the chop has to draw, base on ingredientCount
-							for (int i = 0; i < Map::levelWinConditions.size(); i++)
-							{
-								Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
-								Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-								Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-								spritecomp->transformation.Position = transcomp->Position;
-								spritecomp->transformation.Scale = transcomp->Scale;
+							Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
+							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
 
-								Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-								spritecomp->draw();
+							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+							spritecomp->transformation.Position = transcomp->Position;
+							spritecomp->transformation.Scale = transcomp->Scale;
 
-								//std::cout << "pls show me the denied stuff\n";
-							}
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							spritecomp->draw();
 
-
-
+							//std::cout << "pls show me the denied stuff\n";
 						}
 					}
-
-						
-					
 				}
 			}
 		}

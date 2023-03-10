@@ -116,7 +116,7 @@ void Core::pseudomain::update()
 
 	CoreSystem->Update((Get_Delta()));
 
-	
+	std::cout << "Updoot Loop" << std::endl;
 }
 
 /*  _________________________________________________________________________ */

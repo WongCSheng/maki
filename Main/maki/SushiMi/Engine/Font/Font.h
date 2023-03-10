@@ -12,26 +12,29 @@ This file implements functionality for fonts using freetype for showing words on
 #include <map>
 #include "../Engine/System/Graphics/glslshader.h"
 #include "Engine/Shaders/ShaderLibrary.h"
-
+#include <src/Window.h>
 #ifndef FONT_H_
 #define FONT_H_
-
-class Font
+namespace Core
 {
-public:
-	struct Character
+	class Font
 	{
-		unsigned int	TextureID;			// ID handle of the glyph texture
-		glm::ivec2		Size;				// Size of glyph
-		glm::ivec2		Bearing;			// Offset from baseline to left/top of glyph
-		unsigned int	Advance;			// Offset to advance to next glyph
+	public:
+		struct Character
+		{
+			unsigned int	TextureID;			// ID handle of the glyph texture
+			glm::ivec2		Size;				// Size of glyph
+			glm::ivec2		Bearing;			// Offset from baseline to left/top of glyph
+			unsigned int	Advance;			// Offset to advance to next glyph
+		};
+		static std::map<char, Character> Characters;	// Singleton
+		static int init();
+		static void RenderText(ShaderLibrary& s, std::string text, float x, float y, float scale, glm::vec3 color, float alpha);
+
 	};
-	static std::map<char, Character> Characters;	// Singleton
-	static int init();
-	static void RenderText(ShaderLibrary& s, std::string text, float x, float y, float scale, glm::vec3 color);
 
-};
+	extern unsigned int VAO, VBO;
+}
 
-extern unsigned int VAO, VBO;
 
 #endif // !FONT_H_

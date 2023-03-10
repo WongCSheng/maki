@@ -51,6 +51,7 @@ namespace Core
 			AudioManager.LoadMusic("Fishing_Village.wav");
 			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("Fishing_Village.wav");
+			AudioManager.PlayVoice("Idle_1.wav");
 
 			if (fin)
 			{

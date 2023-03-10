@@ -133,11 +133,11 @@ void Core::pseudomain::draw()
 		if (GLHelper::fps < 60)
 		{
 
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 600.f, .2f, glm::vec3(1.f, 0.f, 0.f));
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.9f, screenheight * 0.95f, .8f, glm::vec3(1.f, 0.f, 0.f),1.f);
 		}
 		else
 		{
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 600.f, .2f, glm::vec3(0.f, 1.f, 0.f));
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.9f, screenheight * 0.95f, .8f, glm::vec3(0.f, 1.f, 0.f), 1.f);
 		}
 	}
 	//imGUI Game Editor
@@ -291,12 +291,22 @@ void Core::pseudomain::init() {
 	AudioManager.LoadSFX("Closing container.wav");
 	AudioManager.LoadVoice("YES_1.wav");
 	AudioManager.LoadVoice("Sad_1.wav");
+	AudioManager.LoadVoice("Dialogue_1.wav");
+	AudioManager.LoadVoice("Dialogue_2.wav");
+	AudioManager.LoadVoice("Dialogue_3.wav");
+	AudioManager.LoadVoice("Dialogue_4.wav");
+	AudioManager.LoadVoice("Dialogue_5.wav");
+	AudioManager.LoadVoice("Idle_1.wav");
+	AudioManager.LoadSFX("Pouring.wav");
+	AudioManager.LoadSFX("Squeezing.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
 	AudioManager.PlayMusic("BGM.wav");
 
-	std:cout << "Music Volume: " << volume << std::endl;
-	
+	AudioManager.SetMusicVolume(0.1f);
+	//AudioManager.GetMusicChannel()->getVolume(&volume);
+	AudioManager.PlayMusic("BGM.wav");
+	std::cout << "BGM volume: " << volume << std::endl;
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }

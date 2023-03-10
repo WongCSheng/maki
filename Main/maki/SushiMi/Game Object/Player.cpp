@@ -164,7 +164,8 @@ namespace Core
 		playerpos.y = static_cast<float>(playerpos_restart.y);
 		sp->transformation.Position.x = static_cast<float>(playerpos_restart.x);
 		sp->transformation.Position.y = static_cast<float>(playerpos_restart.y);
-		
+		//Window::player->sp->transformation.Scale = glm::vec2(100, 100);
+		Window::player->sp->curr_anim = AnimationType::Idle;
 		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
 
 		SceneManager::destroyTile();
@@ -209,6 +210,11 @@ namespace Core
 
 	void Player::stop()
 	{
+		if (Map::isStuck() == true)
+		{
+			current_anim = AnimationType::Jump;
+		}
+		else
 		current_anim = AnimationType::Idle;
 	}
 

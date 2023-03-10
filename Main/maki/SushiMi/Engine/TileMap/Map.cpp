@@ -234,7 +234,8 @@ namespace Core
 		}
 
 		Window::player->restart();
-		Window::player->resetCount++;
+		SceneManager::FcurrentAlpha = 1.f;
+		SceneManager::timer = 0.0f;
 		win_amt = 0;
 	}
 
@@ -1629,7 +1630,9 @@ namespace Core
 				std::cout << "left sinkhole\n";
 				Window::player->move_left();
 				Window::player->current_anim = AnimationType::Jump;
-				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
+				Window::player->sp->transformation.Scaling(0.1f);
+				Window::player->stop();
+				AudioManager.PlayVoice("Sad_1.wav");
 			}
 			else
 			{
@@ -1675,6 +1678,7 @@ namespace Core
 				std::cout << "normal left" << std::endl;
 			}
 		}
+		Window::player->stop();
 		curr_grid = next_grid;
 	}
 
@@ -2015,7 +2019,10 @@ namespace Core
 				std::cout << "right sinkhole\n";
 				Window::player->move_right();
 				Window::player->current_anim = AnimationType::Jump;
-				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
+				//Window::player->sp->transformation.Scale = glm::vec2(80, 80);
+				Window::player->sp->transformation.Scaling(0.1f);
+				Window::player->stop();
+				AudioManager.PlayVoice("Sad_1.wav");
 			}
 			//Just move
 			else
@@ -2069,6 +2076,7 @@ namespace Core
 				std::cout << "normal right" << std::endl;
 			}
 		}
+		Window::player->stop();
 		curr_grid = next_grid;
 	}
 
@@ -2406,7 +2414,9 @@ namespace Core
 				std::cout << "down sinkhole\n";
 				Window::player->move_down();
 				Window::player->current_anim = AnimationType::Jump;
-				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
+				Window::player->sp->transformation.Scaling(0.1f);
+				Window::player->stop();
+				AudioManager.PlayVoice("Sad_1.wav");
 			}
 			//Just move
 			else
@@ -2454,6 +2464,7 @@ namespace Core
 				std::cout << "normal down" << std::endl;
 			}
 		}
+		Window::player->stop();
 		curr_grid = next_grid;
 	}
 	
@@ -2792,7 +2803,9 @@ namespace Core
 				std::cout << "up sinkhole\n";
 				Window::player->move_up();
 				Window::player->current_anim = AnimationType::Jump;
-				Window::player->sp->transformation.Scale = glm::vec2(80, 80);
+				Window::player->sp->transformation.Scaling(0.1f);
+				Window::player->stop();
+				AudioManager.PlayVoice("Sad_1.wav");
 			}
 			//Just move
 			else
@@ -2841,6 +2854,7 @@ namespace Core
 				std::cout << "normal up" << std::endl;
 			}
 		}
+		Window::player->stop();
 		curr_grid = next_grid;
 	}
 
@@ -2884,12 +2898,16 @@ namespace Core
 		SceneManager::drawIngr();
 		SceneManager::drawTop();
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
-		//std::cout << Window::player->resetCount << std::endl;
-		if (Window::player->resetCount == 3)
+		if (Window::player->resetCount >= 1 && Window::player->resetCount < 5)
 		{
-			
+			SceneManager::FadeOut();
 			SceneManager::drawEncourage();
 
+		}
+		else if (Window::player->resetCount >= 5)
+		{
+			SceneManager::FadeOut();
+			SceneManager::drawGiveUp();
 		}
 		Shaders->Textured_Shader()->use();
 		//SceneManager::drawRice();

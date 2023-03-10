@@ -13,7 +13,7 @@ namespace Core
 	float alpha = 1.0f;
 	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
-
+	float timer = 0.f;
 	SceneManager::SceneManager()
 	{
 		/*tile = nullptr;
@@ -77,6 +77,7 @@ namespace Core
 		Window::player->current_anim = AnimationType::Idle;
 		Window::questProgress = 0;
 		amt_of_win_conditions = 0;
+		Window::player->resetCount = 0;
 		//missing: restart sinkhole, restart sushi plate pods
 		Window::isPlayerinSinkhole = false;
 		//reset ingredient pos
@@ -488,6 +489,7 @@ namespace Core
 
 	bool SceneManager::activateSoya(Sprite* soya)
 	{
+		AudioManager.PlaySFX("Pouring.wav");
 		if (soya->timer < 5.f)
 		{
 			soya->transformation.Position.x = soya->transformation.Position.x - 30;
@@ -501,6 +503,7 @@ namespace Core
 
 	bool SceneManager::activateWasabi(Sprite* wasabi)
 	{
+		AudioManager.PlaySFX("Squeezing.wav");
 		if (wasabi->timer < 5.f)
 		{
 			wasabi->transformation.Position.y = wasabi->transformation.Position.y - 100;
@@ -521,6 +524,7 @@ namespace Core
 	}
 	bool SceneManager::activateTea(Sprite* tea)
 	{
+		AudioManager.PlaySFX("Pouring.wav");
 		if (tea->timer < 5.f)
 		{
 			tea->transformation.Position.x = tea->transformation.Position.x - 50;
@@ -646,8 +650,34 @@ namespace Core
 
 	void SceneManager::drawEncourage()
 	{
+		/*random int between 0 to 10*/
+		const char* encourgementwords[5] = { "Stay strong", "Keep pushing",
+		"Almost there!", "Don't give up!", "Yes you can!"};
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		timer += Get_Delta();
+		if (timer > 1.f)
+		{
+			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+		}
 		Shaders->Font_Shader()->use();
-		Font::RenderText(*Shaders, "You can do it!!", 190, 90, .25f, glm::vec3(0.f, 0.f, 0.f));
+		Font::RenderText(*Shaders, encourgementwords[Player::resetCount], Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
+	}
+
+	void SceneManager::drawGiveUp()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		float timer = 0;
+		timer += Get_Delta();
+
+		if (timer > 1.f)
+		{
+			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+		}
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, "Getgud -Bami 2023", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
+
 	}
 
 	void SceneManager::drawCutscene()

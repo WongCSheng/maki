@@ -50,6 +50,7 @@ namespace Core
 			AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
 			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+			AudioManager.PlayVoice("Idle_1.wav");
 
 			if (fin)
 			{

@@ -207,6 +207,7 @@ namespace Core
 		static void draw_Bami_End_Room();
 
 		static void drawEncourage();
+		static void drawGiveUp();
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
@@ -301,6 +302,11 @@ namespace Core
 		inline static float targetAlpha = 0.0f;
 		inline static float currentAlpha = 0.0f;
 
+		// Font alpha parameters
+		inline static float FtargetAlpha = 0.0f;
+		inline static float FcurrentAlpha = 0.0f;
+
+		inline static float timer = 0.0f;
 		// Boxcover targetpos and currpos
 		inline static float currpos;
 		inline static float targetpos;

@@ -45,6 +45,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 
 static Core::MainSystem* CoreSystem;
+int screenwidth = 0, screenheight = 0;
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -134,11 +135,11 @@ void Core::pseudomain::draw()
 		if (GLHelper::fps < 60)
 		{
 
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 0.f, .2f, glm::vec3(1.f, 0.f, 0.f));
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 600.f, .2f, glm::vec3(1.f, 0.f, 0.f));
 		}
 		else
 		{
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 0.f, .2f, glm::vec3(0.f, 1.f, 0.f));
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), 0.f, 600.f, .2f, glm::vec3(0.f, 1.f, 0.f));
 		}
 	}
 	//imGUI Game Editor
@@ -181,6 +182,7 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 void Core::pseudomain::init() {
+	glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();

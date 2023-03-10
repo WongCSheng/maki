@@ -8,6 +8,7 @@
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Headers/SceneManager.h"
+#include "../Engine/Audio/AudioEngine.h"
 
 
 namespace Core
@@ -1518,6 +1519,7 @@ namespace Core
 						SceneManager::set_target_pos(boxcover);
 						SceneManager::set_curr_pos(boxcover);
 						boxcover->animeMe = true;
+						AudioManager.PlaySFX("Closing container.wav");
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -1904,6 +1906,7 @@ namespace Core
 						SceneManager::set_target_pos(boxcover);
 						SceneManager::set_curr_pos(boxcover);
 						boxcover->animeMe = true;
+						AudioManager.PlaySFX("Closing container.wav");
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2294,6 +2297,7 @@ namespace Core
 						SceneManager::set_target_pos(boxcover);
 						SceneManager::set_curr_pos(boxcover);
 						boxcover->animeMe = true;
+						AudioManager.PlaySFX("Closing container.wav");
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
@@ -2679,6 +2683,7 @@ namespace Core
 						SceneManager::set_target_pos(boxcover);
 						SceneManager::set_curr_pos(boxcover);
 						boxcover->animeMe = true;
+						AudioManager.PlaySFX("Closing container.wav");
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))

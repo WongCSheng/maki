@@ -668,6 +668,7 @@ namespace Core
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		timer = 0;
 		timer += Get_Delta();
 
 		if (timer > 1.f)

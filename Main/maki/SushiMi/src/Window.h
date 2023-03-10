@@ -149,7 +149,7 @@ namespace Core
 
 #endif
 
-		static inline void ImGuiToObjContainer(ObjectFactory*);
+		//static inline void ImGuiToObjContainer(ObjectFactory*);
 
 		static inline Player* player;
 		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp

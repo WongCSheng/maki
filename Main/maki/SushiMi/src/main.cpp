@@ -300,7 +300,7 @@ void Core::pseudomain::init() {
 	AudioManager.LoadSFX("Squeezing.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	AudioManager.PlayMusic("BGM.wav");
+	
 
 	AudioManager.SetMusicVolume(0.1f);
 	//AudioManager.GetMusicChannel()->getVolume(&volume);

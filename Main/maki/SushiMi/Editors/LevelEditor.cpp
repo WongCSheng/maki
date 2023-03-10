@@ -687,7 +687,7 @@ namespace Core
 			ImGui::Spacing();
 
 
-			ImGui::Text("Buttons to test textures load in editor");
+			//ImGui::Text("Buttons to test textures load in editor");
 
 			/*ImGui::ImageButton("gfx/image.png", 64, 64, 8, 0xffffff, 1, 0xff0000, 0.5);*/
 
@@ -727,10 +727,10 @@ namespace Core
 				texpath = "../textures/menu.jpg";
 			}*/
 
-			if (ImGui::Button("+"))
-			{
-				/*Window::ImGuiToObjContainer()*/
-			}
+			//if (ImGui::Button("+"))
+			//{
+			//	/*Window::ImGuiToObjContainer()*/
+			//}
 
 			ImGui::Spacing();
 			ImGui::Text("File Save Functions:");

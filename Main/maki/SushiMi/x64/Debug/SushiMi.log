@@ -1,2 +1,25 @@
-﻿  Map.cpp
-  SushiMi.vcxproj -> C:\Users\Chong Sheng\Documents\SiT\CSD2400\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  LevelEditor.cpp
+  Sprite.cpp
+  Core.cpp
+  Font.cpp
+  Map.cpp
+  Player.cpp
+  Level1.cpp
+  Level2.cpp
+  Level3.cpp
+  Level4.cpp
+  Level5.cpp
+  Level6.cpp
+  Level7.cpp
+  Level8.cpp
+  Level9.cpp
+  TestLevel.cpp
+  Tutorial1.cpp
+  Tutorial2.cpp
+  SceneManager.cpp
+  Window.cpp
+  main.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\SceneManager.cpp(671,17): warning C4458: declaration of 'timer' hides class member
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\Headers\SceneManager.h(309,23): message : see declaration of 'Core::SceneManager::timer' (compiling source file src\SceneManager.cpp)
+  LINK : C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

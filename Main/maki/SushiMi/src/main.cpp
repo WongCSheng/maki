@@ -285,7 +285,7 @@ void Core::pseudomain::init() {
 #endif
 
 	float volume{ 1.f };
-	bool play{ false };
+	//bool play{ false };
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
@@ -301,7 +301,7 @@ void Core::pseudomain::init() {
 	AudioManager.LoadSFX("Squeezing.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	AudioManager.PlayMusic("BGM.wav");
+	
 
 	AudioManager.SetMusicVolume(0.1f);
 	//AudioManager.GetMusicChannel()->getVolume(&volume);

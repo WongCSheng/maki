@@ -8,6 +8,7 @@
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Headers/SceneManager.h"
+#include <Engine/Font/Font.h>
 #include "../Audio/AudioEngine.h"
 
 namespace Core
@@ -230,7 +231,7 @@ namespace Core
 		}
 
 		Window::player->restart();
-
+		Window::player->resetCount++;
 		win_amt = 0;
 	}
 
@@ -2873,12 +2874,21 @@ namespace Core
 
 	void Map::DrawMap()
 	{
+		
 		SceneManager::drawTile();
 		SceneManager::drawSinkHole();
 		SceneManager::drawInsideSinkHole();
 		SceneManager::drawIngr();
 		SceneManager::drawTop();
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
+		std::cout << Window::player->resetCount << std::endl;
+		if (Window::player->resetCount == 3)
+		{
+			
+			SceneManager::drawEncourage();
+
+		}
+		Shaders->Textured_Shader()->use();
 		//SceneManager::drawRice();
 	}
 	/********************************************

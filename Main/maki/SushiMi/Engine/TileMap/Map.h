@@ -55,8 +55,6 @@ namespace Core
 		static inline Sprite* wasabi;
 		static inline Sprite* tea;
 
-
-
 		static int** wGrids;
 		static int** aGrids;
 		static int** RestartGrids;

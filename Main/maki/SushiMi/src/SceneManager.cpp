@@ -3,6 +3,7 @@
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Core/Core.h"
 #include "../Engine/TileMap/Map.h"
+#include <Engine/Font/Font.h>
 //#include "."
 
 
@@ -635,11 +636,18 @@ namespace Core
 	}
 	void SceneManager::drawWinOverlay()
 	{
+		Window::player->resetCount = 0;
 		Window::player->current_anim = AnimationType::Run;
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 		win_overlay->draw();
+	}
+
+	void SceneManager::drawEncourage()
+	{
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, "You can do it!!", 190, 90, .25f, glm::vec3(0.f, 0.f, 0.f));
 	}
 
 	void SceneManager::drawCutscene()

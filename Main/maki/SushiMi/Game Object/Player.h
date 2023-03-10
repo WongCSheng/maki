@@ -48,10 +48,9 @@ namespace Core
 			float y;
 		} playerpos_restart;
 
-		
-
 		static inline Sprite* sp;
 		AnimationType current_anim;
+		static inline int resetCount;
 
 		static inline struct PlayergridPos
 		{

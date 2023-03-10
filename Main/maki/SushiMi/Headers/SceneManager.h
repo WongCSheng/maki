@@ -206,6 +206,8 @@ namespace Core
 		static void draw_Wood_BG();
 		static void draw_Bami_End_Room();
 
+		static void drawEncourage();
+
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
 		static void FadeIn();

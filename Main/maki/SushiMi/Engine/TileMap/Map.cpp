@@ -200,30 +200,36 @@ namespace Core
 			}
 		}
 
-		int i = 0;
+		std::vector<Basket>::iterator it = SceneManager::ingredientcontainer.begin();
 		
-		for (auto &ingredient : SceneManager::ingredientcontainer)
+		for (it; it != SceneManager::ingredientcontainer.end();)
 		{
-			ingredient.Restart();
+			it->Restart();
 
-			if (ingredient.nametag == grid_number::boxcover)
+			if (it->nametag == grid_number::boxcover)
 			{
-				delete ingredient.spr;
-				SceneManager::ingredientcontainer.erase(SceneManager::ingredientcontainer.begin() + i);
+				delete it->spr;
+				it = SceneManager::ingredientcontainer.erase(it);
 			}
 
-			i++;
+			it++;
 		}
 
-		for (auto& ingredient : SceneManager::in_sinkhole)
+		it = SceneManager::in_sinkhole.begin();
+
+		for (it; it != SceneManager::in_sinkhole.end();)
 		{
-			ingredient.Restart();
+			it->Restart();
 
-			if (ingredient.nametag != grid_number::sinkhole)
+			if (it->nametag != grid_number::sinkhole)
 			{
-				SceneManager::ingredientcontainer.push_back(ingredient);
+				SceneManager::ingredientcontainer.push_back(*it);
 
-				SceneManager::in_sinkhole.pop_back();
+				it = SceneManager::in_sinkhole.erase(it);
+			}
+			else
+			{
+				it++;
 			}
 		}
 

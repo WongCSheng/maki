@@ -115,8 +115,6 @@ void Core::pseudomain::update()
 	CoreSystem->objfactory->Update((Get_Delta()));
 
 	CoreSystem->Update((Get_Delta()));
-
-	std::cout << "Updoot Loop" << std::endl;
 }
 
 /*  _________________________________________________________________________ */
@@ -263,7 +261,7 @@ void Core::pseudomain::init() {
 	//load GLAD so it configures OpenGL
 	//gladLoadGL(); //do not uncomment this, glad header does not work
 
-	glViewport(0, 0, 800, 800); //resize window
+	glViewport(0, 0, 1920, 1080); //resize window
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -287,6 +285,7 @@ void Core::pseudomain::init() {
 #endif
 
 	float volume{ 1.f };
+	bool play{ false };
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
@@ -294,13 +293,10 @@ void Core::pseudomain::init() {
 	AudioManager.LoadVoice("Sad_1.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	/*AudioManager.GetMusicChannel()->getVolume(&volume);
-	std::cout << "BGM volume: " << volume << std::endl;*/
+	AudioManager.PlayMusic("BGM.wav");
 
-	AudioManager.SetMusicVolume(0.1f);
-	//AudioManager.GetMusicChannel()->getVolume(&volume);
-	AudioManager.PlayMusic("BGM");
-	std::cout << "BGM volume: " << volume << std::endl;
+	std:cout << "Music Volume: " << volume << std::endl;
+	
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
@@ -318,9 +314,11 @@ void Core::pseudomain::cleanup() {
 
 	GLHelper::cleanup();
 	//unload music
-	AudioManager.UnloadMusic("BGM.wav");
+	/*AudioManager.UnloadMusic("BGM.wav");
 	AudioManager.UnloadMusic("BGM with Forest Day volume test.wav");
-	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.wav");
+	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.wav");*/
+	AudioManager.CleanPlaying();
+	AudioManager.Free();
 
 	////imgui Shutdown
 #if defined(DEBUG) | defined(_DEBUG)

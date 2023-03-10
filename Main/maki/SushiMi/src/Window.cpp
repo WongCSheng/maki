@@ -1598,6 +1598,7 @@ namespace Core
 			if (isMenuState == true)
 			{
 				AudioManager.SetMusicVolume(0.4f);
+				AudioManager.PlayMusic("BGM.wav");
 
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{

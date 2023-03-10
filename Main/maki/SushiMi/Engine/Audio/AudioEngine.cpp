@@ -36,6 +36,7 @@ namespace Core
         ----------------------------------------------------------------------------- */
         channel->setChannelGroup(channelGroup);
         musicChannel->setChannelGroup(channelGroup);
+        voiceChannel->setChannelGroup(channelGroup);
 
         /*
         *   Set a callback on the channel.
@@ -97,12 +98,12 @@ namespace Core
     {
         // Create the sound.
         FMOD::Sound* audioClip = 0;
-        auto search = soundDatabase.find(voiceClip);
-        if (search != soundDatabase.end())
+        auto search = voiceDatabase.find(voiceClip);
+        if (search != voiceDatabase.end())
             audioClip = search->second;
 
         // Play the sound.
-        fmodSystem->playSound(audioClip, nullptr, false, &channel);
+        fmodSystem->playSound(audioClip, nullptr, false, &voiceChannel);
     }
 
     /*!				void _audioManager::StopMusic(void)
@@ -138,7 +139,7 @@ namespace Core
     void _audioManager::StopVoice(void)
     {
         // stop play the sound.
-        channel->stop();
+        voiceChannel->stop();
     }
 
     /*!				void _audioManager::SetAudioVolume(float volume)
@@ -168,6 +169,11 @@ namespace Core
         fmodSystem->playSound(snd, nullptr, false, &musicChannel);
     }
 
+    void _audioManager::SetVoiceVolume(float volume)
+    {
+        voiceChannel->setVolume(volume);
+    }
+
     /*!				void _audioManager::Update()
     @param
     @return none
@@ -194,7 +200,7 @@ namespace Core
 
         for (start = musicDatabase.begin(); start != musicDatabase.end(); start++)
             start->second->release();
-        //channelGroup->release();
+        channelGroup->release();
         fmodSystem->release();
     }
 
@@ -221,7 +227,7 @@ namespace Core
     @param          string name
     @return none
 
-                   Load sound into directory
+                   Load voice into directory
     */
     void _audioManager::LoadVoice(std::string name)
     {
@@ -230,7 +236,7 @@ namespace Core
         std::copy(pathString.begin(), pathString.end(), pathName);
         FMOD::Sound* sound = 0;
         fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
-        soundDatabase[name] = sound;
+        voiceDatabase[name] = sound;
         delete[] pathName;
     }
 
@@ -287,8 +293,8 @@ namespace Core
     */
     void _audioManager::UnloadVoice(std::string name)
     {
-        if (isActive && soundDatabase.find(name) != soundDatabase.end())
-            soundDatabase[name]->release();
+        if (isActive && voiceDatabase.find(name) != voiceDatabase.end())
+            voiceDatabase[name]->release();
     }
 
     /*!				void _audioManager::Free(void)

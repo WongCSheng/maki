@@ -33,9 +33,11 @@ namespace Core
         FMOD::System* fmodSystem = NULL;
         FMOD::Channel* channel = nullptr;
         FMOD::Channel* musicChannel = nullptr;
+        FMOD::Channel* voiceChannel = nullptr;
         FMOD::ChannelGroup* channelGroup = nullptr;
         std::map<std::string, FMOD::Sound*> soundDatabase;
         std::map<std::string, FMOD::Sound*> musicDatabase;
+        std::map<std::string, FMOD::Sound*> voiceDatabase;
         bool isActive = true;
 
         /*                                                             Public Class
@@ -47,11 +49,12 @@ namespace Core
         void PlaySFX(std::string audiClip);
         void PlayMusic(std::string musicTrack);
         void PlayVoice(std::string voiceClip);
-        void StopMusic(void);
         void StopSFX(void);
-        void StopVoice(void);
+        void StopMusic(void);
+        void StopVoice();
         void SetAudioVolume(float volume);
         void SetMusicVolume(float volume);
+        void SetVoiceVolume(float volume);
         void Update(void);
         void LoadSFX(std::string name);
         void LoadMusic(std::string name);

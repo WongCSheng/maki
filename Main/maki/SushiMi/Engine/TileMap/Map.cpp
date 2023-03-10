@@ -224,7 +224,14 @@ namespace Core
 			if (ingredient.nametag != grid_number::sinkhole)
 			{
 				SceneManager::ingredientcontainer.push_back(ingredient);
-				SceneManager::in_sinkhole.erase(SceneManager::in_sinkhole.begin() + i);
+				if ((SceneManager::in_sinkhole.begin() + i) == SceneManager::in_sinkhole.end())
+				{
+					SceneManager::in_sinkhole.erase(SceneManager::in_sinkhole.end() - 1);
+				}
+				else
+				{
+					SceneManager::in_sinkhole.erase(SceneManager::in_sinkhole.begin() + i);
+				}
 			}
 
 			i++;

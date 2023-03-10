@@ -48,7 +48,6 @@ namespace Core
 			Window::loaded = true;
 
 			AudioManager.LoadSFX("WalkSFX.wav");
-			AudioManager.LoadMusic("Forest_bgm.wav");
 			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("Forest_bgm.wav");
 

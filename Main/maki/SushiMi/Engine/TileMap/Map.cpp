@@ -1,3 +1,16 @@
+/*
+File:		Map.cpp
+@author		louishetong.wang@digipen.edu 40%
+co-Author:  thea.sea@digipen.edu 15%
+co-Author:  Aurelia (fei.x@digipen.edu) 30%
+co-Author:  w.chongsheng@digipen.edu  15%
+
+Description:
+*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
+
 #include "Map.h"
 #include <string>
 #include <map>

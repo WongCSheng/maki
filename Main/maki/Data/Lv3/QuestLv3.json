@@ -13,8 +13,8 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Inari",
         "Tofu",
+        "Inari",
         "Rice"
       ]
     }

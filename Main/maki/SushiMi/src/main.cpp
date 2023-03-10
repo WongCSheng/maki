@@ -1,8 +1,11 @@
 //******************************************************************************/
 /*!
 \file		main.cpp
-\author 	Thea Sea
+\author 	Thea Sea 50%
 \par    	email: thea.sea@digipen.edu
+\co-author 	Aurelia Chong 50%
+\par    	email: fei.x@digipen.edu
+
 \date   	2/8/2022
 \brief		This source file contains the main function to call all other functions and implement the game loop
 

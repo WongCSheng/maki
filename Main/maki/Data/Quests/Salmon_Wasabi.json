@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/Salmon_Wasabi.png",
-      "name": "Salmon_Wasabi",
+      "texturepath": "../textures/levelQuest/salmon_wasabi.png",
+      "name": "salmon_wasabi",
       "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }

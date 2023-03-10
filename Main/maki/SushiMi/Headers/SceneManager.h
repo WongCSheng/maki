@@ -1,3 +1,14 @@
+/*
+File:		SceneManager.h
+@author		louishetong.wang@digipen.edu 40%
+co-Author:  Aurelia (fei.x@digipen.edu) 20%
+co-Author:  w.chongsheng@digipen.edu  40%
+
+Description:
+*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #pragma once
 #include "../Engine/Components/Texture/Sprite.h"
 #include "../Game Object/Player.h"

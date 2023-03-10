@@ -1,5 +1,16 @@
 #pragma once
+/*
+File: Window.cpp
+@author		louishetong.wang@digipen.edu 20%
+co-Author:  thea.sea@digipen.edu 30%
+co-Author:  Aurelia (fei.x@digipen.edu) 30%
+co-Author:  w.chongsheng@digipen.edu  20%
 
+Description:
+*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>

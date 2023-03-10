@@ -1,9 +1,9 @@
 /*
 File: Window.cpp
-@author		louishetong.wang@digipen.edu
-co-Author:  thea.sea@digipen.edu
-co-Author:  Aurelia (fei.x@digipen.edu)
-co-Author:  w.chongsheng@digipen.edu
+@author		louishetong.wang@digipen.edu 20%
+co-Author:  thea.sea@digipen.edu 30%
+co-Author:  Aurelia (fei.x@digipen.edu) 30%
+co-Author:  w.chongsheng@digipen.edu  20%
 
 Description:
 */

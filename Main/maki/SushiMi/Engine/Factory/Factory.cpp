@@ -9,7 +9,7 @@ Description:
 */
 #include "Factory.h"
 #include "../Game Object/GameObject.h"
-#include "../Headers/RapidJSON_Header.h"
+#include "../Serialiser/JSONSerializer.h"
 
 namespace Core
 {
@@ -154,7 +154,7 @@ namespace Core
 
 	AssetsManager::~AssetsManager()
 	{
-
+		files.clear();
 	}
 
 	void AssetsManager::Init()
@@ -182,8 +182,10 @@ namespace Core
 			}
 			else
 			{
-				files.push_back(entry.path());
+				files.push_back(entry.path().string());
 			}
+
+			std::cout << entry.path() << std::endl;
 		}
 	}
 
@@ -197,22 +199,52 @@ namespace Core
 			}
 			else
 			{
-				files.push_back(sub.path());
+				files.push_back(sub.path().string());
 			}
 		}
 	}
 	
-	void AssetsManager::Add_Assets(const std::string file)
+	void AssetsManager::Add_Assets(ObjectFactory* container)
+	{
+		for (auto& item : files)
+		{
+			if (item.substr(item.find_last_of(".")) == ".json")
+			{
+				DeserializeEntity(item, container);
+			}
+		}
+	}
+
+	/*void AssetsManager::Remove_Assets(const std::string file)
 	{
 
 	}
 
-	void AssetsManager::Remove_Assets(const std::string file)
+	void AssetsManager::Add_Audio(std::map<std::string, FMOD::Sound*> &container)
+	{
+		for (auto& audio : files)
+		{
+			if (audio.substr(audio.find_last_of(".")) == ".wav")
+			{
+				
+			}
+		}
+	}
+
+	void AssetsManager::Remove_Audio()
 	{
 
 	}
 
-	std::vector<std::filesystem::path>& AssetsManager::GetFiles()
+	void AssetsManager::Add_Maps(std::vector<std::string> container)
+	{
+		for (auto& maps : files)
+		{
+
+		}
+	}*/
+
+	std::vector<std::string>& AssetsManager::GetFiles()
 	{
 		return files;
 	}

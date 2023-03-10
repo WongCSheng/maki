@@ -189,6 +189,8 @@ void Core::pseudomain::init() {
 	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
+
+
 	//loading the entire main_menu which consists of all the buttons
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
 	//loading the entire pause_menu which consists of all the buttons
@@ -288,13 +290,14 @@ void Core::pseudomain::init() {
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
+	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	AudioManager.GetMusicChannel()->getVolume(&volume);
-	std::cout << "BGM volume: " << volume << std::endl;
+	/*AudioManager.GetMusicChannel()->getVolume(&volume);
+	std::cout << "BGM volume: " << volume << std::endl;*/
 
 	AudioManager.SetMusicVolume(0.1f);
-	AudioManager.GetMusicChannel()->getVolume(&volume);
-	AudioManager.PlayMusic("BGM.wav");
+	//AudioManager.GetMusicChannel()->getVolume(&volume);
+	AudioManager.PlayMusic("BGM");
 	std::cout << "BGM volume: " << volume << std::endl;
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use

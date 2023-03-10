@@ -8,6 +8,7 @@ Description: Physics components that stores data for which to be used in PhysicS
 
 #include "../Headers/STL_Header.h"
 #include "../Engine/System/SystemFrame.h"
+#include "../Audio/AudioEngine.h"
 
 namespace Core
 {
@@ -60,6 +61,12 @@ namespace Core
 		AssetsManager();
 		virtual ~AssetsManager();
 
+		static AssetsManager* GetInstance()
+		{
+			static AssetsManager instance;
+			return &instance;
+		}
+
 		void Init();
 		void Update(const double dt);
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
@@ -67,13 +74,18 @@ namespace Core
 		void Add_files(std::string path);
 		void Go_Deeper(std::filesystem::path path);
 
-		void Add_Assets(const std::string file);
-		void Remove_Assets(const std::string file);
+		void Add_Assets(ObjectFactory* container);
+		/*void Remove_Assets(const std::string file);
 
-		std::vector<std::filesystem::path>& GetFiles();
+		void Add_Audio(std::map<std::string, FMOD::Sound*> &container);
+		void Remove_Audio();
+
+		void Add_Maps(std::vector<std::string> container);*/
+
+		std::vector<std::string>& GetFiles();
 		void ClearFileContainer();
 
 	private:
-		std::vector<std::filesystem::path> files;
+		std::vector<std::string> files;
 	};
 }

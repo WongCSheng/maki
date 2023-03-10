@@ -8,8 +8,7 @@
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Headers/SceneManager.h"
-#include "../Engine/Audio/AudioEngine.h"
-
+#include "../Audio/AudioEngine.h"
 
 namespace Core
 {
@@ -1528,7 +1527,7 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
-						//AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), 
@@ -1916,7 +1915,7 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
-						//AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) + (2 * static_cast<int>(tile_width)), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->player_grid_pos.x) + 2, static_cast<int>(Window::player->player_grid_pos.y), combine);
@@ -2307,7 +2306,7 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::boxcover);
-						//AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) + (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
@@ -2651,7 +2650,7 @@ namespace Core
 						{
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -2659,11 +2658,11 @@ namespace Core
 								break;
 							}
 						}
-						for (auto ingredient : SceneManager::ingredientcontainer)
+						for (auto &ingredient : SceneManager::ingredientcontainer)
 						{
 
 							auto& ing_transform = ingredient.spr->transformation.grid_pos;
-							auto [inx, iny] = ing_transform;
+							auto &[inx, iny] = ing_transform;
 							if (iny == Window::player->player_grid_pos.y - 2
 								&& inx == Window::player->player_grid_pos.x)
 							{
@@ -2693,7 +2692,7 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::boxcover);
-						//AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) - (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y - 2, combine);

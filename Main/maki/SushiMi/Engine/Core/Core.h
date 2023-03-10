@@ -74,6 +74,7 @@ namespace Core
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
 		void clear();
 		static ObjectFactory* objfactory;
+		static AssetsManager* assManager;
 		Input* inputsystem;
 
 		void AddtoObjFactory();

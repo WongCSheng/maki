@@ -39,6 +39,8 @@ namespace Core
 	static bool keystate_fps = false;
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
+
+	static std::string walkingsfx;
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
 	enum class GameState {
@@ -1081,7 +1083,7 @@ namespace Core
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
+				AudioManager.PlaySFX(walkingsfx);
 				keystate_right = false;
 				keystate_D = false;
 			}
@@ -1097,7 +1099,7 @@ namespace Core
 			{
 				Map::collision_check_left();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
+				AudioManager.PlaySFX(walkingsfx);
 				keystate_left = false;
 				keystate_A = false;
 			}
@@ -1112,7 +1114,7 @@ namespace Core
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
+				AudioManager.PlaySFX(walkingsfx);
 				//isWalk = true; //play walking sfx
 				keystate_up = false;
 				keystate_W = false;
@@ -1128,7 +1130,7 @@ namespace Core
 			{
 				Map::collision_check_down();
 				Map::print_map_to_console();
-				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
+				AudioManager.PlaySFX(walkingsfx);
 				keystate_down = false;
 				keystate_S = false;
 			}
@@ -1338,17 +1340,17 @@ namespace Core
 				LEVELS LOAD & WIN CHECK
 			*********************************/
 			
-			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); }
-			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); }
-			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); }
-			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); }
-			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); }
-			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); }
-			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); }
-			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); }
-			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); }
-			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); }
-			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); }
+			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
+			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.wav";}
+			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
+			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.wav";	}
+			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.wav";	}
+			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); walkingsfx = "WalkSFX.wav"; }
+			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); walkingsfx = "WalkSFX.wav"; }
+			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.wav"; }
+			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.wav";	}
+			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.wav"; }
+			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.wav";	}
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************

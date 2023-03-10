@@ -4,7 +4,7 @@
 
          Header file for AudioEngine.cpp
 *//*__________________________________________________________________________*/
-#pragma warning(disable:26812)
+#pragma once
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include <iostream>
@@ -13,8 +13,6 @@
 #include <fmod.hpp>
 #include <fmod_errors.h>
 #include <map>
-using namespace std;
-using namespace FMOD;
 
 namespace Core
 {
@@ -32,34 +30,33 @@ namespace Core
     private:
         _audioManager(void);
         ~_audioManager(void);
-        System* fmodSystem = NULL;
-        Channel* channel = nullptr;
-        Channel* musicChannel = nullptr;
-        ChannelGroup* channelGroup = nullptr;
-        map<string, Sound*> soundDatabase;
-        map<string, Sound*> musicDatabase;
+        FMOD::System* fmodSystem = NULL;
+        FMOD::Channel* channel = nullptr;
+        FMOD::Channel* musicChannel = nullptr;
+        FMOD::ChannelGroup* channelGroup = nullptr;
+        std::map<std::string, FMOD::Sound*> soundDatabase;
+        std::map<std::string, FMOD::Sound*> musicDatabase;
         bool isActive = true;
-
 
         /*                                                             Public Class
         ----------------------------------------------------------------------------- */
     public:
         static _audioManager& Instance(void);
-        Channel* GetMusicChannel(void);
+        FMOD::Channel* GetMusicChannel(void);
         void CleanPlaying(void);
-        void PlaySFX(string audiClip);
-        void PlayMusic(string musicTrack);
+        void PlaySFX(std::string audiClip);
+        void PlayMusic(std::string musicTrack);
         void StopMusic(void);
         void StopSFX(void);
         void SetAudioVolume(float volume);
         void SetMusicVolume(float volume);
         void Update(void);
-        void LoadSFX(string name);
-        void LoadMusic(string name);
-        void UnLoadSFX(string name);
-        void UnloadMusic(string name);
+        void LoadSFX(std::string name);
+        void LoadMusic(std::string name);
+        void UnLoadSFX(std::string name);
+        void UnloadMusic(std::string name);
         void Free(void);
-        Sound* GetSound(string name);
+        FMOD::Sound* GetSound(std::string name);
     };
 
     /*                                                             Call back function

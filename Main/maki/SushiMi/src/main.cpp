@@ -285,7 +285,6 @@ void Core::pseudomain::init() {
 #endif
 
 	float volume{ 1.f };
-	bool play{ false };
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");

@@ -49,8 +49,8 @@ namespace Core
 
 			AudioManager.LoadSFX("Hard Floor Walking.wav");
 			AudioManager.LoadMusic("Fishing_Village.wav");
-			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("Fishing_Village.wav");
+			AudioManager.SetMusicVolume(0.7f);
 			AudioManager.PlayVoice("Idle_1.wav");
 
 			if (fin)

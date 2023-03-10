@@ -49,8 +49,8 @@ namespace Core
 
 			AudioManager.LoadSFX("WalkSFX.wav");
 			AudioManager.LoadMusic("Forest_bgm.wav");
-			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("Forest_bgm.wav");
+			AudioManager.SetMusicVolume(0.7f);
 			AudioManager.PlayVoice("Idle_1.wav");
 
 			if (fin)

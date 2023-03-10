@@ -64,6 +64,7 @@ namespace Core
         void UnloadVoice(std::string name);
         void Free(void);
         FMOD::Sound* GetSound(std::string name);
+        FMOD::Sound* GetMusic(std::string name);
     };
 
     /*                                                             Call back function

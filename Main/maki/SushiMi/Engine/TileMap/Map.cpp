@@ -1534,6 +1534,7 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
 						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.SetAudioVolume(1.f);
 						AudioManager.PlayVoice("YES_1.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
@@ -1925,6 +1926,7 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
 						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.SetAudioVolume(1.f);
 						AudioManager.PlayVoice("YES_1.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
@@ -2320,6 +2322,7 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::boxcover);
 						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.SetAudioVolume(1.f);
 						AudioManager.PlayVoice("YES_1.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
@@ -2709,6 +2712,7 @@ namespace Core
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::boxcover);
 						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.SetAudioVolume(1.f);
 						AudioManager.PlayVoice("YES_1.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);

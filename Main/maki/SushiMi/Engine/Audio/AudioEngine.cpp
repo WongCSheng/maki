@@ -66,7 +66,7 @@ namespace Core
             audioClip = search->second;
 
         // Play the sound.
-        fmodSystem->playSound(audioClip, nullptr, false, &channel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &channel);
     }
 
     /*!				void _audioManager::PlayMusic(string musicTrack)
@@ -85,7 +85,7 @@ namespace Core
 
         // Play the music.
         musicChannel->stop();
-        fmodSystem->playSound(audioClip, nullptr, false, &musicChannel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &musicChannel);
     }
 
     /*!				void _audioManager::PlayVoice(string voiceClip)
@@ -103,7 +103,7 @@ namespace Core
             audioClip = search->second;
 
         // Play the sound.
-        fmodSystem->playSound(audioClip, nullptr, false, &voiceChannel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &voiceChannel);
     }
 
     /*!				void _audioManager::StopMusic(void)
@@ -165,8 +165,8 @@ namespace Core
         musicChannel->getCurrentSound(&snd);
         
         musicChannel->stop();
+        fmodSystem->playSound(snd, channelGroup, false, &musicChannel);
         musicChannel->setVolume(volume);
-        fmodSystem->playSound(snd, nullptr, false, &musicChannel);
     }
 
     void _audioManager::SetVoiceVolume(float volume)
@@ -321,6 +321,14 @@ namespace Core
     {
         auto search = soundDatabase.find(name);
         if (search != soundDatabase.end())
+            return search->second;
+        return NULL;
+    }
+    
+    FMOD::Sound* _audioManager::GetMusic(std::string name)
+    {
+        auto search = musicDatabase.find(name);
+        if (search != musicDatabase.end())
             return search->second;
         return NULL;
     }

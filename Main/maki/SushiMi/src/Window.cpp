@@ -1191,7 +1191,7 @@ namespace Core
 			}
 
 		}
-		if (keystate_down || keystate_up || keystate_left || keystate_right == true)
+		if ((keystate_down || keystate_up || keystate_left || keystate_right) && !gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 			player->stop();
 
 #endif //editor
@@ -1610,8 +1610,6 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
-				AudioManager.SetMusicVolume(0.4f);
-				AudioManager.PlayMusic("BGM.wav");
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
@@ -1622,7 +1620,7 @@ namespace Core
 					spritecomp->transformation.Position = transcomp->Position;
 					if (x.first == "Menu")
 					{
-						spritecomp->transformation.Scale = glm::vec2(screenwidth,screenheight);
+						spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
 					}
 					else
 					spritecomp->transformation.Scale = transcomp->Scale;

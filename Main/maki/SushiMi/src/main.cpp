@@ -284,7 +284,6 @@ void Core::pseudomain::init() {
 
 #endif
 
-	float volume{ 1.f };
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
@@ -300,12 +299,12 @@ void Core::pseudomain::init() {
 	AudioManager.LoadSFX("Squeezing.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	
-
-	AudioManager.SetMusicVolume(0.1f);
-	//AudioManager.GetMusicChannel()->getVolume(&volume);
 	AudioManager.PlayMusic("BGM.wav");
-	std::cout << "BGM volume: " << volume << std::endl;
+	AudioManager.SetMusicVolume(0.7f);
+
+	float volume;
+	AudioManager.GetMusicChannel()->getVolume(&volume);
+	std::cout << "Music Volume: " << volume << std::endl;
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }

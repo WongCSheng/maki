@@ -50,8 +50,8 @@ namespace Core
 
 			AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
 			AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
-			AudioManager.SetMusicVolume(0.01f);
 			AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+			AudioManager.SetMusicVolume(0.5f);
 			AudioManager.PlayVoice("Idle_1.wav");
 			
 			if (fin)

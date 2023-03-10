@@ -117,23 +117,33 @@ namespace Core
 		std::ofstream fout(Filename);
 		fout << max_grid_cols_x << " " << max_grid_rows_y << std::endl;
 
+		//print out gGrids and aGrids 1st layer first
 		for (int c = 0; c < max_grid_rows_y; c++)
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				fout << static_cast<char>(gGrids[r][c]) << " ";
+				if (static_cast<char>(gGrids[r][c]) >= '!' && static_cast<char>(gGrids[r][c]) <= '7')
+				{
+					fout << static_cast<char>(gGrids[r][c]) << " ";
+				}
+				else
+				{
+					fout << static_cast<char>(aGrids[r][c]) << " ";
+
+				}
 			}
 			fout << std::endl;
 		}
 
-		for (int c = 0; c < max_grid_rows_y; c++)
+		/*for (int c = 0; c < max_grid_rows_y; c++)
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
 				fout << static_cast<char>(aGrids[r][c]) << " ";
 			}
 			fout << std::endl;
-		}
+		}*/
+		fout << std::endl;
 
 		for (int c = 0; c < max_grid_rows_y; c++)
 		{
@@ -2865,7 +2875,15 @@ namespace Core
 	********************************************/
 	void Map::SetValue(double col_x, double row_y, int value)
 	{
-		gGrids[static_cast<int>(col_x)][static_cast<int>(row_y)] = value;
+		//if its a grid_number tile, put it in gGrids
+		if (value >= '!' && value <= '7')
+		{
+			gGrids[static_cast<int>(col_x)][static_cast<int>(row_y)] = value;
+		}
+		else //put animated in aGrids
+		{
+			aGrids[static_cast<int>(col_x)][static_cast<int>(row_y)] = value;
+		}
 		//Window::loaded = false;
 		//print_map_to_console(); //debugging
 	}

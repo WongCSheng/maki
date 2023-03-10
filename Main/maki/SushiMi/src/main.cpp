@@ -133,11 +133,11 @@ void Core::pseudomain::draw()
 		if (GLHelper::fps < 60)
 		{
 
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.9f, screenheight * 0.95f, .8f, glm::vec3(1.f, 0.f, 0.f),1.f);
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.95f, screenheight * 0.95f, .5f, glm::vec3(1.f, 0.f, 0.f),1.f);
 		}
 		else
 		{
-			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.9f, screenheight * 0.95f, .8f, glm::vec3(0.f, 1.f, 0.f), 1.f);
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.95f, screenheight * 0.95f, .5f, glm::vec3(0.f, 1.f, 0.f), 1.f);
 		}
 	}
 	//imGUI Game Editor

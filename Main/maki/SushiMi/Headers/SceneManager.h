@@ -28,7 +28,7 @@ namespace Core
 		tea,			//3
 		soya,			//4
 		wasabi,			//5
-		boxcover,		//6
+		boxcover,		//6		//54
 		sinkhole,		//7
 		filledsinkhole	//8
 	};
@@ -71,7 +71,7 @@ namespace Core
 		corn_box,			//^
 		cucumber_box,		//_
 		salmon_box,			//`
-		nori_box,			//a
+		nori_box,			//a //97
 		octopus_box,		//b
 		roes_box,			//c
 		tamago_box,			//d

@@ -182,29 +182,66 @@ namespace Core
 				{
 					//ingredient row and col matches box row and col (2 ingredients check against 1 box)
 					std::pair<grid_number, wall_type> checkCondition(ingredient1.nametag, box.first);
+					//std::cout << "what's in ingredient1		" << static_cast<int>(ingredient1.nametag ) << std::endl;
 					
-					std::cout << "checking current >>>>>> " << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
-					if (Map::levelWinConditions.find(checkCondition) != Map::levelWinConditions.end())
+					//std::cout << "checking current >>>>>> " << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
+					//------------------------------------------------------
+					bool check = false;
+					for (const auto& it : Map::levelWinConditions) {
+						std::cout << "Level Win Cond:  " << (int)it.first.first << " " << (int)it.first.second << "\n";
+						if (it.first == checkCondition) {
+							check = true;
+						}
+					}
+					//------------------------------------------------------
+					if (check)
 					{
 
 						std::cout << "ingredient landed correct box\n";
 						//check if quest tab is open
 						if (isQuestTab)
 						{
-								Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+								//check for how many times the chop has to draw, base on ingredientCount
+								for (int i = 0; i < Map::levelWinConditions.size(); i++)
+								{
+									Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+									Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+									Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+									spritecomp->transformation.Position = transcomp->Position;
+									spritecomp->transformation.Scale = transcomp->Scale;
+
+									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+									spritecomp->draw();
+
+									//std::cout << "pls show me the done stuff\n";
+								}
+								
+								
+						}
+
+					}
+					else
+					{
+						if (isQuestTab)
+						{
+							//check for how many times the chop has to draw, base on ingredientCount
+							for (int i = 0; i < Map::levelWinConditions.size(); i++)
+							{
+								Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
 								Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
 								Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 								spritecomp->transformation.Position = transcomp->Position;
 								spritecomp->transformation.Scale = transcomp->Scale;
 
 								Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-								
 								spritecomp->draw();
-							
+
+								//std::cout << "pls show me the denied stuff\n";
+							}
+
+
 
 						}
-
 					}
 
 						
@@ -1745,7 +1782,7 @@ namespace Core
 					{*/
 						/*if (container.first == x)
 						{*/
-							Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+							/*Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
 							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
 							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
@@ -1754,7 +1791,7 @@ namespace Core
 
 							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
-							spritecomp->draw();
+							spritecomp->draw();*/
 						//}
 
 						/*if (container.first == x)

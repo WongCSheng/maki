@@ -59,7 +59,7 @@ namespace Core
 		static int** aGrids;
 		static int** RestartGrids;
 
-		static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
+		//static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
 		
 		static int CorrectCombination;
 	};

@@ -1612,13 +1612,19 @@ namespace Core
 			{
 				AudioManager.SetMusicVolume(0.4f);
 				AudioManager.PlayMusic("BGM.wav");
-
+				int screenwidth = 0, screenheight = 0;
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
 					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 					spritecomp->transformation.Position = transcomp->Position;
+					if (x.first == "Menu")
+					{
+						spritecomp->transformation.Scale = glm::vec2(screenwidth,screenheight);
+					}
+					else
 					spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());

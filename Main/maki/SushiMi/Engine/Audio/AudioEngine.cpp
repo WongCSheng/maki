@@ -87,6 +87,24 @@ namespace Core
         fmodSystem->playSound(audioClip, nullptr, false, &musicChannel);
     }
 
+    /*!				void _audioManager::PlayVoice(string voiceClip)
+    @param			string voiceClip
+    @return none
+
+                    Plays voice
+    */
+    void _audioManager::PlayVoice(std::string voiceClip)
+    {
+        // Create the sound.
+        FMOD::Sound* audioClip = 0;
+        auto search = soundDatabase.find(voiceClip);
+        if (search != soundDatabase.end())
+            audioClip = search->second;
+
+        // Play the sound.
+        fmodSystem->playSound(audioClip, nullptr, false, &channel);
+    }
+
     /*!				void _audioManager::StopMusic(void)
     @param			void
     @return none
@@ -106,6 +124,18 @@ namespace Core
                     Stop playing Sound Effects
     */
     void _audioManager::StopSFX(void)
+    {
+        // stop play the sound.
+        channel->stop();
+    }
+
+    /*!				void _audioManager::StopVoice(void)
+    @param			void
+    @return none
+
+                    Stop playing Voices
+    */
+    void _audioManager::StopVoice(void)
     {
         // stop play the sound.
         channel->stop();
@@ -186,6 +216,24 @@ namespace Core
         delete[] pathName;
     }
 
+    /*!				void _audioManager::LoadVoice(string name)
+    {
+    @param          string name
+    @return none
+
+                   Load sound into directory
+    */
+    void _audioManager::LoadVoice(std::string name)
+    {
+        std::string pathString = "../Assets/Audio/Voice-over/" + name + '\0';
+        char* pathName = new char[pathString.length() + 1];
+        std::copy(pathString.begin(), pathString.end(), pathName);
+        FMOD::Sound* sound = 0;
+        fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
+        soundDatabase[name] = sound;
+        delete[] pathName;
+    }
+
     /*!				void _audioManager::LoadMusic(string name)
     {
     @param          string name
@@ -228,6 +276,19 @@ namespace Core
     {
         if (isActive && musicDatabase.find(name) != musicDatabase.end())
             musicDatabase[name]->release();
+    }
+
+    /*!				void _audioManager::UnloadVoice(string name)
+    {
+    @param          string name
+    @return none
+
+                   Unload voice into directory
+    */
+    void _audioManager::UnloadVoice(std::string name)
+    {
+        if (isActive && soundDatabase.find(name) != soundDatabase.end())
+            soundDatabase[name]->release();
     }
 
     /*!				void _audioManager::Free(void)

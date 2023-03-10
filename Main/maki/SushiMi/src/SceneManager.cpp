@@ -242,7 +242,7 @@ namespace Core
 	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
-		Window::player->current_anim = AnimationType::Run;
+		Window::player->resetCount = 0;
 		win_overlay->transformation.Position = glm::vec2(x, y);
 		win_overlay->transformation.Scale = glm::vec2(1049, 573);
 	}
@@ -636,7 +636,7 @@ namespace Core
 	}
 	void SceneManager::drawWinOverlay()
 	{
-		Window::player->resetCount = 0;
+		
 		Window::player->current_anim = AnimationType::Run;
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());

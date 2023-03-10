@@ -290,7 +290,8 @@ void Core::pseudomain::init() {
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
 	AudioManager.LoadSFX("Closing container.wav");
-	AudioManager.LoadSFX("YES_1");
+	AudioManager.LoadVoice("YES_1.wav");
+	AudioManager.LoadVoice("Sad_1.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
 	/*AudioManager.GetMusicChannel()->getVolume(&volume);

@@ -1269,6 +1269,7 @@ namespace Core
 
 	bool Map::isWin()
 	{
+		AudioManager.PlaySFX("YES_1");
 		return ((win_amt == SceneManager::amt_of_win_conditions) ? true : false);
 	}
 

@@ -635,6 +635,7 @@ namespace Core
 	}
 	void SceneManager::drawWinOverlay()
 	{
+		Window::player->current_anim = AnimationType::Run;
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);

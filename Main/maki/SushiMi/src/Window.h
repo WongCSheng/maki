@@ -62,6 +62,8 @@ namespace Core
 		static inline bool keystate_8;
 		static inline bool keystate_9;
 		static inline bool keystate_0;
+		static inline bool keystate_Y;
+		static inline bool keystate_N;
 		static inline bool keystate_J;
 		static inline bool keystate_K;
 		static inline bool keystate_L;
@@ -79,7 +81,8 @@ namespace Core
 		static inline std::string realstring = "";
 
 		static inline bool gameIsPaused;
-		bool isMenuState;
+		static inline bool areyousure_prompt;
+		static inline bool isMenuState;
 		
 		bool isLevelSelection;
 		bool isWalk;

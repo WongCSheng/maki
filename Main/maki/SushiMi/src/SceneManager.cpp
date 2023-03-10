@@ -333,6 +333,15 @@ namespace Core
 		Bami_End_Room_Cutscene->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
+	void SceneManager::load_Are_You_Sure()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		are_you_sure->transformation.Position = glm::vec2(0, 0);
+		are_you_sure->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		
+	}
+
 	void SceneManager::drawRect(float alpha_)
 	{
 		/*This one draws the black background completely fine, but it is without the Alpha variable */
@@ -664,6 +673,13 @@ namespace Core
 		Font::RenderText(*Shaders, encourgementwords[Player::resetCount], Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
 	}
 
+	void SceneManager::draw_Are_You_Sure()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", are_you_sure->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		are_you_sure->draw();
+	}
+
 	void SceneManager::drawGiveUp()
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -918,6 +934,11 @@ namespace Core
 	void SceneManager::destroy_Bami_End_Room()
 	{
 		delete Bami_End_Room_Cutscene;
+	}
+
+	void SceneManager::destroy_Are_You_Sure()
+	{
+		delete are_you_sure;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

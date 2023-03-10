@@ -185,6 +185,7 @@ namespace Core
 		static void load_Dialogue(); //RP stands for Rice Plain
 		static void load_Wood_BG(); //for fishing village
 		static void load_Bami_End_Room(); //Ending Cutscene
+		static void load_Are_You_Sure(); //confirmation screen
 
 		static void drawTile();
 		static void drawBox();
@@ -205,6 +206,7 @@ namespace Core
 		static void draw_Dialogue();
 		static void draw_Wood_BG();
 		static void draw_Bami_End_Room();
+		static void draw_Are_You_Sure();
 
 		static void drawEncourage();
 		static void drawGiveUp();
@@ -229,6 +231,7 @@ namespace Core
 		static void destroy_Dialogue();
 		static void destroy_Wood_BG();
 		static void destroy_Bami_End_Room();
+		static void destroy_Are_You_Sure();
 
 	
 		static void Readfile();
@@ -292,6 +295,7 @@ namespace Core
 		static inline Sprite* rec;
 
 		static inline Sprite* Bami_End_Room_Cutscene;
+		static inline Sprite* are_you_sure;
 
 
 		static inline unsigned int rows, cols,

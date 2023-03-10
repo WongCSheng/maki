@@ -127,6 +127,8 @@ namespace Core
 			Window::keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
 			Window::keystate_fps = (key == GLFW_KEY_F) ? true : false;
 
+			Window::keystate_Y = (key == GLFW_KEY_Y) ? true : false;
+			Window::keystate_N = (key == GLFW_KEY_N) ? true : false;
 			Window::keystate_P = (key == GLFW_KEY_P) ? true : false;
 			Window::keystate_J = (key == GLFW_KEY_J) ? true : false;
 			Window::keystate_K = (key == GLFW_KEY_K) ? true : false;
@@ -248,7 +250,6 @@ namespace Core
 		isCutscene(0),
 		isHowToPlay(0),
 		isLevelSelection(0),
-		isMenuState(1),
 		isSettings(0),
 		isWalk(0),
 		isEndingCutscene(0)
@@ -343,7 +344,7 @@ namespace Core
 		//SceneManager::Bami_End_Room_Cutscene->isSpriteSheet = 0;
 		//SceneManager::Bami_End_Room_Cutscene->Add_animation("../textures/spritesheet/Bami_Idle.txt");
 		//SceneManager::Bami_End_Room_Cutscene->curr_anim = AnimationType::Idle;
-
+		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png");
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -366,6 +367,7 @@ namespace Core
 		isPlayerinSinkhole = false;
 		loaded = false;
 		HowToPlayPage = 0;
+		areyousure_prompt = false;
 		CutscenePage = 0;
 #endif // !EDITOR
 
@@ -451,6 +453,7 @@ namespace Core
 			isLevel9 = false;
 			isLevel10 = false;
 			isTestLevel = false;
+			areyousure_prompt = false;
 			loaded = false;
 			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in menu
 
@@ -481,6 +484,7 @@ namespace Core
 			isLevel9 = false;
 			isLevel10 = false;
 			isTestLevel = false;
+			areyousure_prompt = false;
 			loaded = false;
 			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in end cutscene
 
@@ -497,6 +501,7 @@ namespace Core
 			// if i pres tab again
 			// isquestab(true) = false;
 			// off the tab state
+			areyousure_prompt = false;
 
 			isQuestTab = !isQuestTab;
 			keystate_tab = false;
@@ -526,6 +531,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isTestLevel = true;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -560,6 +566,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -594,6 +601,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -626,6 +634,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -659,6 +668,7 @@ namespace Core
 				isLevel7 = false;
 				isLevel8 = false;
 				isLevel9 = false;
+				areyousure_prompt = false;
 				isLevel10 = false;
 				loaded = false;
 
@@ -692,6 +702,7 @@ namespace Core
 				isLevel7 = false;
 				isLevel8 = false;
 				isLevel9 = false;
+				areyousure_prompt = false;
 				isLevel10 = false;
 				loaded = false;
 
@@ -725,6 +736,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
 
@@ -760,6 +772,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isTestLevel = false;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -794,6 +807,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isTestLevel = false;
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -826,6 +840,7 @@ namespace Core
 				isLevel7 = true;
 				isLevel8 = false;
 				isLevel9 = false;
+				areyousure_prompt = false;
 				isLevel10 = false;
 				isTestLevel = false;
 				loaded = false;
@@ -861,6 +876,7 @@ namespace Core
 				isLevel8 = true;
 				isLevel9 = false;
 				isLevel10 = false;
+				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
 
@@ -896,6 +912,7 @@ namespace Core
 				isTestLevel = false;
 				isDialogue = false;
 				isHowToPlay = false;
+				areyousure_prompt = false;
 				isLevelSelection = true;
 				SceneManager::restartLevel();
 
@@ -913,10 +930,19 @@ namespace Core
 			//}
 		}
 
+		if (keystate_escape && gameIsPaused)
+		{
+			areyousure_prompt = false;
+		}
 		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isTestLevel ) && isDialogue == false)
 		{
 			gameIsPaused = !gameIsPaused;
+			
 			keystate_escape = false;
+		}
+		if (keystate_escape && areyousure_prompt)
+		{
+			areyousure_prompt = false;
 		}
 		
 		/**************************************/
@@ -960,7 +986,9 @@ namespace Core
 			//MENU BUTTON - QUIT, reference ExitButton.json
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
 			{
-				glfwSetWindowShouldClose(window_ptr, true);
+				areyousure_prompt = true;
+
+				/*glfwSetWindowShouldClose(window_ptr, true);*/
 			}
 
 		}
@@ -1009,13 +1037,12 @@ namespace Core
 						((float)xpos < (position.x + scale.x)) &&
 						((float)ypos < (position.y + scale.y)))
 					{
+						
 						keystate_T = true;
 						int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
 						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
-
-
 					}
 				}
 				else if (x.first == "QuitButton")
@@ -1030,7 +1057,17 @@ namespace Core
 						((float)xpos < (position.x + scale.x)) &&
 						((float)ypos < (position.y + scale.y)))
 					{
-						glfwSetWindowShouldClose(window_ptr, true);
+						areyousure_prompt = true;
+						if (keystate_Y)
+						{
+							
+							glfwSetWindowShouldClose(window_ptr, true);
+						}
+						else if (keystate_N)
+						{
+							areyousure_prompt = false;
+							keystate_N = false;
+						}
 
 
 
@@ -1885,6 +1922,22 @@ namespace Core
 						HowToPlayPage = 5;
 						keystate_left = false;
 					}
+				}
+			}
+
+			if (areyousure_prompt == true)
+			{
+				SceneManager::load_Are_You_Sure();
+				SceneManager::draw_Are_You_Sure();
+				if (keystate_Y && (gameIsPaused || isMenuState))
+				{
+
+					glfwSetWindowShouldClose(window_ptr, true);
+				}
+				else if (keystate_N)
+				{
+					areyousure_prompt = false;
+					keystate_N = false;
 				}
 			}
 

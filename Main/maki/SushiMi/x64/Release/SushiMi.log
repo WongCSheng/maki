@@ -1,68 +1,7 @@
-﻿  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Debug.cpp
-  LevelEditor.cpp
-  Animation2D.cpp
-  AudioEngine.cpp
-  Camera2D.cpp
-  Component.cpp
-  collision.cpp
-  Physics.cpp
-  Rectangle.cpp
-  Sprite.cpp
-  Texture.cpp
-  Transform.cpp
-  Core.cpp
-  Cutscene.cpp
-  Factory.cpp
-  Font.cpp
-  Input.cpp
-  model.cpp
-  Messaging.cpp
-  JSONSerializer.cpp
-  ShaderLibrary.cpp
-  ShaderProgram.cpp
-  CameraSystem.cpp
-  glhelper.cpp
-  glslshader.cpp
-  LinkedList.cpp
-  PhysicSystem.cpp
-  Renderer.cpp
-  SystemFrame.cpp
-  TextureSystem.cpp
-  Transformer.cpp
-  Map.cpp
-  GameObject.cpp
-  Player.cpp
-  Level1.cpp
-  Level10.cpp
-  Level11.cpp
-  Level2.cpp
-  Level3.cpp
-  Level4.cpp
-  Level5.cpp
-  Level6.cpp
-  Level7.cpp
-  Level8.cpp
-  Level9.cpp
-  TestLevel.cpp
-  Tutorial1.cpp
-  Tutorial2.cpp
-  Log.cpp
-  main.cpp
-  Matrix.cpp
-  SceneManager.cpp
-  Window.cpp
-  User.cpp
-  GameWindow.cpp
+﻿  Window.cpp
   Generating code
-  506 of 4963 functions (10.2%) were compiled, the rest were copied from previous compilation.
-    80 functions were new in current compilation
-    472 functions had inline decision re-evaluated but remain unchanged
+  1 of 5030 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    19 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

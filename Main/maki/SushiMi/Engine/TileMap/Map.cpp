@@ -215,8 +215,6 @@ namespace Core
 			i++;
 		}
 
-		i = 0;
-
 		for (auto& ingredient : SceneManager::in_sinkhole)
 		{
 			ingredient.Restart();
@@ -224,17 +222,9 @@ namespace Core
 			if (ingredient.nametag != grid_number::sinkhole)
 			{
 				SceneManager::ingredientcontainer.push_back(ingredient);
-				if ((SceneManager::in_sinkhole.begin() + i) == SceneManager::in_sinkhole.end())
-				{
-					SceneManager::in_sinkhole.erase(SceneManager::in_sinkhole.end() - 1);
-				}
-				else
-				{
-					SceneManager::in_sinkhole.erase(SceneManager::in_sinkhole.begin() + i);
-				}
-			}
 
-			i++;
+				SceneManager::in_sinkhole.pop_back();
+			}
 		}
 
 		Window::player->restart();
@@ -2888,7 +2878,7 @@ namespace Core
 		SceneManager::drawIngr();
 		SceneManager::drawTop();
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), 1.f);
-		std::cout << Window::player->resetCount << std::endl;
+		//std::cout << Window::player->resetCount << std::endl;
 		if (Window::player->resetCount == 3)
 		{
 			

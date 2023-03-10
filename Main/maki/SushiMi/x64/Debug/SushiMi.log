@@ -1,2 +1,6 @@
-﻿  ShaderLibrary.cpp
-  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  Window.cpp
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(170,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(171,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(174,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(175,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

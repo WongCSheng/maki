@@ -18,13 +18,13 @@ namespace Core
 		corn,			//)
 		inari,			//*
 		octopus,		//+
-		rice,			//, (comma)
+		rice,			//, (comma) 
 		roes,			//- (minus)
 		salmon,			//. (fullstop)
 		tamago,			// slash (/)
 		tofu,			//0
 		tuna,			//1
-		nori,			//2 //the end of pushable ingredients
+		nori,			//2 //the end of pushable ingredients //value in dec: 50
 		tea,			//3
 		soya,			//4
 		wasabi,			//5
@@ -244,6 +244,7 @@ namespace Core
 			return tileHeight;
 		}
 
+		static inline std::vector< std::pair<wall_type, Sprite*>> boxcontainer;
 		static inline std::vector<std::pair<animated, Sprite*>> topcontainer;
 		static inline std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 		static inline std::vector<Basket> ingredientcontainer;

@@ -17,7 +17,7 @@ namespace Core
 	//int Map::gGrids[GRID_ROW][GRID_COL];
     static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
-	std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+	/*std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
 	int Map::CorrectCombination{}; //redeclaration
 
 	int** Map::gGrids;
@@ -245,6 +245,7 @@ namespace Core
 		SceneManager::setTileDimension(static_cast<unsigned int>(tile_width), static_cast<unsigned int>(tile_height));
 	
 		CorrectCombination = 0;
+		levelWinConditions.clear();
 
 		/*Testing whether is loaded correctly*/
 		LoadAMap();
@@ -537,7 +538,9 @@ namespace Core
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
-					levelWinConditions.push_back(std::pair(grid_number::avocado, wall_type::avocado_box));
+					/*levelWinConditions.emplace(std::pair(grid_number::avocado, wall_type::avocado_box));*/
+					SceneManager::boxcontainer.push_back({ {wall_type::avocado_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -552,7 +555,8 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::cucumber, wall_type::cucumber_box));
+					/*levelWinConditions.emplace(std::pair(grid_number::cucumber, wall_type::cucumber_box));*/
+					SceneManager::boxcontainer.push_back({ {wall_type::cucumber_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -567,7 +571,8 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::corn, wall_type::corn_box));
+					//levelWinConditions.emplace(std::pair(grid_number::corn, wall_type::corn_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::corn_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -582,7 +587,8 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::octopus, wall_type::octopus_box));
+					//levelWinConditions.emplace(std::pair(grid_number::octopus, wall_type::octopus_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::octopus_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -597,7 +603,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::roes, wall_type::roes_box));
+					//levelWinConditions.emplace(std::pair(grid_number::roes, wall_type::roes_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::roes_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -612,7 +620,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::salmon, wall_type::salmon_box));
+					//levelWinConditions.emplace(std::pair(grid_number::salmon, wall_type::salmon_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::salmon_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -627,7 +637,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::tamago, wall_type::tamago_box));
+					//levelWinConditions.emplace(std::pair(grid_number::tamago, wall_type::tamago_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::tamago_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -642,7 +654,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::tofu, wall_type::tofu_box));
+					//levelWinConditions.emplace(std::pair(grid_number::tofu, wall_type::tofu_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::tofu_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -657,7 +671,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::tuna, wall_type::tuna_box));
+					//levelWinConditions.emplace(std::pair(grid_number::tuna, wall_type::tuna_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::tuna_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -672,7 +688,9 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::nori, wall_type::nori_box));
+					//levelWinConditions.emplace(std::pair(grid_number::nori, wall_type::nori_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::nori_box },box });
+
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -687,7 +705,8 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::rice, wall_type::rice_box));
+					//levelWinConditions.emplace(std::pair(grid_number::rice, wall_type::rice_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::rice_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
@@ -704,7 +723,8 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.push_back(std::pair(grid_number::inari, wall_type::inari_box));
+					//levelWinConditions.emplace(std::pair(grid_number::inari, wall_type::inari_box));
+					SceneManager::boxcontainer.push_back({ {wall_type::inari_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;

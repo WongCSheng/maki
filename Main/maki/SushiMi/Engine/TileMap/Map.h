@@ -15,7 +15,7 @@ namespace Core
 	public:
 		Map();
 		~Map();
-
+		static inline std::map<std::pair<grid_number, wall_type>, Sprite*> levelWinConditions;
 		static void initMap(std::string Filename);
 		static void saveEditedMap(std::string Filename);
 		static void ResetMap();
@@ -65,6 +65,8 @@ namespace Core
 		
 		static int CorrectCombination;
 	};
-	extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;
+	/*extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
+	
+
 }
 #endif

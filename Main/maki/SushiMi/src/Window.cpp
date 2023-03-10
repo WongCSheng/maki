@@ -17,6 +17,7 @@ Description:
 #include "../Editors/imfilebrowser.h"
 #include "../Headers/SceneManager.h"
 #include "../Game Object/Player.h"
+#include "../Game Object/GameObject.h"
 #include "../Engine/Components/Texture/Sprite.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Camera/Camera2D.h"
@@ -34,6 +35,7 @@ namespace Core
 	//static int width, height;
 	std::ifstream fin;						// retrieve the current level dialogue file
 	std::vector<Basket> CurrentIngredients; // retreive the current level loaded ingredients
+	std::vector<std::pair< grid_number, wall_type>> stack;
 	static bool keystate_fps = false;
 	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
@@ -155,44 +157,56 @@ namespace Core
 			for (auto& ingredient1 : SceneManager::ingredientcontainer)
 			{
 				//convert coordinates back into row and column (dont know why need to plus 1)
-				int ingredientRow = static_cast<int>(ingredient1.spr->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
-				int ingredientCol = static_cast<int>(ingredient1.spr->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
-				std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol);
+				//int ingredientRow = static_cast<int>(ingredient1.spr->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
+				//int ingredientCol = static_cast<int>(ingredient1.spr->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
+				////std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol); //test 1
 
-				int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
-				int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height) + 1);
-				std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+				//int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
+				//int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height) + 1);
+				////std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
+
+				//repeats the too
+				//convert coordinates back into row and column(dont know why need to plus 1)
+				int ingredientX =static_cast<int>( round((ingredient1.spr->transformation.Position.x / (float)m_width) * Map::max_grid_cols_x));
+				int ingredientY = static_cast<int>(round((ingredient1.spr->transformation.Position.y / (float)m_height) * Map::max_grid_rows_y));
+				std::pair<int, int> ingredientCoordinates(ingredientX, ingredientY); //test 2
+
+				int boxX = static_cast<int>(round((box.second->transformation.Position.x / (float)m_width) * Map::max_grid_cols_x));
+				int boxY = static_cast<int>(round((box.second->transformation.Position.y / (float)m_height) * Map::max_grid_rows_y));
+				std::pair<int, int> boxCoordinates(boxX, boxY);
 
 				//checking through level win condition (check if ingredient land on box position)
 				if (ingredientCoordinates == boxCoordinates)
 				{
-					//ingredient row and col matches box row and col
+					//ingredient row and col matches box row and col (2 ingredients check against 1 box)
 					std::pair<grid_number, wall_type> checkCondition(ingredient1.nametag, box.first);
-					for (auto& y : levelWinConditions)//suggest to change to map
+					
+					std::cout << "checking current >>>>>> " << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
+					if (Map::levelWinConditions.find(checkCondition) != Map::levelWinConditions.end())
 					{
-						//check whether is correct ingredient to box
-						if (checkCondition == y)
+
+						std::cout << "ingredient landed correct box\n";
+						//check if quest tab is open
+						if (isQuestTab)
 						{
-							std::cout << "ingredient landed correct box\n";
-							//check if quest tab is open
-							if (isQuestTab)
-							{
-								for (auto& x : CoreSystem->objfactory->ObjectContainer)
-								{
-									Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-									Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-									spritecomp->transformation.Position = transcomp->Position;
-									spritecomp->transformation.Scale = transcomp->Scale;
+								Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+								Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+								Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+								spritecomp->transformation.Position = transcomp->Position;
+								spritecomp->transformation.Scale = transcomp->Scale;
 
-									Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+								Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 
-									if (x.first == "done")
-										spritecomp->draw();
-								}
+								
+								spritecomp->draw();
+							
 
-							}
 						}
+
 					}
+
+						
+					
 				}
 			}
 		}
@@ -1719,21 +1733,43 @@ namespace Core
 					spritecomp2->draw();
 				}
 
-				/*if (isTut2)
-				{
-					Object::GameObject* x = CoreSystem->objfactory->ObjectContainer.at("QuestT2");
+				//chop ingredient
+				checkWin();
 
-					Transform* transcomp = static_cast<Transform*>(x->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+				//stack for loop
+				/*for (auto& x : stack)
+				{*/
+					/*for (auto& container : Map::levelWinConditions)
+					{*/
+						/*if (container.first == x)
+						{*/
+							Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					spritecomp->transformation.Position = transcomp->Position;
-					spritecomp->transformation.Scale = transcomp->Scale;
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							spritecomp->transformation.Position = transcomp->Position;
+							spritecomp->transformation.Scale = transcomp->Scale;
 
-					spritecomp->draw();
-					checkWin();
-				}
-				*/
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+							spritecomp->draw();
+						//}
+
+						/*if (container.first == x)
+						{
+							Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
+							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+							spritecomp->transformation.Position = transcomp->Position;
+							spritecomp->transformation.Scale = transcomp->Scale;
+
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+
+							spritecomp->draw();
+						}*/
+					//}
+				//}
 			}
 
 			/*	quest tab shift to left side */

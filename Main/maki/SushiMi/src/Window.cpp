@@ -1249,7 +1249,7 @@ namespace Core
 
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
-			Camera::Update_Viewport(2560, 1200);
+			//Camera::Update_Viewport(2560, 1200);
 			/*
 			ingredient = new Sprite(Editor::LevelEditor::texpath);
 			Sprite(Editor::LevelEditor::texpath);

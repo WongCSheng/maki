@@ -78,17 +78,26 @@ namespace Core
 			static inline const char* texpath = "../textures/Tiles/Wall/RicePlain_Wall3_2.jpg";
 
 #ifdef  EDITOR
-
+			static inline bool hierarchyload;
 
 			struct addedobjinfo
 			{
-				Sprite* spritepath;
 				std::string objname;
+				char enum_;
+				Sprite* spritepath;
+				std::string filepath;
 				int x;
 				int y;
+				int ID;
 
 			}add_obj_info_here;
+
+
 			static inline  std::vector<addedobjinfo> newobjarr;
+			static inline  std::vector<addedobjinfo> TopLayerLegend; //aGrids and gGrids
+			static inline  std::vector<addedobjinfo> BottomLayerLegend; //wGrids
+			static inline  std::vector<addedobjinfo> Hierarchy_BottomLayer; //Display all the objects in Bottom Layer
+			static inline  std::vector<addedobjinfo> Hierarchy_TopLayer; //Display all the objects in Top Layer
 #endif //  EDITOR
 			//obj placing
 			static inline bool objplace = false;

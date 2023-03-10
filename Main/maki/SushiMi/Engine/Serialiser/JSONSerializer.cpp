@@ -81,7 +81,7 @@ namespace Core
 	//Deserialze is read from json file.
 	void DeserializeEntity(std::string const& filepath, ObjectFactory* objfact)
 	{
-		std::cout << filepath << " <<<<<<<reading from this filepath\n";
+		//std::cout << filepath << " <<<<<<<reading from this filepath\n";
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 
 		std::string name; //name of object we are parsing (under sprite component)
@@ -136,7 +136,7 @@ namespace Core
 				transComp = new Transform();
 				transComp->Deserialize(compJsonObj);
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
-				std::cout << "transform component is : " << transComp << std::endl;
+				//std::cout << "transform component is : " << transComp << std::endl;
 				//delete transComp;
 			}
 
@@ -151,7 +151,7 @@ namespace Core
 				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
 				name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
 
-				std::cout << "loading of " << name << "\n";
+				//std::cout << "loading of " << name << "\n";
 				Sprite* object = new Sprite(texturePath);
 				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
 				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
@@ -178,7 +178,7 @@ namespace Core
 		}
 
 		//td::string name("Object: " + std::to_string(objfact->LastObjectID));
-		std::cout << name << " inserting into object container\n";
+		//std::cout << name << " inserting into object container\n";
 		objfact->ObjectContainer.insert({ name, gameObj });	//	save everything in gameObj into container
 		objfact->LastObjectID++;
 		//delete gameObj;
@@ -215,8 +215,8 @@ namespace Core
 				std::cout << "JSONSerializer DeserializeAll: " << filepath << " is not an object" << std::endl;
 				return;
 			}
-			const char* objName = object["name"].GetString(); // need to convert the data retrieved to a C++ type
-			std::cout << "Deserializing " << objName << std::endl;
+			//const char* objName = object["name"].GetString(); // need to convert the data retrieved to a C++ type
+			//std::cout << "Deserializing " << objName << std::endl;
 			//const char* objAlpa = object["alpha"].GetString();
 
 			std::string objFilePath = object["filename"].GetString();
@@ -442,7 +442,7 @@ namespace Core
 			animationList.push_back(animationName.GetString());
 		}
 
-		std::cout << "JSONSerializer Deserialize: Managed to parse " << filepath << std::endl;
+		//std::cout << "JSONSerializer Deserialize: Managed to parse " << filepath << std::endl;
 
 		return new Player(spriteFilepath, pos, scale, animationList);
 		/*Player *valid_player(spriteFilepath, pos, scale, animationList);

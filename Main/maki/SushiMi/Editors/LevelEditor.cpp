@@ -33,6 +33,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 namespace Core
 {
 	int value = 'Q';
+	int IDcounter = 0;
 
 	// Simple helper function to load an image into a OpenGL texture with common settings
 	bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
@@ -80,8 +81,14 @@ namespace Core
 	std::filesystem::path m_curr_path;
 	static const std::filesystem::path s_TextureDirectory = "../TileMap";
 
+	//open text files that hold enums, char and filepath
+	std::ifstream grid_number_textfile;
+	std::ifstream wall_type_textfile;
+
 	namespace Editor
 	{
+		
+
 		void LevelEditor::imguiEditorInit(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
@@ -138,9 +145,59 @@ namespace Core
 			fileDialog.SetTitle("ImGui File Explorer");
 			//fileDialog.SetPwd("../maki/textures/");
 			//fileDialog.SetCurrentTypeFilterIndex(0);
-#endif
 			alphabet = "click on a grid to see its object value";
 
+			wall_type_textfile.open("../Data/EditorEnums/wall_type.txt");
+			grid_number_textfile.open("../Data/EditorEnums/grid_number.txt");
+			if (!wall_type_textfile)
+			{
+				std::cout << "Unable to open wall_type file for wGrids!";
+				return;
+			}
+			if (!grid_number_textfile)
+			{
+				std::cout << "Unable to open grid_number file for gGrids!";
+				return;
+			}
+			/*std::getline(wall_type_textfile, Window::realstring);*/
+
+			
+			//load wall (Bottom Layer)
+			std::string str;
+			wall_type_textfile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignore very first line
+
+			while (getline(wall_type_textfile, str))
+			{
+				std::istringstream line_sstm{ str };
+				addedobjinfo iter;
+				line_sstm >> iter.objname;
+				line_sstm >> iter.enum_;
+				line_sstm >> iter.filepath;
+				BottomLayerLegend.push_back(iter);
+				//std::cout << i.enum_ << std::endl;
+
+			}
+			
+			wall_type_textfile.close();
+
+			//load ingredient grid (Top Layer)
+			grid_number_textfile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignore very first line
+
+			while (getline(grid_number_textfile, str))
+			{
+				std::istringstream line_sstm{ str };
+				addedobjinfo iter;
+				line_sstm >> iter.objname;
+				line_sstm >> iter.enum_;
+				line_sstm >> iter.filepath;
+				TopLayerLegend.push_back(iter);
+				//std::cout << i.enum_ << std::endl;
+
+			}
+			grid_number_textfile.close();
+
+			hierarchyload = false;
+#endif
 		}
 
 		void LevelEditor::imguiGraphicsTest(void)
@@ -192,125 +249,125 @@ namespace Core
 
 
 			//***************************************DISPLAYING TILES*************************************
-			if (ImGui::Begin("Tile Selector"))
-			{
-				//start tile selector
-				int my_image_width = 0;
-				int my_image_height = 0;
-				GLuint my_image_texture = 0;
+			//if (ImGui::Begin("Tile Selector"))
+			//{
+			//	//start tile selector
+			//	int my_image_width = 0;
+			//	int my_image_height = 0;
+			//	GLuint my_image_texture = 0;
 
-				//ImGui::BeginTabBar("Hi");
+			//	//ImGui::BeginTabBar("Hi");
 
-				bool ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_cucumber.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					std::cout << "button for cucumber is pressed" << std::endl;
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
-				}
-				ImGui::SameLine();
+			//	bool ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_cucumber.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		std::cout << "button for cucumber is pressed" << std::endl;
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
+			//	}
+			//	ImGui::SameLine();
 
-				//salmon
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-				}
+			//	//salmon
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+			//	}
 
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_avocado.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
-				}
-
-
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Soya_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Soya_Ingredient.png";
-				}
-
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients1_nori.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
-				}
-
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tuna.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
-				}
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_avocado.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
+			//	}
 
 
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Wasabi_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Wasabi_Ingredient.png";
-				}
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
-				}
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_roes.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
-				}
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Soya_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Soya_Ingredient.png";
+			//	}
 
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_rice.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
-				}
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_inari.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
-				}
-				ImGui::SameLine();
-				ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tofu.png", &my_image_texture, &my_image_width, &my_image_height);
-				IM_ASSERT(ret);
-				if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
-				{
-					texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
-				}
-				//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f)); //uncomment if u want to make button bg transparent
-				//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
-				//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients1_nori.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
+			//	}
+
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tuna.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
+			//	}
 
 
-				////salmon
-				//int my_image_width2 = 0;
-				//int my_image_height2 = 0;
-				//GLuint my_image_texture2 = 0;
-				//bool ret2 = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture2, &my_image_width2, &my_image_height2);
-				//IM_ASSERT(ret2);
-				//if (ImGui::ImageButton((void*)(intptr_t)my_image_texture2, ImVec2(80, 80)))
-				//{
-				//	texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-				//}
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Wasabi_Ingredient.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Wasabi_Ingredient.png";
+			//	}
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
+			//	}
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_roes.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
+			//	}
 
-				//ImGui::PopStyleColor(3); //free the custom transparency buttons
-			}
-			ImGui::End(); 
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_rice.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
+			//	}
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_inari.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
+			//	}
+			//	ImGui::SameLine();
+			//	ret = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_tofu.png", &my_image_texture, &my_image_width, &my_image_height);
+			//	IM_ASSERT(ret);
+			//	if (ImGui::ImageButton((void*)(intptr_t)my_image_texture, ImVec2(80, 80)))
+			//	{
+			//		texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
+			//	}
+			//	//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f)); //uncomment if u want to make button bg transparent
+			//	//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
+			//	//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+
+			//	////salmon
+			//	//int my_image_width2 = 0;
+			//	//int my_image_height2 = 0;
+			//	//GLuint my_image_texture2 = 0;
+			//	//bool ret2 = LoadTextureFromFile("../textures/Tiles/Ingredients/Ingredients0_salmon.png", &my_image_texture2, &my_image_width2, &my_image_height2);
+			//	//IM_ASSERT(ret2);
+			//	//if (ImGui::ImageButton((void*)(intptr_t)my_image_texture2, ImVec2(80, 80)))
+			//	//{
+			//	//	texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
+			//	//}
+
+			//	//ImGui::PopStyleColor(3); //free the custom transparency buttons
+			//}
+			//ImGui::End(); 
 			//******************************************end tile selector****************************
 
 
@@ -356,12 +413,54 @@ namespace Core
 			{
 				glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			}*/
-			ImGui::Begin("Main Dockspace");
+			ImGui::Begin("Ingredient/Animated Top Layer");
+			ImGui::Text("Object Hierachy - Top Layer");
+			if (ImGui::BeginTable("Object Hierachy", 4))
+			{	
+				
+				for (auto& iter : Hierarchy_TopLayer)
+				{
+					ImGui::TableNextRow();
 
-			//Central Dockspace
-			static ImGuiID dockspaceID = 0;
-			dockspaceID = ImGui::GetID("Main Dockspace");
-			ImGui::DockSpace(dockspaceID, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None | ImGuiDockNodeFlags_PassthruCentralNode/*|ImGuiDockNodeFlags_NoResize*/);
+					ImGui::TableNextColumn();
+					ImGui::Text("ID: %d", iter.ID);
+					ImGui::TableNextColumn();
+					ImGui::Text("Name: %s", iter.objname.c_str());
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid X: %d", ((int)(iter.x) / SceneManager::getTileWidth()));
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid Y: %d", ((int)(iter.y) / SceneManager::getTileHeight()));
+					ImGui::TableNextColumn();
+
+				}
+				ImGui::EndTable();
+
+			}
+			ImGui::End(); //End Layer 1
+
+			ImGui::Begin("Wall/Box Layer");
+			ImGui::Text("Object Hierachy - Bottom Layer");
+			if (ImGui::BeginTable("Object Hierachy", 4))
+			{
+				for (auto& iter : Hierarchy_BottomLayer)
+				{
+					ImGui::TableNextRow();
+
+					ImGui::TableNextColumn();
+					ImGui::Text("ID: %d", iter.ID);
+					ImGui::TableNextColumn();
+					ImGui::Text("Name: %s", iter.objname.c_str());
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid X: %d", ((int)(iter.x) / SceneManager::getTileWidth()));
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid Y: %d", ((int)(iter.y) / SceneManager::getTileHeight()));
+					ImGui::TableNextColumn();
+
+				}
+				ImGui::EndTable();
+
+			}
+			ImGui::End(); //end Layer 2
 
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
 			ImGui::Begin("Object Editor - Imgui Window");
@@ -371,6 +470,66 @@ namespace Core
 			{
 				Map::SetValue(xgrid, ygrid, value);
 			}*/
+			if (hierarchyload == false)
+			{
+
+				for (auto& iter : SceneManager::tilecontainer)
+				{
+					for (auto& legend : BottomLayerLegend)
+					{
+						if (static_cast<char>(iter.first) == legend.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend.objname;
+							objprop.x = static_cast<int>(iter.second->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.second->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_BottomLayer.push_back(objprop);
+						}
+
+
+					}
+				}
+				for (auto& iter : SceneManager::ingredientcontainer)
+				{
+					for (auto& legend2 : TopLayerLegend)
+					{	
+						
+						if (static_cast<char>(iter.nametag) == legend2.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend2.objname;
+							objprop.x = static_cast<int>(iter.spr->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.spr->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_TopLayer.push_back(objprop);
+							//std::cout << static_cast<char>(iter.IC) << std::endl;
+						}
+
+					}
+				}
+				for (auto& iter : SceneManager::topcontainer)
+				{
+					for (auto& legend2 : TopLayerLegend)
+					{
+
+						if (static_cast<char>(iter.first) == legend2.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend2.objname;
+							objprop.x = static_cast<int>(iter.second->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.second->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_TopLayer.push_back(objprop);
+						}
+
+					}
+				}
+				hierarchyload = true;
+			}
 
 
 			ImGui::Text("Select a file below to load a saved level!");
@@ -412,6 +571,12 @@ namespace Core
 
 				std::cout << "You have loaded Level from text file: " << imguiloadedmap << std::endl;
 
+
+				//clear and update the object hierarchy
+				Hierarchy_TopLayer.clear();
+				Hierarchy_BottomLayer.clear();
+				hierarchyload = false;
+
 				fileDialog.ClearSelected();
 				loadnewlevel = false; 
 				Window::timetodeletegrid = true;
@@ -421,57 +586,57 @@ namespace Core
 			/*----------------------*/
 			/*Content Browser Panel*/
 			/*----------------------*/
-			ImGui::Begin("Content Browser");
+			//ImGui::Begin("Content Browser");
 
-			if(m_curr_path != std::filesystem::path(s_TextureDirectory))
-			{
-				if(ImGui::Button("<-")) //will only show if u went into a folder in the current directory above
-				{
-					m_curr_path = m_curr_path.parent_path();
-				}
-			}
-			float padding = 10.f;
-			float thumbnail_size = 128;
-			//float cellSize = thumbnail_size + padding;
+			//if(m_curr_path != std::filesystem::path(s_TextureDirectory))
+			//{
+			//	if(ImGui::Button("<-")) //will only show if u went into a folder in the current directory above
+			//	{
+			//		m_curr_path = m_curr_path.parent_path();
+			//	}
+			//}
+			//float padding = 10.f;
+			//float thumbnail_size = 128;
+			////float cellSize = thumbnail_size + padding;
 
-			//float panelWidth = ImGui::GetContentRegionAvail().x;
-			//float columnCount = (int)(panelWidth / cellSize);
-			ImGui::Columns(5, 0, false);
+			////float panelWidth = ImGui::GetContentRegionAvail().x;
+			////float columnCount = (int)(panelWidth / cellSize);
+			//ImGui::Columns(5, 0, false);
 
-			for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
-			{
-				std::string path1 = directory_entry.path().string();
-				auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
+			//for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
+			//{
+			//	std::string path1 = directory_entry.path().string();
+			//	auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
 
-				ImGui::Button(path1.c_str(), { thumbnail_size, thumbnail_size });
-				ImGui::Text(path1.c_str());
+			//	ImGui::Button(path1.c_str(), { thumbnail_size, thumbnail_size });
+			//	ImGui::Text(path1.c_str());
 
-				if (directory_entry.is_directory())
-				{
-					//std::cout << "the directory im clicking is: " << directory_entry.is_directory() << std::endl;
-					/*
-					if (ImGui::Button(path.c_str()))
-					{
-						m_curr_path /= directory_entry.path().filename();
-					}
-					*/
-				}
-				else
-				{
-					/*
-					if(ImGui::Button(path.c_str()))
-					{
-						
-					}
-					*/
-				}
-				ImGui::NextColumn();
-				
-			}
-			ImGui::Columns(1);
-			ImGui::SliderFloat("Thumbnail Size", &thumbnail_size, 16, 512);
-			ImGui::SliderFloat("Padding", &padding, 0, 32);
-			ImGui::End();
+			//	if (directory_entry.is_directory())
+			//	{
+			//		//std::cout << "the directory im clicking is: " << directory_entry.is_directory() << std::endl;
+			//		/*
+			//		if (ImGui::Button(path.c_str()))
+			//		{
+			//			m_curr_path /= directory_entry.path().filename();
+			//		}
+			//		*/
+			//	}
+			//	else
+			//	{
+			//		/*
+			//		if(ImGui::Button(path.c_str()))
+			//		{
+			//			
+			//		}
+			//		*/
+			//	}
+			//	ImGui::NextColumn();
+			//	
+			//}
+			//ImGui::Columns(1);
+			//ImGui::SliderFloat("Thumbnail Size", &thumbnail_size, 16, 512);
+			//ImGui::SliderFloat("Padding", &padding, 0, 32);
+			//ImGui::End();
 
 
 			/*currently not working oops*/
@@ -621,7 +786,6 @@ namespace Core
 
 			}
 			ImGui::End(); //end level save window
-			ImGui::End(); //end Main Docking window
 
 			ImGui::End(); //end the whole imgui process
 			ImGuiIO& io = ImGui::GetIO();
@@ -756,582 +920,22 @@ namespace Core
 		void LevelEditor::imguiObjectCursor(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
-
 			ImGuiIO& io = ImGui::GetIO(); (void)io;
 			if (io.WantCaptureMouseUnlessPopupClose == false)
 			{
-				switch (value)
+				for (auto& iter : BottomLayerLegend)
 				{
-
-
-					case static_cast<int>(grid_number::player):
+					if (value == iter.enum_)
 					{
-						texpath = "../textures/Bami/Idle/BaMi_Idle_New_1.png";
-						break;
+						texpath = iter.filepath.c_str();
 					}
-					case static_cast<int>(grid_number::avocado):
+				}
+				for (auto& iter : TopLayerLegend)
+				{
+					if (value == iter.enum_)
 					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_avocado.png";
-						break;
+						texpath = iter.filepath.c_str();
 					}
-					case static_cast<int>(grid_number::cucumber):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
-						break;
-					}
-					case static_cast<int>(grid_number::corn):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_ew_corn.png";
-						
-						break;
-					}
-
-					case static_cast<int>(grid_number::inari):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_inari.png";
-						break;
-					}
-					case static_cast<int>(grid_number::octopus):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_octopus.png";
-
-						break;
-					}
-					case static_cast<int>(grid_number::rice):
-					{
-
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_rice.png";
-						
-						break;
-					}
-					//roes
-					case static_cast<int>(grid_number::roes):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_roes.png";
-						break;
-					}
-					//salmon
-					case static_cast<int>(grid_number::salmon):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
-						break;
-					}
-					//tamago
-					case static_cast<int>(grid_number::tamago):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_tamago.png";
-						break;
-					}
-					//tofu
-					case static_cast<int>(grid_number::tofu):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_tofu.png";
-						break;
-					}
-					//tuna
-					case static_cast<int>(grid_number::tuna):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients0_tuna.png";
-						break;
-					}
-					//nori
-					case static_cast<int>(grid_number::nori):
-					{
-						texpath = "../textures/Tiles/Ingredients/Ingredients1_nori.png";
-						break;
-					}
-					//soya
-					case static_cast<int>(grid_number::soya):
-					{
-						texpath = "..textures/Tiles/Ingredients/Soya_1.png";
-						//soya = new Sprite("../textures/spritesheet/soyaspritesheet.png");
-						//soya->isSpriteSheet = 1;
-						//std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::soya, soya);
-						////animate soy sauce
-						//soya->Add_animation("../textures/spritesheet/soya_Idle.txt");
-						//soya->Add_animation("../textures/spritesheet/soya_Pour.txt");
-						//soya->curr_anim = AnimationType::Idle;
-
-						break;
-					}
-					//wasabi
-					case static_cast<int>(grid_number::wasabi):
-					{
-						texpath = "../textures/Tiles/Ingredients/Wasabi_1.png";
-						break;
-					}
-					// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
-					case static_cast<int>(wall_type::avocado_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Avocado.png";
-						break;
-					}
-					//cucumber
-					case static_cast<int>(wall_type::cucumber_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Cucumber.png";
-						break;
-					}
-					//corn
-					case static_cast<int>(wall_type::corn_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Corn.png";
-						break;
-					}
-					//octopus
-					case static_cast<int>(wall_type::octopus_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Octopus.png";
-						break;
-					}
-					//roes
-					case static_cast<int>(wall_type::roes_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Roes.png";
-						break;
-					}
-					//salmon
-					case static_cast<int>(wall_type::salmon_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Salmon.png";
-						break;
-					}
-					//tamago
-					case static_cast<int>(wall_type::tamago_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Tamago.png";
-						break;
-					}
-					//tofu
-					case static_cast<int>(wall_type::tofu_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Tofu.png";
-						break;
-					}
-					//tuna
-					case static_cast<int>(wall_type::tuna_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Tuna.png";
-						break;
-					}
-					//nori
-					case static_cast<int>(wall_type::nori_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Nori.png";
-						break;
-					}
-
-					case static_cast<int>(wall_type::rice_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Rice.png";
-						break;
-
-					}
-
-
-					case static_cast<int>(wall_type::inari_box):
-					{
-						texpath = "../textures/Tiles/Pods/Pod_Inari.png";
-						break;
-					}
-
-					/*case static_cast<int>(grid_number::boxcover):
-					{
-						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
-						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-
-						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
-						break;
-					}*/
-
-					/*case static_cast<int>(wall_type::sinkhole):
-					{
-						texpath = "../textures/Tiles/Trap/Sinkhole0_1.png";
-
-
-						break;
-					}*/
-
-					//case static_cast<int>(wall_type::filledsinkhole):
-					//{
-					//	Sprite* filledsinkhole = new Sprite("../textures/Tiles/Trap/Sinkhole_Filled.png");
-
-
-					//	break;
-					//}
-
-					////Temporary placeholder for food in sinkhole
-					//case static_cast<int>(wall_type::temp):
-					//{
-					//	Sprite* foodinsinkhole = new Sprite("../textures/doge.png");
-
-
-					//	break;
-					//}
-					/*case static_cast<int>(grid_number::ground0):
-					{
-						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_0.jpg";
-
-						break;
-					}
-					case static_cast<int>(grid_number::ground1):
-					{
-						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_1.jpg";
-						break;
-					}
-					case static_cast<int>(grid_number::ground2):
-					{
-						texpath = "../textures/Tiles/Ground/RicePlain_Ground0_2.jpg";
-
-
-						break;
-					}*/
-					//no_longer_used
-					/*case static_cast<int>(wall_type::sinkhole_gunkan):
-					{
-						texpath = "../textures/Tiles/Ground_GunkanVillage/Sinkhole.png";
-
-
-
-						break;
-					}*/
-					case static_cast<int>(wall_type::Wall0):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall0.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall0_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall0_1.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall1.png";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall2.jpg";
-
-						break;
-					}
-
-
-
-					case static_cast<int>(wall_type::Wall2_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_1.jpg";
-
-						break;
-					}
-
-
-					case static_cast<int>(wall_type::Wall2_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_2.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall2_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall2_3.png";
-
-						break;
-					}
-
-					case static_cast<int>(wall_type::Wall3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall3.jpg";
-
-						break;
-					}
-
-					case static_cast<int>(wall_type::Wall3_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_1.png";
-
-						break;
-					}
-
-					case static_cast<int>(wall_type::Wall3_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_2.jpg";
-
-						break;
-					}
-
-
-					case static_cast<int>(wall_type::Wall3_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall3_3.png";
-
-						break;
-					}
-
-					case static_cast<int>(wall_type::Wall4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall4.png";
-
-						break;
-					}
-
-					/*case static_cast<int>(wall_type::Wall4_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_1.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall4_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_2.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall4_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_3.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall4_4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall4_4.jpg";
-
-						break;
-					}*/
-
-
-
-					case static_cast<int>(wall_type::Wall5):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall5.jpg";
-
-						break;
-					}
-
-
-					////most common wall
-					//case static_cast<int>(wall_type::Wall5_1):
-					//{
-					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_1.jpg";
-
-					//	break;
-
-					//}
-
-					//case static_cast<int>(wall_type::Wall5_2):
-					//{
-					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_2.jpg";
-
-					//	break;
-
-					//}
-
-					//case static_cast<int>(wall_type::Wall5_3):
-					//{
-					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_3.jpg";
-
-					//	break;
-
-					//}
-
-					//case static_cast<int>(wall_type::Wall5_4):
-					//{
-					//	texpath = "../textures/Tiles/Wall/RicePlain_Wall5_4.jpg";
-
-					//	break;
-
-					//}
-					case static_cast<int>(wall_type::Wall6):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall6.png";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall6_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_1.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall6_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_2.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall6_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_3.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall6_4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall6_4.jpg";
-
-						break;
-
-					}
-					//wall 7
-					case static_cast<int>(wall_type::Wall7):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall7.png";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall7_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_1.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall7_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_2.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall7_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_3.jpg";
-
-						break;
-
-					}
-
-					case static_cast<int>(wall_type::Wall7_4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall7_4.jpg";
-
-						break;
-
-					}
-					//wall 8
-					case static_cast<int>(wall_type::Wall8):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall8.png";
-						break;
-					}
-					//wall 9
-					case static_cast<int>(wall_type::Wall9):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9.png";
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_1):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_1.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_2):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_2.jpg";
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_3):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_3.jpg";
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_4):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_4.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_5):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_5.jpg";
-
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_6):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_6.jpg";
-						break;
-					}
-					case static_cast<int>(wall_type::Wall9_7):
-					{
-						texpath = "../textures/Tiles/Wall/RicePlain_Wall9_7.jpg";
-						break;
-					}
-					case static_cast<int>(wall_type::WaterWall):
-					{
-						texpath = "../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png";
-
-						break;
-					}
-					//	Wall0_Gunkan,		//j
-					case static_cast<int>(wall_type::Wall0_Gunkan):
-					{
-						texpath = "../textures/Tiles/Wall_GunkanVillage/Wall0.png";
-
-						break;
-					}
-					////	Gunkan_Ground_2_2,		//k
-					//case static_cast<int>(wall_type::Wall1_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1.png";
-
-					//	break;
-					//}
-					////	Gunkan_Ground_1_1,		//l
-					//case static_cast<int>(wall_type::Wall1_1_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall1_1.png";
-
-					//	break;
-					//}
-					////	Gunkan_Ground_1_2,		//m
-					//case static_cast<int>(wall_type::Wall2_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2.png";
-
-					//	break;
-					//}
-					////	Gunkan_Ground_1_3,		//n
-					//case static_cast<int>(wall_type::Wall2_1_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall2_1.png";
-					//	break;
-					//}
-					////	Gunkan_Ground_1_4,		//o
-					//case static_cast<int>(wall_type::Wall3_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3.png";
-					//	
-
-					//	break;
-					//}
-					////	Gunkan_Ground_2_1,		//p
-					//case static_cast<int>(wall_type::Wall3_1_Gunkan):
-					//{
-					//	texpath = "../textures/Tiles/Wall_GunkanVillage/Wall3_1.png";
-					//	
-					//	break;
-					//}
-					/*case static_cast<int>(wall_type::WoodenPlatform):
-					{
-						texpath = "../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png";
-						break;
-					}*/
 				}
 				Window::ingredient = new Sprite(Editor::LevelEditor::texpath);
 

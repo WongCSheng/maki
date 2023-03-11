@@ -405,6 +405,7 @@ namespace Core
 		SceneManager::destroy_Dialogue();
 		SceneManager::destroy_Wood_BG();
 		SceneManager::destroy_Bami_End_Room();
+		SceneManager::destroy_Are_You_Sure();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif

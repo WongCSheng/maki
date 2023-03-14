@@ -1,73 +1,74 @@
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_draw.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\rectangle.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\cutscene.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\factory.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\renderer.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level6.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\debug.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\font.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\gameobject.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\testlevel.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_widgets.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\physics.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\jsonserializer.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level4.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\matrix.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\core.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\glhelper.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level5.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\window.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\camera2d.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\transform.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\glslshader.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level10.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level11.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level2.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\main.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_tables.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\collision.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\shaderlibrary.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\player.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\tutorial1.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\leveleditor.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\camerasystem.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level3.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\scenemanager.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\audioengine.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\input.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\systemframe.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\map.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\tutorial2.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\animation2d.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\messaging.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\transformer.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level9.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_impl_opengl3.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\component.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\shaderprogram.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\physicsystem.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level8.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_impl_glfw.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\texture.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\model.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\texturesystem.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level7.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\imgui_demo.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sprite.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\linkedlist.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\level1.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\log.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\user.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\gamewindow.obj
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\vc142.pdb
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\x64\debug\sushimi.exe
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.ilk
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\x64\debug\sushimi.pdb
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\vc142.idb
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.command.1.tlog
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.read.1.tlog
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.write.1.tlog
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.command.1.tlog
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.read.1.tlog
-c:\users\chong sheng\documents\sit\csd2400\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.write.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_tables.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\collision.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\shaderlibrary.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\gameobject.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\testlevel.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_impl_opengl3.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\component.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\shaderprogram.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\physicsystem.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level7.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_impl_glfw.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\texture.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\model.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\texturesystem.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level8.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\debug.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\font.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\player.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\tutorial1.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_widgets.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sprite.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\glslshader.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level10.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level11.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level2.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\main.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\audioengine.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\input.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\systemframe.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\map.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\tutorial2.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\leveleditor.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\camerasystem.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level4.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\scenemanager.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\transform.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\linkedlist.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level1.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\log.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\user.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\gamewindow.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\animation2d.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\messaging.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\transformer.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level9.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\camera2d.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\core.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\glhelper.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level5.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\window.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_draw.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\physics.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\jsonserializer.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level3.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\matrix.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\imgui_demo.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\rectangle.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\cutscene.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\factory.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\renderer.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\level6.obj
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\vc142.pdb
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.ilk
+c:\users\theas\documents\github\maki\main\maki\x64\debug\sushimi.exe
+c:\users\theas\documents\github\maki\main\maki\x64\debug\sushimi.pdb
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\vc142.idb
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\camera2d.nativecodeanalysis.xml
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.command.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.read.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\cl.write.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.command.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.read.1.tlog
+c:\users\theas\documents\github\maki\main\maki\sushimi\x64\debug\sushimi.tlog\link.write.1.tlog

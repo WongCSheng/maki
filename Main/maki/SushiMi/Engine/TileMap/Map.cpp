@@ -102,7 +102,7 @@ namespace Core
 			{
 				fin >> ch;
 
-				if (ch >= '!' && ch <= '7')
+				if (ch >= '!' && ch <= '8')
 				{
 					gGrids[r][c] = ch;
 					RestartGrids[r][c] = ch;
@@ -136,7 +136,7 @@ namespace Core
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				if (static_cast<char>(gGrids[r][c]) >= '!' && static_cast<char>(gGrids[r][c]) <= '7')
+				if (static_cast<char>(gGrids[r][c]) >= '!' && static_cast<char>(gGrids[r][c]) <= '8')
 				{
 					fout << static_cast<char>(gGrids[r][c]) << " ";
 				}
@@ -287,6 +287,7 @@ namespace Core
 				int grid_to_coord_y = static_cast<int>(c / static_cast<float>(max_grid_rows_y) * height);
 				switch (aGrids[r][c])
 				{
+					//RicePlant1
 					case static_cast<int>(animated::RicePlant1):
 					{
 						Sprite* riceplant = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
@@ -295,9 +296,10 @@ namespace Core
 						riceplant->curr_anim = AnimationType::Idle;
 						riceplant->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
-
+						break;
 						
 					}
+					//RicePlant2
 					case static_cast<int>(animated::RicePlant2):
 					{
 						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant2.png");
@@ -306,10 +308,25 @@ namespace Core
 						rice1->curr_anim = AnimationType::Idle;
 						rice1->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-
+						break;
 
 					}
-					/*case static_cast<int>(animated::RicePlain_TopG2_1):
+					//RicePlant3
+					/*RicePlant3,RicePlant4,RicePlant5,	RiceWater1,	RiceWater2,GunkanSign_Right,GunkanSign_Left,GunkanCorn,GunkanCarrot,,GunkanCrow_Right,FishingBoat,FishingLog,	FishingSotong,FishingNoot,FishingCrab,*/
+					//GunkanCrow_Left
+					case static_cast<int>(animated::GunkanCrow_Left):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCrow_Left.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCrow_Left, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//RicePlain_TopG2_1
+					case static_cast<int>(animated::RicePlain_TopG2_1):
 					{
 						Sprite* rice1 = new Sprite("../textures/Tiles/Top/RicePlain_TopG2_1.png");
 						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlain_TopG2_1, std::move(rice1));
@@ -317,9 +334,9 @@ namespace Core
 						rice1->curr_anim = AnimationType::Idle;
 						rice1->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
 
-
-					}*/
+					}
 				}
 
 			}

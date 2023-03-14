@@ -41,7 +41,7 @@ namespace Core
 		wasabi,			//5
 		boxcover,		//6		//54
 		sinkhole,		//7
-		filledsinkhole	//8
+		filledsinkhole,	//8
 	};
 
 	enum class wall_type //: std::uint16_t
@@ -118,41 +118,41 @@ namespace Core
 
 	enum class animated
 	{
-		RicePlant1 = 56,	//8 (should start from 7 since 5 is the last grid_number enum
-		RicePlant2,			//9 and we are reading both animations and ingredients on the 1st layer
-		RicePlant3,			//:
-		RicePlant4,			//;
-		RicePlant5,			//<
-		RiceWater1,			//=
-		RiceWater2,			//>
-		GunkanSign_Right,	//?
-		GunkanSign_Left,	//@
-		GunkanCorn,			//A
-		GunkanCarrot,		//B
-		GunkanCrow_Left,	//C
-		GunkanCrow_Right,	//D
-		FishingBoat,		//E
-		FishingLog,			//F
-		FishingSotong,		//G
-		FishingNoot,		//H
-		FishingCrab,		//I
+		RicePlant1 = 57,	//9 (should start from 7 since 5 is the last grid_number enum
+		RicePlant2,			//: and we are reading both animations and ingredients on the 1st layer
+		RicePlant3,			//;
+		RicePlant4,			//<
+		RicePlant5,			//=
+		RiceWater1,			//>
+		RiceWater2,			//?
+		GunkanSign_Right,	//@
+		GunkanSign_Left,	//A
+		GunkanCorn,			//B
+		GunkanCarrot,		//C
+		GunkanCrow_Left,	//D
+		GunkanCrow_Right,	//E
+		FishingBoat,		//F
+		FishingLog,			//G
+		FishingSotong,		//H
+		FishingNoot,		//I
+		FishingCrab,		//J
 		//fishing tops must be rendered above Bami and above fishing ground, hence it is on the same level as ingredient
-		RicePlain_TopG2_1,  //J
-		Fishing_Top_0_0,	//7
-		Fishing_Top_1_1,	//8
-		Fishing_Top_1_2,	//9
-		Fishing_Top_1_3,	//:
-		Fishing_Top_1_4,	//;
-		Fishing_Top_2_1,	//<
-		Fishing_Top_2_2,	//=
-		Fishing_Top_2_3,	//>
-		Fishing_Top_2_4,	//?
-		Fishing_Top_3_1,	//@
-		Fishing_Top_3_2,	//A
-		Fishing_Top_3_3,	//B
-		Fishing_Top_3_4,	//C
-		Fishing_Top_3_5,	//D
-		Fishing_Top_3_6	//E
+		RicePlain_TopG2_1,  //K
+		Fishing_Top_0_0,	//L
+		Fishing_Top_1_1,	//M
+		Fishing_Top_1_2,	//N
+		Fishing_Top_1_3,	//O
+		Fishing_Top_1_4,	//P
+		Fishing_Top_2_1,	//Q
+		Fishing_Top_2_2,	//R
+		Fishing_Top_2_3,	//S
+		Fishing_Top_2_4,	//T
+		Fishing_Top_3_1,	//U
+		Fishing_Top_3_2,	//V
+		Fishing_Top_3_3,	//W
+		Fishing_Top_3_4,	//X
+		Fishing_Top_3_5,	//Y
+		Fishing_Top_3_6		//Z
 	};
 
 	struct Basket

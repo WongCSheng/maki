@@ -22,23 +22,13 @@ pointers to OpenGL implementations.
 // static data members declared in GLHelper
 GLint GLHelper::width;
 GLint GLHelper::height;
-GLdouble GLHelper::fps;
+int GLHelper::fps;
 GLdouble GLHelper::delta_time;
 std::string GLHelper::title;
 GLFWwindow* GLHelper::ptr_window;
-/*  _________________________________________________________________________ */
-/*! init
 
-@param GLint width
-@param GLint height
-@param std::string title_str
+#define FRAME_TIME_MIN   1.0/60.0
 
-@return bool
-true if OpenGL context and GLEW were successfully initialized.
-false otherwise.
-
-Uses GLFW to create OpenGL context with a window of size width x height pixels.
-*/
 bool GLHelper::init(GLint w, GLint h, std::string t) {
 	GLHelper::width = w;
 	GLHelper::height = h;
@@ -73,10 +63,8 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 	glfwMakeContextCurrent(GLHelper::ptr_window); // make current window the context
 
 	// first parameter represent the handle to the window (ptr_window) while 2nd paramter is the callback function
-	
+
 	glfwSetFramebufferSizeCallback(GLHelper::ptr_window, GLHelper::fbsize_cb);
-	glfwSetKeyCallback(GLHelper::ptr_window, GLHelper::key_cb);
-	glfwSetMouseButtonCallback(GLHelper::ptr_window, GLHelper::mousebutton_cb);
 	glfwSetCursorPosCallback(GLHelper::ptr_window, GLHelper::mousepos_cb);
 
 	// this is the default setting ...
@@ -100,6 +88,7 @@ bool GLHelper::init(GLint w, GLint h, std::string t) {
 
 	return true;
 }
+/*  _________________________________________________________________________ */
 /*  _________________________________________________________________________ */
 /*! print_specs()
 
@@ -167,145 +156,6 @@ void GLHelper::cleanup() {
 }
 
 /*  _________________________________________________________________________*/
-/*! key_cb
-
-@param GLFWwindow*
-Handle to window that is receiving event
-
-@param int
-the keyboard key that was pressed or released
-
-@parm int
-Platform-specific scancode of the key
-
-@parm int
-GLFW_PRESS, GLFW_REPEAT or GLFW_RELEASE
-action will be GLFW_KEY_UNKNOWN if GLFW lacks a key token for it,
-for example E-mail and Play keys.
-
-@parm int
-bit-field describing which modifier keys (shift, alt, control)
-were held down
-
-@return none
-
-This function is called when keyboard buttons are pressed.
-When the ESC key is pressed, the close flag of the window is set.
-*/
-void GLHelper::key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod) {
-	
-	/* for object physics implementation*/
-	if (GLFW_PRESS == action && key == GLFW_KEY_RIGHT)
-	{
-		//Object::objects["Object5"].position.x += 50.0f;
-		std::cout << "Physics: Moving a circle object right" << std::endl;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_LEFT)
-	{
-		//Object::objects["Object5"].position.x -= 50.0f;
-		std::cout << "Physics: Moving a circle object left" << std::endl;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_DOWN)
-	{
-		//Object::objects["Object5"].position.y -= 50.0f;
-		std::cout << "Physics: Moving a circle object down" << std::endl;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_UP)
-	{
-		//Object::objects["Object5"].position.y += 50.0f;
-		std::cout << "Physics: Moving a circle object up" << std::endl;
-	}
-
-	/* for object6's rotation implementation*/
-	/* the lower right rectangle*/
-	// press J to rotate right faster, press K to rotate left
-	if (GLFW_PRESS == action && key == GLFW_KEY_J)
-	{
-		//Object::objects["Object6"].rot_left = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_K)
-	{
-		//Object::objects["Object6"].rot_right = GL_TRUE;
-	}
-
-	/* for object6's scaling implementation*/
-	// Press M to scale upm press N to scale down
-	if (GLFW_PRESS == action && key == GLFW_KEY_M)
-	{
-		//Object::objects["Object6"].scale_up = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_N)
-	{
-		//Object::objects["Object6"].scale_down = GL_TRUE;
-	}
-
-	//for camera physics
-	if (GLFW_PRESS == action && key == GLFW_KEY_V)
-	{
-		//Camera2D::camera2d.camtype_flag = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_Z)
-	{
-		//Camera2D::camera2d.zoom_flag = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_A)
-	{
-		//Camera2D::camera2d.left_turn_flag = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_D)
-	{
-		//Camera2D::camera2d.right_turn_flag = GL_TRUE;
-	}
-	if (GLFW_PRESS == action && key == GLFW_KEY_W)
-	{
-		//Camera2D::camera2d.move_flag = GL_TRUE;
-		//Camera2D::camera2d.decelerate = GL_FALSE;
-	}
-	else if (GLFW_RELEASE == action)
-	{
-		//Camera2D::camera2d.decelerate = GL_TRUE;
-		//Camera2D::camera2d.camtype_flag = GL_FALSE;
-		//Camera2D::camera2d.zoom_flag = GL_FALSE;
-		//Camera2D::camera2d.left_turn_flag = GL_FALSE;
-		//Camera2D::camera2d.right_turn_flag = GL_FALSE;
-		//Camera2D::camera2d.move_flag = GL_FALSE;
-		//Object::objects["Object6"].rot_left = GL_FALSE;
-		//Object::objects["Object6"].rot_right = GL_FALSE;
-		//Object::objects["Object6"].scale_up = GL_FALSE;
-		//Object::objects["Object6"].scale_down = GL_FALSE;
-	}
-
-	
-
-}
-
-/*  _________________________________________________________________________*/
-/*! mousebutton_cb
-
-@param GLFWwindow*
-Handle to window that is receiving event
-
-@param int
-the mouse button that was pressed or released
-GLFW_MOUSE_BUTTON_LEFT and GLFW_MOUSE_BUTTON_RIGHT specifying left and right
-mouse buttons are most useful
-
-@parm int
-action is either GLFW_PRESS or GLFW_RELEASE
-
-@parm int
-bit-field describing which modifier keys (shift, alt, control)
-were held down
-
-@return none
-
-This function is called when mouse buttons are pressed.
-*/
-void GLHelper::mousebutton_cb(GLFWwindow* pwin, int button, int action, int mod) {
-
-}
-
-/*  _________________________________________________________________________*/
 /*! mousepos_cb
 
 @param GLFWwindow*
@@ -322,7 +172,7 @@ new cursor y-coordinate, relative to the top edge of the client area
 This functions receives the cursor position, measured in screen coordinates but
 relative to the top-left corner of the window client area.
 */
-void GLHelper::mousepos_cb(GLFWwindow* pwin, double xpos, double ypos) {
+void GLHelper::mousepos_cb(GLFWwindow* /*pwin*/, double /*xpos*/, double /*ypos*/) {
 #ifdef _DEBUG
 	//std::cout << "Mouse cursor position: (" << xpos << ", " << ypos << ")" << std::endl;
 #endif
@@ -342,7 +192,7 @@ Human-readable description of the code
 The error callback receives a human-readable description of the error and
 (when possible) its cause.
 */
-void GLHelper::error_cb(int error, char const* description) {
+void GLHelper::error_cb(int /*error*/, [[maybe_unused]] char const* description) {
 #ifdef _DEBUG
 	std::cerr << "GLFW error: " << description << std::endl;
 #endif
@@ -365,27 +215,14 @@ Height in pixels of new window size
 This function is called when the window is resized - it receives the new size
 of the window in pixels.
 */
-void GLHelper::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
+void GLHelper::fbsize_cb(GLFWwindow* /*ptr_win*/, int width_, int height_) {
 #ifdef _DEBUG
 	std::cout << "fbsize_cb getting called!!!" << std::endl;
 #endif
 	// use the entire framebuffer as drawing region
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, width_, height_);
 	// later, if working in 3D, we'll have to set the projection matrix here ...
 }
-
-/*  _________________________________________________________________________*/
-/*! update_time
-
-@param double
-fps_calc_interval: the interval (in seconds) at which fps is to be
-calculated
-
-This function must be called once per game loop. It uses GLFW's time functions
-to compute:
-1. the interval in seconds between each frame
-2. the frames per second every "fps_calc_interval" seconds
-*/
 void GLHelper::update_time(double fps_calc_interval) {
 	// get elapsed time (in seconds) between previous and current frames
 	static double prev_time = glfwGetTime();
@@ -405,7 +242,7 @@ void GLHelper::update_time(double fps_calc_interval) {
 	fps_calc_interval = (fps_calc_interval < 0.0) ? 0.0 : fps_calc_interval;
 	fps_calc_interval = (fps_calc_interval > 10.0) ? 10.0 : fps_calc_interval;
 	if (elapsed_time > fps_calc_interval) {
-		GLHelper::fps = count / elapsed_time;
+		GLHelper::fps = static_cast<GLint>(count / elapsed_time);
 		start_time = curr_time;
 		count = 0.0;
 	}

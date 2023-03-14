@@ -1,12 +1,22 @@
 18 10
-A O O N N N O O O O N N N N O O O H
-K B I a a a B N N N a a a B N N N O
-K a a a a i a a N a a a a a a a a O
-K a a a n a a a a a a a J H a a a O
-K a a a a a a a D a l a a D a F M O
-O M H a a a a a P a a a a D g O O O
-O O K o a D a a a a a a a a e O O O
-O O O M M O M M M M M M M M M O O O
-O O O O O O O O O O O O O O O O O O
-O O O O O O O O O O O O O O O O O O
-B O O O O O O O O O O O O O O O O I
+# # # # # 9 # # # # # # # # # # 9 #
+# 9 # # # # # # # J # ! ! # # # # #
+# ! ! ! ! ! ! 9 ! ! ! ! ! ! ! ! ! #
+# ! ! [ # # ! # ! ! # 9 ! # J ! ! #
+# # ! # ! ! ! # ! a ! # ! ! # ! 9 #
+# # ! ! ! , ! # ! ! ! ! ! ! # 2 # #
+# # ! ! # ! ! ! ! ! # # 9 # # % # #
+# # # # # 9 # # # J # 9 # # # # # #
+# # # 9 # # # # # # # # # # # # 9 #
+# # # # # # # # 9 # # # # # # # # #
+
+M M M M M M M M M M M P P M M M M M
+M P P P P P P M P P Q ! ! O P P P M
+N ! ! ! ! ! ! F ! ! ! ! ! ! ! ! ! L
+N ! ! [ I K ! F ! ! I H ! I H ! ! L
+M H ! A ! ! ! F ! a ! G ! ! F ! C M
+M N ! ! ! , ! G ! ! ! ! ! ! F ! L M
+M N ! ! E ! ! ! ! ! C D D D N ! L M
+M M D D M D D D D D M M M M M D M M
+M M M M M M M M M M M M M M M M M M
+M M M M M M M M M M M M M M M M M M

@@ -33,14 +33,14 @@ namespace Core
 		/******************************************************************************/
 		for (int i = 0; i <= 86; ++i)
 		{
-			keys[(KEY)(i)][KEY_STATE_RELEASE] = false;
-			keys[(KEY)(i)][KEY_STATE_PRESS] = false;
-			keys[(KEY)(i)][KEY_STATE_REPEAT] = false;
+			keys[(KEY)(i)][KEY_STATE::KEY_STATE_RELEASE] = false;
+			keys[(KEY)(i)][KEY_STATE::KEY_STATE_PRESS] = false;
+			keys[(KEY)(i)][KEY_STATE::KEY_STATE_REPEAT] = false;
 		}
 
-		keys[(KEY)(999)][KEY_STATE_RELEASE] = false;
-		keys[(KEY)(999)][KEY_STATE_PRESS] = false;
-		keys[(KEY)(999)][KEY_STATE_REPEAT] = false;
+		keys[(KEY)(999)][KEY_STATE::KEY_STATE_RELEASE] = false;
+		keys[(KEY)(999)][KEY_STATE::KEY_STATE_PRESS] = false;
+		keys[(KEY)(999)][KEY_STATE::KEY_STATE_REPEAT] = false;
 	}
 
 	/******************************************************************************/
@@ -73,19 +73,19 @@ namespace Core
 	{
 		if (keyqueue.size() > 0)
 		{
-			keys[keyqueue.front()][KEY_STATE_RELEASE] = false;
+			keys[keyqueue.front()][KEY_STATE::KEY_STATE_RELEASE] = false;
 			keyqueue.pop();
 		}
 
-		if (action != KEY_STATE_RELEASE)
+		if (action != KEY_STATE::KEY_STATE_RELEASE)
 		{
 			keys[key][action] = true;
 			keyqueue.push(key);
 		}
 		else
 		{
-			keys[key][KEY_STATE_PRESS] = false;
-			keys[key][KEY_STATE_REPEAT] = false;
+			keys[key][KEY_STATE::KEY_STATE_PRESS] = false;
+			keys[key][KEY_STATE::KEY_STATE_REPEAT] = false;
 		}
 	}
 
@@ -116,7 +116,7 @@ namespace Core
 	/******************************************************************************/
 	bool Input::GetKeyDown(const KEY key)
 	{
-		if (keys[key][KEY_STATE_PRESS] || keys[key][KEY_STATE_REPEAT])
+		if (keys[key][KEY_STATE::KEY_STATE_PRESS] || keys[key][KEY_STATE::KEY_STATE_REPEAT])
 		{
 			return true;
 		}
@@ -141,10 +141,10 @@ namespace Core
 	gfxVector2 Input::GetMouse(GLFWwindow* window, int action)
 	{
 		double xpos, ypos;
-		if (action == KEY_STATE_PRESS)
+		if (action == static_cast<int>(KEY_STATE::KEY_STATE_PRESS))
 		{
 			glfwGetCursorPos(window, &xpos, & ypos);
-			gfxVector2 coordinates(xpos, ypos);
+			gfxVector2 coordinates((float)xpos, (float)ypos);
 			//std::cout << "Cursor position at " << xpos << " : " << ypos << std::endl;
 			return coordinates;
 		}
@@ -153,9 +153,9 @@ namespace Core
 
 	bool Input::IsKeyPressed(KEY key)
 	{
-		if (keys[key][KEY_STATE_PRESS])
+		if (keys[key][KEY_STATE::KEY_STATE_PRESS])
 		{
-			std::cout << "key " << key << " is pressed\n";
+			//std::cout << "key " << key << " is pressed\n";
 			return true;
 		}
 		else

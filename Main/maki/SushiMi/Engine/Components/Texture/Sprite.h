@@ -1,5 +1,7 @@
+#pragma once
 #ifndef SPRITE_H_
 #define SPRITE_H_
+
 
 /*!
 @file		Sprite.h
@@ -9,7 +11,7 @@
 @brief		Drawing of the sprite and animating of it is here
 *//*__________________________________________________________________________*/
 #include "../Engine/Components/Texture/Texture.h"
-#include "../Engine/System/Graphics/Renderer.h"
+#include "../Engine/System/Renderer.h"
 #include "../Engine/Components/Transform/Transform.h" //important as it is the only function that has a get()
 //#include "../Engine/Components/Transform/Transform.h"
 //#include "../Engine/System/Transformer.h"
@@ -20,19 +22,17 @@ namespace Core
 	class Sprite :public Component
 	{
 	public:
-		Sprite();
+
+		Sprite(const char* filename);
 
 		~Sprite();
 
 		void draw();
+		void drawTest();
 
 		void draw(double deltatime, AnimationType type);
 
 		void Add_animation(const char* filename);
-
-		void InsertTexture(const char* filename);
-		void InsertTexture(Texture tex);
-		Texture* GetTexture();
 
 		void Init();
 		void Serialize(const std::string name);
@@ -45,8 +45,15 @@ namespace Core
 		void Deactivate();
 		void Remove();
 		bool isSpriteSheet;
+
+		std::string levelname;
+		std::vector<std::string> CorrectIngredients;
+		static std::map<std::string, std::vector<std::string>> levelCorrectIngredients;
 		float SpriteSize[2];
 		Transform transformation;
+		float curr_pos;
+		float target_pos;
+		AnimationType curr_anim;
 
 		static inline Sprite* menu;
 
@@ -91,6 +98,18 @@ namespace Core
 			int x;
 			int y;
 		} goal2_Grid_pos;
+
+		float timer;
+		int count;
+		float alpha;
+		bool animeMe;
+		/*for salmon to toggle between the sprites
+		status 0 = normal
+		status 1 = soya
+		status 2 = wasabi
+		status 3 = both
+		*/
+		int status;
 
 	private:
 

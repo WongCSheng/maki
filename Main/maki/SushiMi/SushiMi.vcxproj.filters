@@ -14,7 +14,7 @@
       <Filter>Users</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Messaging\Messaging.cpp">
-      <Filter>GameEngine\Messaging</Filter>
+      <Filter>Cutscene\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\SystemFrame.cpp">
       <Filter>GameEngine\System</Filter>
@@ -43,11 +43,11 @@
     <ClCompile Include="..\lib\imgui\imgui_widgets.cpp">
       <Filter>GameEngine\UI\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Factory\Factory.cpp">
       <Filter>GameEngine\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Timer\Timer.cpp">
-      <Filter>GameEngine\Timer</Filter>
     </ClCompile>
     <ClCompile Include="Debugger\Debug.cpp">
       <Filter>Debugger</Filter>
@@ -61,8 +61,20 @@
     <ClCompile Include="Game Object\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\CameraSystem.cpp">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Renderer.cpp">
+      <Filter>GameEngine\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Transformer.cpp">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Components\Component.cpp">
       <Filter>GameEngine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\PhysicSystem.cpp">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Editors\LevelEditor.cpp">
       <Filter>Editors</Filter>
@@ -100,7 +112,16 @@
     <ClCompile Include="Engine\Camera\Camera2D.cpp">
       <Filter>GameEngine\Component\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
     <ClCompile Include="Game Object\Player.cpp">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>Scene Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\TextureSystem.cpp">
       <Filter>GameEngine\System\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Components\Texture\Rectangle.cpp">
@@ -121,32 +142,50 @@
     <ClCompile Include="Engine\Cutscene\Cutscene.cpp">
       <Filter>Cutscene</Filter>
     </ClCompile>
-    <ClCompile Include="Editors\EditorLayer.cpp">
-      <Filter>Editors</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\Camera\CameraSystem.cpp">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\Graphics\Renderer.cpp">
-      <Filter>GameEngine\System\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\System\Graphics\Font\fonts.cpp">
+    <ClCompile Include="Engine\Font\Font.cpp">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Physics\PhysicSystem.cpp">
-      <Filter>GameEngine\System\Physics</Filter>
+    <ClCompile Include="Level State\Level1.cpp">
+      <Filter>Level State</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Graphics\TextureSystem.cpp">
-      <Filter>GameEngine\System\Texture</Filter>
+    <ClCompile Include="Level State\Level2.cpp">
+      <Filter>Level State</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Transform\Transformer.cpp">
-      <Filter>GameEngine\System\Transform</Filter>
+    <ClCompile Include="Level State\Level3.cpp">
+      <Filter>Level State</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Window\Window.cpp">
-      <Filter>Main</Filter>
+    <ClCompile Include="Level State\Level4.cpp">
+      <Filter>Level State</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\System\Scene\SceneManager.cpp">
-      <Filter>Scene Manager</Filter>
+    <ClCompile Include="Level State\Level5.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level6.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level7.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level8.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level9.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level10.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Level11.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\TestLevel.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Tutorial1.cpp">
+      <Filter>Level State</Filter>
+    </ClCompile>
+    <ClCompile Include="Level State\Tutorial2.cpp">
+      <Filter>Level State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +202,7 @@
       <Filter>GameEngine\System</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Messaging\Messaging.h">
-      <Filter>GameEngine\Messaging</Filter>
+      <Filter>Cutscene\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Mesh\model.h">
       <Filter>GameEngine\Mesh</Filter>
@@ -201,6 +240,18 @@
     <ClInclude Include="Headers\STL_Header.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="include\Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
     <ClInclude Include="Headers\Graphics_Header.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -209,9 +260,6 @@
     </ClInclude>
     <ClInclude Include="Headers\RapidJSON_Header.h">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Timer\Timer.h">
-      <Filter>GameEngine\Timer</Filter>
     </ClInclude>
     <ClInclude Include="Debugger\Debug.h">
       <Filter>Debugger</Filter>
@@ -225,8 +273,20 @@
     <ClInclude Include="Game Object\GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\CameraSystem.h">
+      <Filter>GameEngine\System\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Renderer.h">
+      <Filter>GameEngine\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Transformer.h">
+      <Filter>GameEngine\System\Transform</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\Components\Component.h">
       <Filter>GameEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\PhysicSystem.h">
+      <Filter>GameEngine\System\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Editors\LevelEditor.h">
       <Filter>Editors</Filter>
@@ -252,9 +312,6 @@
     <ClInclude Include="Editors\imfilebrowser.h">
       <Filter>Editors</Filter>
     </ClInclude>
-    <ClInclude Include="testshader.h">
-      <Filter>Editors</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Input\Input.h">
       <Filter>GameEngine\Input</Filter>
     </ClInclude>
@@ -270,6 +327,7 @@
     <ClInclude Include="Engine\Shaders\ShaderProgram.h">
       <Filter>GameEngine\System\Graphics\GL\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="include\glm.h" />
     <ClInclude Include="Engine\Components\Transform\Transform.h">
       <Filter>GameEngine\Component\Transform</Filter>
     </ClInclude>
@@ -279,7 +337,16 @@
     <ClInclude Include="Engine\Camera\Camera2D.h">
       <Filter>GameEngine\Component\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Window.h">
+      <Filter>Main</Filter>
+    </ClInclude>
     <ClInclude Include="Game Object\Player.h">
+      <Filter>GameEngine\System\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\SceneManager.h">
+      <Filter>Scene Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\TextureSystem.h">
       <Filter>GameEngine\System\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Components\Texture\Rectangle.h">
@@ -300,50 +367,11 @@
     <ClInclude Include="Engine\Cutscene\Cutscene.hpp">
       <Filter>Cutscene</Filter>
     </ClInclude>
-    <ClInclude Include="Editors\EditorLayer.h">
-      <Filter>Editors</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Camera\CameraSystem.h">
-      <Filter>GameEngine\System\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Graphics\Renderer.h">
-      <Filter>GameEngine\System\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Graphics\Font\fonts.h">
+    <ClInclude Include="Engine\Font\Font.h">
       <Filter>GameEngine\System\Graphics\Fonts</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\Physics\PhysicSystem.h">
-      <Filter>GameEngine\System\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Graphics\TextureSystem.h">
-      <Filter>GameEngine\System\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Transform\Transformer.h">
-      <Filter>GameEngine\System\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Window\Window.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\Math.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\Matrix.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\Vector.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\vector3.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\vector4.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\System\Scene\SceneManager.h">
-      <Filter>Scene Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Math\glm.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="Level State\LevelsHeader.h">
+      <Filter>Level State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -358,9 +386,6 @@
     </Filter>
     <Filter Include="GameEngine\Core">
       <UniqueIdentifier>{57bcac02-779c-4cfe-8147-57a957306be9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Messaging">
-      <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\UI">
       <UniqueIdentifier>{4ada0b2c-cd3e-45fa-9ff1-2fc175d346a2}</UniqueIdentifier>
@@ -391,9 +416,6 @@
     </Filter>
     <Filter Include="GameEngine\Factory">
       <UniqueIdentifier>{8051f76e-1e7f-4699-b0df-1f3b238ffc36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Timer">
-      <UniqueIdentifier>{9e02925b-088d-41f8-a125-0ca2355f73c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Debugger">
       <UniqueIdentifier>{8a2a5263-9510-4a91-9728-cf360999f289}</UniqueIdentifier>
@@ -472,6 +494,12 @@
     </Filter>
     <Filter Include="Cutscene">
       <UniqueIdentifier>{dac5785e-a57e-4e03-a956-d7d8bc294bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level State">
+      <UniqueIdentifier>{30489099-e3f1-47cf-be59-70234cee0a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cutscene\Messaging">
+      <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

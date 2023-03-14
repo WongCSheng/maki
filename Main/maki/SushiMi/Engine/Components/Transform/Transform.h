@@ -50,7 +50,7 @@ namespace Core
 
 		glm::mat4 Get()
 		{
-			TranslateMat = glm::translate(glm::mat4(1.0f), glm::vec3(Position, 1.0f));
+			TranslateMat = glm::translate(glm::mat4(1.0f), glm::vec3(Position, 1.f));
 			RotationMat = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0.0f, 0.0f, 1.0f));
 			ScaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(Scale, 1.0f));
 

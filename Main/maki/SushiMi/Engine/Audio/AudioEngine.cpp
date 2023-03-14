@@ -8,6 +8,7 @@
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "AudioEngine.h"
+#include "../Factory/Factory.h"
 
 namespace Core
 {
@@ -18,7 +19,7 @@ namespace Core
         /*
         * Create the main system object.
         ----------------------------------------------------------------------------- */
-        System_Create(&fmodSystem);
+        FMOD::System_Create(&fmodSystem);
 
         /*
        *   Initialize FMOD.
@@ -35,6 +36,7 @@ namespace Core
         ----------------------------------------------------------------------------- */
         channel->setChannelGroup(channelGroup);
         musicChannel->setChannelGroup(channelGroup);
+        voiceChannel->setChannelGroup(channelGroup);
 
         /*
         *   Set a callback on the channel.
@@ -55,16 +57,16 @@ namespace Core
 
                     Plays music clip
     */
-    void _audioManager::PlaySFX(string clipName)
+    void _audioManager::PlaySFX(std::string clipName)
     {
         // Create the sound.
-        Sound* audioClip = 0;
+        FMOD::Sound* audioClip = 0;
         auto search = soundDatabase.find(clipName);
         if (search != soundDatabase.end())
             audioClip = search->second;
 
         // Play the sound.
-        fmodSystem->playSound(audioClip, nullptr, false, &channel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &channel);
     }
 
     /*!				void _audioManager::PlayMusic(string musicTrack)
@@ -73,17 +75,35 @@ namespace Core
 
                     Plays music track
     */
-    void _audioManager::PlayMusic(string musicTrack)
+    void _audioManager::PlayMusic(std::string musicTrack)
     {
         // Create the sound.
-        Sound* audioClip = 0;
+        FMOD::Sound* audioClip = 0;
         auto search = musicDatabase.find(musicTrack);
         if (search != musicDatabase.end())
             audioClip = search->second;
 
         // Play the music.
         musicChannel->stop();
-        fmodSystem->playSound(audioClip, nullptr, false, &musicChannel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &musicChannel);
+    }
+
+    /*!				void _audioManager::PlayVoice(string voiceClip)
+    @param			string voiceClip
+    @return none
+
+                    Plays voice
+    */
+    void _audioManager::PlayVoice(std::string voiceClip)
+    {
+        // Create the sound.
+        FMOD::Sound* audioClip = 0;
+        auto search = voiceDatabase.find(voiceClip);
+        if (search != voiceDatabase.end())
+            audioClip = search->second;
+
+        // Play the sound.
+        fmodSystem->playSound(audioClip, channelGroup, false, &voiceChannel);
     }
 
     /*!				void _audioManager::StopMusic(void)
@@ -110,6 +130,18 @@ namespace Core
         channel->stop();
     }
 
+    /*!				void _audioManager::StopVoice(void)
+    @param			void
+    @return none
+
+                    Stop playing Voices
+    */
+    void _audioManager::StopVoice(void)
+    {
+        // stop play the sound.
+        voiceChannel->stop();
+    }
+
     /*!				void _audioManager::SetAudioVolume(float volume)
     @param			float volume
     @return none
@@ -129,7 +161,17 @@ namespace Core
     */
     void _audioManager::SetMusicVolume(float volume)
     {
+        FMOD::Sound* snd = nullptr;
+        musicChannel->getCurrentSound(&snd);
+        
+        musicChannel->stop();
+        fmodSystem->playSound(snd, channelGroup, false, &musicChannel);
         musicChannel->setVolume(volume);
+    }
+
+    void _audioManager::SetVoiceVolume(float volume)
+    {
+        voiceChannel->setVolume(volume);
     }
 
     /*!				void _audioManager::Update()
@@ -152,13 +194,13 @@ namespace Core
     void _audioManager::CleanPlaying()
     {
         // Clean up.
-        map<string, Sound*>::iterator start;
+        std::map<std::string, FMOD::Sound*>::iterator start;
         for (start = soundDatabase.begin(); start != soundDatabase.end(); start++)
             start->second->release();
 
         for (start = musicDatabase.begin(); start != musicDatabase.end(); start++)
             start->second->release();
-        //channelGroup->release();
+        channelGroup->release();
         fmodSystem->release();
     }
 
@@ -169,14 +211,32 @@ namespace Core
 
                    Load sound into directory
     */
-    void _audioManager::LoadSFX(string name)
-    {
-        string pathString = "../Assets/Audio/SFX/" + name + '\0';
+    void _audioManager::LoadSFX(std::string name)
+    {        
+        std::string pathString = "../Assets/Audio/SFX/" + name + '\0';
         char* pathName = new char[pathString.length() + 1];
-        copy(pathString.begin(), pathString.end(), pathName);
-        Sound* sound = 0;
+        std::copy(pathString.begin(), pathString.end(), pathName);
+        FMOD::Sound* sound = 0;
         fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
         soundDatabase[name] = sound;
+        delete[] pathName;
+    }
+
+    /*!				void _audioManager::LoadVoice(string name)
+    {
+    @param          string name
+    @return none
+
+                   Load voice into directory
+    */
+    void _audioManager::LoadVoice(std::string name)
+    {
+        std::string pathString = "../Assets/Audio/Voice-over/" + name + '\0';
+        char* pathName = new char[pathString.length() + 1];
+        std::copy(pathString.begin(), pathString.end(), pathName);
+        FMOD::Sound* sound = 0;
+        fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
+        voiceDatabase[name] = sound;
         delete[] pathName;
     }
 
@@ -187,12 +247,12 @@ namespace Core
 
                    Load music into directory
     */
-    void _audioManager::LoadMusic(string name)
+    void _audioManager::LoadMusic(std::string name)
     {
-        string pathString = "../Assets/Audio/Music/" + name + '\0';
+        std::string pathString = "../Assets/Audio/Music/" + name + '\0';
         char* pathName = new char[pathString.length() + 1];
-        copy(pathString.begin(), pathString.end(), pathName);
-        Sound* music = 0;
+        std::copy(pathString.begin(), pathString.end(), pathName);
+        FMOD::Sound* music = 0;
         fmodSystem->createSound(pathName, FMOD_LOOP_NORMAL, nullptr, &music);
         musicDatabase[name] = music;
         delete[] pathName;
@@ -205,7 +265,7 @@ namespace Core
 
                    Unload sound into directory
     */
-    void _audioManager::UnLoadSFX(string name)
+    void _audioManager::UnLoadSFX(std::string name)
     {
         if (isActive && soundDatabase.find(name) != soundDatabase.end())
             soundDatabase[name]->release();
@@ -218,10 +278,23 @@ namespace Core
 
                    Unload music into directory
     */
-    void _audioManager::UnloadMusic(string name)
+    void _audioManager::UnloadMusic(std::string name)
     {
         if (isActive && musicDatabase.find(name) != musicDatabase.end())
             musicDatabase[name]->release();
+    }
+
+    /*!				void _audioManager::UnloadVoice(string name)
+    {
+    @param          string name
+    @return none
+
+                   Unload voice into directory
+    */
+    void _audioManager::UnloadVoice(std::string name)
+    {
+        if (isActive && voiceDatabase.find(name) != voiceDatabase.end())
+            voiceDatabase[name]->release();
     }
 
     /*!				void _audioManager::Free(void)
@@ -244,10 +317,18 @@ namespace Core
 
                    get sound
     */
-    Sound* _audioManager::GetSound(string name)
+    FMOD::Sound* _audioManager::GetSound(std::string name)
     {
         auto search = soundDatabase.find(name);
         if (search != soundDatabase.end())
+            return search->second;
+        return NULL;
+    }
+    
+    FMOD::Sound* _audioManager::GetMusic(std::string name)
+    {
+        auto search = musicDatabase.find(name);
+        if (search != musicDatabase.end())
             return search->second;
         return NULL;
     }
@@ -264,7 +345,7 @@ namespace Core
     /*
        *   get channel
        ----------------------------------------------------------------------------- */
-    Channel* _audioManager::GetMusicChannel(void)
+    FMOD::Channel* _audioManager::GetMusicChannel(void)
     {
         return musicChannel;
     }
@@ -274,7 +355,7 @@ namespace Core
         void* commandData1, void* commandData2)
     {
         if (controlType == FMOD_CHANNELCONTROL_CHANNEL
-            && AudioManager.GetMusicChannel() == (Channel*)channelControl
+            && AudioManager.GetMusicChannel() == (FMOD::Channel*)channelControl
             && callbackType == FMOD_CHANNELCONTROL_CALLBACK_END)
         {
             // music ended

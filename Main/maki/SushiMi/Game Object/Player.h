@@ -30,6 +30,8 @@ namespace Core
 		void move_down();
 		void restart();
 
+		void isStuck();
+
 		void stop();
 
 		glm::mat4 Transformation();
@@ -42,14 +44,13 @@ namespace Core
 		} playerpos;
 
 		static inline struct PlayerInitialPos {
-			int x;
-			int y;
+			float x;
+			float y;
 		} playerpos_restart;
 
-		
-
-		Sprite* sp;
+		static inline Sprite* sp;
 		AnimationType current_anim;
+		static inline int resetCount;
 
 		static inline struct PlayergridPos
 		{

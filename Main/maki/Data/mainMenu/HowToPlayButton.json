@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 275, 520 ],
+      "rotation": 0.0,
+      "scale": [ 266, 96 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Button_HowToPlay.png",
+      "name": "HowToPlay",
+      "alpha" : 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    },
+    {
+      "type": "Audio",
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
+    }
+  ]
+}

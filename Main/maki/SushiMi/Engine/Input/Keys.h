@@ -121,7 +121,7 @@ namespace Core
 		KEY_UNDEFINED = 999,
 	};*/
 	
-enum KEY
+enum class KEY
 	     {
 	         Unknown = -1,
 		         A = 0,
@@ -237,7 +237,7 @@ enum KEY
 		         Return = Enter
 		     };
 
-	enum MOUSE
+	enum class MOUSE
 	{
 		MOUSE_BUTTON_LEFT = 0,
 		MOUSE_BUTTON_RIGHT,
@@ -245,9 +245,9 @@ enum KEY
 		MOUSE_UNDEFINED = 999,
 	};
 
-	enum KEY_STATE
+	enum class KEY_STATE
 	{
-		KEY_STATE_RELEASE,
+		KEY_STATE_RELEASE = 0,
 		KEY_STATE_PRESS,
 		KEY_STATE_REPEAT,
 		KEY_STATE_UNDEFINED = 999,

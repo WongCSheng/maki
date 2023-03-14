@@ -15,7 +15,6 @@
 #include <stdexcept>               // std::runtime_error
 #include <error/error.h>
 #include <error/en.h>
-#include <stringbuffer.h>
 
 #include <fstream>
 #include <filesystem>

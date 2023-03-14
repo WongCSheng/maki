@@ -16,11 +16,12 @@ namespace Core
 {
 	struct Texture;
 	//using namespace std;
-	enum AnimationType
+	enum class AnimationType
 	{
 		Idle,
 		Run,
-		Jump
+		Jump,
+		Both
 	};
 
 	class Animation2D

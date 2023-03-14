@@ -175,11 +175,28 @@ BundleArtifacts/
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
 #Merge Attempt/maki/x64/Debug/SushiMi.exe
-<<<<<<< HEAD
-Merge Attempt/maki/x64/Debug/SushiMi.exe
-Merge Attempt/maki/SushiMi/Log.txt
-=======
 Main/maki/SushiMi/Log.txt
 Main/maki/SushiMi/Log.txt
 Main/maki/SushiMi/x64/Debug/SushiMi.log
->>>>>>> M3-submission-branch
+Main/maki/SushiMi/x64/Debug/SushiMi.log
+Main/maki/SushiMi/x64/Debug/SushiMi.log
+*.sarif
+Main/maki/SushiMi/x64/Debug/Camera2D.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Debug/Camera2D.nativecodeanalysis.xml
+*.sarif
+Main/maki/SushiMi/x64/Release/SceneManager.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/ShaderProgram.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/Rectangle.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Debug/imgui_draw.nativecodeanalysis.sarif
+Main/maki/SushiMi/x64/Debug/imgui_impl_glfw.nativecodeanalysis.sarif
+Main/maki/SushiMi/x64/Release/Cutscene.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/Factory.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/Font.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/GameObject.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/GameWindow.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/glslshader.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/imgui.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/imgui_draw.nativecodeanalysis.xml
+Main/maki/SushiMi/x64/Release/imgui_impl_opengl3.nativecodeanalysis.xml
+Main/maki/x64/Editor Mode/SushiMi.exe.lastcodeanalysissucceeded
+Main/maki/x64/Debug/SushiMi.exe.lastcodeanalysissucceeded

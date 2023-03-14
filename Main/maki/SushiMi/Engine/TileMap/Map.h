@@ -1,53 +1,83 @@
+/*
+File:		Map.h
+@author		louishetong.wang@digipen.edu 40%
+co-Author:  thea.sea@digipen.edu 15%
+co-Author:  Aurelia (fei.x@digipen.edu) 30%
+co-Author:  w.chongsheng@digipen.edu  15%
+
+Description:
+*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #pragma once
-
+#ifndef Map_H_
+#define Map_H_
 #include <string>
-#include <map>
-#include <iostream>
-#include <fstream>
-#include "../Engine/System/SystemFrame.h"
+#include <vector>
+#include "../../src/Window.h"
 
-/*set a static grid first*/
-#define GRID_COL 18
-#define GRID_ROW 10
+#include "../Headers/SceneManager.h"
 
 namespace Core
 {
 	class Sprite;
 
-	class Map : public SystemFrame
+	class Map
 	{
 	public:
 		Map();
 		~Map();
-
-		void Init();
-		void Update(const double dt);
-		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
-
+		static inline std::map<std::pair<grid_number, wall_type>, Sprite*> levelWinConditions;
 		static void initMap(std::string Filename);
+		static void saveEditedMap(std::string Filename);
 		static void ResetMap();
-		static void LoadMap();
+		static void RestartMap();
+		static int LoadMap();
+		static void LoadAMap();
+		static void LoadWMap();
+		static void LoadGMap();
 		static void DrawMap();
-		static int GetValue(int col_x, int row_y);
-		static void SetValue(int col_x, int row_y, int value);
+		static int GetValue(double col_x, double row_y);
+		static void SetValue(double col_x, double row_y, int value);
 		/*put here temporarily first*/
-		/*static void collision_check_right();
+		static void collision_check_right();
 		static void collision_check_left();
 		static void collision_check_up();
-		static void collision_check_down();*/
+		static void collision_check_down();
 		static void print_map_to_console();
 	
+		static bool isStuck();
 		static bool isWin();
+		
+		static void fadeToBlack();
+		static std::string EnumToString(grid_number ingredient);
 
-		static inline int grid_row;
-		static inline int grid_col;
+		//static inline Core::grid_number box_stepped_on;
+		static inline int Map_Height, Map_Width;
+		/*static int** MapData;
+		static int** BinaryData;*/
+		static inline int max_grid_cols_x;
+		static inline int max_grid_rows_y;
 		static float tile_width, tile_height;
-
-		static int tile_counter;
-
 		static int** gGrids;
-		static short** cGrids;
-		static short** rGrids;
-		static short** pGrids;
+
+		static inline Sprite* soya;
+		static inline Sprite* rice;
+		static inline Sprite* salmon;
+		static inline Sprite* wasabi;
+		static inline Sprite* tea;
+
+		static int** wGrids;
+		static int** aGrids;
+		static int** RestartGrids;
+
+		//static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
+		
+		static int CorrectCombination;
 	};
+	/*extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
+	
+
 }
+#endif

@@ -1,8 +1,11 @@
 //******************************************************************************/
 /*!
 \file		main.cpp
-\author 	Thea Sea
+\author 	Thea Sea 50%
 \par    	email: thea.sea@digipen.edu
+\co-author 	Aurelia Chong 50%
+\par    	email: fei.x@digipen.edu
+
 \date   	2/8/2022
 \brief		This source file contains the main function to call all other functions and implement the game loop
 
@@ -20,11 +23,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
 #include "../Engine/Core/Core.h"
-#include "../Engine/Window/Window.h"
+#include "Window.h"
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
 #include "../Editors/LevelEditor.h"
-#include "../Engine/System/Graphics/TextureSystem.h"
+#include "../Engine/System/TextureSystem.h"
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
@@ -33,16 +36,19 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 //#include "../Mono/Mono.h"
 #include <memory> 
 #include <crtdbg.h> 
+#include <WinBase.h>
 
 //	testing
 #include "../Headers/Log.h"
-#include "../Engine/System/Graphics/Font/fonts.h"
+#include "Engine/Font/Font.h"
+
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
 
 
 static Core::MainSystem* CoreSystem;
+int screenwidth = 0, screenheight = 0;
 
 /*                                                      function definitions
 ----------------------------------------------------------------------------- */
@@ -57,13 +63,18 @@ Indicates how the program existed. Normal exit is signaled by a return value of
 0. Abnormal termination is signaled by a non-zero return value.
 Note that the C++ compiler will insert a return 0 statement if one is missing.
 */
-int main() {
 
+//int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow);
+
+
+int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout_ HINSTANCE hPrevInstance,
+	[[maybe_unused]] LPSTR lpCmdLine, [[maybe_unused]] int nCmdShow)
+{
+	
 	// Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//_CrtSetBreakAlloc(3240); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(5294); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -74,11 +85,19 @@ int main() {
 
 	/*----------------------------------------------*/
 
-	CoreSystem->windowsystem->Mainloop();
-	
+	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
+
 	Core::pseudomain::cleanup();
+
+	return 0;
+	
 }
 
+int main() {
+
+	return WinMain(GetModuleHandle(NULL), NULL, GetCommandLineA(), SW_SHOWNORMAL);
+
+}
 /*  _________________________________________________________________________ */
 /*! update
 @param none
@@ -92,14 +111,13 @@ void Core::pseudomain::update()
 {
 	glfwPollEvents();
 
-	GLHelper::update_time(1.0);
-
 	Editor::LevelEditor::imguiGraphicsTest();
 
+	GLHelper::update_time(1.0);
 
-	CoreSystem->objfactory->Update(GLHelper::delta_time);
+	CoreSystem->objfactory->Update((Get_Delta()));
 
-	CoreSystem->Update(GLHelper::delta_time);
+	CoreSystem->Update((Get_Delta()));
 }
 
 /*  _________________________________________________________________________ */
@@ -112,7 +130,21 @@ Uses GLHelper::GLFWWindow* to get handle to OpenGL context.
 */
 void Core::pseudomain::draw() 
 {
+	if (Window::show_fps)
+	{
+		Shaders->Font_Shader()->use();
+		if (GLHelper::fps < 60)
+		{
+
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.95f, screenheight * 0.95f, .5f, glm::vec3(1.f, 0.f, 0.f),1.f);
+		}
+		else
+		{
+			Font::RenderText(*Shaders, "FPS: " + to_string(GLHelper::fps), screenwidth * 0.95f, screenheight * 0.95f, .5f, glm::vec3(0.f, 1.f, 0.f), 1.f);
+		}
+	}
 	//imGUI Game Editor
+
 
 
 	Editor::LevelEditor::imguiEditorDraw();
@@ -124,13 +156,13 @@ void Core::pseudomain::draw()
 }
 
 void GLAPIENTRY
-MessageCallback(GLenum source,
+MessageCallback(GLenum /*source*/,
 	GLenum type,
-	GLuint id,
+	GLuint /*id*/,
 	GLenum severity,
-	GLsizei length,
+	GLsizei /*length*/,
 	const GLchar* message,
-	const void* userParam)
+	const void* /*userParam*/)
 {
 	if (type == GL_DEBUG_TYPE_ERROR) {
 		fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
@@ -151,30 +183,79 @@ The specific initialization of OpenGL state and geometry data is
 abstracted away in GLApp::init
 */
 void Core::pseudomain::init() {
+	glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
-	//Font::init();
+	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 
 
+
+	//loading the entire main_menu which consists of all the buttons
+	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
+	//loading the entire pause_menu which consists of all the buttons
+	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
+
+	//How to play screens
+	DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
+
 	//loading main menu
-	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
-	//loading TabMenu
-	Core::DeserializeEntity("../Data/TabMenu.json", CoreSystem->objfactory);
+	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
+	Core::DeserializeEntity("../Data/Quests/questBase.json", CoreSystem->objfactory);
 
-	//loading image&button paths
-	Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
+	/*	Loading all ingredients	(ingredients from tut1-lv6)*/
+	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Cucumber.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Inari.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Nori.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Octopus.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Rice.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Roes.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Salmon.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Tamago.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Tofu.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Tuna.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
 
-	//loading pause menu & buttons
-	Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
+	/*	Loading quests lv7-lv10)*/
+	Core::DeserializeEntity("../Data/Quests/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
+	Core::DeserializeEntity("../Data/Quests/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
+	Core::DeserializeEntity("../Data/Quests/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
+
+	/*Loading of quest chop*/
+	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Quests/denied.json", CoreSystem->objfactory);
+
+	/* Loading of all quests in the desinated level*/
+	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv2/QuestLv2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv3/QuestLv3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv4/QuestLv4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv5/QuestLv5.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv7/QuestLv7.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv8/QuestLv8.json", CoreSystem->objfactory);
+
+
+	////loading image&button paths
+	//Core::DeserializeEntity("../Data/StartButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/HowToPlay.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/SettingsButton.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/ExitButton.json", CoreSystem->objfactory);
+
+	////loading pause menu & buttons
+	/*Core::DeserializeEntity("../Data/PauseMenu.json",CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/ResumeButton.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/QuitButton.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/MenuButton.json", CoreSystem->objfactory);*/
 
 
 	glEnable(GL_DEBUG_OUTPUT);
@@ -183,7 +264,7 @@ void Core::pseudomain::init() {
 	//load GLAD so it configures OpenGL
 	//gladLoadGL(); //do not uncomment this, glad header does not work
 
-	glViewport(0, 0, 800, 800); //resize window
+	glViewport(0, 0, 1920, 1080); //resize window
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -191,20 +272,42 @@ void Core::pseudomain::init() {
 	// Part 2
 	GLHelper::print_specs(); //uncommented
 	glfwMakeContextCurrent(Window::window_ptr);
+#if defined(RELEASE)| defined(RELEASE)
+	//make fullscreen
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+	glfwSetWindowMonitor(Window::window_ptr, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+#endif
 
 	// Part 3
 	//Editor::LevelEditor::imguiEditorInit(); //shifted into mainsystem
 #if defined(EDITOR) | defined(EDITOR)
-	CoreSystem->leveleditorsystem->imguiEditorInit();
-	
+	//CoreSystem->leveleditorsystem->imguiEditorInit();
+	CoreSystem->AccessSystem<Core::Editor::LevelEditor>(Core::SystemID::LevelEditor)->imguiEditorInit();
+
 #endif
 
 	//load audio files
 	AudioManager.LoadMusic("BGM.wav");
-	AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
+	AudioManager.LoadSFX("Closing container.wav");
+	AudioManager.LoadVoice("YES_1.wav");
+	AudioManager.LoadVoice("Sad_1.wav");
+	AudioManager.LoadVoice("Dialogue_1.wav");
+	AudioManager.LoadVoice("Dialogue_2.wav");
+	AudioManager.LoadVoice("Dialogue_3.wav");
+	AudioManager.LoadVoice("Dialogue_4.wav");
+	AudioManager.LoadVoice("Dialogue_5.wav");
+	AudioManager.LoadVoice("Idle_1.wav");
+	AudioManager.LoadSFX("Pouring.wav");
+	AudioManager.LoadSFX("Squeezing.wav");
+	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	AudioManager.SetMusicVolume(0.8f);
 	AudioManager.PlayMusic("BGM.wav");
+	AudioManager.SetMusicVolume(0.7f);
+
+	float volume;
+	AudioManager.GetMusicChannel()->getVolume(&volume);
+	std::cout << "Music Volume: " << volume << std::endl;
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
@@ -222,9 +325,11 @@ void Core::pseudomain::cleanup() {
 
 	GLHelper::cleanup();
 	//unload music
-	AudioManager.UnloadMusic("BGM.wav");
-	AudioManager.UnLoadSFX("WalkSFX.wav");
-	AudioManager.UnloadMusic("BGM.wav");
+	/*AudioManager.UnloadMusic("BGM.wav");
+	AudioManager.UnloadMusic("BGM with Forest Day volume test.wav");
+	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.wav");*/
+	AudioManager.CleanPlaying();
+	AudioManager.Free();
 
 	////imgui Shutdown
 #if defined(DEBUG) | defined(_DEBUG)

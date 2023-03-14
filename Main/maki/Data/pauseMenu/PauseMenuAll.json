@@ -1,0 +1,20 @@
+{
+  "components": [
+    {
+      "name": "PauseMenu",
+      "filename": "../Data/pauseMenu/PauseMenu.json"
+    },
+    {
+      "name": "ResumeButton",
+      "filename": "../Data/pauseMenu/ResumeButton.json"
+    },
+    {
+      "name": "MenuButton",
+      "filename": "../Data/pauseMenu/MenuButton.json"
+    },
+    {
+      "name": "QuitButton",
+      "filename": "../Data/pauseMenu/QuitButton.json"
+    }
+  ]
+}

@@ -29,24 +29,41 @@ namespace Core
 {
 	MainSystem::MainSystem()
 	{
-		cameraSystem = CameraSystem::GetInstance();
-		systems.push_back(cameraSystem);
-		// -
-		transformer = Transformer::GetInstance();
-		systems.push_back(transformer);
+		/*systems.insert({ SystemID::CameraSystem, std::unique_ptr<CameraSystem>(CameraSystem::GetInstance()) });
 
-		windowsystem = std::make_unique<Window>(800, 600);
-		systems.push_back(windowsystem.get());
-		// -
-		rendersystem = Renderer::GetInstance();
-		systems.push_back(rendersystem);
+		systems.insert({ SystemID::Transformer, std::unique_ptr<Transformer>(Transformer::GetInstance()) });
 
-		texturesystem = TextureSystem::GetInstance();
-		systems.push_back(texturesystem);
+		systems.insert({ SystemID::Windows, std::unique_ptr<Window>(Window::GetInstance(800, 600)) });
+
+		systems.insert({ SystemID::Renderer, std::unique_ptr<Renderer>(Renderer::GetInstance()) });
+
+		systems.insert({ SystemID::TextureSystem, std::unique_ptr<TextureSystem>(TextureSystem::GetInstance()) });
 
 #if defined(DEBUG) | defined(_DEBUG)
-		leveleditorsystem = std::make_unique<Editor::LevelEditor>();
-		systems.push_back(leveleditorsystem.get());
+		systems.insert({ SystemID::LevelEditor, std::unique_ptr<Editor::LevelEditor>(Editor::LevelEditor::GetInstance()) });
+#endif
+
+		systems.insert({ SystemID::Factory, std::unique_ptr<ObjectFactory>(ObjectFactory::GetInstance()) });
+
+		inputsystem = new Input();*/
+
+		cameraSystem = CameraSystem::GetInstance();
+		systems.insert({ SystemID::CameraSystem, cameraSystem });
+		// -
+		transformer = Transformer::GetInstance();
+		systems.insert({ SystemID::Transformer, transformer });
+
+		windowsystem = Window::GetInstance(800, 600);
+		systems.insert({ SystemID::Windows, windowsystem });
+		// -
+		rendersystem = Renderer::GetInstance();
+		systems.insert({ SystemID::Renderer, rendersystem });
+
+		texturesystem = TextureSystem::GetInstance();
+		systems.insert({ SystemID::TextureSystem, texturesystem });
+#if defined(DEBUG) | defined(_DEBUG)
+		leveleditorsystem = Editor::LevelEditor::GetInstance();
+		systems.insert({ SystemID::LevelEditor, leveleditorsystem });
 #endif
 
 		scnsystem = SceneManager::GetInstance();
@@ -62,19 +79,10 @@ namespace Core
 	*/
 	MainSystem::~MainSystem()
 	{
-		/*for (auto& sys : systems)
+		/*for (auto& [name, ptr] : systems)
 		{
-			if (sys != NULL)
-			{
-				delete sys;
-				sys = NULL;
-			}
+			delete ptr;
 		}*/
-		//To shift into cleanup
-		
-		//glfwSetKeyCallback(GLHelper::ptr_window, Input::key_callback);
-
-		//delete windowsystem;
 	}
 
 	/*
@@ -98,35 +106,10 @@ namespace Core
 
 	void MainSystem::Init()
 	{
-		for (auto& sys : systems)
+		for (auto sys = systems.begin(); sys != systems.end(); sys++)
 		{
-			sys->Init();
-
+			sys->second->Init();
 		}
-		//creation of obj
-		//Object::GameObject* temp1 = objfactory->Create();
-		//Object::GameObject* temp2 = objfactory->Create();
-		//objfactory->AddObjects(temp1, "Obj Test 1");
-		//objfactory->AddObjects(temp2, "Obj Test 2");
-
-		////creation of collision objs
-		//Object::GameObject* Collision1 = objfactory->Create();
-		//Object::GameObject* Collision2 = objfactory->Create();
-		//objfactory->AddObjects(Collision1, "CollisionObj1 Test");
-		//objfactory->AddObjects(Collision2, "CollisionObj2 Test");
-
-		
-		
-
-		//Object::GameObjectProperty* test = objfactory->ObjectContainer;
-
-		//for (auto& i : objfactory->ObjectContainer)
-		//{
-		//	i.second->GetObjectProperties()->AddComponent(ComponentID::Collision, new Collision());
-		//	static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min = gfxVector2(0, 0); //set button coordiantes
-		//	static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max = gfxVector2(100, 100);
-		//}
-
 	}
 
 	/*
@@ -135,31 +118,14 @@ namespace Core
 
 	void MainSystem::Update(const double dt)
 	{
-		for (int i = 0; i < systems.size(); ++i)
+		for (auto sys = systems.begin(); sys != systems.end(); sys++)
 		{
-			systems[i]->Update(dt);
+			sys->second->Update(dt);
 		}
 
-		int mousestate = glfwGetMouseButton(Window::window_ptr, MOUSE_BUTTON_LEFT);
+		int mousestate = glfwGetMouseButton(Window::window_ptr, static_cast<int>(MOUSE::MOUSE_BUTTON_LEFT));
 
 		gfxVector2 mousePos = inputsystem->GetMouse(Window::window_ptr, mousestate);
-
-		//for (auto& i : objfactory->ObjectContainer)
-		//{
-		//	if (staticPointRect(mousePos, static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB()))
-		//	{
-		//		std::cout << "U are clicking" << std::endl;
-		//		/*std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.x << " , ";
-		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().min.y << std::endl;
-		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.x << " , ";
-		//		std::cout << static_cast<Collision*>(i.second->GetObjectProperties()->GetComponent(ComponentID::Collision))->GetAABB().max.y << std::endl;*/
-		//		std::cout << mousePos.x << ", " << mousePos.y << std::endl;
-		//		break;
-
-		//	}
-
-		//}
-
 	}
 
 	/*
@@ -168,9 +134,9 @@ namespace Core
 
 	void MainSystem::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
 	{
-		for (int i = 0; i < systems.size(); ++i)
+		for (auto sys = systems.begin(); sys != systems.end(); sys++)
 		{
-			systems[i]->RegisterComponent(ObjectContainer);
+			sys->second->RegisterComponent(ObjectContainer);
 		}
 
 	}
@@ -186,51 +152,11 @@ namespace Core
 
 		TextureSystem::GetInstance()->Shutdown();
 
-		delete objfactory;
-
 		delete inputsystem;
 	}
-	void MainSystem::AccessObjFactory()
+
+	void MainSystem::AddtoObjFactory()
 	{
 		Editor::LevelEditor::AddToFactory(objfactory);
 	}
 }
-
-//MainSystem::MainSystem()
-//{
-//}
-//
-//MainSystem::~MainSystem()
-//{
-//	for (SystemFrame* i : SubSystems)
-//	{
-//		if (i != NULL)
-//		{
-//			delete i;
-//			i = NULL;
-//		}
-//
-//		if (elem_pos > 0)
-//		{
-//			--elem_pos;
-//		}
-//	}
-//}
-//
-//void MainSystem::Sys_Init()
-//{
-//	elem_pos = 0;
-//}
-//
-//void MainSystem::update(const float dt)
-//{
-//
-//}
-//
-//void MainSystem::RegisterEntities(std::array<Entity, 1000> entities)
-//{
-//	for (SystemFrame* i : SubSystems)
-//	{
-//		i->RegisterEntities(entities);
-//	}
-//}

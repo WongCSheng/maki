@@ -1157,7 +1157,7 @@ static void ShowDemoWindowWidgets()
     if (ImGui::TreeNode("Combo"))
     {
         // Combo Boxes are also called "Dropdown" in other systems
-        // Expose flags as checkbox for the demo
+        // Expose flags as box_stepped_on for the demo
         static ImGuiComboFlags flags = 0;
         ImGui::CheckboxFlags("ImGuiComboFlags_PopupAlignLeft", &flags, ImGuiComboFlags_PopupAlignLeft);
         ImGui::SameLine(); HelpMarker("Only makes a difference if the popup is larger than the combo");
@@ -2403,7 +2403,7 @@ static void ShowDemoWindowWidgets()
         if (item_type == 0) { ImGui::Text("ITEM: Text"); }                                              // Testing text items with no identifier/interaction
         if (item_type == 1) { ret = ImGui::Button("ITEM: Button"); }                                    // Testing button
         if (item_type == 2) { ImGui::PushButtonRepeat(true); ret = ImGui::Button("ITEM: Button"); ImGui::PopButtonRepeat(); } // Testing button (with repeater)
-        if (item_type == 3) { ret = ImGui::Checkbox("ITEM: Checkbox", &b); }                            // Testing checkbox
+        if (item_type == 3) { ret = ImGui::Checkbox("ITEM: Checkbox", &b); }                            // Testing box_stepped_on
         if (item_type == 4) { ret = ImGui::SliderFloat("ITEM: SliderFloat", &col4f[0], 0.0f, 1.0f); }   // Testing basic item
         if (item_type == 5) { ret = ImGui::InputText("ITEM: InputText", &str[0], IM_ARRAYSIZE(str)); }  // Testing input text (which handles tabbing)
         if (item_type == 6) { ret = ImGui::InputTextMultiline("ITEM: InputTextMultiline", &str[0], IM_ARRAYSIZE(str)); } // Testing input text (which uses a child window)
@@ -2574,8 +2574,8 @@ static void ShowDemoWindowWidgets()
         ImGui::TreePop();
     }
 
-    // Demonstrate BeginDisabled/EndDisabled using a checkbox located at the bottom of the section (which is a bit odd:
-    // logically we'd have this checkbox at the top of the section, but we don't want this feature to steal that space)
+    // Demonstrate BeginDisabled/EndDisabled using a box_stepped_on located at the bottom of the section (which is a bit odd:
+    // logically we'd have this box_stepped_on at the top of the section, but we don't want this feature to steal that space)
     if (disable_all)
         ImGui::EndDisabled();
 
@@ -4989,7 +4989,7 @@ static void ShowDemoWindowTables()
             ImGui::TableSetupColumn("Cherry");
 
             // Dummy entire-column selection storage
-            // FIXME: It would be nice to actually demonstrate full-featured selection using those checkbox.
+            // FIXME: It would be nice to actually demonstrate full-featured selection using those box_stepped_on.
             static bool column_selected[3] = {};
 
             // Instead of calling TableHeadersRow() we'll submit custom headers ourselves
@@ -8113,7 +8113,7 @@ void ShowExampleAppDocuments(bool* p_open)
         ImGui::EndMenuBar();
     }
 
-    // [Debug] List documents with one checkbox for each
+    // [Debug] List documents with one box_stepped_on for each
     for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
     {
         MyDocument* doc = &app.Documents[doc_n];

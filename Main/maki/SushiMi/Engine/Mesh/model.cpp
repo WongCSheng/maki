@@ -65,12 +65,12 @@ Model Model::init(std::string mesh_filepath)
 	glNamedBufferStorage(vbo_hdl, sizeof(gfxVector2) * pos_vtx.size(), NULL, GL_DYNAMIC_STORAGE_BIT);
 	glNamedBufferSubData(vbo_hdl, 0, sizeof(gfxVector2) * pos_vtx.size(), pos_vtx.data());
 
-	GLuint vaoid;
-	glCreateVertexArrays(1, &vaoid);
-	glEnableVertexArrayAttrib(vaoid, 0);
-	glVertexArrayVertexBuffer(vaoid, 0, vbo_hdl, 0, sizeof(gfxVector2));
-	glVertexArrayAttribFormat(vaoid, 0, 2, GL_FLOAT, GL_FALSE, 0);
-	glVertexArrayAttribBinding(vaoid, 0, 0);
+	GLuint vaoid_;
+	glCreateVertexArrays(1, &vaoid_);
+	glEnableVertexArrayAttrib(vaoid_, 0);
+	glVertexArrayVertexBuffer(vaoid_, 0, vbo_hdl, 0, sizeof(gfxVector2));
+	glVertexArrayAttribFormat(vaoid_, 0, 2, GL_FLOAT, GL_FALSE, 0);
+	glVertexArrayAttribBinding(vaoid_, 0, 0);
 	glBindVertexArray(0);
 
 	GLuint ebo_hdl;

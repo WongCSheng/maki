@@ -57,7 +57,7 @@ namespace Core
 		}
 	}
 
-	void CameraSystem::Update(const double dt)
+	void CameraSystem::Update(const double)
 	{
 		/*for (int i = 0; i < cameras.size(); ++i)
 		{

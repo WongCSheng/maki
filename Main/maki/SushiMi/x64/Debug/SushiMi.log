@@ -1,0 +1,23 @@
+﻿  LevelEditor.cpp
+  Sprite.cpp
+  Core.cpp
+  Font.cpp
+  Map.cpp
+  Player.cpp
+  Level1.cpp
+  Level2.cpp
+  Level3.cpp
+  Level4.cpp
+  Level5.cpp
+  Level6.cpp
+  Level7.cpp
+  Level8.cpp
+  Level9.cpp
+  TestLevel.cpp
+  Tutorial1.cpp
+  Tutorial2.cpp
+  SceneManager.cpp
+  Window.cpp
+  main.cpp
+  LINK : C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
+  SushiMi.vcxproj -> C:\Users\Aurel\Desktop\Maki_Clone\maki\Main\maki\x64\Debug\SushiMi.exe

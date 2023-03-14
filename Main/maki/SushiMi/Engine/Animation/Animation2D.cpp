@@ -12,21 +12,22 @@
 #include <string>
 #include <sstream>
 #include "../Components/Texture/Texture.h"
-#include "../Engine/System/Graphics/Renderer.h"
-#include <glew/include/GL/glew.h>
-#include <glm/glm/vec2.hpp>
+#include "../Engine/System/Renderer.h"
+#include <../glew/include/GL/glew.h>
+#include <../glm/glm/vec2.hpp>
+#include <../Engine/System/Graphics/glhelper.h>
+
 
 namespace Core
 {
 	Animation2D::Animation2D(const char* filename)
 		: anim_cursor(0),
 		current_frame_indx(0),
-		speed(0.05f)
+		speed(0.5f)
 	{
 		FILE* fp = nullptr;
 		const int bufferlen = 255;
 		char line[bufferlen];
-
 		fopen_s(&fp, filename, "r");
 
 		if (fp == nullptr)
@@ -52,7 +53,7 @@ namespace Core
 		}
 
 		frames_count = (int)frames.size();
-
+		if (fp != NULL)
 		fclose(fp);
 	}
 

@@ -9,12 +9,13 @@ Description:
 */
 #include "Factory.h"
 #include "../Game Object/GameObject.h"
-#include "../Headers/RapidJSON_Header.h"
+#include "../Serialiser/JSONSerializer.h"
 
 namespace Core
 {
 	ObjectFactory::ObjectFactory()
 	{
+		LastObjectID = 0;
 	}
 
 	ObjectFactory::~ObjectFactory()
@@ -42,11 +43,9 @@ namespace Core
 			//erase from ObjectContainer
 			delete *it;
 		}
-
-		DeleteList.clear();
 	}
 
-	void ObjectFactory::Update(const double dt)
+	void ObjectFactory::Update(const double )
 	{
 		/*for (std::set<Object::GameObject*>::iterator it = DeleteList.begin(); it != DeleteList.end(); ++it)
 		{
@@ -97,14 +96,14 @@ namespace Core
 
 			//copy string for obj name
 			tempStr = it.first;
-			rapidjson::Value nameVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			rapidjson::Value nameVal(tempStr.c_str(), static_cast<rapidjson::SizeType>(tempStr.size()), doc.GetAllocator());
 			//add obj name
 			tempVal.AddMember("Name", nameVal, doc.GetAllocator());
 			//add obj id
 			tempVal.AddMember("ID", it.second->GetObjectProperties()->GetID(), doc.GetAllocator());
 
-			tempStr = (it.second->GetObjectProperties()->GetIDName());
-			rapidjson::Value idVal(tempStr.c_str(), tempStr.size(), doc.GetAllocator());
+			tempStr = (it.second->characteristics->GetIDName());
+			rapidjson::Value idVal(tempStr.c_str(), static_cast<rapidjson::SizeType>(tempStr.size()), doc.GetAllocator());
 			//add obj id name
 			tempVal.AddMember("ID Name", idVal, doc.GetAllocator());
 
@@ -118,7 +117,7 @@ namespace Core
 
 			//add to top lvl object
 			std::string objCountStr = std::to_string(objCount);
-			rapidjson::Value index(objCountStr.c_str(), objCountStr.size(), doc.GetAllocator());
+			rapidjson::Value index(objCountStr.c_str(), static_cast<rapidjson::SizeType>(objCountStr.size()), doc.GetAllocator());
 			doc.AddMember(index, tempVal, doc.GetAllocator());
 			objCount++;
 
@@ -141,9 +140,117 @@ namespace Core
 		fclose(fp);
 	}
 
-
-	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	void ObjectFactory::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> )
 	{
 
+	}
+
+	//ASSETS MANAGER
+
+	AssetsManager::AssetsManager()
+	{
+
+	}
+
+	AssetsManager::~AssetsManager()
+	{
+		files.clear();
+	}
+
+	void AssetsManager::Init()
+	{
+
+	}
+
+	void AssetsManager::Update(const double )
+	{
+
+	}
+
+	void AssetsManager::RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer)
+	{
+
+	}
+
+	void AssetsManager::Add_files(std::string path)
+	{
+		for (auto& entry : std::filesystem::directory_iterator(path))
+		{
+			if (entry.is_directory())
+			{
+				Go_Deeper(entry.path());
+			}
+			else
+			{
+				files.push_back(entry.path().string());
+			}
+
+			std::cout << entry.path() << std::endl;
+		}
+	}
+
+	void AssetsManager::Go_Deeper(std::filesystem::path path)
+	{
+		for (auto& sub : std::filesystem::directory_iterator(path))
+		{
+			if (sub.is_directory())
+			{
+				Go_Deeper(sub.path());
+			}
+			else
+			{
+				files.push_back(sub.path().string());
+			}
+		}
+	}
+	
+	void AssetsManager::Add_Assets(ObjectFactory* container)
+	{
+		for (auto& item : files)
+		{
+			if (item.substr(item.find_last_of(".")) == ".json")
+			{
+				DeserializeEntity(item, container);
+			}
+		}
+	}
+
+	/*void AssetsManager::Remove_Assets(const std::string file)
+	{
+
+	}
+
+	void AssetsManager::Add_Audio(std::map<std::string, FMOD::Sound*> &container)
+	{
+		for (auto& audio : files)
+		{
+			if (audio.substr(audio.find_last_of(".")) == ".wav")
+			{
+				
+			}
+		}
+	}
+
+	void AssetsManager::Remove_Audio()
+	{
+
+	}
+
+	void AssetsManager::Add_Maps(std::vector<std::string> container)
+	{
+		for (auto& maps : files)
+		{
+
+		}
+	}*/
+
+	std::vector<std::string>& AssetsManager::GetFiles()
+	{
+		return files;
+	}
+
+	void AssetsManager::ClearFileContainer()
+	{
+		files.clear();
 	}
 }

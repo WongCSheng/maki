@@ -8,6 +8,7 @@ Description: Physics components that stores data for which to be used in PhysicS
 
 #include "../Headers/STL_Header.h"
 #include "../Engine/System/SystemFrame.h"
+#include "../Audio/AudioEngine.h"
 
 namespace Core
 {
@@ -20,11 +21,19 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
+		ObjectFactory* Instance;
+
 		std::set<Object::GameObject*> DeleteList;
 
 	public:		
 		ObjectFactory();
 		virtual ~ObjectFactory();
+
+		static ObjectFactory* GetInstance()
+		{
+			static ObjectFactory Instance;
+			return &Instance;
+		}
 
 		static inline std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
 		unsigned int LastObjectID;
@@ -44,5 +53,39 @@ namespace Core
 		void DeserializeObjects(const char* filename);
 	
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+	};
+
+	class AssetsManager : public SystemFrame
+	{
+	public:
+		AssetsManager();
+		virtual ~AssetsManager();
+
+		static AssetsManager* GetInstance()
+		{
+			static AssetsManager instance;
+			return &instance;
+		}
+
+		void Init();
+		void Update(const double dt);
+		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer);
+
+		void Add_files(std::string path);
+		void Go_Deeper(std::filesystem::path path);
+
+		void Add_Assets(ObjectFactory* container);
+		/*void Remove_Assets(const std::string file);
+
+		void Add_Audio(std::map<std::string, FMOD::Sound*> &container);
+		void Remove_Audio();
+
+		void Add_Maps(std::vector<std::string> container);*/
+
+		std::vector<std::string>& GetFiles();
+		void ClearFileContainer();
+
+	private:
+		std::vector<std::string> files;
 	};
 }

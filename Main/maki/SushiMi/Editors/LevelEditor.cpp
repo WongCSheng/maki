@@ -21,18 +21,19 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "LevelEditor.h"
 #include "imfilebrowser.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
-#include "../testshader.h"
 #include "../src/Window.h"
 #include "../Engine/TileMap/Map.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
+#include "../Headers/SceneManager.h"
 #include <sstream>
 
 
 //#include "../Engine/Core/Core.h"
 namespace Core
 {
-	
+	int value = 'Q';
+	int IDcounter = 0;
 
 	// Simple helper function to load an image into a OpenGL texture with common settings
 	bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
@@ -80,8 +81,14 @@ namespace Core
 	std::filesystem::path m_curr_path;
 	static const std::filesystem::path s_TextureDirectory = "../TileMap";
 
+	//open text files that hold enums, char and filepath
+	std::ifstream grid_number_textfile;
+	std::ifstream wall_type_textfile;
+
 	namespace Editor
 	{
+		
+
 		void LevelEditor::imguiEditorInit(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
@@ -96,7 +103,7 @@ namespace Core
 			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
 			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
 
-			float fontSize = 18.0f;// *2.0f;
+			//float fontSize = 18.0f;// *2.0f;
 			/*io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", fontSize);
 			io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", fontSize);*/
 
@@ -115,6 +122,7 @@ namespace Core
 			//SetDarkThemeColors();
 
 			GLFWwindow* window = static_cast<GLFWwindow*>(Window::window_ptr);
+			//GLFWwindow* windowtest = glfwCreateWindow(400, 200, "TEST", NULL, NULL);/* = static_cast<GLFWwindow*>(Window::window_ptr)*/;
 
 			// Setup Platform/Renderer bindings
 			ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -129,7 +137,7 @@ namespace Core
 			}*/
 
 			// create a file browser instance
-			static ImGui::FileBrowser fileDialog;
+			//static ImGui::FileBrowser fileDialog;
 			
 
 			m_curr_path = s_TextureDirectory;
@@ -137,9 +145,59 @@ namespace Core
 			fileDialog.SetTitle("ImGui File Explorer");
 			//fileDialog.SetPwd("../maki/textures/");
 			//fileDialog.SetCurrentTypeFilterIndex(0);
-#endif
 			alphabet = "click on a grid to see its object value";
 
+			wall_type_textfile.open("../Data/EditorEnums/wall_type.txt");
+			grid_number_textfile.open("../Data/EditorEnums/grid_number.txt");
+			if (!wall_type_textfile)
+			{
+				std::cout << "Unable to open wall_type file for wGrids!";
+				return;
+			}
+			if (!grid_number_textfile)
+			{
+				std::cout << "Unable to open grid_number file for gGrids!";
+				return;
+			}
+			/*std::getline(wall_type_textfile, Window::realstring);*/
+
+			
+			//load wall (Bottom Layer)
+			std::string str;
+			wall_type_textfile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignore very first line
+
+			while (getline(wall_type_textfile, str))
+			{
+				std::istringstream line_sstm{ str };
+				addedobjinfo iter;
+				line_sstm >> iter.objname;
+				line_sstm >> iter.enum_;
+				line_sstm >> iter.filepath;
+				BottomLayerLegend.push_back(iter);
+				//std::cout << i.enum_ << std::endl;
+
+			}
+			
+			wall_type_textfile.close();
+
+			//load ingredient grid (Top Layer)
+			grid_number_textfile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignore very first line
+
+			while (getline(grid_number_textfile, str))
+			{
+				std::istringstream line_sstm{ str };
+				addedobjinfo iter;
+				line_sstm >> iter.objname;
+				line_sstm >> iter.enum_;
+				line_sstm >> iter.filepath;
+				TopLayerLegend.push_back(iter);
+				//std::cout << i.enum_ << std::endl;
+
+			}
+			grid_number_textfile.close();
+
+			hierarchyload = false;
+#endif
 		}
 
 		void LevelEditor::imguiGraphicsTest(void)
@@ -168,6 +226,9 @@ namespace Core
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
+			//make the whole screen dockable
+			ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+			//ImGui::GetMainViewport();
 
 			fileDialog.SetTypeFilters({ ".txt"});
 			fileDialog.SetPwd("../TileMap"); //current working directory is TileMap
@@ -352,10 +413,124 @@ namespace Core
 			{
 				glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			}*/
+			ImGui::Begin("Ingredient/Animated Top Layer");
+			ImGui::Text("Object Hierachy - Top Layer");
+			if (ImGui::BeginTable("Object Hierachy", 4))
+			{	
+				
+				for (auto& iter : Hierarchy_TopLayer)
+				{
+					ImGui::TableNextRow();
 
-			ImGui::Begin("Object Editor - Imgui Window");
+					ImGui::TableNextColumn();
+					ImGui::Text("ID: %d", iter.ID);
+					ImGui::TableNextColumn();
+					ImGui::Text("Name: %s", iter.objname.c_str());
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid X: %d", ((int)(iter.x) / SceneManager::getTileWidth()));
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid Y: %d", ((int)(iter.y) / SceneManager::getTileHeight()));
+					ImGui::TableNextColumn();
+
+				}
+				ImGui::EndTable();
+
+			}
+			ImGui::End(); //End Layer 1
+
+			ImGui::Begin("Wall/Box Layer");
+			ImGui::Text("Object Hierachy - Bottom Layer");
+			if (ImGui::BeginTable("Object Hierachy", 4))
+			{
+				for (auto& iter : Hierarchy_BottomLayer)
+				{
+					ImGui::TableNextRow();
+
+					ImGui::TableNextColumn();
+					ImGui::Text("ID: %d", iter.ID);
+					ImGui::TableNextColumn();
+					ImGui::Text("Name: %s", iter.objname.c_str());
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid X: %d", ((int)(iter.x) / SceneManager::getTileWidth()));
+					ImGui::TableNextColumn();
+					ImGui::Text("Grid Y: %d", ((int)(iter.y) / SceneManager::getTileHeight()));
+					ImGui::TableNextColumn();
+
+				}
+				ImGui::EndTable();
+
+			}
+			ImGui::End(); //end Layer 2
 
 			//ImGui::Text("%s", * JSONSerializer::LevelLoadPathPtr);
+			ImGui::Begin("Object Editor - Imgui Window");
+			//int value = Map::GetValue(xgrid, ygrid);
+			ImGui::SliderInt("ASCII Value to set to tile", &value, '!', '~');
+			/*if (ImGui::Button("Set Value"))
+			{
+				Map::SetValue(xgrid, ygrid, value);
+			}*/
+			if (hierarchyload == false)
+			{
+
+				for (auto& iter : SceneManager::tilecontainer)
+				{
+					for (auto& legend : BottomLayerLegend)
+					{
+						if (static_cast<char>(iter.first) == legend.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend.objname;
+							objprop.x = static_cast<int>(iter.second->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.second->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_BottomLayer.push_back(objprop);
+						}
+
+
+					}
+				}
+				for (auto& iter : SceneManager::ingredientcontainer)
+				{
+					for (auto& legend2 : TopLayerLegend)
+					{	
+						
+						if (static_cast<char>(iter.nametag) == legend2.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend2.objname;
+							objprop.x = static_cast<int>(iter.spr->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.spr->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_TopLayer.push_back(objprop);
+							//std::cout << static_cast<char>(iter.IC) << std::endl;
+						}
+
+					}
+				}
+				for (auto& iter : SceneManager::topcontainer)
+				{
+					for (auto& legend2 : TopLayerLegend)
+					{
+
+						if (static_cast<char>(iter.first) == legend2.enum_)
+						{
+							addedobjinfo objprop;
+
+							objprop.objname = legend2.objname;
+							objprop.x = static_cast<int>(iter.second->transformation.Position.x);
+							objprop.y = static_cast<int>(iter.second->transformation.Position.y);
+							objprop.ID = ++IDcounter;
+							Hierarchy_TopLayer.push_back(objprop);
+						}
+
+					}
+				}
+				hierarchyload = true;
+			}
+
 
 			ImGui::Text("Select a file below to load a saved level!");
 			ImGui::BulletText("level text files are in ../TileMap");
@@ -388,12 +563,19 @@ namespace Core
 				imguiloadedmap = path2.c_str();
 				//std::cout << "Selected Load file AFTER conversion" << *JSONSerializer::LevelLoadPathPtr << std::endl;
 
+			
 				
 				//delete Window::player; //delete old player? but it feels so inappropriate to put it here if i need to delete all objects in future to replace them
 				//Window::player = Core::Deserialize(*Core::LevelLoadPathPtr);
 				Window::loaded = false;
 
 				std::cout << "You have loaded Level from text file: " << imguiloadedmap << std::endl;
+
+
+				//clear and update the object hierarchy
+				Hierarchy_TopLayer.clear();
+				Hierarchy_BottomLayer.clear();
+				hierarchyload = false;
 
 				fileDialog.ClearSelected();
 				loadnewlevel = false; 
@@ -404,57 +586,57 @@ namespace Core
 			/*----------------------*/
 			/*Content Browser Panel*/
 			/*----------------------*/
-			ImGui::Begin("Content Browser");
+			//ImGui::Begin("Content Browser");
 
-			if(m_curr_path != std::filesystem::path(s_TextureDirectory))
-			{
-				if(ImGui::Button("<-")) //will only show if u went into a folder in the current directory above
-				{
-					m_curr_path = m_curr_path.parent_path();
-				}
-			}
-			float padding = 10.f;
-			float thumbnail_size = 128;
-			float cellSize = thumbnail_size + padding;
+			//if(m_curr_path != std::filesystem::path(s_TextureDirectory))
+			//{
+			//	if(ImGui::Button("<-")) //will only show if u went into a folder in the current directory above
+			//	{
+			//		m_curr_path = m_curr_path.parent_path();
+			//	}
+			//}
+			//float padding = 10.f;
+			//float thumbnail_size = 128;
+			////float cellSize = thumbnail_size + padding;
 
-			float panelWidth = ImGui::GetContentRegionAvail().x;
-			float columnCount = (int)(panelWidth / cellSize);
-			ImGui::Columns(5, 0, false);
+			////float panelWidth = ImGui::GetContentRegionAvail().x;
+			////float columnCount = (int)(panelWidth / cellSize);
+			//ImGui::Columns(5, 0, false);
 
-			for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
-			{
-				std::string path = directory_entry.path().string();
-				auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
+			//for( auto& directory_entry : std::filesystem::directory_iterator(m_curr_path))
+			//{
+			//	std::string path1 = directory_entry.path().string();
+			//	auto relative_path = std::filesystem::relative(directory_entry.path(),s_TextureDirectory);
 
-				ImGui::Button(path.c_str(), { thumbnail_size, thumbnail_size });
-				ImGui::Text(path.c_str());
+			//	ImGui::Button(path1.c_str(), { thumbnail_size, thumbnail_size });
+			//	ImGui::Text(path1.c_str());
 
-				if (directory_entry.is_directory())
-				{
-					//std::cout << "the directory im clicking is: " << directory_entry.is_directory() << std::endl;
-					/*
-					if (ImGui::Button(path.c_str()))
-					{
-						m_curr_path /= directory_entry.path().filename();
-					}
-					*/
-				}
-				else
-				{
-					/*
-					if(ImGui::Button(path.c_str()))
-					{
-						
-					}
-					*/
-				}
-				ImGui::NextColumn();
-				
-			}
-			ImGui::Columns(1);
-			ImGui::SliderFloat("Thumbnail Size", &thumbnail_size, 16, 512);
-			ImGui::SliderFloat("Padding", &padding, 0, 32);
-			ImGui::End();
+			//	if (directory_entry.is_directory())
+			//	{
+			//		//std::cout << "the directory im clicking is: " << directory_entry.is_directory() << std::endl;
+			//		/*
+			//		if (ImGui::Button(path.c_str()))
+			//		{
+			//			m_curr_path /= directory_entry.path().filename();
+			//		}
+			//		*/
+			//	}
+			//	else
+			//	{
+			//		/*
+			//		if(ImGui::Button(path.c_str()))
+			//		{
+			//			
+			//		}
+			//		*/
+			//	}
+			//	ImGui::NextColumn();
+			//	
+			//}
+			//ImGui::Columns(1);
+			//ImGui::SliderFloat("Thumbnail Size", &thumbnail_size, 16, 512);
+			//ImGui::SliderFloat("Padding", &padding, 0, 32);
+			//ImGui::End();
 
 
 			/*currently not working oops*/
@@ -478,17 +660,21 @@ namespace Core
 
 			//RGB colour selection
 			//ImGui::ColorEdit3("Color", *arr);
+			ImGui::Spacing();
+			ImGui::Text("Currently displaying: ");
+			ImGui::Text(imguiloadedmap.c_str());
 
+			ImGui::Spacing();
 			ImGui::Text("Click on a cell to see its value");
 
 			ImGui::Spacing();
-			ImGui::Text("Grid row: ");
+			ImGui::Text("Grid column (X): ");
 			ImGui::SameLine();
 			std::stringstream xstring;
 			xstring << xgrid;
 			ImGui::Text(xstring.str().c_str());
 
-			ImGui::Text("Grid col: ");
+			ImGui::Text("Grid row (Y): ");
 			ImGui::SameLine();
 			std::stringstream ystring;
 			ystring << ygrid;
@@ -501,14 +687,14 @@ namespace Core
 			ImGui::Spacing();
 
 
-			ImGui::Text("Buttons to test textures load in editor");
+			//ImGui::Text("Buttons to test textures load in editor");
 
 			/*ImGui::ImageButton("gfx/image.png", 64, 64, 8, 0xffffff, 1, 0xff0000, 0.5);*/
 
-			if (ImGui::Button("Cucumber"))
+			/*if (ImGui::Button("Cucumber"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_cucumber.png";
-			}
+			}*/
 
 			//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.f, 0.f, 0.f, 0.f));
 			//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.f, 0.f, 0.f, 0.f));
@@ -520,7 +706,7 @@ namespace Core
 			//}
 			//ImGui::PopStyleColor(3);
 
-			if (ImGui::Button("Salmon"))
+			/*if (ImGui::Button("Salmon"))
 			{
 				texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png";
 				
@@ -539,12 +725,12 @@ namespace Core
 			if (ImGui::Button("Return to Main Menu"))
 			{
 				texpath = "../textures/menu.jpg";
-			}
+			}*/
 
-			if (ImGui::Button("+"))
-			{
-				/*Window::ImGuiToObjContainer()*/
-			}
+			//if (ImGui::Button("+"))
+			//{
+			//	/*Window::ImGuiToObjContainer()*/
+			//}
 
 			ImGui::Spacing();
 			ImGui::Text("File Save Functions:");
@@ -580,7 +766,8 @@ namespace Core
 						//std::cout << "Selected filename" << *JSONSerializer::LevelSavePathPtr << std::endl;
 						levelsave = 2;
 
-						Core::Serialize(*Window::player, *Core::LevelSavePathPtr);
+						Map::saveEditedMap(*Core::LevelSavePathPtr);
+						/*Core::Serialize(*Window::player, *Core::LevelSavePathPtr);*/
 
 						std::cout << "the level is saved! level save status is " << levelsave << std::endl;
 
@@ -602,11 +789,11 @@ namespace Core
 
 			ImGui::End(); //end the whole imgui process
 			ImGuiIO& io = ImGui::GetIO();
-			int width, height;
+			int width__, height__;
 
-			glfwGetWindowSize(Window::window_ptr, &width, &height);
+			glfwGetWindowSize(Window::window_ptr, &width__, &height__);
 
-			io.DisplaySize = ImVec2((float)width, (float)height);
+			io.DisplaySize = ImVec2((float)width__, (float)height__);
 
 			// Rendering
 			ImGui::Render();
@@ -639,50 +826,64 @@ namespace Core
 #if defined(EDITOR) | defined(_EDITOR)
 
 			double xpos = 0, ypos = 0;
+			double gridxpos = 0, gridypos = 0;
+
 			int width_, height_ = 0;
 			//grid snapping logic
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 			glfwGetWindowSize(Window::window_ptr, &width_, &height_);
 
-			std::cout << "You are clicking at grid position X: " << (int)(xpos/ width_*18) << " Y: " << (int)(ypos/height_*10) << std::endl;
+			/*std::cout << "You are clicking at grid position X: " << (int)(xpos/ width_*18) << " Y: " << (int)(ypos/height_*10) << std::endl;
 			std::cout << "the object in the grid is: " << static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10))) << std::endl;
-			alphabet = static_cast<char>(Map::GetValue((int)(xpos / width_ * 18), (int)(ypos / height_ * 10)));
 			xgrid = (int)(xpos / width_ * 18);
-			ygrid = (int)(ypos / height_ * 10);
+			ygrid = (int)(ypos / height_ * 10);*/
 
 
-			int i = imguiPlacedObjs;
+			i = imguiPlacedObjs;
 
 			//newobjarr[i].spritevector = new Sprite(texpath); replace with pushing back a struct
-			/*Window::a = new Sprite(texpath);*/
-			xpos = (float)((int)(xpos) / 100 * 100);
-			ypos = (float)((int)(ypos) / 100 * 100);
 
-			/**************************
-			* Step 1: set ur spritepath
-			* 1a) set scale,
-			* 1b) set pos
-			* Step 2: set ur name given to object
-			* Step 3: save your pos into x and y so that Object Container can read it
-			* Step 4: push back the whole struct
-			****************************************************/
-			addedobjinfo a;
-			a.spritepath = new Sprite(texpath); //1
-			a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
-			a.spritepath->transformation.Scale = glm::vec2(100, 100); //1b
-			a.objname = "path"; //2
-			a.x = xpos;
-			a.y = ypos; //3
-			newobjarr.push_back(a); //push back the whole struct
-			//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
-			//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
-			//if (texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png")
-			//{
-			//	newobjarr[i].objname = "salmon";//you placed a salmon!
-			//}
-			//else
-			//	newobjarr[i].objname = "unknown";
-			std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
+			if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
+			{
+				gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+				gridypos = ((int)(ypos) / SceneManager::getTileHeight());
+
+				Map::SetValue(gridxpos, gridypos, value);
+				//r / static_cast<float>(max_grid_cols_x) * width
+
+				xpos = gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_;
+				ypos = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
+				/**************************
+				* Step 1: set ur spritepath
+				* 1a) set scale,
+				* 1b) set pos
+				* Step 2: set ur name given to object
+				* Step 3: save your pos into x and y so that Object Container can read it
+				* Step 4: push back the whole struct
+				****************************************************/
+				addedobjinfo a;
+				a.spritepath = new Sprite(texpath); //1
+				a.spritepath->transformation.Position = glm::vec2(xpos, ypos); //1a
+				a.spritepath->transformation.Scale = glm::vec2(SceneManager::getTileWidth()*1.01f, SceneManager::getTileHeight()*1.01f);//1b
+				a.objname = "path"; //2
+				a.x = static_cast<int>(xpos);
+				a.y = static_cast<int>(ypos); //3
+				newobjarr.push_back(a); //push back the whole struct
+				//std::cout << "X: " << xpos << " Y:" << ypos << std::endl; //debug
+				//newobjarr[i].spritepath->transformation.position = glm::vec2(xpos, ypos);
+				//if (texpath = "../textures/Tiles/Ingredients/Ingredients0_salmon.png")
+				//{
+				//	newobjarr[i].objname = "salmon";//you placed a salmon!
+				//}
+				//else
+				//	newobjarr[i].objname = "unknown";
+				std::cout << "name of object you just created: " << newobjarr[i].objname << std::endl;
+				Map::print_map_to_console();
+			}
+			/*Window::a = new Sprite(texpath);*/
+			/*xpos = (float)((int)(xpos) / 100 * 100);
+			ypos = (float)((int)(ypos) / 100 * 100);*/
+
 
 			
 			++imguiPlacedObjs;
@@ -693,7 +894,7 @@ namespace Core
 		{
 #if defined(EDITOR) | defined(_EDITOR)
 
-			for (int i = 0; i < imguiPlacedObjs; ++i)
+			for (i = 0; i < imguiPlacedObjs; ++i)
 			{
 				delete newobjarr[i].spritepath;
 			}
@@ -709,30 +910,116 @@ namespace Core
 			//this function is called when the "+" button to add new objects is called.
 		}
 
+
+		/**************************
+		VALUES FOR EACH TEXTURE
+		*************************/
+		
+		
+
 		void LevelEditor::imguiObjectCursor(void)
 		{
 #if defined(EDITOR) | defined(_EDITOR)
-
-			//display obj to place on cursor
-			double xpos = 0, ypos = 0;
-
-			//grid snapping logic
-			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			//xpos += 100 * 0.5f;
-			//ypos += 100 * 0.5f;
-			xpos = (float)((int)(xpos) / 100 * 100);
-			ypos = (float)((int)(ypos) / 100 * 100);
-
-			//Window::ingredient->transformation.Position = glm::vec2(xpos, ypos);
-			//place object on click
-
-			if (ImGui::IsMouseClicked(0)) //0 means left
+			ImGuiIO& io = ImGui::GetIO(); (void)io;
+			if (io.WantCaptureMouseUnlessPopupClose == false)
 			{
-				//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
-				
-				imguiCreateObj();
+				for (auto& iter : BottomLayerLegend)
+				{
+					if (value == iter.enum_)
+					{
+						texpath = iter.filepath.c_str();
+					}
+				}
+				for (auto& iter : TopLayerLegend)
+				{
+					if (value == iter.enum_)
+					{
+						texpath = iter.filepath.c_str();
+					}
+				}
+				Window::ingredient = new Sprite(Editor::LevelEditor::texpath);
 
+				//display obj to place on cursor
+				int width_ = 0, height_ = 0;
+				double xpos = 0, ypos = 0;
+				double gridxpos = 0, gridypos = 0;
+
+				//grid snapping logic
+				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+				glfwGetWindowSize(Window::window_ptr, &width_, &height_);
+				//r / static_cast<float>(max_grid_cols_x) * width
+				/*width = SceneManager::getTileWidth() * Map::max_grid_cols_x;
+				height = SceneManager::getTileHeight() * Map::max_grid_rows_y;*/
+
+				//xpos += 100 * 0.5f;
+				//ypos += 100 * 0.5f;
+				//xpos = col number
+				//static_cast<float>(max_grid_cols_x) * width
+				//xpos = (int)(xpos / SceneManager::getTileWidth()) /** (double)SceneManager::getTileWidth()*/;
+				//ypos = ((int)(ypos / (double)SceneManager::getTileHeight())) * (double)SceneManager::getTileHeight();
+				/*xpos = (int) (float)((int)(xpos / width_ / 18) * (width_ / 18));
+				ypos = (int)(float)((int)(ypos / height_ / 10) * (height_ / 10));*/
+				Window::ingredient->transformation.Scale = glm::vec2(SceneManager::getTileWidth()*1.01f, SceneManager::getTileHeight()*1.01f);
+				if (SceneManager::getTileWidth() != 0 || SceneManager::getTileHeight() != 0)
+				{
+					gridxpos = static_cast<double>((int)(xpos) / SceneManager::getTileWidth()); 
+					gridypos = static_cast<double>((int)(ypos) / SceneManager::getTileHeight());
+					xgrid = ((int)(xpos) / SceneManager::getTileWidth());
+					ygrid = ((int)(ypos) / SceneManager::getTileHeight());
+					//std::cout << "Grid pos x: " << gridxpos << " and y: " << gridypos << std::endl;
+					//std::cout << " Max Grid col x is: " << Map::max_grid_rows_y << " and Max Grid row y is: " << Map::max_grid_cols_x << std::endl;
+					
+					//if you are in an invalid grid range of the map
+					if (gridxpos >= Map::max_grid_cols_x || gridxpos < 0 || gridypos < 0 || gridypos >= Map::max_grid_rows_y)
+					{
+						alphabet = "out of range";
+
+					}
+					else
+					{
+						//std::cout << "you are out of range!" << std::endl;
+						//return 3; //if you are pressing out of this grid, return 0 as tile value 
+						alphabet = static_cast<char>(Map::GetValue(gridxpos, gridypos));
+						//std::cout << "x value is : " << gridxpos << " and y value is: " << gridypos << std::endl;
+						if (ImGui::IsMouseClicked(0)) //0 means left
+						{
+
+							/*gridxpos = ((int)(xpos) / SceneManager::getTileWidth());
+							gridypos = ((int)(ypos) / SceneManager::getTileHeight());*/
+
+							//r / static_cast<float>(max_grid_cols_x) * width
+
+							//Window::ingredient->transformation.Position.x =  gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_ ;
+							//Window::ingredient->transformation.Position.y = gridypos / static_cast<float>(Map::max_grid_rows_y) * height_;
+							imguiCreateObj();
+
+							//std::cout << "placing NEW obj at x: " << Window::ingredient->transformation.Position.x << " and y: " << Window::ingredient->transformation.Position.y << std::endl;
+							Map::print_map_to_console();
+
+
+
+						}
+					}
+					
+				}
+
+				Window::ingredient->transformation.Position.x = static_cast<float>(gridxpos / static_cast<float>(Map::max_grid_cols_x) * width_);
+				Window::ingredient->transformation.Position.y = static_cast<float>(gridypos / static_cast<float>(Map::max_grid_rows_y) * height_);
+				/*SceneManager::rows*/
+					/*= glm::vec2(xpos, ypos)*/
+				//place object on click
+				//std::cout << "Grid width: " << SceneManager::getTileWidth() << " and height: " << SceneManager::getTileHeight() << std::endl;
+
+				
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::ingredient->transformation.Get());
+				Window::ingredient->draw();
+
+				if (Window::ingredient)
+				{
+					delete Window::ingredient;
+				}
 			}
+		
 #endif
 			
 		}

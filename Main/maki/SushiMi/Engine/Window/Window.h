@@ -1,5 +1,16 @@
 #pragma once
+/*
+File: Window.cpp
+@author		louishetong.wang@digipen.edu 20%
+co-Author:  thea.sea@digipen.edu 30%
+co-Author:  Aurelia (fei.x@digipen.edu) 30%
+co-Author:  w.chongsheng@digipen.edu  20%
 
+Description:
+*/
+
+/*                                                                   includes
+----------------------------------------------------------------------------- */
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
@@ -18,11 +29,22 @@ namespace Core
 	{
 	public:
 		Window(int width, int height);
-
 		~Window();
 
+		static Window* GetInstance(int width, int height)
+		{
+			static Window instance(width,height);
+			return &instance;
+		}
+
+
+		float getDelta()
+		{
+			return static_cast<float>(delta);
+		}
+
 		void Init() {}
-		void Update(const double dt) {}
+		void Update(const double) {}
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 
 		void Input();
@@ -31,21 +53,84 @@ namespace Core
 
 		void Mainloop();
 
-
+		/*                                                             input key states
+		----------------------------------------------------------------------------- */
+		static inline bool keystate_left;
+		static inline bool keystate_right;
+		static inline bool keystate_up;
+		static inline bool keystate_down;
+		static inline bool keystate_R;
+		static inline bool keystate_M;
+		static inline bool keystate_tab;
+		static inline bool keystate_space;
+		static inline bool keystate_1;
+		static inline bool keystate_2;
+		static inline bool keystate_3;
+		static inline bool keystate_4;
+		static inline bool keystate_5;
+		static inline bool keystate_6;
+		static inline bool keystate_7;
+		static inline bool keystate_8;
+		static inline bool keystate_9;
+		static inline bool keystate_0;
+		static inline bool keystate_Y;
+		static inline bool keystate_N;
+		static inline bool keystate_J;
+		static inline bool keystate_K;
+		static inline bool keystate_L;
+		static inline bool keystate_P;
+		static inline bool keystate_T;
+		static inline bool keystate_escape;
+		static inline bool place_obj;
+		static inline bool keystate_W;
+		static inline bool keystate_A;
+		static inline bool keystate_S;
+		static inline bool keystate_D;
+		static inline bool keystate_fps;
+		static inline bool mouseLeft;
+		static inline size_t curr_len = 0;
+		static inline std::string realstring = "";
 
 		static inline bool gameIsPaused;
-		bool isMenuState;
+		static inline bool areyousure_prompt;
+		static inline bool isMenuState;
 		
 		bool isLevelSelection;
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
-		static inline bool isLevel1;
-		static inline bool isLevel2;
-		bool isQuestTab;
-		bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
+
+		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3, //Rice Plain Village
+		isLevel4, isLevel5, isLevel6, //gunkan village
+		isLevel7, isLevel8, isLevel9, //fishing village
+		isLevel10, //maki city
+		isTestLevel;
+
+		bool isEndingCutscene;
+
+		static inline bool isDialogue;
+		static inline int dialogue_style;
+		static inline bool show_fps;
+		enum class dialogue
+		{
+			T1 = 0,
+			T2,	//1
+			L1,	//2
+			L2,	//3
+			L3,	//4
+			L4,	//5
+			L5, //6
+			L6,	//7
+			L7,	//8
+			L8,	//9
+			L9	//10
+		};
+
+		static inline bool isQuestTab;
+		static inline bool isWinCondition; //dont use this, Map.cpp has Map:isWin() that returns true or false
 		static inline int questProgress;
 		static inline int numQuests;
+
 
 		bool isCutscene;
 		static inline int CutscenePage;
@@ -68,10 +153,17 @@ namespace Core
 		{
 			return gameIsPaused;
 		}
-		//for editor
-		//static inline Sprite* ingredient;
 
-		static inline void ImGuiToObjContainer(ObjectFactory*);
+		bool checkWin();
+
+		//for editor
+#ifdef EDITOR
+		static inline Sprite* ingredient; //for imguiObjectCursor
+
+
+#endif
+
+		//static inline void ImGuiToObjContainer(ObjectFactory*);
 
 		static inline Player* player;
 		static inline GLFWwindow* window_ptr; //moved from private to public for access in main.cpp
@@ -85,14 +177,16 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		//void ImGuiToObjContainer(ObjectFactory* c);
 	
-		static inline struct ScreenDimensions {
+
+
+		struct ScreenDimensions {
 			static inline int screenwidth;
 			static inline int screenheight;
 		};
 
 	private:
 		int m_width, m_height;
-		double starttime, endtime, delta;
+		double starttime, endtime, delta, fps;
 	};
 
 	class pseudomain
@@ -103,4 +197,5 @@ namespace Core
 		static void init();
 		static void cleanup();
 	};
+#define Get_Delta()				Window::GetInstance(0, 0)->getDelta()
 }

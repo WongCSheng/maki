@@ -9,6 +9,7 @@
   <ItemDefinitionGroup>
     <Link>
       <AdditionalDependencies>"opengl32.lib";"glew32.lib";"glfw3dll.lib";"freetype.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y
@@ -17,10 +18,11 @@ copy "$(SolutionDir)lib\Fmod\fmod.dll" "$(TargetDir)" /Y</Command>
     </PostBuildEvent>
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>GLFW_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_DLL;_CRT_SECURE_NO_WARNINGS;RELEASE;RELEASER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
       <WarningLevel>Level4</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4005;26451;6011;28182;6262;28252;26812;6031;33010;26495;28253;33011;6387;4723;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>

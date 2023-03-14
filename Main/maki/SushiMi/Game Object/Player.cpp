@@ -26,12 +26,12 @@ namespace Core
 
 		sp = new Sprite("../textures/spritesheet/spritesheet.png");
 		sp->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
-		sp->transformation.Scale = glm::vec2(100, 100);
+		sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
 
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
@@ -43,7 +43,7 @@ namespace Core
 			sp->Add_animation(animFilepath.c_str());
 		}
 
-		current_anim = Idle;
+		current_anim = AnimationType::Idle;
 	}
 
 	Player::~Player()
@@ -57,8 +57,6 @@ namespace Core
 	{
 		if (sp->transformation.Scale.x > 0)
 			sp->transformation.Scale.x *= 1;
-
-		current_anim = Run;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -76,6 +74,12 @@ namespace Core
 		player_grid_pos.x--;
 		
 		sp->transformation.Position.x -= Map::tile_width;
+		/*this timer does not work
+		StartSecTimer(2);
+		*/
+
+		 
+		current_anim = AnimationType::Idle;
 	}
 
 	void Player::move_right()
@@ -83,13 +87,13 @@ namespace Core
 		if (sp->transformation.Scale.x < 0)
 			sp->transformation.Scale.x *= -1;
 
-		current_anim = Run;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridWidth = Window::ScreenDimensions::screenwidth / 19; //columns are 19
 
-		if ((player_grid_pos.x + 1) >= Map::grid_row)
+		if ((player_grid_pos.x + 1) >= Map::max_grid_cols_x)
 		{
 			std::cout << "out of grid on the right" << std::endl;
 			return;
@@ -109,7 +113,7 @@ namespace Core
 			sp->transformation.Scale.y *= 1;
 		//std::cout << "you are pressing up" << std::endl;
 
-		current_anim = Run;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -129,12 +133,17 @@ namespace Core
 		Player::player_grid_pos.y--;
 	}
 
+	void Player::isStuck()
+	{
+		current_anim = AnimationType::Run;
+	}
+
 	void Player::move_down()
 	{
 		if (sp->transformation.Scale.y < 0)
 			sp->transformation.Scale.y *= -1;
 
-		current_anim = Run;
+		current_anim = AnimationType::Idle;
 
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
@@ -149,6 +158,14 @@ namespace Core
 
 	void Player::restart()
 	{
+		player_grid_pos.x = player_initial_grid_pos.x;
+		player_grid_pos.y = player_initial_grid_pos.y;
+		playerpos.x = static_cast<float>(playerpos_restart.x);
+		playerpos.y = static_cast<float>(playerpos_restart.y);
+		sp->transformation.Position.x = static_cast<float>(playerpos_restart.x);
+		sp->transformation.Position.y = static_cast<float>(playerpos_restart.y);
+		//Window::player->sp->transformation.Scale = glm::vec2(100, 100);
+		Window::player->sp->curr_anim = AnimationType::Idle;
 		/*DOESNT WORK, TEXTURES WILL GO INTO SHIT
 
 		SceneManager::destroyTile();
@@ -188,15 +205,17 @@ namespace Core
 		//sp->transformation.Position.y = playerpos_restart.y;
 		//Window::player->player_grid_pos.x = Window::player->player_initial_grid_pos.x;
 		//Window::player->player_grid_pos.y = Window::player->player_initial_grid_pos.y;
-
 		}
-
-
 	}
 
 	void Player::stop()
 	{
-		current_anim = Idle;
+		if (Map::isStuck() == true)
+		{
+			current_anim = AnimationType::Jump;
+		}
+		else
+		current_anim = AnimationType::Idle;
 	}
 
 	glm::mat4 Player::Transformation()

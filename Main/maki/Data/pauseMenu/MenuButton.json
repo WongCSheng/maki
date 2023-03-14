@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 800.0, 515.0 ],
+      "rotation": 0.0,
+      "scale": [ 350, 100 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Button_MainMenu.png",
+      "name": "MenuButton",
+      "alpha" : 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    }
+  ]
+}

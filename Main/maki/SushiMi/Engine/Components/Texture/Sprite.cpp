@@ -16,7 +16,9 @@ email:		fei.x@digipen.edu
 
 namespace Core
 {
-	Sprite::Sprite()
+	std::map<std::string, std::vector<std::string>> Sprite::levelCorrectIngredients;
+
+	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}, animeMe{}, count{}, status{}
 	{
 		
 	}
@@ -41,12 +43,19 @@ namespace Core
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
 
+	void Sprite::drawTest()
+	{
+		glBindTexture(GL_TEXTURE_2D, texture.TextureID);
+		glBindVertexArray(rectangle.VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+	}
+
 	void Sprite::draw(double deltatime, AnimationType type)
 	{
 
-		if (anims[type])
+		if (anims[static_cast<int>(type)])
 		{
-			anims[type]->play(texture, rectangle, deltatime);
+			anims[static_cast<int>(type)]->play(texture, rectangle, deltatime);
 		}
 
 		glBindTexture(GL_TEXTURE_2D, texture.TextureID);
@@ -57,7 +66,7 @@ namespace Core
 	void Sprite::Add_animation(const char* filename)
 	{
 		auto anim = new Animation2D(filename);
-		anim->set_animation_speed(0.05f);
+		anim->set_animation_speed(0.2f);
 		anims.push_back(anim);
 	}
 
@@ -98,6 +107,9 @@ namespace Core
 	void Sprite::Deserialize(const rapidjson::Value& jsonObj)
 	{
 		//checking file exist/no
+		if (jsonObj.HasMember("name"))
+			levelname = jsonObj["name"].GetString();
+
 		if (!jsonObj.HasMember("SpriteSheet"))
 		{
 			std::cout << "Component of type SpriteSheet cannot be read" << std::endl;
@@ -122,6 +134,22 @@ namespace Core
 			else
 				SpriteSize[i] = value; 
 		}
+
+		if (jsonObj.HasMember("CorrectIngredient"))
+		{
+			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
+			for (int i{}; i < static_cast<int>(SpriteArr2.Size()); ++i)
+			{
+				const rapidjson::Value& ingredient = SpriteArr2[i];
+
+				if (std::find(CorrectIngredients.begin(), CorrectIngredients.end(), ingredient.GetString()) != CorrectIngredients.end())
+					continue;
+				else
+					CorrectIngredients.push_back(ingredient.GetString());
+			}
+		}
+		levelCorrectIngredients.insert({ levelname, CorrectIngredients });
+
 		std::cout << "SpriteSize X: " << SpriteSize[0] << "        " << "SpriteSize Y: " << SpriteSize[1] << "\n";
 
 		std::cout << "Deserializing Sprite Component! \n";
@@ -130,13 +158,10 @@ namespace Core
 
 	void Sprite::restart()
 	{
-		for (auto& ingredient : SceneManager::ingredientcontainer)
+		/*for (auto& ingredient : SceneManager::ingredientcontainer)
 		{
-			for (auto& start : SceneManager::ingredient_starting_pos)
-			{
-				ingredient.second->transformation.Position = start.second->transformation.Position;
-			}
-		}
+			ingredient.spr.second->transformation.Position = SceneManager::ingredient_starting_pos[ingredient.first]
+		}*/
 		
 		/**************
 		INGREDIENT 1

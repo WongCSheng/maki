@@ -11,11 +11,13 @@
 #include <string>
 #include <iostream>
 //using namespace std;
-#include <glm/glm/mat4x4.hpp>
+#include "../../glm/glm/mat4x4.hpp"
+#include "../../glew/include/GL/glew.h"
+
 class ShaderProgram
 {
 public:
-	ShaderProgram(const char* vertex_shader, const char* fragment_shader);
+	ShaderProgram(std::string vertex_shader, std::string fragment_shader);
 
 	~ShaderProgram();
 
@@ -23,7 +25,11 @@ public:
 
 	void Send_Mat4(const char* name, glm::mat4 mat);
 
+	void Send_Alpha(const char* name, float alpha);
+
+	GLuint get_hdl();
+
 private:
 	void checkerorr(unsigned int shader_id, std::string type);
-	unsigned int ID;
+	 GLuint ID;
 };

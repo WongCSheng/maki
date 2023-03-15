@@ -325,12 +325,60 @@ namespace Core
 						break;
 
 					}
+					//GunkanCorn
+					case static_cast<int>(animated::GunkanCorn):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCorn.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCorn, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//GunkanCarrot
+					case static_cast<int>(animated::GunkanCarrot):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCarrot.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCarrot, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
 					//RicePlain_TopG2_1
 					case static_cast<int>(animated::RicePlain_TopG2_1):
 					{
 						Sprite* rice1 = new Sprite("../textures/Tiles/Top/RicePlain_TopG2_1.png");
 						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlain_TopG2_1, std::move(rice1));
 						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//FishingSotong
+					case static_cast<int>(animated::FishingSotong):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingSotong.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingSotong, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//FishingNoot
+					case static_cast<int>(animated::FishingNoot):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingNoot.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingNoot, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
 						rice1->curr_anim = AnimationType::Idle;
 						rice1->isSpriteSheet = 1;
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
@@ -941,49 +989,7 @@ namespace Core
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall6_1):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_1, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall6_2):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_2, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall6_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall6_4):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6_4, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
+				
 				//wall 7
 				case static_cast<int>(wall_type::Wall7):
 				{
@@ -994,49 +1000,7 @@ namespace Core
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall7_1):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_1, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall7_2):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_2, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall7_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
-
-				case static_cast<int>(wall_type::Wall7_4):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7_4, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-
-				}
+				
 				//wall 8
 				case static_cast<int>(wall_type::Wall8):
 				{
@@ -1057,69 +1021,7 @@ namespace Core
 
 					break;
 				}
-				case static_cast<int>(wall_type::Wall9_1):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_1.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_1, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_2):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_2.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_2, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_3):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_3.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_3, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_4):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_4.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_4, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_5):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_5.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_5, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_6):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_6.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_6, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
-				case static_cast<int>(wall_type::Wall9_7):
-				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9_7.jpg");
-					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9_7, tile);
-
-					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
-
-					break;
-				}
+				
 				case static_cast<int>(wall_type::WaterWall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");

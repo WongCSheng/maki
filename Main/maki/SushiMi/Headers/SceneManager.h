@@ -99,21 +99,7 @@ namespace Core
 		Gunkan_Ground_6_2,	//o
 		Gunkan_Ground_6_3,	//p
 		Gunkan_Ground_6_4,	//q
-		Wall6_1,			//W to replace as it is repetitive
-		Wall6_2,			//X to replace as it is repetitive
-		Wall6_3,			//Y to replace as it is repetitive
-		Wall6_4,			//Z to replace as it is repetitive
-		Wall7_1,			//backslash (\) to replace as it is repetitive
-		Wall7_2,			//] to replace as it is repetitive
-		Wall7_3,			//^ to replace as it is repetitive
-		Wall7_4,			//_ to replace as it is repetitive
-		Wall9_1,			//b to replace as it is repetitive
-		Wall9_2,			//c to replace as it is repetitive
-		Wall9_3,			//d to replace as it is repetitive
-		Wall9_4,			//e to replace as it is repetitive
-		Wall9_5,			//f (to replace as it is repetitive)
-		Wall9_6,			//g  (to replace as it is repetitive)
-		Wall9_7,			//h (to replace as it is repetitive)
+		
 	};
 
 	enum class animated

@@ -313,6 +313,18 @@ namespace Core
 					}
 					//RicePlant3
 					/*RicePlant3,RicePlant4,RicePlant5,	RiceWater1,	RiceWater2,GunkanSign_Right,GunkanSign_Left,GunkanCorn,GunkanCarrot,,GunkanCrow_Right,FishingBoat,FishingLog,	FishingSotong,FishingNoot,FishingCrab,*/
+					//GunkanSign_Right
+					case static_cast<int>(animated::GunkanSign_Right):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanSign_Right.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanSign_Right, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
 					//GunkanCrow_Left
 					case static_cast<int>(animated::GunkanCrow_Left):
 					{
@@ -361,6 +373,30 @@ namespace Core
 						break;
 
 					}
+					//FishingBoat
+					case static_cast<int>(animated::FishingBoat):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingBoat.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingBoat, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//FishingLog
+					case static_cast<int>(animated::FishingLog):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingLog.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingLog, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
 					//FishingSotong
 					case static_cast<int>(animated::FishingSotong):
 					{
@@ -378,6 +414,18 @@ namespace Core
 					{
 						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingNoot.png");
 						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingNoot, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//FishingCrab
+					case static_cast<int>(animated::FishingCrab):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingCrab.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingCrab, std::move(rice1));
 						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
 						rice1->curr_anim = AnimationType::Idle;
 						rice1->isSpriteSheet = 1;

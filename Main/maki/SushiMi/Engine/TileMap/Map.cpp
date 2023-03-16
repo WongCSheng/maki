@@ -626,20 +626,36 @@ namespace Core
 				//sinkhole
 				case static_cast<int>(grid_number::sinkhole):
 				{
-					Sprite* sinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::sinkhole, sinkhole);
-
-					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					if (Map::maki_city != 1)
+					{
+						Sprite* sinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::sinkhole, sinkhole);
+						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					}
+					else
+					{
+						Sprite* sinkhole = new Sprite("../textures/Tiles/Maki_City/City_Sinkhole/Sinkhole_City_Empty.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::sinkhole, sinkhole);
+						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					}
 
 					break;
 				}
 				//filled sinkhole
 				case static_cast<int>(grid_number::filledsinkhole):
 				{
-					Sprite* filledsinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole_Filled.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::filledsinkhole, filledsinkhole);
-
-					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					if (Map::maki_city != 1)
+					{
+						Sprite* filledsinkhole = new Sprite("../textures/Tiles/Ground_GunkanVillage/Sinkhole_Filled.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::filledsinkhole, filledsinkhole);
+						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					}
+					else
+					{
+						Sprite* filledsinkhole = new Sprite("../textures/Tiles/Maki_City/City_Sinkhole/Sinkhole_City_Filled.png");
+						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::filledsinkhole, filledsinkhole);
+						SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					}
 
 					break;
 				}

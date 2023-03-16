@@ -42,7 +42,7 @@ namespace Core
 			}
 
 			Map::initMap("../TileMap/level5.txt");
-
+			Map::maki_city = 1;
 			Map::LoadMap();
 			Window::isQuestTab = false;
 			Window::loaded = true;
@@ -119,6 +119,7 @@ namespace Core
 			SceneManager::drawBlackOverlay();
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
+			Map::maki_city = 0;
 			//stop all player controls
 			//press button to undraw level 5, and draw level 6
 			if (Window::keystate_space && Window::isWinCondition == true)

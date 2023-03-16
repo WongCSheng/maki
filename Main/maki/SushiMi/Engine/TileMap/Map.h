@@ -49,8 +49,7 @@ namespace Core
 	
 		static bool isStuck();
 		static bool isWin();
-		
-		static void fadeToBlack();
+	
 		static std::string EnumToString(grid_number ingredient);
 
 		//static inline Core::grid_number box_stepped_on;
@@ -75,6 +74,8 @@ namespace Core
 		//static std::map<std::pair<grid_number, wall_type>, std::string> levelWinConditionsalt;
 		
 		static int CorrectCombination;
+
+		static inline bool maki_city;
 	};
 	/*extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
 	

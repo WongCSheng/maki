@@ -189,8 +189,8 @@ void Core::pseudomain::init() {
 	CoreSystem->objfactory->Init();
 	Font::init();
 	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
-
-
+	/*might need this if we using latin characters*/
+	std::setlocale(LC_ALL, "en_US.UTF-8");
 
 	//loading the entire main_menu which consists of all the buttons
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
@@ -298,6 +298,8 @@ void Core::pseudomain::init() {
 	AudioManager.LoadVoice("Dialogue_4.wav");
 	AudioManager.LoadVoice("Dialogue_5.wav");
 	AudioManager.LoadVoice("Idle_1.wav");
+	AudioManager.LoadVoice("Curious_3.wav");
+	AudioManager.LoadVoice("Oof_1.wav");
 	AudioManager.LoadSFX("Pouring.wav");
 	AudioManager.LoadSFX("Squeezing.wav");
 	//AssetsManager::GetInstance()->Add_files("../Assets");

@@ -32,7 +32,7 @@ namespace Core
 	extern std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 	void Levels::Level4()
 	{
-
+		Map::region = 2;
 		if (!Window::loaded)
 		{
 			Map::maki_city = 0; //it is not maki city

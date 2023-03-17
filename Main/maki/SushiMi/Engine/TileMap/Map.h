@@ -76,6 +76,17 @@ namespace Core
 		static int CorrectCombination;
 
 		static inline bool maki_city;
+
+
+		/*map changing*/
+		/*
+		* this is to change textures depending on the region of the map
+		* 1 = Rice Plain
+		* 2 = Village
+		* 3 = Fishing
+		* 4 = Maki City
+		*/
+		static inline int region;
 	};
 	/*extern std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
 	

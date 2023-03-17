@@ -33,7 +33,7 @@ namespace Core
 
 	void Levels::Level1()
 	{
-		
+		Map::region = 1;
 		if (!Window::loaded)
 		{
 			Map::maki_city = 0; //it is not maki city

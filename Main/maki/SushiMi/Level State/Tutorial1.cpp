@@ -41,7 +41,7 @@ namespace Core
 			{
 				Map::ResetMap();
 			}
-
+			Map::region = 1;
 			Map::initMap("../TileMap/_tut1.txt");
 
 			Map::LoadMap();

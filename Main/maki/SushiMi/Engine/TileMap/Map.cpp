@@ -214,7 +214,7 @@ namespace Core
 		}
 
 		std::vector<Basket>::iterator it = SceneManager::ingredientcontainer.begin();
-		
+
 		for (it; it != SceneManager::ingredientcontainer.end();)
 		{
 			it->Restart();
@@ -314,6 +314,60 @@ namespace Core
 
 					}
 					//RicePlant3
+					case static_cast<int>(animated::RicePlant3):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant3.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant3, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+					}
+					//RicePlant4
+					case static_cast<int>(animated::RicePlant4):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant4.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant4, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+					}
+					//RicePlant5
+					case static_cast<int>(animated::RicePlant5):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant5.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant5, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+					}
+					//RiceWater1
+					case static_cast<int>(animated::RiceWater1):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater1.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater1, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+					}
+					//RiceWater2
+					case static_cast<int>(animated::RiceWater2):
+					{
+						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater2.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater2, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+					}
 					/*RicePlant3,RicePlant4,RicePlant5,	RiceWater1,	RiceWater2,GunkanSign_Right,GunkanSign_Left,GunkanCorn,GunkanCarrot,,GunkanCrow_Right,FishingBoat,FishingLog,	FishingSotong,FishingNoot,FishingCrab,*/
 					//GunkanSign_Right
 					case static_cast<int>(animated::GunkanSign_Right):
@@ -1451,19 +1505,355 @@ namespace Core
 
 					break;
 				}
+				//	Ground Top 1,	
+				case static_cast<int>(wall_type::Ground_Top_1):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_1.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_1, tile);
 
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_1.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_1, tile);
 
-				
-				////	Wood,		//p
-				//case static_cast<int>(wall_type::WoodenPlatform):
-				//{
-				//	Sprite* tile = new Sprite("../textures/Tiles/Ground_FishingVillage/Fishing_Ground.png");
-				//	std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::WoodenPlatform, tile);
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_1.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_1, tile);
 
-				//	SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_1.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_1, tile);
 
-				//	break;
-				//}
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 2,	
+				case static_cast<int>(wall_type::Ground_Top_2):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_2.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_2, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_2.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_2, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_2.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_2, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_2.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_2, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 3,	
+				case static_cast<int>(wall_type::Ground_Top_3):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_3.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_3, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_3.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_3, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_3.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_3, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_3.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_3, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 4,	
+				case static_cast<int>(wall_type::Ground_Top_4):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_4.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_4, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_4.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_4, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_4.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_4, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_4.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_4, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 5,	
+				case static_cast<int>(wall_type::Ground_Top_5):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_5.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_5, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_5.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_5, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_5.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_5, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_5.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_5, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 6,	
+				case static_cast<int>(wall_type::Ground_Top_6):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_6.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_6, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_6.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_6, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_6.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_6, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_6.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_6, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 7,	
+				case static_cast<int>(wall_type::Ground_Top_7):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_7.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_7, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_7.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_7, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_7.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_7, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_7.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_7, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 8,	
+				case static_cast<int>(wall_type::Ground_Top_8):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_8.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_8, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_8.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_8, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_8.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_8, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_8.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_8, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 9,	
+				case static_cast<int>(wall_type::Ground_Top_9):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_9.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_9, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_9.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_9, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_9.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_9, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_9.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_9, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 10,	
+				case static_cast<int>(wall_type::Ground_Top_10):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_10.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_10, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 2)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Village_top/Village_Top_Ground_10.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_10, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 3)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/Fishing_top/Fishing_Ground_Top_10.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_10, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_10.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_10, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
+				//	Ground Top 11,	
+				case static_cast<int>(wall_type::Ground_Top_11):
+				{
+					if (Map::region == 1)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/RicePlain_top/RicePlain_Top_Ground_11.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_11, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					else if (Map::region == 4)
+					{
+						Sprite* tile = new Sprite("../textures/StaticTop/City_top/City_Ground_Top_11.png");
+						std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Ground_Top_11, tile);
+
+						SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
+					}
+					break;
+				}
 
 				default:
 					assert("Texture type not found\n");
@@ -1559,6 +1949,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "left ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.wav");
 						Window::player->stop();
 					}
 
@@ -1949,6 +2340,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "right ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.wav");
 						Window::player->stop();
 					}
 
@@ -2347,6 +2739,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "down ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.wav");
 						Window::player->stop();
 					}
 
@@ -2736,6 +3129,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "up ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.wav");
 						Window::player->stop();
 					}
 

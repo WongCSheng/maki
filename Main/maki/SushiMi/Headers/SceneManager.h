@@ -99,7 +99,22 @@ namespace Core
 		Gunkan_Ground_6_2,	//o
 		Gunkan_Ground_6_3,	//p
 		Gunkan_Ground_6_4,	//q
-		
+		/*static tops*/
+		Ground_Top_1,		//r
+		Ground_Top_2,		//s
+		Ground_Top_3,		//t
+		Ground_Top_4,		//u
+		Ground_Top_5,		//v
+		Ground_Top_6,		//w
+		Ground_Top_7,		//x
+		Ground_Top_8,		//y
+		Ground_Top_9,		//z
+		Ground_Top_10,		//{
+		Ground_Top_11,		//|
+		Ground_Top_12,		//}
+		Ground_Top_13,		//~
+		Ground_Top_14,		//€
+		Ground_Top_15,		//ü
 	};
 
 	enum class animated

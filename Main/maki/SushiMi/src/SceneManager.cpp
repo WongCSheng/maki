@@ -330,7 +330,7 @@ namespace Core
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		city_bg->transformation.Position = glm::vec2(0,0);
-		city_bg->transformation.Scale = glm::vec2(screenwidth, screenheight );
+		city_bg->transformation.Scale = glm::vec2(screenwidth /** 0.872f*/, screenheight/* * 0.9f*/);
 	}
 
 	void SceneManager::load_Bami_End_Room()

@@ -35,6 +35,7 @@ namespace Core
 
 		if (!Window::loaded)
 		{
+			Map::maki_city = 0; //it is not maki city
 			Window::player->current_anim = AnimationType::Idle;
 			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
@@ -125,7 +126,7 @@ namespace Core
 			if (Window::keystate_space && Window::isWinCondition == true)
 			{
 				Window::isLevel8 = false; //unload curr level
-				Window::isMenuState = true; //load new level
+				Window::isLevel9 = true; //load new level
 				Window::isWinCondition = false; //reset win condition
 				Window::loaded = false; //set to load
 				Window::keystate_space = false;

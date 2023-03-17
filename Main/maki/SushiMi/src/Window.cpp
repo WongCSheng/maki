@@ -125,29 +125,31 @@ namespace Core
 			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 			Window::keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
-			Window::keystate_fps = (key == GLFW_KEY_F) ? true : false;
+			Window::keystate_fps = (key == GLFW_KEY_F) ? true : false;	//toggle on or off fps
 
-			Window::keystate_Y = (key == GLFW_KEY_Y) ? true : false;
-			Window::keystate_N = (key == GLFW_KEY_N) ? true : false;
-			Window::keystate_P = (key == GLFW_KEY_P) ? true : false;
-			Window::keystate_J = (key == GLFW_KEY_J) ? true : false;
-			Window::keystate_K = (key == GLFW_KEY_K) ? true : false;
-			Window::keystate_L = (key == GLFW_KEY_L) ? true : false;
-			Window::keystate_1 = (key == GLFW_KEY_1) ? true : false;
-			Window::keystate_2 = (key == GLFW_KEY_2) ? true : false;
-			Window::keystate_3 = (key == GLFW_KEY_3) ? true : false;
-			Window::keystate_4 = (key == GLFW_KEY_4) ? true : false;
-			Window::keystate_5 = (key == GLFW_KEY_5) ? true : false;
-			Window::keystate_6 = (key == GLFW_KEY_6) ? true : false;
-			Window::keystate_7 = (key == GLFW_KEY_7) ? true : false;
-			Window::keystate_8 = (key == GLFW_KEY_8) ? true : false;
-			Window::keystate_9 = (key == GLFW_KEY_9) ? true : false;
-			Window::keystate_0 = (key == GLFW_KEY_0) ? true : false;
+			Window::keystate_Y = (key == GLFW_KEY_Y) ? true : false;	//yes
+			Window::keystate_N = (key == GLFW_KEY_N) ? true : false;	//no
 
-			Window::keystate_W = (key == GLFW_KEY_W) ? true : false;
-			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;
-			Window::keystate_S = (key == GLFW_KEY_S) ? true : false;
-			Window::keystate_D = (key == GLFW_KEY_D) ? true : false;
+			Window::keystate_P = (key == GLFW_KEY_P) ? true : false;	//play ending cutscene
+			Window::keystate_J = (key == GLFW_KEY_J) ? true : false;	//test level
+			Window::keystate_K = (key == GLFW_KEY_K) ? true : false;	//tut1
+			Window::keystate_L = (key == GLFW_KEY_L) ? true : false;	//tut2
+			Window::keystate_1 = (key == GLFW_KEY_1) ? true : false;	//level1
+			Window::keystate_2 = (key == GLFW_KEY_2) ? true : false;	//level2
+			Window::keystate_3 = (key == GLFW_KEY_3) ? true : false;	//level3
+			Window::keystate_4 = (key == GLFW_KEY_4) ? true : false;	//level4
+			Window::keystate_5 = (key == GLFW_KEY_5) ? true : false;	//level5
+			Window::keystate_6 = (key == GLFW_KEY_6) ? true : false;	//level6
+			Window::keystate_7 = (key == GLFW_KEY_7) ? true : false;	//level7
+			Window::keystate_8 = (key == GLFW_KEY_8) ? true : false;	//level8
+			Window::keystate_9 = (key == GLFW_KEY_9) ? true : false;	//level9
+			Window::keystate_0 = (key == GLFW_KEY_0) ? true : false;	//level10
+			Window::keystate_minus = (key == GLFW_KEY_MINUS) ? true : false;	//level11 (maki city)
+
+			Window::keystate_W = (key == GLFW_KEY_W) ? true : false;	//up
+			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;	//left
+			Window::keystate_S = (key == GLFW_KEY_S) ? true : false;	//down
+			Window::keystate_D = (key == GLFW_KEY_D) ? true : false;	//right
 
 		}
 	}
@@ -453,6 +455,7 @@ namespace Core
 			isLevel8 = false;
 			isLevel9 = false;
 			isLevel10 = false;
+			isLevel11 = false;
 			isTestLevel = false;
 			areyousure_prompt = false;
 			loaded = false;
@@ -484,6 +487,7 @@ namespace Core
 			isLevel8 = false;
 			isLevel9 = false;
 			isLevel10 = false;
+			isLevel11 = false;
 			isTestLevel = false;
 			areyousure_prompt = false;
 			loaded = false;
@@ -531,15 +535,12 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
 				isTestLevel = true;
 				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
-
 
 				keystate_J = false;
 			}
@@ -567,15 +568,14 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
+				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
 
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
-
-
+				
 				keystate_K = false;
 			}
 		}
@@ -602,13 +602,13 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
+				isTestLevel = false; 
 				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
 
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
 				keystate_L = false;
 			}
 		}
@@ -618,7 +618,6 @@ namespace Core
 			std::cout << "you have loaded level 1" << std::endl;
 			if (keystate_1)
 			{
-
 				isCutscene = false;
 				isMenuState = false;
 				isLevelSelection = false;
@@ -635,14 +634,12 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
+				isTestLevel = false; 
 				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
-
 
 				keystate_1 = false;
 			}
@@ -669,15 +666,14 @@ namespace Core
 				isLevel7 = false;
 				isLevel8 = false;
 				isLevel9 = false;
-				areyousure_prompt = false;
 				isLevel10 = false;
+				isLevel11 = false;
+				isTestLevel = false; 
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
-
-
+				
 				keystate_2 = false;
 			}
 		}
@@ -703,8 +699,10 @@ namespace Core
 				isLevel7 = false;
 				isLevel8 = false;
 				isLevel9 = false;
-				areyousure_prompt = false;
 				isLevel10 = false;
+				isLevel11 = false;
+				isTestLevel = false; 
+				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
@@ -737,6 +735,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
 				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
@@ -772,13 +771,12 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
-				isTestLevel = false;
+				isLevel11 = false;
 				areyousure_prompt = false;
+				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
 
 
 				keystate_5 = false;
@@ -807,6 +805,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
 				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
@@ -843,6 +842,7 @@ namespace Core
 				isLevel9 = false;
 				areyousure_prompt = false;
 				isLevel10 = false;
+				isLevel11 = false;
 				isTestLevel = false;
 				loaded = false;
 
@@ -877,16 +877,113 @@ namespace Core
 				isLevel8 = true;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false; 
 				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-				//SceneManager::tilecontainer.clear();
-				//SceneManager::ingredientcontainer.clear();
-
 
 				keystate_8 = false;
+			}
+		}
+		if (keystate_9)
+		{
+			keystate_9 = true;
+			std::cout << "you have loaded level 9" << std::endl;
+			if (keystate_9)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = true;
+				isLevel10 = false;
+				isLevel11 = false; 
+				areyousure_prompt = false;
+				isTestLevel = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				keystate_9 = false;
+			}
+		}
+		if (keystate_0)
+		{
+			keystate_0 = true;
+			std::cout << "you have loaded level 10" << std::endl;
+			if (keystate_0)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = true;
+				isLevel11 = false;
+				areyousure_prompt = false;
+				isTestLevel = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				keystate_0 = false;
+			}
+		}
+		if (keystate_minus)
+		{
+			keystate_minus = true;
+			std::cout << "you have loaded level 11" << std::endl;
+			if (keystate_minus)
+			{
+
+				isCutscene = false;
+				isMenuState = false;
+				isLevelSelection = false;
+				gameIsPaused = false;
+				isTut1 = false;
+				isTut2 = false;
+				isLevel1 = false;
+				isLevel2 = false;
+				isLevel3 = false;
+				isLevel4 = false;
+				isLevel5 = false;
+				isLevel6 = false;
+				isLevel7 = false;
+				isLevel8 = false;
+				isLevel9 = false;
+				isLevel10 = false;
+				isLevel11 = true;
+				areyousure_prompt = false;
+				isTestLevel = false;
+				loaded = false;
+
+				SceneManager::restartLevel();
+
+				keystate_minus = false;
 			}
 		}
 		if (keystate_T)
@@ -910,6 +1007,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = false;
 				isLevel10 = false;
+				isLevel11 = false;
 				isTestLevel = false;
 				isDialogue = false;
 				isHowToPlay = false;
@@ -935,7 +1033,7 @@ namespace Core
 		{
 			areyousure_prompt = false;
 		}
-		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isTestLevel ) && isDialogue == false)
+		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel ) && isDialogue == false)
 		{
 			gameIsPaused = !gameIsPaused;
 			
@@ -1278,7 +1376,7 @@ namespace Core
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			Shaders->Textured_Shader()->use();
-			if (isLevel7 || isLevel8 || isLevel9)
+			if (isLevel7 || isLevel8 || isLevel9 || isLevel10)
 			{
 				SceneManager::load_Wood_BG();
 				SceneManager::draw_Wood_BG();
@@ -1426,7 +1524,9 @@ namespace Core
 			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.wav"; }
 			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.wav";	}
 			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.wav";	}
+			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.wav"; }
+			if (isLevel10 == true) { level = GameState::LEVEL10; Levels::Level10(); walkingsfx = "Hard Floor Walking.wav"; }
+			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.wav";	}
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************
@@ -1884,7 +1984,7 @@ namespace Core
 				isMenuState = false; //disable menu buttons
 				gameIsPaused = false;
 
-				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isTestLevel = false;
+				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
 				isQuestTab = false;
 
 				//SceneManager::loadHowToOverlay(0, 0);

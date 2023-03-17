@@ -35,6 +35,7 @@ namespace Core
 
 		if (!Window::loaded)
 		{
+			Map::maki_city = 0; //it is not maki city
 			Window::player->current_anim = AnimationType::Idle;
 			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
@@ -42,12 +43,13 @@ namespace Core
 			}
 
 			Map::initMap("../TileMap/level5.txt");
-			Map::maki_city = 1;
+			Map::maki_city = 0;
 			Map::LoadMap();
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
 			AudioManager.LoadSFX("WalkSFX.wav");
+			AudioManager.LoadMusic("Forest_bgm.wav");
 			AudioManager.PlayMusic("Forest_bgm.wav");
 			AudioManager.SetMusicVolume(0.7f);
 			AudioManager.PlayVoice("Idle_1.wav");

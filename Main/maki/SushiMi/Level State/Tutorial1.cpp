@@ -36,6 +36,7 @@ namespace Core
 		if (!Window::loaded)
 		{
 
+			Map::maki_city = 0; //it is not maki city
 			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
 				Map::ResetMap();

@@ -490,7 +490,18 @@ namespace Core
 				}
 				case static_cast<int>(grid_number::corn):
 				{
-					Sprite* corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
+					Sprite* corn = nullptr;
+					if (maki_city != 1)
+					{
+						corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
+
+					}
+					else
+					{
+						corn = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Corn.png");
+
+					}
+					
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
@@ -499,7 +510,18 @@ namespace Core
 
 				case static_cast<int>(grid_number::inari):
 				{
-					Sprite* inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
+					Sprite* inari = nullptr;
+					if (maki_city != 1)
+					{
+						inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
+
+					}
+					else
+					{
+						inari = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Inari.png");
+
+					}
+					
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
@@ -524,7 +546,17 @@ namespace Core
 				//roes
 				case static_cast<int>(grid_number::roes):
 				{
-					Sprite* roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
+					Sprite* roes = nullptr;
+					if (maki_city != 1)
+					{
+						roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
+
+					}
+					else
+					{
+						roes = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Roes.png");
+
+					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
@@ -567,7 +599,17 @@ namespace Core
 				//tuna
 				case static_cast<int>(grid_number::tuna):
 				{
-					Sprite* tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
+					Sprite* tuna = nullptr;
+					if (maki_city != 1)
+					{
+						tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
+
+					}
+					else
+					{
+						tuna = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Tuna.png");
+
+					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
@@ -744,7 +786,16 @@ namespace Core
 				//roes
 				case static_cast<int>(wall_type::roes_box):
 				{
-					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Roes.png");
+					Sprite* box = nullptr;
+					if (maki_city != 1)
+					{
+						box = new Sprite("../textures/Tiles/Pods/Pod_Roes.png");
+
+					}
+					else
+					{
+						
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::roes_box, box);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -929,7 +980,18 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall1.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.8.png");
+
+					}
+					
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -938,7 +1000,18 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall2):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.2.png");
+
+					}
+					
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -980,7 +1053,18 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.5.png");
+
+					}
+				
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1021,20 +1105,36 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall4):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall4.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.1.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall4, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-
-				
-
-
 				case static_cast<int>(wall_type::Wall5):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall5.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_Empty.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall5, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1046,7 +1146,17 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall6):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall6.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.3.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall6, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1057,7 +1167,17 @@ namespace Core
 				//wall 7
 				case static_cast<int>(wall_type::Wall7):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall7.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.7.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall7, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1068,7 +1188,18 @@ namespace Core
 				//wall 8
 				case static_cast<int>(wall_type::Wall8):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall8.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.4.png");
+
+					}
+				
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1078,7 +1209,18 @@ namespace Core
 				//wall 9
 				case static_cast<int>(wall_type::Wall9):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall9.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.6.png");
+
+					}
+				
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);

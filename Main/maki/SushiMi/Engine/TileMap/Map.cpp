@@ -794,7 +794,7 @@ namespace Core
 					}
 					else
 					{
-						
+						box = new Sprite("../textures/Tiles/Maki_City/City_Pods/City_Restaurant_5.png");
 					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::roes_box, box);
 
@@ -962,7 +962,18 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall0):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.1.png");
+
+					}
+					
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -971,7 +982,17 @@ namespace Core
 				}
 				case static_cast<int>(wall_type::Wall0_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall0_1.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.2.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1023,7 +1044,16 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall2_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1)
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall2_1.jpg");
+
+					}
+					else
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.9.png");
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2_1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1074,7 +1104,17 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3_1):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_1.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.3.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_1, tile);
 					//tile->Add_animation()
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1084,7 +1124,17 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3_2):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_2.jpg");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.4.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_2, tile);
 					//tile->Add_animation()
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1095,7 +1145,17 @@ namespace Core
 
 				case static_cast<int>(wall_type::Wall3_3):
 				{
-					Sprite* tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
+					Sprite* tile = nullptr;
+					if (maki_city != 1) //if it is not maki city
+					{
+						tile = new Sprite("../textures/Tiles/Wall/RicePlain_Wall3_3.png");
+
+					}
+					else //it is maki city
+					{
+						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.5.png");
+
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3_3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);

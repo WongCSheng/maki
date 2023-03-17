@@ -325,6 +325,14 @@ namespace Core
 		wooden_bg->transformation.Scale = glm::vec2(screenwidth * 0.867f, screenheight * 0.91f);
 	}
 
+	void SceneManager::load_City_BG()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		city_bg->transformation.Position = glm::vec2(0,0);
+		city_bg->transformation.Scale = glm::vec2(screenwidth, screenheight );
+	}
+
 	void SceneManager::load_Bami_End_Room()
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -795,6 +803,12 @@ namespace Core
 		wooden_bg->draw();
 	}
 
+	void SceneManager::draw_City_BG()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", city_bg->transformation.Get());
+		city_bg->draw();
+	}
+
 	void SceneManager::draw_Bami_End_Room()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Bami_End_Room_Cutscene->transformation.Get());
@@ -929,6 +943,11 @@ namespace Core
 	void SceneManager::destroy_Wood_BG()
 	{
 		delete wooden_bg;
+	}
+
+	void SceneManager::destroy_City_BG()
+	{
+		delete city_bg;
 	}
 
 	void SceneManager::destroy_Bami_End_Room()

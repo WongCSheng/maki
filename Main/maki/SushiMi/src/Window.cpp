@@ -332,6 +332,7 @@ namespace Core
 		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
 
 		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
+		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
 
 		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
 		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
@@ -406,6 +407,7 @@ namespace Core
 		SceneManager::destroyLevelSelect();
 		SceneManager::destroy_Dialogue();
 		SceneManager::destroy_Wood_BG();
+		SceneManager::destroy_City_BG();
 		SceneManager::destroy_Bami_End_Room();
 		SceneManager::destroy_Are_You_Sure();
 
@@ -1380,6 +1382,12 @@ namespace Core
 			{
 				SceneManager::load_Wood_BG();
 				SceneManager::draw_Wood_BG();
+
+			}
+			else if (isLevel11)
+			{
+				SceneManager::load_City_BG();
+				SceneManager::draw_City_BG();
 
 			}
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/

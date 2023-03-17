@@ -181,6 +181,7 @@ namespace Core
 		static void loadLevelSelect(int x, int y);
 		static void load_Dialogue(); //RP stands for Rice Plain
 		static void load_Wood_BG(); //for fishing village
+		static void load_City_BG(); //for maki city
 		static void load_Bami_End_Room(); //Ending Cutscene
 		static void load_Are_You_Sure(); //confirmation screen
 
@@ -202,6 +203,7 @@ namespace Core
 		static void drawBlackOverlay();
 		static void draw_Dialogue();
 		static void draw_Wood_BG();
+		static void draw_City_BG();	
 		static void draw_Bami_End_Room();
 		static void draw_Are_You_Sure();
 
@@ -227,6 +229,7 @@ namespace Core
 		static void destroyLevelSelect();
 		static void destroy_Dialogue();
 		static void destroy_Wood_BG();
+		static void destroy_City_BG();
 		static void destroy_Bami_End_Room();
 		static void destroy_Are_You_Sure();
 
@@ -262,7 +265,7 @@ namespace Core
 		static inline Sprite* riceplain_dialogue, * gunkan_dialogue, * fishingvillage_dialogue;
 		static inline int num_dialogue_clicks;
 
-		static inline Sprite* wooden_bg;
+		static inline Sprite* wooden_bg, *city_bg;
 
 		static inline Sprite* howtoplay_overlay1;
 		static inline Sprite* howtoplay_overlay2;

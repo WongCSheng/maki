@@ -224,8 +224,10 @@ namespace Core
 				delete it->spr;
 				it = SceneManager::ingredientcontainer.erase(it);
 			}
-
-			it++;
+			else
+			{
+				it++;
+			}
 		}
 
 		it = SceneManager::in_sinkhole.begin();

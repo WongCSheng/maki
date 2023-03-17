@@ -2059,6 +2059,22 @@ namespace Core
 					double xpos = 0, ypos = 0;
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
+					//volume up setting
+					if (xpos > 1036 && xpos < 1139 && ypos > 410 && ypos < 500)
+					{
+						AudioManager.IncreaseMusicVolume();
+						AudioManager.IncreaseSFXVolume();
+						AudioManager.IncreaseVoiceVolume();
+					}
+
+					//volume down setting
+					if (xpos > 1163 && xpos < 1268 && ypos > 410 && ypos < 500)
+					{
+						AudioManager.DecreaseMusicVolume();
+						AudioManager.DecreaseSFXVolume();
+						AudioManager.DecreaseVoiceVolume();
+					}
+
 					//PRESS CREDITS
 					if (xpos > 814 && xpos < 1047 && ypos > 536 && ypos < 612)
 					{

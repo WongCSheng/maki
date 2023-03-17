@@ -34,7 +34,7 @@ namespace Core
         /*
         *   Set music channel group
         ----------------------------------------------------------------------------- */
-        channel->setChannelGroup(channelGroup);
+        SFXchannel->setChannelGroup(channelGroup);
         musicChannel->setChannelGroup(channelGroup);
         voiceChannel->setChannelGroup(channelGroup);
 
@@ -66,7 +66,7 @@ namespace Core
             audioClip = search->second;
 
         // Play the sound.
-        fmodSystem->playSound(audioClip, channelGroup, false, &channel);
+        fmodSystem->playSound(audioClip, channelGroup, false, &SFXchannel);
     }
 
     /*!				void _audioManager::PlayMusic(string musicTrack)
@@ -127,7 +127,7 @@ namespace Core
     void _audioManager::StopSFX(void)
     {
         // stop play the sound.
-        channel->stop();
+        SFXchannel->stop();
     }
 
     /*!				void _audioManager::StopVoice(void)
@@ -150,7 +150,9 @@ namespace Core
     */
     void _audioManager::SetAudioVolume(float volume)
     {
-        channel->setVolume(volume);
+        SFXchannel->setPaused(true);
+        SFXchannel->setVolume(volume);
+        SFXchannel->setPaused(false);
     }
 
     /*!				void _audioManager::SetMusicVolume(float volume)
@@ -161,17 +163,88 @@ namespace Core
     */
     void _audioManager::SetMusicVolume(float volume)
     {
-        FMOD::Sound* snd = nullptr;
-        musicChannel->getCurrentSound(&snd);
-        
-        musicChannel->stop();
-        fmodSystem->playSound(snd, channelGroup, false, &musicChannel);
+        musicChannel->setPaused(true);
         musicChannel->setVolume(volume);
+        musicChannel->setPaused(false);
     }
 
     void _audioManager::SetVoiceVolume(float volume)
     {
+        voiceChannel->setPaused(true);
         voiceChannel->setVolume(volume);
+        voiceChannel->setPaused(false);
+    }
+
+    void _audioManager::IncreaseMusicVolume()
+    {
+        float volume;
+
+        musicChannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume += (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetMusicVolume(volume);
+    }
+
+    void _audioManager::IncreaseSFXVolume()
+    {
+        float volume;
+
+        SFXchannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume += (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetAudioVolume(volume);
+    }
+
+    void _audioManager::IncreaseVoiceVolume()
+    {
+        float volume;
+
+        voiceChannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume += (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetVoiceVolume(volume);
+    }
+
+    void _audioManager::DecreaseMusicVolume()
+    {
+        float volume;
+
+        musicChannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume -= (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetVoiceVolume(volume);
+    }
+
+    void _audioManager::DecreaseSFXVolume()
+    {
+        float volume;
+
+        SFXchannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume -= (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetVoiceVolume(volume);
+    }
+
+    void _audioManager::DecreaseVoiceVolume()
+    {
+        float volume;
+
+        voiceChannel->getVolume(&volume);
+        if (volume > -2.f && volume < 2.f)
+        {
+            volume -= (volume <= 1.f) ? 0.1f : 0.f;
+        }
+        SetVoiceVolume(volume);
     }
 
     /*!				void _audioManager::Update()
@@ -348,6 +421,16 @@ namespace Core
     FMOD::Channel* _audioManager::GetMusicChannel(void)
     {
         return musicChannel;
+    }
+
+    FMOD::Channel* _audioManager::GetAudioChannel()
+    {
+        return SFXchannel;
+    }
+
+    FMOD::Channel* _audioManager::GetVoiceChannel()
+    {
+        return voiceChannel;
     }
 
     FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,

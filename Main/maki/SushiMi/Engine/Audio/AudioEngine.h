@@ -31,7 +31,7 @@ namespace Core
         _audioManager(void);
         ~_audioManager(void);
         FMOD::System* fmodSystem = NULL;
-        FMOD::Channel* channel = nullptr;
+        FMOD::Channel* SFXchannel = nullptr;
         FMOD::Channel* musicChannel = nullptr;
         FMOD::Channel* voiceChannel = nullptr;
         FMOD::ChannelGroup* channelGroup = nullptr;
@@ -45,6 +45,8 @@ namespace Core
     public:
         static _audioManager& Instance(void);
         FMOD::Channel* GetMusicChannel(void);
+        FMOD::Channel* GetAudioChannel(void);
+        FMOD::Channel* GetVoiceChannel(void);
         void CleanPlaying(void);
         void PlaySFX(std::string audiClip);
         void PlayMusic(std::string musicTrack);
@@ -55,6 +57,12 @@ namespace Core
         void SetAudioVolume(float volume);
         void SetMusicVolume(float volume);
         void SetVoiceVolume(float volume);
+        void IncreaseMusicVolume();
+        void IncreaseSFXVolume();
+        void IncreaseVoiceVolume();
+        void DecreaseMusicVolume();
+        void DecreaseSFXVolume();
+        void DecreaseVoiceVolume();
         void Update(void);
         void LoadSFX(std::string name);
         void LoadMusic(std::string name);

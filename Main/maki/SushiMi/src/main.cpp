@@ -305,10 +305,6 @@ void Core::pseudomain::init() {
 	AudioManager.PlayMusic("BGM.wav");
 	AudioManager.SetMusicVolume(0.7f);
 
-	float volume;
-	AudioManager.GetMusicChannel()->getVolume(&volume);
-	std::cout << "Music Volume: " << volume << std::endl;
-
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
 }
 

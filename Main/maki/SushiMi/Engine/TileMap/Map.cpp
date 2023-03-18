@@ -3464,7 +3464,16 @@ namespace Core
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
+				if (gGrids[r][c] >= '!' && gGrids[r][c] <= '8')
+				{
+					std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
+
+				}
+				else
+				{
+					std::cout << std::setw(4) << static_cast<char>(aGrids[r][c]) << std::setw(4);
+
+				}
 			}
 			std::cout << std::endl;
 		}
@@ -3479,6 +3488,7 @@ namespace Core
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
+				
 				std::cout << std::setw(4) << static_cast<char>(wGrids[r][c]) << std::setw(4);
 			}
 			std::cout << std::endl;

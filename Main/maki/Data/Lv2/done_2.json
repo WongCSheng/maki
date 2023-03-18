@@ -2,7 +2,7 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 150.0, 150.0 ],
+      "position": [ 250.0, 150.0 ],
       "rotation": 0.0,
       "scale": [ 50, 50 ]
     },

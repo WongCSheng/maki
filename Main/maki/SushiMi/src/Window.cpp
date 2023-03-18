@@ -207,6 +207,7 @@ namespace Core
 						{
 							//check for how many times the chop has to draw, base on ingredientCount
 							Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
+						
 							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
 							//need to adjust the transform component of the done button to the right position
 							//get the set that is matched
@@ -219,7 +220,13 @@ namespace Core
 							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 							spritecomp->draw();
 
-							//std::cout << "pls show me the done stuff\n";
+							std::cout << "pls show me the done stuff\n";
+
+							obj = CoreSystem->objfactory->ObjectContainer.at("done_2");
+							
+
+							obj = CoreSystem->objfactory->ObjectContainer.at("done_3");
+							
 						}
 					}
 					else
@@ -274,7 +281,7 @@ namespace Core
 		}
 
 		glfwMakeContextCurrent(window_ptr);
-		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
+		/*std::cout << "GLEW Error: " << */glewGetErrorString(glewInit())/* << std::endl*/;  //it says "No error"
 
 		//initialize key&mouse callback functions
 		glfwSetKeyCallback(window_ptr, keyCallBack);
@@ -1933,6 +1940,7 @@ namespace Core
 				//chop ingredient
 				checkWin();
 
+				//not working
 				//stack for loop
 				/*for (auto& x : stack)
 				{*/

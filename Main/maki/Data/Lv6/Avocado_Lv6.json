@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 150.0, 140.0 ],
+      "rotation": 0.0,
+      "scale": [ 80, 80 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/Avocado.png",
+      "name": "Avocado_Lv6",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 0, 0 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/bg.jpg",
+      "name": "Quest_Lv1",
+      "SpriteSheet": false,
+      "SpriteSize": [ 0, 0 ],
+      "CorrectIngredient": [
+        "Rice_Lv1",
+        "Nori_Lv1"
+      ]
+    }
+  ]
+} 

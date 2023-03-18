@@ -204,10 +204,81 @@ void Core::pseudomain::init() {
 	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
-	Core::DeserializeEntity("../Data/Quests/questBase.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
 
-	/*	Loading all ingredients	(ingredients from tut1-lv6)*/
-	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
+	/*	 Loading of Chops (Done)	*/
+	Core::DeserializeEntity("../Data/Chop/denied.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/denied_2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/denied_3.json", CoreSystem->objfactory);
+
+	/*	 Loading of Chops (Denied)	*/
+	Core::DeserializeEntity("../Data/Chop/done.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/done_2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/done_3.json", CoreSystem->objfactory);
+
+			/*	Loading all ingredients	by level*/
+	//Lv1
+	Core::DeserializeEntity("../Data/Lv1/Nori_Lv1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv1/Rice_Lv1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv1/Quest_Lv1.json", CoreSystem->objfactory);
+
+	//Lv2
+	Core::DeserializeEntity("../Data/Lv2/Inari_Lv2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv2/Nori_Lv2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv2/Tofu_Lv2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv2/Quest_Lv2.json", CoreSystem->objfactory);
+
+	//Lv3
+	Core::DeserializeEntity("../Data/Lv3/Inari_Lv3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv3/Rice_Lv3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv3/Tofu_Lv3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv3/Quest_Lv3.json", CoreSystem->objfactory);
+
+	//lv4
+	Core::DeserializeEntity("../Data/Lv4/Corn_Lv4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv4/Cucumber_Lv4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv4/Tamago_Lv4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv4/Quest_Lv4.json", CoreSystem->objfactory);
+
+	//Lv5
+	Core::DeserializeEntity("../Data/Lv5/Avocado_Lv5.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv5/Cucumber_Lv5.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv5/Tamago_Lv5.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv5/Quest_Lv5.json", CoreSystem->objfactory);
+
+
+	//Lv6
+	Core::DeserializeEntity("../Data/Lv6/Avocado_Lv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv6/Cucumber_Lv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv6/Corn_Lv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv6/Quest_Lv6.json", CoreSystem->objfactory);
+
+	//Lv7
+	Core::DeserializeEntity("../Data/Lv7/Salmon_Wasabi_Lv7.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv7/Quest_Lv7.json", CoreSystem->objfactory);
+
+	//Lv8
+	Core::DeserializeEntity("../Data/Lv8/Octopus_Wasabi_Lv8.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv8/Salmon_Lv8.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv8/Tuna_Soya_Lv8.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv8/Quest_Lv8.json", CoreSystem->objfactory);
+
+	//Lv9
+	Core::DeserializeEntity("../Data/Lv9/Octopus_Wasabi_Lv9.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv9/Roe_Soya_Wasabi_Lv9.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv9/Tuna_Lv9.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv9/Quest_Lv9.json", CoreSystem->objfactory);
+
+	//Lv10
+	Core::DeserializeEntity("../Data/Lv10/Octopus_Soya_Wasabi_Lv10.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv10/Roe_Wasabi_Lv10.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv10/Salmon_Soya_Lv10.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Lv10/Quest_Lv10.json", CoreSystem->objfactory);
+
+
+
+	
+	/*Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Cucumber.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Inari.json", CoreSystem->objfactory);
@@ -221,28 +292,28 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tuna.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);*/
 
 	/*	Loading quests lv7-lv10)*/
-	Core::DeserializeEntity("../Data/Quests/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
-	Core::DeserializeEntity("../Data/Quests/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
-	Core::DeserializeEntity("../Data/Quests/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
+	//Core::DeserializeEntity("../Data/Quests/Salmon_Wasabi.json", CoreSystem->objfactory); //Lv7 & Lv8
+	//Core::DeserializeEntity("../Data/Quests/Tuna_Soya.json", CoreSystem->objfactory);	//Lv8
+	//Core::DeserializeEntity("../Data/Quests/Octupus_Wasabi.json", CoreSystem->objfactory); //Lv8
 
-	/*Loading of quest chop*/
-	Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Quests/denied.json", CoreSystem->objfactory);
+	///*Loading of quest chop*/
+	//Core::DeserializeEntity("../Data/Quests/done.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Quests/denied.json", CoreSystem->objfactory);
 
-	/* Loading of all quests in the desinated level*/
-	Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv2/QuestLv2.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv3/QuestLv3.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv4/QuestLv4.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv5/QuestLv5.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv7/QuestLv7.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Lv8/QuestLv8.json", CoreSystem->objfactory);
+	///* Loading of all quests in the desinated level*/
+	//Core::DeserializeEntity("../Data/Tut1/QuestTut1.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Tut2/QuestTut2.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv1/QuestLv1.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv2/QuestLv2.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv3/QuestLv3.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv4/QuestLv4.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv5/QuestLv5.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv6/QuestLv6.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv7/QuestLv7.json", CoreSystem->objfactory);
+	//Core::DeserializeEntity("../Data/Lv8/QuestLv8.json", CoreSystem->objfactory);
 
 
 	////loading image&button paths

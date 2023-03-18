@@ -1835,48 +1835,52 @@ namespace Core
 				switch (level)
 				{
 				case(GameState::TUT1):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut1");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Tut1");
 					break;
 
 				case(GameState::TUT2):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestTut2");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Tut2");
 					break;
 
 				case(GameState::LEVEL1):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv1");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv1");
 					break;
 
 				case(GameState::LEVEL2):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv2");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv2");
 					break;
 
 				case(GameState::LEVEL3):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv3");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv3");
 					break;
 
 				case(GameState::LEVEL4):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv4");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv4");
 					break;
 
 				case(GameState::LEVEL5):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv5");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv5");
 					break;
 
 				case(GameState::LEVEL6):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv6");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv6");
 					break;
 
 				case(GameState::LEVEL7):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv7");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv7");
 					break;
 
 				case(GameState::LEVEL8):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv8");
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv8");
 					break;
 
-					//case(GameState::LEVEL9):
-					//	ingredientforlevel = Sprite::levelCorrectIngredients.at("QuestLv9");
-					//	break;
+				case(GameState::LEVEL9):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv9");
+					break;
+
+				case(GameState::LEVEL10):
+					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv10");
+					break;
 				}
 				
 				size_t numOfLoadedIngredient = ingredientforlevel.size();    // number of ingredients loaded for current level

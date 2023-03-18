@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 150.0, 150.0 ],
+      "rotation": 0.0,
+      "scale": [ 50, 50 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/done.png",
+      "name": "done",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+} 

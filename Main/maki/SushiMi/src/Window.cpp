@@ -274,7 +274,7 @@ namespace Core
 		}
 
 		glfwMakeContextCurrent(window_ptr);
-		std::cout << "GLEW Error: " << glewGetErrorString(glewInit()) << std::endl;  //it says "No error"
+		glewGetErrorString(glewInit());  //it says "No error"
 
 		//initialize key&mouse callback functions
 		glfwSetKeyCallback(window_ptr, keyCallBack);

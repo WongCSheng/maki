@@ -530,13 +530,13 @@ namespace Core
 
 				case static_cast<int>(grid_number::avocado):
 				{
-					Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
+					/*Sprite* avocado = new Sprite("../textures/Tiles/Ingredients/Ingredients0_avocado.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-					break;
+					break;*/
 
-					avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
+					Sprite* avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 					avocado->status = 0;
 					avocado->isSpriteSheet = 1;
@@ -3477,7 +3477,11 @@ namespace Core
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
+				if (gGrids[r][c] >= '!' && gGrids[r][c] <= '7')
+					std::cout << std::setw(4) << static_cast<char>(gGrids[r][c]) << std::setw(4);
+				else
+					std::cout << std::setw(4) << static_cast<char>(aGrids[r][c]) << std::setw(4);
+
 			}
 			std::cout << std::endl;
 		}

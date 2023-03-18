@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/done.png",
-      "name": "done",
+      "texturepath": "../textures/Quest/done.png",
+      "name": "done_3",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

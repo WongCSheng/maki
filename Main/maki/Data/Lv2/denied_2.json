@@ -4,12 +4,12 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 500, 350 ]
+      "scale": [ 50, 50 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/denied.png",
-      "name": "denie_2",
+      "texturepath": "../textures/Quest/denied.png",
+      "name": "denied_2",
       "SpriteSheet": false,                           
       "SpriteSize": [ 1280, 703 ]
     }

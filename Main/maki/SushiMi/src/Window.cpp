@@ -1898,17 +1898,17 @@ namespace Core
 					{
 					case(1):
 						//loading 1 ingredient
-						loadedIngredients.insert({ ingredient, {50.0f, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f, 140.0f} }); // 1st ingriedient: 50, 140
 						break;
 
 					case(2):
 						//loading 2 ingredients
-						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} }); // 2nd ingriedient: 150,140
 						break;
 
 					case(3):
 						//loading 3 ingredients
-						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} });
+						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} }); // 3rd ingriedient: 250,10
 						break;
 
 						//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//

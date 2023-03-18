@@ -217,6 +217,15 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Chop/done_3.json", CoreSystem->objfactory);
 
 			/*	Loading all ingredients	by level*/
+	//tut1
+	Core::DeserializeEntity("../Data/Tut1/Rice_Tut1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut1/Quest_Tut1.json", CoreSystem->objfactory);
+
+	//tut2
+	Core::DeserializeEntity("../Data/Tut2/Nori_Tut2.json", CoreSystem->objfactory); 
+	Core::DeserializeEntity("../Data/Tut2/Tofu_Tut2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Tut2/Quest_Tut2.json", CoreSystem->objfactory);
+
 	//Lv1
 	Core::DeserializeEntity("../Data/Lv1/Nori_Lv1.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Lv1/Rice_Lv1.json", CoreSystem->objfactory);

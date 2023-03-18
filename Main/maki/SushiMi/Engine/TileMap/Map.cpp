@@ -535,6 +535,19 @@ namespace Core
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;
+
+					avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
+					avocado->status = 0;
+					avocado->isSpriteSheet = 1;
+					/*add avocado sprites*/
+					avocado->Add_animation("../textures/spritesheet/avocado_normal.txt");
+					avocado->Add_animation("../textures/spritesheet/avocado_soy.txt");
+					avocado->Add_animation("../textures/spritesheet/avocado_wasabi.txt");
+					avocado->Add_animation("../textures/spritesheet/avocado_both.txt");
+					avocado->curr_anim = AnimationType::Idle;
+					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					break;
 				}
 				case static_cast<int>(grid_number::cucumber):
 				{

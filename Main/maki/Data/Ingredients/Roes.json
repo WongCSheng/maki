@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Avocado.png",
-      "name": "Avocado_Lv5",
+      "texturepath": "../textures/Quest/Roes.png",
+      "name": "Roes",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Roe_Wasabi.png",
-      "name": "Roe_Wasabi_Lv10",
+      "texturepath": "../textures/Quest/Inari.png",
+      "name": "Inari",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

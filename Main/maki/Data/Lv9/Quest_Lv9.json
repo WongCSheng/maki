@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Octopus_Wasabi_Lv9",
-        "Tuna_Lv9",
-        "Roe_Soya_Wasabi_Lv9"
+        "Octopus_Wasabi",
+        "Tuna",
+        "Roe_Soya_Wasabi"
       ]
     }
   ]

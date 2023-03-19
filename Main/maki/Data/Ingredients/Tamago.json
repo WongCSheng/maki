@@ -9,7 +9,7 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/Quest/Tamago.png",
-      "name": "Tamago_Lv4",
+      "name": "Tamago",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

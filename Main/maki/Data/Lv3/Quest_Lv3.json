@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Inari_Lv3",
-        "Tofu_Lv3",
-        "Rice_Lv3"
+        "Inari",
+        "Tofu",
+        "Rice"
       ]
     }
   ]

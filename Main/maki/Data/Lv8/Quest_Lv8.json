@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tuna_Soya_Lv8",
-        "Octopus_Wasabi_Lv8",
-        "Salmon_Lv8"
+        "Tuna_Soya",
+        "Octopus_Wasabi",
+        "Salmon"
       ]
     }
   ]

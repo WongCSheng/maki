@@ -13,8 +13,8 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Rice_Lv1",
-        "Nori_Lv1"
+        "Rice",
+        "Nori"
       ]
     }
   ]

@@ -28,7 +28,7 @@ namespace Core
 {
 
 	//int Map::gGrids[GRID_ROW][GRID_COL];
-    static inline int width, height;
+	static inline int width, height;
 	unsigned int SceneManager::amt_of_win_conditions, win_amt;
 	/*std::vector<std::pair<grid_number, wall_type>> levelWinConditions;*/
 	int Map::CorrectCombination{}; //redeclaration
@@ -42,7 +42,8 @@ namespace Core
 	grid_number next_grid;
 	grid_number curr_grid;
 
-
+	std::map<std::string, Sprite*> Map::loadedIngredients;		//  all loaded ingredients for the level
+	std::map< std::string, Sprite*> Map::loadedBoxes;			//	all loaded boxes for the level
 
 	Map::Map()
 	{
@@ -258,11 +259,11 @@ namespace Core
 	int Map::LoadMap()
 	{
 		glfwGetWindowSize(Window::window_ptr, &width, &height);
-		
+		windowDim = { width, height };
 		tile_width = static_cast<float>(width / max_grid_cols_x);
 		tile_height = static_cast<float>(height / max_grid_rows_y);
 		SceneManager::setTileDimension(static_cast<unsigned int>(tile_width), static_cast<unsigned int>(tile_height));
-	
+
 		CorrectCombination = 0;
 		levelWinConditions.clear();
 
@@ -290,205 +291,205 @@ namespace Core
 				switch (aGrids[r][c])
 				{
 					//RicePlant1
-					case static_cast<int>(animated::RicePlant1):
-					{
-						Sprite* riceplant = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
-						std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(riceplant));
-						riceplant->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						riceplant->curr_anim = AnimationType::Idle;
-						riceplant->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
-						break;
-						
-					}
-					//RicePlant2
-					case static_cast<int>(animated::RicePlant2):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant2.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant2, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				case static_cast<int>(animated::RicePlant1):
+				{
+					Sprite* riceplant = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant1.png");
+					std::pair<animated, Sprite*> combine = std::make_pair(animated::RicePlant1, std::move(riceplant));
+					riceplant->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					riceplant->curr_anim = AnimationType::Idle;
+					riceplant->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine);
+					break;
 
-					}
-					//RicePlant3
-					case static_cast<int>(animated::RicePlant3):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant3.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant3, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
-					}
-					//RicePlant4
-					case static_cast<int>(animated::RicePlant4):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant4.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant4, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
-					}
-					//RicePlant5
-					case static_cast<int>(animated::RicePlant5):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant5.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant5, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
-					}
-					//RiceWater1
-					case static_cast<int>(animated::RiceWater1):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater1.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater1, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
-					}
-					//RiceWater2
-					case static_cast<int>(animated::RiceWater2):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater2.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater2, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
-					}
-					/*RicePlant3,RicePlant4,RicePlant5,	RiceWater1,	RiceWater2,GunkanSign_Right,GunkanSign_Left,GunkanCorn,GunkanCarrot,,GunkanCrow_Right,FishingBoat,FishingLog,	FishingSotong,FishingNoot,FishingCrab,*/
-					//GunkanSign_Right
-					case static_cast<int>(animated::GunkanSign_Right):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanSign_Right.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanSign_Right, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//RicePlant2
+				case static_cast<int>(animated::RicePlant2):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant2.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant2, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//GunkanCrow_Left
-					case static_cast<int>(animated::GunkanCrow_Left):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCrow_Left.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCrow_Left, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//RicePlant3
+				case static_cast<int>(animated::RicePlant3):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant3.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant3, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+				}
+				//RicePlant4
+				case static_cast<int>(animated::RicePlant4):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant4.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant4, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+				}
+				//RicePlant5
+				case static_cast<int>(animated::RicePlant5):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RicePlant5.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlant5, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+				}
+				//RiceWater1
+				case static_cast<int>(animated::RiceWater1):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater1.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater1, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+				}
+				//RiceWater2
+				case static_cast<int>(animated::RiceWater2):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/RiceWater2.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RiceWater2, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/RiceWater.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+				}
+				/*RicePlant3,RicePlant4,RicePlant5,	RiceWater1,	RiceWater2,GunkanSign_Right,GunkanSign_Left,GunkanCorn,GunkanCarrot,,GunkanCrow_Right,FishingBoat,FishingLog,	FishingSotong,FishingNoot,FishingCrab,*/
+				//GunkanSign_Right
+				case static_cast<int>(animated::GunkanSign_Right):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanSign_Right.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanSign_Right, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//GunkanCorn
-					case static_cast<int>(animated::GunkanCorn):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCorn.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCorn, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//GunkanCrow_Left
+				case static_cast<int>(animated::GunkanCrow_Left):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCrow_Left.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCrow_Left, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//GunkanCarrot
-					case static_cast<int>(animated::GunkanCarrot):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCarrot.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCarrot, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//GunkanCorn
+				case static_cast<int>(animated::GunkanCorn):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCorn.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCorn, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//RicePlain_TopG2_1
-					case static_cast<int>(animated::RicePlain_TopG2_1):
-					{
-						Sprite* rice1 = new Sprite("../textures/Tiles/Top/RicePlain_TopG2_1.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlain_TopG2_1, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//GunkanCarrot
+				case static_cast<int>(animated::GunkanCarrot):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCarrot.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCarrot, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//FishingBoat
-					case static_cast<int>(animated::FishingBoat):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingBoat.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingBoat, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//RicePlain_TopG2_1
+				case static_cast<int>(animated::RicePlain_TopG2_1):
+				{
+					Sprite* rice1 = new Sprite("../textures/Tiles/Top/RicePlain_TopG2_1.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::RicePlain_TopG2_1, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//FishingLog
-					case static_cast<int>(animated::FishingLog):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingLog.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingLog, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//FishingBoat
+				case static_cast<int>(animated::FishingBoat):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingBoat.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingBoat, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//FishingSotong
-					case static_cast<int>(animated::FishingSotong):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingSotong.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingSotong, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//FishingLog
+				case static_cast<int>(animated::FishingLog):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingLog.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingLog, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//FishingNoot
-					case static_cast<int>(animated::FishingNoot):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingNoot.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingNoot, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//FishingSotong
+				case static_cast<int>(animated::FishingSotong):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingSotong.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingSotong, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//FishingCrab
-					case static_cast<int>(animated::FishingCrab):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingCrab.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingCrab, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//FishingNoot
+				case static_cast<int>(animated::FishingNoot):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingNoot.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingNoot, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
+				}
+				//FishingCrab
+				case static_cast<int>(animated::FishingCrab):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/FishingCrab.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::FishingCrab, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
+
+				}
 				}
 
 			}
@@ -534,6 +535,8 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					std::string String = IngredientToString(grid_number::avocado);
+					loadedIngredients.insert({ String ,avocado });
 					break;
 				}
 				case static_cast<int>(grid_number::cucumber):
@@ -542,6 +545,8 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::cucumber, cucumber);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+					std::string String = IngredientToString(grid_number::cucumber);
+					loadedIngredients.insert({ String ,cucumber });
 					break;
 				}
 				case static_cast<int>(grid_number::corn):
@@ -557,10 +562,13 @@ namespace Core
 						corn = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Corn.png");
 
 					}
-					
+
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::corn);
+					loadedIngredients.insert({ String ,corn });
 					break;
 				}
 
@@ -577,10 +585,13 @@ namespace Core
 						inari = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Inari.png");
 
 					}
-					
+
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::inari);
+					loadedIngredients.insert({ String ,inari });
 					break;
 				}
 				case static_cast<int>(grid_number::octopus):
@@ -589,6 +600,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::octopus);
+					loadedIngredients.insert({ String ,octopus });
 					break;
 				}
 				case static_cast<int>(grid_number::rice):
@@ -597,6 +611,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::rice, rice);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::rice);
+					loadedIngredients.insert({ String ,rice });
 					break;
 				}
 				//roes
@@ -616,6 +633,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::roes);
+					loadedIngredients.insert({ String ,roes });
 					break;
 				}
 				//salmon
@@ -632,6 +652,9 @@ namespace Core
 					salmon->Add_animation("../textures/spritesheet/salmon_both.txt");
 					salmon->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::salmon);
+					loadedIngredients.insert({ String ,salmon });
 					break;
 				}
 				//tamago
@@ -641,6 +664,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tamago, tamago);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::tamago);
+					loadedIngredients.insert({ String ,tamago });
 					break;
 				}
 				//tofu
@@ -650,6 +676,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tofu, tofu);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::tofu);
+					loadedIngredients.insert({ String ,tofu });
 					break;
 				}
 				//tuna
@@ -669,6 +698,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::tuna);
+					loadedIngredients.insert({ String ,tuna });
 					break;
 				}
 				//nori
@@ -678,6 +710,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::nori, std::move(nori));
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::nori);
+					loadedIngredients.insert({ String ,nori });
 					break;
 				}
 				//soya
@@ -693,6 +728,8 @@ namespace Core
 					soya->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
+					std::string String = IngredientToString(grid_number::soya);
+					loadedIngredients.insert({ String ,soya });
 					break;
 				}
 				//wasabi
@@ -706,6 +743,9 @@ namespace Core
 					wasabi->Add_animation("../textures/spritesheet/wasabi_Pour.txt");
 					wasabi->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::wasabi);
+					loadedIngredients.insert({ String ,wasabi });
 					break;
 				}
 				//tea
@@ -719,6 +759,9 @@ namespace Core
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tea, tea);
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
+
+					std::string String = IngredientToString(grid_number::tea);
+					loadedIngredients.insert({ String ,tea });
 					break;
 				}
 				//sinkhole
@@ -786,9 +829,11 @@ namespace Core
 					levelWinConditions.emplace(std::pair(std::pair(grid_number::avocado, wall_type::avocado_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::avocado_box },box });
 
-
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::avocado_box);
+					loadedBoxes.insert({ String ,box});
 					break;
 				}
 				//cucumber
@@ -800,11 +845,14 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::cucumber, wall_type::cucumber_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::cucumber, wall_type::cucumber_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::cucumber_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::cucumber_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//corn
@@ -821,6 +869,9 @@ namespace Core
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::corn_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//octopus
@@ -832,11 +883,14 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::octopus, wall_type::octopus_box),  box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::octopus, wall_type::octopus_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::octopus_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::octopus_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//roes
@@ -857,12 +911,15 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::roes, wall_type::roes_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::roes, wall_type::roes_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::roes_box },box });
 
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::roes_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//salmon
@@ -874,12 +931,15 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::salmon, wall_type::salmon_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::salmon, wall_type::salmon_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::salmon_box },box });
 
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::salmon_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//tamago
@@ -891,12 +951,15 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::tamago, wall_type::tamago_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::tamago, wall_type::tamago_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::tamago_box },box });
 
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::tamago_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//tofu
@@ -908,12 +971,15 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::tofu, wall_type::tofu_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::tofu, wall_type::tofu_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::tofu_box },box });
 
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::tofu_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//tuna
@@ -925,12 +991,15 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::tuna, wall_type::tuna_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::tuna, wall_type::tuna_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::tuna_box },box });
 
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::tuna_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 				//nori
@@ -948,6 +1017,9 @@ namespace Core
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::nori_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 
@@ -964,6 +1036,9 @@ namespace Core
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::rice_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 
 				}
@@ -977,11 +1052,14 @@ namespace Core
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 
-					levelWinConditions.emplace(std::pair(std::pair(grid_number::inari, wall_type::inari_box),box));
+					levelWinConditions.emplace(std::pair(std::pair(grid_number::inari, wall_type::inari_box), box));
 					SceneManager::boxcontainer.push_back({ {wall_type::inari_box },box });
 
 					SceneManager::win_condition.push_back(std::make_pair(r, c));
 					SceneManager::amt_of_win_conditions++;
+
+					std::string String = PodToString(wall_type::inari_box);
+					loadedBoxes.insert({ String ,box });
 					break;
 				}
 
@@ -1029,7 +1107,7 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_2.1.png");
 
 					}
-					
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall0, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1068,7 +1146,7 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.8.png");
 
 					}
-					
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall1, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1088,7 +1166,7 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.2.png");
 
 					}
-					
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall2, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1150,7 +1228,7 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.5.png");
 
 					}
-				
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall3, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1279,7 +1357,7 @@ namespace Core
 
 					break;
 				}
-				
+
 				//wall 7
 				case static_cast<int>(wall_type::Wall7):
 				{
@@ -1300,7 +1378,7 @@ namespace Core
 
 					break;
 				}
-				
+
 				//wall 8
 				case static_cast<int>(wall_type::Wall8):
 				{
@@ -1315,7 +1393,7 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.4.png");
 
 					}
-				
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall8, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1336,14 +1414,14 @@ namespace Core
 						tile = new Sprite("../textures/Tiles/Maki_City/Wall/City_Road_1.6.png");
 
 					}
-				
+
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::Wall9, tile);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
 
 					break;
 				}
-				
+
 				case static_cast<int>(wall_type::WaterWall):
 				{
 					Sprite* tile = new Sprite("../textures/Tiles/Wall_FishingVillage/Fishing_Wall.png");
@@ -1872,7 +1950,7 @@ namespace Core
 	bool Map::isStuck()
 	{
 		// if player's grid index is 50, means its STUCK or put all ingr into goals
-		if((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole)))
+		if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole)))
 		{
 			Window::player->isStuck();
 			return true;
@@ -1899,7 +1977,7 @@ namespace Core
 					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 				{
 					std::cout << "left ingredient\n";
-					
+
 					//check if tile on the left of ingredient is a wall
 					if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] > static_cast<int>(wall_type::first) &&
 						wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last))
@@ -1926,7 +2004,7 @@ namespace Core
 						}
 
 						unsigned short it = 0;
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -2065,7 +2143,7 @@ namespace Core
 					}
 					//check if tile on left of salmon is tea
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::tea) &&
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
 					{
 						/*If salmon has either wasabi/soya/both on it*/
 						if (salmon->status != 0)
@@ -2129,7 +2207,7 @@ namespace Core
 						AudioManager.PlayVoice("YES_1.wav");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
-						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y), 
+						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
 							static_cast<int>(Window::player->playerpos.x) - 2, static_cast<int>(Window::player->playerpos.y), combine);
 						boxcover->target_pos = boxcover->transformation.Position.y;
 						boxcover->curr_pos = boxcover->transformation.Position.y - 20;
@@ -2148,7 +2226,7 @@ namespace Core
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
 						}
 
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -2176,7 +2254,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 
-						
+
 						//check if current grid is rice_box
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2195,7 +2273,7 @@ namespace Core
 								break;
 							}
 						}
-						
+
 						std::cout << "left ingredient space\n";
 						Window::player->move_left();
 					}
@@ -2229,7 +2307,7 @@ namespace Core
 			else
 			{
 				//Check if left tile is box
-				if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box)&& wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
+				if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 				{
 					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 					Window::player->move_left();
@@ -2317,7 +2395,7 @@ namespace Core
 						}
 
 						unsigned short it = 0;
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -2368,11 +2446,11 @@ namespace Core
 								break;
 							}
 						}
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 
 							auto& ing_transform = ingredient.spr->transformation.grid_pos;
-							auto &[inx, iny] = ing_transform;
+							auto& [inx, iny] = ing_transform;
 							if (iny == Window::player->player_grid_pos.y
 								&& inx == Window::player->player_grid_pos.x + 2)
 							{
@@ -2423,11 +2501,11 @@ namespace Core
 								break;
 							}
 						}
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 
 							auto& ing_transform = ingredient.spr->transformation.grid_pos;
-							auto &[inx, iny] = ing_transform;
+							auto& [inx, iny] = ing_transform;
 							if (iny == Window::player->player_grid_pos.y
 								&& inx == Window::player->player_grid_pos.x + 2)
 							{
@@ -2458,8 +2536,8 @@ namespace Core
 
 					//check if tile on left of salmon is tea
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::tea) &&
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
-						{
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					{
 						/*If salmon has either wasabi/soya/both on it*/
 						if (salmon->status != 0)
 						{
@@ -2483,11 +2561,11 @@ namespace Core
 									break;
 								}
 							}
-							for (auto &ingredient : SceneManager::ingredientcontainer)
+							for (auto& ingredient : SceneManager::ingredientcontainer)
 							{
 
 								auto& ing_transform = ingredient.spr->transformation.grid_pos;
-								auto &[inx, iny] = ing_transform;
+								auto& [inx, iny] = ing_transform;
 								if (iny == Window::player->player_grid_pos.y
 									&& inx == Window::player->player_grid_pos.x + 2)
 								{
@@ -2716,7 +2794,7 @@ namespace Core
 						}
 
 						unsigned short it = 0;
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -2856,8 +2934,8 @@ namespace Core
 
 					//check if tile on left of salmon is tea
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::tea) &&
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
-						{
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
+					{
 						/*If salmon has either wasabi/soya/both on it*/
 						if (salmon->status != 0)
 						{
@@ -3063,7 +3141,7 @@ namespace Core
 		Window::player->stop();
 		curr_grid = next_grid;
 	}
-	
+
 	void Map::collision_check_up()
 	{
 		if (!isStuck())
@@ -3071,7 +3149,7 @@ namespace Core
 			next_grid = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 			//Check if above tile is a wall or ingredient
 			if ((gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(grid_number::ingredients) &&
-				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::nori )) ||
+				gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::nori)) ||
 				(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
 					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last)))
 			{
@@ -3106,7 +3184,7 @@ namespace Core
 						}
 
 						unsigned short it = 0;
-						for (auto &ingredient : SceneManager::ingredientcontainer)
+						for (auto& ingredient : SceneManager::ingredientcontainer)
 						{
 							if (ingredient.nametag == check)
 							{
@@ -3246,56 +3324,56 @@ namespace Core
 					}
 					//check if tile on left of salmon is tea
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::tea) &&
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
 					{
-					/*If salmon has either wasabi/soya/both on it*/
-					if (salmon->status != 0)
-					{
-						// set grid
-						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
-						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
-						{
-							wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
-						}
-						else
-						{
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-						}
-						for (auto &ingredient : SceneManager::ingredientcontainer)
-						{
-							if (ingredient.nametag == check)
-							{
-								ingredient.spr->transformation.Position.y -= tile_height;
-								break;
-							}
-						}
-						for (auto &ingredient : SceneManager::ingredientcontainer)
-						{
-
-							auto& ing_transform = ingredient.spr->transformation.grid_pos;
-							auto &[inx, iny] = ing_transform;
-							if (iny == Window::player->player_grid_pos.y - 2
-								&& inx == Window::player->player_grid_pos.x)
-							{
-								ingredient.spr->timer = 0;
-								SceneManager::activateTea(ingredient.spr);
-								ingredient.spr->animeMe = true;
-								break;
-							}
-						}
-
-						/*change salmon sprite to nothing*/
+						/*If salmon has either wasabi/soya/both on it*/
 						if (salmon->status != 0)
 						{
-							salmon->status = 0;
-						}
-						salmon->curr_anim = AnimationType::Idle;
+							// set grid
+							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
+							if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
+							{
+								wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+							}
+							else
+							{
+								gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+							}
+							for (auto& ingredient : SceneManager::ingredientcontainer)
+							{
+								if (ingredient.nametag == check)
+								{
+									ingredient.spr->transformation.Position.y -= tile_height;
+									break;
+								}
+							}
+							for (auto& ingredient : SceneManager::ingredientcontainer)
+							{
 
-						Window::player->move_up();
-						std::cout << "tea dripped\n";
-					}
+								auto& ing_transform = ingredient.spr->transformation.grid_pos;
+								auto& [inx, iny] = ing_transform;
+								if (iny == Window::player->player_grid_pos.y - 2
+									&& inx == Window::player->player_grid_pos.x)
+								{
+									ingredient.spr->timer = 0;
+									SceneManager::activateTea(ingredient.spr);
+									ingredient.spr->animeMe = true;
+									break;
+								}
+							}
+
+							/*change salmon sprite to nothing*/
+							if (salmon->status != 0)
+							{
+								salmon->status = 0;
+							}
+							salmon->curr_anim = AnimationType::Idle;
+
+							Window::player->move_up();
+							std::cout << "tea dripped\n";
+						}
 					}
 
 					//check if it's a box
@@ -3409,11 +3487,11 @@ namespace Core
 			else
 			{
 				//Check if up tile is any box
-				if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::rice_box)&& wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::tuna_box))
+				if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::tuna_box))
 				{
 					//save the value of the box stepped on
 					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-					
+
 					Window::player->move_up();
 					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
 					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
@@ -3488,7 +3566,7 @@ namespace Core
 		{
 			for (int r = 0; r < max_grid_cols_x; r++)
 			{
-				
+
 				std::cout << std::setw(4) << static_cast<char>(wGrids[r][c]) << std::setw(4);
 			}
 			std::cout << std::endl;
@@ -3499,7 +3577,7 @@ namespace Core
 
 	void Map::DrawMap()
 	{
-		
+
 		SceneManager::drawTile();
 		SceneManager::drawSinkHole();
 		SceneManager::drawInsideSinkHole();
@@ -3556,7 +3634,7 @@ namespace Core
 	/**************************************************************
 	 Helper function to convert enum in sceneManager.h to string
 	**************************************************************/
-	std::string Map::EnumToString(grid_number ingredient)
+	std::string Map::IngredientToString(grid_number ingredient)
 	{
 		switch (ingredient)
 		{
@@ -3619,8 +3697,72 @@ namespace Core
 		case(grid_number::tea):
 			return ("Tea");
 			break;
+
 		default:
-			return("");
+			return "";
+			break;
+		}
+
+	}
+
+	/**************************************************************
+	 Helper function to convert enum in sceneManager.h to string
+	**************************************************************/
+	std::string Map::PodToString(wall_type pod)
+	{
+		switch (pod)
+		{
+		case(wall_type::avocado_box):
+			return ("Avocado_box");
+			break;
+
+		case(wall_type::corn_box):
+			return ("Corn_box");
+			break;
+
+		case(wall_type::cucumber_box):
+			return ("Cucumber_box");
+			break;
+
+		case(wall_type::inari_box):
+			return ("Inari_box");
+			break;
+
+		case(wall_type::nori_box):
+			return ("Nori_box");
+			break;
+
+		case(wall_type::octopus_box):
+			return ("Octopus_box");
+			break;
+
+		case(wall_type::rice_box):
+			return ("Rice_box");
+			break;
+
+		case(wall_type::roes_box):
+			return ("Roes_box");
+			break;
+
+		case(wall_type::salmon_box):
+			return ("Salmon_box");
+			break;
+
+		case(wall_type::tamago_box):
+			return ("Tamago_box");
+			break;
+
+		case(wall_type::tofu_box):
+			return ("Tofu_box");
+			break;
+
+		case(wall_type::tuna_box):
+			return ("Tuna_box");
+			break;
+
+		default:
+			return "";
+			break;
 		}
 	}
 }

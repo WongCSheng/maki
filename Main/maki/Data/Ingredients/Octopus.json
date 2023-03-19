@@ -8,9 +8,9 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Tuna_Soya.png",
-      "name": "Tuna_Soya_Lv8",
-      "SpriteSheet": true,
+      "texturepath": "../textures/Quest/Octopus.png",
+      "name": "Octopus",
+      "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }
   ]

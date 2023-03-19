@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Inari.png",
-      "name": "Inari_Lv3",
+      "texturepath": "../textures/Quest/Cucumber.png",
+      "name": "Cucumber",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

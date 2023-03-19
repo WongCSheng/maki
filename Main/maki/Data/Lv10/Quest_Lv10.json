@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Salmon_Soya_Lv10",
-        "Octopus_Soya_Wasabi_Lv10",
-        "Roe_Wasabi_Lv10"
+        "Salmon_Soya",
+        "Octopus_Soya_Wasabi",
+        "Roe_Wasabi"
       ]
     }
   ]

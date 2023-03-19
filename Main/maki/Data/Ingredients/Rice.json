@@ -8,9 +8,9 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Octopus_Wasabi.png",
-      "name": "Octopus_Wasabi_Lv8",
-      "SpriteSheet": true,
+      "texturepath": "../textures/Quest/Rice.png",
+      "name": "Rice",
+      "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }
   ]

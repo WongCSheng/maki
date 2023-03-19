@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Cucumber.png",
-      "name": "Cucumber_Lv6",
+      "texturepath": "../textures/Quest/Avocado.png",
+      "name": "Avocado",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

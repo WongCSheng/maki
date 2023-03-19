@@ -15,6 +15,7 @@ Description:
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 #include "../Engine/System/SystemFrame.h"
+#include "../Headers/Math_Header.h"
 
 
 namespace Core
@@ -132,6 +133,23 @@ namespace Core
 		static inline int questProgress;
 		static inline int numQuests;
 
+		enum class GameState {
+			TUT1 = 0,
+			TUT2,
+			LEVEL1,
+			LEVEL2,
+			LEVEL3,
+			LEVEL4,
+			LEVEL5,
+			LEVEL6,
+			LEVEL7,
+			LEVEL8,
+			LEVEL9,
+			LEVEL10,
+			LEVEL11, //maki city
+			MENU
+		};
+		static GameState level;
 
 		bool isCutscene;
 		static inline int CutscenePage;
@@ -155,7 +173,15 @@ namespace Core
 			return gameIsPaused;
 		}
 
-		bool checkWin();
+		void checkWin(std::string level);
+		int checkCombination(std::string ingredient, std::string box);
+		std::string EnumToString(GameState);
+		void updateChop(int position, gfxVector2 pos);
+		static void resetQuest();
+
+		static std::vector<std::string> currentQuestIngredient;
+		static std::array<std::pair<std::string, int>, 3> winningBoxes;
+		static std::map<std::string, gfxVector2> questDrawItems;
 
 		//for editor
 #ifdef EDITOR

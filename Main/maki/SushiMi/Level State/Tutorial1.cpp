@@ -42,6 +42,9 @@ namespace Core
 				Map::ResetMap();
 			}
 			Map::region = 1;
+
+			Window::resetQuest();
+
 			Map::initMap("../TileMap/_tut1.txt");
 
 			Map::LoadMap();

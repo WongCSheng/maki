@@ -2,14 +2,14 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 250.0, 140.0 ],
+      "position": [ 150.0, 140.0 ],
       "rotation": 0.0,
       "scale": [ 80, 80 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Nori.png",
-      "name": "Nori_Lv2",
+      "texturepath": "../textures/Quest/Corn.png",
+      "name": "Corn",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

@@ -49,8 +49,13 @@ namespace Core
 	
 		static bool isStuck();
 		static bool isWin();
-	
-		static std::string EnumToString(grid_number ingredient);
+
+		static std::string IngredientToString(grid_number ingredient);
+		static std::string PodToString(wall_type pod);
+
+		static std::map<std::string, Sprite*> loadedIngredients;	//  all loaded ingredients for the level
+		static std::map< std::string, Sprite*> loadedBoxes;			//	all loaded boxes for the level
+		static inline std::pair<int, int> windowDim;				//	level current window dimension
 
 		//static inline Core::grid_number box_stepped_on;
 		static inline int Map_Height, Map_Width;

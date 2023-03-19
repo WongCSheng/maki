@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Roe_Soya_Wasabi.png",
-      "name": "Roe_Soya_Wasabi_Lv9",
+      "texturepath": "../textures/Quest/Salmon.png",
+      "name": "Salmon",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

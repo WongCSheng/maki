@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Tuna.png",
-      "name": "Tuna_Lv9",
+      "texturepath": "../textures/spritesheet/Ingredients/soyaspritesheet.png",
+      "name": "Soya",
       "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }

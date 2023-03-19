@@ -8,9 +8,9 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Tamago.png",
-      "name": "Tamago_Lv5",
-      "SpriteSheet": false,
+      "texturepath": "../textures/Quest/Tuna_Soya.png",
+      "name": "Tuna_Soya",
+      "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }
   ]

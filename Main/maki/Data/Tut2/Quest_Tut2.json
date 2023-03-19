@@ -13,8 +13,8 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tofu_Tut2",
-        "Nori_Tut2"
+        "Tofu",
+        "Nori"
       ]
     }
   ]

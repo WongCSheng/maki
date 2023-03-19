@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Corn_Lv6",
-        "Cucumber_Lv6",
-        "Avocado_Lv6"
+        "Corn",
+        "Cucumber",
+        "Avocado"
       ]
     }
   ]

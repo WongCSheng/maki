@@ -13,9 +13,9 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tamago_Lv5",
-        "Cucumber_Lv5",
-        "Avocado_Lv5"
+        "Tamago",
+        "Cucumber",
+        "Avocado"
       ]
     }
   ]

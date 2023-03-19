@@ -2,14 +2,14 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 150.0, 140.0 ],
+      "position": [ 95.0, 140.0 ],
       "rotation": 0.0,
       "scale": [ 80, 80 ]
     },
     {
       "type": "Sprite",
       "texturepath": "../textures/Quest/Tofu.png",
-      "name": "Tofu_Lv3",
+      "name": "Tofu",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

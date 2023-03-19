@@ -41,25 +41,15 @@ namespace Core
 	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 
 	static std::string walkingsfx;
+
+	std::vector<std::string> Window::currentQuestIngredient;
+	std::array<std::pair<std::string, int>, 3> Window::winningBoxes;
+	Window::GameState Window::level;
+
+	std::map<std::string, gfxVector2> Window::questDrawItems;
 	/*                                                             game states
 	----------------------------------------------------------------------------- */
-	enum class GameState {
-		TUT1 = 0,
-		TUT2,
-		LEVEL1,
-		LEVEL2,
-		LEVEL3,
-		LEVEL4,
-		LEVEL5,
-		LEVEL6,
-		LEVEL7,
-		LEVEL8,
-		LEVEL9,
-		LEVEL10,
-		LEVEL11, //maki city
-		MENU
-	};
-	static GameState level;
+
 
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
 	{
@@ -153,104 +143,189 @@ namespace Core
 
 		}
 	}
-
-	bool Window::checkWin()
+	void Window::checkWin(std::string currentlevel)
 	{
-		//checking through all loaded box for the current level
-		for (auto& box : SceneManager::tilecontainer)
+		//	load current level boxes for quest
+		std::vector<std::string> levelBoxes = Sprite::quest_boxes.at(currentlevel);
+
+		//	checking through each ingredient loaded in the level
+		for (auto& ingredient : Map::loadedIngredients)
 		{
-			//checking through all loaded ingredient for the current level
-			for (auto& ingredient1 : SceneManager::ingredientcontainer)
+			Sprite* sIngredient = ingredient.second;	//current ingredient to check
+			float ingredientRow = round((sIngredient->transformation.Position.x / static_cast<float>(Map::windowDim.first)) * static_cast<float>(Map::max_grid_cols_x));
+			float ingredientCol = round((sIngredient->transformation.Position.y / static_cast<float>(Map::windowDim.second)) * static_cast<float>(Map::max_grid_rows_y));
+			std::pair<float, float> ingredientCoordinates(ingredientRow, ingredientCol);
+
+			//	check through each boxes loaded in the level
+			for (auto& box : Map::loadedBoxes)
 			{
-				//convert coordinates back into row and column (dont know why need to plus 1)
-				//int ingredientRow = static_cast<int>(ingredient1.spr->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width)) + 1;
-				//int ingredientCol = static_cast<int>(ingredient1.spr->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height)) + 1;
-				////std::pair<int, int> ingredientCoordinates(ingredientRow, ingredientCol); //test 1
+				Sprite* sBox = box.second;	//current box to check
+				float BoxRow = round((sBox->transformation.Position.x / static_cast<float>(Map::windowDim.first)) * static_cast<float>(Map::max_grid_cols_x));
+				float BoxCol = round((sBox->transformation.Position.y / static_cast<float>(Map::windowDim.second)) * static_cast<float>(Map::max_grid_rows_y));
+				std::pair<float, float> boxCoordinates(BoxRow, BoxCol);
 
-				//int BoxRow = static_cast<int>(box.second->transformation.Position.x * (static_cast<float>(Map::max_grid_cols_x) / m_width) + 1);
-				//int BoxCol = static_cast<int>(box.second->transformation.Position.y * (static_cast<float>(Map::max_grid_rows_y) / m_height) + 1);
-				////std::pair<int, int> boxCoordinates(BoxRow, BoxCol);
-
-				//repeats the too
-				//convert coordinates back into row and column(dont know why need to plus 1)
-				int ingredientX =static_cast<int>( round((ingredient1.spr->transformation.Position.x / (float)m_width) * Map::max_grid_cols_x));
-				int ingredientY = static_cast<int>(round((ingredient1.spr->transformation.Position.y / (float)m_height) * Map::max_grid_rows_y));
-				std::pair<int, int> ingredientCoordinates(ingredientX, ingredientY); //test 2
-
-				int boxX = static_cast<int>(round((box.second->transformation.Position.x / (float)m_width) * Map::max_grid_cols_x));
-				int boxY = static_cast<int>(round((box.second->transformation.Position.y / (float)m_height) * Map::max_grid_rows_y));
-				std::pair<int, int> boxCoordinates(boxX, boxY);
-
-				//checking through level win condition (check if ingredient land on box position)
-				if (ingredientCoordinates == boxCoordinates && (int)ingredient1.nametag != 54)
+				//	check if any ingredient matches box position 
+				if (ingredientCoordinates == boxCoordinates)
 				{
-					//ingredient row and col matches box row and col (2 ingredients check against 1 box)
-					std::pair<grid_number, wall_type> checkCondition(ingredient1.nametag, box.first);
-					//std::cout << "what's in ingredient1		" << static_cast<int>(ingredient1.nametag ) << std::endl;
-					
-					std::cout << "checking Ingredient" << (int)checkCondition.first << " " << (int)checkCondition.second << "\n";
-					//------------------------------------------------------
-					bool check = false;
-					for (const auto& it : Map::levelWinConditions) {
-						std::cout << "Level Win Cond:  " << (int)it.first.first << " " << (int)it.first.second << "\n";
-						if (it.first == checkCondition) {
-							check = true;
-							break;
-						}
-					}
-					//------------------------------------------------------
-					if (check)
+					//	check if combination is valid
+					int state = checkCombination(ingredient.first, box.first);
+
+					for (size_t i{}; i < levelBoxes.size(); ++i)
 					{
-						std::cout << "ingredient landed correct box\n";
-						//check if quest tab is open
-						if (isQuestTab)
-						{
-							//check for how many times the chop has to draw, base on ingredientCount
-							Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
-						
-							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-							//need to adjust the transform component of the done button to the right position
-							//get the set that is matched
-							//check the quest tab position of the matched set
-							//change transcomp position to correct matched quest tab location
-							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-							spritecomp->transformation.Position = transcomp->Position;
-							spritecomp->transformation.Scale = transcomp->Scale;
-
-							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-							spritecomp->draw();
-
-							std::cout << "pls show me the done stuff\n";
-
-							obj = CoreSystem->objfactory->ObjectContainer.at("done_2");
-							
-
-							obj = CoreSystem->objfactory->ObjectContainer.at("done_3");
-							
-						}
-					}
-					else
-					{
-						if (isQuestTab)
-						{
-							//check for how many times the chop has to draw, base on ingredientCount
-							Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
-							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-
-							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-							spritecomp->transformation.Position = transcomp->Position;
-							spritecomp->transformation.Scale = transcomp->Scale;
-
-							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-							spritecomp->draw();
-
-							//std::cout << "pls show me the denied stuff\n";
-						}
+						if (levelBoxes[i] == ingredient.first)
+							winningBoxes[i] = { ingredient.first, state };
 					}
 				}
 			}
 		}
-		return false;
+	}
+
+	int Window::checkCombination(std::string ingredient, std::string box)
+	{
+		std::size_t found = box.find(ingredient);
+		if (found != std::string::npos)
+		{
+			std::size_t found_salmon = ingredient.find("Salmon");
+			if (found_salmon != std::string::npos)
+			{
+				//	ingredient contain add on sauce (tbc)
+				std::size_t found_wasabi = ingredient.find("Wasabi");
+				if (found_salmon != std::string::npos)
+				{
+					if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
+					{
+						std::cout << "salmon with wasabi found\n";
+					}
+					
+				}
+			}
+			else
+			{
+				return 1;
+			}
+		}
+		else
+			return 0;
+
+		return 0;
+	}
+
+	void Window::updateChop(int position, gfxVector2 pos)
+	{
+		std::string chop;
+
+		if (winningBoxes[position].second == 1)
+		{
+			switch (position)
+			{
+			case 0:
+				chop = "done";
+				break;
+			case 1:
+				chop = "done_2";
+				break;
+			case 2:
+				chop = "done_3";
+				break;
+			}
+			questDrawItems.insert({ chop, pos });
+			
+		}
+
+		else if (winningBoxes[position].second == 0)
+		{
+			switch (position)
+			{
+			case 0:
+				chop = "denied";
+				break;
+			case 1:
+				chop = "denied_2";
+				break;
+			case 2:
+				chop = "denied_3";
+				break;
+			}
+			questDrawItems.insert({ chop, pos });
+		}
+	}
+
+	void Window::resetQuest()
+	{
+		//reset quest tab
+		Map::loadedIngredients.clear();
+		Map::loadedBoxes.clear();
+
+		for (size_t i{}; i < Window::winningBoxes.size(); ++i)
+			winningBoxes[i] = { " ", -1 };
+
+		questDrawItems.clear();
+	}
+
+	std::string Window::EnumToString(GameState Currentlevel)
+	{
+		/**
+		 * IMPT!! Remember to add in additional level and ensure match to the name inside Json
+		 */
+
+		switch (Currentlevel)
+		{
+		case(GameState::TUT1):
+			return "Quest_Tut1";
+			break;
+
+		case(GameState::TUT2):
+			return "Quest_Tut2";
+			break;
+
+		case(GameState::LEVEL1):
+			return "Quest_Lv1";
+			break;
+
+		case(GameState::LEVEL2):
+			return "Quest_Lv2";
+			break;
+
+		case(GameState::LEVEL3):
+			return "Quest_Lv3";
+			break;
+
+		case(GameState::LEVEL4):
+			return "Quest_Lv4";
+			break;
+
+		case(GameState::LEVEL5):
+			return "Quest_Lv5";
+			break;
+
+		case(GameState::LEVEL6):
+			return "Quest_Lv6";
+			break;
+
+		case(GameState::LEVEL7):
+			return "Quest_Lv7";
+			break;
+
+		case(GameState::LEVEL8):
+			return "Quest_Lv8";
+			break;
+
+		case(GameState::LEVEL9):
+			return "Quest_Lv9";
+			break;
+
+		case(GameState::LEVEL10):
+			return "Quest_Lv10";
+			break;
+
+		case(GameState::LEVEL11):
+			return "Quest_Lv11";
+			break;
+
+		default:
+			return "";
+		}
+
 	}
 
 	Window::Window(int _width, int _height)
@@ -307,7 +382,7 @@ namespace Core
 		timetodeletegrid = false;
 		isMenuState = true;
 #ifdef EDITOR
-		
+
 		//the first level displayed on the map's launch
 		Editor::LevelEditor::imguiloadedmap = "../TileMap/level1.txt";
 
@@ -584,7 +659,7 @@ namespace Core
 
 				SceneManager::restartLevel();
 
-				
+
 				keystate_K = false;
 			}
 		}
@@ -612,7 +687,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
-				isTestLevel = false; 
+				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
 
@@ -644,7 +719,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
-				isTestLevel = false; 
+				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
 
@@ -677,12 +752,12 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
-				isTestLevel = false; 
+				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
 
 				SceneManager::restartLevel();
-				
+
 				keystate_2 = false;
 			}
 		}
@@ -710,7 +785,7 @@ namespace Core
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
-				isTestLevel = false; 
+				isTestLevel = false;
 				areyousure_prompt = false;
 				loaded = false;
 
@@ -886,7 +961,7 @@ namespace Core
 				isLevel8 = true;
 				isLevel9 = false;
 				isLevel10 = false;
-				isLevel11 = false; 
+				isLevel11 = false;
 				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
@@ -919,7 +994,7 @@ namespace Core
 				isLevel8 = false;
 				isLevel9 = true;
 				isLevel10 = false;
-				isLevel11 = false; 
+				isLevel11 = false;
 				areyousure_prompt = false;
 				isTestLevel = false;
 				loaded = false;
@@ -1042,17 +1117,17 @@ namespace Core
 		{
 			areyousure_prompt = false;
 		}
-		if (keystate_escape && (isTut1|| isTut2|| isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel ) && isDialogue == false)
+		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false)
 		{
 			gameIsPaused = !gameIsPaused;
-			
+
 			keystate_escape = false;
 		}
 		if (keystate_escape && areyousure_prompt)
 		{
 			areyousure_prompt = false;
 		}
-		
+
 		/**************************************/
 		//BUTTONS DISPLAYED AT MAIN MENU
 		/**************************************/
@@ -1129,7 +1204,7 @@ namespace Core
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
 						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
 
-				
+
 
 					}
 				}
@@ -1145,7 +1220,7 @@ namespace Core
 						((float)xpos < (position.x + scale.x)) &&
 						((float)ypos < (position.y + scale.y)))
 					{
-						
+
 						keystate_T = true;
 						int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -1168,7 +1243,7 @@ namespace Core
 						areyousure_prompt = true;
 						if (keystate_Y)
 						{
-							
+
 							glfwSetWindowShouldClose(window_ptr, true);
 						}
 						else if (keystate_N)
@@ -1317,7 +1392,7 @@ namespace Core
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
-				if(Window::player->resetCount == 1)
+				if (Window::player->resetCount == 1)
 					AudioManager.PlayVoice("Dialogue_1.wav");
 				if (Window::player->resetCount == 2)
 					AudioManager.PlayVoice("Dialogue_2.wav");
@@ -1325,9 +1400,15 @@ namespace Core
 					AudioManager.PlayVoice("Dialogue_3.wav");
 				if (Window::player->resetCount == 4)
 					AudioManager.PlayVoice("Dialogue_4.wav");
-				if (Window::player->resetCount >=5)
+				if (Window::player->resetCount >= 5)
 					AudioManager.PlayVoice("Dialogue_5.wav");
 				//restart
+
+				//reset quest tab
+				for (size_t i{}; i < Window::winningBoxes.size(); ++i)
+					winningBoxes[i] = { " ", -1 };
+				questDrawItems.clear();
+
 				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
@@ -1437,7 +1518,7 @@ namespace Core
 				Map::LoadMap();
 				loaded = true;
 
-			}
+		}
 			if (loaded == true)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1528,20 +1609,20 @@ namespace Core
 			/*********************************
 				LEVELS LOAD & WIN CHECK
 			*********************************/
-			
+
 			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.wav";}
+			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
 			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.wav";	}
-			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.wav";	}
+			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
+			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
 			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); walkingsfx = "WalkSFX.wav"; }
 			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); walkingsfx = "WalkSFX.wav"; }
 			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.wav"; }
-			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.wav";	}
+			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.wav"; }
 			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.wav"; }
 			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.wav"; }
 			if (isLevel10 == true) { level = GameState::LEVEL10; Levels::Level10(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.wav";	}
+			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.wav"; }
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************
@@ -1776,11 +1857,11 @@ namespace Core
 						spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
 					}
 					else
-					spritecomp->transformation.Scale = transcomp->Scale;
+						spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 					glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), spritecomp->alpha);
-					
+
 					if (x.first == "Menu") //draw menu
 						spritecomp->draw();
 
@@ -1826,6 +1907,14 @@ namespace Core
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
 			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
+				//	fixed position for quest items and chop (shld only work tut1 - lvl10
+				gfxVector2 pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };
+
+				//	current level
+				std::string sLevel = EnumToString(level);
+				//	check if ingredient landed on box
+				checkWin(sLevel);
+
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
 				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
 				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
@@ -1836,145 +1925,42 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 				spritecomp1->draw();
 
-				std::vector<std::string> ingredientforlevel{};
-				std::map<std::string, gfxVector2>loadedIngredients;
+				std::vector<std::string> currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
 
-				switch (level)
+				// update ingredients' position to draw on quest tab at fixed position
+				for (size_t i{}; i < currentQuestIngredient.size(); ++i)
 				{
-				case(GameState::TUT1):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Tut1");
-					break;
-
-				case(GameState::TUT2):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Tut2");
-					break;
-
-				case(GameState::LEVEL1):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv1");
-					break;
-
-				case(GameState::LEVEL2):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv2");
-					break;
-
-				case(GameState::LEVEL3):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv3");
-					break;
-
-				case(GameState::LEVEL4):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv4");
-					break;
-
-				case(GameState::LEVEL5):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv5");
-					break;
-
-				case(GameState::LEVEL6):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv6");
-					break;
-
-				case(GameState::LEVEL7):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv7");
-					break;
-
-				case(GameState::LEVEL8):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv8");
-					break;
-
-				case(GameState::LEVEL9):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv9");
-					break;
-
-				case(GameState::LEVEL10):
-					ingredientforlevel = Sprite::levelCorrectIngredients.at("Quest_Lv10");
-					break;
-				}
-				
-				size_t numOfLoadedIngredient = ingredientforlevel.size();    // number of ingredients loaded for current level
-
-				float increment = 0.f;    // increment to position each ingredient onto quest tab
-
-				//checking through all loaded ingredient for the current level
-				for (auto& ingredient : ingredientforlevel)
-				{
-
-					//std::string loadedIngredient = Map::EnumToString(ingredient.nametag);    // convert enum to string
-
-					// determine each ingredient location based on number of ingredient loaded
-					switch (numOfLoadedIngredient)
+					switch (i)
 					{
-					case(1):
-						//loading 1 ingredient
-						loadedIngredients.insert({ ingredient, {50.0f, 140.0f} }); // 1st ingriedient: 50, 140
+					case 0:
+						questDrawItems.insert({ currentQuestIngredient[i] , pos1 });
+						updateChop(i, pos1);
 						break;
-
-					case(2):
-						//loading 2 ingredients
-						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} }); // 2nd ingriedient: 150,140
+					case 1:
+						questDrawItems.insert({ currentQuestIngredient[i] , pos2 });
+						updateChop(i, pos2);
 						break;
-
-					case(3):
-						//loading 3 ingredients
-						loadedIngredients.insert({ ingredient, {50.0f + increment, 140.0f} }); // 3rd ingriedient: 250,10
+					case 2:
+						questDrawItems.insert({ currentQuestIngredient[i] , pos3 });
+						updateChop(i, pos3);
 						break;
-
-						//******IMPT : need to expand on the case number if level contains more than 3 ingredients******//
+					default:
+						break;
 					}
-					increment += 100.0f;
 				}
 
-				// drawing of loaded ingredients using new positions
-				for (auto& ingredient : loadedIngredients)
+				//	draw ingredients and chops
+				for (auto& ingredient : questDrawItems)
 				{
 					Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
-					Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 					Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 					spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
-					spritecomp2->transformation.Scale = transcomp2->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 					spritecomp2->draw();
 				}
-
-				//chop ingredient
-				checkWin();
-
-				//not working
-				//stack for loop
-				/*for (auto& x : stack)
-				{*/
-					/*for (auto& container : Map::levelWinConditions)
-					{*/
-						/*if (container.first == x)
-						{*/
-							/*Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("done");
-							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-							spritecomp->transformation.Position = transcomp->Position;
-							spritecomp->transformation.Scale = transcomp->Scale;
-
-							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-							spritecomp->draw();*/
-						//}
-
-						/*if (container.first == x)
-						{
-							Core::Object::GameObject* obj = CoreSystem->objfactory->ObjectContainer.at("denied");
-							Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-							Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-							spritecomp->transformation.Position = transcomp->Position;
-							spritecomp->transformation.Scale = transcomp->Scale;
-
-							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-
-							spritecomp->draw();
-						}*/
-					//}
-				//}
 			}
 
 			/*	quest tab shift to left side */
@@ -2105,7 +2091,7 @@ namespace Core
 			{
 				SceneManager::load_Bami_End_Room();
 				SceneManager::draw_Bami_End_Room();
-				
+
 			}
 
 			if (isCredits == true)
@@ -2119,8 +2105,8 @@ namespace Core
 					{
 						isCredits = false;
 					}
-				}
-			}
+	}
+}
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();

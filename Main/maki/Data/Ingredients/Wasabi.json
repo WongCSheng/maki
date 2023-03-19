@@ -8,9 +8,9 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Avocado.png",
-      "name": "Avocado_Lv6",
-      "SpriteSheet": false,
+      "texturepath": "../textures/spritesheet/Ingredients/wasabispritesheet.png",
+      "name": "Wasabi",
+      "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }
   ]

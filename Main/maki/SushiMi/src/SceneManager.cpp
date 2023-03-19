@@ -506,7 +506,7 @@ namespace Core
 
 	bool SceneManager::activateSoya(Sprite* soya)
 	{
-		AudioManager.PlaySFX("Pouring.wav");
+		AudioManager.PlaySFX("Pouring.ogg");
 		if (soya->timer < 5.f)
 		{
 			soya->transformation.Position.x = soya->transformation.Position.x - 30;
@@ -520,7 +520,7 @@ namespace Core
 
 	bool SceneManager::activateWasabi(Sprite* wasabi)
 	{
-		AudioManager.PlaySFX("Squeezing.wav");
+		AudioManager.PlaySFX("Squeezing.ogg");
 		if (wasabi->timer < 5.f)
 		{
 			wasabi->transformation.Position.y = wasabi->transformation.Position.y - 100;
@@ -541,7 +541,7 @@ namespace Core
 	}
 	bool SceneManager::activateTea(Sprite* tea)
 	{
-		AudioManager.PlaySFX("Pouring.wav");
+		AudioManager.PlaySFX("Pouring.ogg");
 		if (tea->timer < 5.f)
 		{
 			tea->transformation.Position.x = tea->transformation.Position.x - 50;

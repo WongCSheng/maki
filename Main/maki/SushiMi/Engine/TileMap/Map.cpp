@@ -2040,7 +2040,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "left ingredient ingredient\n";
-						AudioManager.PlayVoice("Oof_1.wav");
+						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
 
@@ -2215,9 +2215,9 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
 
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
-						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.ogg");
 						AudioManager.SetAudioVolume(1.f);
-						AudioManager.PlayVoice("YES_1.wav");
+						AudioManager.PlayVoice("YES_1.ogg");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) - (2 * static_cast<int>(tile_width) + 5), static_cast<int>(Window::player->playerpos.y),
@@ -2315,7 +2315,7 @@ namespace Core
 				Window::player->current_anim = AnimationType::Jump;
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
-				AudioManager.PlayVoice("Sad_1.wav");
+				AudioManager.PlayVoice("Sad_1.ogg");
 			}
 			else
 			{
@@ -2431,7 +2431,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "right ingredient ingredient\n";
-						AudioManager.PlayVoice("Oof_1.wav");
+						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
 
@@ -2608,9 +2608,9 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
 
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::boxcover);
-						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.ogg");
 						AudioManager.SetAudioVolume(1.f);
-						AudioManager.PlayVoice("YES_1.wav");
+						AudioManager.PlayVoice("YES_1.ogg");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x) + (2 * static_cast<int>(tile_width)), static_cast<int>(Window::player->playerpos.y), static_cast<int>(Window::player->player_grid_pos.x) + 2, static_cast<int>(Window::player->player_grid_pos.y), combine);
@@ -2707,7 +2707,7 @@ namespace Core
 				//Window::player->sp->transformation.Scale = glm::vec2(80, 80);
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
-				AudioManager.PlayVoice("Sad_1.wav");
+				AudioManager.PlayVoice("Sad_1.ogg");
 			}
 			//Just move
 			else
@@ -2830,7 +2830,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "down ingredient ingredient\n";
-						AudioManager.PlayVoice("Oof_1.wav");
+						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
 
@@ -3005,9 +3005,9 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::boxcover);
-						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.ogg");
 						AudioManager.SetAudioVolume(1.f);
-						AudioManager.PlayVoice("YES_1.wav");
+						AudioManager.PlayVoice("YES_1.ogg");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) + (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y + 2, combine);
@@ -3103,7 +3103,7 @@ namespace Core
 				Window::player->current_anim = AnimationType::Jump;
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
-				AudioManager.PlayVoice("Sad_1.wav");
+				AudioManager.PlayVoice("Sad_1.ogg");
 			}
 			//Just move
 			else
@@ -3220,7 +3220,7 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "up ingredient ingredient\n";
-						AudioManager.PlayVoice("Oof_1.wav");
+						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
 
@@ -3396,9 +3396,9 @@ namespace Core
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::boxcover);
-						AudioManager.PlaySFX("Closing container.wav");
+						AudioManager.PlaySFX("Closing container.ogg");
 						AudioManager.SetAudioVolume(1.f);
-						AudioManager.PlayVoice("YES_1.wav");
+						AudioManager.PlayVoice("YES_1.ogg");
 						Sprite* boxcover = new Sprite("../textures/Tiles/Pods/Pod_Cover.png");
 						std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::boxcover, boxcover);
 						SceneManager::loadIngr(static_cast<int>(Window::player->playerpos.x), static_cast<int>(Window::player->playerpos.y) - (2 * static_cast<int>(tile_height)), Window::player->player_grid_pos.x, Window::player->player_grid_pos.y - 2, combine);
@@ -3494,7 +3494,7 @@ namespace Core
 				Window::player->current_anim = AnimationType::Jump;
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
-				AudioManager.PlayVoice("Sad_1.wav");
+				AudioManager.PlayVoice("Sad_1.ogg");
 			}
 			//Just move
 			else

@@ -306,23 +306,23 @@ void Core::pseudomain::init() {
 #endif
 
 	//load audio files
-	AudioManager.LoadMusic("BGM.wav");
-	AudioManager.LoadSFX("Closing container.wav");
-	AudioManager.LoadVoice("YES_1.wav");
-	AudioManager.LoadVoice("Sad_1.wav");
-	AudioManager.LoadVoice("Dialogue_1.wav");
-	AudioManager.LoadVoice("Dialogue_2.wav");
-	AudioManager.LoadVoice("Dialogue_3.wav");
-	AudioManager.LoadVoice("Dialogue_4.wav");
-	AudioManager.LoadVoice("Dialogue_5.wav");
-	AudioManager.LoadVoice("Idle_1.wav");
-	AudioManager.LoadVoice("Curious_3.wav");
-	AudioManager.LoadVoice("Oof_1.wav");
-	AudioManager.LoadSFX("Pouring.wav");
-	AudioManager.LoadSFX("Squeezing.wav");
+	AudioManager.LoadMusic("BGM.ogg");
+	AudioManager.LoadSFX("Closing container.ogg");
+	AudioManager.LoadVoice("YES_1.ogg");
+	AudioManager.LoadVoice("Sad_1.ogg");
+	AudioManager.LoadVoice("Dialogue_1.ogg");
+	AudioManager.LoadVoice("Dialogue_2.ogg");
+	AudioManager.LoadVoice("Dialogue_3.ogg");
+	AudioManager.LoadVoice("Dialogue_4.ogg");
+	AudioManager.LoadVoice("Dialogue_5.ogg");
+	AudioManager.LoadVoice("Idle_1.ogg");
+	AudioManager.LoadVoice("Curious_3.ogg");
+	AudioManager.LoadVoice("Oof_1.ogg");
+	AudioManager.LoadSFX("Pouring.ogg");
+	AudioManager.LoadSFX("Squeezing.ogg");
 	//AssetsManager::GetInstance()->Add_files("../Assets");
 	//play bgm
-	AudioManager.PlayMusic("BGM.wav");
+	AudioManager.PlayMusic("BGM.ogg");
 	AudioManager.SetMusicVolume(0.7f);
 
 	LogOutput(LogLevel::LOG_LEVEL_WARN, "test");//this is for testing, u can create your own warning msg when u use
@@ -341,9 +341,9 @@ void Core::pseudomain::cleanup() {
 
 	GLHelper::cleanup();
 	//unload music
-	/*AudioManager.UnloadMusic("BGM.wav");
-	AudioManager.UnloadMusic("BGM with Forest Day volume test.wav");
-	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.wav");*/
+	/*AudioManager.UnloadMusic("BGM.ogg");
+	AudioManager.UnloadMusic("BGM with Forest Day volume test.ogg");
+	AudioManager.UnLoadSFX("Gravel_Drag-Movement_1.ogg");*/
 	AudioManager.CleanPlaying();
 	AudioManager.Free();
 

@@ -48,10 +48,10 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
-			AudioManager.LoadSFX("Gravel_Drag-Movement_1.wav");
-			AudioManager.LoadMusic("BGM with Forest Day volume test.wav");
+			AudioManager.LoadSFX("Gravel_Drag-Movement_1.ogg");
+			AudioManager.LoadMusic("BGM with Forest Day volume test.ogg");
 			AudioManager.SetMusicVolume(0.01f);
-			AudioManager.PlayMusic("BGM with Forest Day volume test.wav");
+			AudioManager.PlayMusic("BGM with Forest Day volume test.ogg");
 
 			if (fin)
 			{

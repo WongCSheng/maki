@@ -1268,7 +1268,7 @@ namespace Core
 			//	isLevel2 = false;
 			//	SceneManager::restartLevel();
 			//	AudioManager.StopMusic();
-			//	AudioManager.PlayMusic("BGM.wav");
+			//	AudioManager.PlayMusic("BGM.ogg");
 			//}
 			////QUIT GAME
 			//if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
@@ -1392,16 +1392,16 @@ namespace Core
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
-				if (Window::player->resetCount == 1)
-					AudioManager.PlayVoice("Dialogue_1.wav");
+				if(Window::player->resetCount == 1)
+					AudioManager.PlayVoice("Dialogue_1.ogg");
 				if (Window::player->resetCount == 2)
-					AudioManager.PlayVoice("Dialogue_2.wav");
+					AudioManager.PlayVoice("Dialogue_2.ogg");
 				if (Window::player->resetCount == 3)
-					AudioManager.PlayVoice("Dialogue_3.wav");
+					AudioManager.PlayVoice("Dialogue_3.ogg");
 				if (Window::player->resetCount == 4)
-					AudioManager.PlayVoice("Dialogue_4.wav");
-				if (Window::player->resetCount >= 5)
-					AudioManager.PlayVoice("Dialogue_5.wav");
+					AudioManager.PlayVoice("Dialogue_4.ogg");
+				if (Window::player->resetCount >=5)
+					AudioManager.PlayVoice("Dialogue_5.ogg");
 				//restart
 
 				//reset quest tab
@@ -1609,20 +1609,20 @@ namespace Core
 			/*********************************
 				LEVELS LOAD & WIN CHECK
 			*********************************/
-
-			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.wav"; }
-			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); walkingsfx = "WalkSFX.wav"; }
-			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); walkingsfx = "WalkSFX.wav"; }
-			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.wav"; }
-			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel10 == true) { level = GameState::LEVEL10; Levels::Level10(); walkingsfx = "Hard Floor Walking.wav"; }
-			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.wav"; }
+			
+			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
+			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.ogg";}
+			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
+			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.ogg";	}
+			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.ogg";	}
+			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); walkingsfx = "WalkSFX.ogg"; }
+			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); walkingsfx = "WalkSFX.ogg"; }
+			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.ogg"; }
+			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.ogg";	}
+			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.ogg"; }
+			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.ogg"; }
+			if (isLevel10 == true) { level = GameState::LEVEL10; Levels::Level10(); walkingsfx = "Hard Floor Walking.ogg"; }
+			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.ogg";	}
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************
@@ -1981,7 +1981,7 @@ namespace Core
 
 			if (isWalk == true)
 			{
-				AudioManager.PlaySFX("Gravel_Drag-Movement_1.wav");
+				AudioManager.PlaySFX("Gravel_Drag-Movement_1.ogg");
 				isWalk = false;
 			}
 

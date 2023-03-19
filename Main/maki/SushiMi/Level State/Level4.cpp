@@ -50,11 +50,11 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
-			AudioManager.LoadSFX("WalkSFX.wav");
-			AudioManager.LoadMusic("Forest_bgm.wav");
-			AudioManager.PlayMusic("Forest_bgm.wav");
+			AudioManager.LoadSFX("WalkSFX.ogg");
+			AudioManager.LoadMusic("Forest_bgm.ogg");
+			AudioManager.PlayMusic("Forest_bgm.ogg");
 			AudioManager.SetMusicVolume(0.7f);
-			AudioManager.PlayVoice("Idle_1.wav");
+			AudioManager.PlayVoice("Idle_1.ogg");
 
 			if (fin)
 			{

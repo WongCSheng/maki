@@ -51,11 +51,11 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
-			AudioManager.LoadSFX("Hard Floor Walking.wav");
-			AudioManager.LoadMusic("Fishing_Village.wav");
-			AudioManager.PlayMusic("Fishing_Village.wav");
+			AudioManager.LoadSFX("Hard Floor Walking.ogg");
+			AudioManager.LoadMusic("Fishing_Village.ogg");
+			AudioManager.PlayMusic("Fishing_Village.ogg");
 			AudioManager.SetMusicVolume(0.7f);
-			AudioManager.PlayVoice("Idle_1.wav");
+			AudioManager.PlayVoice("Idle_1.ogg");
 
 			if (fin)
 			{

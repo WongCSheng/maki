@@ -17,6 +17,7 @@ email:		fei.x@digipen.edu
 namespace Core
 {
 	std::map<std::string, std::vector<std::string>> Sprite::levelCorrectIngredients;
+	std::map<std::string, std::vector<std::string>> Sprite::quest_boxes;
 
 	Sprite::Sprite(const char* filename) : SpriteSize{}, alpha{}, curr_anim{}, isSpriteSheet{}, timer{}, animeMe{}, count{}, status{}
 	{
@@ -122,23 +123,17 @@ namespace Core
 
 		if (jsonObj.HasMember("CorrectIngredient"))
 		{
+			std::vector<std::string> vIngrendient;
+
 			const rapidjson::Value& SpriteArr2 = jsonObj["CorrectIngredient"];
 			for (int i{}; i < static_cast<int>(SpriteArr2.Size()); ++i)
 			{
 				const rapidjson::Value& ingredient = SpriteArr2[i];
-
-				if (std::find(CorrectIngredients.begin(), CorrectIngredients.end(), ingredient.GetString()) != CorrectIngredients.end())
-					continue;
-				else
-					CorrectIngredients.push_back(ingredient.GetString());
+				vIngrendient.emplace_back(ingredient.GetString());
 			}
+			quest_boxes.emplace(levelname, vIngrendient);
 		}
-		levelCorrectIngredients.insert({ levelname, CorrectIngredients });
-
-		std::cout << "SpriteSize X: " << SpriteSize[0] << "        " << "SpriteSize Y: " << SpriteSize[1] << "\n";
-
 		std::cout << "Deserializing Sprite Component! \n";
-	
 	}
 
 	void Sprite::restart()

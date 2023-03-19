@@ -1,17 +1,16 @@
-{
-  "components": [
+{"components": [
     {
       "type": "Transform",
-      "position": [ 150.0, 150.0 ],
+      "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 50, 50 ]
+      "scale": [ 500, 350 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/done.png",
-      "name": "done",
+      "texturepath": "../textures/Quest/questBase.png",
+      "name": "questBase",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }
   ]
-} 
+}

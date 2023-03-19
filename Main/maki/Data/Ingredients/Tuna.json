@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/Quest_Tuna.png",
+      "texturepath": "../textures/Quest/Tuna.png",
       "name": "Tuna",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]

@@ -8,14 +8,12 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/doge.jpg",
-      "name": "QuestLv2",
+      "texturepath": "../textures/bg.jpg",
+      "name": "Quest_Lv7",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tofu",
-        "Inari",
-        "Nori"
+        "Salmon_Wasabi"
       ]
     }
   ]

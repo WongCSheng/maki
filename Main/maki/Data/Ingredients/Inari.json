@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/Quest_Inari.png",
+      "texturepath": "../textures/Quest/Inari.png",
       "name": "Inari",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]

@@ -9,14 +9,13 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv5",
+      "name": "Quest_Lv8",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tamago",
-        "Cucumber",
-        "Avocado"
-
+        "Tuna_Soya",
+        "Octopus_Wasabi",
+        "Salmon"
       ]
     }
   ]

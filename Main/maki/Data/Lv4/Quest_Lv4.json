@@ -9,15 +9,13 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv7",
+      "name": "Quest_Lv4",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "salmon_wasabi"
-        
-
-       
-
+        "Corn",
+        "Cucumber",
+        "Tamago"
       ]
     }
   ]

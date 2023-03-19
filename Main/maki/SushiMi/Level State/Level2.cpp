@@ -42,6 +42,8 @@ namespace Core
 				Map::ResetMap();
 			}
 
+			Window::resetQuest();
+
 			Map::initMap("../TileMap/level2.txt");
 
 			Map::LoadMap();

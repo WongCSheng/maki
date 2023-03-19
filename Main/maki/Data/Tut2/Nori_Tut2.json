@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Avocado.png",
-      "name": "Avocado",
+      "texturepath": "../textures/Quest/Nori.png",
+      "name": "Nori_Tut2",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

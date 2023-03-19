@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/Quest_Cucumber.png",
+      "texturepath": "../textures/Quest/Cucumber.png",
       "name": "Cucumber",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]

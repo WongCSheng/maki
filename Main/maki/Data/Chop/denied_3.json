@@ -2,14 +2,14 @@
   "components": [
     {
       "type": "Transform",
-      "position": [80.0, 150.0 ],
+      "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
       "scale": [ 50, 50 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/denied.png",
-      "name": "denied",
+      "texturepath": "../textures/Quest/denied.png",
+      "name": "denied_3",
       "SpriteSheet": false,                           
       "SpriteSize": [ 1280, 703 ]
     }

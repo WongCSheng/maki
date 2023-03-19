@@ -9,12 +9,13 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv1",
+      "name": "Quest_Lv6",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Rice",
-        "Nori"
+        "Corn",
+        "Cucumber",
+        "Avocado"
       ]
     }
   ]

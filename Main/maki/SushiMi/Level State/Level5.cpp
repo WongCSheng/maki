@@ -43,6 +43,8 @@ namespace Core
 				Map::ResetMap();
 			}
 
+			Window::resetQuest();
+
 			Map::initMap("../TileMap/level5.txt");
 			Map::maki_city = 0;
 			Map::LoadMap();

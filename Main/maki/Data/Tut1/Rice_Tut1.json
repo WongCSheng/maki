@@ -2,14 +2,14 @@
   "components": [
     {
       "type": "Transform",
-      "position": [ 0.0, 0.0 ],
+      "position": [ 150.0, 140.0 ],
       "rotation": 0.0,
-      "scale": [ 500, 350 ]
+      "scale": [ 80, 80 ]
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/questBase.png",
-      "name": "questBase",
+      "texturepath": "../textures/Quest/Rice.png",
+      "name": "Rice_Tut1",
       "SpriteSheet": false,
       "SpriteSize": [ 1280, 703 ]
     }

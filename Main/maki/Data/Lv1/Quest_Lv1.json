@@ -9,13 +9,12 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv3",
+      "name": "Quest_Lv1",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Tofu",
-        "Inari",
-        "Rice"
+        "Rice",
+        "Nori"
       ]
     }
   ]

@@ -111,6 +111,9 @@ namespace Core
 		*/
 		int status;
 
+		//added in
+		static std::map<std::string, std::vector<std::string>> quest_boxes; // load in win conditions for level
+
 	private:
 
 		Texture texture;

@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/levelQuest/Tuna_Soya.png",
+      "texturepath": "../textures/Quest/Tuna_Soya.png",
       "name": "Tuna_Soya",
       "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]

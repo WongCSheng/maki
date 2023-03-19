@@ -9,15 +9,12 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv8",
+      "name": "Quest_Tut2",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Salmon",
-        "Tuna_Soya",
-        "Octupus_Wasabi"
-       
-
+        "Tofu",
+        "Nori"
       ]
     }
   ]

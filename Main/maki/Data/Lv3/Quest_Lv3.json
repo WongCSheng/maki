@@ -9,13 +9,13 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestLv4",
+      "name": "Quest_Lv3",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Corn",
-        "Cucumber",
-        "Tamago"
+        "Inari",
+        "Tofu",
+        "Rice"
       ]
     }
   ]

@@ -9,11 +9,13 @@
     {
       "type": "Sprite",
       "texturepath": "../textures/bg.jpg",
-      "name": "QuestTut1",
+      "name": "Quest_Lv9",
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Rice"
+        "Octopus_Wasabi",
+        "Tuna",
+        "Roe_Soya_Wasabi"
       ]
     }
   ]

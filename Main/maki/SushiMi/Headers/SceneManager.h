@@ -24,17 +24,17 @@ namespace Core
 		its_a_wall = 35,//#
 		player = 37,	//%
 		ingredients,	//&
-		avocado,		//'
-		cucumber,		//(
-		corn,			//)
-		inari,			//*
-		octopus,		//+
-		rice,			//, (comma) 
-		roes,			//- (minus)
-		salmon,			//. (fullstop)
+		octopus,		//'
+		roes,			//(
+		tuna,			//)
+		corn,			//*
+		inari,			//+
+		avocado,		//, (comma) 
+		salmon,			//- (minus) //interact-able ends here
+		cucumber,		//. (fullstop)
 		tamago,			// slash (/)
 		tofu,			//0
-		tuna,			//1
+		rice,			//1
 		nori,			//2 //the end of pushable ingredients //value in dec: 50
 		tea,			//3
 		soya,			//4

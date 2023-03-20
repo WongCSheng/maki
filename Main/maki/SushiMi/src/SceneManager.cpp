@@ -459,8 +459,6 @@ namespace Core
 
 		}
 
-		if (Map::salmon != nullptr)
-		{
 			for (auto& ingredient : ingredientcontainer)
 			{
 				/*check which sprite has set animation to true*/
@@ -495,7 +493,6 @@ namespace Core
 				}
 					
 			}
-		}
 	}
 	/*
 	void SceneManager::drawRice()

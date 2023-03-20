@@ -540,21 +540,25 @@ namespace Core
 					if (maki_city != 1)
 					{
 						avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
+						/*add avocado sprites*/
+						avocado->Add_animation("../textures/spritesheet/avocado_normal.txt");
+						avocado->Add_animation("../textures/spritesheet/avocado_soy.txt");
+						avocado->Add_animation("../textures/spritesheet/avocado_wasabi.txt");
+						avocado->Add_animation("../textures/spritesheet/avocado_both.txt");
 
 					}
 					else
 					{
-						avocado = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Avocado.png");
-
+						avocado = new Sprite("../textures/spritesheet/MakiCity_avocadospritesheet.png");
+						/*add avocado sprites*/
+						avocado->Add_animation("../textures/spritesheet/MakiCity_Avocado_normal.txt");
+						avocado->Add_animation("../textures/spritesheet/MakiCity_Avocado_soy.txt");
+						avocado->Add_animation("../textures/spritesheet/MakiCity_Avocado_wasabi.txt");
+						avocado->Add_animation("../textures/spritesheet/MakiCity_Avocado_both.txt");
 					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 					avocado->status = 0;
 					avocado->isSpriteSheet = 1;
-					/*add avocado sprites*/
-					avocado->Add_animation("../textures/spritesheet/avocado_normal.txt");
-					avocado->Add_animation("../textures/spritesheet/avocado_soy.txt");
-					avocado->Add_animation("../textures/spritesheet/avocado_wasabi.txt");
-					avocado->Add_animation("../textures/spritesheet/avocado_both.txt");
 					avocado->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					std::string String = IngredientToString(grid_number::avocado);
@@ -576,17 +580,27 @@ namespace Core
 					Sprite* corn = nullptr;
 					if (maki_city != 1)
 					{
-						corn = new Sprite("../textures/Tiles/Ingredients/Ingredients0_ew_corn.png");
-
+						corn = new Sprite("../textures/spritesheet/cornspritesheet.png");
+						/*add corn sprites*/
+						corn->Add_animation("../textures/spritesheet/corn_normal.txt");
+						corn->Add_animation("../textures/spritesheet/corn_soy.txt");
+						corn->Add_animation("../textures/spritesheet/corn_wasabi.txt");
+						corn->Add_animation("../textures/spritesheet/corn_both.txt");
 					}
 					else
 					{
-						corn = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Corn.png");
+						corn = new Sprite("../textures/spritesheet/MakiCity_cornspritesheet.png");
+						/*add corn sprites*/
+						corn->Add_animation("../textures/spritesheet/MakiCity_corn_normal.txt");
+						corn->Add_animation("../textures/spritesheet/MakiCity_corn_soy.txt");
+						corn->Add_animation("../textures/spritesheet/MakiCity_corn_wasabi.txt");
+						corn->Add_animation("../textures/spritesheet/MakiCity_corn_both.txt");
 
 					}
-
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::corn, corn);
-
+					corn->status = 0;
+					corn->isSpriteSheet = 1;
+					corn->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::corn);
@@ -599,17 +613,27 @@ namespace Core
 					Sprite* inari = nullptr;
 					if (maki_city != 1)
 					{
-						inari = new Sprite("../textures/Tiles/Ingredients/Ingredients0_inari.png");
-
+						inari = new Sprite("../textures/spritesheet/inarispritesheet.png");
+						/*add inari sprites*/
+						inari->Add_animation("../textures/spritesheet/inari_normal.txt");
+						inari->Add_animation("../textures/spritesheet/inari_soy.txt");
+						inari->Add_animation("../textures/spritesheet/inari_wasabi.txt");
+						inari->Add_animation("../textures/spritesheet/inari_both.txt");
 					}
 					else
 					{
-						inari = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Inari.png");
+						inari = new Sprite("../textures/spritesheet/MakiCity_inarispritesheet.png");
+						/*add inari sprites*/
+						inari->Add_animation("../textures/spritesheet/MakiCity_Inari_normal.txt");
+						inari->Add_animation("../textures/spritesheet/MakiCity_Inari_soy.txt");
+						inari->Add_animation("../textures/spritesheet/MakiCity_Inari_wasabi.txt");
+						inari->Add_animation("../textures/spritesheet/MakiCity_Inari_both.txt");
 
 					}
-
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::inari, inari);
-
+					inari->status = 0;
+					inari->isSpriteSheet = 1;
+					inari->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::inari);
@@ -618,9 +642,30 @@ namespace Core
 				}
 				case static_cast<int>(grid_number::octopus):
 				{
-					Sprite* octopus = new Sprite("../textures/Tiles/Ingredients/Ingredients0_octopus.png");
-					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
+					Sprite* octopus = nullptr;
+					if (maki_city != 1)
+					{
+						octopus = new Sprite("../textures/spritesheet/octopusspritesheet.png");
+						/*add octopus sprites*/
+						octopus->Add_animation("../textures/spritesheet/octopus_normal.txt");
+						octopus->Add_animation("../textures/spritesheet/octopus_soy.txt");
+						octopus->Add_animation("../textures/spritesheet/octopus_wasabi.txt");
+						octopus->Add_animation("../textures/spritesheet/octopus_both.txt");
+					}
+					else
+					{
+						octopus = new Sprite("../textures/spritesheet/MakiCity_octopusspritesheet.png");
+						/*add octopus sprites*/
+						octopus->Add_animation("../textures/spritesheet/MakiCity_Octopus_normal.txt");
+						octopus->Add_animation("../textures/spritesheet/MakiCity_Octopus_soy.txt");
+						octopus->Add_animation("../textures/spritesheet/MakiCity_Octopus_wasabi.txt");
+						octopus->Add_animation("../textures/spritesheet/MakiCity_Octopus_both.txt");
 
+					}
+					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::octopus, octopus);
+					octopus->status = 0;
+					octopus->isSpriteSheet = 1;
+					octopus->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::octopus);
@@ -644,16 +689,27 @@ namespace Core
 					Sprite* roes = nullptr;
 					if (maki_city != 1)
 					{
-						roes = new Sprite("../textures/Tiles/Ingredients/Ingredients0_roes.png");
-
+						roes = new Sprite("../textures/spritesheet/roespritesheet.png");
+						/*add roes sprites*/
+						roes->Add_animation("../textures/spritesheet/roe_normal.txt");
+						roes->Add_animation("../textures/spritesheet/roe_soy.txt");
+						roes->Add_animation("../textures/spritesheet/roe_wasabi.txt");
+						roes->Add_animation("../textures/spritesheet/roe_both.txt");
 					}
 					else
 					{
-						roes = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Roes.png");
+						roes = new Sprite("../textures/spritesheet/MakiCity_octopusspritesheet.png");
+						/*add roes sprites*/
+						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_normal.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_soy.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_wasabi.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_both.txt");
 
 					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);
-
+					roes->status = 0;
+					roes->isSpriteSheet = 1;
+					roes->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::roes);
@@ -2092,13 +2148,14 @@ namespace Core
 					}
 
 					/*------------------------------Salmon and soya/Wasabi/Tea Checks HERE----------------------------------------------------------------------------------------*/
-					//check if tile on the left of salmon is soya
+					//check if tile on the left of ingredent is soya
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
-						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) && 
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2113,6 +2170,17 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.x -= tile_width;
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with soya*/
+									ingredient.spr->status = 1;
+									ingredient.spr->curr_anim = AnimationType::Run;
+								}
+								else if (ingredient.spr->status == 2)
+								{
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2130,28 +2198,18 @@ namespace Core
 								break;
 							}
 						}
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with soya*/
-							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 2)
-						{
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
 						Window::player->move_left();
 						std::cout << "soya dripped\n";
 					}
 
-					//check if tile on left of salmon is Wasabi
+					//check if tile on left of ingredient is Wasabi
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::wasabi) &&
-						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2166,6 +2224,19 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.x -= tile_width;
+								/*check salmon status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change salmon sprite to with wasabi*/
+									ingredient.spr->status = 2;
+									ingredient.spr->curr_anim = AnimationType::Jump;
+								}
+								else if (ingredient.spr->status == 1)
+								{
+									/*if has soya on it, change to both*/
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2184,33 +2255,17 @@ namespace Core
 							}
 						}
 
-						/*check salmon status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
-							salmon->curr_anim = AnimationType::Jump;
-						}
-						else if (salmon->status == 1)
-						{
-							/*if has soya on it, change to both*/
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
-
 						Window::player->move_left();
 						std::cout << "Wasabi dripped\n";
 					}
-					//check if tile on left of salmon is tea
+					//check if tile on left of ingredient is tea
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::tea) &&
-						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 					{
-						/*If salmon has either wasabi/soya/both on it*/
-						if (salmon->status != 0)
-						{
 							// set grid
 							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+							gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 							gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 							if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 							{
@@ -2225,6 +2280,12 @@ namespace Core
 								if (ingredient.nametag == check)
 								{
 									ingredient.spr->transformation.Position.x -= tile_width;
+									/*change ingredient sprite to nothing*/
+									if (ingredient.spr->status != 0)
+									{
+										ingredient.spr->status = 0;
+									}
+									ingredient.spr->curr_anim = AnimationType::Idle;
 									break;
 								}
 							}
@@ -2243,17 +2304,9 @@ namespace Core
 								}
 							}
 
-							/*change salmon sprite to nothing*/
-							if (salmon->status != 0)
-							{
-								salmon->status = 0;
-							}
-							salmon->curr_anim = AnimationType::Idle;
-
 							Window::player->move_left();
 							std::cout << "tea dripped\n";
 						}
-					}
 
 					//check if it's a box
 					else if (wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
@@ -2481,14 +2534,15 @@ namespace Core
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
-
-					//check if tile on the right of salmon is soya
+					/*------------------------------soya/Wasabi/Tea Checks HERE----------------------------------------------------------------------------------------*/
+					//check if tile on the right of ingredient is soya
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::soya) &&
-						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) &&
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2503,6 +2557,17 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.x += tile_width;
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with soya*/
+									ingredient.spr->status = 1;
+									ingredient.spr->curr_anim = AnimationType::Run;
+								}
+								else if (ingredient.spr->status == 2)
+								{
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2521,29 +2586,18 @@ namespace Core
 								break;
 							}
 						}
-						/*check soya status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with soya*/
-							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 2)
-						{
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
 						Window::player->move_right();
 						std::cout << "soya dripped\n";
 					}
 
-					//check if tile on left of salmon is Wasabi
+					//check if tile on right of ingredient is Wasabi
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::wasabi) &&
-						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
-						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2558,6 +2612,19 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.x += tile_width;
+								/*check salmon status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change salmon sprite to with wasabi*/
+									ingredient.spr->status = 2;
+									ingredient.spr->curr_anim = AnimationType::Jump;
+								}
+								else if (ingredient.spr->status == 1)
+								{
+									/*if has soya on it, change to both*/
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2576,34 +2643,19 @@ namespace Core
 							}
 						}
 
-						/*check salmon status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
-							salmon->curr_anim = AnimationType::Jump;
-						}
-						else if (salmon->status == 1)
-						{
-							/*if has soya on it, change to both*/
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
-
 						Window::player->move_right();
 						std::cout << "Wasabi dripped\n";
 					}
 
-					//check if tile on left of salmon is tea
+					//check if tile on right of ingredient is tea
 					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::tea) &&
-						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::salmon))
-					{
-						/*If salmon has either wasabi/soya/both on it*/
-						if (salmon->status != 0)
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::salmon))
 						{
+
 							// set grid
 							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
-							gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::salmon);
+							gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] = static_cast<int>(check);
 							gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::player);
 							if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 							{
@@ -2618,6 +2670,12 @@ namespace Core
 								if (ingredient.nametag == check)
 								{
 									ingredient.spr->transformation.Position.x += tile_width;
+									/*change sprite to nothing*/
+									if (ingredient.spr->status != 0)
+									{
+										ingredient.spr->status = 0;
+										ingredient.spr->curr_anim = AnimationType::Idle;
+									}
 									break;
 								}
 							}
@@ -2634,19 +2692,12 @@ namespace Core
 									ingredient.spr->animeMe = true;
 									break;
 								}
-							}
 
-							/*change salmon sprite to nothing*/
-							if (salmon->status != 0)
-							{
-								salmon->status = 0;
 							}
-							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_right();
 							std::cout << "tea dripped\n";
 						}
-					}
 
 					//check if it's a box
 					else if (wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) &&
@@ -2880,14 +2931,15 @@ namespace Core
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
-
-					//check if tile on the bottom of salmon is soya
+					/*------------------------------soya/Wasabi/Tea Checks HERE----------------------------------------------------------------------------------------*/
+					//check if tile on the bottom of ingredient is soya
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::soya) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::octopus) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2902,6 +2954,18 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.y += tile_height;
+								/*check soya status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with soya*/
+									ingredient.spr->status = 1;
+									ingredient.spr->curr_anim = AnimationType::Run;
+								}
+								else if (ingredient.spr->status == 2)
+								{
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2919,29 +2983,18 @@ namespace Core
 								break;
 							}
 						}
-						/*check soya status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with soya*/
-							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 2)
-						{
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
 						Window::player->move_down();
 						std::cout << "soya dripped\n";
 					}
 
-					//check if tile on left of salmon is Wasabi
+					//check if tile on left of ingredient is Wasabi
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::wasabi) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -2956,6 +3009,19 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.y += tile_height;
+								/*check status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with wasabi*/
+									ingredient.spr->status = 2;
+									ingredient.spr->curr_anim = AnimationType::Jump;
+								}
+								else if (salmon->status == 1)
+								{
+									/*if has soya on it, change to both*/
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -2974,34 +3040,19 @@ namespace Core
 							}
 						}
 
-						/*check salmon status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
-							salmon->curr_anim = AnimationType::Jump;
-						}
-						else if (salmon->status == 1)
-						{
-							/*if has soya on it, change to both*/
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
-
 						Window::player->move_down();
 						std::cout << "Wasabi dripped\n";
 					}
 
-					//check if tile on left of salmon is tea
+					//check if tile on left of ingredient is tea
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] == static_cast<int>(grid_number::tea) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] == static_cast<int>(grid_number::salmon))
-					{
-						/*If salmon has either wasabi/soya/both on it*/
-						if (salmon->status != 0)
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(grid_number::salmon))
 						{
+
 							// set grid
 							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(grid_number::salmon);
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] = static_cast<int>(check);
 							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::player);
 							if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 							{
@@ -3044,7 +3095,6 @@ namespace Core
 							Window::player->move_down();
 							std::cout << "tea dripped\n";
 						}
-					}
 					//check if it's a box
 					else if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] >= static_cast<int>(wall_type::rice_box) &&
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] <= static_cast<int>(wall_type::tuna_box))
@@ -3270,14 +3320,15 @@ namespace Core
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
-
-					//check if tile on the top of salmon is soya
+					/*------------------------------soya/Wasabi/Tea Checks HERE----------------------------------------------------------------------------------------*/
+					//check if tile on the top of ingredient is soya
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::soya) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::octopus) &&
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -3292,6 +3343,18 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.y -= tile_height;
+								/*check status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with soya*/
+									ingredient.spr->status = 1;
+									ingredient.spr->curr_anim = AnimationType::Run;
+								}
+								else if (ingredient.spr->status == 2)
+								{
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -3309,30 +3372,18 @@ namespace Core
 								break;
 							}
 						}
-
-						/*check soya status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with soya*/
-							salmon->status = 1;
-							salmon->curr_anim = AnimationType::Run;
-						}
-						else if (salmon->status == 2)
-						{
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
 						Window::player->move_up();
 						std::cout << "soya dripped\n";
 					}
 
 					//check if tile on left of salmon is Wasabi
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::wasabi) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::salmon))
 					{
 						// set grid
 						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(check);
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
 						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
@@ -3347,6 +3398,19 @@ namespace Core
 							if (ingredient.nametag == check)
 							{
 								ingredient.spr->transformation.Position.y -= tile_height;
+								/*check status*/
+								if (ingredient.spr->status == 0)
+								{
+									/*change sprite to with wasabi*/
+									ingredient.spr->status = 2;
+									ingredient.spr->curr_anim = AnimationType::Jump;
+								}
+								else if (ingredient.spr->status == 1)
+								{
+									/*if has soya on it, change to both*/
+									ingredient.spr->status = 3;
+									ingredient.spr->curr_anim = AnimationType::Both;
+								}
 								break;
 							}
 						}
@@ -3364,76 +3428,57 @@ namespace Core
 								break;
 							}
 						}
-
-						/*check salmon status*/
-						if (salmon->status == 0)
-						{
-							/*change salmon sprite to with wasabi*/
-							salmon->status = 2;
-							salmon->curr_anim = AnimationType::Jump;
-						}
-						else if (salmon->status == 1)
-						{
-							/*if has soya on it, change to both*/
-							salmon->status = 3;
-							salmon->curr_anim = AnimationType::Both;
-						}
-
 						Window::player->move_up();
 						std::cout << "Wasabi dripped\n";
 					}
 					//check if tile on left of salmon is tea
 					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::tea) &&
-						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] == static_cast<int>(grid_number::salmon))
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::octopus) &&
+					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(grid_number::salmon))
 					{
-						/*If salmon has either wasabi/soya/both on it*/
-						if (salmon->status != 0)
+						// set grid
+						grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(check);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
+						if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
 						{
-							// set grid
-							grid_number check = static_cast<grid_number>(gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] = static_cast<int>(grid_number::salmon);
-							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::player);
-							if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox))
-							{
-								wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
-							}
-							else
-							{
-								gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
-							}
-							for (auto& ingredient : SceneManager::ingredientcontainer)
-							{
-								if (ingredient.nametag == check)
-								{
-									ingredient.spr->transformation.Position.y -= tile_height;
-									break;
-								}
-							}
-							for (auto& ingredient : SceneManager::ingredientcontainer)
-							{
-
-								auto& ing_transform = ingredient.spr->transformation.grid_pos;
-								auto& [inx, iny] = ing_transform;
-								if (iny == Window::player->player_grid_pos.y - 2
-									&& inx == Window::player->player_grid_pos.x)
-								{
-									ingredient.spr->timer = 0;
-									SceneManager::activateTea(ingredient.spr);
-									ingredient.spr->animeMe = true;
-									break;
-								}
-							}
-
-							/*change salmon sprite to nothing*/
-							if (salmon->status != 0)
-							{
-								salmon->status = 0;
-							}
-							salmon->curr_anim = AnimationType::Idle;
-
-							Window::player->move_up();
-							std::cout << "tea dripped\n";
+							wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
 						}
+						else
+						{
+							gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+						}
+						for (auto &ingredient : SceneManager::ingredientcontainer)
+						{
+							if (ingredient.nametag == check)
+							{
+								ingredient.spr->transformation.Position.y -= tile_height;
+								/*change sprite to nothing*/
+								if (ingredient.spr->status != 0)
+								{
+									ingredient.spr->status = 0;
+								}
+								ingredient.spr->curr_anim = AnimationType::Idle;
+								break;
+							}
+						}
+						for (auto &ingredient : SceneManager::ingredientcontainer)
+						{
+
+							auto& ing_transform = ingredient.spr->transformation.grid_pos;
+							auto &[inx, iny] = ing_transform;
+							if (iny == Window::player->player_grid_pos.y - 2
+								&& inx == Window::player->player_grid_pos.x)
+							{
+								ingredient.spr->timer = 0;
+								SceneManager::activateTea(ingredient.spr);
+								ingredient.spr->animeMe = true;
+								break;
+							}
+						}
+
+						Window::player->move_up();
+						std::cout << "tea dripped\n";
 					}
 
 					//check if it's a box

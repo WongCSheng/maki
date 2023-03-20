@@ -698,12 +698,12 @@ namespace Core
 					}
 					else
 					{
-						roes = new Sprite("../textures/spritesheet/MakiCity_octopusspritesheet.png");
+						roes = new Sprite("../textures/spritesheet/MakiCity_roesspritesheet.png");
 						/*add roes sprites*/
-						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_normal.txt");
-						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_soy.txt");
-						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_wasabi.txt");
-						roes->Add_animation("../textures/spritesheet/MakiCity_Octopus_both.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Roes_normal.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Roes_soy.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Roes_wasabi.txt");
+						roes->Add_animation("../textures/spritesheet/MakiCity_Roes_both.txt");
 
 					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::roes, roes);

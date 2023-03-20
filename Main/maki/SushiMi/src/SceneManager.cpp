@@ -315,6 +315,11 @@ namespace Core
 			fishingvillage_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
 			fishingvillage_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
 		}
+		else if (Window::dialogue_style == static_cast<int>(Window::dialogue::MAKI_CITY))
+		{
+			makicity_dialogue->transformation.Position = glm::vec2(screenwidth * 0.15f, screenheight * 0.7f);
+			makicity_dialogue->transformation.Scale = glm::vec2(screenwidth * 0.7f, screenheight * 0.3f);
+		}
 	}
 
 	void SceneManager::load_Wood_BG()
@@ -793,6 +798,11 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", fishingvillage_dialogue->transformation.Get());
 			fishingvillage_dialogue->draw();
 		}
+		else if (Window::dialogue_style == static_cast<int>(Window::dialogue::MAKI_CITY))
+		{
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", makicity_dialogue->transformation.Get());
+			makicity_dialogue->draw();
+		}
 		
 		
 	}
@@ -938,6 +948,7 @@ namespace Core
 		delete riceplain_dialogue;
 		delete gunkan_dialogue;
 		delete fishingvillage_dialogue;
+		delete makicity_dialogue;
 	}
 
 	void SceneManager::destroy_Wood_BG()

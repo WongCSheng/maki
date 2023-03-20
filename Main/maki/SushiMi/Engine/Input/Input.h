@@ -23,6 +23,12 @@ namespace Core
 	class Input
 	{
 	public:
+		//get instance this way without newing
+		static Input* GetInstance() {
+			static Input inputinstance;
+			return &inputinstance;
+		}
+
 		/*static Input& Instance()
 		{
 			if (instance != 0)

@@ -145,8 +145,10 @@ namespace Core
 	}
 	void Window::checkWin(std::string currentlevel)
 	{
+		std::vector<std::string> levelBoxes;
 		//	load current level boxes for quest
-		std::vector<std::string> levelBoxes = Sprite::quest_boxes.at(currentlevel);
+		//if (Map::maki_city != 1) //@ aurelia delete this later, cause this was put here as game crashes when Quest_Lv11.json doesnt exist
+		levelBoxes = Sprite::quest_boxes.at(currentlevel);
 
 		//	checking through each ingredient loaded in the level
 		for (auto& ingredient : Map::loadedIngredients)
@@ -189,7 +191,7 @@ namespace Core
 			if (found_salmon != std::string::npos)
 			{
 				//	ingredient contain add on sauce (tbc)
-				std::size_t found_wasabi = ingredient.find("Wasabi");
+				//std::size_t found_wasabi = ingredient.find("Wasabi"); //tbc, but commented out as it causes warning
 				if (found_salmon != std::string::npos)
 				{
 					if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
@@ -419,6 +421,7 @@ namespace Core
 		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
 		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
 		SceneManager::fishingvillage_dialogue = new Sprite("../textures/UI/DialogueBox_FishingVillage.png");
+		SceneManager::makicity_dialogue = new Sprite("../textures/UI/DialogueBox_MakiCity.png");
 
 		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
@@ -958,7 +961,7 @@ namespace Core
 				isLevel5 = false;
 				isLevel6 = false;
 				isLevel7 = false;
-				isLevel8 = true;
+				isLevel8 = true;  
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
@@ -1745,7 +1748,7 @@ namespace Core
 					}
 
 				}
-				else if (dialogue_style >= static_cast<int>(dialogue::L7) && dialogue_style <= static_cast<int>(dialogue::L9))
+				else if (dialogue_style >= static_cast<int>(dialogue::L7) && dialogue_style <= static_cast<int>(dialogue::MAKI_CITY))
 				{
 					SceneManager::load_Dialogue();
 					SceneManager::draw_Dialogue();
@@ -1753,7 +1756,7 @@ namespace Core
 
 					if (curr_len <= realstring.length())
 					{
-						if (realstring.length() < 56)
+						if (realstring.length() < 60)
 						{
 							std::string one_by_one = realstring.substr(0, curr_len);
 
@@ -1769,10 +1772,10 @@ namespace Core
 
 							}
 						}
-						else if (realstring.length() >= 56 && realstring.length() < 107)
+						else if (realstring.length() >= 60 && realstring.length() < 107)
 						{
-							std::string first_line = realstring.substr(0, 56);
-							std::string second_line = realstring.substr(56, curr_len);
+							std::string first_line = realstring.substr(0, 60);
+							std::string second_line = realstring.substr(60, curr_len);
 
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
@@ -1792,13 +1795,13 @@ namespace Core
 						else if (realstring.length() >= 107)
 						{
 							//std::cout << "this text is soo long " << std::endl;
-							std::string first_line = realstring.substr(0, 56);
-							std::string second_line = realstring.substr(56, 107 - 56);
+							std::string first_line = realstring.substr(0, 55);
+							std::string second_line = realstring.substr(55, 107 - 55);
 							std::string third_line = realstring.substr(107, curr_len);
 							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.2f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.1f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+							Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 							if (Get_Delta())
 							{
 								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
@@ -1925,41 +1928,51 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 				spritecomp1->draw();
 
-				std::vector<std::string> currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
-
-				// update ingredients' position to draw on quest tab at fixed position
-				for (size_t i{}; i < currentQuestIngredient.size(); ++i)
+				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);
+				if (checkifquestexists != Sprite::quest_boxes.end()) //if the quest does not exist for the level (eg test level, or lvl 9-11 quest not done yet)
 				{
-					switch (i)
+					currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
+
+					// update ingredients' position to draw on quest tab at fixed position
+					for (int i{}; i < currentQuestIngredient.size(); ++i)
 					{
-					case 0:
-						questDrawItems.insert({ currentQuestIngredient[i] , pos1 });
-						updateChop(i, pos1);
-						break;
-					case 1:
-						questDrawItems.insert({ currentQuestIngredient[i] , pos2 });
-						updateChop(i, pos2);
-						break;
-					case 2:
-						questDrawItems.insert({ currentQuestIngredient[i] , pos3 });
-						updateChop(i, pos3);
-						break;
-					default:
-						break;
+						switch (i)
+						{
+						case 0:
+							questDrawItems.insert({ currentQuestIngredient[i] , pos1 });
+							updateChop(i, pos1);
+							break;
+						case 1:
+							questDrawItems.insert({ currentQuestIngredient[i] , pos2 });
+							updateChop(i, pos2);
+							break;
+						case 2:
+							questDrawItems.insert({ currentQuestIngredient[i] , pos3 });
+							updateChop(i, pos3);
+							break;
+						default:
+							break;
+						}
 					}
+
 				}
 
 				//	draw ingredients and chops
 				for (auto& ingredient : questDrawItems)
 				{
-					Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
-					//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
+					//check if what you are accessing exists so it does not throw exception
+					if (checkifitexists != CoreSystem->objfactory->ObjectContainer.end())
+					{
+						Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
+						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
+						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-					spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
+						spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
 
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
-					spritecomp2->draw();
+						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
+						spritecomp2->draw();
+					}
 				}
 			}
 

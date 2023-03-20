@@ -536,8 +536,17 @@ namespace Core
 
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					break;*/
+					Sprite* avocado = nullptr;
+					if (maki_city != 1)
+					{
+						avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
 
-					Sprite* avocado = new Sprite("../textures/spritesheet/avocadospritesheet.png");
+					}
+					else
+					{
+						avocado = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Avocado.png");
+
+					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::avocado, avocado);
 					avocado->status = 0;
 					avocado->isSpriteSheet = 1;
@@ -833,7 +842,16 @@ namespace Core
 					// Ingredients that have boxes are: avocado, cucumber,corn,inari,octopus,rice,roes,salmon,tamago,tofu,tuna,nori	
 				case static_cast<int>(wall_type::avocado_box):
 				{
-					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Avocado.png");
+					Sprite* box = nullptr;
+					if (maki_city != 1)
+					{
+						box = new Sprite("../textures/Tiles/Pods/Pod_Avocado.png");
+
+					}
+					else
+					{
+						box = new Sprite("../textures/Tiles/Maki_City/City_Pods/City_Restaurant_1.png");
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::avocado_box, box);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -871,7 +889,17 @@ namespace Core
 				//corn
 				case static_cast<int>(wall_type::corn_box):
 				{
-					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Corn.png");
+					Sprite* box = nullptr;
+					if (maki_city != 1)
+					{
+						box = new Sprite("../textures/Tiles/Pods/Pod_Corn.png");
+
+					}
+					else
+					{
+						box = new Sprite("../textures/Tiles/Maki_City/City_Pods/City_Restaurant_4.png");
+					}
+					
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::corn_box, box);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -998,7 +1026,16 @@ namespace Core
 				//tuna
 				case static_cast<int>(wall_type::tuna_box):
 				{
-					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
+					Sprite* box = nullptr;
+					if (maki_city != 1)
+					{
+						box = new Sprite("../textures/Tiles/Pods/Pod_Tuna.png");
+
+					}
+					else
+					{
+						box = new Sprite("../textures/Tiles/Maki_City/City_Pods/City_Restaurant_2.png");
+					}
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::tuna_box, box);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);
@@ -1059,7 +1096,17 @@ namespace Core
 
 				case static_cast<int>(wall_type::inari_box):
 				{
-					Sprite* box = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
+					Sprite* box = nullptr;
+					if (maki_city != 1)
+					{
+						box = new Sprite("../textures/Tiles/Pods/Pod_Inari.png");
+
+					}
+					else
+					{
+						box = new Sprite("../textures/Tiles/Maki_City/City_Pods/City_Restaurant_3.png");
+					}
+				
 					std::pair<wall_type, Sprite*> combine = std::make_pair(wall_type::inari_box, box);
 
 					SceneManager::loadTile(grid_to_coord_x, grid_to_coord_y, combine);

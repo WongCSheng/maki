@@ -75,7 +75,7 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //do not remove this line!!!
 
-	//_CrtSetBreakAlloc(5294); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(1807); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
@@ -160,15 +160,15 @@ void GLAPIENTRY
 MessageCallback(GLenum /*source*/,
 	GLenum type,
 	GLuint /*id*/,
-	GLenum severity,
+	GLenum /*severity*/,
 	GLsizei /*length*/,
-	const GLchar* message,
+	const GLchar* /*message*/,
 	const void* /*userParam*/)
 {
 	if (type == GL_DEBUG_TYPE_ERROR) {
-		fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
-			(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
-			type, severity, message);
+		//fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+			//(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+			//type, severity, message);
 	}
 
 }
@@ -254,6 +254,9 @@ void Core::pseudomain::init() {
 
 	//Lv10
 	Core::DeserializeEntity("../Data/Lv10/Quest_Lv10.json", CoreSystem->objfactory);
+
+	//Lv11
+	Core::DeserializeEntity("../Data/Lv11/Quest_Lv11.json", CoreSystem->objfactory);
 
 	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);

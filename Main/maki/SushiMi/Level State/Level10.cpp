@@ -87,10 +87,10 @@ namespace Core
 			SceneManager::FadeOut();
 			SceneManager::drawBlackOverlay();
 		}
-		//draw lv9 tile map
+		//draw lv10 tile map
 		Map::DrawMap();
 
-		//draw playerpos at lvl 9
+		//draw playerpos at lvl 10
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::player->Transformation());
 
 		//std::cout << "goals no " << Window::numQuests << std::endl;

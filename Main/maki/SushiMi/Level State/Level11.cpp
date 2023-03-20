@@ -1,6 +1,6 @@
 /*!*****************************************************************************
 
-\file       Level9.cpp
+\file       Level11.cpp
 \author     Thea Sea (80% - Level State and loading)
 \par        DP email: thea.sea@digipen.edu
 \co-author	Louis He Tong Wang (10% - Transitions)
@@ -71,10 +71,10 @@ namespace Core
 
 
 
-			Window::dialogue_style = static_cast<int>(Window::dialogue::L9);
+			Window::dialogue_style = static_cast<int>(Window::dialogue::MAKI_CITY);
 			Window::curr_len = 0;
 
-			SceneManager::num_dialogue_clicks = 1; //num of dialogue pages BEFORE game starts
+			SceneManager::num_dialogue_clicks = 2; //num of dialogue pages BEFORE game starts
 			Window::isDialogue = true;
 			CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
 																	// for quest tab drawing of ingredients

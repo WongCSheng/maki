@@ -67,10 +67,14 @@ namespace Core
 		systems.insert({ SystemID::LevelEditor, leveleditorsystem });
 #endif
 
+		//these lines caused memory leak, pls take note
+		/*objfactory = new ObjectFactory();
+		inputsystem = new Input();*/
 
-		objfactory = new ObjectFactory();
+		//use this method of getting instance instead 
+		objfactory = ObjectFactory::GetInstance();
 
-		inputsystem = new Input();
+		inputsystem = Input::GetInstance();
 	}
 
 	/*
@@ -151,7 +155,7 @@ namespace Core
 
 		TextureSystem::GetInstance()->Shutdown();
 
-		delete inputsystem;
+		//delete inputsystem;
 	}
 
 	void MainSystem::AddtoObjFactory()

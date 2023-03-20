@@ -125,7 +125,8 @@ namespace Core
 			L6,	//7
 			L7,	//8
 			L8,	//9
-			L9	//10
+			L9,	//10
+			MAKI_CITY
 		};
 
 		static inline bool isQuestTab;

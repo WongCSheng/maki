@@ -86,11 +86,11 @@ namespace Core
 		octopus_box,		//b
 		roes_box,			//c
 		tamago_box,			//d
-		tofu_box,			//| (bitwise OR) = e
-		tuna_box,			//}f
-		WoodenPlatform,		//~g
-		ground1,			//#h
-		ground2,			//$i
+		tofu_box,			//e
+		tuna_box,			//f
+		WoodenPlatform,		//g
+		ground1,			//h
+		ground2,			//i
 		Gunkan_Ground_2_3,	//j
 		Gunkan_Ground_3_1,	//k 
 		Gunkan_Ground_3_2,	//l
@@ -194,7 +194,7 @@ namespace Core
 		static void loadWinOverlay(int x, int y);
 		static void loadCutscene();
 		static void loadLevelSelect(int x, int y);
-		static void load_Dialogue(); //RP stands for Rice Plain
+		static void load_Dialogue(); //loads all region dialogue background
 		static void load_Wood_BG(); //for fishing village
 		static void load_City_BG(); //for maki city
 		static void load_Bami_End_Room(); //Ending Cutscene
@@ -277,7 +277,7 @@ namespace Core
 		static unsigned int amt_of_win_conditions;
 
 		//dialogue
-		static inline Sprite* riceplain_dialogue, * gunkan_dialogue, * fishingvillage_dialogue;
+		static inline Sprite* riceplain_dialogue, * gunkan_dialogue, * fishingvillage_dialogue, * makicity_dialogue;
 		static inline int num_dialogue_clicks;
 
 		static inline Sprite* wooden_bg, *city_bg;

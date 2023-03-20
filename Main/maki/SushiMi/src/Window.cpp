@@ -47,7 +47,7 @@ namespace Core
 	Window::GameState Window::level;
 
 	std::map<std::string, gfxVector2> Window::questDrawItems;
-	/*                                                             game states
+	/*																  game states
 	----------------------------------------------------------------------------- */
 
 
@@ -191,7 +191,7 @@ namespace Core
 			if (found_salmon != std::string::npos)
 			{
 				//	ingredient contain add on sauce (tbc)
-				//std::size_t found_wasabi = ingredient.find("Wasabi"); //tbc, but commented out as it causes warning
+				//std::size_t found_wasabi = ingredient.find("Wasabi");
 				if (found_salmon != std::string::npos)
 				{
 					if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
@@ -215,8 +215,7 @@ namespace Core
 	void Window::updateChop(int position, gfxVector2 pos)
 	{
 		std::string chop;
-
-		if (winningBoxes[position].second == 1)
+		if (winningBoxes[position].second == 1 && (!(isTut1 || isTut2)))
 		{
 			switch (position)
 			{
@@ -234,7 +233,7 @@ namespace Core
 			
 		}
 
-		else if (winningBoxes[position].second == 0)
+		else if (winningBoxes[position].second == 0 && (!(isTut1 || isTut2)))
 		{
 			switch (position)
 			{
@@ -250,7 +249,13 @@ namespace Core
 			}
 			questDrawItems.insert({ chop, pos });
 		}
+		/*else if (winningBoxes[position].second == -1)
+		{
+			if((isTut1 || isTut2));
+		
+		}*/
 	}
+	
 
 	void Window::resetQuest()
 	{
@@ -1932,6 +1937,7 @@ namespace Core
 				if (checkifquestexists != Sprite::quest_boxes.end()) //if the quest does not exist for the level (eg test level, or lvl 9-11 quest not done yet)
 				{
 					currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
+				std::vector<std::string> current_quest_ingredient = Sprite::quest_boxes.at(sLevel);
 
 					// update ingredients' position to draw on quest tab at fixed position
 					for (int i{}; i < currentQuestIngredient.size(); ++i)

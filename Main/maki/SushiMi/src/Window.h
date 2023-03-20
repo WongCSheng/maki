@@ -174,10 +174,27 @@ namespace Core
 			return gameIsPaused;
 		}
 
+		/*
+		 * Checks for win conditions in the level
+		 */
 		void checkWin(std::string level);
+
+		/*
+		 *	checks for the ingredient pushed into the right box
+		 */
 		int checkCombination(std::string ingredient, std::string box);
+
+		/*
+		 *	 Helper function to convert game states to string for parsing
+		 */
 		std::string EnumToString(GameState);
+
+		/*
+		 *  update ingredients' position to draw on quest tab at fixed position
+		 */
 		void updateChop(int position, gfxVector2 pos);
+
+		/*	resets quest tab	*/
 		static void resetQuest();
 
 		static std::vector<std::string> currentQuestIngredient;

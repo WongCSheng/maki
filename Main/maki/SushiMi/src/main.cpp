@@ -202,7 +202,7 @@ void Core::pseudomain::init() {
 	DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
 
 	//loading main menu
-	//Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
@@ -219,44 +219,43 @@ void Core::pseudomain::init() {
 
 			/*	Loading all ingredients	by level*/
 	//tut1
-	Core::DeserializeEntity("../Data/Tut1/Quest_Tut1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Tut1.json", CoreSystem->objfactory);
 
 	//tut2
-	Core::DeserializeEntity("../Data/Tut2/Quest_Tut2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Tut2.json", CoreSystem->objfactory);
 
 	//Lv1
-	Core::DeserializeEntity("../Data/Lv1/Quest_Lv1.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv1.json", CoreSystem->objfactory);
 
 	//Lv2
-	Core::DeserializeEntity("../Data/Lv2/Quest_Lv2.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv2.json", CoreSystem->objfactory);
 
 	//Lv3
-	Core::DeserializeEntity("../Data/Lv3/Quest_Lv3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv3.json", CoreSystem->objfactory);
 
 	//lv4
-	Core::DeserializeEntity("../Data/Lv4/Quest_Lv4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv4.json", CoreSystem->objfactory);
 
 	//Lv5
-	Core::DeserializeEntity("../Data/Lv5/Quest_Lv5.json", CoreSystem->objfactory);
-
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv5.json", CoreSystem->objfactory);
 
 	//Lv6
-	Core::DeserializeEntity("../Data/Lv6/Quest_Lv6.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv6.json", CoreSystem->objfactory);
 
 	//Lv7
-	Core::DeserializeEntity("../Data/Lv7/Quest_Lv7.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv7.json", CoreSystem->objfactory);
 
 	//Lv8
-	Core::DeserializeEntity("../Data/Lv8/Quest_Lv8.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv8.json", CoreSystem->objfactory);
 
 	//Lv9
-	Core::DeserializeEntity("../Data/Lv9/Quest_Lv9.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv9.json", CoreSystem->objfactory); //json cannot read its filepath on 3rd ingrd
 
 	//Lv10
-	Core::DeserializeEntity("../Data/Lv10/Quest_Lv10.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv10.json", CoreSystem->objfactory);  
 
 	//Lv11
-	Core::DeserializeEntity("../Data/Lv11/Quest_Lv11.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv11.json", CoreSystem->objfactory);
 
 	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);
@@ -270,14 +269,17 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tamago.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tofu.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tuna.json", CoreSystem->objfactory);
-
-	//Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
-	//Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
-	//Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
-
+	//mixed ingredients
 	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Octopus_Wasabi.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Roes_Soya_Wasabi.json", CoreSystem->objfactory);
+
+	Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
+
+
 
 
 	glEnable(GL_DEBUG_OUTPUT);

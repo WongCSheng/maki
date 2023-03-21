@@ -765,16 +765,27 @@ namespace Core
 					Sprite* tuna = nullptr;
 					if (maki_city != 1)
 					{
-						tuna = new Sprite("../textures/Tiles/Ingredients/Ingredients0_tuna.png");
-
+						tuna = new Sprite("../textures/spritesheet/tunaspritesheet.png");
+						/*add tuna sprites*/
+						tuna->Add_animation("../textures/spritesheet/tuna_normal.txt");
+						tuna->Add_animation("../textures/spritesheet/tuna_soy.txt");
+						tuna->Add_animation("../textures/spritesheet/tuna_wasabi.txt");
+						tuna->Add_animation("../textures/spritesheet/tuna_both.txt");
 					}
 					else
 					{
-						tuna = new Sprite("../textures/Tiles/Maki_City/City_Ingredients/MakiCity_Tuna.png");
+						tuna = new Sprite("../textures/spritesheet/MakiCity_tunaspritesheet.png");
+						/*add tuna sprites*/
+						tuna->Add_animation("../textures/spritesheet/MakiCity_Tuna_normal.txt");
+						tuna->Add_animation("../textures/spritesheet/MakiCity_Tuna_soy.txt");
+						tuna->Add_animation("../textures/spritesheet/MakiCity_Tuna_wasabi.txt");
+						tuna->Add_animation("../textures/spritesheet/MakiCity_Tuna_both.txt");
 
 					}
 					std::pair<grid_number, Sprite*> combine = std::make_pair(grid_number::tuna, tuna);
-
+					tuna->status = 0;
+					tuna->isSpriteSheet = 1;
+					tuna->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::tuna);

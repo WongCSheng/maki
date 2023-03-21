@@ -111,7 +111,7 @@ namespace Core
 		player_grid_pos.x++;
 
 		//particle->transformation.Get();
-		particle->draw();
+		//particle->draw();
 
 		sp->transformation.Position.x += Map::tile_width;
 	}

@@ -39,6 +39,7 @@ namespace Core
 	int** Map::RestartGrids;
 
 	wall_type ex_box;
+	grid_number ex_ingr;
 	grid_number next_grid;
 	grid_number curr_grid;
 
@@ -206,6 +207,14 @@ namespace Core
 
 	void Map::RestartMap()
 	{
+
+		for (auto ingredient : SceneManager::ingredientcontainer)
+		{
+			ingredient.spr->status = 0;
+			ingredient.spr->curr_anim = AnimationType::Idle;
+			ingredient.spr->animeMe = 0;
+		}
+
 		for (int i = 0; i < max_grid_cols_x; i++)
 		{
 			for (int j = 0; j < max_grid_rows_y; j++)
@@ -219,7 +228,6 @@ namespace Core
 		for (it; it != SceneManager::ingredientcontainer.end();)
 		{
 			it->Restart();
-
 			if (it->nametag == grid_number::boxcover)
 			{
 				delete it->spr;
@@ -2433,10 +2441,25 @@ namespace Core
 				//Check if left tile is box
 				if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 				{
-					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
-					Window::player->move_left();
-					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
-					gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					/*if player already is inside a box*/
+					if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox) &&
+						static_cast<int>(ex_box) != 0)
+					{
+						/*set CURRENT player grid to be the ex_box*/
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						/*set ex_box to be the NEXT grid*/
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						Window::player->move_left();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+					}
+					else
+					{
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y]);
+						Window::player->move_left();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+						gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					}
+
 				}
 				/*soya/tea/wasabi with player*/
 				else if (gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::tea) &&
@@ -2824,10 +2847,25 @@ namespace Core
 				//Check if right tile is a box
 				if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] <= static_cast<int>(wall_type::tuna_box))
 				{
-					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
-					Window::player->move_right();
-					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
-					gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					/*if player already is inside a box*/
+					if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox) &&
+						static_cast<int>(ex_box) != 0)
+					{
+						/*set CURRENT player grid to be the ex_box*/
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						/*set ex_box to be the NEXT grid*/
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
+						Window::player->move_right();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+					}
+					else
+					{
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y]);
+						Window::player->move_right();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+						gGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y] = static_cast<int>(grid_number::space);
+					}
+
 				}
 				/*soya/tea/wasabi with player*/
 				else if (gGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y] >= static_cast<int>(grid_number::tea) &&
@@ -3220,10 +3258,25 @@ namespace Core
 				//Check if up tile is a box
 				if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] <= static_cast<int>(wall_type::tuna_box))
 				{
-					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
-					Window::player->move_down();
-					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
+					/*if player already is inside a box*/
+					if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox) &&
+						static_cast<int>(ex_box) != 0)
+					{
+						/*set CURRENT player grid to be the ex_box*/
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						/*set ex_box to be the NEXT grid*/
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
+						Window::player->move_down();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+					}
+					else
+					{
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1]);
+						Window::player->move_down();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] = static_cast<int>(grid_number::space);
+					}
+
 				}
 				/*soya/tea/wasabi with player*/
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] >= static_cast<int>(grid_number::tea) &&
@@ -3606,12 +3659,27 @@ namespace Core
 				//Check if up tile is any box
 				if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(wall_type::rice_box) && wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] <= static_cast<int>(wall_type::tuna_box))
 				{
-					//save the value of the box stepped on
-					ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+					/*if player already is inside a box*/
+					if (wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] == static_cast<int>(wall_type::insidebox) &&
+						static_cast<int>(ex_box) != 0)
+					{
+						/*set CURRENT player grid to be the ex_box*/
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(ex_box);
+						/*set ex_box to be the NEXT grid*/
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
+						Window::player->move_up();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+					}
+					else
+					{
+						//save the value of the box stepped on
+						ex_box = static_cast<wall_type>(wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1]);
 
-					Window::player->move_up();
-					wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
-					gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+						Window::player->move_up();
+						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y] = static_cast<int>(wall_type::insidebox);
+						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 1] = static_cast<int>(grid_number::space);
+					}
+
 				}
 				/*soya/tea/wasabi with player*/
 				else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 1] >= static_cast<int>(grid_number::tea) &&

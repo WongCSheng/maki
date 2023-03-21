@@ -193,16 +193,24 @@ void Core::pseudomain::init() {
 	/*might need this if we using latin characters*/
 	std::setlocale(LC_ALL, "en_US.UTF-8");
 
-	//loading the entire main_menu which consists of all the buttons
+
+
+
+	/*
+	 *										Loading for deserializing game objects
+	 *  _________________________________________________________________________ */
+
+	/*				loading the entire main_menu which consists of all the buttons			*/
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
-	//loading the entire pause_menu which consists of all the buttons
+
+	/*				loading the entire pause_menu which consists of all the buttons			*/
 	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
 
-	//How to play screens
+	/*				loading how to play screens 			*/
 	DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
 
-	//loading main menu
-	Core::DeserializeEntity("../Data/Menu.json", CoreSystem->objfactory);
+	/*				loading main menu			*/
+	Core::DeserializeEntity("../Data/mainMenu/Menu.json", CoreSystem->objfactory);
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
@@ -257,6 +265,9 @@ void Core::pseudomain::init() {
 	//Lv11
 	Core::DeserializeEntity("../Data/Levels/Quest_Lv11.json", CoreSystem->objfactory);
 
+	/*
+	 * Deserialize single ingredients
+	 */
 	Core::DeserializeEntity("../Data/Ingredients/Avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Cucumber.json", CoreSystem->objfactory);
@@ -269,17 +280,20 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Tamago.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tofu.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tuna.json", CoreSystem->objfactory);
-	//mixed ingredients
-	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Ingredients/Octopus_Wasabi.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);
-	Core::DeserializeEntity("../Data/Ingredients/Roes_Soya_Wasabi.json", CoreSystem->objfactory);
-
 	Core::DeserializeEntity("../Data/Ingredients/Wasabi.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Tea.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/Soya.json", CoreSystem->objfactory);
 
-
+	/*
+	 * Deserialize mixed ingredients, from lv7 onwards, 2nd mechanics
+	 */
+	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory);			//lv7
+	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);				//lv8
+	Core::DeserializeEntity("../Data/Ingredients/Octopus_Wasabi.json", CoreSystem->objfactory);			//lv8
+	Core::DeserializeEntity("../Data/Ingredients/Roes_Soya_Wasabi.json", CoreSystem->objfactory);		//lv9
+	Core::DeserializeEntity("../Data/Ingredients/Salmon_Soya.json", CoreSystem->objfactory);				//lv10
+	Core::DeserializeEntity("../Data/Ingredients/Octopus_Soya_Wasabi.json", CoreSystem->objfactory); 	//lv10
+	Core::DeserializeEntity("../Data/Ingredients/Roes_Wasabi.json", CoreSystem->objfactory); 			//lv10
 
 
 	glEnable(GL_DEBUG_OUTPUT);

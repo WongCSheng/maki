@@ -188,17 +188,31 @@ namespace Core
 		if (found != std::string::npos)
 		{
 			std::size_t found_salmon = ingredient.find("Salmon");
-			if (found_salmon != std::string::npos)
+			if (found_salmon == std::string::npos)
 			{
 				//	ingredient contain add on sauce (tbc)
 				//std::size_t found_wasabi = ingredient.find("Wasabi");
-				if (found_salmon != std::string::npos)
+				if (found_salmon == std::string::npos)
 				{
 					if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
 					{
 						std::cout << "salmon with wasabi found\n";
 					}
 					
+				}
+			}
+			std::size_t found_tuna = ingredient.find("Tuna");
+			if (found_tuna == std::string::npos)
+			{
+				//	ingredient contain add on sauce (tbc)
+				//std::size_t found_wasabi = ingredient.find("Wasabi");
+				if (found_tuna == std::string::npos)
+				{
+					if (Map::loadedIngredients.find("Tuna") != Map::loadedIngredients.end())
+					{
+						std::cout << "Tuna found\n";
+					}
+
 				}
 			}
 			else

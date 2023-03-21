@@ -184,46 +184,258 @@ namespace Core
 
 	int Window::checkCombination(std::string ingredient, std::string box)
 	{
-		std::size_t found = box.find(ingredient);
+		std::size_t found = box.find(ingredient);//general
+
 		if (found != std::string::npos)
 		{
 			std::size_t found_salmon = ingredient.find("Salmon");
-			if (found_salmon == std::string::npos)
+			std::size_t found_tuna = ingredient.find("Tuna");
+			std::size_t found_octopus = ingredient.find("Octopus");
+			std::size_t found_roes = ingredient.find("Roes");
+
+
+			if (found_salmon != std::string::npos)
 			{
-				//	ingredient contain add on sauce (tbc)
-				//std::size_t found_wasabi = ingredient.find("Wasabi");
-				if (found_salmon == std::string::npos)
+				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Salmon");
+				//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+				
+				switch(spritecomp1->status)
 				{
-					if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
+				case 0: //normal salmon
 					{
-						std::cout << "salmon with wasabi found\n";
+						return 1;
+					}
+					break;
+
+				case 1: //soya
+					{
+					std::size_t found_soya = ingredient.find("Soya");
+					if (found_soya != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
 					}
 					
-				}
-			}
-			std::size_t found_tuna = ingredient.find("Tuna");
-			if (found_tuna == std::string::npos)
-			{
-				//	ingredient contain add on sauce (tbc)
-				//std::size_t found_wasabi = ingredient.find("Wasabi");
-				if (found_tuna == std::string::npos)
-				{
-					if (Map::loadedIngredients.find("Tuna") != Map::loadedIngredients.end())
+
+				case 2: //wasabi
 					{
-						std::cout << "Tuna found\n";
+					std::size_t found_wasabi = ingredient.find("Wasabi");
+					if (found_wasabi != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
+					}
+					
+
+				case 3: //both
+					{
+					std::size_t found_both = ingredient.find("Both");
+					if (found_both != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
+					}
+				}
+				//
+				////	ingredient contain add on sauce (tbc)
+				////std::size_t found_wasabi = ingredient.find("Wasabi");
+				//if (found_salmon != std::string::npos)
+				//{
+				//	if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
+				//	{
+				//		//std::cout << "salmon with wasabi found\n";
+				//	}
+				//}
+			}
+			else if (found_tuna != std::string::npos)
+			{
+				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Tuna");
+				//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+				switch (spritecomp1->status)
+				{
+				case 0: //normal tuna
+					{
+						return 1;
+					}
+					break;
+
+				case 1: //soya
+					{
+					std::size_t found_soya = ingredient.find("Soya");
+					if (found_soya != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
 					}
 
+				case 2: //wasabi
+					{
+					std::size_t found_wasabi = ingredient.find("Wasabi");
+					if (found_wasabi != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
+					}
+
+				case 3: //both
+					{
+					std::size_t found_both = ingredient.find("Both");
+					if (found_both != std::string::npos)
+					{
+						return 1;
+					}
+					else
+						return 0;
+
+					break;
+					}
 				}
+				
 			}
-			else
+			else if (found_octopus != std::string::npos)
+			{
+			Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Octopus");
+			//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+			Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+			switch (spritecomp1->status)
+			{
+			case 0: //normal Octopus
 			{
 				return 1;
 			}
-		}
-		else
-			return 0;
+			break;
 
+			case 1: //soya
+			{
+				std::size_t found_soya = ingredient.find("Soya");
+				if (found_soya != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+			}
+
+			case 2: //wasabi
+			{
+				std::size_t found_wasabi = ingredient.find("Wasabi");
+				if (found_wasabi != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+			}
+
+			case 3: //both
+			{
+				std::size_t found_both = ingredient.find("Both");
+				if (found_both != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+					}
+				}
+			}
+			else if (found_roes != std::string::npos)
+			{
+			Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Roes");
+			//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+			Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+			switch (spritecomp1->status)
+			{
+			case 0: //normal roes
+			{
+				return 1;
+			}
+			break;
+
+			case 1: //soya
+			{
+				std::size_t found_soya = ingredient.find("Soya");
+				if (found_soya != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+			}
+
+			case 2: //wasabi
+			{
+				std::size_t found_wasabi = ingredient.find("Wasabi");
+				if (found_wasabi != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+			}
+
+			case 3: //both
+			{
+				std::size_t found_both = ingredient.find("Both");
+				if (found_both != std::string::npos)
+				{
+					return 1;
+				}
+				else
+					return 0;
+
+				break;
+				}
+			}
+		}
+
+		else
+		{
+			return 1; //for the rest of the ingredients (for non-mix ingredients)
+		}
+	}
+
+	else
+	{
 		return 0;
+	}
+
+	return 0;
 	}
 
 	void Window::updateChop(int position, gfxVector2 pos)

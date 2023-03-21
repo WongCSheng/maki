@@ -8,8 +8,8 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Quest/Octopus_Soya_Wasabi.png",
-      "name": "Octopus_Soya_Wasabi",
+      "texturepath": "../textures/Quest/Roes_Both.png",
+      "name": "Roes_Both",
       "SpriteSheet": true,
       "SpriteSize": [ 1280, 703 ]
     }

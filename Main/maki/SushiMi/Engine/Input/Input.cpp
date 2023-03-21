@@ -161,5 +161,10 @@ namespace Core
 		else
 			return false;
 	}
+
+	void mouseControl()
+		{
+		}
+	
 	
 }

@@ -294,9 +294,9 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Salmon_Wasabi.json", CoreSystem->objfactory);			//lv7
 	Core::DeserializeEntity("../Data/Ingredients/Tuna_Soya.json", CoreSystem->objfactory);				//lv8
 	Core::DeserializeEntity("../Data/Ingredients/Octopus_Wasabi.json", CoreSystem->objfactory);			//lv8
-	Core::DeserializeEntity("../Data/Ingredients/Roes_Soya_Wasabi.json", CoreSystem->objfactory);		//lv9
+	Core::DeserializeEntity("../Data/Ingredients/Roes_Both.json", CoreSystem->objfactory);				//lv9
 	Core::DeserializeEntity("../Data/Ingredients/Salmon_Soya.json", CoreSystem->objfactory);				//lv10
-	Core::DeserializeEntity("../Data/Ingredients/Octopus_Soya_Wasabi.json", CoreSystem->objfactory); 	//lv10
+	Core::DeserializeEntity("../Data/Ingredients/Octopus_Both.json", CoreSystem->objfactory); 			//lv10
 	Core::DeserializeEntity("../Data/Ingredients/Roes_Wasabi.json", CoreSystem->objfactory); 			//lv10
 
 

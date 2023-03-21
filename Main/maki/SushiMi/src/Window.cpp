@@ -1640,186 +1640,72 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				if (dialogue_style >= static_cast<int>(dialogue::T1) && dialogue_style <= static_cast<int>(dialogue::L3))
+				
+				SceneManager::load_Dialogue();
+				SceneManager::draw_Dialogue();
+
+
+				if (curr_len <= realstring.length())
 				{
-					SceneManager::load_Dialogue();
-					SceneManager::draw_Dialogue();
-
-					if (curr_len <= realstring.length())
+					if (realstring.length() < 60)
 					{
-						if (curr_len < 54)
-						{
-							std::string one_by_one = realstring.substr(0, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, one_by_one, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
-							{
-								curr_len += 1; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
+						std::string one_by_one = realstring.substr(0, curr_len);
 
-							}
-						}
-						else if (curr_len >= 54)
+						Font::RenderText(*Shaders, one_by_one, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						if (Get_Delta())
 						{
-							std::string first_line = realstring.substr(0, 54);
-							std::string second_line = realstring.substr(54, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
+							curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
+							//std::cout << "value of i is : " << curr_len << std::endl;
+							if (curr_len > realstring.length())
 							{
-								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
+								curr_len = realstring.length();
 							}
+
 						}
 					}
-
-				}
-				else if (dialogue_style >= static_cast<int>(dialogue::L4) && dialogue_style <= static_cast<int>(dialogue::L6))
-				{
-					SceneManager::load_Dialogue();
-					SceneManager::draw_Dialogue();
-
-
-
-					if (curr_len <= realstring.length())
+					else if (realstring.length() >= 60 && realstring.length() < 107)
 					{
-						if (realstring.length() < 55)
+						std::string first_line = realstring.substr(0, 60);
+						std::string second_line = realstring.substr(60, curr_len);
+
+						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+						Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+
+						if (Get_Delta())
 						{
-							std::string one_by_one = realstring.substr(0, curr_len);
-
-							Font::RenderText(*Shaders, one_by_one, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
+							curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
+							//std::cout << "value of i is : " << curr_len << std::endl;
+							if (curr_len > realstring.length())
 							{
-								curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
+								curr_len = realstring.length();
 							}
-						}
-						else if (realstring.length() >= 55 && realstring.length() < 107)
-						{
-							std::string first_line = realstring.substr(0, 53);
-							std::string second_line = realstring.substr(53, curr_len);
 
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-
-							if (Get_Delta())
-							{
-								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
-							}
-						}
-						else if (realstring.length() >= 107)
-						{
-							//std::cout << "this text is soo long " << std::endl;
-							std::string first_line = realstring.substr(0, 53);
-							std::string second_line = realstring.substr(53, 107 - 53);
-							std::string third_line = realstring.substr(107, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.2f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.1f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
-							{
-								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
-							}
 						}
 					}
-
-				}
-				else if (dialogue_style >= static_cast<int>(dialogue::L7) && dialogue_style <= static_cast<int>(dialogue::MAKI_CITY))
-				{
-					SceneManager::load_Dialogue();
-					SceneManager::draw_Dialogue();
-
-
-					if (curr_len <= realstring.length())
+					else if (realstring.length() >= 107)
 					{
-						if (realstring.length() < 60)
+						//std::cout << "this text is soo long " << std::endl;
+						std::string first_line = realstring.substr(0, 55);
+						std::string second_line = realstring.substr(55, 107 - 55);
+						std::string third_line = realstring.substr(107, curr_len);
+						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
+						Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						if (Get_Delta())
 						{
-							std::string one_by_one = realstring.substr(0, curr_len);
-
-							Font::RenderText(*Shaders, one_by_one, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
+							curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
+							//std::cout << "value of i is : " << curr_len << std::endl;
+							if (curr_len > realstring.length())
 							{
-								curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
+								curr_len = realstring.length();
 							}
-						}
-						else if (realstring.length() >= 60 && realstring.length() < 107)
-						{
-							std::string first_line = realstring.substr(0, 60);
-							std::string second_line = realstring.substr(60, curr_len);
 
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-
-							if (Get_Delta())
-							{
-								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
-							}
-						}
-						else if (realstring.length() >= 107)
-						{
-							//std::cout << "this text is soo long " << std::endl;
-							std::string first_line = realstring.substr(0, 55);
-							std::string second_line = realstring.substr(55, 107 - 55);
-							std::string third_line = realstring.substr(107, curr_len);
-							/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-							Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-							if (Get_Delta())
-							{
-								curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-								//std::cout << "value of i is : " << curr_len << std::endl;
-								if (curr_len > realstring.length())
-								{
-									curr_len = realstring.length();
-								}
-
-							}
 						}
 					}
 				}
+				
 
 				//if there are still pages to display
 				if (SceneManager::num_dialogue_clicks > 0)

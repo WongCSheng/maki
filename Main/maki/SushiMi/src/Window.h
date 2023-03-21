@@ -108,6 +108,7 @@ namespace Core
 		isLevel11, //maki city
 		isTestLevel;
 
+
 		bool isEndingCutscene;
 
 		static inline bool isDialogue;

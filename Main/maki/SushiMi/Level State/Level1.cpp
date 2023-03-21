@@ -69,9 +69,6 @@ namespace Core
 			}
 			std::getline(fin, Window::realstring);
 
-
-
-
 			Window::dialogue_style = static_cast<int>(Window::dialogue::L1);
 			Window::curr_len = 0;
 
@@ -80,6 +77,7 @@ namespace Core
 			CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
 																	// for quest tab drawing of ingredients
 			//also need dialogue after game end
+
 		}
 		/*Fade out effect*/
 		if (!Window::isWinCondition)
@@ -89,6 +87,12 @@ namespace Core
 		}
 		//draw lv1 tile map
 		Map::DrawMap();
+		SceneManager::particle->timer += ((Get_Delta()));
+		if (SceneManager::particle->timer < 1.0f)
+		{
+			SceneManager::particle->alpha -= ((Get_Delta()));
+			SceneManager::draw_Particle(); //draw particle above map, but below quest and fade
+		}
 
 		//draw playerpos at lvl 1
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::player->Transformation());

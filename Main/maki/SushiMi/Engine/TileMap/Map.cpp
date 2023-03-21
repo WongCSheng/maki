@@ -3174,6 +3174,7 @@ namespace Core
 
 						std::cout << "down ingredient space\n";
 						Window::player->move_down();
+						
 					}
 				}
 				/*check wall*/

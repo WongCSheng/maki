@@ -85,6 +85,12 @@ namespace Core
 		}
 		//draw lv2 tile map
 		Map::DrawMap();
+		SceneManager::particle->timer += ((Get_Delta()));
+		if (SceneManager::particle->timer < 1.0f)
+		{
+			SceneManager::particle->alpha -= ((Get_Delta()));
+			SceneManager::draw_Particle(); //draw particle above map, but below quest and fade
+		}
 
 		//draw playerpos at lvl 2
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::player->Transformation());

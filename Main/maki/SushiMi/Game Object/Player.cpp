@@ -20,6 +20,7 @@ float Core::Map::tile_width = 0;
 float Core::Map::tile_height = 0;
 namespace Core
 {
+	
 
 	Player::Player()
 	{
@@ -31,10 +32,13 @@ namespace Core
 		sp->Add_animation("../textures/spritesheet/Idle.txt");
 		sp->Add_animation("../textures/spritesheet/Run.txt");
 
+
 		current_anim = AnimationType::Idle;
 	}
 
 	Player::Player(const char* spriteFilepath, float* spritePos, float* spriteScale, std::vector<std::string> const& animationList) {
+		
+
 		sp = new Sprite(spriteFilepath);
 		sp->transformation.Position = glm::vec2(spritePos[0], spritePos[1]);
 		sp->transformation.Scale = glm::vec2(spriteScale[0], spriteScale[1]);
@@ -49,7 +53,7 @@ namespace Core
 	Player::~Player()
 	{
 		if (sp)
-		delete sp;
+			delete sp;
 	}
 
 	//Example: my screen can display 19 (W) x 11 (H) tiles
@@ -67,17 +71,18 @@ namespace Core
 			std::cout << "out of grid on the left" << std::endl;
 			return;
 		}
-
+		
 		//current hard code way
 		playerpos.x -= Map::tile_width;
 
 		player_grid_pos.x--;
 		
 		sp->transformation.Position.x -= Map::tile_width;
-		/*this timer does not work
+		/*
 		StartSecTimer(2);
 		*/
-
+		//particle->transformation.Get();
+		
 		 
 		current_anim = AnimationType::Idle;
 	}
@@ -98,11 +103,15 @@ namespace Core
 			std::cout << "out of grid on the right" << std::endl;
 			return;
 		}
+		
 
 		//current hard code way
 		playerpos.x += Map::tile_width;
 
 		player_grid_pos.x++;
+
+		//particle->transformation.Get();
+		particle->draw();
 
 		sp->transformation.Position.x += Map::tile_width;
 	}
@@ -118,7 +127,7 @@ namespace Core
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
-
+		
 		//current hard code way
 		Player::playerpos.y -= Map::tile_height;
 		if (playerpos.y < 0)
@@ -131,6 +140,9 @@ namespace Core
 		}
 
 		Player::player_grid_pos.y--;
+
+		//particle draw
+	
 	}
 
 	void Player::isStuck()
@@ -148,12 +160,13 @@ namespace Core
 		//Best way: ensure grid is consistent with all window sizes
 		//glfwGetWindowSize(Window::window_ptr, &Window::ScreenDimensions::screenwidth, &Window::ScreenDimensions::screenheight);
 		//int gridHeight = Window::ScreenDimensions::screenheight / 11; //rows are 11
-
+		
+		//particle->transformation.Position = glm::vec2(playerpos.x, playerpos.y);
 		Player::playerpos.y += Map::tile_height;
-
 		sp->transformation.Position.y += Map::tile_height; //down is positive for some reason
 
 		Player::player_grid_pos.y++;
+		
 	}
 
 	void Player::restart()
@@ -226,5 +239,6 @@ namespace Core
 	void Player::draw(double deltatime)
 	{
 		sp->draw(deltatime, current_anim);
+
 	}
 }

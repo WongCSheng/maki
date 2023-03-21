@@ -63,6 +63,7 @@ namespace Core
 
 	void SceneManager::restartLevel()
 	{
+		particle->transformation.Position = glm::vec2(Player::playerpos.x, Player::playerpos.y);
 		if (tilecontainer.size() > 0 && ingredientcontainer.size() > 0 && in_sinkhole.size()>0 && topcontainer.size()>0)
 		{
 			Map::ResetMap();
@@ -352,6 +353,33 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		are_you_sure->transformation.Position = glm::vec2(0, 0);
 		are_you_sure->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		
+	}
+
+	void SceneManager::load_Particle()
+	{
+		particle->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
+		switch (particleDisplay)
+		{
+		case particlePos::isLeftofPlayer:
+			particle->transformation.Position = glm::vec2(Player::playerpos.x - SceneManager::getTileWidth(), Player::playerpos.y);
+			break;
+
+		case particlePos::isRightofPlayer:
+			particle->transformation.Position = glm::vec2(Player::playerpos.x + SceneManager::getTileWidth(), Player::playerpos.y);
+			break;
+
+		case particlePos::isAbovePlayer:
+			particle->transformation.Position = glm::vec2(Player::playerpos.x, Player::playerpos.y - SceneManager::getTileHeight());
+			break;
+
+		case particlePos::isBelowPlayer:
+			particle->transformation.Position = glm::vec2(Player::playerpos.x, Player::playerpos.y + SceneManager::getTileHeight());
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 
@@ -690,6 +718,14 @@ namespace Core
 		are_you_sure->draw();
 	}
 
+	void SceneManager::draw_Particle()
+	{
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", particle->transformation.Get());
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		//particle->draw();
+		SceneManager::particle->draw((Get_Delta()), SceneManager::particle->curr_anim);
+	}
+
 	void SceneManager::drawGiveUp()
 	{
 		int screenwidth = 0, screenheight = 0;
@@ -966,6 +1002,11 @@ namespace Core
 	void SceneManager::destroy_Are_You_Sure()
 	{
 		delete are_you_sure;
+	}
+
+	void SceneManager::destroy_Particle()
+	{
+		delete particle;
 	}
 
 	void SceneManager::setTileDimension(unsigned int Width, unsigned int Height)

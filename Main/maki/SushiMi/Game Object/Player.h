@@ -49,6 +49,7 @@ namespace Core
 		} playerpos_restart;
 
 		static inline Sprite* sp;
+		
 		AnimationType current_anim;
 		static inline int resetCount;
 

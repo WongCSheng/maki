@@ -199,6 +199,7 @@ namespace Core
 		static void load_City_BG(); //for maki city
 		static void load_Bami_End_Room(); //Ending Cutscene
 		static void load_Are_You_Sure(); //confirmation screen
+		static void load_Particle(); //particle pos
 
 		static void drawTile();
 		static void drawBox();
@@ -221,6 +222,7 @@ namespace Core
 		static void draw_City_BG();	
 		static void draw_Bami_End_Room();
 		static void draw_Are_You_Sure();
+		static void draw_Particle();
 
 		static void drawEncourage();
 		static void drawGiveUp();
@@ -247,6 +249,7 @@ namespace Core
 		static void destroy_City_BG();
 		static void destroy_Bami_End_Room();
 		static void destroy_Are_You_Sure();
+		static void destroy_Particle();
 
 	
 		static void Readfile();
@@ -311,7 +314,16 @@ namespace Core
 
 		static inline Sprite* Bami_End_Room_Cutscene;
 		static inline Sprite* are_you_sure;
+		static inline Sprite* particle;
 
+		static inline enum class particlePos
+		{
+			isRightofPlayer = 0,
+			isLeftofPlayer, //1
+			isAbovePlayer, //2
+			isBelowPlayer //3
+
+		}particleDisplay;
 
 		static inline unsigned int rows, cols,
 			tileWidth, tileHeight;

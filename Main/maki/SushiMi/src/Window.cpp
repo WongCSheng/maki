@@ -439,6 +439,12 @@ namespace Core
 		//SceneManager::Bami_End_Room_Cutscene->curr_anim = AnimationType::Idle;
 		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png");
 
+		SceneManager::particle = new Sprite("../textures/Bami/RiceParticle/particlespritesheet.png");
+		SceneManager::particle->isSpriteSheet = 0;
+		SceneManager::particle->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+		SceneManager::particle->curr_anim = AnimationType::Idle;
+
+
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
@@ -500,6 +506,7 @@ namespace Core
 		SceneManager::destroy_City_BG();
 		SceneManager::destroy_Bami_End_Room();
 		SceneManager::destroy_Are_You_Sure();
+		SceneManager::destroy_Particle();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -1339,6 +1346,7 @@ namespace Core
 				Map::collision_check_right();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
+				
 				keystate_right = false;
 				keystate_D = false;
 			}
@@ -1355,6 +1363,7 @@ namespace Core
 				Map::collision_check_left();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
+
 				keystate_left = false;
 				keystate_A = false;
 			}
@@ -1370,7 +1379,7 @@ namespace Core
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-				//isWalk = true; //play walking sfx
+				
 				keystate_up = false;
 				keystate_W = false;
 
@@ -1386,6 +1395,7 @@ namespace Core
 				Map::collision_check_down();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
+				
 				keystate_down = false;
 				keystate_S = false;
 			}
@@ -1486,6 +1496,7 @@ namespace Core
 				SceneManager::draw_City_BG();
 
 			}
+
 			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
 			//Map::DrawMap(); //shifted into boolean
 
@@ -1765,7 +1776,6 @@ namespace Core
 			}
 
 
-
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
@@ -2041,8 +2051,9 @@ namespace Core
 					{
 						isCredits = false;
 					}
-	}
-}
+				}
+			}
+			
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();

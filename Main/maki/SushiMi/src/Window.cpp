@@ -1643,11 +1643,11 @@ namespace Core
 				
 				SceneManager::load_Dialogue();
 				SceneManager::draw_Dialogue();
-
+				std::string first_line, second_line, third_line = "";
 
 				if (curr_len <= realstring.length())
 				{
-					if (realstring.length() < 60)
+					if (realstring.length() < 60) //only 1 line of dialogue
 					{
 						std::string one_by_one = realstring.substr(0, curr_len);
 
@@ -1663,15 +1663,21 @@ namespace Core
 
 						}
 					}
-					else if (realstring.length() >= 60 && realstring.length() < 107)
+					else if (realstring.length() >= 60 && realstring.length() < 107) //2 lines of dialogue
 					{
-						std::string first_line = realstring.substr(0, 60);
-						std::string second_line = realstring.substr(60, curr_len);
+						if (curr_len <= 60)
+						{
+							first_line = realstring.substr(0, curr_len);
 
+						}
+						else if (curr_len > 60)
+						{
+							first_line = realstring.substr(0, 60);
+							second_line = realstring.substr(60, curr_len);
+
+						}
+						
 						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-						Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-						Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-
 						if (Get_Delta())
 						{
 							curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
@@ -1682,17 +1688,31 @@ namespace Core
 							}
 
 						}
+						Font::RenderText(*Shaders, first_line, screenwidth * 0.34f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, second_line, screenwidth * 0.34f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+
 					}
-					else if (realstring.length() >= 107)
+					else if (realstring.length() >= 107) //3 lines of dialogue
 					{
 						//std::cout << "this text is soo long " << std::endl;
-						std::string first_line = realstring.substr(0, 55);
-						std::string second_line = realstring.substr(55, 107 - 55);
-						std::string third_line = realstring.substr(107, curr_len);
+						if (curr_len <= 55)
+						{
+							first_line = realstring.substr(0, curr_len);
+
+						}
+						else if (curr_len <= 107)
+						{
+							first_line = realstring.substr(0, 55);
+							second_line = realstring.substr(55, curr_len - 55);
+
+						}
+						else if (curr_len >= 107)
+						{
+							first_line = realstring.substr(0, 55);
+							second_line = realstring.substr(55, 107 - 55);
+							third_line = realstring.substr(107, curr_len);
+						}
 						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
-						Font::RenderText(*Shaders, first_line, screenwidth * 0.35f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-						Font::RenderText(*Shaders, second_line, screenwidth * 0.35f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-						Font::RenderText(*Shaders, third_line, screenwidth * 0.35f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 						if (Get_Delta())
 						{
 							curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
@@ -1703,6 +1723,9 @@ namespace Core
 							}
 
 						}
+						Font::RenderText(*Shaders, first_line, screenwidth * 0.34f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, second_line, screenwidth * 0.34f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, third_line, screenwidth * 0.34f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 					}
 				}
 				
@@ -1715,13 +1738,21 @@ namespace Core
 					//std::cout << "dialogue is displaying" << std::endl;
 					if (keystate_space)
 					{
-						curr_len = 0;
-						--SceneManager::num_dialogue_clicks;
-						if (!fin.eof())
+						if (curr_len != realstring.length()) //finish the current string when clicking
 						{
-							std::getline(fin, realstring);
+							curr_len = realstring.length();
 						}
-						//std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+						else //OR get the next line of dialogue
+						{
+							curr_len = 0;
+							--SceneManager::num_dialogue_clicks;
+							if (!fin.eof())
+							{
+								std::getline(fin, realstring);
+							}
+							//std::cout << "got the next line, decreasing dialogue clicks to: " << SceneManager::num_dialogue_clicks << std::endl;
+
+						}
 						keystate_space = false;
 					}
 

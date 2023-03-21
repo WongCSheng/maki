@@ -82,8 +82,9 @@ namespace Core
 		StartSecTimer(2);
 		*/
 		//particle->transformation.Get();
-		
-		 
+		SceneManager::particle->timer = 0;
+		SceneManager::particleDisplay = SceneManager::particlePos::isRightofPlayer;
+		SceneManager::load_Particle();
 		current_anim = AnimationType::Idle;
 	}
 
@@ -109,9 +110,9 @@ namespace Core
 		playerpos.x += Map::tile_width;
 
 		player_grid_pos.x++;
-
-		//particle->transformation.Get();
-		particle->draw();
+		SceneManager::particle->timer = 0;
+		SceneManager::particleDisplay = SceneManager::particlePos::isLeftofPlayer;
+		SceneManager::load_Particle();
 
 		sp->transformation.Position.x += Map::tile_width;
 	}
@@ -142,7 +143,9 @@ namespace Core
 		Player::player_grid_pos.y--;
 
 		//particle draw
-	
+		SceneManager::particle->timer = 0;
+		SceneManager::particleDisplay = SceneManager::particlePos::isBelowPlayer;
+		SceneManager::load_Particle();
 	}
 
 	void Player::isStuck()
@@ -166,7 +169,10 @@ namespace Core
 		sp->transformation.Position.y += Map::tile_height; //down is positive for some reason
 
 		Player::player_grid_pos.y++;
-		
+		SceneManager::particle->timer = 0;
+
+		SceneManager::particleDisplay = SceneManager::particlePos::isAbovePlayer;
+		SceneManager::load_Particle();
 	}
 
 	void Player::restart()

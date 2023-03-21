@@ -77,7 +77,6 @@ namespace Core
 			CurrentIngredients = SceneManager::ingredientcontainer; //** IMPT : this line is needed for EACH level during loading
 																	// for quest tab drawing of ingredients
 			//also need dialogue after game end
-
 		}
 		/*Fade out effect*/
 		if (!Window::isWinCondition)

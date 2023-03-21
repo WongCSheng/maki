@@ -489,9 +489,6 @@
     <Filter Include="Users\Windows">
       <UniqueIdentifier>{00b5f330-e753-466f-90cf-5d7d87e1cef0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\Serialization\Data">
-      <UniqueIdentifier>{e153f348-3983-4b34-b528-aba846e633a9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Cutscene">
       <UniqueIdentifier>{dac5785e-a57e-4e03-a956-d7d8bc294bdd}</UniqueIdentifier>
     </Filter>
@@ -508,45 +505,6 @@
     </None>
     <None Include="..\shaders\SushiMi.vert">
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
-    </None>
-    <None Include="..\Data\Bami bottom right.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\Bami top right.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\ExitButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\generated.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\HowToPlay.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\Menu.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\MenuButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\QuitButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\ResumeButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\SettingsButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\StartButton.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\PauseMenu.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
-    </None>
-    <None Include="..\Data\TabMenu.json">
-      <Filter>GameEngine\Serialization\Data</Filter>
     </None>
   </ItemGroup>
 </Project>

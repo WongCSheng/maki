@@ -153,6 +153,11 @@ namespace Core
 		};
 		static GameState level;
 
+		enum Quest
+		{
+			
+		};
+
 		bool isCutscene;
 		static inline int CutscenePage;
 

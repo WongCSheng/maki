@@ -274,19 +274,6 @@
     <ClInclude Include="Window\GameWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Data\Bami bottom right.json" />
-    <None Include="..\Data\Bami top right.json" />
-    <None Include="..\Data\ExitButton.json" />
-    <None Include="..\Data\generated.json" />
-    <None Include="..\Data\HowToPlay.json" />
-    <None Include="..\Data\Menu.json" />
-    <None Include="..\Data\MenuButton.json" />
-    <None Include="..\Data\PauseMenu.json" />
-    <None Include="..\Data\QuitButton.json" />
-    <None Include="..\Data\ResumeButton.json" />
-    <None Include="..\Data\SettingsButton.json" />
-    <None Include="..\Data\StartButton.json" />
-    <None Include="..\Data\TabMenu.json" />
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
   </ItemGroup>

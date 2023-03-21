@@ -198,7 +198,7 @@ void Core::pseudomain::init() {
 
 	/*
 	 *										Loading for deserializing game objects
-	 *  _________________________________________________________________________ */
+	 *  ____________________________________________________________________________________ */
 
 	/*				loading the entire main_menu which consists of all the buttons			*/
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
@@ -219,11 +219,15 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Chop/denied.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/denied_2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/denied_3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/denied_4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/denied_5.json", CoreSystem->objfactory);
 
 	/*	 Loading of Chops (Denied)	*/
 	Core::DeserializeEntity("../Data/Chop/done.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/done_2.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/done_3.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/done_4.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/done_5.json", CoreSystem->objfactory);
 
 			/*	Loading all ingredients	by level*/
 	//tut1

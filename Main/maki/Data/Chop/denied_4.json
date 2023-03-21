@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 50, 50 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/denied.png",
+      "name": "denied_4",
+      "SpriteSheet": false,                           
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+} 

@@ -75,13 +75,13 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //do not remove this line!!!
 
-	//_CrtSetBreakAlloc(1807); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(3759); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
 	//systems that were new and not deleted
 	CoreSystem = new Core::MainSystem();
-
+	
 	Core::pseudomain::init();
 
 	/*----------------------------------------------*/
@@ -89,6 +89,8 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
 
 	Core::pseudomain::cleanup();
+
+
 
 	return 0;
 	
@@ -207,10 +209,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeAll("../Data/pauseMenu/PauseMenuAll.json", CoreSystem->objfactory);
 
 	/*				loading how to play screens 			*/
-	DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
-
-	/*				loading main menu			*/
-	Core::DeserializeEntity("../Data/mainMenu/Menu.json", CoreSystem->objfactory);
+	Core::DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);

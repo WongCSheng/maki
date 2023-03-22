@@ -417,11 +417,7 @@ namespace Core
 			}
 			questDrawItems.insert({ chop, pos });
 		}
-		/*else if (winningBoxes[position].second == -1)
-		{
-			if((isTut1 || isTut2));
 
-		}*/
 	}
 
 
@@ -565,13 +561,6 @@ namespace Core
 
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
-
-		SceneManager::howtoplay_overlay1 = new Sprite("../textures/How To Play/HowToPlayBox_1.png");
-		SceneManager::howtoplay_overlay2 = new Sprite("../textures/How To Play/HowToPlayBox_2.png");
-		SceneManager::howtoplay_overlay3 = new Sprite("../textures/How To Play/HowToPlayBox_3.png");
-		SceneManager::howtoplay_overlay4 = new Sprite("../textures/How To Play/HowToPlayBox_4.png");
-		SceneManager::howtoplay_overlay5 = new Sprite("../textures/How To Play/HowToPlayBox_5.png");
-		SceneManager::howtoplay_overlay6 = new Sprite("../textures/How To Play/HowToPlayBox_6.png");
 
 		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
 		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
@@ -2253,4 +2242,5 @@ namespace Core
 		//}
 	}
 }
+
 

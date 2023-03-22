@@ -151,7 +151,7 @@ namespace Core
 		levelBoxes = Sprite::quest_boxes.at(currentlevel);
 
 		//	checking through each ingredient loaded in the level
-		for (auto& ingredient : Map::loadedIngredients)
+		for (auto& ingredient : Map::loadedIngredients) //loadedingredients does not contain mixed
 		{
 			Sprite* sIngredient = ingredient.second;	//current ingredient to check
 			float ingredientRow = round((sIngredient->transformation.Position.x / static_cast<float>(Map::windowDim.first)) * static_cast<float>(Map::max_grid_cols_x));
@@ -170,272 +170,214 @@ namespace Core
 				if (ingredientCoordinates == boxCoordinates)
 				{
 					//	check if combination is valid
-					int state = checkCombination(ingredient.first, box.first);
+					int state = checkCombination(ingredient.first, box.first, levelBoxes);
 
 					for (size_t i{}; i < levelBoxes.size(); ++i)
 					{
-						if (levelBoxes[i] == ingredient.first)
+						std::size_t check = levelBoxes[i].find(ingredient.first);
+						if (check != std::string::npos)
 							winningBoxes[i] = { ingredient.first, state };
+						//if (levelBoxes[i] == ingredient.first)
 					}
 				}
 			}
 		}
 	}
 
-	int Window::checkCombination(std::string ingredient, std::string box)
+	int Window::checkCombination(std::string ingredient, std::string box, std::vector<std::string> container)
 	{
-		std::size_t found = box.find(ingredient);//general
+		std::size_t found = box.find(ingredient);	//	check base ingredient matches box
 
-		if (found != std::string::npos)
+		if (found != std::string::npos)	//	if base ingredient matches box
 		{
-			std::size_t found_salmon = ingredient.find("Salmon");
-			std::size_t found_tuna = ingredient.find("Tuna");
-			std::size_t found_octopus = ingredient.find("Octopus");
-			std::size_t found_roes = ingredient.find("Roes");
-
-
-			if (found_salmon != std::string::npos)
+			//	check for special ingredient (salmon, tuna, roes, octopus)
+			for (auto& x : container)
 			{
-				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Salmon");
-				//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-				
-				switch(spritecomp1->status)
+				std::size_t check = x.find(ingredient);
+				if (check != std::string::npos)
 				{
-				case 0: //normal salmon
+					//	check special ingrdient for add on
+					for (auto& _ingredient : SceneManager::ingredientcontainer)
 					{
-						return 1;
-					}
-					break;
 
-				case 1: //soya
-					{
-					std::size_t found_soya = ingredient.find("Soya");
-					if (found_soya != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
+						std::size_t wasabi = x.find("Wasabi");
+						std::size_t soya = x.find("Soya");
+						std::size_t both = x.find("Both");
 
-					break;
-					}
-					
+						if ((_ingredient.nametag == grid_number::octopus) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						{
+							switch (_ingredient.spr->status)
+							{
+							case 0:
+							{
+								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+									return 1;
+								else
+									return 0;
+							}
+							case 1:
+							{
+								// added soya
+								if (soya != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
 
-				case 2: //wasabi
-					{
-					std::size_t found_wasabi = ingredient.find("Wasabi");
-					if (found_wasabi != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
+							case 2:
+							{
+								// added wasabi
+								if (wasabi != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
 
-					break;
-					}
-					
 
-				case 3: //both
-					{
-					std::size_t found_both = ingredient.find("Both");
-					if (found_both != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
+							case 3:
+							{
+								// added both
+								if (both != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
 
-					break;
+							}
+						}
+
+						else if ((_ingredient.nametag == grid_number::salmon) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						{
+							switch (_ingredient.spr->status)
+							{
+							case 0:
+							{
+								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+									return 1;
+								else
+									return 0;
+							}
+							case 1:
+							{
+								// added soya
+								if (soya != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+							case 2:
+							{
+								// added wasabi
+								if (wasabi != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+
+							case 3:
+							{
+								// added both
+								if (both != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+							}
+
+						}
+
+						else if ((_ingredient.nametag == grid_number::tuna) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						{
+							switch (_ingredient.spr->status)
+							{
+							case 0:
+							{
+								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+									return 1;
+								else
+									return 0;
+							}
+							case 1:
+							{
+								// added soya
+								if (soya != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+							case 2:
+							{
+								// added wasabi
+								if (wasabi != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+
+							case 3:
+							{
+								// added both
+								if (both != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+							}
+
+						}
+
+						else if ((_ingredient.nametag == grid_number::roes) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						{
+							switch (_ingredient.spr->status)
+							{
+							case 0:
+							{
+								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+									return 1;
+								else
+									return 0;
+							}
+							case 1:
+							{
+								// added soya
+								if (soya != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+							case 2:
+							{
+								// added wasabi
+								if (wasabi != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+
+
+							case 3:
+							{
+								// added both
+								if (both != std::string::npos)
+									return 1;
+								else
+									return 0;
+							}
+							}
+
+						}
 					}
 				}
-				//
-				////	ingredient contain add on sauce (tbc)
-				////std::size_t found_wasabi = ingredient.find("Wasabi");
-				//if (found_salmon != std::string::npos)
-				//{
-				//	if (Map::loadedIngredients.find("Salmon") != Map::loadedIngredients.end())
-				//	{
-				//		//std::cout << "salmon with wasabi found\n";
-				//	}
-				//}
 			}
-			else if (found_tuna != std::string::npos)
-			{
-				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Tuna");
-				//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-				switch (spritecomp1->status)
-				{
-				case 0: //normal tuna
-					{
-						return 1;
-					}
-					break;
-
-				case 1: //soya
-					{
-					std::size_t found_soya = ingredient.find("Soya");
-					if (found_soya != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
-
-					break;
-					}
-
-				case 2: //wasabi
-					{
-					std::size_t found_wasabi = ingredient.find("Wasabi");
-					if (found_wasabi != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
-
-					break;
-					}
-
-				case 3: //both
-					{
-					std::size_t found_both = ingredient.find("Both");
-					if (found_both != std::string::npos)
-					{
-						return 1;
-					}
-					else
-						return 0;
-
-					break;
-					}
-				}
-				
-			}
-			else if (found_octopus != std::string::npos)
-			{
-			Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Octopus");
-			//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-			Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-			switch (spritecomp1->status)
-			{
-			case 0: //normal Octopus
-			{
-				return 1;
-			}
-			break;
-
-			case 1: //soya
-			{
-				std::size_t found_soya = ingredient.find("Soya");
-				if (found_soya != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-			}
-
-			case 2: //wasabi
-			{
-				std::size_t found_wasabi = ingredient.find("Wasabi");
-				if (found_wasabi != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-			}
-
-			case 3: //both
-			{
-				std::size_t found_both = ingredient.find("Both");
-				if (found_both != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-					}
-				}
-			}
-			else if (found_roes != std::string::npos)
-			{
-			Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("Roes");
-			//Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-			Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
-
-			switch (spritecomp1->status)
-			{
-			case 0: //normal roes
-			{
-				return 1;
-			}
-			break;
-
-			case 1: //soya
-			{
-				std::size_t found_soya = ingredient.find("Soya");
-				if (found_soya != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-			}
-
-			case 2: //wasabi
-			{
-				std::size_t found_wasabi = ingredient.find("Wasabi");
-				if (found_wasabi != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-			}
-
-			case 3: //both
-			{
-				std::size_t found_both = ingredient.find("Both");
-				if (found_both != std::string::npos)
-				{
-					return 1;
-				}
-				else
-					return 0;
-
-				break;
-				}
-			}
+			return 1;
 		}
-
 		else
-		{
-			return 1; //for the rest of the ingredients (for non-mix ingredients)
-		}
-	}
-
-	else
-	{
 		return 0;
-	}
-
-	return 0;
 	}
 
 	void Window::updateChop(int position, gfxVector2 pos)
@@ -456,7 +398,7 @@ namespace Core
 				break;
 			}
 			questDrawItems.insert({ chop, pos });
-			
+
 		}
 
 		else if (winningBoxes[position].second == 0 && (!(isTut1 || isTut2)))
@@ -478,10 +420,10 @@ namespace Core
 		/*else if (winningBoxes[position].second == -1)
 		{
 			if((isTut1 || isTut2));
-		
+
 		}*/
 	}
-	
+
 
 	void Window::resetQuest()
 	{
@@ -558,7 +500,6 @@ namespace Core
 		default:
 			return "";
 		}
-
 	}
 
 	Window::Window(int _width, int _height)
@@ -1199,7 +1140,7 @@ namespace Core
 				isLevel5 = false;
 				isLevel6 = false;
 				isLevel7 = false;
-				isLevel8 = true;  
+				isLevel8 = true;
 				isLevel9 = false;
 				isLevel10 = false;
 				isLevel11 = false;
@@ -1572,7 +1513,7 @@ namespace Core
 				Map::collision_check_right();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-				
+
 				keystate_right = false;
 				keystate_D = false;
 			}
@@ -1605,7 +1546,7 @@ namespace Core
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-				
+
 				keystate_up = false;
 				keystate_W = false;
 
@@ -1621,7 +1562,7 @@ namespace Core
 				Map::collision_check_down();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-				
+
 				keystate_down = false;
 				keystate_S = false;
 			}
@@ -1636,7 +1577,7 @@ namespace Core
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
-				if(Window::player->resetCount == 1)
+				if (Window::player->resetCount == 1)
 					AudioManager.PlayVoice("Dialogue_1.ogg");
 				if (Window::player->resetCount == 2)
 					AudioManager.PlayVoice("Dialogue_2.ogg");
@@ -1644,7 +1585,7 @@ namespace Core
 					AudioManager.PlayVoice("Dialogue_3.ogg");
 				if (Window::player->resetCount == 4)
 					AudioManager.PlayVoice("Dialogue_4.ogg");
-				if (Window::player->resetCount >=5)
+				if (Window::player->resetCount >= 5)
 					AudioManager.PlayVoice("Dialogue_5.ogg");
 				//restart
 
@@ -1763,7 +1704,7 @@ namespace Core
 				Map::LoadMap();
 				loaded = true;
 
-		}
+			}
 			if (loaded == true)
 			{
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", player->Transformation());
@@ -1854,20 +1795,20 @@ namespace Core
 			/*********************************
 				LEVELS LOAD & WIN CHECK
 			*********************************/
-			
+
 			if (isTut1 == true) { level = GameState::TUT1; Levels::Tutorial1(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
-			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.ogg";}
+			if (isTut2 == true) { level = GameState::TUT2;  Levels::Tutorial2(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
 			if (isLevel1 == true) { level = GameState::LEVEL1;  Levels::Level1(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
-			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.ogg";	}
-			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.ogg";	}
+			if (isLevel2 == true) { level = GameState::LEVEL2; Levels::Level2(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
+			if (isLevel3 == true) { level = GameState::LEVEL3; Levels::Level3(); walkingsfx = "Gravel_Drag-Movement_1.ogg"; }
 			if (isLevel4 == true) { level = GameState::LEVEL4; Levels::Level4(); walkingsfx = "WalkSFX.ogg"; }
 			if (isLevel5 == true) { level = GameState::LEVEL5; Levels::Level5(); walkingsfx = "WalkSFX.ogg"; }
 			if (isLevel6 == true) { level = GameState::LEVEL6; Levels::Level6(); walkingsfx = "WalkSFX.ogg"; }
-			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.ogg";	}
+			if (isLevel7 == true) { level = GameState::LEVEL7; Levels::Level7(); walkingsfx = "Hard Floor Walking.ogg"; }
 			if (isLevel8 == true) { level = GameState::LEVEL8; Levels::Level8(); walkingsfx = "Hard Floor Walking.ogg"; }
 			if (isLevel9 == true) { level = GameState::LEVEL9; Levels::Level9(); walkingsfx = "Hard Floor Walking.ogg"; }
 			if (isLevel10 == true) { level = GameState::LEVEL10; Levels::Level10(); walkingsfx = "Hard Floor Walking.ogg"; }
-			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.ogg";	}
+			if (isLevel11 == true) { level = GameState::LEVEL11; Levels::Level11(); walkingsfx = "Hard Floor Walking.ogg"; }
 			if (isTestLevel == true) { Levels::TestLevel(); }
 
 			/**********************************
@@ -1877,7 +1818,7 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-				
+
 				SceneManager::load_Dialogue();
 				SceneManager::draw_Dialogue();
 				std::string first_line, second_line, third_line = "";
@@ -1913,7 +1854,7 @@ namespace Core
 							second_line = realstring.substr(60, curr_len);
 
 						}
-						
+
 						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 						if (Get_Delta())
 						{
@@ -1965,7 +1906,7 @@ namespace Core
 						Font::RenderText(*Shaders, third_line, screenwidth * 0.34f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 					}
 				}
-				
+
 
 				//if there are still pages to display
 				if (SceneManager::num_dialogue_clicks > 0)
@@ -2090,7 +2031,7 @@ namespace Core
 				if (checkifquestexists != Sprite::quest_boxes.end()) //if the quest does not exist for the level (eg test level, or lvl 9-11 quest not done yet)
 				{
 					currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
-				std::vector<std::string> current_quest_ingredient = Sprite::quest_boxes.at(sLevel);
+					std::vector<std::string> current_quest_ingredient = Sprite::quest_boxes.at(sLevel);
 
 					// update ingredients' position to draw on quest tab at fixed position
 					for (int i{}; i < currentQuestIngredient.size(); ++i)
@@ -2279,7 +2220,7 @@ namespace Core
 					}
 				}
 			}
-			
+
 
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
@@ -2312,3 +2253,4 @@ namespace Core
 		//}
 	}
 }
+

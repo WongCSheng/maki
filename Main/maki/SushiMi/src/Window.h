@@ -188,7 +188,7 @@ namespace Core
 		/*
 		 *	checks for the ingredient pushed into the right box
 		 */
-		int checkCombination(std::string ingredient, std::string box);
+		int checkCombination(std::string ingredient, std::string box, std::vector<std::string> container);
 
 		/*
 		 *	 Helper function to convert game states to string for parsing

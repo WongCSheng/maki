@@ -134,7 +134,7 @@ namespace Core
 			if (Window::keystate_space && Window::isWinCondition == true)
 			{
 				Window::isLevel11 = false; //unload curr level
-				Window::isMenuState = true; //load cutscene (put menu for now)
+				Window::finallevelclear = true; //start to trigger ending cutscene
 				Window::isWinCondition = false; //reset win condition
 				Window::loaded = false; //set to load
 				Window::keystate_space = false;

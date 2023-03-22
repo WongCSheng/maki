@@ -101,6 +101,7 @@ namespace Core
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
+		static inline bool isEndingloaded;
 
 		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3, //Rice Plain Village
 		isLevel4, isLevel5, isLevel6, //gunkan village
@@ -110,6 +111,7 @@ namespace Core
 
 
 		bool isEndingCutscene;
+		static inline bool finallevelclear;
 
 		static inline bool isDialogue;
 		static inline int dialogue_style;
@@ -202,6 +204,37 @@ namespace Core
 
 		/*	resets quest tab	*/
 		static void resetQuest();
+
+		// set all other states false
+		void setAllStatesFalse()
+		{
+			isDialogue = false;
+			isEndingCutscene = false;
+			isCutscene = false;
+			isMenuState = false;
+			isQuestTab = false;
+			isHowToPlay = false;
+			isLevelSelection = false;
+			gameIsPaused = false;
+			keystate_M = false;
+			isTut1 = false;
+			isTut2 = false;
+			isLevel1 = false;
+			isLevel2 = false;
+			isLevel3 = false;
+			isLevel4 = false;
+			isLevel5 = false;
+			isLevel6 = false;
+			isLevel7 = false;
+			isLevel8 = false;
+			isLevel9 = false;
+			isLevel10 = false;
+			isLevel11 = false;
+			isTestLevel = false;
+			areyousure_prompt = false;
+			loaded = false;
+			keystate_M = false; 
+		}
 
 		static std::vector<std::string> currentQuestIngredient;
 		static std::array<std::pair<std::string, int>, 3> winningBoxes;

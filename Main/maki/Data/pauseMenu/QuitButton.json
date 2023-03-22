@@ -4,7 +4,7 @@
       "type": "Transform",
       "position": [ 800.0, 665.0 ],
       "rotation": 0.0,
-      "scale": [ 350, 100 ]
+      "scale": [ 350, 130 ]
     },
     {
       "type": "Sprite",

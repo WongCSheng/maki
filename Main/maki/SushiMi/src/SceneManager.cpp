@@ -343,8 +343,8 @@ namespace Core
 	{
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-		Bami_End_Room_Cutscene->transformation.Position = glm::vec2(0, 0);
-		Bami_End_Room_Cutscene->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		End_Scene_1->transformation.Position = glm::vec2(0, 0);
+		End_Scene_1->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 
 	void SceneManager::load_Are_You_Sure()
@@ -854,8 +854,8 @@ namespace Core
 
 	void SceneManager::draw_Bami_End_Room()
 	{
-		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Bami_End_Room_Cutscene->transformation.Get());
-		Bami_End_Room_Cutscene->draw();
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", End_Scene_1->transformation.Get());
+		End_Scene_1->draw((Get_Delta()), SceneManager::End_Scene_1->curr_anim);
 		
 	}
 
@@ -996,7 +996,7 @@ namespace Core
 
 	void SceneManager::destroy_Bami_End_Room()
 	{
-		delete Bami_End_Room_Cutscene;
+		delete End_Scene_1;
 	}
 
 	void SceneManager::destroy_Are_You_Sure()

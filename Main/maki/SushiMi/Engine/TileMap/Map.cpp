@@ -3115,6 +3115,12 @@ namespace Core
 							{
 								if (ingredient.nametag == check)
 								{
+									/*change sprite to nothing*/
+									if (ingredient.spr->status != 0)
+									{
+										ingredient.spr->status = 0;
+									}
+									ingredient.spr->curr_anim = AnimationType::Idle;
 									ingredient.spr->transformation.Position.y += tile_height;
 									break;
 								}
@@ -3133,13 +3139,6 @@ namespace Core
 									break;
 								}
 							}
-
-							/*change salmon sprite to nothing*/
-							if (salmon->status != 0)
-							{
-								salmon->status = 0;
-							}
-							salmon->curr_anim = AnimationType::Idle;
 
 							Window::player->move_down();
 							std::cout << "tea dripped\n";

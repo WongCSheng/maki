@@ -312,7 +312,7 @@ namespace Core
 
 		static inline Sprite* rec;
 
-		static inline Sprite* End_Scene_1;
+		static inline Sprite* Ending_Cutscene;
 		static inline Sprite* are_you_sure;
 		static inline Sprite* particle;
 

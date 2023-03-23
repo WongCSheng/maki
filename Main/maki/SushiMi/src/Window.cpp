@@ -47,6 +47,7 @@ namespace Core
 	Window::GameState Window::level;
 
 	std::map<std::string, gfxVector2> Window::questDrawItems;
+	double lastframe = 0;
 	/*																  game states
 	----------------------------------------------------------------------------- */
 
@@ -589,11 +590,11 @@ namespace Core
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
 
-		//SceneManager::End_Scene_1 = new Sprite("../Textures/Cutscene/frame8.jpg"); //placeholder
-		SceneManager::End_Scene_1 = new Sprite("../textures/Cutscene/Ending/Scene_1.png"); 
-		SceneManager::End_Scene_1->isSpriteSheet = 0;
-		SceneManager::End_Scene_1->Add_animation("../textures/Cutscene/Ending/Bami_End.txt");
-		SceneManager::End_Scene_1->curr_anim = AnimationType::Idle;
+		SceneManager::Ending_Cutscene = new Sprite("../textures/Cutscene/Ending/EndingScene.png"); 
+		SceneManager::Ending_Cutscene->isSpriteSheet = 0;
+		SceneManager::Ending_Cutscene->Add_animation("../textures/Cutscene/Ending/Bami_End.txt");
+		SceneManager::Ending_Cutscene->curr_anim = AnimationType::Idle;
+		SceneManager::Ending_Cutscene->timer = 0;
 
 		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png"); //confirmation page
 
@@ -718,6 +719,7 @@ namespace Core
 
 				SceneManager::num_dialogue_clicks = 0; //do not show dialogue in end cutscene
 				SceneManager::restartLevel();
+				SceneManager::Ending_Cutscene->timer = 0;
 				keystate_P = false;
 
 			}
@@ -1408,14 +1410,8 @@ namespace Core
 			{
 				//star is complete quest 
 				//flag is complete entire level
-				isMenuState = false;
-				isCutscene = false;
-				isLevel1 = false;
-				isLevel2 = false;
-				isLevel3 = false;
-				isLevel4 = false;
-				isLevel5 = false;
-				isLevel6 = false;
+				setAllStatesFalse();
+				isLevelSelection = true;
 				SceneManager::loadLevelSelect(0, 0);
 				SceneManager::drawLevelSelect();
 			}
@@ -1865,8 +1861,19 @@ namespace Core
 			if (isEndingCutscene == true)
 			{
 				SceneManager::load_Bami_End_Room();
-				SceneManager::draw_Bami_End_Room();
+				lastframe = 0;
 
+				if (SceneManager::Ending_Cutscene->timer < 14.8f) //if count equals the number of frames animated (the number of times draw is called)
+				{
+					SceneManager::draw_Bami_End_Room();
+					SceneManager::Ending_Cutscene->timer += Get_Delta();
+					lastframe = Get_Delta();
+				}
+				else
+				{
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", SceneManager::Ending_Cutscene->transformation.Get());
+					SceneManager::Ending_Cutscene->draw(lastframe, SceneManager::Ending_Cutscene->curr_anim);
+				}
 			}
 
 			if (isCredits == true)

@@ -123,7 +123,7 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
-			SceneManager::rec->timer += Get_Delta();
+			
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
@@ -135,26 +135,21 @@ namespace Core
 			}
 			if (SceneManager::spacepressed == 1)
 			{
+				SceneManager::rec->timer += Get_Delta();
 				/*Fade in function, comes together*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
+				if (SceneManager::rec->timer > 4.f)
+				{
+					Window::isTut1 = false; //unload curr level
+					Window::isTut2 = true; //load new level
+					Window::isWinCondition = false; //reset win condition
+					Window::loaded = false; //set to load
+					SceneManager::spacepressed = 0;
+				}
 			}
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
-			//stop all player controls
-			//press button to undraw tut 1, and draw tut 2
-			if (SceneManager::spacepressed == 2)
-			{
-				Window::isTut1 = false; //unload curr level
-				Window::isTut2 = true; //load new level
-				Window::isWinCondition = false; //reset win condition
-				Window::loaded = false; //set to load
-				Window::keystate_space = false;
-				SceneManager::spacepressed = 0;
-			}
-
 		}
 	}
-
-
 }

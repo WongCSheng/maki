@@ -142,7 +142,7 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
-			SceneManager::rec->timer += Get_Delta();
+
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
@@ -154,26 +154,21 @@ namespace Core
 			}
 			if (SceneManager::spacepressed == 1)
 			{
+				SceneManager::rec->timer += Get_Delta();
 				/*Fade in function, comes together*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
+				if (SceneManager::rec->timer > 4.f)
+				{
+					Window::isLevel11 = false; //unload curr level
+					Window::finallevelclear = true; //start to trigger ending cutscene
+					Window::isWinCondition = false; //reset win condition
+					Window::loaded = false; //set to load
+					SceneManager::spacepressed = 0;
+				}
 			}
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
-			//stop all player controls
-			//press button to undraw level 11, and draw ending cutscene
-			if(SceneManager::spacepressed == 2)
-			{
-				Window::isLevel11 = false; //unload curr level
-				Window::finallevelclear = true; //start to trigger ending cutscene
-				Window::isWinCondition = false; //reset win condition
-				Window::loaded = false; //set to load
-				Window::keystate_space = false;
-				SceneManager::spacepressed = 0;
-			}
-
 		}
 	}
-
-
 }

@@ -1683,7 +1683,7 @@ namespace Core
 
 				spritecomp1->transformation.Position = transcomp1->Position;
 				spritecomp1->transformation.Scale = transcomp1->Scale;
-
+				Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 				spritecomp1->draw();
 

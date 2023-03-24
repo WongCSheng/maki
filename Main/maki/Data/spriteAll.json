@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "name": "Menu",
+      "filename": "../Data/mainMenu/Menu.json"
+    },
+    {
+      "name": "StartButton",
+      "filename": "../Data/mainMenu/StartButton.json"
+    },
+    {
+      "name": "HowToPlay",
+      "filename": "../Data/mainMenu/HowToPlay.json"
+    },
+    {
+      "name": "SettingsButton",
+      "filename": "../Data/mainMenu/SettingsButton.json"
+    },
+    {
+      "name": "ExitButton",
+      "filename": "../Data/mainMenu/ExitButton.json"
+    }
+  ]
+}

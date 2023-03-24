@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir)lib\glfw\include;$(SolutionDir)lib\glew\include;$(SolutionDir)lib\glm\glm;$(SolutionDir)lib\rapidJSON\;$(SolutionDir)lib\freetype\include;$(SolutionDir)lib\Fmod\inc;$(SolutionDir)lib;$(SolutionDir)SushiMi;$(SolutionDir)lib\Fmod;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\glfw\;$(SolutionDir)lib\glew\;$(SolutionDir)lib\freetype\;$(SolutionDir)lib\Fmod\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>"opengl32.lib";"glew32.lib";"glfw3dll.lib";"freetype.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\glfw\glfw3.dll" "$(TargetDir)" /Y
+copy "$(SolutionDir)lib\glew\glew32.dll" "$(TargetDir)" /Y
+copy "$(SolutionDir)lib\Fmod\fmod.dll" "$(TargetDir)" /Y</Command>
+    </PostBuildEvent>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>GLFW_DLL;_CRT_SECURE_NO_WARNINGS;RELEASE;RELEASER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <WarningLevel>Level4</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4005;26451;6011;28182;6262;28252;26812;6031;33010;26495;28253;33011;6387;4723;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 800.0, 665.0 ],
+      "rotation": 0.0,
+      "scale": [ 350, 130 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Button_Quit.png",
+      "name": "QuitButton",
+      "alpha" : 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{"components": [
+    {
+      "type": "Transform",
+      "position": [ 0.0, 0.0 ],
+      "rotation": 0.0,
+      "scale": [ 500, 350 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/questBase.png",
+      "name": "questBase",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+}

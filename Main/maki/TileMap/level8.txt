@@ -1,0 +1,26 @@
+22 12
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R F R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R b ! ! ! ! ! R R R R R H R R R 
+R R R R R R R 3 5 ' R ) ! ! R R R R R R R R 
+R R R R H R R ! ! % ! ! ` ! R R R R R R R R 
+R R R R R R R ! f 4 - ! ! ! R I R R R R R R 
+R R R R R R R R ! ! R ! ! R R R R R R R R R 
+R R R I R R R R R R R R R R R R R R R R R R 
+R R R R R G R R R R R R R R R R F R R R G R 
+R R R R R R R R R R R J R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R b ! ! ! ! ! R R R R R R R R R 
+R R R R R R R 3 5 ' R ) ! ! R R R R R R R R 
+R R R R R R R ! ! % ! ! ` ! R R R R R R R R 
+R R R R R R R ! f 4 - ! ! ! R R R R R R R R 
+R R R R R R R R ! ! R ! ! R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 
+R R R R R R R R R R R R R R R R R R R R R R 

@@ -1,0 +1,35 @@
+string				char	filepath
+RicePlant1			8		../textures/spritesheet/AnimatedTop/RicePlant1.png
+RicePlant2			9		../textures/spritesheet/AnimatedTop/RicePlant2.png
+RicePlant3			:		
+RicePlant4			;
+RicePlant5			<
+RiceWater1			=
+RiceWater2			>
+GunkanSign_Right	?
+GunkanSign_Left		@
+GunkanCorn			A
+GunkanCarrot		B
+GunkanCrow_Left		C
+GunkanCrow_Right	D
+FishingBoat			E
+FishingLog			F
+FishingSotong		G
+FishingNoot			H
+FishingCrab			I
+RicePlain_TopG2_1	J
+Fishing_Top_0_0		7
+Fishing_Top_1_1		8
+Fishing_Top_1_2		9
+Fishing_Top_1_3		:
+Fishing_Top_1_4		;
+Fishing_Top_2_1		<
+Fishing_Top_2_2		=
+Fishing_Top_2_3		>
+Fishing_Top_2_4		?
+Fishing_Top_3_1		@
+Fishing_Top_3_2		A
+Fishing_Top_3_3		B
+Fishing_Top_3_4		C
+Fishing_Top_3_5		D
+Fishing_Top_3_6		E

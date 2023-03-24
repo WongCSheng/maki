@@ -1,0 +1,6 @@
+Lunch was good! Don’t you just love the ambience here at  the Fishing Village? I know I do!
+Hmmm, we have quite a few delivery orders today. Let me teach you the way to collect the orders with the   right condiments.
+First, check the order list. On the top of the list, we have Salmon with Wasabi sauce. To collect them, we push our ingredient, Salmon into the Wasabi tile.
+Oh no, wrong condiments. You can remove it by using the Tea tile.
+Becareful, the Tea tile will REMOVE ALL the condiments.
+Now, let's complete the order by pushing the ingredient into the Wasabi tile and into the plastic container for delivery! 

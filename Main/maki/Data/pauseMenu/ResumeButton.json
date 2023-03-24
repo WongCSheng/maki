@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 800.0, 365.0 ],
+      "rotation": 0.0,
+      "scale": [ 350, 140 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Buttons/Button_Resume.png",
+      "name": "ResumeButton",
+      "alpha" : 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    },
+    {
+      "type": "Audio",
+      "AudioPath": "../Assets/Audio/Music/BGM.wav"
+    }
+  ]
+}

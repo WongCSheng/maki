@@ -1,0 +1,28 @@
+{
+  "components": [
+    {
+      "name": "howtoplay_overlay_1",
+      "filename": "../Data/mainMenu/howtoplay_overlay_1.json"
+    },
+    {
+      "name": "howtoplay_overlay_2",
+      "filename": "../Data/mainMenu/howtoplay_overlay_2.json"
+    },
+    {
+      "name": "howtoplay_overlay_3",
+      "filename": "../Data/mainMenu/howtoplay_overlay_3.json"
+    },
+    {
+      "name": "howtoplay_overlay_4",
+      "filename": "../Data/mainMenu/howtoplay_overlay_4.json"
+    },
+    {
+      "name": "howtoplay_overlay_5",
+      "filename": "../Data/mainMenu/howtoplay_overlay_5.json"
+    },
+    {
+      "name": "howtoplay_overlay_6",
+      "filename": "../Data/mainMenu/howtoplay_overlay_6.json"
+    }
+  ]
+}

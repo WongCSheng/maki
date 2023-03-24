@@ -1,0 +1,18 @@
+{
+    "sprite": {
+        "filepath": "../textures/spritesheet/Bamispritesheet.png",
+        "position": [
+            600,
+            600
+        ],
+        "scale": [
+            100,
+            100
+        ]
+    },
+    "animation": [
+        "../textures/spritesheet/Bami_Idle.txt",
+        "../textures/spritesheet/Bami_Run.txt",
+        "../textures/spritesheet/Bami_Jump.txt"
+    ]
+}

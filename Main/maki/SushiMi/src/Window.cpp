@@ -1657,7 +1657,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection/* && !isTut1 && !isTut2*/)
+			if (isQuestTab && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection/* && !isTut1 && !isTut2*/)
 			{
 				//	fixed position for quest items and chop (shld only work tut1 - lvl10
 				gfxVector2 pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };

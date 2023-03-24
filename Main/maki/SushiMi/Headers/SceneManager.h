@@ -345,5 +345,7 @@ namespace Core
 		// Boxcover targetpos and currpos
 		inline static float currpos;
 		inline static float targetpos;
+
+		inline static int spacepressed;
 	};
 }

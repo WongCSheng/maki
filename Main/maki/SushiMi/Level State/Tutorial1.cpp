@@ -35,7 +35,7 @@ namespace Core
 
 		if (!Window::loaded)
 		{
-
+			SceneManager::rec->timer = 0;
 			Map::maki_city = 0; //it is not maki city
 			if (SceneManager::tilecontainer.size() > 0 || SceneManager::ingredientcontainer.size() > 0 || SceneManager::topcontainer.size() > 0 || SceneManager::in_sinkhole.size() > 0)
 			{
@@ -123,22 +123,34 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
+			SceneManager::rec->timer += Get_Delta();
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-			/*Fade in function, comes together*/
-			SceneManager::FadeIn();
-			SceneManager::drawBlackOverlay();
+
+			if (Window::keystate_space)
+			{
+				SceneManager::spacepressed++;
+				Window::keystate_space = false;
+
+			}
+			if (SceneManager::spacepressed == 1)
+			{
+				/*Fade in function, comes together*/
+				SceneManager::FadeIn();
+				SceneManager::drawBlackOverlay();
+			}
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
 			//stop all player controls
 			//press button to undraw tut 1, and draw tut 2
-			if (Window::keystate_space && Window::isWinCondition == true)
+			if (SceneManager::spacepressed == 2)
 			{
 				Window::isTut1 = false; //unload curr level
 				Window::isTut2 = true; //load new level
 				Window::isWinCondition = false; //reset win condition
 				Window::loaded = false; //set to load
 				Window::keystate_space = false;
+				SceneManager::spacepressed = 0;
 			}
 
 		}

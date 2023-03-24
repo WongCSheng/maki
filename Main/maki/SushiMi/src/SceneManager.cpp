@@ -41,6 +41,7 @@ namespace Core
 		player_stuck = nullptr;
 		rows = cols = tileHeight = tileWidth = 0;
 		rec = nullptr;
+		spacepressed = 0;
 	}
 
 	SceneManager::~SceneManager()

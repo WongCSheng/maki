@@ -562,16 +562,6 @@ namespace Core
 
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
-
-		SceneManager::frame1 = new Sprite("../Textures/Cutscene/frame1.jpg");
-		SceneManager::frame2 = new Sprite("../Textures/Cutscene/frame2.jpg");
-		SceneManager::frame3 = new Sprite("../Textures/Cutscene/frame3.jpg");
-		SceneManager::frame4 = new Sprite("../Textures/Cutscene/frame4.jpg");
-		SceneManager::frame5 = new Sprite("../Textures/Cutscene/frame5.jpg");
-		SceneManager::frame6 = new Sprite("../Textures/Cutscene/frame6.jpg");
-		SceneManager::frame7 = new Sprite("../Textures/Cutscene/frame7.jpg");
-		SceneManager::frame8 = new Sprite("../Textures/Cutscene/frame8.jpg");
-
 		SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
 
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
@@ -1421,8 +1411,8 @@ namespace Core
 
 			if (isCutscene)
 			{
-				SceneManager::loadCutscene();
-				SceneManager::drawCutscene();
+				/*SceneManager::loadCutscene();*/
+				SceneManager::drawCutscene(CutscenePage);
 				if ((keystate_space) && isMenuState == false)
 				{
 					keystate_space = true;
@@ -1667,7 +1657,7 @@ namespace Core
 			}
 
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
+			if (isQuestTab && !isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection/* && !isTut1 && !isTut2*/)
 			{
 				//	fixed position for quest items and chop (shld only work tut1 - lvl10
 				gfxVector2 pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };

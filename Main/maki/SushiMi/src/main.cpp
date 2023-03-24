@@ -210,6 +210,9 @@ void Core::pseudomain::init() {
 
 	/*				loading how to play screens 			*/
 	Core::DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
+	Core::DeserializeAll("../Data/Cutscene/Cutscene_All.json", CoreSystem->objfactory);
+
+
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);

@@ -749,68 +749,55 @@ namespace Core
 
 	}
 
-	void SceneManager::drawCutscene()
+	void SceneManager::drawCutscene(int CutscenePage)
 	{
-		switch (Window::CutscenePage)
 		{
-		case 0:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame1->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame1->draw();
-			break;
-		}
-		case 1:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame2->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame2->draw();
-			break;
-		}
-		case 2:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame3->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame3->draw();
-			break;
-		}
-		case 3:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame4->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame4->draw();
-			break;
-		}
-		case 4:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame5->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame5->draw();
-			break;
-		}
-		case 5:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame6->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame6->draw();
-			break;
-		}
-		case 6:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame7->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame7->draw();
-			break;
-		}
-		case 7:
-		{
-			Shaders->Textured_Shader()->Send_Mat4("model_matrx", frame8->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			frame8->draw();
-			break;
-		}
+				/* resize the window before the cutscene is drawn. */
+			int screenwidth = 0, screenheight = 0;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			// object pointer to retreive from object factory container
+			Core::Object::GameObject* obj{};
 
+			// retreive cutscenes from object container using page
+			switch (CutscenePage)
+			{
+			case 0:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame1");
+				break;
+			case 1:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame2");
+				break;
+			case 2:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame3");
+				break;
+			case 3:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame4");
+				break;
+			case 4:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame5");
+				break;
+			case 5:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame6");
+				break;
+			case 6:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame7");
+				break;
+			case 7:
+				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame8");
+				break;
+			}
+
+			Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
+			Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+			spritecomp->transformation.Position = transcomp->Position;
+			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			spritecomp->draw();
 		}
+		
 	}
 
 	void SceneManager::drawLevelSelect()

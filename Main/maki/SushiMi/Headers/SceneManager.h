@@ -214,7 +214,7 @@ namespace Core
 		static void drawHowToOverlay(int page);
 		static void drawSettings();
 		static void drawWinOverlay();
-		static void drawCutscene();
+		static void drawCutscene(int CutscenePage);
 		static void drawLevelSelect();
 		static void drawBlackOverlay();
 		static void draw_Dialogue();

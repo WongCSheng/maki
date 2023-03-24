@@ -1,0 +1,36 @@
+{
+  "components": [
+    {
+      "name": "Cutscene_frame1",
+      "filename": "../Data/Cutscene/Cutscene_frame1.json"
+    },
+    {
+      "name": "Cutscene_frame2",
+      "filename": "../Data/Cutscene/Cutscene_frame2.json"
+    },
+    {
+      "name": "Cutscene_frame3",
+      "filename": "../Data/Cutscene/Cutscene_frame3.json"
+    },
+    {
+      "name": "Cutscene_frame4",
+      "filename": "../Data/Cutscene/Cutscene_frame4.json"
+    },
+    {
+      "name": "Cutscene_frame5",
+      "filename": "../Data/Cutscene/Cutscene_frame5.json"
+    },
+    {
+      "name": "Cutscene_frame6",
+      "filename": "../Data/Cutscene/Cutscene_frame6.json"
+    },
+    {
+      "name": "Cutscene_frame7",
+      "filename": "../Data/Cutscene/Cutscene_frame7.json"
+    },
+    {
+      "name": "Cutscene_frame8",
+      "filename": "../Data/Cutscene/Cutscene_frame8.json"
+    }
+  ]
+}

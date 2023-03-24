@@ -229,6 +229,8 @@ namespace Core
 
 		static void loadRect(int x, int y);
 		static void drawRect(float alpha);
+		static void loadFader(int x, int y);
+		static void drawFader(float alpha);
 		static void FadeIn();
 		static void FadeOut();
 		static void set_target_pos(Sprite* boxcover);
@@ -250,6 +252,7 @@ namespace Core
 		static void destroy_Bami_End_Room();
 		static void destroy_Are_You_Sure();
 		static void destroy_Particle();
+		static void destroy_fading();
 
 	
 		static void Readfile();
@@ -311,6 +314,7 @@ namespace Core
 		static inline Sprite* player_stuck;
 
 		static inline Sprite* rec;
+		static inline Sprite* fader;
 
 		static inline Sprite* Ending_Cutscene;
 		static inline Sprite* are_you_sure;

@@ -45,7 +45,7 @@ namespace Core
 			Window::resetQuest();
 
 			Map::initMap("../TileMap/level11.txt");
-
+			SceneManager::loadFader(0, 0);
 			Map::LoadMap();
 			Window::isQuestTab = false;
 			Window::loaded = true;
@@ -94,7 +94,7 @@ namespace Core
 			SceneManager::particle->alpha -= ((Get_Delta()));
 			SceneManager::draw_Particle(); //draw particle above map, but below quest and fade
 		}
-
+		
 		//draw playerpos at lvl 11
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Window::player->Transformation());
 
@@ -114,6 +114,26 @@ namespace Core
 		{
 			Window::player->draw(0);
 
+		}
+
+		if (!Window::isWinCondition)
+		{
+			/*fading effect throughout*/
+			SceneManager::fader->timer += ((Get_Delta()));
+			if (SceneManager::fader->timer <= 2.f)
+			{
+				SceneManager::fader->alpha += ((Get_Delta())/3);
+			}
+			if (SceneManager::fader->timer > 2.f)
+			{
+				SceneManager::fader->alpha -= ((Get_Delta())/3);
+			}
+			if (SceneManager::fader->timer > 3.5f)
+			{
+				SceneManager::fader->timer = 0.f;
+				SceneManager::fader->alpha = 0.f;
+			}
+			SceneManager::drawFader(SceneManager::fader->alpha);
 		}
 		if (Map::isWin())
 		{

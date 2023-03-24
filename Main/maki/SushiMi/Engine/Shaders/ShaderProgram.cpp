@@ -65,7 +65,7 @@ void ShaderProgram::Send_Mat4(const char* name, glm::mat4 mat)
 void ShaderProgram::Send_Alpha(const char* name, float alpha)
 {
 	auto location = glGetUniformLocation(ID, name);
-	glUniform1f(glGetUniformLocation(location, "alpha"), alpha);
+	glUniform1f(location, alpha);
 }
 
 void ShaderProgram::checkerorr(unsigned int shader_id, std::string type)

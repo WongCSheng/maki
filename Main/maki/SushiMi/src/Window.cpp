@@ -589,7 +589,9 @@ namespace Core
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
-
+		SceneManager::fader = new Sprite("../textures/bg.jpg");
+		SceneManager::fader->alpha = 0.f;
+		SceneManager::fader->timer = 0.f;
 		SceneManager::Ending_Cutscene = new Sprite("../textures/Cutscene/Ending/EndingScene.png"); 
 		SceneManager::Ending_Cutscene->isSpriteSheet = 0;
 		SceneManager::Ending_Cutscene->Add_animation("../textures/Cutscene/Ending/Bami_End.txt");
@@ -667,6 +669,7 @@ namespace Core
 		SceneManager::destroy_Bami_End_Room();
 		SceneManager::destroy_Are_You_Sure();
 		SceneManager::destroy_Particle();
+		SceneManager::destroy_fading();
 
 		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
@@ -1476,7 +1479,6 @@ namespace Core
 			{
 				int screenwidth = 0, screenheight = 0;
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-
 				SceneManager::load_Dialogue();
 				SceneManager::draw_Dialogue();
 				std::string first_line, second_line, third_line = "";
@@ -1727,7 +1729,8 @@ namespace Core
 						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 						spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
-
+						Shaders->Textured_Shader()->use();
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
 					}

@@ -397,8 +397,15 @@ namespace Core
 		glUniform1f(glGetUniformLocation(Shaders->Alpha_Shader()->get_hdl(), "alpha"), alpha);
 		rec->draw();
 		*/
+	}
 
+	void SceneManager::drawFader(float alpha_)
+	{
+		/*This one draws the black background completely fine, but it is without the Alpha variable */
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", fader->transformation.Get());
 
+		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha_);
+		fader->draw();
 	}
 	
 	void SceneManager::drawBlackOverlay()
@@ -815,6 +822,8 @@ namespace Core
 
 	void SceneManager::draw_Dialogue()
 	{
+		Shaders->Textured_Shader()->use();
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		if (Window::dialogue_style >= static_cast<int>(Window::dialogue::T1) && Window::dialogue_style <= static_cast<int>(Window::dialogue::L3))
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", riceplain_dialogue->transformation.Get());
@@ -837,23 +846,25 @@ namespace Core
 			makicity_dialogue->draw();
 		}
 		
-		
 	}
 
 	void SceneManager::draw_Wood_BG()
 	{
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", wooden_bg->transformation.Get());
 		wooden_bg->draw();
 	}
 
 	void SceneManager::draw_City_BG()
 	{
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", city_bg->transformation.Get());
 		city_bg->draw();
 	}
 
 	void SceneManager::draw_Bami_End_Room()
 	{
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", Ending_Cutscene->transformation.Get());
 		Ending_Cutscene->draw((Get_Delta()), SceneManager::Ending_Cutscene->curr_anim);
 		
@@ -863,6 +874,12 @@ namespace Core
 	{
 		rec->transformation.Position = glm::vec2(x, y);
 		rec->transformation.Scale = glm::vec2(1920, 1200);
+	}
+
+	void SceneManager::loadFader(int x, int y)
+	{
+		fader->transformation.Position = glm::vec2(x, y);
+		fader->transformation.Scale = glm::vec2(1920, 1200);
 	}
 
 	void SceneManager::FadeIn()
@@ -957,6 +974,11 @@ namespace Core
 	void SceneManager::destroyWinOverlay()
 	{
 		delete win_overlay;
+	}
+
+	void SceneManager::destroy_fading()
+	{
+		delete fader;
 	}
 
 	void SceneManager::destroyCutscene()

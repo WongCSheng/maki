@@ -120,15 +120,15 @@ namespace Core
 		{
 			/*fading effect throughout*/
 			SceneManager::fader->timer += ((Get_Delta()));
-			if (SceneManager::fader->timer <= 2.f)
+			if (SceneManager::fader->timer <= 2.5f)
 			{
 				SceneManager::fader->alpha += ((Get_Delta())/3);
 			}
-			if (SceneManager::fader->timer > 2.f)
+			if (SceneManager::fader->timer > 3.f)
 			{
 				SceneManager::fader->alpha -= ((Get_Delta())/3);
 			}
-			if (SceneManager::fader->timer > 3.5f)
+			if (SceneManager::fader->timer > 5.5f)
 			{
 				SceneManager::fader->timer = 0.f;
 				SceneManager::fader->alpha = 0.f;

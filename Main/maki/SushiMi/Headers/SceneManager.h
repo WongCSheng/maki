@@ -201,6 +201,10 @@ namespace Core
 		static void load_Are_You_Sure(); //confirmation screen
 		static void load_Particle(); //particle pos
 
+		static void drawTut1();
+		static void drawTut2();
+		static void resetColor();
+
 		static void drawTile();
 		static void drawBox();
 		static void drawTop();

@@ -1,14 +1,2 @@
-﻿  Level1.cpp
-  Level10.cpp
-  Level11.cpp
-  Level2.cpp
-  Level3.cpp
-  Level4.cpp
-  Level5.cpp
-  Level6.cpp
-  Level7.cpp
-  Level8.cpp
-  Level9.cpp
-  Tutorial1.cpp
-  Tutorial2.cpp
-  SushiMi.vcxproj -> D:\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿  Window.cpp
+  SushiMi.vcxproj -> C:\Users\Aurel\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

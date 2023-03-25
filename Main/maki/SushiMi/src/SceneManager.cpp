@@ -4,6 +4,7 @@
 #include "../Engine/Core/Core.h"
 #include "../Engine/TileMap/Map.h"
 #include <Engine/Font/Font.h>
+#include "Window.h"
 //#include "."
 
 
@@ -14,6 +15,21 @@ namespace Core
 	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
+
+	static bool up_key = false;
+	static bool down_key = false;
+	static bool left_key = false;
+	static bool right_key = false;
+
+	/* default black color */
+	glm::vec3 color_up{0.f, 0.f, 0.f}; 
+	glm::vec3 color_down{ 0.f, 0.f, 0.f };
+	glm::vec3 color_left{ 0.f, 0.f, 0.f };
+	glm::vec3 color_right{ 0.f, 0.f, 0.f };
+
+	//color str default red
+	glm::vec3 color_str{ 1.f, 0.f, 0.f };
+
 	SceneManager::SceneManager()
 	{
 		/*tile = nullptr;
@@ -702,6 +718,86 @@ namespace Core
 		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 		win_overlay->draw();
 	}
+
+
+	void SceneManager::drawTut1( )
+	{
+		std::string up = "Up";
+		std::string down = "Down";
+		std::string left = "Left";
+		std::string right = "Right";
+		std::string str = " All ingredients are packed";
+
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		/*	bool state to toggle the key */
+		if(!up_key) 
+		{	//up_key is true
+			//default up_key set to red
+			color_up = { 1.f, 0.f, 0.f };
+
+		}
+		if (!down_key) 
+		{
+			//default up_key set to red
+			color_down = { 1.f, 0.f, 0.f };
+
+		}
+		if (!left_key) 
+		{
+			//default up_key set to red
+			color_left = { 1.f, 0.f, 0.f };
+
+		}
+		if (!right_key) 
+		{
+			//default up_key set to red
+			color_right = { 1.f, 0.f, 0.f };
+
+		}
+		//std::cout << Window::keystate_up << "is the Up key value" << "\n";
+
+		if(Window::keystate_up)
+		{
+			color_up = { 0.f, 1.f, 0.f };
+			up_key = true; //keep color to green after pressed Up
+		}
+		if (Window::keystate_down == true)
+		{
+			color_down = { 0.f, 1.f, 0.f };
+			down_key = true; //keep color to green after pressed Up
+		}
+		if (Window::keystate_left == true)
+		{
+			color_left = { 0.f, 1.f, 0.f };
+			left_key = true; //keep color to green after pressed Up
+		}
+		if (Window::keystate_right == true )
+		{
+			color_right = { 0.f, 1.f, 0.f };
+			right_key = true; //keep color to green after pressed Up
+		}
+		
+			Shaders->Font_Shader()->use();
+			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-920), (float)(screenheight-180), .55f, color_up, 1.f);
+			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 860), (float)(screenheight - 180), .55f, color_down, 1.f);
+			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 765), (float)(screenheight - 180), .55f, color_left, 1.f);
+			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 180), .55f, color_right, 1.f);
+			//Font::RenderText(*Shaders, str, 50, 550, .55f, color_str, 1.f);
+			Shaders->Textured_Shader()->use();
+		
+	}
+
+	/* resets color back to red*/
+	void SceneManager::resetColor()
+	{
+		color_up = { 1.f, 0.f, 0.f };
+		color_down = { 1.f, 0.f, 0.f };
+		color_left = { 1.f, 0.f, 0.f };
+		color_right = { 1.f, 0.f, 0.f };
+	}
+	
 
 	void SceneManager::drawEncourage()
 	{

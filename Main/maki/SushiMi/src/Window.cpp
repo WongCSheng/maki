@@ -109,7 +109,7 @@ namespace Core
 			Window::keystate_M = (key == GLFW_KEY_M) ? true : false;
 			Window::keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
 			Window::keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
-			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;;
+			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;
 			Window::keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
 			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
 			Window::keystate_T = (key == GLFW_KEY_T) ? true : false;
@@ -1250,6 +1250,7 @@ namespace Core
 				for (size_t i{}; i < Window::winningBoxes.size(); ++i)
 					winningBoxes[i] = { " ", -1 };
 				questDrawItems.clear();
+				SceneManager::resetColor();
 
 				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
@@ -1677,6 +1678,12 @@ namespace Core
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 				spritecomp1->draw();
 
+				if(isTut1)
+				{
+					std::cout << keystate_up << "----------value--------" <<  "\n";
+					SceneManager::drawTut1();
+				}
+
 				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);
 				if (checkifquestexists != Sprite::quest_boxes.end()) //if the quest does not exist for the level (eg test level, or lvl 9-11 quest not done yet)
 				{
@@ -1726,7 +1733,7 @@ namespace Core
 					}
 				}
 			}
-
+			
 			/*	quest tab shift to left side */
 			/*	disable quest tab in all the listed cases in the else-if condition	*/
 			/*	so that quest tab will only shown in levels	*/

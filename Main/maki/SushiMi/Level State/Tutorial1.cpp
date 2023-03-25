@@ -44,13 +44,16 @@ namespace Core
 			Map::region = 1;
 
 			Window::resetQuest();
+			//SceneManager::resetColor();
 
 			Map::initMap("../TileMap/_tut1.txt");
 
 			Map::LoadMap();
-			Window::isQuestTab = false;
+
 			Window::loaded = true;
 
+			Window::isQuestTab = false;
+			
 			AudioManager.LoadSFX("Gravel_Drag-Movement_1.ogg");
 			AudioManager.LoadMusic("BGM with Forest Day volume test.ogg");
 			AudioManager.PlayMusic("BGM with Forest Day volume test.ogg");
@@ -81,6 +84,8 @@ namespace Core
 																	// for quest tab drawing of ingredients
 			//also need dialogue after game end
 		}
+		
+
 		/*Fade out effect*/
 		if (!Window::isWinCondition)
 		{
@@ -89,6 +94,7 @@ namespace Core
 		}
 		//draw tut 1 tile map
 		Map::DrawMap();
+
 		SceneManager::particle->timer += ((Get_Delta()));
 		if (SceneManager::particle->timer < 1.0f)
 		{

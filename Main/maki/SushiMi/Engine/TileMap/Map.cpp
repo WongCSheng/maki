@@ -570,7 +570,14 @@ namespace Core
 					avocado->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 					std::string String = IngredientToString(grid_number::avocado);
-					loadedIngredients.insert({ String ,avocado });
+					if (maki_city)
+					{
+						loadedIngredients.insert({ "mc_avocado" ,avocado });
+					}
+					else
+					{
+						loadedIngredients.insert({ String ,avocado });
+					}
 					break;
 				}
 				case static_cast<int>(grid_number::cucumber):
@@ -612,7 +619,14 @@ namespace Core
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::corn);
-					loadedIngredients.insert({ String ,corn });
+					if (maki_city)
+					{
+						loadedIngredients.insert({ "mc_corn" ,corn });
+					}
+					else
+					{
+						loadedIngredients.insert({ String ,corn });
+					}
 					break;
 				}
 
@@ -645,7 +659,14 @@ namespace Core
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::inari);
-					loadedIngredients.insert({ String ,inari });
+					if (maki_city)
+					{
+						loadedIngredients.insert({ "mc_inari" ,inari });
+					}
+					else
+					{
+						loadedIngredients.insert({ String ,inari });
+					}
 					break;
 				}
 				case static_cast<int>(grid_number::octopus):
@@ -719,9 +740,15 @@ namespace Core
 					roes->isSpriteSheet = 1;
 					roes->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
 					std::string String = IngredientToString(grid_number::roes);
-					loadedIngredients.insert({ String ,roes });
+					if(maki_city)
+					{
+						loadedIngredients.insert({ "mc_roes" ,roes });
+					}
+					else
+					{
+						loadedIngredients.insert({ String ,roes });
+					}
 					break;
 				}
 				//salmon
@@ -738,7 +765,6 @@ namespace Core
 					salmon->Add_animation("../textures/spritesheet/salmon_both.txt");
 					salmon->curr_anim = AnimationType::Idle;
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
-
 					std::string String = IngredientToString(grid_number::salmon);
 					loadedIngredients.insert({ String ,salmon });
 					break;
@@ -797,7 +823,14 @@ namespace Core
 					SceneManager::loadIngr(grid_to_coord_x, grid_to_coord_y, r, c, combine);
 
 					std::string String = IngredientToString(grid_number::tuna);
-					loadedIngredients.insert({ String ,tuna });
+					if (maki_city)
+					{
+						loadedIngredients.insert({ "mc_tuna" ,tuna });
+					}
+					else
+					{
+						loadedIngredients.insert({ String ,tuna });
+					}
 					break;
 				}
 				//nori
@@ -939,7 +972,14 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 
 					std::string String = PodToString(wall_type::avocado_box);
-					loadedBoxes.insert({ String ,box});
+					if (maki_city)
+					{
+						loadedBoxes.insert({ "mc_avocado" ,box });
+					}
+					else
+					{
+						loadedBoxes.insert({ String ,box });
+					}
 					break;
 				}
 				//cucumber
@@ -987,7 +1027,14 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 
 					std::string String = PodToString(wall_type::corn_box);
-					loadedBoxes.insert({ String ,box });
+					if (maki_city)
+					{
+						loadedBoxes.insert({ "mc_corn" ,box });
+					}
+					else
+					{
+						loadedBoxes.insert({ String ,box });
+					}
 					break;
 				}
 				//octopus
@@ -1035,7 +1082,14 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 
 					std::string String = PodToString(wall_type::roes_box);
-					loadedBoxes.insert({ String ,box });
+					if (maki_city)
+					{
+						loadedBoxes.insert({ "mc_roes" ,box });
+					}
+					else
+					{
+						loadedBoxes.insert({ String ,box });
+					}
 					break;
 				}
 				//salmon
@@ -1124,7 +1178,14 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 
 					std::string String = PodToString(wall_type::tuna_box);
-					loadedBoxes.insert({ String ,box });
+					if (maki_city)
+					{
+						loadedBoxes.insert({ "mc_tuna" ,box });
+					}
+					else
+					{
+						loadedBoxes.insert({ String ,box });
+					}
 					break;
 				}
 				//nori
@@ -1194,7 +1255,14 @@ namespace Core
 					SceneManager::amt_of_win_conditions++;
 
 					std::string String = PodToString(wall_type::inari_box);
-					loadedBoxes.insert({ String ,box });
+					if (maki_city)
+					{
+						loadedBoxes.insert({ "mc_inari" ,box });
+					}
+					else
+					{
+						loadedBoxes.insert({ String ,box });
+					}
 					break;
 				}
 

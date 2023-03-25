@@ -4,7 +4,7 @@
       "type": "Transform",
       "position": [ 0.0, 0.0 ],
       "rotation": 0.0,
-      "scale": [ 0, 0 ]
+      "scale": [ 500, 350 ]
     },
     {
       "type": "Sprite",
@@ -13,11 +13,13 @@
       "SpriteSheet": false,
       "SpriteSize": [ 0, 0 ],
       "CorrectIngredient": [
-        "Avocado",
-        "Inari",
-        "Corn",
-        "Tuna",
-        "Roe_Wasabi"
+        "mc_corn",
+        "mc_inari",
+        "mc_avocado",
+        "mc_tuna",
+        "mc_roes"
+
+
       ]
     }
   ]

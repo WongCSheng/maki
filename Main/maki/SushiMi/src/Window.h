@@ -155,11 +155,6 @@ namespace Core
 		};
 		static GameState level;
 
-		enum Quest
-		{
-			
-		};
-
 		bool isCutscene;
 		static inline int CutscenePage;
 
@@ -237,7 +232,7 @@ namespace Core
 		}
 
 		static std::vector<std::string> currentQuestIngredient;
-		static std::array<std::pair<std::string, int>, 3> winningBoxes;
+		static std::array<std::pair<std::string, int>, 5> winningBoxes;
 		static std::map<std::string, gfxVector2> questDrawItems;
 
 		//for editor

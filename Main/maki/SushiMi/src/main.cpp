@@ -217,6 +217,16 @@ void Core::pseudomain::init() {
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
 
+	/* Only maki city */
+	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory); 
+	Core::DeserializeEntity("../Data/Ingredients/mc_corn.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/mc_inari.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/mc_avocado.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/mc_tuna.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Ingredients/mc_roes.json", CoreSystem->objfactory);
+
+
+
 	/*	 Loading of Chops (Done)	*/
 	Core::DeserializeEntity("../Data/Chop/denied.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/denied_2.json", CoreSystem->objfactory);

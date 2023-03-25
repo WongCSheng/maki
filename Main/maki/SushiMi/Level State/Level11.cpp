@@ -68,9 +68,6 @@ namespace Core
 			}
 			std::getline(fin, Window::realstring);
 
-
-
-
 			Window::dialogue_style = static_cast<int>(Window::dialogue::MAKI_CITY);
 			Window::curr_len = 0;
 

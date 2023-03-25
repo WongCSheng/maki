@@ -43,7 +43,7 @@ namespace Core
 	static std::string walkingsfx;
 
 	std::vector<std::string> Window::currentQuestIngredient;
-	std::array<std::pair<std::string, int>, 3> Window::winningBoxes;
+	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
 
 	std::map<std::string, gfxVector2> Window::questDrawItems;
@@ -160,7 +160,7 @@ namespace Core
 			std::pair<float, float> ingredientCoordinates(ingredientRow, ingredientCol);
 
 			//	check through each boxes loaded in the level
-			for (auto& box : Map::loadedBoxes)
+  			for (auto& box : Map::loadedBoxes)
 			{
 				Sprite* sBox = box.second;	//current box to check
 				float BoxRow = round((sBox->transformation.Position.x / static_cast<float>(Map::windowDim.first)) * static_cast<float>(Map::max_grid_cols_x));
@@ -200,175 +200,323 @@ namespace Core
 					//	check special ingrdient for add on
 					for (auto& _ingredient : SceneManager::ingredientcontainer)
 					{
-
 						std::size_t wasabi = x.find("Wasabi");
 						std::size_t soya = x.find("Soya");
 						std::size_t both = x.find("Both");
 
-						if ((_ingredient.nametag == grid_number::octopus) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						if (!Map::maki_city)
 						{
-							switch (_ingredient.spr->status)
+							if ((_ingredient.nametag == grid_number::octopus) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-							case 0:
-							{
-								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
-									return 1;
-								else
-									return 0;
-							}
-							case 1:
-							{
-								// added soya
-								if (soya != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 3:
+								{
+									// added both
+									if (both != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 							}
 
-							case 2:
+							else if ((_ingredient.nametag == grid_number::salmon) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-								// added wasabi
-								if (wasabi != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 3:
+								{
+									// added both
+									if (both != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
+
 							}
 
-
-							case 3:
+							else if ((_ingredient.nametag == grid_number::tuna) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-								// added both
-								if (both != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 3:
+								{
+									// added both
+									if (both != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
+
 							}
+
+							else if ((_ingredient.nametag == grid_number::roes) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+							{
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 3:
+								{
+									// added both
+									if (both != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 
 							}
 						}
 
-						else if ((_ingredient.nametag == grid_number::salmon) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
+						if(Map::maki_city)
 						{
-							switch (_ingredient.spr->status)
+							std::size_t corn = x.find("mc_corn");
+							std::size_t inari = x.find("mc_inari");
+							std::size_t avocado = x.find("mc_avocado");
+							std::size_t tuna = x.find("mc_tuna");
+							std::size_t roes = x.find("mc_roes");
+
+							if ((_ingredient.nametag == grid_number::corn) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-							case 0:
-							{
-								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 							}
-							case 1:
+							else if ((_ingredient.nametag == grid_number::inari) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-								// added soya
-								if (soya != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 							}
 
-							case 2:
+							else if ((_ingredient.nametag == grid_number::avocado) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-								// added wasabi
-								if (wasabi != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 							}
-
-
-							case 3:
+							else if ((_ingredient.nametag == grid_number::tuna) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-								// added both
-								if (both != std::string::npos)
-									return 1;
-								else
-									return 0;
+								switch (_ingredient.spr->status)
+								{
+								case 0:
+								{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+								}
+								case 1:
+								{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								case 2:
+								{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+								}
+								}
 							}
-							}
-
-						}
-
-						else if ((_ingredient.nametag == grid_number::tuna) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
-						{
-							switch (_ingredient.spr->status)
+							else if ((_ingredient.nametag == grid_number::roes) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
-							case 0:
-							{
-								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
-									return 1;
-								else
-									return 0;
-							}
-							case 1:
-							{
-								// added soya
-								if (soya != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
-
-							case 2:
-							{
-								// added wasabi
-								if (wasabi != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
-
-
-							case 3:
-							{
-								// added both
-								if (both != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
-							}
-
-						}
-
-						else if ((_ingredient.nametag == grid_number::roes) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
-						{
-							switch (_ingredient.spr->status)
-							{
-							case 0:
-							{
-								if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
-									return 1;
-								else
-									return 0;
-							}
-							case 1:
-							{
-								// added soya
-								if (soya != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
-
-							case 2:
-							{
-								// added wasabi
-								if (wasabi != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
-
-
-							case 3:
-							{
-								// added both
-								if (both != std::string::npos)
-									return 1;
-								else
-									return 0;
-							}
+								switch (_ingredient.spr->status)
+								{
+									case 0:
+									{
+									if ((wasabi == std::string::npos) && (soya == std::string::npos) && (both == std::string::npos))
+										return 1;
+									else
+										return 0;
+									}
+									case 1:
+									{
+									// added soya
+									if (soya != std::string::npos)
+										return 1;
+									else
+										return 0;
+									}
+								case 2:
+									{
+									// added wasabi
+									if (wasabi != std::string::npos)
+										return 1;
+									else
+										return 0;
+									}
+								}
 							}
 
 						}
@@ -397,6 +545,12 @@ namespace Core
 			case 2:
 				chop = "done_3";
 				break;
+			case 3:
+				chop = "done_4";
+				break;
+			case 4:
+				chop = "done_5";
+				break;
 			}
 			questDrawItems.insert({ chop, pos });
 
@@ -414,6 +568,12 @@ namespace Core
 				break;
 			case 2:
 				chop = "denied_3";
+				break;
+			case 3:
+				chop = "denied_4";
+				break;
+			case 4:
+				chop = "denied_5";
 				break;
 			}
 			questDrawItems.insert({ chop, pos });
@@ -1657,35 +1817,59 @@ namespace Core
 				}
 			}
 
+										/*Draw QuestTab*/
+			gfxVector2 pos1 , pos2 , pos3, pos4, pos5;
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
-			if (isQuestTab && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection/* && !isTut1 && !isTut2*/)
+			if (isQuestTab && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
-				//	fixed position for quest items and chop (shld only work tut1 - lvl10
-				gfxVector2 pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };
+				if(!Map::maki_city)
+				{
+					//	fixed position for quest items and chop (shld only work tut1 - lvl10
+					pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };
+				}
+
+				else
+				{
+					pos1 = { 30.f, 160.f }, pos2 = { 160.f, 160.f }, pos3 = { 285.f, 160.f }, pos4 = { 70.f, 250.f }, pos5 = { 240.f, 250.f };
+				}
 
 				//	current level
 				std::string sLevel = EnumToString(level);
 				//	check if ingredient landed on box
 				checkWin(sLevel);
+				if (!Map::maki_city)
+				{
+					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
+					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					spritecomp1->transformation.Position = transcomp1->Position;
+					spritecomp1->transformation.Scale = transcomp1->Scale;
+					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+					spritecomp1->draw();
+				}
+				else //if(Map::maki_city)
+				{
+					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
+					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-				spritecomp1->transformation.Position = transcomp1->Position;
-				spritecomp1->transformation.Scale = transcomp1->Scale;
-				Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
-				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
-				spritecomp1->draw();
+					spritecomp1->transformation.Position = transcomp1->Position;
+					spritecomp1->transformation.Scale = transcomp1->Scale * 1.25f;
+					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+					spritecomp1->draw();
+				}
 
 				if(isTut1)
 				{
-					std::cout << keystate_up << "----------value--------" <<  "\n";
+					//std::cout << keystate_up << "----------value--------" <<  "\n";
 					SceneManager::drawTut1();
 				}
 
 				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);
-				if (checkifquestexists != Sprite::quest_boxes.end()) //if the quest does not exist for the level (eg test level, or lvl 9-11 quest not done yet)
+				if (checkifquestexists != Sprite::quest_boxes.end()) 
 				{
 					currentQuestIngredient = Sprite::quest_boxes.at(sLevel);
 					std::vector<std::string> current_quest_ingredient = Sprite::quest_boxes.at(sLevel);
@@ -1707,6 +1891,16 @@ namespace Core
 							questDrawItems.insert({ currentQuestIngredient[i] , pos3 });
 							updateChop(i, pos3);
 							break;
+						case 3:
+							questDrawItems.insert({ currentQuestIngredient[i] , pos4 });
+							updateChop(i, pos4);
+							break;
+
+						case 4:
+							questDrawItems.insert({ currentQuestIngredient[i] , pos5 });
+							updateChop(i, pos5);
+							break;
+
 						default:
 							break;
 						}
@@ -1717,20 +1911,19 @@ namespace Core
 				//	draw ingredients and chops
 				for (auto& ingredient : questDrawItems)
 				{
-					auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
+					//auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
 					//check if what you are accessing exists so it does not throw exception
-					if (checkifitexists != CoreSystem->objfactory->ObjectContainer.end())
-					{
+					
 						Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
 						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 						spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
-						Shaders->Textured_Shader()->use();
-						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+						//Shaders->Textured_Shader()->use();
+						//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
-					}
+					
 				}
 			}
 			

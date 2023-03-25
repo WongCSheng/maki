@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 150.0, 140.0 ],
+      "rotation": 0.0,
+      "scale": [ 95, 85 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/mc_inari.png",
+      "name": "mc_inari",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+}

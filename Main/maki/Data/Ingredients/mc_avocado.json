@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 150.0, 140.0 ],
+      "rotation": 0.0,
+      "scale": [ 95, 85 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Quest/mc_avocado.png",
+      "name": "mc_avocado",
+      "SpriteSheet": false,
+      "SpriteSize": [ 1280, 703 ]
+    }
+  ]
+}

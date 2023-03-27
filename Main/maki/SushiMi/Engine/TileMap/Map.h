@@ -82,6 +82,8 @@ namespace Core
 
 		static inline bool maki_city;
 
+		static inline bool ingr_corner_stuck;
+
 
 		/*map changing*/
 		/*

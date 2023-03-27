@@ -815,6 +815,19 @@ namespace Core
 		Font::RenderText(*Shaders, encourgementwords[Player::resetCount], Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
 	}
 
+	void SceneManager::drawIngrStuck()
+	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		timer += Get_Delta();
+		if (timer > 1.f)
+		{
+			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+		}
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, "Looks like the ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
+	}
+
 	void SceneManager::draw_Are_You_Sure()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", are_you_sure->transformation.Get());

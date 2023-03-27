@@ -282,6 +282,8 @@ namespace Core
 		//scale the player according to map size
 		Player::sp->transformation.Scale = glm::vec2(SceneManager::getTileWidth(), SceneManager::getTileHeight());
 
+		ingr_corner_stuck = 0;
+
 
 		print_map_to_console();
 
@@ -2186,6 +2188,14 @@ namespace Core
 						wGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last))
 					{
 						std::cout << "left ingredient wall\n";
+						if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last) ||
+							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
+						{
+							ingr_corner_stuck = 1;
+							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
+						}
 						Window::player->stop();
 					}
 					//check if tile on the left of ingredient is a sinkhole
@@ -2589,6 +2599,14 @@ namespace Core
 						wGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] < static_cast<int>(wall_type::last))
 					{
 						std::cout << "right ingredient wall\n";
+						if (wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last) ||
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
+						{
+							ingr_corner_stuck = 1;
+							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
+						}
 						Window::player->stop();
 					}
 					//check if tile on the right of ingredient is a sinkhole
@@ -3002,6 +3020,14 @@ namespace Core
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y + 2] < static_cast<int>(wall_type::last))
 					{
 						std::cout << "down ingredient wall\n";
+						if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last) ||
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
+						{
+							ingr_corner_stuck = 1;
+							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
+						}
 						Window::player->stop();
 					}
 					//check if tile below of ingredient is a sinkhole
@@ -3406,6 +3432,14 @@ namespace Core
 						wGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] < static_cast<int>(wall_type::last))
 					{
 						std::cout << "up ingredient wall\n";
+						if (wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last) ||
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y - 1] > static_cast<int>(wall_type::first) &&
+							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last))
+						{
+							ingr_corner_stuck = 1;
+							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
+						}
 						Window::player->stop();
 					}
 					//check if tile above of ingredient is a sinkhole
@@ -3846,6 +3880,11 @@ namespace Core
 		{
 			SceneManager::FadeOut();
 			SceneManager::drawGiveUp();
+		}
+		if (ingr_corner_stuck == 1)
+		{
+			SceneManager::FadeOut();
+			SceneManager::drawIngrStuck();
 		}
 		Shaders->Textured_Shader()->use();
 		//SceneManager::drawRice();

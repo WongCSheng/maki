@@ -229,6 +229,7 @@ namespace Core
 		static void draw_Particle();
 
 		static void drawEncourage();
+		static void drawIngrStuck();
 		static void drawGiveUp();
 
 		static void loadRect(int x, int y);

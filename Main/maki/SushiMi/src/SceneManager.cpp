@@ -722,11 +722,11 @@ namespace Core
 
 	void SceneManager::drawTut1( )
 	{
-		std::string up = "Up";
-		std::string down = "Down";
-		std::string left = "Left";
-		std::string right = "Right";
-		std::string str = " All ingredients are packed";
+		const std::string up = "Up";
+		const std::string down = "Down";
+		const std::string left = "Left";
+		const std::string right = "Right";
+		const std::string str = "All ingredients are packed";
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -758,7 +758,7 @@ namespace Core
 		}
 		//std::cout << Window::keystate_up << "is the Up key value" << "\n";
 
-		if(Window::keystate_up)
+ 		if(Window::keystate_up)
 		{
 			color_up = { 0.f, 1.f, 0.f };
 			up_key = true; //keep color to green after pressed Up
@@ -778,12 +778,17 @@ namespace Core
 			color_right = { 0.f, 1.f, 0.f };
 			right_key = true; //keep color to green after pressed Up
 		}
+		if (Map::isWin())
+		{
+			color_str = { 0.f, 1.f, 0.f }; //green
+		};
 		
 			Shaders->Font_Shader()->use();
 			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-920), (float)(screenheight-180), .55f, color_up, 1.f);
 			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 860), (float)(screenheight - 180), .55f, color_down, 1.f);
 			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 765), (float)(screenheight - 180), .55f, color_left, 1.f);
 			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 180), .55f, color_right, 1.f);
+			Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 225), .55f, color_str, 1.f);
 			//Font::RenderText(*Shaders, str, 50, 550, .55f, color_str, 1.f);
 			Shaders->Textured_Shader()->use();
 		

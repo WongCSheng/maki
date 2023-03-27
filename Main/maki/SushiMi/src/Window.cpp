@@ -46,8 +46,15 @@ namespace Core
 	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
 
+	static bool up_key = false;
+	static bool down_key = false;
+	static bool left_key = false;
+	static bool right_key = false;
+
 	std::map<std::string, gfxVector2> Window::questDrawItems;
 	double lastframe = 0;
+
+	static std::map<std::string, gfxVector2> chops;
 	/*																  game states
 	----------------------------------------------------------------------------- */
 
@@ -552,8 +559,7 @@ namespace Core
 				chop = "done_5";
 				break;
 			}
-			questDrawItems.insert({ chop, pos });
-
+			chops.insert({ chop, pos });
 		}
 
 		else if (winningBoxes[position].second == 0 && (!(isTut1 || isTut2)))
@@ -576,7 +582,7 @@ namespace Core
 				chop = "denied_5";
 				break;
 			}
-			questDrawItems.insert({ chop, pos });
+			chops.insert({ chop, pos });
 		}
 
 	}
@@ -1323,7 +1329,7 @@ namespace Core
 		//}
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_right = true;
+			//keystate_right = true;
 			keystate_D = true;
 			if (keystate_right || keystate_D)
 			{
@@ -1331,14 +1337,14 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				keystate_right = false;
+				//keystate_right = false;
 				keystate_D = false;
 			}
 		}
 
 		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_left = true;
+			//keystate_left = true;
 			keystate_A = true;
 			//player only move on one press
 			//holding key or let go key, player stop
@@ -1348,14 +1354,14 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				keystate_left = false;
+				//keystate_left = false;
 				keystate_A = false;
 			}
 		}
 
 		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_up = true;
+			//keystate_up = true;
 			keystate_W = true;
 
 			if (keystate_up || keystate_W)
@@ -1364,7 +1370,8 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				keystate_up = false;
+				//keystate_up = false;
+				up_key = true;
 				keystate_W = false;
 
 			}
@@ -1372,7 +1379,7 @@ namespace Core
 
 		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_down = true;
+			//keystate_down = true;
 			keystate_S = true;
 			if (keystate_down || keystate_S)
 			{
@@ -1380,7 +1387,7 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				keystate_down = false;
+				//keystate_down = false;
 				keystate_S = false;
 			}
 		}
@@ -1909,21 +1916,33 @@ namespace Core
 				}
 
 				//	draw ingredients and chops
-				for (auto& ingredient : questDrawItems)
+				for (auto& [name, position] : questDrawItems)
 				{
 					//auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
 					//check if what you are accessing exists so it does not throw exception
 					
-						Core::Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(ingredient.first);
+						Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(name);
 						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
-						spritecomp2->transformation.Position = { ingredient.second.x, ingredient.second.y };
+						spritecomp2->transformation.Position = { position.x, position.y };
 						//Shaders->Textured_Shader()->use();
 						//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
-					
+				}
+
+				for (auto& [name, position] : chops)
+				{
+					Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at(name);
+					//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+
+					spritecomp1->transformation.Position = { position.x, position.y };
+					//Shaders->Textured_Shader()->use();
+					//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+					spritecomp1->draw();
 				}
 			}
 			

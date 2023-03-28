@@ -1397,7 +1397,6 @@ namespace Core
 		*******************************/
 		if (keystate_R && (gameIsPaused == false && isWinCondition == false))
 		{
-			keystate_R = true;
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
@@ -1423,7 +1422,6 @@ namespace Core
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
 
-				keystate_R = false;
 			}
 
 		}
@@ -1871,8 +1869,12 @@ namespace Core
 
 				if(isTut1)
 				{
-					//std::cout << keystate_up << "----------value--------" <<  "\n";
 					SceneManager::drawTut1();
+				}
+
+				if (isTut2)
+				{
+					SceneManager::drawTut2();
 				}
 
 				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);

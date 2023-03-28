@@ -20,15 +20,19 @@ namespace Core
 	static bool down_key = false;
 	static bool left_key = false;
 	static bool right_key = false;
+	static bool r_key = false;
 
 	/* default black color */
 	glm::vec3 color_up{0.f, 0.f, 0.f}; 
 	glm::vec3 color_down{ 0.f, 0.f, 0.f };
 	glm::vec3 color_left{ 0.f, 0.f, 0.f };
 	glm::vec3 color_right{ 0.f, 0.f, 0.f };
+	glm::vec3 color_r{ 0.f, 0.f, 0.f };
 
-	//color str default red
+	//color str default  //red
 	glm::vec3 color_str{ 1.f, 0.f, 0.f };
+
+
 
 	SceneManager::SceneManager()
 	{
@@ -763,35 +767,64 @@ namespace Core
 			color_up = { 0.f, 1.f, 0.f };
 			up_key = true; //keep color to green after pressed Up
 		}
-		if (Window::keystate_down == true)
+		if (Window::keystate_down)
 		{
 			color_down = { 0.f, 1.f, 0.f };
 			down_key = true; //keep color to green after pressed Up
 		}
-		if (Window::keystate_left == true)
+		if (Window::keystate_left)
 		{
 			color_left = { 0.f, 1.f, 0.f };
 			left_key = true; //keep color to green after pressed Up
 		}
-		if (Window::keystate_right == true )
+		if (Window::keystate_right)
 		{
 			color_right = { 0.f, 1.f, 0.f };
 			right_key = true; //keep color to green after pressed Up
 		}
-		if (Map::isWin())
+		
+		if (!Map::isWin())
+		{
+			//when no win, set the string to red color
+			color_str = { 1.f, 0.f, 0.f }; //red
+		} 
+		else if(Map::isWin())
 		{
 			color_str = { 0.f, 1.f, 0.f }; //green
+			//when win condition met, green color
 		};
 		
 			Shaders->Font_Shader()->use();
-			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-920), (float)(screenheight-180), .55f, color_up, 1.f);
-			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 860), (float)(screenheight - 180), .55f, color_down, 1.f);
-			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 765), (float)(screenheight - 180), .55f, color_left, 1.f);
-			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 180), .55f, color_right, 1.f);
-			Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 225), .55f, color_str, 1.f);
-			//Font::RenderText(*Shaders, str, 50, 550, .55f, color_str, 1.f);
+			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight-175), .55f, color_up, 1.f);
+			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 175), .55f, color_down, 1.f);
+			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 175), .55f, color_left, 1.f);
+			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 175), .55f, color_right, 1.f);
+			Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 220), .55f, color_str, 1.f);
 			Shaders->Textured_Shader()->use();
 		
+	}
+
+	void SceneManager::drawTut2()
+	{
+		if (!r_key)
+		{
+			//default up_key set to red
+			color_r = { 1.f, 0.f, 0.f };
+		}
+		if(Window::keystate_R)
+		{
+			color_r= { 0.f, 1.f, 0.f }; //green
+			r_key = true; //keep color to green after pressed r
+			
+		}
+		const std::string str = "Press   'R'   to  restart";
+
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 190), .55f, color_r, 1.f);
+		Shaders->Textured_Shader()->use();
 	}
 
 	/* resets color back to red*/
@@ -801,6 +834,7 @@ namespace Core
 		color_down = { 1.f, 0.f, 0.f };
 		color_left = { 1.f, 0.f, 0.f };
 		color_right = { 1.f, 0.f, 0.f };
+		color_r = { 1.f, 0.f, 0.f };
 	}
 	
 

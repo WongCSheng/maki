@@ -354,6 +354,7 @@ void Core::pseudomain::init() {
 	AudioManager.LoadVoice("Idle_1.ogg");
 	AudioManager.LoadVoice("Curious_3.ogg");
 	AudioManager.LoadVoice("Oof_1.ogg");
+	AudioManager.LoadVoice("Scream_8.ogg");
 	AudioManager.LoadSFX("Pouring.ogg");
 	AudioManager.LoadSFX("Squeezing.ogg");
 	//AssetsManager::GetInstance()->Add_files("../Assets");

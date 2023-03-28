@@ -89,6 +89,7 @@ namespace Core
 		/*Fade out effect*/
 		if (!Window::isWinCondition)
 		{
+			SceneManager::rec->timer = 0.f;
 			SceneManager::FadeOut();
 			SceneManager::drawBlackOverlay();
 		}
@@ -139,7 +140,7 @@ namespace Core
 				Window::keystate_space = false;
 
 			}
-			if (SceneManager::spacepressed == 1)
+			if (SceneManager::spacepressed >= 1)
 			{
 				SceneManager::rec->timer += Get_Delta();
 				/*Fade in function, comes together*/

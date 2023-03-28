@@ -1922,14 +1922,13 @@ namespace Core
 				{
 					//auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
 					//check if what you are accessing exists so it does not throw exception
-					
 						Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(name);
 						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 						spritecomp2->transformation.Position = { position.x, position.y };
 						//Shaders->Textured_Shader()->use();
-						//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
 				}

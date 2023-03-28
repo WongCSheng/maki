@@ -259,8 +259,10 @@ namespace Core
 
 		Window::player->restart();
 		SceneManager::FcurrentAlpha = 1.f;
+		SceneManager::ScurrentAlpha = 1.f;
 		SceneManager::timer = 0.0f;
 		win_amt = 0;
+		ingr_corner_stuck = 0;
 	}
 
 
@@ -2194,6 +2196,7 @@ namespace Core
 							wGrids[Window::player->player_grid_pos.x - 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
 						{
 							ingr_corner_stuck = 1;
+							AudioManager.PlayVoice("Scream_8.ogg");
 							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
 						}
 						Window::player->stop();
@@ -2605,6 +2608,7 @@ namespace Core
 							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
 						{
 							ingr_corner_stuck = 1;
+							AudioManager.PlayVoice("Scream_8.ogg");
 							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
 						}
 						Window::player->stop();
@@ -3026,6 +3030,7 @@ namespace Core
 							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y + 1] < static_cast<int>(wall_type::last))
 						{
 							ingr_corner_stuck = 1;
+							AudioManager.PlayVoice("Scream_8.ogg");
 							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
 						}
 						Window::player->stop();
@@ -3438,6 +3443,7 @@ namespace Core
 							wGrids[Window::player->player_grid_pos.x + 1][Window::player->player_grid_pos.y - 1] < static_cast<int>(wall_type::last))
 						{
 							ingr_corner_stuck = 1;
+							AudioManager.PlayVoice("Scream_8.ogg");
 							std::cout << "fk im stuck, add sounds + emotion + a text" << std::endl;
 						}
 						Window::player->stop();

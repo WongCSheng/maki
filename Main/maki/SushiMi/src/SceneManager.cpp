@@ -431,6 +431,7 @@ namespace Core
 	
 	void SceneManager::drawBlackOverlay()
 	{
+
 		SceneManager::loadRect(0, 0);
 
 		currentAlpha = std::lerp(currentAlpha, targetAlpha, Get_Delta());
@@ -848,7 +849,7 @@ namespace Core
 		timer += Get_Delta();
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			FcurrentAlpha = std::lerp(FcurrentAlpha, FtargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, encourgementwords[Player::resetCount], Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
@@ -861,10 +862,10 @@ namespace Core
 		timer += Get_Delta();
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			ScurrentAlpha = std::lerp(ScurrentAlpha, StargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
-		Font::RenderText(*Shaders, "Looks like the ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
+		Font::RenderText(*Shaders, "ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), ScurrentAlpha);
 	}
 
 	void SceneManager::draw_Are_You_Sure()
@@ -891,7 +892,7 @@ namespace Core
 
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			FcurrentAlpha = std::lerp(FcurrentAlpha, FtargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, "Getgud -Bami 2023", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
@@ -1021,11 +1022,15 @@ namespace Core
 	void SceneManager::FadeIn()
 	{
 		targetAlpha = 1.0f;
+		FtargetAlpha = 1.0f;
+		StargetAlpha = 1.0f;
 	}
 
 	void SceneManager::FadeOut()
 	{
 		targetAlpha = 0.0f;
+		FtargetAlpha = 0.0f;
+		StargetAlpha = 0.0f;
 	}
 
 	void SceneManager::set_target_pos(Sprite* boxcover)

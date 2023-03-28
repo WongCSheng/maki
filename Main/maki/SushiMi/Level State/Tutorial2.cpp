@@ -80,12 +80,7 @@ namespace Core
 																	// for quest tab drawing of ingredients
 			//also need dialogue after game end
 		}
-		/*Fade out effect*/
-		if (!Window::isWinCondition)
-		{
-			SceneManager::FadeOut();
-			SceneManager::drawBlackOverlay();
-		}
+
 		//draw tut 2 tile map
 		Map::DrawMap();
 		SceneManager::particle->timer += ((Get_Delta()));
@@ -115,6 +110,14 @@ namespace Core
 			Window::player->draw(0);
 
 		}
+		/*Fade out effect*/
+		if (!Window::isWinCondition)
+		{
+			SceneManager::rec->timer = 0.f;
+			SceneManager::FadeOut();
+			SceneManager::drawBlackOverlay();
+			Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+		}
 		if (Map::isWin())
 		{
 			//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
@@ -132,7 +135,7 @@ namespace Core
 				Window::keystate_space = false;
 
 			}
-			if (SceneManager::spacepressed == 1)
+			if (SceneManager::spacepressed >= 1)
 			{
 				SceneManager::rec->timer += Get_Delta();
 				/*Fade in function, comes together*/
@@ -147,6 +150,7 @@ namespace Core
 					SceneManager::spacepressed = 0;
 				}
 			}
+
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
 		}

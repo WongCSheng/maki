@@ -211,6 +211,12 @@ namespace Core
 						std::size_t soya = x.find("Soya");
 						std::size_t both = x.find("Both");
 
+					/*	std::size_t corn = x.find("mc_corn");
+						std::size_t inari = x.find("mc_inari");
+						std::size_t avocado = x.find("mc_avocado");
+						std::size_t tuna = x.find("mc_tuna");
+						std::size_t roes = x.find("mc_roes");*/
+
 						if (!Map::maki_city)
 						{
 							if ((_ingredient.nametag == grid_number::octopus) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
@@ -371,12 +377,6 @@ namespace Core
 
 						if(Map::maki_city)
 						{
-							std::size_t corn = x.find("mc_corn");
-							std::size_t inari = x.find("mc_inari");
-							std::size_t avocado = x.find("mc_avocado");
-							std::size_t tuna = x.find("mc_tuna");
-							std::size_t roes = x.find("mc_roes");
-
 							if ((_ingredient.nametag == grid_number::corn) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
 								switch (_ingredient.spr->status)
@@ -598,6 +598,7 @@ namespace Core
 			winningBoxes[i] = { " ", -1 };
 
 		questDrawItems.clear();
+		chops.clear();
 	}
 
 	std::string Window::EnumToString(GameState Currentlevel)
@@ -1329,7 +1330,7 @@ namespace Core
 		//}
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			//keystate_right = true;
+			keystate_right = true;
 			keystate_D = true;
 			if (keystate_right || keystate_D)
 			{
@@ -1337,14 +1338,14 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				//keystate_right = false;
+				keystate_right = false;
 				keystate_D = false;
 			}
 		}
 
 		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			//keystate_left = true;
+			keystate_left = true;
 			keystate_A = true;
 			//player only move on one press
 			//holding key or let go key, player stop
@@ -1354,24 +1355,22 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				//keystate_left = false;
+				keystate_left = false;
 				keystate_A = false;
 			}
 		}
 
 		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			//keystate_up = true;
+			keystate_up = true;
 			keystate_W = true;
-
 			if (keystate_up || keystate_W)
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				//keystate_up = false;
-				up_key = true;
+				keystate_up = false;
 				keystate_W = false;
 
 			}
@@ -1379,7 +1378,7 @@ namespace Core
 
 		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			//keystate_down = true;
+			keystate_down = true;
 			keystate_S = true;
 			if (keystate_down || keystate_S)
 			{
@@ -1387,7 +1386,7 @@ namespace Core
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				//keystate_down = false;
+				keystate_down = false;
 				keystate_S = false;
 			}
 		}
@@ -1395,8 +1394,9 @@ namespace Core
 		/***************************
 			restart key "R" resets the level
 		*******************************/
-		if (keystate_R && (gameIsPaused == false && isWinCondition == false))
+		if (keystate_R && (gameIsPaused == false && isWinCondition == false)) 
 		{
+			//keystate_R = true;
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
@@ -1416,12 +1416,13 @@ namespace Core
 				for (size_t i{}; i < Window::winningBoxes.size(); ++i)
 					winningBoxes[i] = { " ", -1 };
 				questDrawItems.clear();
+				chops.clear();
 				SceneManager::resetColor();
 
 				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
-
+				keystate_R = false;
 			}
 
 		}

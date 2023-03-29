@@ -16,11 +16,7 @@ namespace Core
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
 
-	static bool up_key = false;
-	static bool down_key = false;
-	static bool left_key = false;
-	static bool right_key = false;
-	static bool r_key = false;
+	
 
 	/* default black color */
 	glm::vec3 color_up{0.f, 0.f, 0.f}; 
@@ -36,6 +32,11 @@ namespace Core
 
 	SceneManager::SceneManager()
 	{
+		up_key = false;
+		down_key = false;
+		left_key = false;
+		right_key = false;
+		r_key = false;
 		/*tile = nullptr;
 		ingredient1 = nullptr;
 		ingredient2 = nullptr;
@@ -737,52 +738,44 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 		/*	bool state to toggle the key */
-		if(!up_key) 
+		if(!up_key)
 		{	//up_key is true
 			//default up_key set to red
 			color_up = { 1.f, 0.f, 0.f };
 
 		}
+		else
+		{
+			color_up = { 0.f, 1.f, 0.f };
+		}
+
 		if (!down_key) 
 		{
 			//default up_key set to red
 			color_down = { 1.f, 0.f, 0.f };
 
 		}
+		else
+			color_down = { 0.f, 1.f, 0.f };
+
 		if (!left_key) 
 		{
 			//default up_key set to red
 			color_left = { 1.f, 0.f, 0.f };
 
 		}
+		else
+			color_left = { 0.f, 1.f, 0.f };
+
 		if (!right_key) 
 		{
 			//default up_key set to red
 			color_right = { 1.f, 0.f, 0.f };
 
 		}
-		//std::cout << Window::keystate_up << "is the Up key value" << "\n";
-
- 		if(Window::keystate_up)
-		{
-			color_up = { 0.f, 1.f, 0.f };
-			up_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_down)
-		{
-			color_down = { 0.f, 1.f, 0.f };
-			down_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_left)
-		{
-			color_left = { 0.f, 1.f, 0.f };
-			left_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_right)
-		{
+		else
 			color_right = { 0.f, 1.f, 0.f };
-			right_key = true; //keep color to green after pressed Up
-		}
+
 		
 		if (!Map::isWin())
 		{
@@ -795,32 +788,41 @@ namespace Core
 			//when win condition met, green color
 		};
 		
-			Shaders->Font_Shader()->use();
-			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight-175), .55f, color_up, 1.f);
-			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 175), .55f, color_down, 1.f);
-			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 175), .55f, color_left, 1.f);
-			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 175), .55f, color_right, 1.f);
-			Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 220), .55f, color_str, 1.f);
-			Shaders->Textured_Shader()->use();
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight-175), .55f, color_up, 1.f);
+		Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 175), .55f, color_down, 1.f);
+		Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 175), .55f, color_left, 1.f);
+		Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 175), .55f, color_right, 1.f);
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 220), .55f, color_str, 1.f);
+		Shaders->Textured_Shader()->use();
 		
 	}
 
 	void SceneManager::drawTut2()
 	{
+		//if (!r_key)
+		//{
+		//	//default up_key set to red
+		//	color_r = { 1.f, 0.f, 0.f };
+		//}
 		if (!r_key)
 		{
 			//default up_key set to red
 			color_r = { 1.f, 0.f, 0.f };
+
 		}
-		if(Window::keystate_R)
-		{
-			color_r= { 0.f, 1.f, 0.f }; //green
-			r_key = true; //keep color to green after pressed r
-			
-		}
+		else
+			color_r = { 0.f, 1.f, 0.f };
+
+		//if(Window::keystate_R)
+		//{
+		//	color_r= { 0.f, 1.f, 0.f }; //green
+		//	r_key = true; //keep color to green after pressed r
+		//	
+		//}
 		const std::string str = "Press   'R'   to  restart";
 
-		int screenwidth = 0, screenheight = 0;
+		int screenwidth, screenheight;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 		Shaders->Font_Shader()->use();

@@ -46,10 +46,10 @@ namespace Core
 	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
 
-	static bool up_key = false;
+	/*static bool up_key = false;
 	static bool down_key = false;
 	static bool left_key = false;
-	static bool right_key = false;
+	static bool right_key = false;*/
 
 	std::map<std::string, gfxVector2> Window::questDrawItems;
 	double lastframe = 0;
@@ -87,18 +87,8 @@ namespace Core
 		----------------------------------------------------------------------------- */
 	void keyCallBack([[maybe_unused]] GLFWwindow* window_ptr, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mod)
 	{
-		if (GLFW_REPEAT == action)
-		{
-			Window::keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
-			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
-			Window::keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
-			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;
-			Window::keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
-			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
-			Window::keystate_M = (key == GLFW_KEY_M) ? true : false;
-			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
-		}
-		else if (GLFW_RELEASE == action)
+		
+		if (GLFW_RELEASE == action)
 		{
 			Window::keystate_left = false;
 			Window::keystate_right = false;
@@ -110,6 +100,10 @@ namespace Core
 			Window::keystate_tab = false;
 			Window::keystate_space = false;
 			Window::keystate_fps = false;
+			Window::keystate_W = false;
+			Window::keystate_D = false;
+			Window::keystate_A = false;
+			Window::keystate_S = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -148,7 +142,6 @@ namespace Core
 			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;	//left
 			Window::keystate_S = (key == GLFW_KEY_S) ? true : false;	//down
 			Window::keystate_D = (key == GLFW_KEY_D) ? true : false;	//right
-
 		}
 	}
 	void Window::checkWin(std::string currentlevel)
@@ -210,12 +203,6 @@ namespace Core
 						std::size_t wasabi = x.find("Wasabi");
 						std::size_t soya = x.find("Soya");
 						std::size_t both = x.find("Both");
-
-					/*	std::size_t corn = x.find("mc_corn");
-						std::size_t inari = x.find("mc_inari");
-						std::size_t avocado = x.find("mc_avocado");
-						std::size_t tuna = x.find("mc_tuna");
-						std::size_t roes = x.find("mc_roes");*/
 
 						if (!Map::maki_city)
 						{
@@ -1330,23 +1317,24 @@ namespace Core
 		//}
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_right = true;
-			keystate_D = true;
+		
 			if (keystate_right || keystate_D)
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
 				keystate_right = false;
 				keystate_D = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = false;
+				SceneManager::left_key = false;
+				SceneManager::right_key = true;
 			}
 		}
 
 		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_left = true;
-			keystate_A = true;
+	
 			//player only move on one press
 			//holding key or let go key, player stop
 			if (keystate_left || keystate_A)
@@ -1354,32 +1342,36 @@ namespace Core
 				Map::collision_check_left();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
 				keystate_left = false;
 				keystate_A = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = false;
+				SceneManager::left_key = true;
+				SceneManager::right_key = false;
 			}
 		}
 
 		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_up = true;
-			keystate_W = true;
+		
 			if (keystate_up || keystate_W)
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
 				keystate_up = false;
 				keystate_W = false;
+				SceneManager::up_key = true;
+				SceneManager::down_key = false;
+				SceneManager::left_key = false;
+				SceneManager::right_key = false;
 
 			}
 		}
 
 		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
 		{
-			keystate_down = true;
-			keystate_S = true;
+
 			if (keystate_down || keystate_S)
 			{
 				Map::collision_check_down();
@@ -1388,6 +1380,10 @@ namespace Core
 
 				keystate_down = false;
 				keystate_S = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = true;
+				SceneManager::left_key = false;
+				SceneManager::right_key = false;
 			}
 		}
 
@@ -1422,6 +1418,7 @@ namespace Core
 				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
+				SceneManager::r_key = true;
 				keystate_R = false;
 			}
 

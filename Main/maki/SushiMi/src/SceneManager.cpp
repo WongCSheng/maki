@@ -6,7 +6,7 @@
 #include <Engine/Font/Font.h>
 #include "Window.h"
 //#include "."
-
+double credits_y = 0;
 
 namespace Core
 {
@@ -260,9 +260,9 @@ namespace Core
 		settings_page->transformation.Position = glm::vec2(screenwidth * 0.25, screenheight * 0.25);
 		settings_page->transformation.Scale = glm::vec2(screenwidth * 0.47, screenheight * 0.5);
 
-		//credits
-		credits_page->transformation.Position = glm::vec2(0, 0);
-		credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		////credits
+		//credits_page->transformation.Position = glm::vec2(0, 0);
+		//credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
@@ -704,14 +704,29 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", settings_page->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			settings_page->draw();
+			credits_y = 0;
 
 		}
 		else //isCredits == true
 		{
+			int screenwidth = 0, screenheight = 0;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			
+			//credits
+			credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight*3);
+			if (credits_y > -screenheight * 2)
+			{
+				credits_y -= Get_Delta()*70;
+				
+			}
+			
+			credits_page->transformation.Position = glm::vec2(0, credits_y);
 			//if credits only
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", credits_page->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			credits_page->draw();
+			
+
 
 		}
 	}

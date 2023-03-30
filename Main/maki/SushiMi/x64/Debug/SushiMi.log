@@ -1,2 +1,3 @@
-﻿  Window.cpp
-  SushiMi.vcxproj -> C:\Users\Aurel\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe
+﻿C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\SushiMi.vcxproj(60,5): warning MSB4011: "C:\Users\thea.sea\AppData\Local\Microsoft\MSBuild\v4.0\Microsoft.Cpp.x64.user.props" cannot be imported again. It was already imported at "C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\SushiMi.vcxproj (51,5)". This is most likely a build authoring error. This subsequent import will be ignored. 
+  SceneManager.cpp
+  SushiMi.vcxproj -> C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

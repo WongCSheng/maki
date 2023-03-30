@@ -719,7 +719,8 @@ namespace Core
 		SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
 
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
-		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
+		SceneManager::credits_page = new Sprite("../textures/Credits/NEWCreditsRoll.png");
+		
 
 		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
 		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
@@ -2089,15 +2090,19 @@ namespace Core
 
 			if (isCredits == true)
 			{
-				if (mouseLeft)
+				//if (mouseLeft)
+				//{
+				//	double xpos = 0, ypos = 0;
+				//	glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+				//	//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+				//	if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
+				//	{
+				//		isCredits = false;
+				//	}
+				//}
+				if (keystate_escape)
 				{
-					double xpos = 0, ypos = 0;
-					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-					//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
-					{
-						isCredits = false;
-					}
+					isCredits = false;
 				}
 			}
 			if (finallevelclear)

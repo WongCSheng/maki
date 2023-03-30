@@ -2015,7 +2015,8 @@ namespace Core
 				if (keystate_escape)
 				{
 					isHowToPlay = false;
-					//isMenuState = true;
+					if (!isTut1 && !isTut2 && !isLevel1 && !isLevel2 && !isLevel3 && !isLevel4 && !isLevel5 && !isLevel6 && !isLevel7 && !isLevel8 && !isLevel9 && !isLevel10 && !isLevel11 && !isTestLevel)
+					isMenuState = true;
 					HowToPlayPage = 0;
 					keystate_escape = false;
 					/*break;*/

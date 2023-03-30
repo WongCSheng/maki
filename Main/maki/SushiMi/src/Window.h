@@ -158,7 +158,7 @@ namespace Core
 		bool isCutscene;
 		static inline int CutscenePage;
 
-		bool isHowToPlay;
+		static inline bool isHowToPlay;
 		static inline int HowToPlayPage;
 
 		bool isSettings;

@@ -657,7 +657,6 @@ namespace Core
 		:m_width(_width),
 		m_height(_height),
 		isCutscene(0),
-		isHowToPlay(0),
 		isLevelSelection(0),
 		isSettings(0),
 		isWalk(0),
@@ -1111,7 +1110,7 @@ namespace Core
 		{
 			areyousure_prompt = false;
 		}
-		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false)
+		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false && isHowToPlay == false)
 		{
 			gameIsPaused = !gameIsPaused;
 
@@ -1193,12 +1192,43 @@ namespace Core
 					{
 						gameIsPaused = false;
 						//std::cout << "game resume, no more pause screen" << std::endl;
-						int screenwidth = 0, screenheight = 0;
+						/*int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
 
 
+
+					}
+				}
+				else if (x.first == "HowToPlay1")
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
+
+					//RESUME THE GAME BUTTON
+					if (((float)xpos > position.x) &&
+						((float)ypos > position.y) &&
+						((float)xpos < (position.x + scale.x)) &&
+						((float)ypos < (position.y + scale.y)))
+					{
+						if (!keystate_escape)
+							isHowToPlay = true;
+
+						//std::cout << "game resume, no more pause screen" << std::endl;
+						/*int screenwidth = 0, screenheight = 0;
+						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
+
+						/*if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel))
+						{
+							HowToPlayPage = 0;
+							isHowToPlay = false;
+							keystate_escape = false;
+							gameIsPaused = true;
+						}*/
 
 					}
 				}
@@ -1216,10 +1246,10 @@ namespace Core
 					{
 
 						keystate_T = true;
-						int screenwidth = 0, screenheight = 0;
+						/*int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
 					}
 				}
 				else if (x.first == "QuitButton")
@@ -1813,6 +1843,9 @@ namespace Core
 					if (x.first == "ResumeButton")
 						spritecomp->draw();
 
+					if (x.first == "HowToPlay1")
+						spritecomp->draw();
+
 					if (x.first == "QuitButton")
 						spritecomp->draw();
 
@@ -1971,9 +2004,9 @@ namespace Core
 			if (isHowToPlay == true)
 			{
 				isMenuState = false; //disable menu buttons
-				gameIsPaused = false;
+				//gameIsPaused = false;
 
-				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
+				//isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
 				isQuestTab = false;
 
 				//SceneManager::loadHowToOverlay(0, 0);
@@ -1981,10 +2014,11 @@ namespace Core
 				SceneManager::drawHowToOverlay(HowToPlayPage);
 				if (keystate_escape)
 				{
-					isMenuState = true;
-					HowToPlayPage = 0;
 					isHowToPlay = false;
+					//isMenuState = true;
+					HowToPlayPage = 0;
 					keystate_escape = false;
+					/*break;*/
 				}
 				else if (keystate_right)
 				{

@@ -694,6 +694,7 @@ namespace Core
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			if (Window::isHowToPlay == true)
 			spritecomp->draw();
 	}
 	void SceneManager::drawSettings()

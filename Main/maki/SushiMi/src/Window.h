@@ -256,7 +256,7 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		//void ImGuiToObjContainer(ObjectFactory* c);
 	
-
+		static inline const char* levelprogress;
 
 		struct ScreenDimensions {
 			static inline int screenwidth;

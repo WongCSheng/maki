@@ -27,7 +27,9 @@ Description:
 #include "../Engine/Core/Core.h"
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "Engine/Font/Font.h"
+#include "../Headers/Log.h"
 #include "../Level State/LevelsHeader.h"
+#include "../Engine/GameSave/GameSave.h"
 
 namespace Core
 {
@@ -715,9 +717,13 @@ namespace Core
 		delta = 0;
 		Shaders = std::make_unique<ShaderLibrary>();
 		camera = std::make_unique<Camera>(0, 0);
-
+		
 		timetodeletegrid = false;
 		isMenuState = true;
+		levelprogress = 0;
+		
+		GameSave::LoadGameSave("../Data/LevelProgress/Gamesave.txt");
+		//GameSave::SetAllGameSaveZero();
 #ifdef EDITOR
 
 		//the first level displayed on the map's launch
@@ -806,6 +812,7 @@ namespace Core
 
 	Window::~Window()
 	{
+		GameSave::WriteGameSave("../Data/LevelProgress/Gamesave.txt"); //Save Level Progress
 		timetodeletegrid = true;
 		Map::ResetMap();
 #ifndef EDITOR
@@ -1327,7 +1334,7 @@ namespace Core
 		//	//the code below closes the game
 		//	//glfwSetWindowShouldClose(window_ptr, true);
 		//}
-		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
+		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
 			//keystate_right = true;
 			keystate_D = true;
@@ -1342,7 +1349,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
+		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
 			//keystate_left = true;
 			keystate_A = true;
@@ -1359,7 +1366,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
+		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
 			//keystate_up = true;
 			keystate_W = true;
@@ -1377,7 +1384,7 @@ namespace Core
 			}
 		}
 
-		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false)
+		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
 			//keystate_down = true;
 			keystate_S = true;

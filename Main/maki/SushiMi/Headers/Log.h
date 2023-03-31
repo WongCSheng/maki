@@ -28,6 +28,9 @@ using namespace std;
 #define LOG_TRACE_ENABLED 0
 #endif
 
+static inline const int BufLen = 1000;
+static inline char OutMessage[BufLen];
+
 /**************************************************************************/
 /*!
 	This enum contains the logging level enum for seriousness of the error
@@ -39,7 +42,8 @@ typedef enum class LogLevel {
 	LOG_LEVEL_WARN,	//Errors that may cause some sublevel harm to app
 	LOG_LEVEL_INFO,	//Basic level logging for information
 	LOG_LEVEL_DEBUG,	//Included only for debug/test build for debugging
-	LOG_LEVEL_TRACE		//Includes very low level of detail for debugging mode
+	LOG_LEVEL_TRACE,		//Includes very low level of detail for debugging mode
+	LOG_LEVEL_PROGRESS		//Includes very low level of detail for debugging mode
 }LogLevel;
 
 

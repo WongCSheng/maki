@@ -121,6 +121,9 @@ namespace Core
 		if (Window::isWinCondition == true)
 		{
 
+			GameSave::LevelStatusContainer[2].isLevelClear = 1;
+			GameSave::LevelStatusContainer[3].isUnlocked = 1; //set next level unlocked
+
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
@@ -147,6 +150,20 @@ namespace Core
 			}
 			SceneManager::loadWinOverlay(static_cast<int>(screenwidth * 0.25), static_cast<int>(screenheight * 0.25));
 			SceneManager::drawWinOverlay();
+			//stop all player controls
+			//press button to undraw level 1, and draw level 2
+			if (Window::keystate_space && Window::isWinCondition == true)
+			{
+				//update level progress
+				
+
+				Window::isLevel1 = false; //unload curr level
+				Window::isLevel2 = true; //load new level
+				Window::isWinCondition = false; //reset win condition
+				Window::loaded = false; //set to load
+				Window::keystate_space = false;
+			}
+
 		}
 	}
 }

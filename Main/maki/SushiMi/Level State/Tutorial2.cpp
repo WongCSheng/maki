@@ -141,7 +141,7 @@ namespace Core
 				/*Fade in function, comes together*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
-				if (SceneManager::rec->timer > 4.f)
+				if (SceneManager::rec->timer > 3.f)
 				{
 					Window::isTut2 = false; //unload curr level
 					Window::isLevel1 = true; //load new level

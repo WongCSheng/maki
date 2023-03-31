@@ -75,6 +75,7 @@ namespace Core
 		static inline bool keystate_9;
 		static inline bool keystate_0;
 		static inline bool keystate_minus;
+		static inline bool keystate_equal;
 		static inline bool keystate_Y;
 		static inline bool keystate_N;
 		static inline bool keystate_J;
@@ -256,7 +257,7 @@ namespace Core
 		static inline Sprite* pause_overlay;
 		//void ImGuiToObjContainer(ObjectFactory* c);
 	
-
+		static inline const char* levelprogress;
 
 		struct ScreenDimensions {
 			static inline int screenwidth;

@@ -1,3 +1,24 @@
-﻿C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\SushiMi.vcxproj(60,5): warning MSB4011: "C:\Users\thea.sea\AppData\Local\Microsoft\MSBuild\v4.0\Microsoft.Cpp.x64.user.props" cannot be imported again. It was already imported at "C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\SushiMi\SushiMi.vcxproj (51,5)". This is most likely a build authoring error. This subsequent import will be ignored. 
+﻿  LevelEditor.cpp
+  Sprite.cpp
+  Core.cpp
+  Font.cpp
+  Map.cpp
+  Player.cpp
+  Level1.cpp
+  Level10.cpp
+  Level11.cpp
+  Level2.cpp
+  Level3.cpp
+  Level4.cpp
+  Level5.cpp
+  Level6.cpp
+  Level7.cpp
+  Level8.cpp
+  Level9.cpp
+  TestLevel.cpp
+  Tutorial1.cpp
+  Tutorial2.cpp
+  SceneManager.cpp
   Window.cpp
-  SushiMi.vcxproj -> C:\Users\thea.sea\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe
+  main.cpp
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

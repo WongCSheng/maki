@@ -187,6 +187,9 @@
     <ClCompile Include="Level State\Tutorial2.cpp">
       <Filter>Level State</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\GameSave\GameSave.cpp">
+      <Filter>GameEngine\GameSave</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -373,6 +376,9 @@
     <ClInclude Include="Level State\LevelsHeader.h">
       <Filter>Level State</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\GameSave\GameSave.h">
+      <Filter>GameEngine\GameSave</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -497,6 +503,9 @@
     </Filter>
     <Filter Include="Cutscene\Messaging">
       <UniqueIdentifier>{ff332856-d5b9-41e8-b331-ffffccb8bebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\GameSave">
+      <UniqueIdentifier>{f23a5e1b-1566-4197-ba69-d5ad2f068b34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

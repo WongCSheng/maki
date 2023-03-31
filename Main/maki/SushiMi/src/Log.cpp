@@ -196,17 +196,18 @@ The message to be logged
 void LogOutput(LogLevel level, const char* message, ...) {
 	std::fstream outFile = InitializeLogging();
 	// Array of strings to append into message for formatting
-	const char* LevelStrings[6] = {
+	const char* LevelStrings[7] = {
 		"[FATAL]: ",
 		"[ERROR]: ",
 		"[WARN]: ",
 		"[INFO]: ",
 		"[DEBUG]: ",
-		"[TRACE]: " };
+		"[TRACE]: ",
+		"[LEVEL PROGRESS]: "
+
+	};
 	//char IsError = level < LogLevel::LOG_LEVEL_WARN; // FATAL and ERROR is considered Error, the rest are sub errors
 
-	const int BufLen = 1000;
-	char OutMessage[BufLen];
 	//Memory::ZeroMem(OutMessage, sizeof(OutMessage));
 
 	//formatting of output message

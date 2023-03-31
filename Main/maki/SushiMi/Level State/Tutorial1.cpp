@@ -130,7 +130,9 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
-			
+			GameSave::LevelStatusContainer[0].isLevelClear = 1;
+			GameSave::LevelStatusContainer[1].isUnlocked = 1; //set next level unlocked
+
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 

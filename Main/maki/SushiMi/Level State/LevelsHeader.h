@@ -15,7 +15,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 *******************************************************************************/
 
 #pragma once
-
+#include "../Engine/GameSave/GameSave.h"
 namespace Core
 {
 	class Levels
@@ -34,9 +34,10 @@ namespace Core
 		static void Level9();
 		static void Level10();
 		static void Level11();
-		static void Level12();
 		static void TestLevel();
 
+		GameSave L1;
+		
 		//std::ifstream fin;
 		//std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 	};

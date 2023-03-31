@@ -1,4 +1,9 @@
-﻿  GameSave.cpp
+﻿  LevelEditor.cpp
+  Sprite.cpp
+  Core.cpp
+  Font.cpp
+  Map.cpp
+  Player.cpp
   Level1.cpp
   Level10.cpp
   Level11.cpp
@@ -13,10 +18,7 @@
   TestLevel.cpp
   Tutorial1.cpp
   Tutorial2.cpp
+  SceneManager.cpp
   Window.cpp
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(377,20): warning C4189: 'inari': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(380,20): warning C4189: 'roes': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(379,20): warning C4189: 'tuna': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(378,20): warning C4189: 'avocado': local variable is initialized but not referenced
-C:\Users\theas\Documents\GitHub\maki\Main\maki\SushiMi\src\Window.cpp(376,20): warning C4189: 'corn': local variable is initialized but not referenced
+  main.cpp
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

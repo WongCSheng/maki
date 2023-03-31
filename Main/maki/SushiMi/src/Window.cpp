@@ -139,6 +139,7 @@ namespace Core
 			Window::keystate_9 = (key == GLFW_KEY_9) ? true : false;	//level9
 			Window::keystate_0 = (key == GLFW_KEY_0) ? true : false;	//level10
 			Window::keystate_minus = (key == GLFW_KEY_MINUS) ? true : false;	//level11 (maki city)
+			Window::keystate_equal = (key == GLFW_KEY_EQUAL) ? true : false;	//cheat code
 
 			Window::keystate_W = (key == GLFW_KEY_W) ? true : false;	//up
 			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;	//left
@@ -1089,7 +1090,14 @@ namespace Core
 				keystate_minus = false;
 			}
 		}
-		if (keystate_T)
+		if (keystate_equal)
+		{
+			std::cout << "cheating..." << std::endl;
+			isWinCondition = true;
+			keystate_equal = false;
+			
+		}
+		/*if (keystate_T)
 		{
 			std::cout << "you are in level selection screen" << std::endl;
 
@@ -1101,7 +1109,7 @@ namespace Core
 
 				keystate_T = false;
 			}
-		}
+		}*/
 
 		if (mouseLeft)
 		{

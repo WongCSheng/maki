@@ -6,7 +6,7 @@
 #include <Engine/Font/Font.h>
 #include "Window.h"
 //#include "."
-
+double credits_y = 0;
 
 namespace Core
 {
@@ -16,22 +16,27 @@ namespace Core
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
 
-	static bool up_key = false;
-	static bool down_key = false;
-	static bool left_key = false;
-	static bool right_key = false;
+	
 
 	/* default black color */
 	glm::vec3 color_up{0.f, 0.f, 0.f}; 
 	glm::vec3 color_down{ 0.f, 0.f, 0.f };
 	glm::vec3 color_left{ 0.f, 0.f, 0.f };
 	glm::vec3 color_right{ 0.f, 0.f, 0.f };
+	glm::vec3 color_r{ 0.f, 0.f, 0.f };
 
-	//color str default red
+	//color str default  //red
 	glm::vec3 color_str{ 1.f, 0.f, 0.f };
+
+
 
 	SceneManager::SceneManager()
 	{
+		up_key = false;
+		down_key = false;
+		left_key = false;
+		right_key = false;
+		r_key = false;
 		/*tile = nullptr;
 		ingredient1 = nullptr;
 		ingredient2 = nullptr;
@@ -255,9 +260,9 @@ namespace Core
 		settings_page->transformation.Position = glm::vec2(screenwidth * 0.25, screenheight * 0.25);
 		settings_page->transformation.Scale = glm::vec2(screenwidth * 0.47, screenheight * 0.5);
 
-		//credits
-		credits_page->transformation.Position = glm::vec2(0, 0);
-		credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight);
+		////credits
+		//credits_page->transformation.Position = glm::vec2(0, 0);
+		//credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight);
 	}
 	void SceneManager::loadWinOverlay(int x, int y)
 	{
@@ -427,6 +432,7 @@ namespace Core
 	
 	void SceneManager::drawBlackOverlay()
 	{
+
 		SceneManager::loadRect(0, 0);
 
 		currentAlpha = std::lerp(currentAlpha, targetAlpha, Get_Delta());
@@ -688,6 +694,7 @@ namespace Core
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			if (Window::isHowToPlay == true)
 			spritecomp->draw();
 	}
 	void SceneManager::drawSettings()
@@ -698,14 +705,29 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", settings_page->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			settings_page->draw();
+			credits_y = 0;
 
 		}
 		else //isCredits == true
 		{
+			int screenwidth = 0, screenheight = 0;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			
+			//credits
+			credits_page->transformation.Scale = glm::vec2(screenwidth, screenheight*3);
+			if (credits_y > -screenheight * 2)
+			{
+				credits_y -= Get_Delta()*70;
+				
+			}
+			
+			credits_page->transformation.Position = glm::vec2(0, credits_y);
 			//if credits only
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", credits_page->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			credits_page->draw();
+			
+
 
 		}
 	}
@@ -732,66 +754,96 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
 		/*	bool state to toggle the key */
-		if(!up_key) 
+		if(!up_key)
 		{	//up_key is true
 			//default up_key set to red
 			color_up = { 1.f, 0.f, 0.f };
 
 		}
+		else
+		{
+			color_up = { 0.f, 1.f, 0.f };
+		}
+
 		if (!down_key) 
 		{
 			//default up_key set to red
 			color_down = { 1.f, 0.f, 0.f };
 
 		}
+		else
+			color_down = { 0.f, 1.f, 0.f };
+
 		if (!left_key) 
 		{
 			//default up_key set to red
 			color_left = { 1.f, 0.f, 0.f };
 
 		}
+		else
+			color_left = { 0.f, 1.f, 0.f };
+
 		if (!right_key) 
 		{
 			//default up_key set to red
 			color_right = { 1.f, 0.f, 0.f };
 
 		}
-		//std::cout << Window::keystate_up << "is the Up key value" << "\n";
-
- 		if(Window::keystate_up)
-		{
-			color_up = { 0.f, 1.f, 0.f };
-			up_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_down == true)
-		{
-			color_down = { 0.f, 1.f, 0.f };
-			down_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_left == true)
-		{
-			color_left = { 0.f, 1.f, 0.f };
-			left_key = true; //keep color to green after pressed Up
-		}
-		if (Window::keystate_right == true )
-		{
+		else
 			color_right = { 0.f, 1.f, 0.f };
-			right_key = true; //keep color to green after pressed Up
-		}
-		if (Map::isWin())
+
+		
+		if (!Map::isWin())
+		{
+			//when no win, set the string to red color
+			color_str = { 1.f, 0.f, 0.f }; //red
+		} 
+		else if(Map::isWin())
 		{
 			color_str = { 0.f, 1.f, 0.f }; //green
+			//when win condition met, green color
 		};
 		
-			Shaders->Font_Shader()->use();
-			Font::RenderText(*Shaders, up, (float)((screenwidth/2)-920), (float)(screenheight-180), .55f, color_up, 1.f);
-			Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 860), (float)(screenheight - 180), .55f, color_down, 1.f);
-			Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 765), (float)(screenheight - 180), .55f, color_left, 1.f);
-			Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 180), .55f, color_right, 1.f);
-			Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 225), .55f, color_str, 1.f);
-			//Font::RenderText(*Shaders, str, 50, 550, .55f, color_str, 1.f);
-			Shaders->Textured_Shader()->use();
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight-175), .55f, color_up, 1.f);
+		Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 175), .55f, color_down, 1.f);
+		Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 175), .55f, color_left, 1.f);
+		Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 175), .55f, color_right, 1.f);
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 220), .55f, color_str, 1.f);
+		Shaders->Textured_Shader()->use();
 		
+	}
+
+	void SceneManager::drawTut2()
+	{
+		//if (!r_key)
+		//{
+		//	//default up_key set to red
+		//	color_r = { 1.f, 0.f, 0.f };
+		//}
+		if (!r_key)
+		{
+			//default up_key set to red
+			color_r = { 1.f, 0.f, 0.f };
+
+		}
+		else
+			color_r = { 0.f, 1.f, 0.f };
+
+		//if(Window::keystate_R)
+		//{
+		//	color_r= { 0.f, 1.f, 0.f }; //green
+		//	r_key = true; //keep color to green after pressed r
+		//	
+		//}
+		const std::string str = "Press   'R'   to  restart";
+
+		int screenwidth, screenheight;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		Shaders->Font_Shader()->use();
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 190), .55f, color_r, 1.f);
+		Shaders->Textured_Shader()->use();
 	}
 
 	/* resets color back to red*/
@@ -801,6 +853,7 @@ namespace Core
 		color_down = { 1.f, 0.f, 0.f };
 		color_left = { 1.f, 0.f, 0.f };
 		color_right = { 1.f, 0.f, 0.f };
+		color_r = { 1.f, 0.f, 0.f };
 	}
 	
 
@@ -814,7 +867,7 @@ namespace Core
 		timer += Get_Delta();
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			FcurrentAlpha = std::lerp(FcurrentAlpha, FtargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, encourgementwords[Player::resetCount], Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
@@ -827,10 +880,10 @@ namespace Core
 		timer += Get_Delta();
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			ScurrentAlpha = std::lerp(ScurrentAlpha, StargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
-		Font::RenderText(*Shaders, "Looks like the ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
+		Font::RenderText(*Shaders, "ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), ScurrentAlpha);
 	}
 
 	void SceneManager::draw_Are_You_Sure()
@@ -857,7 +910,7 @@ namespace Core
 
 		if (timer > 1.f)
 		{
-			FcurrentAlpha = std::lerp(FcurrentAlpha, targetAlpha, Get_Delta());
+			FcurrentAlpha = std::lerp(FcurrentAlpha, FtargetAlpha, Get_Delta());
 		}
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, "Getgud -Bami 2023", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), FcurrentAlpha);
@@ -987,11 +1040,15 @@ namespace Core
 	void SceneManager::FadeIn()
 	{
 		targetAlpha = 1.0f;
+		FtargetAlpha = 1.0f;
+		StargetAlpha = 1.0f;
 	}
 
 	void SceneManager::FadeOut()
 	{
 		targetAlpha = 0.0f;
+		FtargetAlpha = 0.0f;
+		StargetAlpha = 0.0f;
 	}
 
 	void SceneManager::set_target_pos(Sprite* boxcover)

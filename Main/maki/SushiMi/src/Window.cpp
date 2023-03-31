@@ -48,10 +48,10 @@ namespace Core
 	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
 
-	static bool up_key = false;
+	/*static bool up_key = false;
 	static bool down_key = false;
 	static bool left_key = false;
-	static bool right_key = false;
+	static bool right_key = false;*/
 
 	std::map<std::string, gfxVector2> Window::questDrawItems;
 	double lastframe = 0;
@@ -89,18 +89,8 @@ namespace Core
 		----------------------------------------------------------------------------- */
 	void keyCallBack([[maybe_unused]] GLFWwindow* window_ptr, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mod)
 	{
-		if (GLFW_REPEAT == action)
-		{
-			Window::keystate_left = (key == GLFW_KEY_LEFT) ? true : false;
-			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
-			Window::keystate_right = (key == GLFW_KEY_RIGHT) ? true : false;
-			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;
-			Window::keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
-			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
-			Window::keystate_M = (key == GLFW_KEY_M) ? true : false;
-			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
-		}
-		else if (GLFW_RELEASE == action)
+		
+		if (GLFW_RELEASE == action)
 		{
 			Window::keystate_left = false;
 			Window::keystate_right = false;
@@ -112,6 +102,10 @@ namespace Core
 			Window::keystate_tab = false;
 			Window::keystate_space = false;
 			Window::keystate_fps = false;
+			Window::keystate_W = false;
+			Window::keystate_D = false;
+			Window::keystate_A = false;
+			Window::keystate_S = false;
 		}
 		else if (GLFW_PRESS == action)
 		{
@@ -150,7 +144,6 @@ namespace Core
 			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;	//left
 			Window::keystate_S = (key == GLFW_KEY_S) ? true : false;	//down
 			Window::keystate_D = (key == GLFW_KEY_D) ? true : false;	//right
-
 		}
 	}
 	void Window::checkWin(std::string currentlevel)
@@ -373,12 +366,6 @@ namespace Core
 
 						if(Map::maki_city)
 						{
-							std::size_t corn = x.find("mc_corn");
-							std::size_t inari = x.find("mc_inari");
-							std::size_t avocado = x.find("mc_avocado");
-							std::size_t tuna = x.find("mc_tuna");
-							std::size_t roes = x.find("mc_roes");
-
 							if ((_ingredient.nametag == grid_number::corn) && (Map::IngredientToString(_ingredient.nametag) == ingredient))
 							{
 								switch (_ingredient.spr->status)
@@ -600,6 +587,7 @@ namespace Core
 			winningBoxes[i] = { " ", -1 };
 
 		questDrawItems.clear();
+		chops.clear();
 	}
 
 	std::string Window::EnumToString(GameState Currentlevel)
@@ -671,7 +659,6 @@ namespace Core
 		:m_width(_width),
 		m_height(_height),
 		isCutscene(0),
-		isHowToPlay(0),
 		isLevelSelection(0),
 		isSettings(0),
 		isWalk(0),
@@ -737,7 +724,8 @@ namespace Core
 		SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
 
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
-		SceneManager::credits_page = new Sprite("../textures/Credits/credits.png");
+		SceneManager::credits_page = new Sprite("../textures/Credits/NEWCreditsRoll.png");
+		
 
 		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
 		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
@@ -1129,7 +1117,7 @@ namespace Core
 		{
 			areyousure_prompt = false;
 		}
-		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false)
+		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false && isHowToPlay == false)
 		{
 			gameIsPaused = !gameIsPaused;
 
@@ -1211,12 +1199,43 @@ namespace Core
 					{
 						gameIsPaused = false;
 						//std::cout << "game resume, no more pause screen" << std::endl;
-						int screenwidth = 0, screenheight = 0;
+						/*int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
 
 
+
+					}
+				}
+				else if (x.first == "HowToPlay1")
+				{
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
+
+					//RESUME THE GAME BUTTON
+					if (((float)xpos > position.x) &&
+						((float)ypos > position.y) &&
+						((float)xpos < (position.x + scale.x)) &&
+						((float)ypos < (position.y + scale.y)))
+					{
+						if (!keystate_escape)
+							isHowToPlay = true;
+
+						//std::cout << "game resume, no more pause screen" << std::endl;
+						/*int screenwidth = 0, screenheight = 0;
+						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
+
+						/*if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel))
+						{
+							HowToPlayPage = 0;
+							isHowToPlay = false;
+							keystate_escape = false;
+							gameIsPaused = true;
+						}*/
 
 					}
 				}
@@ -1234,10 +1253,10 @@ namespace Core
 					{
 
 						keystate_T = true;
-						int screenwidth = 0, screenheight = 0;
+						/*int screenwidth = 0, screenheight = 0;
 						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);
+						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
 					}
 				}
 				else if (x.first == "QuitButton")
@@ -1336,23 +1355,24 @@ namespace Core
 		//}
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
-			//keystate_right = true;
-			keystate_D = true;
+		
 			if (keystate_right || keystate_D)
 			{
 				Map::collision_check_right();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
-				//keystate_right = false;
+				keystate_right = false;
 				keystate_D = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = false;
+				SceneManager::left_key = false;
+				SceneManager::right_key = true;
 			}
 		}
 
 		else if ((keystate_left || keystate_A) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
-			//keystate_left = true;
-			keystate_A = true;
+	
 			//player only move on one press
 			//holding key or let go key, player stop
 			if (keystate_left || keystate_A)
@@ -1360,51 +1380,57 @@ namespace Core
 				Map::collision_check_left();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
-				//keystate_left = false;
+				keystate_left = false;
 				keystate_A = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = false;
+				SceneManager::left_key = true;
+				SceneManager::right_key = false;
 			}
 		}
 
 		else if ((keystate_up || keystate_W) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
-			//keystate_up = true;
-			keystate_W = true;
-
+		
 			if (keystate_up || keystate_W)
 			{
 				Map::collision_check_up();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
-
-				//keystate_up = false;
-				up_key = true;
+				keystate_up = false;
 				keystate_W = false;
+				SceneManager::up_key = true;
+				SceneManager::down_key = false;
+				SceneManager::left_key = false;
+				SceneManager::right_key = false;
 
 			}
 		}
 
 		else if ((keystate_down || keystate_S) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
-			//keystate_down = true;
-			keystate_S = true;
+
 			if (keystate_down || keystate_S)
 			{
 				Map::collision_check_down();
 				Map::print_map_to_console();
 				AudioManager.PlaySFX(walkingsfx);
 
-				//keystate_down = false;
+				keystate_down = false;
 				keystate_S = false;
+				SceneManager::up_key = false;
+				SceneManager::down_key = true;
+				SceneManager::left_key = false;
+				SceneManager::right_key = false;
 			}
 		}
 
 		/***************************
 			restart key "R" resets the level
 		*******************************/
-		if (keystate_R && (gameIsPaused == false && isWinCondition == false))
+		if (keystate_R && (gameIsPaused == false && isWinCondition == false)) 
 		{
-			keystate_R = true;
+			//keystate_R = true;
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
@@ -1424,12 +1450,13 @@ namespace Core
 				for (size_t i{}; i < Window::winningBoxes.size(); ++i)
 					winningBoxes[i] = { " ", -1 };
 				questDrawItems.clear();
+				chops.clear();
 				SceneManager::resetColor();
 
 				Map::RestartMap();
 				std::cout << "restarting level" << std::endl;
 				std::cout << "player is moved back to x: " << player->playerpos_restart.x << " and y: " << player->playerpos_restart.y << std::endl;
-
+				SceneManager::r_key = true;
 				keystate_R = false;
 			}
 
@@ -1823,6 +1850,9 @@ namespace Core
 					if (x.first == "ResumeButton")
 						spritecomp->draw();
 
+					if (x.first == "HowToPlay1")
+						spritecomp->draw();
+
 					if (x.first == "QuitButton")
 						spritecomp->draw();
 
@@ -1865,7 +1895,8 @@ namespace Core
 				}
 				else //if(Map::maki_city)
 				{
-					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
+					//Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
+					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity");
 					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
 					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
@@ -1878,8 +1909,12 @@ namespace Core
 
 				if(isTut1)
 				{
-					//std::cout << keystate_up << "----------value--------" <<  "\n";
 					SceneManager::drawTut1();
+				}
+
+				if (isTut2)
+				{
+					SceneManager::drawTut2();
 				}
 
 				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);
@@ -1927,14 +1962,17 @@ namespace Core
 				{
 					//auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
 					//check if what you are accessing exists so it does not throw exception
-					
 						Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(name);
 						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
 						spritecomp2->transformation.Position = { position.x, position.y };
 						//Shaders->Textured_Shader()->use();
-						//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+						if (Map::maki_city)
+						{
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+						}
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
 				}
@@ -1978,9 +2016,9 @@ namespace Core
 			if (isHowToPlay == true)
 			{
 				isMenuState = false; //disable menu buttons
-				gameIsPaused = false;
+				//gameIsPaused = false;
 
-				isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
+				//isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
 				isQuestTab = false;
 
 				//SceneManager::loadHowToOverlay(0, 0);
@@ -1988,10 +2026,12 @@ namespace Core
 				SceneManager::drawHowToOverlay(HowToPlayPage);
 				if (keystate_escape)
 				{
+					isHowToPlay = false;
+					if (!isTut1 && !isTut2 && !isLevel1 && !isLevel2 && !isLevel3 && !isLevel4 && !isLevel5 && !isLevel6 && !isLevel7 && !isLevel8 && !isLevel9 && !isLevel10 && !isLevel11 && !isTestLevel)
 					isMenuState = true;
 					HowToPlayPage = 0;
-					isHowToPlay = false;
 					keystate_escape = false;
+					/*break;*/
 				}
 				else if (keystate_right)
 				{
@@ -2097,15 +2137,19 @@ namespace Core
 
 			if (isCredits == true)
 			{
-				if (mouseLeft)
+				//if (mouseLeft)
+				//{
+				//	double xpos = 0, ypos = 0;
+				//	glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+				//	//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+				//	if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
+				//	{
+				//		isCredits = false;
+				//	}
+				//}
+				if (keystate_escape)
 				{
-					double xpos = 0, ypos = 0;
-					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-					//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-					if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
-					{
-						isCredits = false;
-					}
+					isCredits = false;
 				}
 			}
 			if (finallevelclear)

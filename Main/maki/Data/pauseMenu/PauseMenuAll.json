@@ -1,12 +1,13 @@
 {
   "components": [
-    {
-      "name": "PauseMenu",
-      "filename": "../Data/pauseMenu/PauseMenu.json"
-    },
+    
     {
       "name": "ResumeButton",
       "filename": "../Data/pauseMenu/ResumeButton.json"
+    },
+	{
+      "name": "HowToPlay1",
+      "filename": "../Data/pauseMenu/HowToPlay.json"
     },
     {
       "name": "MenuButton",
@@ -15,6 +16,10 @@
     {
       "name": "QuitButton",
       "filename": "../Data/pauseMenu/QuitButton.json"
+    },
+	{
+      "name": "PauseMenu",
+      "filename": "../Data/pauseMenu/PauseMenu.json"
     }
   ]
 }

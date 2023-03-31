@@ -219,6 +219,7 @@ void Core::pseudomain::init() {
 
 	/* Only maki city */
 	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory); 
+	Core::DeserializeEntity("../Data/Chop/makicity.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_inari.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_avocado.json", CoreSystem->objfactory);
@@ -354,6 +355,7 @@ void Core::pseudomain::init() {
 	AudioManager.LoadVoice("Idle_1.ogg");
 	AudioManager.LoadVoice("Curious_3.ogg");
 	AudioManager.LoadVoice("Oof_1.ogg");
+	AudioManager.LoadVoice("Scream_8.ogg");
 	AudioManager.LoadSFX("Pouring.ogg");
 	AudioManager.LoadSFX("Squeezing.ogg");
 	//AssetsManager::GetInstance()->Add_files("../Assets");

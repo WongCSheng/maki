@@ -344,7 +344,11 @@ namespace Core
 
 		// Font alpha parameters
 		inline static float FtargetAlpha = 0.0f;
-		inline static float FcurrentAlpha = 0.0f;
+		inline static float FcurrentAlpha = 1.0f;
+
+		// Font alpha parameters
+		inline static float StargetAlpha = 0.0f;
+		inline static float ScurrentAlpha = 1.0f;
 
 		inline static float timer = 0.0f;
 		// Boxcover targetpos and currpos
@@ -352,5 +356,11 @@ namespace Core
 		inline static float targetpos;
 
 		inline static int spacepressed;
+		inline static bool up_key;
+		inline static bool down_key;
+		inline static bool left_key;
+		inline static bool right_key;
+		inline static bool r_key;
+		
 	};
 }

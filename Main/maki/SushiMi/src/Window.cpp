@@ -1888,7 +1888,8 @@ namespace Core
 				}
 				else //if(Map::maki_city)
 				{
-					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
+					//Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
+					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity");
 					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
 					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
 
@@ -1961,6 +1962,10 @@ namespace Core
 						spritecomp2->transformation.Position = { position.x, position.y };
 						//Shaders->Textured_Shader()->use();
 						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+						if (Map::maki_city)
+						{
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+						}
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();
 				}

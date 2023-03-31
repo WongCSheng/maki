@@ -219,6 +219,7 @@ void Core::pseudomain::init() {
 
 	/* Only maki city */
 	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory); 
+	Core::DeserializeEntity("../Data/Chop/makicity.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_inari.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_avocado.json", CoreSystem->objfactory);

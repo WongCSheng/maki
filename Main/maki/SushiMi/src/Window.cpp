@@ -47,7 +47,7 @@ namespace Core
 	std::vector<std::string> Window::currentQuestIngredient;
 	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
-
+	bool isStartCutscenePlayed = false;
 	/*static bool up_key = false;
 	static bool down_key = false;
 	static bool left_key = false;
@@ -115,7 +115,7 @@ namespace Core
 			Window::keystate_up = (key == GLFW_KEY_UP) ? true : false;
 			Window::keystate_down = (key == GLFW_KEY_DOWN) ? true : false;
 			Window::keystate_R = (key == GLFW_KEY_R) ? true : false;
-			Window::keystate_T = (key == GLFW_KEY_T) ? true : false;
+
 			Window::keystate_tab = (key == GLFW_KEY_TAB) ? true : false;
 			Window::keystate_escape = (key == GLFW_KEY_ESCAPE) ? true : false;
 			Window::keystate_space = (key == GLFW_KEY_SPACE) ? true : false;
@@ -145,6 +145,10 @@ namespace Core
 			Window::keystate_A = (key == GLFW_KEY_A) ? true : false;	//left
 			Window::keystate_S = (key == GLFW_KEY_S) ? true : false;	//down
 			Window::keystate_D = (key == GLFW_KEY_D) ? true : false;	//right
+#ifndef RELEASE
+			Window::keystate_T = (key == GLFW_KEY_T) ? true : false;
+
+#endif // !RELEASE
 		}
 	}
 	void Window::checkWin(std::string currentlevel)
@@ -1097,7 +1101,7 @@ namespace Core
 			keystate_equal = false;
 			
 		}
-		/*if (keystate_T)
+		if (keystate_T)
 		{
 			std::cout << "you are in level selection screen" << std::endl;
 
@@ -1109,7 +1113,7 @@ namespace Core
 
 				keystate_T = false;
 			}
-		}*/
+		}
 
 		if (mouseLeft)
 		{
@@ -1153,7 +1157,14 @@ namespace Core
 			{
 
 				isMenuState = false;
+				if (isStartCutscenePlayed == false)
+				{
 				isCutscene = true;
+				}
+				else
+				{
+					isTut1 = true;
+				}
 				/*isLevelSelection = true;*/
 
 				//std::cout << "exit main menu" << std::endl;
@@ -1622,6 +1633,7 @@ namespace Core
 			if (isCutscene)
 			{
 				/*SceneManager::loadCutscene();*/
+				isStartCutscenePlayed = true;
 				SceneManager::drawCutscene(CutscenePage);
 				if ((keystate_space) && isMenuState == false)
 				{

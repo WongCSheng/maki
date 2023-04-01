@@ -1,22 +1,22 @@
 18 10
-# # # # # # # # # # # # # # # # : #
+# # # # # # # # # # # # # < # # : #
 # : # # # # 9 # # # # ! ! # K # # #
 # ! ! ! ! ! ! : ! ! ! ! ! ! ! ! ! #
-# ! ! [ # # ! # ! ! # : ! # # ! ! #
-# # ! # ! ! ! # ! a ! # ! ! # ! 9 #
-# 9 ! ! ! 1 ! # ! ! ! ! ! ! # 2 # #
-# # ! ! # ! ! ! ! ! # # 9 # # % # #
+= ! ! [ # # ! # ! ! # : ! # # ! ! #
+# # ! # ! ! ! = ! a ! # ! ! ; ! 9 #
+: 9 ! ! ! 1 ! # ! ! ! ! ! ! # 2 # #
+# # ! ! # ! ! ! ! ! # # 9 # : % ; #
 # # : # # # # # # # # : # # # # # #
-# # # # # # # K # # # # # # # # : #
-# # # # # # # # # # # # # # # # # #
+# # # # = # # K # > # # # ? # # : #
+? # # # # < # # ! ! ! ! # # > # # #
 
 M M M M M M M M M M M P P M M M M M
 M P P P P P P M P P Q ! ! O P P P M
-N ! ! ! ! ! ! F ! ! ! ! ! ! ! ! ! L
-N ! ! [ I K ! F ! ! I H ! I H ! ! L
-M H ! A ! ! ! F ! a ! G ! ! F ! C M
-M N ! ! ! 1 ! G ! ! ! ! ! ! F ! L M
-M N ! ! E ! ! ! ! ! C D D D N ! L M
+N ! ! ! v ! s F s ! s ! ! x ! ! { L
+N ! x [ I K ! F ! ! I H ! I H ! ! L
+M H ! A ! ! { F z a ! G w ! F x C M
+M N ! ! ! 1 ! G ! x ! u ! ! F ! L M
+M N z ! E ! ! ! ! ! C D D D N ! L M
 M M D D M D D D D D M M M M M D M M
 M M M M M M M M M M M M M M M M M M
-M M M M M M M M M M M M M M M M M M
+M M M M M M M M u z ! s M M M M M M

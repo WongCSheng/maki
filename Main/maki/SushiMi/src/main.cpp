@@ -191,7 +191,6 @@ void Core::pseudomain::init() {
 	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
 	Font::init();
-	CoreSystem->objfactory->DeserializeObjects("../Assets/test.json");
 	/*might need this if we using latin characters*/
 	std::setlocale(LC_ALL, "en_US.UTF-8");
 

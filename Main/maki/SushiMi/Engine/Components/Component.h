@@ -27,7 +27,8 @@ namespace Core
 		Transform = 0b0000'0100,
 		Camera = 0b0000'1000,
 		Physics = 0b0001'0000,
-		Collision = 0b0010'0000
+		Collision = 0b0010'0000,
+		Texture = 0b0100'0000
 	};
 
 	class Component
@@ -46,10 +47,10 @@ namespace Core
 		void SetOwner(Object::GameObjectProperty* owner);
 		void Reset(bool set);
 
-		virtual bool IsActive();
-		virtual void Activate();
-		virtual void Deactivate();
-		virtual void Remove();	// queue it for deletion
+		virtual bool IsActive() = 0;
+		virtual void Activate() = 0;
+		virtual void Deactivate() = 0;
+		virtual void Remove() = 0;	// queue it for deletion
 
 	protected:
 		Object::GameObjectProperty* owner;

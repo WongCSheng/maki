@@ -64,7 +64,12 @@ namespace Core
 	void ObjectFactory::AddObjects(Object::GameObject* added, std::string i)
 	{
 		ObjectContainer.insert({ i, added });
+		LastObjectID++;
+	}
 
+	unsigned int ObjectFactory::Get_num_of_Objects()
+	{
+		return LastObjectID;
 	}
 
 	void ObjectFactory::Init()

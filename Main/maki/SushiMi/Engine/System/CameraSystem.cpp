@@ -8,6 +8,7 @@ Description: Camera System that takes data stored in Camera2D.h and runs it with
 #include "../Camera/Camera2D.h"
 #include "../Window/GameWindow.h"
 #include "../Game Object/GameObject.h"
+#include "../Engine/Components/Component.h"
 
 namespace Core
 {
@@ -50,10 +51,10 @@ namespace Core
 			camera[i]
 		}*/
 
-		if (gameobj->GetObjectProperties()->GetComponent(ComponentID::Camera))
+		if (gameobj->GetObjectProperties()->GetComponent<Component>(ComponentID::Camera))
 		{
 
-			cameras.push_back(gameobj->GetObjectProperties()->GetComponent(ComponentID::Camera));
+			cameras.push_back(gameobj->GetObjectProperties()->GetComponent<Component>(ComponentID::Camera));
 		}
 	}
 

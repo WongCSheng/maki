@@ -47,8 +47,7 @@ namespace Core
 	class MainSystem : public SystemFrame
 	{
 	private:
-		/*MainSystem();
-		virtual ~MainSystem();*/
+		MainSystem();
 
 		//static MainSystem* instance;
 
@@ -66,8 +65,14 @@ namespace Core
 	public:
 		//static MainSystem& Instance();
 
-		MainSystem();
+		//MainSystem();
 		virtual ~MainSystem();
+
+		static MainSystem* GetInstance()
+		{
+			static MainSystem instance;
+			return &instance;
+		}
 
 		void Init();
 		void Update(const double dt);

@@ -1,7 +1,7 @@
 #include "../Headers/SceneManager.h"
 #include "../Engine//Serialiser/JSONSerializer.h"
 #include "../Engine/Shaders/ShaderLibrary.h"
-#include "../Engine/Core/Core.h"
+#include "../Headers/Main.h"
 #include "../Engine/TileMap/Map.h"
 #include <Engine/Font/Font.h>
 #include "Window.h"
@@ -10,13 +10,10 @@ double credits_y = 0;
 
 namespace Core
 {
-	extern Core::MainSystem* CoreSystem;
 	float alpha = 1.0f;
 	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
-
-	
 
 	/* default black color */
 	glm::vec3 color_up{0.f, 0.f, 0.f}; 
@@ -27,8 +24,6 @@ namespace Core
 
 	//color str default  //red
 	glm::vec3 color_str{ 1.f, 0.f, 0.f };
-
-
 
 	SceneManager::SceneManager()
 	{
@@ -685,8 +680,8 @@ namespace Core
 				break;
 			}
 
-			Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-			Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+			Transform* transcomp =obj->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+			Sprite* spritecomp =obj->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 			spritecomp->transformation.Position = transcomp->Position;
 			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight); 
@@ -954,8 +949,8 @@ namespace Core
 				break;
 			}
 
-			Transform* transcomp = static_cast<Transform*>(obj->GetObjectProperties()->GetComponent(ComponentID::Transform));
-			Sprite* spritecomp = static_cast<Sprite*>(obj->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+			Transform* transcomp = obj->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+			Sprite* spritecomp = obj->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 			spritecomp->transformation.Position = transcomp->Position;
 			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
@@ -1153,7 +1148,7 @@ namespace Core
 
 	void SceneManager::destroyLevelSelect()
 	{
-		delete level_select;
+		//delete level_select;
 	}
 
 	void SceneManager::destroy_Dialogue()

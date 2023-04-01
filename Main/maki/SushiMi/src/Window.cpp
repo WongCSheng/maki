@@ -726,40 +726,6 @@ namespace Core
 
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
-		SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
-
-		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
-		SceneManager::credits_page = new Sprite("../textures/Credits/NEWCreditsRoll.png");
-		
-
-		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
-		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
-
-		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
-		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
-		SceneManager::fishingvillage_dialogue = new Sprite("../textures/UI/DialogueBox_FishingVillage.png");
-		SceneManager::makicity_dialogue = new Sprite("../textures/UI/DialogueBox_MakiCity.png");
-
-		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
-		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
-		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
-		SceneManager::rec = new Sprite("../textures/bg.jpg");
-		SceneManager::fader = new Sprite("../textures/bg.jpg");
-		SceneManager::fader->alpha = 0.f;
-		SceneManager::fader->timer = 0.f;
-		SceneManager::Ending_Cutscene = new Sprite("../textures/Cutscene/Ending/EndingScene.png"); 
-		SceneManager::Ending_Cutscene->isSpriteSheet = 0;
-		SceneManager::Ending_Cutscene->Add_animation("../textures/Cutscene/Ending/Bami_End.txt");
-		SceneManager::Ending_Cutscene->curr_anim = AnimationType::Idle;
-		SceneManager::Ending_Cutscene->timer = 0;
-
-		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png"); //confirmation page
-
-		SceneManager::particle = new Sprite("../textures/Bami/RiceParticle/particlespritesheet.png");
-		SceneManager::particle->isSpriteSheet = 0;
-		SceneManager::particle->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-		SceneManager::particle->curr_anim = AnimationType::Idle;
-
 
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
@@ -1120,7 +1086,7 @@ namespace Core
 			//place_obj = true;
 			//if (place_obj)
 			//{
-				//std::cout << "placing obj at x: " << ingredient->transformation.position.x << "and y: " << ingredient->transformation.position.y << std::endl;
+				//std::cout << "placing obj at x: " << ingredient->transformation.posittion.x << "and y: " << ingredient->transformation.position.y << std::endl;
 				//place_obj = false;
 			//}
 		}
@@ -1165,7 +1131,7 @@ namespace Core
 				{
 					isTut1 = true;
 				}
-				/*isLevelSelection = true;*/
+				isLevelSelection = true;
 
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
@@ -1206,7 +1172,8 @@ namespace Core
 			{
 				if (x.first == "ResumeButton")
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					//Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
@@ -1229,7 +1196,7 @@ namespace Core
 				}
 				else if (x.first == "HowToPlay1")
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform));
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
@@ -1260,7 +1227,8 @@ namespace Core
 				}
 				else if (x.first == "MenuButton")
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					//Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
@@ -1280,7 +1248,8 @@ namespace Core
 				}
 				else if (x.first == "QuitButton")
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					//Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
@@ -1486,6 +1455,49 @@ namespace Core
 #endif //editor
 	}
 
+	void Window::Init()
+	{
+		//SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
+
+		//retrieve
+		auto* objFact = ObjectFactory::GetInstance();
+		auto* obj = objFact->ObjectContainer["map"];
+		auto objProp = obj->GetObjectProperties();
+		//load map image
+		SceneManager::level_select = objProp->GetComponent<Sprite>(ComponentID::Renderer);
+
+		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
+		SceneManager::credits_page = new Sprite("../textures/Credits/NEWCreditsRoll.png");
+
+
+		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
+		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
+
+		SceneManager::riceplain_dialogue = new Sprite("../textures/UI/DialogueBox_RicePlain.png");
+		SceneManager::gunkan_dialogue = new Sprite("../textures/UI/DialogueBox_Gunkan.png");
+		SceneManager::fishingvillage_dialogue = new Sprite("../textures/UI/DialogueBox_FishingVillage.png");
+		SceneManager::makicity_dialogue = new Sprite("../textures/UI/DialogueBox_MakiCity.png");
+
+		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
+		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
+		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
+		SceneManager::rec = new Sprite("../textures/bg.jpg");
+		SceneManager::fader = new Sprite("../textures/bg.jpg");
+		SceneManager::fader->alpha = 0.f;
+		SceneManager::fader->timer = 0.f;
+		SceneManager::Ending_Cutscene = new Sprite("../textures/Cutscene/Ending/EndingScene.png");
+		SceneManager::Ending_Cutscene->isSpriteSheet = 0;
+		SceneManager::Ending_Cutscene->Add_animation("../textures/Cutscene/Ending/Bami_End.txt");
+		SceneManager::Ending_Cutscene->curr_anim = AnimationType::Idle;
+		SceneManager::Ending_Cutscene->timer = 0;
+
+		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png"); //confirmation page
+		SceneManager::particle = new Sprite("../textures/Bami/RiceParticle/particlespritesheet.png");
+		SceneManager::particle->isSpriteSheet = 0;
+		SceneManager::particle->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
+		SceneManager::particle->curr_anim = AnimationType::Idle;
+	}
+
 	void Window::Resize()
 	{
 		int width_, height_;
@@ -1620,15 +1632,7 @@ namespace Core
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 #ifndef EDITOR
 
-			if (isLevelSelection)
-			{
-				//star is complete quest 
-				//flag is complete entire level
-				setAllStatesFalse();
-				isLevelSelection = true;
-				SceneManager::loadLevelSelect(0, 0);
-				SceneManager::drawLevelSelect();
-			}
+			
 
 			if (isCutscene)
 			{
@@ -1822,8 +1826,10 @@ namespace Core
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					/*Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
+					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+					Sprite* spritecomp = x.second->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp->transformation.Position = transcomp->Position;
 					if (x.first == "Menu")
@@ -1857,8 +1863,11 @@ namespace Core
 			{
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					/*Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
+
+					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+					Sprite* spritecomp = x.second->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp->transformation.Position = transcomp->Position;
 					spritecomp->transformation.Scale = transcomp->Scale;
@@ -1895,7 +1904,7 @@ namespace Core
 
 				else
 				{
-					pos1 = { 30.f, 160.f }, pos2 = { 160.f, 160.f }, pos3 = { 285.f, 160.f }, pos4 = { 70.f, 250.f }, pos5 = { 240.f, 250.f };
+					pos1 = { 38.f, 145.f }, pos2 = { 160.f, 145.f }, pos3 = { 285.f, 145.f }, pos4 = { 70.f, 250.f }, pos5 = { 240.f, 250.f };
 				}
 
 				//	current level
@@ -1905,8 +1914,10 @@ namespace Core
 				if (!Map::maki_city)
 				{
 					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					/*Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
+					Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp1->transformation.Position = transcomp1->Position;
 					spritecomp1->transformation.Scale = transcomp1->Scale;
@@ -1918,8 +1929,8 @@ namespace Core
 				{
 					//Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
 					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity");
-					Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp1->transformation.Position = transcomp1->Position;
 					spritecomp1->transformation.Scale = transcomp1->Scale * 1.25f;
@@ -1985,7 +1996,7 @@ namespace Core
 					//check if what you are accessing exists so it does not throw exception
 						Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(name);
 						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
-						Sprite* spritecomp2 = static_cast<Sprite*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+						Sprite* spritecomp2 = obj2->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 						spritecomp2->transformation.Position = { position.x, position.y };
 						//Shaders->Textured_Shader()->use();
@@ -2002,11 +2013,11 @@ namespace Core
 				{
 					Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at(name);
 					//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp1->transformation.Position = { position.x, position.y };
 					//Shaders->Textured_Shader()->use();
-					//Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
+					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 					spritecomp1->draw();
 				}
@@ -2018,8 +2029,12 @@ namespace Core
 			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-				Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));
+			/*	Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
+				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
+
+				Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+				Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+
 
 				spritecomp1->transformation.Position = { transcomp1->Position.x - 387.f, transcomp1->Position.y };
 				spritecomp1->transformation.Scale = transcomp1->Scale;
@@ -2179,6 +2194,16 @@ namespace Core
 				isEndingCutscene = true;
 			}
 
+			if (isLevelSelection)
+			{
+				//star is complete quest 
+				//flag is complete entire level
+				setAllStatesFalse();
+				isLevelSelection = true;
+				SceneManager::loadLevelSelect(0, 0);
+				SceneManager::drawLevelSelect();
+				Levels::LevelSelect();
+			}
 			////display object at imgui cursor
 			//Core::Editor::LevelEditor::imguiObjectCursor();
 

@@ -34,12 +34,6 @@ namespace Core
 				i.second->Init();
 			}
 		}
-		
-		/*template<typename T>*/
-		Component* GameObjectProperty::GetComponent(Core::ComponentID ID)
-		{
-			return ComponentContainer[ID];
-		}
 
 		unsigned int GameObjectProperty::GetID()
 		{
@@ -59,11 +53,6 @@ namespace Core
 		void GameObjectProperty::SetIDName(std::string name)
 		{
 			ObjectID.second = name;
-		}
-
-		void GameObjectProperty::AddComponent(Core::ComponentID ID, Core::Component* comp)
-		{
-			ComponentContainer.insert({ ID, comp });
 		}
 
 		void GameObjectProperty::RemoveComponent(Core::ComponentID ID)

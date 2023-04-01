@@ -44,7 +44,7 @@ namespace Core
 			return static_cast<float>(delta);
 		}
 
-		void Init() {}
+		void Init();
 		void Update(const double) {}
 		void RegisterComponent(std::unordered_map<std::string, Object::GameObject*> ObjectContainer) {}
 

@@ -125,7 +125,7 @@ namespace Core
 				object->Deserialize(compJsonObj);
 
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
-				//delete spriteComp;
+				//delete object;
 			}
 
 
@@ -133,8 +133,7 @@ namespace Core
 
 		//std::string name("Object: " + std::to_string(objfact->LastObjectID));
 		//std::cout << name << " inserting into object container\n";
-		objfact->ObjectContainer.insert({ name, gameObj });	//	save everything in gameObj into container
-		objfact->LastObjectID++;
+		objfact->AddObjects(gameObj, name);	//	save everything in gameObj into container
 		//delete gameObj;
 	}
 

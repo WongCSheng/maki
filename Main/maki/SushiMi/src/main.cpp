@@ -14,7 +14,7 @@ Reproduction or disclosure of this file or its contents without the
 prior written consent of DigiPen Institute of Technology is prohibited.
  */
  /******************************************************************************/
-
+#define _CRTDBG_MAP_ALLOC
 
 
 
@@ -22,7 +22,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 ----------------------------------------------------------------------------- */
 // Extension loader library's header must be included before GLFW's header!!!
 #include "../Headers/STL_Header.h"
-#include "../Engine/Core/Core.h"
+#include "../Headers/Main.h"
 #include "Window.h"
 #include "../Headers/ImGui_Header.h"
 #include "../Editors/imfilebrowser.h"
@@ -32,8 +32,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Serialiser/JSONSerializer.h"
 #include "../Engine/Factory/Factory.h"
 #include "../Engine/TileMap/Map.h"
-
-//#include "../Mono/Mono.h"
+#include "../Headers/LevelSelect.h"
 #include <memory> 
 #include <crtdbg.h> 
 #include <WinBase.h>
@@ -41,13 +40,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 //	testing
 #include "../Headers/Log.h"
 #include "Engine/Font/Font.h"
+#include "Headers/LevelSelect.h"
 
 
 /*                                                   type declarations
 ----------------------------------------------------------------------------- */
-
-
-static Core::MainSystem* CoreSystem;
 int screenwidth = 0, screenheight = 0;
 
 /*                                                      function definitions
@@ -75,12 +72,12 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //do not remove this line!!!
 
-	//_CrtSetBreakAlloc(3759); //use this to detect memory leaks, replace the number with mem leak location
+	//_CrtSetBreakAlloc(4474); //use this to detect memory leaks, replace the number with mem leak location
 
 #endif
 
 	//systems that were new and not deleted
-	CoreSystem = new Core::MainSystem();
+	CoreSystem = Core::MainSystem::GetInstance();
 	
 	Core::pseudomain::init();
 
@@ -89,8 +86,6 @@ int WINAPI WinMain([[maybe_unused]] HINSTANCE hInstance, [[maybe_unused]] _Inout
 	CoreSystem->AccessSystem<Core::Window>(Core::SystemID::Windows)->Mainloop();
 
 	Core::pseudomain::cleanup();
-
-
 
 	return 0;
 	
@@ -188,20 +183,17 @@ abstracted away in GLApp::init
 void Core::pseudomain::init() {
 	glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 
-	CoreSystem->Init();
 	CoreSystem->objfactory->Init();
 	Font::init();
 	/*might need this if we using latin characters*/
 	std::setlocale(LC_ALL, "en_US.UTF-8");
 
 
-
-
 	/*
 	 *										Loading for deserializing game objects
 	 *  ____________________________________________________________________________________ */
 
-	/*				loading the entire main_menu which consists of all the buttons			*/
+	 /*				loading the entire main_menu which consists of all the buttons			*/
 	Core::DeserializeAll("../Data/mainMenu/MenuAll.json", CoreSystem->objfactory);
 
 	/*				loading the entire pause_menu which consists of all the buttons			*/
@@ -212,19 +204,28 @@ void Core::pseudomain::init() {
 	Core::DeserializeAll("../Data/Cutscene/Cutscene_All.json", CoreSystem->objfactory);
 
 
+	/*										 for level selection					*/
+	Core::DeserializeEntity("../Data/LevelSelect/map_node.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/LevelSelect/map_lock.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/LevelSelect/map.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/LevelSelect/map_crown.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/LevelSelect/map_star.json", CoreSystem->objfactory);
+
+	init_LevelSelectMap();
+
+
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
 
 	/* Only maki city */
-	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory); 
+	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/makicity.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_corn.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_inari.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_avocado.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_tuna.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Ingredients/mc_roes.json", CoreSystem->objfactory);
-
 
 
 	/*	 Loading of Chops (Done)	*/
@@ -234,6 +235,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Chop/denied_4.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/denied_5.json", CoreSystem->objfactory);
 
+
 	/*	 Loading of Chops (Denied)	*/
 	Core::DeserializeEntity("../Data/Chop/done.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/done_2.json", CoreSystem->objfactory);
@@ -241,8 +243,9 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Chop/done_4.json", CoreSystem->objfactory);
 	Core::DeserializeEntity("../Data/Chop/done_5.json", CoreSystem->objfactory);
 
-			/*	Loading all ingredients	by level*/
-	//tut1
+
+	/*	Loading all ingredients	by level*/
+//tut1
 	Core::DeserializeEntity("../Data/Levels/Quest_Tut1.json", CoreSystem->objfactory);
 
 	//tut2
@@ -276,7 +279,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Levels/Quest_Lv9.json", CoreSystem->objfactory); //json cannot read its filepath on 3rd ingrd
 
 	//Lv10
-	Core::DeserializeEntity("../Data/Levels/Quest_Lv10.json", CoreSystem->objfactory);  
+	Core::DeserializeEntity("../Data/Levels/Quest_Lv10.json", CoreSystem->objfactory);
 
 	//Lv11
 	Core::DeserializeEntity("../Data/Levels/Quest_Lv11.json", CoreSystem->objfactory);
@@ -311,6 +314,7 @@ void Core::pseudomain::init() {
 	Core::DeserializeEntity("../Data/Ingredients/Octopus_Both.json", CoreSystem->objfactory); 			//lv10
 	Core::DeserializeEntity("../Data/Ingredients/Roes_Wasabi.json", CoreSystem->objfactory); 			//lv10
 
+	CoreSystem->Init();
 
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
@@ -391,5 +395,4 @@ void Core::pseudomain::cleanup() {
 #endif
 
 	CoreSystem->clear();
-	delete CoreSystem;
 }

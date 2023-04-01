@@ -5,6 +5,7 @@ Description: Transform System which takes data in Transform.h to run in it's log
 */
 
 #include "Transformer.h"
+#include "../Components/Transform/Transform.h"
 
 namespace Core
 {
@@ -40,7 +41,7 @@ namespace Core
 
 		for (it; it != Transforms.end(); ++it)
 		{
-			UpdateTransformation(reinterpret_cast<Core::Transform*>(it->second->GetObjectProperties()->GetComponent(ComponentID::Transform)));
+			UpdateTransformation(it->second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform));
 		}
 	}
 

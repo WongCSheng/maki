@@ -199,6 +199,7 @@
     <ClCompile Include="Level State\Level7.cpp" />
     <ClCompile Include="Level State\Level8.cpp" />
     <ClCompile Include="Level State\Level9.cpp" />
+    <ClCompile Include="Level State\LevelSelect.cpp" />
     <ClCompile Include="Level State\TestLevel.cpp" />
     <ClCompile Include="Level State\Tutorial1.cpp" />
     <ClCompile Include="Level State\Tutorial2.cpp" />
@@ -260,6 +261,8 @@
     <ClInclude Include="Headers\Assertion.h" />
     <ClInclude Include="Headers\Graphics_Header.h" />
     <ClInclude Include="Headers\ImGui_Header.h" />
+    <ClInclude Include="Headers\LevelSelect.h" />
+    <ClInclude Include="Headers\Main.h" />
     <ClInclude Include="Headers\Math_Header.h" />
     <ClInclude Include="Headers\RapidJSON_Header.h" />
     <ClInclude Include="Headers\SceneManager.h" />

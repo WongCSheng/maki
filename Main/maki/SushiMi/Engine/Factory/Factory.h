@@ -21,12 +21,12 @@ namespace Core
 	class ObjectFactory : public SystemFrame
 	{
 	private:
-		ObjectFactory* Instance;
+		ObjectFactory();
 
+		unsigned int LastObjectID;
 		std::set<Object::GameObject*> DeleteList;
 
 	public:		
-		ObjectFactory();
 		virtual ~ObjectFactory();
 
 		static ObjectFactory* GetInstance()
@@ -36,7 +36,6 @@ namespace Core
 		}
 
 		static inline std::unordered_map<std::string, Object::GameObject*> ObjectContainer;
-		unsigned int LastObjectID;
 
 		Object::GameObject* Create();
 
@@ -47,6 +46,8 @@ namespace Core
 		void Update(const double dt);
 
 		void AddObjects(Object::GameObject* added, std::string i);
+
+		unsigned int Get_num_of_Objects();
 
 		void Init();
 

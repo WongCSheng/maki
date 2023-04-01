@@ -1834,7 +1834,7 @@ namespace Core
 						spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-					glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), spritecomp->alpha);
+					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 
 					if (x.first == "Menu") //draw menu
 						spritecomp->draw();
@@ -1864,6 +1864,7 @@ namespace Core
 					spritecomp->transformation.Scale = transcomp->Scale;
 
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 					if (x.first == "PauseMenu")
 						spritecomp->draw();
 
@@ -2024,6 +2025,7 @@ namespace Core
 				spritecomp1->transformation.Scale = transcomp1->Scale;
 
 				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+				Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 				spritecomp1->draw();
 			}
 

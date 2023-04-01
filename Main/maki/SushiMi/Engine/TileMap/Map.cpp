@@ -213,6 +213,8 @@ namespace Core
 			ingredient.spr->status = 0;
 			ingredient.spr->curr_anim = AnimationType::Idle;
 			ingredient.spr->animeMe = 0;
+			ingredient.spr->timer = 0.f;
+			ingredient.spr->alpha = 1.f;
 		}
 
 		for (int i = 0; i < max_grid_cols_x; i++)
@@ -233,6 +235,7 @@ namespace Core
 				delete it->spr;
 				it = SceneManager::ingredientcontainer.erase(it);
 			}
+
 			else
 			{
 				it++;

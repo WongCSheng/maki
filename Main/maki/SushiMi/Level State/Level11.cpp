@@ -160,7 +160,7 @@ namespace Core
 				/*Fade in function, comes together*/
 				SceneManager::FadeIn();
 				SceneManager::drawBlackOverlay();
-				if (SceneManager::rec->timer > 4.f)
+				if (SceneManager::rec->timer > 3.f)
 				{
 					Window::isLevel11 = false; //unload curr level
 					Window::finallevelclear = true; //start to trigger ending cutscene

@@ -435,7 +435,7 @@ namespace Core
 
 		SceneManager::loadRect(0, 0);
 
-		currentAlpha = std::lerp(currentAlpha, targetAlpha, Get_Delta());
+		currentAlpha = std::lerp(currentAlpha, targetAlpha, Get_Delta() * 1.2f);
 		SceneManager::drawRect(currentAlpha);
 		//std::cout << "Alpha: " << currentAlpha << std::endl;
 	}
@@ -662,7 +662,6 @@ namespace Core
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 			// object pointer to retreive from object factory container
 			Core::Object::GameObject* obj{};
-
 			// retreive how to play overlay from object container using page
 			switch (page)
 			{
@@ -693,17 +692,18 @@ namespace Core
 			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight); 
 
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 			if (Window::isHowToPlay == true)
 			spritecomp->draw();
 	}
 	void SceneManager::drawSettings()
 	{
+		
 		//if settings only 
 		if (Window::isCredits == false)
 		{
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", settings_page->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+			Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 			settings_page->draw();
 			credits_y = 0;
 
@@ -724,7 +724,6 @@ namespace Core
 			credits_page->transformation.Position = glm::vec2(0, credits_y);
 			//if credits only
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", credits_page->transformation.Get());
-			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
 			credits_page->draw();
 			
 
@@ -737,7 +736,7 @@ namespace Core
 		Window::player->current_anim = AnimationType::Run;
 		Shaders->Textured_Shader()->use();
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
-		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		win_overlay->draw();
 	}
 
@@ -889,7 +888,7 @@ namespace Core
 	void SceneManager::draw_Are_You_Sure()
 	{
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", are_you_sure->transformation.Get());
-		glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
+		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		are_you_sure->draw();
 	}
 

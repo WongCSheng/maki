@@ -1773,9 +1773,9 @@ namespace Core
 							}
 
 						}
-						Font::RenderText(*Shaders, first_line, screenwidth * 0.34f, screenheight * 0.17f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-						Font::RenderText(*Shaders, second_line, screenwidth * 0.34f, screenheight * 0.12f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
-						Font::RenderText(*Shaders, third_line, screenwidth * 0.34f, screenheight * 0.07f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, first_line, screenwidth * 0.34f, screenheight * 0.19f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, second_line, screenwidth * 0.34f, screenheight * 0.14f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
+						Font::RenderText(*Shaders, third_line, screenwidth * 0.34f, screenheight * 0.09f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 					}
 				}
 

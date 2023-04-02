@@ -35,6 +35,7 @@ namespace Core
 		static void Level10();
 		static void Level11();
 		static void TestLevel();
+		static void LevelSelect();
 
 		GameSave L1;
 		

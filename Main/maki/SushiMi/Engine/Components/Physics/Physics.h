@@ -25,6 +25,12 @@ namespace Core
 		virtual ~Physics();
 
 		void Init();
+
+		bool IsActive();
+		void Activate() override;
+		void Deactivate() override;
+		void Remove() override;
+
 		void Serialise(const std::string name);
 		void Deserialise(const std::string name);
 		

@@ -28,9 +28,14 @@ namespace Core
 	{
 	public:
 		Transform();
-		~Transform();
+		virtual ~Transform() override;
 
-		void Init();
+		bool IsActive() override;
+		void Activate() override;
+		void Deactivate() override;
+		void Remove() override;
+
+		void Init() override;
 
 		//transform functions, derived from parent component
 		 void Serialize (const std::string name) /*override*/; //write to json

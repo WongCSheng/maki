@@ -17,7 +17,6 @@ class Camera
 public:
 	Camera(int window_width, int window_height);
 	~Camera();
-	
 
 	glm::mat4 Get_Projection();
 	static void Update_Viewport(int new_width, int new_height);

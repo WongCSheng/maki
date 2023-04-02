@@ -23,6 +23,7 @@ Description:
 #include "../Headers/SceneManager.h"
 #include <Engine/Font/Font.h>
 #include "../Audio/AudioEngine.h"
+#include "../Headers/Main.h"
 
 namespace Core
 {

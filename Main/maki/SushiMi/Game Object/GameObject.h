@@ -20,8 +20,15 @@ namespace Core
 
 			void Init();
 
-			//template<typename T>
-			Component* GetComponent(ComponentID ID);
+			template<typename T>
+			T* GetComponent(const ComponentID ID)
+			{
+				if (ComponentContainer.contains(ID))
+				{
+					return dynamic_cast<T*>(ComponentContainer[ID]);
+				}
+				return nullptr;
+			}
 
 			unsigned int GetID();
 			void SetID(unsigned int name);
@@ -29,7 +36,11 @@ namespace Core
 			std::string GetIDName();
 			void SetIDName(std::string name);
 
-			void AddComponent(ComponentID ID, Component* comp);
+			template<typename T>
+			void AddComponent(ComponentID ID, T* comp)
+			{
+				ComponentContainer.insert({ ID, comp });
+			}
 
 			void RemoveComponent(ComponentID ID);
 

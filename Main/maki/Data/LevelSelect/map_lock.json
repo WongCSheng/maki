@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 600.0, 585.0 ],
+      "rotation": 0.0,
+      "scale": [ 700, 100 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/Level Selection Map/map_lock.png",
+      "name": "map_lock",
+      "alpha": 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    }
+  ]
+}

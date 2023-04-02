@@ -28,6 +28,30 @@ namespace Core
 		
 	}
 
+	bool Transform::IsActive()
+	{
+		return active;
+	}
+
+	void Transform::Activate()
+	{
+		active = true;
+	}
+
+	void Transform::Deactivate()
+	{
+		active = false;
+	}
+
+	void Transform::Remove()
+	{
+		remove = true;
+	}
+
+
+
+
+
 	void Transform::Serialize(const std::string name)  
 	{
 	}
@@ -57,7 +81,7 @@ namespace Core
 				Position.y = value; //rmb to uncomment
 		}
 
-		std::cout << "Pos X: " << Position.x << "        " << "Pos Y: " << Position.y << "\n";
+		//std::cout << "Pos X: " << Position.x << "        " << "Pos Y: " << Position.y << "\n";
 
 		if (!jsonObj.HasMember("rotation") || !jsonObj["rotation"].IsNumber())
 			std::cout << "Component of type Transform must have key 'rotation' with a number value." << std::endl;

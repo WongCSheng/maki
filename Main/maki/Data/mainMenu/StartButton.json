@@ -13,10 +13,6 @@
       "alpha" : 1.0,
       "SpriteSheet": false,
       "SpriteSize": [ 1920, 1080 ]
-    },
-    {
-      "type": "Audio",
-      "AudioPath": "../Assets/Audio/Music/BGM.wav"
     }
   ]
 }

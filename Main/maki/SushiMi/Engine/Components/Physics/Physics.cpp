@@ -25,6 +25,30 @@ namespace Core
 
 	}
 
+	bool Physics::IsActive()
+	{
+		return active;
+	}
+
+	void Physics::Activate()
+	{
+		active = true;
+	}
+
+	void Physics::Deactivate()
+	{
+		active = false;
+	}
+
+	void Physics::Remove()
+	{
+		remove = true;
+	}
+
+
+
+
+
 	void Physics::Serialise(const std::string name)
 	{
 

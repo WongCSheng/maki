@@ -21,7 +21,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "../Engine/Shaders/ShaderLibrary.h"
 #include "../Engine/Audio/AudioEngine.h"
 #include "../Engine/TileMap/Map.h"
-#include "../Engine/Core/Core.h"
+#include "../Headers/Main.h"
 #include <string>
 
 

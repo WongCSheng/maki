@@ -273,6 +273,7 @@
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="Level State\LevelsHeader.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\Window.h" />
     <ClInclude Include="Users\User.h" />
@@ -281,6 +282,12 @@
   <ItemGroup>
     <None Include="..\shaders\SushiMi.frag" />
     <None Include="..\shaders\SushiMi.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SushiMi1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\BaMi.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

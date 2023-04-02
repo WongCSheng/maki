@@ -190,6 +190,7 @@
     <ClCompile Include="Engine\GameSave\GameSave.cpp">
       <Filter>GameEngine\GameSave</Filter>
     </ClCompile>
+    <ClCompile Include="Level State\LevelSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Core.h">
@@ -379,6 +380,9 @@
     <ClInclude Include="Engine\GameSave\GameSave.h">
       <Filter>GameEngine\GameSave</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\LevelSelect.h" />
+    <ClInclude Include="Headers\Main.h" />
+    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameEngine">
@@ -515,5 +519,11 @@
     <None Include="..\shaders\SushiMi.vert">
       <Filter>GameEngine\System\Graphics\GL\Frag and Vert</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SushiMi1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\BaMi.ico" />
   </ItemGroup>
 </Project>

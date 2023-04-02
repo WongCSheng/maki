@@ -1,7 +1,7 @@
 /*!*****************************************************************************
 
 \file       LevelSelect.cpp
-\author     Aurelia Chong
+\author     Aurelia Chong (100%)
 \par        DP email: fei.x@digipen.edu
 \date       03-29-2023
 
@@ -20,33 +20,42 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "Engine/Font/Font.h"
 #include <iostream>
 #include "../src/Window.h"
+#include "Headers/Main.h"
+
 
 namespace Core
 {
+	//map that stores all level selection map icons
 	std::map<int, icons> level_icons;
+
+	//string that stores the level names
 	std::string node_level_txt;
 
+	/*		 Function to initialise map items		*/
 	void init_LevelSelectMap()
 	{
-		//13 nodes positions
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
+		//initialise 13 nodes positions
 		std::array<gfxVector2, 13> nodePos
 		{
-		{ 
-			{390, 100},
-			{322, 270},
-			{470, 265},
-			{550, 160},
-			{680, 185},
+		{
 
-			{940, 185},
-			{1175, 180},
-			{1340, 260},
-			{1400, 468},
-			{1237, 530},
+			{ ( (float)390 /(float)1920 )* (float)screenwidth , ( (float)100/ (float)1080 ) * (float)screenheight}, //nodepos1
+			{ ((float)322 / (float)1920) * (float)screenwidth , ((float)270 / (float)1080) * (float)screenheight}, //nodepos2
+			{ ((float)470 / (float)1920) * (float)screenwidth , ((float)265 / (float)1080) * (float)screenheight}, //nodepos3
+			{ ((float)550 / (float)1920) * (float)screenwidth , ((float)160 / (float)1080) * (float)screenheight}, //nodepos4
+			{ ((float)680 / (float)1920) * (float)screenwidth , ((float)185 / (float)1080) * (float)screenheight}, //nodepos5
+			{ ((float)940 / (float)1920) * (float)screenwidth , ((float)185 / (float)1080) * (float)screenheight}, //nodepos6
+			{ ((float)1175 / (float)1920) * (float)screenwidth , ((float)180 / (float)1080) * (float)screenheight}, //nodepos7
+			{ ((float)1340 / (float)1920) * (float)screenwidth , ((float)260 / (float)1080) * (float)screenheight}, //nodepos8
+			{ ((float)1400 / (float)1920) * (float)screenwidth , ((float)500 / (float)1080) * (float)screenheight}, //nodepos9
+			{ ((float)1237 / (float)1920) * (float)screenwidth , ((float)550 / (float)1080) * (float)screenheight}, //nodepos10
+			{ ((float)1055 / (float)1920) * (float)screenwidth , ((float)450 / (float)1080) * (float)screenheight}, //nodepos11
+			{ ((float)883 / (float)1920) * (float)screenwidth , ((float)570 / (float)1080) * (float)screenheight}, //nodepos12
+			{ ((float)865 / (float)1920) * (float)screenwidth , ((float)815 / (float)1080) * (float)screenheight}, //nodepos13
 
-			{1055, 450},
-			{883, 554},
-			{865, 765}
 			}
 		};
 		for(int i = 0; i < 13; i++)
@@ -60,12 +69,11 @@ namespace Core
 		}
 	}
 
+	/*		Draws level Select Map		*/
 	void Levels::LevelSelect()
 	{
-
 		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-
 		for (int i = 0; i < static_cast<int>(GameSave::LevelStatusContainer.size()); i++)
 		{
 			//level clear is true -> crown draw

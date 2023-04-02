@@ -6,7 +6,7 @@
 #include <Engine/Font/Font.h>
 #include "../Engine/GameSave/GameSave.h"
 #include "Window.h"
-//#include "."
+
 double credits_y = 0;
 
 namespace Core
@@ -16,14 +16,12 @@ namespace Core
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
 
-	/* default black color */
-	glm::vec3 color_up{0.f, 0.f, 0.f}; 
-	glm::vec3 color_down{ 0.f, 0.f, 0.f };
-	glm::vec3 color_left{ 0.f, 0.f, 0.f };
-	glm::vec3 color_right{ 0.f, 0.f, 0.f };
-	glm::vec3 color_r{ 0.f, 0.f, 0.f };
-
-	//color str default  //red
+	/* set default red color */
+	glm::vec3 color_up{1.f, 0.f, 0.f}; 
+	glm::vec3 color_down{ 1.f, 0.f, 0.f };
+	glm::vec3 color_left{ 1.f, 0.f, 0.f };
+	glm::vec3 color_right{ 1.f, 0.f, 0.f };
+	glm::vec3 color_r{ 1.f, 0.f, 0.f };
 	glm::vec3 color_str{ 1.f, 0.f, 0.f };
 
 	SceneManager::SceneManager()
@@ -736,122 +734,90 @@ namespace Core
 		win_overlay->draw();
 	}
 
-
+	/*	helper function to draw tut1 quest text	*/
 	void SceneManager::drawTut1( )
 	{
+		int screenwidth = 0, screenheight = 0;
+		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+
 		const std::string up = "Up";
 		const std::string down = "Down";
 		const std::string left = "Left";
 		const std::string right = "Right";
 		const std::string str = "All ingredients are packed";
 
-		int screenwidth = 0, screenheight = 0;
-		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-
-		/*	bool state to toggle the key */
-		if(!up_key)
-		{	//up_key is true
-			//default up_key set to red
-			color_up = { 1.f, 0.f, 0.f };
+		if (up_key)
+		{
+			color_up = { 0.f, 0.f, 0.f }; //black
+		}
+		if (down_key)
+		{
+			color_down = { 0.f, 0.f, 0.f }; //black
 
 		}
-		else
+		if (left_key)
 		{
-			color_up = { 0.f, 1.f, 0.f };
-		}
-
-		if (!down_key) 
-		{
-			//default up_key set to red
-			color_down = { 1.f, 0.f, 0.f };
+			color_left = { 0.f, 0.f, 0.f }; //black
 
 		}
-		else
-			color_down = { 0.f, 1.f, 0.f };
-
-		if (!left_key) 
+		if (right_key)
 		{
-			//default up_key set to red
-			color_left = { 1.f, 0.f, 0.f };
+			
+			color_right = { 0.f, 0.f, 0.f }; //black
 
 		}
-		else
-			color_left = { 0.f, 1.f, 0.f };
-
-		if (!right_key) 
+		if(Map::isWin())
 		{
-			//default up_key set to red
-			color_right = { 1.f, 0.f, 0.f };
-
+			color_str = { 0.f, 0.f, 0.f }; //black
+			
 		}
-		else
-			color_right = { 0.f, 1.f, 0.f };
-
-		
-		if (!Map::isWin())
-		{
-			//when no win, set the string to red color
-			color_str = { 1.f, 0.f, 0.f }; //red
-		} 
-		else if(Map::isWin())
-		{
-			color_str = { 0.f, 1.f, 0.f }; //green
-			//when win condition met, green color
-		};
 		
 		Shaders->Font_Shader()->use();
-		Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight-175), .55f, color_up, 1.f);
-		Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 175), .55f, color_down, 1.f);
-		Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 175), .55f, color_left, 1.f);
-		Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 175), .55f, color_right, 1.f);
-		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 220), .55f, color_str, 1.f);
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 930), (float)(screenheight - 175), .55f, color_str, 1.f);
+		Font::RenderText(*Shaders, up, (float)((screenwidth/2)-930), (float)(screenheight- 220), .55f, color_up, 1.f);
+		Font::RenderText(*Shaders, down, (float)((screenwidth / 2) - 865), (float)(screenheight - 220), .55f, color_down, 1.f);
+		Font::RenderText(*Shaders, left, (float)((screenwidth / 2) - 770), (float)(screenheight - 220), .55f, color_left, 1.f);
+		Font::RenderText(*Shaders, right, (float)((screenwidth / 2) - 690), (float)(screenheight - 220), .55f, color_right, 1.f);
 		Shaders->Textured_Shader()->use();
 		
 	}
 
+	/*	helper function to draw tut2 quest text	*/
 	void SceneManager::drawTut2()
 	{
-		//if (!r_key)
-		//{
-		//	//default up_key set to red
-		//	color_r = { 1.f, 0.f, 0.f };
-		//}
-		if (!r_key)
-		{
-			//default up_key set to red
-			color_r = { 1.f, 0.f, 0.f };
-
-		}
-		else
-		{
-			color_r = { 0.f, 1.f, 0.f };
-			GameSave::LevelStatusContainer[1].isQuestClear = 1;
-		}
-
-		//if(Window::keystate_R)
-		//{
-		//	color_r= { 0.f, 1.f, 0.f }; //green
-		//	r_key = true; //keep color to green after pressed r
-		//	
-		//}
-		const std::string str = "Press   'R'   to  restart";
-
 		int screenwidth, screenheight;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+		if(!r_key)
+		{
+			color_r = { 1.f, 0.f, 0.f }; //red
+		}
+		else
+		{   //r_key is pressed
+			color_r = { 0.f, 0.f, 0.f };
+			if(Map::isWin())
+			{	//player pressed r_key and met win condition of the level-> quest cleared
+				GameSave::LevelStatusContainer[1].isQuestClear = 1;
+			}
+			
+		}
+		const std::string str = "Press   'R'   to  restart";
 
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 190), .55f, color_r, 1.f);
 		Shaders->Textured_Shader()->use();
 	}
 
-	/* resets color back to red*/
+	/* helper function that resets tut text colors back to red*/
 	void SceneManager::resetColor()
 	{
-		color_up = { 1.f, 0.f, 0.f };
-		color_down = { 1.f, 0.f, 0.f };
-		color_left = { 1.f, 0.f, 0.f };
-		color_right = { 1.f, 0.f, 0.f };
-		color_r = { 1.f, 0.f, 0.f };
+		if(Window::keystate_R == true)
+		{
+			color_up = { 1.f, 0.f, 0.f };
+			color_down = { 1.f, 0.f, 0.f };
+			color_left = { 1.f, 0.f, 0.f };
+			color_right = { 1.f, 0.f, 0.f };
+			color_r = { 1.f, 0.f, 0.f };
+		}
 	}
 	
 

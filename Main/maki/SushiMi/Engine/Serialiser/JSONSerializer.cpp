@@ -1,6 +1,6 @@
 /*!
 @file		JSONSerializer.cpp
-@author		Chong Rui Xuan Aurelia
+@author		Chong Rui Xuan Aurelia (100%)
 @par		fei.x@digipen.edu
 @date		6/1/2022
 
@@ -41,7 +41,6 @@ namespace Core
 
 	void DeserializeEntity(std::string const& filepath, ObjectFactory* objfact)
 	{
-		//std::cout << filepath << " <<<<<<<reading from this filepath\n";
 		std::string json_from_file = ReadFileContents(filepath.c_str());
 
 		std::string name; //name of object we are parsing (under sprite component)
@@ -96,45 +95,26 @@ namespace Core
 				transComp = new Transform();
 				transComp->Deserialize(compJsonObj);
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Transform, transComp);
-				//std::cout << "transform component is : " << transComp << std::endl;
 				//delete transComp;
 			}
 
 			else if (compJsonObj["type"] == "Sprite")
 			{
-				//rapidjson::Value& spritJsonObj = document["Sprite"]; // get the sprite JSON object
-				//if (!spritJsonObj.HasMember("texturepath") || !spritJsonObj["texturepath"].IsString())
-				//{
-				//	std::cout << "JSONSerializer Deserialize Sprite: " << filepath << " does not have 'texturepath'" << std::endl;
-				//	return;
-				//}
 				const char* texturePath = compJsonObj["texturepath"].GetString(); // need to convert the data retrieved to a C++ type
 				name = compJsonObj["name"].GetString();	//	name of object (under sprite component)
-
-				//std::cout << "loading of " << name << "\n";
 				Sprite* object = new Sprite(texturePath);
-				/*Sprite::menu->transformation.Position = glm::vec2(0, 0);
-				Sprite::menu->transformation.Scale = glm::vec2(1000, 800);*/
 				if (compJsonObj.HasMember("alpha"))
 				{
 					alpha = compJsonObj["alpha"].GetFloat();
 					object->alpha = alpha;
 				}
 
-
 				object->Deserialize(compJsonObj);
-
 				gameObj->GetObjectProperties()->AddComponent(ComponentID::Renderer, object);
-				//delete object;
 			}
-
-
 		}
-
-		//std::string name("Object: " + std::to_string(objfact->LastObjectID));
-		//std::cout << name << " inserting into object container\n";
 		objfact->AddObjects(gameObj, name);	//	save everything in gameObj into container
-		//delete gameObj;
+		;
 	}
 
 	/*										Deserializes multiple components at once
@@ -237,16 +217,6 @@ namespace Core
 			}
 			pos[i] = posValue.GetFloat(); // since posValue is a number, can just get the value as a float
 		}
-		//setting player pos from JSON into custom variable
-		//set your custom variable!!!! important
-		
-
-		/*playerpos_restart.x = pos[0];
-		player->playerpos_restart.y = pos[1];
-
-		player->playerpos.x = pos[0];
-		player->playerpos.y = pos[1];*/
-
 
 		if (!spriteObj.HasMember("scale") || !spriteObj["scale"].IsArray())
 		{
@@ -296,18 +266,10 @@ namespace Core
 			}
 			animationList.push_back(animationName.GetString());
 		}
-
-		//std::cout << "JSONSerializer Deserialize: Managed to parse " << filepath << std::endl;
-
 		return new Player(spriteFilepath, pos, scale, animationList);
-		/*Player *valid_player(spriteFilepath, pos, scale, animationList);
-		valid_player->playerpos = player->playerpos;
-		valid_player->playerpos_restart = player->playerpos_restart;
-		return valid_player;*/
 	}
 
 }
-
 
 /* screen to text*/
 void Core::Serialize(const Player& player, std::string const& filepath)
@@ -342,14 +304,6 @@ void Core::Serialize(const Player& player, std::string const& filepath)
 	rapidjson::Value jsonAnimArr;
 	jsonAnimArr.SetArray(); // set JSON type to array
 
-	// Adding 2 animations. This can be turned into a for loop
-	/* Presuming animList is a vector of string
-		for (std::string& anim : animList) { // loop through the vector
-			rapidjson::Value jsonAnimValue;
-			jsonAnimValue.SetString(anim.c_str(), jsonDoc.GetAllocator()); // set the value of jsonAnimValue
-			jsonAnimArr.PushBack(jsonAnimValue, jsonDoc.GetAllocator()); // add the anim name into the json animation array
-		}
-	*/
 	rapidjson::Value jsonAnimValue;
 	jsonAnimValue.SetString("../textures/spritesheet/Idle.txt", jsonDoc.GetAllocator());
 	jsonAnimArr.PushBack(jsonAnimValue, jsonDoc.GetAllocator());
@@ -363,8 +317,6 @@ void Core::Serialize(const Player& player, std::string const& filepath)
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> jsonWriter(jsonStrBuffer);
 	jsonDoc.Accept(jsonWriter);
 
-	/*if (Editor::LevelEditor::levelsave == 1 )
-	{*/
 	// Write the JSON string into file
 	std::fstream fs;
 	fs.open(filepath, std::fstream::out);

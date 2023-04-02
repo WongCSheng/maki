@@ -4,6 +4,7 @@
 #include "../Headers/Main.h"
 #include "../Engine/TileMap/Map.h"
 #include <Engine/Font/Font.h>
+#include "../Engine/GameSave/GameSave.h"
 #include "Window.h"
 //#include "."
 double credits_y = 0;
@@ -822,7 +823,10 @@ namespace Core
 
 		}
 		else
+		{
 			color_r = { 0.f, 1.f, 0.f };
+			GameSave::LevelStatusContainer[1].isQuestClear = 1;
+		}
 
 		//if(Window::keystate_R)
 		//{

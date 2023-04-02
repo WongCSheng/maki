@@ -122,7 +122,7 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
-
+			
 			GameSave::LevelStatusContainer[2].isLevelClear = 1;
 			GameSave::LevelStatusContainer[3].isUnlocked = 1; //set next level unlocked
 

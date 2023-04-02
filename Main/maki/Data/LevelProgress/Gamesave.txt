@@ -1,7 +1,7 @@
 	Unlock Status | Level Clear | Quest Clear
 	   Lock		  |	  Crown		|	Star
 T1		1				0			1
-T2		1				0			0
+T2		1				0			1
 L1		0				0			0
 L2		0				0			0
 L3		0				0			0

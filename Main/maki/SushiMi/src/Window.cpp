@@ -663,8 +663,6 @@ namespace Core
 	Window::Window(int _width, int _height)
 		:m_width(_width),
 		m_height(_height),
-		isCutscene(0),
-		isLevelSelection(0),
 		isSettings(0),
 		isWalk(0),
 		isEndingCutscene(0)
@@ -1081,15 +1079,15 @@ namespace Core
 			}
 		}
 
-		if (mouseLeft)
-		{
+		/*if (mouseLeft)
+		{*/
 			//place_obj = true;
 			//if (place_obj)
 			//{
 				//std::cout << "placing obj at x: " << ingredient->transformation.posittion.x << "and y: " << ingredient->transformation.position.y << std::endl;
 				//place_obj = false;
 			//}
-		}
+		//}
 
 		if (keystate_escape && gameIsPaused)
 		{
@@ -1129,9 +1127,8 @@ namespace Core
 				}
 				else
 				{
-					isTut1 = true;
+					isLevelSelection = true;
 				}
-				isLevelSelection = true;
 
 				//std::cout << "exit main menu" << std::endl;
 				int screenwidth = 0, screenheight = 0;
@@ -1295,44 +1292,7 @@ namespace Core
 			//	glfwSetWindowShouldClose(window_ptr, true);
 			//}
 		}
-		/**************************************/
-		//BUTTONS DISPLAYED ON LEVEL SELECT
-		/**************************************/
-		if (mouseLeft && isLevelSelection == true)
-		{
-			double xpos = 0, ypos = 0;
-			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-
-			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-
-			//TUTORIAL1 and play cutscene
-			if (xpos > 394 && ypos > 139 && xpos < 472 && ypos < 200)
-			{
-				isLevelSelection = false;
-				isCutscene = true;
-			}
-			//Tutorial2
-			if (xpos > 331 && ypos > 283 && xpos < 405 && ypos < 339)
-			{
-				isLevelSelection = false;
-				isTut2 = true;
-
-			}
-			//LEVEL1
-			if (xpos > 474 && ypos > 272 && xpos < 551 && ypos < 333)
-			{
-				isLevelSelection = false;
-				isLevel1 = true;
-
-			}
-			//LEVEL2
-			if (xpos > 568 && ypos > 163 && xpos < 633 && ypos < 223)
-			{
-				isLevelSelection = false;
-				isLevel2 = true;
-
-			}
-		}
+		
 		//note: escape should be mapped to pause/menu
 		//if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
 		//{

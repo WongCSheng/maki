@@ -203,7 +203,7 @@ void LogOutput(LogLevel level, const char* message, ...) {
 		"[INFO]: ",
 		"[DEBUG]: ",
 		"[TRACE]: ",
-		"[LEVEL PROGRESS]: "
+		"[LOG]: "
 
 	};
 	//char IsError = level < LogLevel::LOG_LEVEL_WARN; // FATAL and ERROR is considered Error, the rest are sub errors

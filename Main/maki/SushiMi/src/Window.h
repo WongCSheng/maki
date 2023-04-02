@@ -98,7 +98,7 @@ namespace Core
 		static inline bool areyousure_prompt;
 		static inline bool isMenuState;
 		
-		bool isLevelSelection;
+		static inline bool isLevelSelection;
 		bool isWalk;
 		static inline bool loaded;
 		static inline bool isPlayerinSinkhole;
@@ -156,7 +156,7 @@ namespace Core
 		};
 		static GameState level;
 
-		bool isCutscene;
+		static inline bool isCutscene;
 		static inline int CutscenePage;
 
 		static inline bool isHowToPlay;

@@ -367,7 +367,7 @@ void Core::pseudomain::init() {
 	AudioManager.SetMusicVolume(0.7f);
 
 	//LogOutput(LogLevel::LOG_LEVEL_WARN, "test warning");//this is for testing, u can create your own warning msg when u use
-	LogOutput(LogLevel::LOG_LEVEL_PROGRESS, "0"/*Window::levelprogress*/);//this is for testing, u can create your own warning msg when u use
+	LogOutput(LogLevel::LOG_ENTRY, "Test Log Entry"/*Window::levelprogress*/);//this is for testing, u can create your own warning msg when u use
 }
 
 /*  _________________________________________________________________________ */

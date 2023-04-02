@@ -43,7 +43,7 @@ typedef enum class LogLevel {
 	LOG_LEVEL_INFO,	//Basic level logging for information
 	LOG_LEVEL_DEBUG,	//Included only for debug/test build for debugging
 	LOG_LEVEL_TRACE,		//Includes very low level of detail for debugging mode
-	LOG_LEVEL_PROGRESS		//Includes very low level of detail for debugging mode
+	LOG_ENTRY		//test log
 }LogLevel;
 
 

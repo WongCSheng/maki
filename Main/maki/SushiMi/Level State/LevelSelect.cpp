@@ -18,6 +18,8 @@ written consent of DigiPen Institute of Technology is prohibited.
 #include "LevelsHeader.h"
 #include <array>
 #include "Engine/Font/Font.h"
+#include <iostream>
+#include "../src/Window.h"
 
 namespace Core
 {
@@ -47,7 +49,6 @@ namespace Core
 			{865, 765}
 			}
 		};
-
 		for(int i = 0; i < 13; i++)
 		{
 			icons icon;
@@ -97,6 +98,7 @@ namespace Core
 			Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", nodeSprite->transformation.Get());
 			nodeSprite->draw();
+			
 
 			if(level_icons.at(i).isLocked)
 			{
@@ -123,6 +125,64 @@ namespace Core
 				Shaders->Font_Shader()->use();
 				Font::RenderText(*Shaders, node_level_txt  , (level_icons.at(i).node_pos.x + 25), ( screenheight - level_icons.at(i).node_pos.y -50 ), .55f, color_txt, 1.f);
 				Shaders->Textured_Shader()->use();
+				//if a level is unlocked, it can respond to mouse input
+				if (Window::mouseLeft)
+				{
+					double xpos = 0, ypos = 0;
+					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+					double nodewidth = 85;
+
+					//check against the node
+					if (xpos > level_icons.at(i).node_pos.x && ypos > level_icons.at(i).node_pos.y && xpos < level_icons.at(i).node_pos.x + nodewidth && ypos < level_icons.at(i).node_pos.y + nodewidth)
+					{
+						Window::isLevelSelection = false;
+						switch (i)
+						{
+						case 0:
+							Window::isTut1 = true;
+							break;
+						case 1:
+							Window::isTut2 = true;
+							break;
+						case 2:
+							Window::isLevel1 = true;
+							break;
+						case 3:
+							Window::isLevel2 = true;
+							break;
+						case 4:
+							Window::isLevel3 = true;
+							break;
+						case 5:
+							Window::isLevel4 = true;
+							break;
+						case 6:
+							Window::isLevel5 = true;
+							break;
+						case 7:
+							Window::isLevel6 = true;
+							break;
+						case 8:
+							Window::isLevel7 = true;
+							break;
+						case 9:
+							Window::isLevel8 = true;
+							break;
+						case 10:
+							Window::isLevel9 = true;
+							break;
+						case 11:
+							Window::isLevel10 = true;
+							break;
+						case 12:
+							Window::isLevel11 = true;
+							break;
+
+						default:
+							break;
+						}
+					}
+				}
 			}
 
 			if (level_icons.at(i).isCrown)

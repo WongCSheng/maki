@@ -82,6 +82,19 @@ namespace Core
 		}
 	}
 
+	std::string Window::GetDocumentsFolder()
+	{
+		char path[MAX_PATH];
+		if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_MYDOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path)))
+		{
+			return std::string(path);
+		}
+		else
+		{
+			return "";
+		}
+	}
+
 
 	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
@@ -711,8 +724,9 @@ namespace Core
 		timetodeletegrid = false;
 		isMenuState = true;
 		levelprogress = 0;
-		
-		GameSave::LoadGameSave("../Data/LevelProgress/Gamesave.txt");
+		// Get the path to the Documents folder
+		std::string documentsFolder = Window::GetDocumentsFolder();
+		GameSave::LoadGameSave(documentsFolder + "/Data/LevelProgress/Gamesave.txt");
 		//GameSave::SetAllGameSaveZero();
 #ifdef EDITOR
 
@@ -769,7 +783,9 @@ namespace Core
 
 	Window::~Window()
 	{
-		GameSave::WriteGameSave("../Data/LevelProgress/Gamesave.txt"); //Save Level Progress
+		// Get the path to the Documents folder
+		std::string documentsFolder = Window::GetDocumentsFolder();
+		GameSave::WriteGameSave(documentsFolder + "/Data/LevelProgress/Gamesave.txt"); //Save Level Progress
 		timetodeletegrid = true;
 		Map::ResetMap();
 #ifndef EDITOR

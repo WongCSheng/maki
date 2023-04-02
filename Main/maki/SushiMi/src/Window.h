@@ -14,6 +14,9 @@ Description:
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
+#include <Windows.h>
+#include <ShlObj.h>
+#include <string>
 #include "../Engine/System/SystemFrame.h"
 #include "../Headers/Math_Header.h"
 
@@ -192,6 +195,12 @@ namespace Core
 		 *	 Helper function to convert game states to string for parsing
 		 */
 		std::string EnumToString(GameState);
+
+
+		/*
+		*  getting document folder
+		*/
+		static std::string GetDocumentsFolder();
 
 		/*
 		 *  update ingredients' position to draw on quest tab at fixed position

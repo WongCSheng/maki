@@ -1904,7 +1904,7 @@ namespace Core
 
 				else
 				{
-					pos1 = { 38.f, 145.f }, pos2 = { 160.f, 145.f }, pos3 = { 285.f, 145.f }, pos4 = { 70.f, 250.f }, pos5 = { 240.f, 250.f };
+					pos1 = { 38.f, 145.f }, pos2 = { 185.f, 145.f }, pos3 = { 335.f, 145.f }, pos4 = { 80.f, 245.f }, pos5 = { 280.f, 245.f };
 				}
 
 				//	current level
@@ -1927,7 +1927,6 @@ namespace Core
 				}
 				else //if(Map::maki_city)
 				{
-					//Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity_base");
 					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("makicity");
 					Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
@@ -2003,7 +2002,8 @@ namespace Core
 						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.0f);
 						if (Map::maki_city)
 						{
-							Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+							//turn off texture for ingredients in makicity
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 0.f); 
 						}
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp2->transformation.Get());
 						spritecomp2->draw();

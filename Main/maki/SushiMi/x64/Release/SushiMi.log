@@ -1,7 +1,40 @@
-﻿  Window.cpp
+﻿  LevelEditor.cpp
+  AudioEngine.cpp
+  Component.cpp
+  Sprite.cpp
+  Transform.cpp
+  Core.cpp
+  Factory.cpp
+  Font.cpp
+  JSONSerializer.cpp
+  CameraSystem.cpp
+  glhelper.cpp
+  PhysicSystem.cpp
+  Transformer.cpp
+  Map.cpp
+  GameObject.cpp
+  Player.cpp
+  Level1.cpp
+  Level10.cpp
+  Level11.cpp
+  Level2.cpp
+  Level3.cpp
+  Level4.cpp
+  Level5.cpp
+  Level6.cpp
+  Level7.cpp
+  Level8.cpp
+  Level9.cpp
+  LevelSelect.cpp
+  TestLevel.cpp
+  Tutorial1.cpp
+  Tutorial2.cpp
+  SceneManager.cpp
+  Window.cpp
+  main.cpp
   Generating code
-  293 of 5233 functions ( 5.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    162 functions had inline decision re-evaluated but remain unchanged
+  400 of 5262 functions ( 7.6%) were compiled, the rest were copied from previous compilation.
+    29 functions were new in current compilation
+    70 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Release\SushiMi.exe

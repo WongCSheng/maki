@@ -1404,6 +1404,10 @@ namespace Core
 				isStartCutscenePlayed = true;
 				SceneManager::drawCutscene(CutscenePage);
 
+				AudioManager.LoadSFX("Phone Vibration.ogg");
+				AudioManager.LoadSFX("Ding.ogg");
+				AudioManager.LoadSFX("Hard Floor Walking Long.ogg");
+
 				if ((keystate_space) && isMenuState == false)
 				{
 					keystate_space = true;

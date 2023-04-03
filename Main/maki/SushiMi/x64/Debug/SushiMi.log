@@ -1,4 +1,18 @@
-﻿  AudioEngine.cpp
+﻿  LevelEditor.cpp
+  AudioEngine.cpp
+  Component.cpp
+  Sprite.cpp
+  Transform.cpp
+  Core.cpp
+  Factory.cpp
+  JSONSerializer.cpp
+  CameraSystem.cpp
+  glhelper.cpp
+  PhysicSystem.cpp
+  Transformer.cpp
+  Map.cpp
+  GameObject.cpp
+  Player.cpp
   Level1.cpp
   Level10.cpp
   Level11.cpp
@@ -10,6 +24,10 @@
   Level7.cpp
   Level8.cpp
   Level9.cpp
+  LevelSelect.cpp
+  TestLevel.cpp
+  Tutorial1.cpp
+  Tutorial2.cpp
   SceneManager.cpp
   Window.cpp
   main.cpp

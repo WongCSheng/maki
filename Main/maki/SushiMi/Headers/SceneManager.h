@@ -152,13 +152,19 @@ namespace Core
 		Fishing_Top_3_2,	//V
 		Fishing_Top_3_3,	//W
 		Fishing_Top_3_4,	//X
-		Fishing_Top_3_5,	//Y
-		Fishing_Top_3_6		//Z
-	};
-
-	struct Basket
-	{
-		int IC;
+		Fishing_LifeBuoy_Red,	//Y
+		Fishing_LifeBuoy_Blue,	//Z
+		Fishing_LifeBuoy_Green,	 //[
+		Fishing_LifeBuoy_Orange,	//backslash (\)
+		Fishing_Wood_1,				//]
+		Fishing_Wood_2,				//^
+		Fishing_Wood_3				//_
+									
+	};							 
+								 
+	struct Basket				 
+	{							 
+		int IC;					 
 		grid_number nametag;
 		Transform init_value;
 		std::pair<int, int> init_Grid_Pos;

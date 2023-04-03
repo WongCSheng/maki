@@ -64,7 +64,7 @@ namespace Core
 			icon.isCrown = false;
 			icon.isLocked = true;
 			icon.node_pos = nodePos[i];
-			icon.isStar = true;
+			icon.isStar = false;
 			level_icons.insert({ i,icon });
 		}
 	}
@@ -82,18 +82,27 @@ namespace Core
 				level_icons.at(i).isCrown = true;
 			}
 
+			//if ((!Map::maki_city) && Window::winningBoxes.size() > 2)
+			//{
+			//	level_icons.at(i).isStar = true;
+			//}
+			//   else if (Map::maki_city && Window::Window::winningBoxes.size() > 4)
+			//{
+			//	level_icons.at(i).isStar = true;
+			//}
+			//else
+			//	level_icons.at(i).isStar = false;
+			//
+
 			//level
 			if (GameSave::LevelStatusContainer[i].isUnlocked == 1)
 			{
 				level_icons.at(i).isLocked = false;
 			}
+			/*else
+				level_icons.at(i).isLocked = true;*/
 
-			if (GameSave::LevelStatusContainer[i].isQuestClear == 1)
-			{
-				level_icons.at(i).isStar = true;
-			}
-			else
-				level_icons.at(i).isStar = false;
+			
 		}
 
 		for (int i = 0; i < level_icons.size();  i++)

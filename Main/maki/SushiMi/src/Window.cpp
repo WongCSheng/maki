@@ -1609,7 +1609,7 @@ namespace Core
 			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
 #ifndef EDITOR
 
-			
+
 
 			if (isCutscene)
 			{
@@ -1865,12 +1865,12 @@ namespace Core
 				}
 			}
 
-										/*Draw QuestTab*/
-			gfxVector2 pos1 , pos2 , pos3, pos4, pos5;
+			/*Draw QuestTab*/
+			gfxVector2 pos1, pos2, pos3, pos4, pos5;
 			/*If quest tab is loaded, check what are the ingredients loaded for the level*/
 			if (isQuestTab && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection)
 			{
-				if(!Map::maki_city)
+				if (!Map::maki_city)
 				{
 					//	fixed position for quest items and chop (shld only work tut1 - lvl10
 					pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };
@@ -1911,28 +1911,44 @@ namespace Core
 					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 					spritecomp1->draw();
 				}
-
-				if(isTut1)
+				// draw level indicator
+				if (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11)
 				{
-					SceneManager::drawTut1();
 					if (!isDialogue)
 					{
-						Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateT1");
-						
+						Core::Object::GameObject* obj1 = nullptr;
+						if (isTut1)
+						{
+							SceneManager::drawTut1();
+							obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateT1");
+						}
+						else if (isTut2)
+						{
+							SceneManager::drawTut2();
+							obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateT2");
+						}
+						else if (isLevel1) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL1"); }
+						else if (isLevel2) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL2"); }
+						else if (isLevel3) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL3"); }
+						else if (isLevel4) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL4"); }
+						else if (isLevel5) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL5"); }
+						else if (isLevel6) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL6"); }
+						else if (isLevel7) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL7"); }
+						else if (isLevel8) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL8"); }
+						else if (isLevel9) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL9"); }
+						else if (isLevel10) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL10"); }
+						else if (isLevel11) { obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateL11"); }
+
 						Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
-						spritecomp1->transformation.Position = glm::vec2(screenwidth*0.78f, screenheight*0.88f);
-						spritecomp1->transformation.Scale = glm::vec2((405*screenwidth)/1920, (126*screenheight)/1080);
+						spritecomp1->transformation.Position = glm::vec2(screenwidth * 0.78f, screenheight * 0.88f);
+						spritecomp1->transformation.Scale = glm::vec2((405 * screenwidth) / 1920, (126 * screenheight) / 1080);
 						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
 						spritecomp1->draw();
 					}
 				}
-
-				if (isTut2)
-				{
-					SceneManager::drawTut2();
-				}
+				
 
 				auto checkifquestexists = Sprite::quest_boxes.find(sLevel);
 				if (checkifquestexists != Sprite::quest_boxes.end()) 

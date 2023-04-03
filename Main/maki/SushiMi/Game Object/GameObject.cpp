@@ -87,7 +87,7 @@ namespace Core
 
 		GameObjectProperty* GameObject::GetObjectProperties()
 		{
-			return characteristics;
+ 			return characteristics;
 		}
 	}
 }

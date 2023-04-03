@@ -1,0 +1,2 @@
+C:\Users\toohu\OneDrive\Desktop\1175\maki\Main\maki\x64\Debug\SushiMi.exe.lastcodeanalysissucceeded
+C:\Users\toohu\OneDrive\Desktop\1175\maki\Main\maki\SushiMi\x64\Debug\NativeCodeAnalysis.read.1.tlog

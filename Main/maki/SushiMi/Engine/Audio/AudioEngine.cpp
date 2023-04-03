@@ -218,10 +218,7 @@ namespace Core
         float volume;
 
         musicChannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume += (volume <= 1.f) ? 0.1f : 0.f;
-        }
+        volume += 0.1f;
         SetMusicVolume(volume);
     }
 
@@ -230,10 +227,7 @@ namespace Core
         float volume;
 
         SFXchannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume += (volume <= 1.f) ? 0.1f : 0.f;
-        }
+        volume += 0.1f;
         SetAudioVolume(volume);
     }
 
@@ -242,10 +236,7 @@ namespace Core
         float volume;
 
         voiceChannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume += (volume <= 1.f) ? 0.1f : 0.f;
-        }
+        volume += 0.1f;
         SetVoiceVolume(volume);
     }
 
@@ -254,11 +245,8 @@ namespace Core
         float volume;
 
         musicChannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume -= (volume <= 1.f) ? 0.1f : 0.f;
-        }
-        SetVoiceVolume(volume);
+        volume -= 0.1f;
+        SetMusicVolume(volume);
     }
 
     void _audioManager::DecreaseSFXVolume()
@@ -266,11 +254,8 @@ namespace Core
         float volume;
 
         SFXchannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume -= (volume <= 1.f) ? 0.1f : 0.f;
-        }
-        SetVoiceVolume(volume);
+        volume -= 0.1f;
+        SetAudioVolume(volume);
     }
 
     void _audioManager::DecreaseVoiceVolume()
@@ -278,10 +263,7 @@ namespace Core
         float volume;
 
         voiceChannel->getVolume(&volume);
-        if (volume > -2.f && volume < 2.f)
-        {
-            volume -= (volume <= 1.f) ? 0.1f : 0.f;
-        }
+        volume -= 0.1f;
         SetVoiceVolume(volume);
     }
 

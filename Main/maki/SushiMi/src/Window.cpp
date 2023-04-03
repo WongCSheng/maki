@@ -1890,7 +1890,6 @@ namespace Core
 				SceneManager::drawSettings();
 				if (mouseLeft)
 				{
-
 					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 					double xpos = 0, ypos = 0;
 					

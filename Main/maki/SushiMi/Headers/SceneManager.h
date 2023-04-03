@@ -348,6 +348,7 @@ namespace Core
 
 		static inline Sprite* Ending_Cutscene;
 		static inline Sprite* are_you_sure;
+		static inline Sprite* are_you_sure_text;
 		static inline Sprite* particle;
 
 		static inline enum class particlePos

@@ -392,6 +392,9 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		are_you_sure->transformation.Position = glm::vec2(0, 0);
 		are_you_sure->transformation.Scale = glm::vec2(screenwidth, screenheight);
+
+		are_you_sure_text->transformation.Position = glm::vec2(0, 0);
+		are_you_sure_text->transformation.Scale = glm::vec2(screenwidth / 3, screenheight / 3);
 		
 	}
 
@@ -853,6 +856,10 @@ namespace Core
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", are_you_sure->transformation.Get());
 		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		are_you_sure->draw();
+
+		Shaders->Textured_Shader()->Send_Mat4("model_matrx", are_you_sure_text->transformation.Get());
+		Shaders->Textured_Shader()->Send_Alpha("alpha", .3f);
+		are_you_sure_text->draw();
 	}
 
 	void SceneManager::draw_Particle()
@@ -1170,6 +1177,7 @@ namespace Core
 	void SceneManager::destroy_Are_You_Sure()
 	{
 		delete are_you_sure;
+		delete are_you_sure_text;
 	}
 
 	void SceneManager::destroy_Particle()

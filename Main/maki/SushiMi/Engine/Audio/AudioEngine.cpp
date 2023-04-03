@@ -88,8 +88,23 @@ namespace Core
             audioClip = search->second;
 
         // Play the music.
-        musicChannel->stop();
+        bool check{ true };
+        StopMusic();
+        while (check)
+        {
+            musicChannel->isPlaying(&check); //waits
+        }
         fmodSystem->playSound(audioClip, channelGroup, false, &musicChannel);
+        unsigned long long dspclock;
+        FMOD::Sound* snd;
+        int rate;
+        musicChannel->setPaused(true);
+        musicChannel->getCurrentSound(&snd);
+        musicChannel->getDSPClock(0, &dspclock);
+        fmodSystem->getSoftwareFormat(&rate, 0, 0);
+        musicChannel->addFadePoint(dspclock, 0.0f);
+        musicChannel->addFadePoint(dspclock + rate, 1.0f);
+        musicChannel->setPaused(false);
     }
 
     /*!				void _audioManager::PlayVoice(string voiceClip)
@@ -118,8 +133,18 @@ namespace Core
     */
     void _audioManager::StopMusic(void)
     {
-        // stop play the sound.
-        musicChannel->stop();
+        // fade out the sound.
+        unsigned long long dspclock;
+        FMOD::Sound* snd;
+        int rate;
+        musicChannel->setPaused(true);
+        musicChannel->getCurrentSound(&snd);
+        musicChannel->getDSPClock(0, &dspclock);
+        fmodSystem->getSoftwareFormat(&rate, 0, 0);
+        musicChannel->addFadePoint(dspclock, 1.0f);
+        musicChannel->addFadePoint(dspclock + rate, 0.0f);
+        musicChannel->setDelay(0, dspclock + rate, true);
+        musicChannel->setPaused(false);
     }
 
     /*!				void _audioManager::StopSFX(void)
@@ -131,6 +156,15 @@ namespace Core
     void _audioManager::StopSFX(void)
     {
         // stop play the sound.
+        /*unsigned long long dspclock;
+        FMOD::Sound* snd;
+        int rate;
+        SFXchannel->getCurrentSound(&snd);
+        SFXchannel->getDSPClock(0, &dspclock);
+        fmodSystem->getSoftwareFormat(&rate, 0, 0);
+        SFXchannel->addFadePoint(dspclock, 1.0f);
+        SFXchannel->addFadePoint(dspclock + rate, 0.0f);
+        SFXchannel->setDelay(0, dspclock + rate, true);*/
         SFXchannel->stop();
     }
 

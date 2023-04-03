@@ -51,6 +51,7 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
+			AudioManager.StopSFX();
 			AudioManager.LoadSFX("Gravel_Drag-Movement_1.ogg");
 			AudioManager.LoadSFX("Gravel_Drag-Movement_2.ogg");
 			AudioManager.LoadSFX("Gravel_Drag-Movement_3.ogg");

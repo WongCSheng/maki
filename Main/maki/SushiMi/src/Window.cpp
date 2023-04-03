@@ -31,6 +31,7 @@ Description: This file contains functions for the processes running in the Windo
 #include "../Level State/LevelsHeader.h"
 #include "../Engine/GameSave/GameSave.h"
 
+
 namespace Core
 {
 	static Core::MainSystem* CoreSystem;
@@ -858,6 +859,8 @@ namespace Core
 			std::cout << "you have loaded tutorial 2" << std::endl;
 			setAllStatesFalse();
 			isTut2 = true;
+			
+
 			SceneManager::restartLevel();
 			keystate_L = false;
 		}

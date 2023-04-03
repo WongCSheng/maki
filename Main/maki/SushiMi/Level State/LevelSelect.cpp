@@ -76,33 +76,22 @@ namespace Core
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		for (int i = 0; i < static_cast<int>(GameSave::LevelStatusContainer.size()); i++)
 		{
-			//level clear is true -> crown draw
+			//level clear is true -> draw crown 
 			if(GameSave::LevelStatusContainer[i].isLevelClear == 1 )
 			{
 				level_icons.at(i).isCrown = true;
 			}
 
-			//if ((!Map::maki_city) && Window::winningBoxes.size() > 2)
-			//{
-			//	level_icons.at(i).isStar = true;
-			//}
-			//   else if (Map::maki_city && Window::Window::winningBoxes.size() > 4)
-			//{
-			//	level_icons.at(i).isStar = true;
-			//}
-			//else
-			//	level_icons.at(i).isStar = false;
-			//
+			if(GameSave::LevelStatusContainer[i].isQuestClear == 1)
+			{
+				level_icons.at(i).isStar = true;
+			}
 
-			//level
+			//level unlocked true -> remove lock
 			if (GameSave::LevelStatusContainer[i].isUnlocked == 1)
 			{
 				level_icons.at(i).isLocked = false;
 			}
-			/*else
-				level_icons.at(i).isLocked = true;*/
-
-			
 		}
 
 		for (int i = 0; i < level_icons.size();  i++)

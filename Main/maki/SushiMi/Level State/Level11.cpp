@@ -143,6 +143,7 @@ namespace Core
 		if (Window::isWinCondition == true)
 		{
 			GameSave::LevelStatusContainer[12].isLevelClear = 1; //this is the last level so it will not unlock another level
+			GameSave::LevelStatusContainer[12].isQuestClear = 1;
 
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);

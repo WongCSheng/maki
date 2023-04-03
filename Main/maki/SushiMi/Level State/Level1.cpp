@@ -123,7 +123,7 @@ namespace Core
 			
 			GameSave::LevelStatusContainer[2].isLevelClear = 1;
 			GameSave::LevelStatusContainer[3].isUnlocked = 1; //set next level unlocked
-
+			GameSave::LevelStatusContainer[2].isQuestClear = 1;
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 

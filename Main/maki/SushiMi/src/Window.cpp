@@ -1649,15 +1649,29 @@ namespace Core
 				checkWin(sLevel);
 				if (!Map::maki_city)
 				{
-					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-					Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
-					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
-
-					spritecomp1->transformation.Position = transcomp1->Position;
-					spritecomp1->transformation.Scale = transcomp1->Scale;
-					Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
-					Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
-					spritecomp1->draw();
+					if(isTut2)
+					{
+						Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("quest_tut2");
+						Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+						Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+						spritecomp1->transformation.Position = transcomp1->Position;
+						spritecomp1->transformation.Scale = transcomp1->Scale;
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+						spritecomp1->draw();
+					}
+					else
+					{
+						Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
+						Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+						Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+						spritecomp1->transformation.Position = transcomp1->Position;
+						spritecomp1->transformation.Scale = transcomp1->Scale;
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+						spritecomp1->draw();
+					}
+					
 				}
 				else //if(Map::maki_city)
 				{

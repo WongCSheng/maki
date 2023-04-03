@@ -411,29 +411,29 @@ namespace Core
 						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
 						break;
 
-					}
-					//GunkanCorn
-					case static_cast<int>(animated::GunkanCorn):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCorn.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCorn, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//GunkanCorn
+				case static_cast<int>(animated::GunkanCorn):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCorn.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCorn, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/GunkanCorn.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
-					}
-					//GunkanCarrot
-					case static_cast<int>(animated::GunkanCarrot):
-					{
-						Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCarrot.png");
-						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCarrot, std::move(rice1));
-						rice1->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
-						rice1->curr_anim = AnimationType::Idle;
-						rice1->isSpriteSheet = 1;
-						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
-						break;
+				}
+				//GunkanCarrot
+				case static_cast<int>(animated::GunkanCarrot):
+				{
+					Sprite* rice1 = new Sprite("../textures/spritesheet/AnimatedTop/GunkanCarrot.png");
+					std::pair<animated, Sprite*> combine1 = std::make_pair(animated::GunkanCarrot, std::move(rice1));
+					rice1->Add_animation("../textures/spritesheet/AnimatedTop/GunkanCarrot.txt");
+					rice1->curr_anim = AnimationType::Idle;
+					rice1->isSpriteSheet = 1;
+					SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+					break;
 
 					}
 					//RicePlain_TopG2_1

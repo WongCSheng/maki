@@ -52,6 +52,7 @@ namespace Core
 	std::random_device dede;
 	std::mt19937 gen(dede());
 	std::uniform_int_distribution<int> dialogues(0, 4);
+	float music, sfx, vfx;
 	/*																  game states
 	----------------------------------------------------------------------------- */
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
@@ -663,6 +664,7 @@ namespace Core
 		isEndingCutscene(0)
 
 	{
+
 		starttime = endtime = delta = fps = 0;
 
 		glfwInit();
@@ -985,14 +987,15 @@ namespace Core
 
 		if (mouseLeft && isMenuState == true)
 		{
-			//std::cout << "mouse clicking (windows.cpp)" << std::endl;
-			double xpos = 0, ypos = 0;
-			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
-			//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
+			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+			double xpos = 0, ypos = 0;
+
+			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+			std::cout << "X percentage: " << xpos / screenwidth * 100 << " " << "Y percentage: " << ypos / screenheight * 100 << std::endl;
 
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
-			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96))
+			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.30f && ypos < screenheight * 0.38f)
 			{
 				isMenuState = false;
 				if (isStartCutscenePlayed == false)
@@ -1006,19 +1009,19 @@ namespace Core
 				mouseLeft = false;
 			}
 			//HOW TO PLAY
-			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
+			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.45f && ypos < screenheight * 0.53f)
 			{
 				isHowToPlay = true;
 				mouseLeft = false;
 			}
 			//SETTINGS
-			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96))
+			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.61f && ypos < screenheight * 0.69f)
 			{
 				isSettings = true;
 				mouseLeft = false;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
-			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
+			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.78f && ypos < screenheight * 0.86f)
 			{
 				areyousure_prompt = true;
 				mouseLeft = false;
@@ -1032,7 +1035,6 @@ namespace Core
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			//std::cout << xpos << " " << ypos << "\n";
 			for (auto& x : CoreSystem->objfactory->ObjectContainer)
 			{
 				if (x.first == "ResumeButton")
@@ -1290,29 +1292,30 @@ namespace Core
 
 	void Window::Mainloop()
 	{
-
+		AudioManager.GetMinimiseVolumes(music, sfx, vfx);
 		
 		starttime = glfwGetTime();
 
 		while (!glfwWindowShouldClose(window_ptr))
 		{
 			int focused = glfwGetWindowAttrib(window_ptr, GLFW_FOCUSED);
-
 			if (focused == 0)
 			{
 				AudioManager.SetMusicVolume(0);
+				AudioManager.SetAudioVolume(0);
+				AudioManager.SetVoiceVolume(0);
 			}
 			else
 			{
-				AudioManager.SetMusicVolume(1);
+				AudioManager.SetMinimiseVolumes(music, sfx, vfx);
 			}
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
 			pseudomain::update();
 			AudioManager.Update();
-			//for each frame 
 			Resize();
+			//for each frame 
 			Input();
 			if (isTut1 || isLevel1 || isLevel2 || isLevel3)
 			{

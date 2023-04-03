@@ -1,6 +1,7 @@
 ﻿  LevelEditor.cpp
   AudioEngine.cpp
   Component.cpp
+  Sprite.cpp
   Transform.cpp
   Core.cpp
   Factory.cpp
@@ -11,6 +12,7 @@
   Transformer.cpp
   Map.cpp
   GameObject.cpp
+  Player.cpp
   Level1.cpp
   Level10.cpp
   Level11.cpp
@@ -29,5 +31,5 @@
   SceneManager.cpp
   Window.cpp
   main.cpp
-  LINK : C:\Users\Aurel\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
-  SushiMi.vcxproj -> C:\Users\Aurel\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe
+  LINK : C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe not found or not built by the last incremental link; performing full link
+  SushiMi.vcxproj -> C:\Users\theas\Documents\GitHub\maki\Main\maki\x64\Debug\SushiMi.exe

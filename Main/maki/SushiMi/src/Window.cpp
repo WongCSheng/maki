@@ -1260,7 +1260,7 @@ namespace Core
 		SceneManager::Ending_Cutscene->timer = 0;
 
 		SceneManager::are_you_sure = new Sprite("../textures/UI/Are you sure box.png"); //confirmation page
-		SceneManager::are_you_sure_text = new Sprite("../textures/UI/You’re about to leave. Are you sure_.png");
+		//SceneManager::are_you_sure_text = new Sprite("../textures/UI/You’re about to leave. Are you sure_.png");
 		SceneManager::particle = new Sprite("../textures/Bami/RiceParticle/particlespritesheet.png");
 		SceneManager::particle->isSpriteSheet = 0;
 		SceneManager::particle->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
@@ -1978,6 +1978,7 @@ namespace Core
 			{
 				SceneManager::load_Are_You_Sure();
 				SceneManager::draw_Are_You_Sure();
+				//input for are you sure
 				if (keystate_Y && (gameIsPaused || isMenuState))
 				{
 					glfwSetWindowShouldClose(window_ptr, true);

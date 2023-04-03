@@ -52,23 +52,15 @@ namespace Core
 	----------------------------------------------------------------------------- */
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
 	{
-		switch (button)
+		if (GLFW_RELEASE == action)
 		{
-		case GLFW_MOUSE_BUTTON_LEFT:
-			Window::mouseLeft = (button == GLFW_MOUSE_BUTTON_LEFT) ? true : false;
-			break;
-		}
-
-		switch (action)
-		{
-		case GLFW_PRESS:
-			Window::mouseLeft = (action == GLFW_PRESS) ? true : false;
-			break;
-
-		case GLFW_RELEASE:
 			Window::mouseLeft = false;
-			break;
 		}
+		else if (GLFW_PRESS == action)
+		{
+			Window::mouseLeft = (button == GLFW_MOUSE_BUTTON_LEFT) ? true : false;
+		}
+
 	}
 
 	std::string Window::GetDocumentsFolder()
@@ -1008,22 +1000,25 @@ namespace Core
 				{
 					isLevelSelection = true;
 				}
+				mouseLeft = false;
 			}
 			//HOW TO PLAY
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
 			{
 				isHowToPlay = true;
-				//std::cout << "in how to play screen" << std::endl;
+				mouseLeft = false;
 			}
 			//SETTINGS
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96))
 			{
 				isSettings = true;
+				mouseLeft = false;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
 			{
 				areyousure_prompt = true;
+				mouseLeft = false;
 			}
 
 		}
@@ -1051,7 +1046,7 @@ namespace Core
 						((float)ypos < (position.y + scale.y)))
 					{
 						gameIsPaused = false;
-						
+						mouseLeft = false;
 					}
 				}
 				else if (x.first == "HowToPlay1")
@@ -1068,7 +1063,7 @@ namespace Core
 					{
 						if (!keystate_escape)
 							isHowToPlay = true;
-
+						mouseLeft = false;
 					}
 				}
 				else if (x.first == "MenuButton")
@@ -1086,7 +1081,7 @@ namespace Core
 					{
 
 						keystate_T = true;
-						
+						mouseLeft = false;
 					}
 				}
 				else if (x.first == "QuitButton")
@@ -1815,6 +1810,12 @@ namespace Core
 
 			if (isHowToPlay == true)
 			{
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				double xpos = 0, ypos = 0;
+
+				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+				//std::cout << "X percentage: " << xpos / screenwidth * 100 << " " << "Y percentage: " << ypos / screenheight * 100 << std::endl;
+
 				isMenuState = false; //disable menu buttons
 			
 				isQuestTab = false;
@@ -1822,42 +1823,35 @@ namespace Core
 				//SceneManager::loadHowToOverlay(0, 0);
 				//std::cout << HowToPlayPage << "current page\n";
 				SceneManager::drawHowToOverlay(HowToPlayPage);
-				if (keystate_escape)
+				if (mouseLeft)
 				{
-					isHowToPlay = false;
-					if (!isTut1 && !isTut2 && !isLevel1 && !isLevel2 && !isLevel3 && !isLevel4 && !isLevel5 && !isLevel6 && !isLevel7 && !isLevel8 && !isLevel9 && !isLevel10 && !isLevel11 && !isTestLevel)
-					isMenuState = true;
-					HowToPlayPage = 0;
-					keystate_escape = false;
-					/*break;*/
-				}
-				else if (keystate_right)
-				{
-					if (HowToPlayPage < 5)
+					if (xpos > screenwidth * 0.11f && xpos < screenwidth * 0.25f && ypos > screenheight * 0.78f && ypos < screenheight * 0.88f)
 					{
-						HowToPlayPage++;
-						keystate_right = false;
-					}
-					else if (HowToPlayPage >= 5)
-					{
+						isHowToPlay = false;
+						if (!isTut1 && !isTut2 && !isLevel1 && !isLevel2 && !isLevel3 && !isLevel4 && !isLevel5 && !isLevel6 && !isLevel7 && !isLevel8 && !isLevel9 && !isLevel10 && !isLevel11 && !isTestLevel)
+							isMenuState = true;
 						HowToPlayPage = 0;
-						keystate_right = false;
+						mouseLeft = false;
+					}
+					else if (xpos > screenwidth * 0.84f && xpos < screenwidth * 0.91f && ypos > screenheight * 0.78f && ypos < screenheight * 0.88f)
+					{
+						if (HowToPlayPage < 5)
+						{
+							HowToPlayPage++;
+						}
+						mouseLeft = false;
+					}
+					else if (xpos > screenwidth * 0.75f && xpos < screenwidth * 0.82f && ypos > screenheight * 0.78f && ypos < screenheight * 0.88f)
+					{
+						//PREV PAGE 
+						if (HowToPlayPage > 0)
+						{
+							HowToPlayPage--;
+						}
+						mouseLeft = false;
 					}
 				}
-				else if (keystate_left)
-				{
-					//PREV PAGE 
-					if (HowToPlayPage > 0)
-					{
-						HowToPlayPage--;
-						keystate_left = false;
-					}
-					else if (HowToPlayPage <= 0)
-					{
-						HowToPlayPage = 5;
-						keystate_left = false;
-					}
-				}
+
 			}
 
 			if (areyousure_prompt == true)
@@ -1882,34 +1876,39 @@ namespace Core
 				SceneManager::drawSettings();
 				if (mouseLeft)
 				{
+
+					glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 					double xpos = 0, ypos = 0;
-
+					
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-
-					//volume up setting
-					if (xpos > 1036 && xpos < 1139 && ypos > 410 && ypos < 500)
+					//volume up setting 
+					if (xpos > screenwidth * 0.61f && xpos < screenwidth * 0.65f && ypos > screenheight * 0.41f && ypos < screenheight * 0.49f)
 					{
 						AudioManager.IncreaseMusicVolume();
 						AudioManager.IncreaseSFXVolume();
 						AudioManager.IncreaseVoiceVolume();
+						mouseLeft = false;
 					}
 
 					//volume down setting
-					if (xpos > 1163 && xpos < 1268 && ypos > 410 && ypos < 500)
+					if (xpos > screenwidth * 0.54f && xpos < screenwidth * 0.60f && ypos > screenheight * 0.41f && ypos < screenheight * 0.49f)
 					{
 						AudioManager.DecreaseMusicVolume();
 						AudioManager.DecreaseSFXVolume();
 						AudioManager.DecreaseVoiceVolume();
+						mouseLeft = false;
 					}
 					//PRESS CREDITS
-					if (xpos > 814 && xpos < 1047 && ypos > 536 && ypos < 612)
+					if (xpos > screenwidth * 0.42f && xpos < screenwidth * 0.55f && ypos > screenheight * 0.51f && ypos < screenheight * 0.59f)
 					{
 						isCredits = true;
+						mouseLeft = false;
 					}
 					//PRESS BACK
-					if (xpos > 814 && xpos < 1047 && ypos > 635 && ypos < 708)
+					if (xpos > screenwidth * 0.42f && xpos < screenwidth * 0.55f && ypos > screenheight * 0.61f && ypos < screenheight * 0.69f)
 					{
 						isSettings = false;
+						mouseLeft = false;
 					}
 				}
 			}

@@ -1290,10 +1290,23 @@ namespace Core
 
 	void Window::Mainloop()
 	{
+
+		
 		starttime = glfwGetTime();
 
 		while (!glfwWindowShouldClose(window_ptr))
 		{
+			int focused = glfwGetWindowAttrib(window_ptr, GLFW_FOCUSED);
+
+			std::cout << focused << std::endl;
+			if (focused == 0)
+			{
+				AudioManager.SetMusicVolume(0);
+			}
+			else
+			{
+				AudioManager.SetMusicVolume(1);
+			}
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/

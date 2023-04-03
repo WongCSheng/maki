@@ -5,6 +5,7 @@
 #include "../Engine/TileMap/Map.h"
 #include <Engine/Font/Font.h>
 #include "../Engine/GameSave/GameSave.h"
+#include "../Game Object/GameObject.h"
 #include "Window.h"
 
 double credits_y = 0;
@@ -67,6 +68,27 @@ namespace Core
 
 	void SceneManager::Init()
 	{
+		/*Object::GameObject* HTP_left_button = CoreSystem->objfactory->Create();
+		Transform transform_left;
+		Sprite spr_left("../textures/Buttons/Button_ArrowLeft.png");
+		HTP_left_button->GetObjectProperties()->AddComponent(ComponentID::Transform, &transform_left);
+		HTP_left_button->GetObjectProperties()->AddComponent(ComponentID::Renderer, &spr_left);
+
+		Object::GameObject* HTP_right_button = CoreSystem->objfactory->Create();
+		Transform transform_right;
+		Sprite spr_right("../textures/Buttons/Button_ArrowLeft.png");
+		HTP_left_button->GetObjectProperties()->AddComponent(ComponentID::Transform, &transform_right);
+		HTP_left_button->GetObjectProperties()->AddComponent(ComponentID::Renderer, &spr_right);
+
+		Object::GameObject* HTP_back_button = CoreSystem->objfactory->Create();
+		Transform transform_back;
+		Sprite spr_back("../textures/Buttons/Button_ArrowLeft.png");
+		HTP_back_button->GetObjectProperties()->AddComponent(ComponentID::Transform, &transform_back);
+		HTP_back_button->GetObjectProperties()->AddComponent(ComponentID::Renderer, &spr_back);
+
+		CoreSystem->objfactory->AddObjects(HTP_left_button, "HTP_LEFT_BUTTON");
+		CoreSystem->objfactory->AddObjects(HTP_right_button, "HTP_RIGHT_BUTTON");
+		CoreSystem->objfactory->AddObjects(HTP_back_button, "HTP_BACK_BUTTON");*/
 	}
 
 	void SceneManager::Update(const double)
@@ -465,40 +487,7 @@ namespace Core
 					}
 				}
 			}
-			/*
-					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::soya)
-					{
-						if (Map::salmon->status == 1)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					if (Map::wasabi->timer >2.f && ingredient.first == grid_number::wasabi)
-					{
-
-						if (Map::salmon->status == 2)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					if (ingredient.second->timer > 2.f && ingredient.first == grid_number::tea)
-					{
-
-						if (Map::salmon->status == 4)
-						{
-							ingredient.second->curr_anim = AnimationType::Idle;
-							//ingredient.second->alpha -= Window::GetInstance(0, 0)->getDelta();
-							ingredient.second->alpha = 0.5f;
-						}
-					}
-					*/
-
-
-
+			
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", ingredient.spr->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), ingredient.spr->alpha);
 			if (ingredient.spr->isSpriteSheet)

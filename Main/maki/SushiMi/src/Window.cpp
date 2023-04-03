@@ -47,6 +47,7 @@ namespace Core
 	double lastframe = 0;
 	static std::map<std::string, gfxVector2> chops;
 	int screenwidth = 0, screenheight = 0;
+	double xpos = 0, ypos = 0;
 
 	std::random_device dede;
 	std::mt19937 gen(dede());
@@ -993,7 +994,6 @@ namespace Core
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96))
 			{
-
 				isMenuState = false;
 				if (isStartCutscenePlayed == false)
 				{
@@ -1298,7 +1298,6 @@ namespace Core
 		{
 			int focused = glfwGetWindowAttrib(window_ptr, GLFW_FOCUSED);
 
-			std::cout << focused << std::endl;
 			if (focused == 0)
 			{
 				AudioManager.SetMusicVolume(0);
@@ -1584,6 +1583,9 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
+				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					/*Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -1607,25 +1609,66 @@ namespace Core
 						spritecomp->draw();
 
 					if (x.first == "StartButton")
+					{
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 0.5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "HowToPlay")
+					{
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 0.5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "SettingsButton")
+					{
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 0.5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "ExitButton")
+					{
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", 0.5f);
+						}
 						spritecomp->draw();
+					}
 				}
 			}
 
 			if (gameIsPaused == true)
 			{
+				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
+				
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					Sprite* spritecomp = x.second->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+
+					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
+					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
 
 					spritecomp->transformation.Position = transcomp->Position;
 					spritecomp->transformation.Scale = transcomp->Scale;
@@ -1636,16 +1679,64 @@ namespace Core
 						spritecomp->draw();
 
 					if (x.first == "ResumeButton")
+					{
+						if (((float)xpos > position.x) &&
+							((float)ypos > position.y) &&
+							((float)xpos < (position.x + scale.x)) &&
+							((float)ypos < (position.y + scale.y)))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", .5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "HowToPlay1")
+					{
+						if (((float)xpos > position.x) &&
+							((float)ypos > position.y) &&
+							((float)xpos < (position.x + scale.x)) &&
+							((float)ypos < (position.y + scale.y)))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", .5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "QuitButton")
+					{
+						if (((float)xpos > position.x) &&
+							((float)ypos > position.y) &&
+							((float)xpos < (position.x + scale.x)) &&
+							((float)ypos < (position.y + scale.y)))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", .5f);
+						}
 						spritecomp->draw();
+					}
 
 					if (x.first == "MenuButton")
+					{
+						if (((float)xpos > position.x) &&
+							((float)ypos > position.y) &&
+							((float)xpos < (position.x + scale.x)) &&
+							((float)ypos < (position.y + scale.y)))
+						{
+							spritecomp->transformation.Position.x += 2.f;
+							spritecomp->transformation.Position.y -= 2.f;
+							Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
+							Shaders->Textured_Shader()->Send_Alpha("alpha", .5f);
+						}
 						spritecomp->draw();
+					}
 				}
 			}
 

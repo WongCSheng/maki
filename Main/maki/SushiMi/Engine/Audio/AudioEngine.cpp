@@ -504,6 +504,20 @@ namespace Core
         return voiceChannel;
     }
 
+    void _audioManager::GetMinimiseVolumes(float& music, float& SFX, float& voice)
+    {
+        musicChannel->getVolume(&music);
+        SFXchannel->getVolume(&SFX);
+        voiceChannel->getVolume(&voice);
+    }
+
+    void _audioManager::SetMinimiseVolumes(float music, float SFX, float voice)
+    {
+        SetMusicVolume(music);
+        SetAudioVolume(SFX);
+        SetVoiceVolume(voice);
+    }
+
     FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
         FMOD_CHANNELCONTROL_TYPE controlType, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbackType,
         void* commandData1, void* commandData2)

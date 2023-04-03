@@ -48,6 +48,9 @@ namespace Core
 	static std::map<std::string, gfxVector2> chops;
 	int screenwidth = 0, screenheight = 0;
 
+	std::random_device dede;
+	std::mt19937 gen(dede());
+	std::uniform_int_distribution<int> dialogues(0, 4);
 	/*																  game states
 	----------------------------------------------------------------------------- */
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
@@ -1384,6 +1387,7 @@ namespace Core
 				/*SceneManager::loadCutscene();*/
 				isStartCutscenePlayed = true;
 				SceneManager::drawCutscene(CutscenePage);
+
 				if ((keystate_space) && isMenuState == false)
 				{
 					keystate_space = true;

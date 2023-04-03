@@ -51,6 +51,7 @@ namespace Core
 	std::random_device dede;
 	std::mt19937 gen(dede());
 	std::uniform_int_distribution<int> dialogues(0, 4);
+	float music, sfx, vfx;
 	/*																  game states
 	----------------------------------------------------------------------------- */
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
@@ -662,6 +663,7 @@ namespace Core
 		isEndingCutscene(0)
 
 	{
+
 		starttime = endtime = delta = fps = 0;
 
 		glfwInit();
@@ -1290,30 +1292,31 @@ namespace Core
 
 	void Window::Mainloop()
 	{
-
+		AudioManager.GetMinimiseVolumes(music, sfx, vfx);
 		
 		starttime = glfwGetTime();
 
 		while (!glfwWindowShouldClose(window_ptr))
 		{
+			std::cout << "Music: " << music << std::endl;
 			int focused = glfwGetWindowAttrib(window_ptr, GLFW_FOCUSED);
-
-			std::cout << focused << std::endl;
 			if (focused == 0)
 			{
 				AudioManager.SetMusicVolume(0);
+				AudioManager.SetAudioVolume(0);
+				AudioManager.SetVoiceVolume(0);
 			}
 			else
 			{
-				AudioManager.SetMusicVolume(1);
+				AudioManager.SetMinimiseVolumes(music, sfx, vfx);
 			}
 			/*FOR DEBUGGING PURPOSES*/
 			//std::cout << "Player x: " << player->playerpos.x << " , " << "Player y: " << player->playerpos.y << std::endl;
 			/*--------------------------*/
 			pseudomain::update();
 			AudioManager.Update();
-			//for each frame 
 			Resize();
+			//for each frame 
 			Input();
 			if (isTut1 || isLevel1 || isLevel2 || isLevel3)
 			{

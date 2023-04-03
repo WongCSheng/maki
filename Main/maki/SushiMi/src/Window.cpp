@@ -990,12 +990,10 @@ namespace Core
 
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 			double xpos = 0, ypos = 0;
-
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-			std::cout << "X percentage: " << xpos / screenwidth * 100 << " " << "Y percentage: " << ypos / screenheight * 100 << std::endl;
 
 			//MENU BUTTON - START (PLAY GAME), reference StartButton.json 
-			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.30f && ypos < screenheight * 0.38f)
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96) && isSettings == false)
 			{
 				isMenuState = false;
 				if (isStartCutscenePlayed == false)
@@ -1009,19 +1007,19 @@ namespace Core
 				mouseLeft = false;
 			}
 			//HOW TO PLAY
-			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.45f && ypos < screenheight * 0.53f)
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96) && isSettings == false)
 			{
 				isHowToPlay = true;
 				mouseLeft = false;
 			}
 			//SETTINGS
-			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.61f && ypos < screenheight * 0.69f)
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96) && isSettings == false)
 			{
 				isSettings = true;
 				mouseLeft = false;
 			}
 			//MENU BUTTON - QUIT, reference ExitButton.json
-			if (xpos > screenwidth * 0.14f && xpos < screenwidth * 0.28f && ypos > screenheight * 0.78f && ypos < screenheight * 0.86f)
+			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96) && isSettings == false)
 			{
 				areyousure_prompt = true;
 				mouseLeft = false;
@@ -1031,7 +1029,7 @@ namespace Core
 		/**************************************/
 		//BUTTONS DISPLAYED WHEN GAME IS PAUSED
 		/**************************************/
-		if (mouseLeft && gameIsPaused == true)
+		if (mouseLeft && gameIsPaused == true && areyousure_prompt == false)
 		{
 			double xpos = 0, ypos = 0;
 			glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
@@ -1103,16 +1101,6 @@ namespace Core
 						((float)ypos < (position.y + scale.y)))
 					{
 						areyousure_prompt = true;
-						if (keystate_Y)
-						{
-
-							glfwSetWindowShouldClose(window_ptr, true);
-						}
-						else if (keystate_N)
-						{
-							areyousure_prompt = false;
-							keystate_N = false;
-						}
 					}
 				}
 			}
@@ -1269,7 +1257,8 @@ namespace Core
 		SceneManager::Ending_Cutscene->curr_anim = AnimationType::Idle;
 		SceneManager::Ending_Cutscene->timer = 0;
 
-		SceneManager::are_you_sure = new Sprite("../textures/UI/AREYOUSURE.png"); //confirmation page
+		SceneManager::are_you_sure = new Sprite("../textures/UI/Are you sure box.png"); //confirmation page
+		SceneManager::are_you_sure_text = new Sprite("../textures/UI/You’re about to leave. Are you sure_.png");
 		SceneManager::particle = new Sprite("../textures/Bami/RiceParticle/particlespritesheet.png");
 		SceneManager::particle->isSpriteSheet = 0;
 		SceneManager::particle->Add_animation("../textures/spritesheet/AnimatedTop/NineFrames.txt");
@@ -1292,18 +1281,16 @@ namespace Core
 
 	void Window::Mainloop()
 	{
-		AudioManager.GetMinimiseVolumes(music, sfx, vfx);
-		
 		starttime = glfwGetTime();
 
 		while (!glfwWindowShouldClose(window_ptr))
 		{
+			AudioManager.GetMinimiseVolumes(music, sfx, vfx);
+			
 			int focused = glfwGetWindowAttrib(window_ptr, GLFW_FOCUSED);
 			if (focused == 0)
 			{
-				AudioManager.SetMusicVolume(0);
-				AudioManager.SetAudioVolume(0);
-				AudioManager.SetVoiceVolume(0);
+				AudioManager.SetMinimiseVolumes(0.f, 0.f, 0.f);
 			}
 			else
 			{
@@ -1613,7 +1600,7 @@ namespace Core
 
 					if (x.first == "StartButton")
 					{
-						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96))
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 349 && static_cast<int>(ypos) < (349 + 96) && isSettings == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1625,7 +1612,7 @@ namespace Core
 
 					if (x.first == "HowToPlay")
 					{
-						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96) && isSettings == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1637,7 +1624,7 @@ namespace Core
 
 					if (x.first == "SettingsButton")
 					{
-						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96))
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 700 && static_cast<int>(ypos) < (700 + 96) && isSettings == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1649,7 +1636,7 @@ namespace Core
 
 					if (x.first == "ExitButton")
 					{
-						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
+						if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96) && isSettings == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1686,7 +1673,7 @@ namespace Core
 						if (((float)xpos > position.x) &&
 							((float)ypos > position.y) &&
 							((float)xpos < (position.x + scale.x)) &&
-							((float)ypos < (position.y + scale.y)))
+							((float)ypos < (position.y + scale.y)) && areyousure_prompt == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1701,7 +1688,7 @@ namespace Core
 						if (((float)xpos > position.x) &&
 							((float)ypos > position.y) &&
 							((float)xpos < (position.x + scale.x)) &&
-							((float)ypos < (position.y + scale.y)))
+							((float)ypos < (position.y + scale.y)) && areyousure_prompt == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1716,7 +1703,7 @@ namespace Core
 						if (((float)xpos > position.x) &&
 							((float)ypos > position.y) &&
 							((float)xpos < (position.x + scale.x)) &&
-							((float)ypos < (position.y + scale.y)))
+							((float)ypos < (position.y + scale.y)) && areyousure_prompt == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1731,7 +1718,7 @@ namespace Core
 						if (((float)xpos > position.x) &&
 							((float)ypos > position.y) &&
 							((float)xpos < (position.x + scale.x)) &&
-							((float)ypos < (position.y + scale.y)))
+							((float)ypos < (position.y + scale.y)) && areyousure_prompt == false)
 						{
 							spritecomp->transformation.Position.x += 2.f;
 							spritecomp->transformation.Position.y -= 2.f;
@@ -1989,7 +1976,6 @@ namespace Core
 				SceneManager::draw_Are_You_Sure();
 				if (keystate_Y && (gameIsPaused || isMenuState))
 				{
-
 					glfwSetWindowShouldClose(window_ptr, true);
 				}
 				else if (keystate_N)

@@ -51,6 +51,7 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
+			AudioManager.StopSFX();
 			AudioManager.LoadSFX("WalkSFX.ogg");
 			AudioManager.LoadMusic("Forest_bgm.ogg");
 			AudioManager.PlayMusic("Forest_bgm.ogg");

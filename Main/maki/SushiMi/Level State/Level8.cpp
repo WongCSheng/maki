@@ -51,6 +51,7 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
+			AudioManager.StopSFX();
 			AudioManager.LoadSFX("Hard Floor Walking.ogg");
 			AudioManager.LoadSFX("Hard Floor Walking_1.ogg");
 			AudioManager.LoadSFX("Hard Floor Walking_2.ogg");

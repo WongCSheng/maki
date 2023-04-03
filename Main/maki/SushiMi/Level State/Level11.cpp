@@ -50,14 +50,15 @@ namespace Core
 			Window::isQuestTab = false;
 			Window::loaded = true;
 
+			AudioManager.StopSFX();
 			AudioManager.LoadSFX("Hard Floor Walking.ogg");
 			AudioManager.LoadSFX("Hard Floor Walking_1.ogg");
 			AudioManager.LoadSFX("Hard Floor Walking_2.ogg");
-			AudioManager.LoadSFX("Water_Light Waves_Loop.ogg");
-			AudioManager.LoadMusic("Fishing_Village.ogg");
-			AudioManager.PlayMusic("Fishing_Village.ogg");
+			AudioManager.LoadSFX("City Noise.ogg");
+			AudioManager.LoadMusic("Forest_bgm.ogg");
+			AudioManager.PlayMusic("Forest_bgm.ogg");
 			AudioManager.SetMusicVolume(0.7f);
-			AudioManager.PlaySFX("Water_Light Waves_Loop.ogg");
+			AudioManager.PlaySFX("City Noise.ogg");
 			AudioManager.SetAudioVolume(0.3f);
 			AudioManager.PlayVoice("Idle_1.ogg");
 

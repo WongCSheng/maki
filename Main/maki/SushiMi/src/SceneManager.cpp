@@ -809,7 +809,7 @@ namespace Core
 		const std::string str = "Press   'R'   to  restart";
 
 		Shaders->Font_Shader()->use();
-		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 920), (float)(screenheight - 190), .55f, color_r, 1.f);
+		Font::RenderText(*Shaders, str, (float)((screenwidth / 2) - 929), (float)(screenheight - 220), .55f, color_r, 1.f);
 		Shaders->Textured_Shader()->use();
 	}
 

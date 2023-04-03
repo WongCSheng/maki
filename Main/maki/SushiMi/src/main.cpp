@@ -223,6 +223,7 @@ void Core::pseudomain::init() {
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);
+	Core::DeserializeEntity("../Data/Chop/quest_tut2.json", CoreSystem->objfactory);
 
 	/* Only maki city */
 	Core::DeserializeEntity("../Data/Chop/makicity_base.json", CoreSystem->objfactory);

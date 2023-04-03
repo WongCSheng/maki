@@ -130,6 +130,7 @@ namespace Core
 		{
 			GameSave::LevelStatusContainer[10].isLevelClear = 1;
 			GameSave::LevelStatusContainer[11].isUnlocked = 1; //set next level unlocked
+			GameSave::LevelStatusContainer[10].isQuestClear = 1;
 
 
 			int screenwidth = 0, screenheight = 0;

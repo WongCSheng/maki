@@ -123,11 +123,13 @@ namespace Core
 		{
 			//std::cout << "you win!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 			Window::isWinCondition = true;
+			
 		}
 		if (Window::isWinCondition == true)
 		{
 			GameSave::LevelStatusContainer[8].isLevelClear = 1;
 			GameSave::LevelStatusContainer[9].isUnlocked = 1; //set next level unlocked
+			GameSave::LevelStatusContainer[8].isQuestClear = 1;
 
 
 			int screenwidth = 0, screenheight = 0;

@@ -929,6 +929,79 @@ namespace Core
 						break;
 
 					}
+					//City_Light_Left,
+					// 	
+					case static_cast<int>(animated::City_Light_Left):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/City_Light_Left.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Light_Left, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//	City_Light_Right,
+					case static_cast<int>(animated::City_Light_Right):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/City_Light_Right.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Light_Right, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//	Lamp_Bottom_Left,
+					case static_cast<int>(animated::Lamp_Bottom_Left):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/Lamp_Bottom_Left.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::Lamp_Bottom_Left, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//	Lamp_Bottom_Right,
+					case static_cast<int>(animated::Lamp_Bottom_Right):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/Lamp_Bottom_Right.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::Lamp_Bottom_Right, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//	Lamp_Top_Left,
+					case static_cast<int>(animated::Lamp_Top_Left):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/Lamp_Top_Left.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::Lamp_Top_Left, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//	Lamp_Top_Right
+					case static_cast<int>(animated::Lamp_Top_Right):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Animated_Top/Lamp_Top_Right.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::Lamp_Top_Right, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
 					
 				}
 

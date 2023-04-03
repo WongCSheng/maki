@@ -174,11 +174,13 @@ namespace Core
 		City_Litter_6,				//l
 		City_Sewer,					//m
 		City_SlowDownSign,			//n
-									//o
-									//p
-									//q
-
-
+		City_Light_Left,			//o
+		City_Light_Right,			//p
+		Lamp_Bottom_Left,			//q
+		Lamp_Bottom_Right,			//r
+		Lamp_Top_Left,				//s
+		Lamp_Top_Right				//t
+									
 	};							 
 								 
 	struct Basket				 

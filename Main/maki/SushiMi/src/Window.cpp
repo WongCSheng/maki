@@ -819,6 +819,11 @@ namespace Core
 				setAllStatesFalse();
 				/*finallevelclear = true;*/
 				isEndingCutscene = true;
+				AudioManager.StopMusic();
+
+				AudioManager.LoadMusic("BGM Credits.ogg");
+				AudioManager.PlayMusic("BGM Credits.ogg");
+				AudioManager.SetMusicVolume(0.7f);
 
 				SceneManager::num_dialogue_clicks = 0; //do not show dialogue in end cutscene
 				SceneManager::restartLevel();

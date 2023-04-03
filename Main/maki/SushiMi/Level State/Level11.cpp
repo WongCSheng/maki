@@ -55,9 +55,9 @@ namespace Core
 			AudioManager.LoadSFX("Hard Floor Walking_1.ogg");
 			AudioManager.LoadSFX("Hard Floor Walking_2.ogg");
 			AudioManager.LoadSFX("City Noise.ogg");
-			AudioManager.LoadMusic("Forest_bgm.ogg");
-			AudioManager.PlayMusic("Forest_bgm.ogg");
-			AudioManager.SetMusicVolume(0.7f);
+			AudioManager.LoadMusic("City_bgm.ogg");
+			AudioManager.PlayMusic("City_bgm.ogg");
+			AudioManager.SetMusicVolume(0.5f);
 			AudioManager.PlaySFX("City Noise.ogg");
 			AudioManager.SetAudioVolume(0.3f);
 			AudioManager.PlayVoice("Idle_1.ogg");

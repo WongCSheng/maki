@@ -158,8 +158,27 @@ namespace Core
 		Fishing_LifeBuoy_Orange,	//backslash (\)
 		Fishing_Wood_1,				//]
 		Fishing_Wood_2,				//^
-		Fishing_Wood_3				//_
-									
+		Fishing_Wood_3,				//_
+		City_Crossing1,				//`
+		City_Crossing2, 			//a
+		City_Crossing3, 			//b
+		City_Drain_Down,			//c
+		City_Drain_Left,			//d
+		City_Drain_Right,			//e
+		City_Drain_Up,				//f
+		City_Litter_1,				//g
+		City_Litter_2,				//h
+		City_Litter_3,				//i
+		City_Litter_4,				//j
+		City_Litter_5,				//k
+		City_Litter_6,				//l
+		City_Sewer,					//m
+		City_SlowDownSign,			//n
+									//o
+									//p
+									//q
+
+
 	};							 
 								 
 	struct Basket				 

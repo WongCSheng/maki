@@ -748,12 +748,194 @@ namespace Core
 						break;
 
 					}
-					
+
+					//City_Crossing1,		
+					case static_cast<int>(animated::City_Crossing1):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Crossing1.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Crossing1, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Crossing2, 		
+					case static_cast<int>(animated::City_Crossing2):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Crossing2.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Crossing2, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Crossing3, 		
+					case static_cast<int>(animated::City_Crossing3):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Crossing3.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Crossing3, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Drain_Down,		
+					case static_cast<int>(animated::City_Drain_Down):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Drain_Down.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Drain_Down, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Drain_Left,		
+					case static_cast<int>(animated::City_Drain_Left):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Drain_Left.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Drain_Left, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Drain_Right,	
+					case static_cast<int>(animated::City_Drain_Right):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Drain_Right.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Drain_Right, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Drain_Up,		
+					case static_cast<int>(animated::City_Drain_Up):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Drain_Up.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Drain_Up, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_1,	
+					case static_cast<int>(animated::City_Litter_1):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_1.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_1, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_2,		
+					case static_cast<int>(animated::City_Litter_2):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_2.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_2, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_3,		
+					case static_cast<int>(animated::City_Litter_3):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_3.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_3, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_4,		
+					case static_cast<int>(animated::City_Litter_4):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_4.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_4, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_5,		
+					case static_cast<int>(animated::City_Litter_5):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_5.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_5, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Litter_6,		
+					case static_cast<int>(animated::City_Litter_6):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Litter_6.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Litter_6, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_Sewer,		
+					case static_cast<int>(animated::City_Sewer):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_Sewer.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_Sewer, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+					//City_SlowDownSign,	
+					case static_cast<int>(animated::City_SlowDownSign):
+					{
+						Sprite* rice1 = new Sprite("../textures/Tiles/Maki_City/Static_Top/City_SlowDownSign.png");
+						std::pair<animated, Sprite*> combine1 = std::make_pair(animated::City_SlowDownSign, std::move(rice1));
+						rice1->Add_animation("../textures/spritesheet/AnimatedTop/25Frames.txt");
+						rice1->curr_anim = AnimationType::Idle;
+						rice1->isSpriteSheet = 1;
+						SceneManager::loadTopAnimation(grid_to_coord_x, grid_to_coord_y, combine1);
+						break;
+
+					}
+
 				}
 
 			}
 		}
 	}
+					
 
 	void Map::LoadGMap()
 	{

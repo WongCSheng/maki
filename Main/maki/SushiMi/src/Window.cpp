@@ -5,7 +5,7 @@ co-Author:  thea.sea@digipen.edu 30%
 co-Author:  Aurelia (fei.x@digipen.edu) 30%
 co-Author:  w.chongsheng@digipen.edu  20%
 
-Description:
+Description: This file contains functions for the processes running in the Window 
 */
 
 /*                                                                   includes
@@ -34,36 +34,22 @@ Description:
 namespace Core
 {
 	static Core::MainSystem* CoreSystem;
-	//static int width, height;
 	std::ifstream fin;						// retrieve the current level dialogue file
 	std::vector<Basket> CurrentIngredients; // retreive the current level loaded ingredients
 	std::vector<std::pair< grid_number, wall_type>> stack;
 	static bool keystate_fps = false;
-	//std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
-	//std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
-
 	static std::string walkingsfx;
-
 	std::vector<std::string> Window::currentQuestIngredient;
 	std::array<std::pair<std::string, int>, 5> Window::winningBoxes;
 	Window::GameState Window::level;
 	bool isStartCutscenePlayed = false;
-	/*static bool up_key = false;
-	static bool down_key = false;
-	static bool left_key = false;
-	static bool right_key = false;*/
-
 	std::map<std::string, gfxVector2> Window::questDrawItems;
 	double lastframe = 0;
-
 	static std::map<std::string, gfxVector2> chops;
-
 	int screenwidth = 0, screenheight = 0;
 
 	/*																  game states
 	----------------------------------------------------------------------------- */
-
-
 	void mouseCallBack([[maybe_unused]] GLFWwindow* window_ptr, int button, int action, [[maybe_unused]] int mod)
 	{
 		switch (button)
@@ -97,9 +83,6 @@ namespace Core
 			return "";
 		}
 	}
-
-
-	//SceneManager* scnmanager = new SceneManager(); //this is dangerous!! write it in a function so that the new is deleted!!
 
 	/*					key  callback function  , helper function for controlling input
 		----------------------------------------------------------------------------- */
@@ -171,7 +154,7 @@ namespace Core
 	{
 		std::vector<std::string> levelBoxes;
 		//	load current level boxes for quest
-		//if (Map::maki_city != 1) //@ aurelia delete this later, cause this was put here as game crashes when Quest_Lv11.json doesnt exist
+
 		levelBoxes = Sprite::quest_boxes.at(currentlevel);
 
 		//	checking through each ingredient loaded in the level
@@ -706,11 +689,7 @@ namespace Core
 		//initialize key&mouse callback functions
 		glfwSetKeyCallback(window_ptr, keyCallBack);
 		glfwSetMouseButtonCallback(window_ptr, mouseCallBack);
-		/*if (glewInit())
-		{
-			std::cout << "erorr initilize glew" << std::endl;
-			return;
-		}*/
+	
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -767,20 +746,6 @@ namespace Core
 		CutscenePage = 0;
 #endif // !EDITOR
 
-		//player = new Player();
-
-		/*sp = new Sprite("../textures/level1.jpg");
-		sp->transformation.scale = glm::vec2(2000, 2000);
-		sp->transformation.position = glm::vec2(0);*/
-
-		/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
-		//SceneManager::loadTile(); //scene manager
-
-		////the moving ingredient
-		//ingredient = new Sprite(Editor::LevelEditor::texpath);
-		//ingredient->transformation.scale = glm::vec2(100, 100);
-		//ingredient->transformation.position = glm::vec2(15, 20);
-
 	}
 
 	Window::~Window()
@@ -808,8 +773,6 @@ namespace Core
 		SceneManager::destroy_Are_You_Sure();
 		SceneManager::destroy_Particle();
 		SceneManager::destroy_fading();
-
-		//JSONSerializer::Serialize(player, "../Data/generated.json");
 #endif
 
 		delete player;
@@ -841,7 +804,6 @@ namespace Core
 			isMenuState = true;
 			isEndingloaded = false;
 			SceneManager::num_dialogue_clicks = 0; //do not show dialogue in menu
-
 		}
 
 		//Play End Cutscene
@@ -864,22 +826,12 @@ namespace Core
 				keystate_P = false;
 
 			}
-
-
-
 		}
 
 		if (keystate_tab)
 		{
-			gameIsPaused = false;
-			// if i press tab
-			// isquestab(false) = true;
-			// off the tab state
-
-			// if i pres tab again
-			// isquestab(true) = false;
-			// off the tab state
-			areyousure_prompt = false;
+			gameIsPaused = false; // if i press tab, isquestab(false) = true; off the tab state
+			areyousure_prompt = false; // if i press tab again, isquestab(true) = false; off the tab state
 
 			isQuestTab = !isQuestTab;
 			keystate_tab = false;
@@ -887,225 +839,133 @@ namespace Core
 
 		if (keystate_J)
 		{
-			keystate_J = true;
 			std::cout << "you have loaded test level for debugging" << std::endl;
-			if (keystate_J)
-			{
-				setAllStatesFalse();
-				isTestLevel = true;
-				SceneManager::restartLevel();
-
-				keystate_J = false;
-			}
+			setAllStatesFalse();
+			isTestLevel = true;
+			SceneManager::restartLevel();
+			keystate_J = false;
 		}
 		if (keystate_K)
 		{
-			keystate_K = true;
 			std::cout << "you have loaded tutorial 1" << std::endl;
-			if (keystate_K)
-			{
-				setAllStatesFalse();
-				isTut1 = true;
-				SceneManager::restartLevel();
-
-
-				keystate_K = false;
-			}
+			setAllStatesFalse();
+			isTut1 = true;
+			SceneManager::restartLevel();
+			keystate_K = false;
 		}
 		if (keystate_L)
 		{
-			keystate_L = true;
 			std::cout << "you have loaded tutorial 2" << std::endl;
-			if (keystate_L)
-			{
-				setAllStatesFalse();
-				isTut2 = true;
-				SceneManager::restartLevel();
-
-				keystate_L = false;
-			}
+			setAllStatesFalse();
+			isTut2 = true;
+			SceneManager::restartLevel();
+			keystate_L = false;
 		}
 		if (keystate_1)
 		{
-			keystate_1 = true;
 			std::cout << "you have loaded level 1" << std::endl;
-			if (keystate_1)
-			{
-				setAllStatesFalse();
-				isLevel1 = true;
-				SceneManager::restartLevel();
-
-				keystate_1 = false;
-			}
+			setAllStatesFalse();
+			isLevel1 = true;
+			SceneManager::restartLevel();
+			keystate_1 = false;
 		}
 		if (keystate_2)
 		{
-			keystate_2 = true;
 			std::cout << "you have loaded level 2" << std::endl;
-			if (keystate_2)
-			{
-
-				setAllStatesFalse();
-				isLevel2 = true;
-				SceneManager::restartLevel();
-
-				keystate_2 = false;
-			}
+			setAllStatesFalse();
+			isLevel2 = true;
+			SceneManager::restartLevel();
+			keystate_2 = false;
 		}
 		if (keystate_3)
 		{
-			keystate_3 = true;
 			std::cout << "you have loaded level 3" << std::endl;
-			if (keystate_3)
-			{
-
-				setAllStatesFalse();
-				isLevel3 = true;
-				SceneManager::restartLevel();
-
-				keystate_3 = false;
-			}
+			setAllStatesFalse();
+			isLevel3 = true;
+			SceneManager::restartLevel();
+			keystate_3 = false;
 		}
 		if (keystate_4)
 		{
-			keystate_4 = true;
 			std::cout << "you have loaded level 4" << std::endl;
-			if (keystate_4)
-			{
-				setAllStatesFalse();
-				isLevel4 = true;
-				SceneManager::restartLevel();
-
-				keystate_4 = false;
-			}
+			setAllStatesFalse();
+			isLevel4 = true;
+			SceneManager::restartLevel();
+			keystate_4 = false;
 		}
 		if (keystate_5)
 		{
-			keystate_5 = true;
 			std::cout << "you have loaded level 5" << std::endl;
-			if (keystate_5)
-			{
-
-				setAllStatesFalse();
-				isLevel5 = true;
-				SceneManager::restartLevel();
-
-				keystate_5 = false;
-			}
+			setAllStatesFalse();
+			isLevel5 = true;
+			SceneManager::restartLevel();
+			keystate_5 = false;
 		}
 		if (keystate_6)
 		{
-			keystate_6 = true;
 			std::cout << "you have loaded level 6" << std::endl;
-			if (keystate_6)
-			{
-
-				setAllStatesFalse();
-				isLevel6 = true;
-				SceneManager::restartLevel();
-				
-				keystate_6 = false;
-			}
+			setAllStatesFalse();
+			isLevel6 = true;
+			SceneManager::restartLevel();
+			keystate_6 = false;
 		}
 		if (keystate_7)
 		{
-			keystate_7 = true;
 			std::cout << "you have loaded level 7" << std::endl;
-			if (keystate_7)
-			{
-
-				setAllStatesFalse();
-				isLevel7 = true;
-				SceneManager::restartLevel();
-
-				keystate_7 = false;
-			}
+			setAllStatesFalse();
+			isLevel7 = true;
+			SceneManager::restartLevel();
+			keystate_7 = false;
 		}
 		if (keystate_8)
 		{
-			keystate_8 = true;
 			std::cout << "you have loaded level 8" << std::endl;
-			if (keystate_8)
-			{
+			setAllStatesFalse();
+			isLevel8 = true;  
+			SceneManager::restartLevel();
+			keystate_8 = false;
 
-				setAllStatesFalse();
-				isLevel8 = true;  
-				SceneManager::restartLevel();
-
-				keystate_8 = false;
-			}
 		}
 		if (keystate_9)
 		{
-			keystate_9 = true;
 			std::cout << "you have loaded level 9" << std::endl;
-			if (keystate_9)
-			{
-				setAllStatesFalse();
-				isLevel9 = true;
-				SceneManager::restartLevel();
+			setAllStatesFalse();
+			isLevel9 = true;
+			SceneManager::restartLevel();
+			keystate_9 = false;
 
-				keystate_9 = false;
-			}
 		}
 		if (keystate_0)
 		{
-			keystate_0 = true;
 			std::cout << "you have loaded level 10" << std::endl;
-			if (keystate_0)
-			{
-
-				setAllStatesFalse();
-				isLevel10 = true;
-				SceneManager::restartLevel();
-
-				keystate_0 = false;
-			}
+			setAllStatesFalse();
+			isLevel10 = true;
+			SceneManager::restartLevel();
+			keystate_0 = false;
 		}
 		if (keystate_minus)
 		{
-			keystate_minus = true;
 			std::cout << "you have loaded level 11" << std::endl;
-			if (keystate_minus)
-			{
-
-				setAllStatesFalse();
-				isLevel11 = true;
-				SceneManager::restartLevel();
-
-				keystate_minus = false;
-			}
+			setAllStatesFalse();
+			isLevel11 = true;
+			SceneManager::restartLevel();
+			keystate_minus = false;
+			
 		}
 		if (keystate_equal)
 		{
 			std::cout << "cheating..." << std::endl;
 			isWinCondition = true;
 			keystate_equal = false;
-			
 		}
 		if (keystate_T)
 		{
 			std::cout << "you are in level selection screen" << std::endl;
-
-			if (keystate_T)
-			{
-				setAllStatesFalse();
-				isLevelSelection = true;
-				SceneManager::restartLevel();
-
-				keystate_T = false;
-			}
+			setAllStatesFalse();
+			isLevelSelection = true;
+			SceneManager::restartLevel();
+			keystate_T = false;
 		}
-
-		/*if (mouseLeft)
-		{*/
-			//place_obj = true;
-			//if (place_obj)
-			//{
-				//std::cout << "placing obj at x: " << ingredient->transformation.posittion.x << "and y: " << ingredient->transformation.position.y << std::endl;
-				//place_obj = false;
-			//}
-		//}
 
 		if (keystate_escape && gameIsPaused)
 		{
@@ -1114,7 +974,6 @@ namespace Core
 		if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel) && isDialogue == false && isHowToPlay == false)
 		{
 			gameIsPaused = !gameIsPaused;
-
 			keystate_escape = false;
 		}
 		if (keystate_escape && areyousure_prompt)
@@ -1147,11 +1006,6 @@ namespace Core
 				{
 					isLevelSelection = true;
 				}
-
-				//std::cout << "exit main menu" << std::endl;
-				/*Sprite::menu->transformation.Position.x = screenwidth;
-				Sprite::menu->transformation.Position.y = screenheight;*/
-
 			}
 			//HOW TO PLAY
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 520 && static_cast<int>(ypos) < (520 + 96))
@@ -1168,8 +1022,6 @@ namespace Core
 			if (static_cast<int>(xpos) > 275 && static_cast<int>(xpos) < (275 + 266) && static_cast<int>(ypos) > 890 && static_cast<int>(ypos) < (890 + 96))
 			{
 				areyousure_prompt = true;
-
-				/*glfwSetWindowShouldClose(window_ptr, true);*/
 			}
 
 		}
@@ -1197,14 +1049,7 @@ namespace Core
 						((float)ypos < (position.y + scale.y)))
 					{
 						gameIsPaused = false;
-						//std::cout << "game resume, no more pause screen" << std::endl;
-						/*int screenwidth = 0, screenheight = 0;
-						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
-
-
-
+						
 					}
 				}
 				else if (x.first == "HowToPlay1")
@@ -1221,20 +1066,6 @@ namespace Core
 					{
 						if (!keystate_escape)
 							isHowToPlay = true;
-
-						//std::cout << "game resume, no more pause screen" << std::endl;
-						/*int screenwidth = 0, screenheight = 0;
-						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
-
-						/*if (keystate_escape && (isTut1 || isTut2 || isLevel1 || isLevel2 || isLevel3 || isLevel4 || isLevel5 || isLevel6 || isLevel7 || isLevel8 || isLevel9 || isLevel10 || isLevel11 || isTestLevel))
-						{
-							HowToPlayPage = 0;
-							isHowToPlay = false;
-							keystate_escape = false;
-							gameIsPaused = true;
-						}*/
 
 					}
 				}
@@ -1253,15 +1084,12 @@ namespace Core
 					{
 
 						keystate_T = true;
-						/*int screenwidth = 0, screenheight = 0;
-						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
-						SceneManager::howtoplay_overlay1->transformation.Position.x = static_cast<float>(screenwidth);
-						SceneManager::howtoplay_overlay1->transformation.Position.y = static_cast<float>(screenheight);*/
+						
 					}
 				}
 				else if (x.first == "QuitButton")
 				{
-					//Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					
 					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					gfxVector2 position = { transcomp->Position.x, transcomp->Position.y };
 					gfxVector2 scale = { transcomp->Scale.x, transcomp->Scale.y };
@@ -1283,40 +1111,12 @@ namespace Core
 							areyousure_prompt = false;
 							keystate_N = false;
 						}
-
-
-
 					}
 				}
 			}
-			////std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-
-
-			////RETURN TO MAIN MENU
-			//if (xpos > 600 && ypos > 585 && xpos < 1310 && ypos < 687)
-			//{
-			//	isMenuState = true;
-			//	isLevel1 = false;
-			//	isLevel2 = false;
-			//	SceneManager::restartLevel();
-			//	AudioManager.StopMusic();
-			//	AudioManager.PlayMusic("BGM.ogg");
-			//}
-			////QUIT GAME
-			//if (xpos > 600 && ypos > 714 && xpos < 1310 && ypos < 815)
-			//{
-			//	glfwSetWindowShouldClose(window_ptr, true);
-			//}
 		}
 		
-		//note: escape should be mapped to pause/menu
-		//if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
-		//{
-		//	
-
-		//	//the code below closes the game
-		//	//glfwSetWindowShouldClose(window_ptr, true);
-		//}
+		
 		if ((keystate_right || keystate_D) && gameIsPaused == false && isWinCondition == false && isMenuState == false && isDialogue == false && isHowToPlay == false && isEndingCutscene == false)
 		{
 		
@@ -1433,8 +1233,6 @@ namespace Core
 
 	void Window::Init()
 	{
-		//SceneManager::level_select = new Sprite("../textures/Level Selection Map/all_unlocked.png");
-
 		//retrieve
 		auto* objFact = ObjectFactory::GetInstance();
 		auto* obj = objFact->ObjectContainer["map"];
@@ -1531,17 +1329,7 @@ namespace Core
 
 			}
 
-			/*Editor::LevelEditor::AddToFactory(CoreSystem)*/
-			//Map::DrawMap(); //shifted into boolean
-
-			// all drawing goes here ..
-			//Sprite::menu->transformation.Position = glm::vec2(0, 0);
-			//Sprite::menu->transformation.Scale = glm::vec2(1000, 800);
-
 			Shaders->Textured_Shader()->Send_Mat4("projection", camera->Get_Projection());
-
-			/*Shaders->Textured_Shader()->Send_Mat4("model_matrx", sp->transformation.Get());
-			sp->draw();*/
 
 			//the moving ingredient
 #if defined(EDITOR) | defined(_EDITOR)
@@ -1588,25 +1376,7 @@ namespace Core
 
 #endif
 
-			//FOR OBJ CONTAINER DEBUGGING
-			// 
-			//std::cout << "what is inside obj container:" << std::endl;
-			//for (auto& x : CoreSystem->objfactory->ObjectContainer)
-			//{
-			//	std::cout << x.first << std::endl; //should print out menu.json
-
-			//	Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-
-			//	//menu->transformation.Position = { 0,0 };
-			//	//menu->transformation.Scale = { 50,50 };
-			//
-			//	//std::cout << x.second->characteristics->GetID(); // should print the transform ID saved into container
-			//}
-			//std::cout << "end of obj container\n";
-
-			//Sprite::menu->transformation.Position = {0.f,0.f};
-			//Sprite::menu->transformation.Scale = { 50,50 };
-			//Shaders->Textured_Shader()->Send_Mat4("model_matrx", Sprite::menu->transformation.Get());
+		
 #ifndef EDITOR
 
 
@@ -1683,8 +1453,7 @@ namespace Core
 						Font::RenderText(*Shaders, one_by_one, screenwidth * 0.35f, screenheight * 0.15f, .6f, glm::vec3(0.f, 0.f, 0.f), 1.f);
 						if (Get_Delta())
 						{
-							curr_len += 1/* ((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-							//std::cout << "value of i is : " << curr_len << std::endl;
+							curr_len += 1; 
 							if (curr_len > realstring.length())
 							{
 								curr_len = realstring.length();
@@ -1709,8 +1478,7 @@ namespace Core
 						/*std::cout << "new length read: " << realstring.length() << std::endl;*/
 						if (Get_Delta())
 						{
-							curr_len += 1/*((Get_Delta()) * 150)*/; // dialogue render speed is 200 * delta time
-							//std::cout << "value of i is : " << curr_len << std::endl;
+							curr_len += 1; 
 							if (curr_len > realstring.length())
 							{
 								curr_len = realstring.length();
@@ -1993,10 +1761,8 @@ namespace Core
 				//	draw ingredients and chops
 				for (auto& [name, position] : questDrawItems)
 				{
-					//auto checkifitexists = CoreSystem->objfactory->ObjectContainer.find(ingredient.first);
 					//check if what you are accessing exists so it does not throw exception
 						Object::GameObject* obj2 = CoreSystem->objfactory->ObjectContainer.at(name);
-						//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
 						Sprite* spritecomp2 = obj2->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 						spritecomp2->transformation.Position = { position.x, position.y };
@@ -2014,7 +1780,7 @@ namespace Core
 				for (auto& [name, position] : chops)
 				{
 					Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at(name);
-					//Transform* transcomp2 = static_cast<Transform*>(obj2->GetObjectProperties()->GetComponent(ComponentID::Transform));
+					
 					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
 					spritecomp1->transformation.Position = { position.x, position.y };
@@ -2031,8 +1797,6 @@ namespace Core
 			else if (!isWinCondition && !gameIsPaused && !isMenuState && !isDialogue && !isCutscene && !isLevelSelection && !isHowToPlay)
 			{
 				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-			/*	Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-				Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
 
 				Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 				Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
@@ -2055,9 +1819,7 @@ namespace Core
 			if (isHowToPlay == true)
 			{
 				isMenuState = false; //disable menu buttons
-				//gameIsPaused = false;
-
-				//isTut1, isTut2, isLevel1, isLevel2, isLevel3, isLevel4, isLevel5, isLevel6, isLevel7, isLevel8, isLevel9, isLevel10, isLevel11, isTestLevel = false;
+			
 				isQuestTab = false;
 
 				//SceneManager::loadHowToOverlay(0, 0);
@@ -2142,12 +1904,10 @@ namespace Core
 						AudioManager.DecreaseSFXVolume();
 						AudioManager.DecreaseVoiceVolume();
 					}
-
 					//PRESS CREDITS
 					if (xpos > 814 && xpos < 1047 && ypos > 536 && ypos < 612)
 					{
 						isCredits = true;
-
 					}
 					//PRESS BACK
 					if (xpos > 814 && xpos < 1047 && ypos > 635 && ypos < 708)
@@ -2177,16 +1937,6 @@ namespace Core
 
 			if (isCredits == true)
 			{
-				//if (mouseLeft)
-				//{
-				//	double xpos = 0, ypos = 0;
-				//	glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
-				//	//std::cout << "clicking button at x: " << xpos << " and y: " << ypos << std::endl;
-				//	if (xpos > 673 && xpos < 1023 && ypos > 710 && ypos < 817)
-				//	{
-				//		isCredits = false;
-				//	}
-				//}
 				if (keystate_escape)
 				{
 					isCredits = false;
@@ -2199,8 +1949,6 @@ namespace Core
 
 			if (isLevelSelection)
 			{
-				//star is complete quest 
-				//flag is complete entire level
 				setAllStatesFalse();
 				isLevelSelection = true;
 				SceneManager::loadLevelSelect(0, 0);
@@ -2222,21 +1970,10 @@ namespace Core
 			endtime = glfwGetTime();
 			delta = (endtime - starttime);
 			starttime = endtime;
-
 			pseudomain::draw(); //swap buffers and glfwpollevents are already done here, do not call again below
-
-
 		}
-
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
-
-		//void Window::ImGuiToObjContainer(ObjectFactory* c)
-		//{
-
-		//	//Editor::LevelEditor::AddToFactory(ObjectFactory)
-		//}
 	}
 }
-
 

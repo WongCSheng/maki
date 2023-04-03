@@ -8,7 +8,7 @@
     },
     {
       "type": "Sprite",
-      "texturepath": "../textures/Cutscene/frame3.jpg",
+      "texturepath": "../textures/Cutscene/cutscene2.png",
       "name": "Cutscene_frame3",
       "alpha": 1.0,
       "SpriteSheet": false,

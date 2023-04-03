@@ -218,7 +218,8 @@ void Core::pseudomain::init() {
 
 	init_LevelSelectMap();
 
-
+	/*								for reset prompt				*/
+	Core::DeserializeEntity("../Data/ResetPrompt/reset_overlay.json", CoreSystem->objfactory);
 
 	/*	Loading QuestTab_base that is going to appear in every level that shows the quest of that level	*/
 	Core::DeserializeEntity("../Data/Chop/questBase.json", CoreSystem->objfactory);

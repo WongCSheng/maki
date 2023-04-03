@@ -96,7 +96,7 @@ namespace Core
 		amt_of_win_conditions = 0;
 		Window::player->resetCount = 0;
 		//missing: restart sinkhole, restart sushi plate pods
-		Window::isPlayerinSinkhole = false;
+		Window::isDrawResetPrompt = false;
 		//reset ingredient pos
 		/*for (auto& ingredient : ingredientcontainer)
 		{
@@ -729,9 +729,15 @@ namespace Core
 		
 		Window::player->current_anim = AnimationType::Run;
 		Shaders->Textured_Shader()->use();
+	
+
+		Shaders->Textured_Shader()->Send_Alpha("alpha", Window::transparent);
 		Shaders->Textured_Shader()->Send_Mat4("model_matrx", win_overlay->transformation.Get());
-		Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
 		win_overlay->draw();
+		if (Window::transparent < 1.0f)
+		{
+			Window::transparent += Window::getDelta();
+		}
 	}
 
 	/*	helper function to draw tut1 quest text	*/
@@ -848,6 +854,8 @@ namespace Core
 		}
 		Shaders->Font_Shader()->use();
 		Font::RenderText(*Shaders, "ingredient is stuck", Player::playerpos.x - 30, screenheight - Player::playerpos.y, .55f, glm::vec3(0.f, 0.f, 0.f), ScurrentAlpha);
+
+		Window::isDrawResetPrompt = true;
 	}
 
 	void SceneManager::draw_Are_You_Sure()
@@ -1097,7 +1105,6 @@ namespace Core
 	void SceneManager::destroyWinOverlay()
 	{
 		delete win_overlay;
-		delete reset_prompt;
 	}
 
 	void SceneManager::destroy_fading()

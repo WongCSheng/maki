@@ -739,7 +739,7 @@ namespace Core
 		isLevel7 = false;
 		isQuestTab = false;
 		isWinCondition = false;
-		isPlayerinSinkhole = false;
+		isDrawResetPrompt = false;
 		loaded = false;
 		HowToPlayPage = 0;
 		areyousure_prompt = false;
@@ -821,11 +821,6 @@ namespace Core
 				setAllStatesFalse();
 				/*finallevelclear = true;*/
 				isEndingCutscene = true;
-				AudioManager.StopMusic();
-
-				AudioManager.LoadMusic("BGM Credits.ogg");
-				AudioManager.PlayMusic("BGM Credits.ogg");
-				AudioManager.SetMusicVolume(0.7f);
 
 				SceneManager::num_dialogue_clicks = 0; //do not show dialogue in end cutscene
 				SceneManager::restartLevel();
@@ -1201,7 +1196,9 @@ namespace Core
 		*******************************/
 		if (keystate_R && (gameIsPaused == false && isWinCondition == false)) 
 		{
-			//keystate_R = true;
+			isDrawResetPrompt = false;
+			transparent = 0.f;
+
 			if (keystate_R)
 			{
 				Window::player->resetCount++;
@@ -1260,7 +1257,6 @@ namespace Core
 		SceneManager::makicity_dialogue = new Sprite("../textures/UI/DialogueBox_MakiCity.png");
 
 		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
-		SceneManager::reset_prompt = new Sprite("../textures/Victory.png");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
@@ -1612,9 +1608,6 @@ namespace Core
 			{
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
-					/*Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp = static_cast<Sprite*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
-
 					Transform* transcomp = x.second->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					Sprite* spritecomp = x.second->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
@@ -1650,7 +1643,6 @@ namespace Core
 					//	fixed position for quest items and chop (shld only work tut1 - lvl10
 					pos1 = { 50.f, 140.f }, pos2 = { 150.f, 140.f }, pos3 = { 250.f, 140.f };
 				}
-
 				else
 				{
 					pos1 = { 38.f, 145.f }, pos2 = { 185.f, 145.f }, pos3 = { 335.f, 145.f }, pos4 = { 80.f, 245.f }, pos5 = { 280.f, 245.f };
@@ -1663,8 +1655,6 @@ namespace Core
 				if (!Map::maki_city)
 				{
 					Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("questBase");
-					/*Transform* transcomp1 = static_cast<Transform*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Transform));
-					Sprite* spritecomp1 = static_cast<Sprite*>(obj1->GetObjectProperties()->GetComponent(ComponentID::Renderer));*/
 					Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
 					Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
 
@@ -1922,6 +1912,27 @@ namespace Core
 						isSettings = false;
 					}
 				}
+			}
+
+			if (isDrawResetPrompt == true)
+			{
+				//draw reset overlay
+				Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("reset_overlay");
+				Transform* transcomp1 = obj1->GetObjectProperties()->GetComponent<Transform>(ComponentID::Transform);
+				Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+
+				spritecomp1->transformation.Position = transcomp1->Position;
+				spritecomp1->transformation.Scale = transcomp1->Scale;
+				
+				Shaders->Textured_Shader()->Send_Alpha("alpha", transparent);
+				Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+				spritecomp1->draw();
+				if (transparent < 1.0f)
+				{
+					transparent += getDelta();
+				}
+				
+
 			}
 
 			if (isEndingCutscene == true)

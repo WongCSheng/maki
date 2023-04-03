@@ -204,6 +204,8 @@ namespace Core
 
 		win_amt = 0;
 		SceneManager::amt_of_win_conditions = 0;
+		Window::isDrawResetPrompt = false;
+		Window::transparent = 0.f;
 	}
 
 	void Map::RestartMap()
@@ -2520,6 +2522,7 @@ namespace Core
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
 				AudioManager.PlayVoice("Sad_1.ogg");
+				Window::isDrawResetPrompt = true;
 			}
 			else
 			{
@@ -2934,6 +2937,7 @@ namespace Core
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
 				AudioManager.PlayVoice("Sad_1.ogg");
+				Window::isDrawResetPrompt = true;
 			}
 			//Just move
 			else
@@ -3353,6 +3357,8 @@ namespace Core
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
 				AudioManager.PlayVoice("Sad_1.ogg");
+				//draw reset overlay
+				Window::isDrawResetPrompt = true;
 			}
 			//Just move
 			else
@@ -3763,6 +3769,8 @@ namespace Core
 				Window::player->sp->transformation.Scaling(0.1f);
 				Window::player->stop();
 				AudioManager.PlayVoice("Sad_1.ogg");
+				Window::isDrawResetPrompt = true;
+				
 			}
 			//Just move
 			else

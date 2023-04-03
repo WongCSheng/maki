@@ -98,12 +98,7 @@ namespace Core
 
 		if (Window::gameIsPaused == false)
 		{
-			if (Window::isPlayerinSinkhole)
-			{
-				Window::player->stop();
-			}
-			else
-				Window::player->draw(Get_Delta());
+			Window::player->draw(Get_Delta());
 
 		}
 		else if (Window::gameIsPaused == true)

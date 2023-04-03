@@ -93,7 +93,7 @@ namespace Core
 
 		if (Window::gameIsPaused == false)
 		{
-			if (Window::isPlayerinSinkhole)
+			if (Window::isDrawResetPrompt)
 			{
 
 			}

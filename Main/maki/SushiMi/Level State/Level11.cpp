@@ -32,7 +32,7 @@ namespace Core
 	extern std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 	void Levels::Level11()
 	{
-
+		
 		if (!Window::loaded)
 		{
 			Map::maki_city = 1; //set to maki city
@@ -99,12 +99,7 @@ namespace Core
 
 		if (Window::gameIsPaused == false)
 		{
-			if (Window::isPlayerinSinkhole)
-			{
-
-			}
-			else
-				Window::player->draw(Get_Delta());
+			Window::player->draw(Get_Delta());
 
 		}
 		else if (Window::gameIsPaused == true)
@@ -146,8 +141,7 @@ namespace Core
 		}
 		if (Window::isWinCondition == true)
 		{
-			GameSave::LevelStatusContainer[12].isLevelClear = 1;
-			GameSave::LevelStatusContainer[13].isUnlocked = 1; //set next level unlocked
+			GameSave::LevelStatusContainer[12].isLevelClear = 1; //this is the last level so it will not unlock another level
 
 			int screenwidth = 0, screenheight = 0;
 			glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);

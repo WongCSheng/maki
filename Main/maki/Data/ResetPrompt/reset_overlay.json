@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "type": "Transform",
+      "position": [ 0, 0 ],
+      "rotation": 0.0,
+      "scale": [ 1920, 1080 ]
+    },
+    {
+      "type": "Sprite",
+      "texturepath": "../textures/UI/ResetOverlay.png",
+      "name": "reset_overlay",
+      "alpha": 1.0,
+      "SpriteSheet": false,
+      "SpriteSize": [ 1920, 1080 ]
+    }
+  ]
+}

@@ -42,7 +42,7 @@ namespace Core
 		}
 
 
-		float getDelta()
+		static inline float getDelta()
 		{
 			return static_cast<float>(delta);
 		}
@@ -104,7 +104,7 @@ namespace Core
 		static inline bool isLevelSelection;
 		bool isWalk;
 		static inline bool loaded;
-		static inline bool isPlayerinSinkhole;
+		static inline bool isDrawResetPrompt;
 		static inline bool isEndingloaded;
 
 		static inline bool isTut1, isTut2, isLevel1, isLevel2, isLevel3, //Rice Plain Village
@@ -169,6 +169,7 @@ namespace Core
 		static inline bool isCredits;
 
 		static inline bool timetodeletegrid;
+		static inline float transparent = 0.f;
 
 		void SetPaused(bool paused) //take in boolean
 		{
@@ -239,6 +240,10 @@ namespace Core
 			areyousure_prompt = false;
 			loaded = false;
 			keystate_M = false; 
+			isDrawResetPrompt = false;
+			transparent = 0.f;
+			isWinCondition = false;
+			finallevelclear = false;
 		}
 
 		static std::vector<std::string> currentQuestIngredient;
@@ -275,7 +280,7 @@ namespace Core
 
 	private:
 		int m_width, m_height;
-		double starttime, endtime, delta, fps;
+		static inline double starttime, endtime, delta, fps;
 	};
 
 	class pseudomain

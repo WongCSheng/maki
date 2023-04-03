@@ -18,3 +18,6 @@ Log File Dated: 16/11/2022	Timed: 17:16:37
 [22:38:06]	[LOG]: Test Log Entry
 [22:38:32]	[LOG]: Test Log Entry
 [22:38:53]	[LOG]: Test Log Entry
+[12:14:11]	[LOG]: Test Log Entry
+[12:14:34]	[LOG]: Test Log Entry
+[12:15:18]	[LOG]: Test Log Entry

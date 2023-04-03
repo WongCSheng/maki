@@ -55,6 +55,8 @@ namespace Core
 			AudioManager.LoadMusic("Fishing_Village.ogg");
 			AudioManager.PlayMusic("Fishing_Village.ogg");
 			AudioManager.SetMusicVolume(0.7f);
+			AudioManager.PlaySFX("Water_Light Waves_Loop.ogg");
+			AudioManager.SetAudioVolume(0.3f);
 			AudioManager.PlayVoice("Idle_1.ogg");
 
 			if (fin)

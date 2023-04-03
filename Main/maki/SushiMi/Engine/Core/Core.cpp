@@ -67,10 +67,6 @@ namespace Core
 		systems.insert({ SystemID::LevelEditor, leveleditorsystem });
 #endif
 
-		//these lines caused memory leak, pls take note
-		/*objfactory = new ObjectFactory();
-		inputsystem = new Input();*/
-
 		//use this method of getting instance instead 
 		objfactory = ObjectFactory::GetInstance();
 

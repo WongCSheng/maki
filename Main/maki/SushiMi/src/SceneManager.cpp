@@ -15,6 +15,7 @@ namespace Core
 	std::vector<std::pair<wall_type, Sprite*>> tilecontainer;
 	std::vector<std::pair<grid_number, Sprite*>> ingredientcontainer;
 	float timer = 0.f;
+	bool play_it{ false }, check{ false };
 
 	/* set default red color */
 	glm::vec3 color_up{1.f, 0.f, 0.f}; 
@@ -903,27 +904,50 @@ namespace Core
 			{
 			case 0:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame1");
+				play_it = true;
 				break;
 			case 1:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame2");
+				if (play_it)
+				{
+					AudioManager.PlaySFX("Phone Vibration.ogg");
+					play_it = false;
+				}
 				break;
 			case 2:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame3");
+				play_it = true;
 				break;
 			case 3:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame4");
+				if(play_it)
+				{
+					AudioManager.PlaySFX("Ding.ogg");
+					play_it = false;
+				}
 				break;
 			case 4:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame5");
+				play_it = true;
 				break;
 			case 5:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame6");
+				if(play_it)
+				{
+					AudioManager.PlaySFX("Hard Floor Walking Long.ogg");
+					play_it = false;
+				}
 				break;
 			case 6:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame7");
 				break;
 			case 7:
 				obj = Core::MainSystem::objfactory->ObjectContainer.at("Cutscene_frame8");
+				AudioManager.GetAudioChannel()->isPlaying(&check);
+				if (check)
+				{
+					AudioManager.StopSFX();
+				}
 				break;
 			}
 

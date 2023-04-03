@@ -73,6 +73,7 @@ namespace Core
         void Free(void);
         FMOD::Sound* GetSound(std::string name);
         FMOD::Sound* GetMusic(std::string name);
+        void RandomWalking(std::string& gen, short state);
     };
 
     /*                                                             Call back function

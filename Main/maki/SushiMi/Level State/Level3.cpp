@@ -52,6 +52,8 @@ namespace Core
 			Window::loaded = true;
 
 			AudioManager.LoadSFX("Gravel_Drag-Movement_1.ogg");
+			AudioManager.LoadSFX("Gravel_Drag-Movement_2.ogg");
+			AudioManager.LoadSFX("Gravel_Drag-Movement_3.ogg");
 			AudioManager.LoadMusic("BGM with Forest Day volume test.ogg");
 			AudioManager.PlayMusic("BGM with Forest Day volume test.ogg");
 			AudioManager.SetMusicVolume(0.5f);

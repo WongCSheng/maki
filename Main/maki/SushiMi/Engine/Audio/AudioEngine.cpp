@@ -12,6 +12,10 @@
 
 namespace Core
 {
+    std::random_device random;
+    std::mt19937 generator(random());
+    std::uniform_int_distribution<int> distributor(0, 2);
+
     /*                                                                  Constructor
     ----------------------------------------------------------------------------- */
     _audioManager::_audioManager(void)
@@ -286,13 +290,16 @@ namespace Core
     */
     void _audioManager::LoadSFX(std::string name)
     {        
-        std::string pathString = "../Assets/Audio/SFX/" + name + '\0';
-        char* pathName = new char[pathString.length() + 1];
-        std::copy(pathString.begin(), pathString.end(), pathName);
-        FMOD::Sound* sound = 0;
-        fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
-        soundDatabase[name] = sound;
-        delete[] pathName;
+        if (soundDatabase.find(name) == soundDatabase.end())
+        {
+            std::string pathString = "../Assets/Audio/SFX/" + name + '\0';
+            char* pathName = new char[pathString.length() + 1];
+            std::copy(pathString.begin(), pathString.end(), pathName);
+            FMOD::Sound* sound = 0;
+            fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
+            soundDatabase[name] = sound;
+            delete[] pathName;
+        }
     }
 
     /*!				void _audioManager::LoadVoice(string name)
@@ -304,13 +311,16 @@ namespace Core
     */
     void _audioManager::LoadVoice(std::string name)
     {
-        std::string pathString = "../Assets/Audio/Voice-over/" + name + '\0';
-        char* pathName = new char[pathString.length() + 1];
-        std::copy(pathString.begin(), pathString.end(), pathName);
-        FMOD::Sound* sound = 0;
-        fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
-        voiceDatabase[name] = sound;
-        delete[] pathName;
+        if (voiceDatabase.find(name) == voiceDatabase.end())
+        {
+            std::string pathString = "../Assets/Audio/Voice-over/" + name + '\0';
+            char* pathName = new char[pathString.length() + 1];
+            std::copy(pathString.begin(), pathString.end(), pathName);
+            FMOD::Sound* sound = 0;
+            fmodSystem->createSound(pathName, FMOD_DEFAULT, nullptr, &sound);
+            voiceDatabase[name] = sound;
+            delete[] pathName;
+        }
     }
 
     /*!				void _audioManager::LoadMusic(string name)
@@ -322,13 +332,16 @@ namespace Core
     */
     void _audioManager::LoadMusic(std::string name)
     {
-        std::string pathString = "../Assets/Audio/Music/" + name + '\0';
-        char* pathName = new char[pathString.length() + 1];
-        std::copy(pathString.begin(), pathString.end(), pathName);
-        FMOD::Sound* music = 0;
-        fmodSystem->createSound(pathName, FMOD_LOOP_NORMAL, nullptr, &music);
-        musicDatabase[name] = music;
-        delete[] pathName;
+        if (musicDatabase.find(name) == musicDatabase.end())
+        {
+            std::string pathString = "../Assets/Audio/Music/" + name + '\0';
+            char* pathName = new char[pathString.length() + 1];
+            std::copy(pathString.begin(), pathString.end(), pathName);
+            FMOD::Sound* music = 0;
+            fmodSystem->createSound(pathName, FMOD_LOOP_NORMAL, nullptr, &music);
+            musicDatabase[name] = music;
+            delete[] pathName;
+        }
     }
 
     /*!				void _audioManager::UnLoadSFX(string name)
@@ -404,6 +417,48 @@ namespace Core
         if (search != musicDatabase.end())
             return search->second;
         return NULL;
+    }
+
+    void _audioManager::RandomWalking(std::string &gen, short state)
+    {
+        if (state == 0)
+        {
+            switch (distributor(generator))
+            {
+            case 0:
+                gen = "Gravel_Drag-Movement_1.ogg";
+                break;
+            case 1:
+                gen = "Gravel_Drag-Movement_2.ogg";
+                break;
+            case 2:
+                gen = "Gravel_Drag-Movement_3.ogg";
+                break;
+            default:
+                gen = "Gravel_Drag-Movement_1.ogg";
+            }
+        }
+        else if (state == 1)
+        {
+            switch (distributor(generator))
+            {
+            case 0:
+                gen = "Hard Floor Walking.ogg";
+                break;
+            case 1:
+                gen = "Hard Floor Walking_2.ogg";
+                break;
+            case 2:
+                gen = "Hard Floor Walking_3.ogg";
+                break;
+            default:
+                gen = "Hard Floor Walking.ogg";
+            }
+        }
+        else if (state == 2)
+        {
+            gen = "WalkSFX.ogg";
+        }
     }
 
     /*

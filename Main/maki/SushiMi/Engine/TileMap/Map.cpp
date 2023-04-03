@@ -748,7 +748,7 @@ namespace Core
 						break;
 
 					}
-					
+
 					//City_Crossing1,		
 					case static_cast<int>(animated::City_Crossing1):
 					{
@@ -1008,6 +1008,7 @@ namespace Core
 			}
 		}
 	}
+					
 
 	void Map::LoadGMap()
 	{
@@ -2702,6 +2703,7 @@ namespace Core
 						}
 						Window::player->stop();
 					}
+
 					//check if tile on the left of ingredient is a sinkhole
 					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::sinkhole))
 					{
@@ -2744,6 +2746,13 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "left ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.ogg");
+						Window::player->stop();
+					}
+
+					//check if tile on the left of ingredient is boxcover
+					else if (gGrids[Window::player->player_grid_pos.x - 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+					{
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
@@ -3157,6 +3166,12 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "right ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.ogg");
+						Window::player->stop();
+					}
+					//check if tile on the right of ingredient is boxcover
+					else if (gGrids[Window::player->player_grid_pos.x + 2][Window::player->player_grid_pos.y] == static_cast<int>(grid_number::boxcover))
+					{
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}
@@ -3994,6 +4009,18 @@ namespace Core
 						gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] <= static_cast<int>(grid_number::nori))
 					{
 						std::cout << "up ingredient ingredient\n";
+						AudioManager.PlayVoice("Oof_1.ogg");
+						Window::player->stop();
+					}
+					//check if tile on the up of ingredient is boxcover
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y-2] == static_cast<int>(grid_number::boxcover))
+					{
+						AudioManager.PlayVoice("Oof_1.ogg");
+						Window::player->stop();
+					}
+					//check if tile on the down of ingredient is boxcover
+					else if (gGrids[Window::player->player_grid_pos.x][Window::player->player_grid_pos.y - 2] == static_cast<int>(grid_number::boxcover))
+					{
 						AudioManager.PlayVoice("Oof_1.ogg");
 						Window::player->stop();
 					}

@@ -956,10 +956,12 @@ namespace Core
 
 			spritecomp->transformation.Position = transcomp->Position;
 			spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
-
+			spritecomp->Add_animation("../textures/Cutscene/Bami_Start.txt");
+			spritecomp->curr_anim = AnimationType::Idle;
+			spritecomp->isSpriteSheet = 1;
 			Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp->transformation.Get());
 			glUniform1f(glGetUniformLocation(Shaders->Textured_Shader()->get_hdl(), "alpha"), alpha);
-			spritecomp->draw();
+			spritecomp->draw(Get_Delta(), AnimationType::Idle);
 		}
 		
 	}

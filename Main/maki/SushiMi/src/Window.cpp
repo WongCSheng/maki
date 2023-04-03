@@ -48,7 +48,6 @@ namespace Core
 	double lastframe = 0;
 	static std::map<std::string, gfxVector2> chops;
 	int screenwidth = 0, screenheight = 0;
-	double xpos = 0, ypos = 0;
 
 	std::random_device dede;
 	std::mt19937 gen(dede());
@@ -1577,6 +1576,7 @@ namespace Core
 			if (isMenuState == true)
 			{
 				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
+				double xpos = 0, ypos = 0;
 				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
@@ -1653,6 +1653,7 @@ namespace Core
 
 			if (gameIsPaused == true)
 			{
+				double xpos = 0, ypos = 0;
 				glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 				
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)

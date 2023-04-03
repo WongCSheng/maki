@@ -51,6 +51,8 @@ namespace Core
 			Window::loaded = true;
 
 			AudioManager.LoadSFX("Hard Floor Walking.ogg");
+			AudioManager.LoadSFX("Hard Floor Walking_1.ogg");
+			AudioManager.LoadSFX("Hard Floor Walking_2.ogg");
 			AudioManager.LoadSFX("Water_Light Waves_Loop.ogg");
 			AudioManager.LoadMusic("Fishing_Village.ogg");
 			AudioManager.PlayMusic("Fishing_Village.ogg");

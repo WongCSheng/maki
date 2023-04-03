@@ -1097,6 +1097,7 @@ namespace Core
 	void SceneManager::destroyWinOverlay()
 	{
 		delete win_overlay;
+		delete reset_prompt;
 	}
 
 	void SceneManager::destroy_fading()

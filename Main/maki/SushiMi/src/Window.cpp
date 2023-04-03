@@ -57,6 +57,9 @@ namespace Core
 	double lastframe = 0;
 
 	static std::map<std::string, gfxVector2> chops;
+
+	int screenwidth = 0, screenheight = 0;
+
 	/*																  game states
 	----------------------------------------------------------------------------- */
 
@@ -739,7 +742,6 @@ namespace Core
 		player = Core::Deserialize(*Core::LevelLoadPathPtr);
 #ifndef EDITOR
 
-		int screenwidth = 0, screenheight = 0;
 		glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 		gameIsPaused = false;
 		isMenuState = true;
@@ -1147,8 +1149,6 @@ namespace Core
 				}
 
 				//std::cout << "exit main menu" << std::endl;
-				int screenwidth = 0, screenheight = 0;
-				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				/*Sprite::menu->transformation.Position.x = screenwidth;
 				Sprite::menu->transformation.Position.y = screenheight;*/
 
@@ -1444,7 +1444,7 @@ namespace Core
 
 		SceneManager::settings_page = new Sprite("../textures/Settings/settings.png");
 		SceneManager::credits_page = new Sprite("../textures/Credits/NEWCreditsRoll.png");
-
+		
 
 		SceneManager::wooden_bg = new Sprite("../textures/Tiles/Ground_FishingVillage/ground_backdrop.jpg");
 		SceneManager::city_bg = new Sprite("../textures/Tiles/Maki_City/Ground/city_backdrop.png");
@@ -1455,6 +1455,7 @@ namespace Core
 		SceneManager::makicity_dialogue = new Sprite("../textures/UI/DialogueBox_MakiCity.png");
 
 		SceneManager::win_overlay = new Sprite("../textures/Victory.png");
+		SceneManager::reset_prompt = new Sprite("../textures/Victory.png");
 		//SceneManager::cover1 = new Sprite("../textures/Tiles/Pods/PodCover_3.png");
 		//SceneManager::player_stuck = new Sprite("../textures/Bami/Sinking/BaMi_Sinking_1.png");
 		SceneManager::rec = new Sprite("../textures/bg.jpg");
@@ -1669,8 +1670,6 @@ namespace Core
 			*************************************/
 			if (isDialogue)
 			{
-				int screenwidth = 0, screenheight = 0;
-				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				SceneManager::load_Dialogue();
 				SceneManager::draw_Dialogue();
 				std::string first_line, second_line, third_line = "";
@@ -1798,8 +1797,6 @@ namespace Core
 			//*****************Draw Main Menu*****************************************
 			if (isMenuState == true)
 			{
-				int screenwidth = 0, screenheight = 0;
-				glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 				for (auto& x : CoreSystem->objfactory->ObjectContainer)
 				{
 					/*Transform* transcomp = static_cast<Transform*>(x.second->GetObjectProperties()->GetComponent(ComponentID::Transform));
@@ -1810,6 +1807,7 @@ namespace Core
 					spritecomp->transformation.Position = transcomp->Position;
 					if (x.first == "Menu")
 					{
+						glfwGetWindowSize(Window::window_ptr, &screenwidth, &screenheight);
 						spritecomp->transformation.Scale = glm::vec2(screenwidth, screenheight);
 					}
 					else
@@ -1917,6 +1915,18 @@ namespace Core
 				if(isTut1)
 				{
 					SceneManager::drawTut1();
+					if (!isDialogue)
+					{
+						Core::Object::GameObject* obj1 = CoreSystem->objfactory->ObjectContainer.at("IndicateT1");
+						
+						Sprite* spritecomp1 = obj1->GetObjectProperties()->GetComponent<Sprite>(ComponentID::Renderer);
+
+						spritecomp1->transformation.Position = glm::vec2(screenwidth*0.78f, screenheight*0.88f);
+						spritecomp1->transformation.Scale = glm::vec2((405*screenwidth)/1920, (126*screenheight)/1080);
+						Shaders->Textured_Shader()->Send_Alpha("alpha", 1.f);
+						Shaders->Textured_Shader()->Send_Mat4("model_matrx", spritecomp1->transformation.Get());
+						spritecomp1->draw();
+					}
 				}
 
 				if (isTut2)
@@ -2098,6 +2108,7 @@ namespace Core
 				if (mouseLeft)
 				{
 					double xpos = 0, ypos = 0;
+
 					glfwGetCursorPos(Window::window_ptr, &xpos, &ypos);
 
 					//volume up setting

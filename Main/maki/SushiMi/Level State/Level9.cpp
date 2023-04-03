@@ -32,6 +32,7 @@ namespace Core
 	extern std::vector<Basket> CurrentIngredients; // retreive the curent level loaded ingredients
 	void Levels::Level9()
 	{
+		Map::region = 3;
 
 		if (!Window::loaded)
 		{

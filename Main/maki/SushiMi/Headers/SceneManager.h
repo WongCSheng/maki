@@ -310,6 +310,7 @@ namespace Core
 		static inline Sprite* frame8;
 
 		static inline Sprite* level_select;
+		static inline Sprite* reset_prompt;
 
 		static inline Sprite* settings_page;
 		static inline Sprite* credits_page;

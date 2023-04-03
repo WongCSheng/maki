@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "name": "IndicateT1",
+      "filename": "../Data/LevelIndicator/IndicateT1.json"
+    },
+    {
+      "name": "IndicateT2",
+      "filename": "../Data/LevelIndicator/IndicateT2.json"
+    },
+    {
+      "name": "IndicateL1",
+      "filename": "../Data/LevelIndicator/IndicateL1.json"
+    },
+    {
+      "name": "IndicateL2",
+      "filename": "../Data/LevelIndicator/IndicateL2.json"
+    },
+    {
+      "name": "IndicateL3",
+      "filename": "../Data/LevelIndicator/IndicateL3.json"
+    },
+    {
+      "name": "IndicateL4",
+      "filename": "../Data/LevelIndicator/IndicateL4.json"
+    },
+    {
+      "name": "IndicateL5",
+      "filename": "../Data/LevelIndicator/IndicateL5.json"
+    },
+    {
+      "name": "IndicateL6",
+      "filename": "../Data/LevelIndicator/IndicateL6.json"
+    },
+    {
+      "name": "IndicateL7",
+      "filename": "../Data/LevelIndicator/IndicateL7.json"
+    },
+    {
+      "name": "IndicateL8",
+      "filename": "../Data/LevelIndicator/IndicateL8.json"
+    },
+    {
+      "name": "IndicateL9",
+      "filename": "../Data/LevelIndicator/IndicateL9.json"
+    },
+    {
+      "name": "IndicateL10",
+      "filename": "../Data/LevelIndicator/IndicateL10.json"
+    },
+    {
+      "name": "IndicateL11",
+      "filename": "../Data/LevelIndicator/IndicateL11.json"
+    }
+  ]
+}

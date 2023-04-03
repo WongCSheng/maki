@@ -1,16 +1,16 @@
 22 12
-M < M : M ; M P P P M M ; M = M M : M M 9 M 
-M M M M ? M Q ! ! ! L M > M M M M M > M M M 
-M = M M 9 N ! ! 2 ! L M ; M 9 P P P M M < M 
-M M M M ? N ! ! 0 ! L M M N e ! ! ! L = M M 
-M M M M : N ! ! ! ! L : 9 N ! ! ! ! L M : M 
-M < M M M M # # ! # P P P P # ! # ! L < M M 
-M ? M M M K N ! ! ! ! ! ! ! ! ! # ! L M M M 
-M 9 M M M : N ! ! ! # 9 # # M ! ! a L 9 M M 
-M M M M M M N M ! ! ! ! ! ! ! ! # % L M M M 
-M < M M M ? M # # # M M ? M M M M # M M M M 
-M : M M M 9 M M M > M ; M M M : M M M > M M 
-M M M M = M M ; M M M M M M 9 M M = M M M M 
+# < # : # ; # # # # # # ; # = # # : # # 9 # 
+# # # # ? # # ! ! ! # # > # # # # # > # # # 
+# = # # 9 # ! ! 2 ! # # ; # 9 # # # # # < # 
+# # # # ? # ! ! 0 ! # # # # e ! ! ! # = # # 
+# # # # : # ! ! ! ! # : 9 # ! ! ! ! # # : # 
+# < # # # # # # ! # # # # # # ! # ! # < # # 
+# ? # # # K # ! ! ! ! ! ! ! ! ! # ! # # # # 
+# 9 # # # : # ! ! ! # 9 # # # ! ! a # 9 # # 
+# # # # # # # # ! ! ! ! ! ! ! ! # % # # # # 
+# < # # # ? # # # # # # ? # # # # # # # # # 
+# : # # # 9 # # # > # ; # # # : # # # > # # 
+# # # # = # # ; # # # # # # 9 # # = # # # # 
 
 M M M M M M M P P P M M M M M M M M M M M M 
 M M M M M M Q r ! v L M M M M M M M M M M M 

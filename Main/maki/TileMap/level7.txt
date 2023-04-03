@@ -1,16 +1,16 @@
 22 12
-R R R R R R R R R R R R R R R R R R R R R R
-R R G R H R J R R R R R G R R R R R H R R R
-R R R R R R R R I R R R R R R R R H R R G R
-R R R R R R R R R R ! ! ! ! ` R R R I R R R
-R R H R % ! - 5 ! 4 ! 3 ! ! ! R R R R R R R
-R R R R R R R R R R R ! ! ! 5 R I R F R R R
-R R R R R H R R R R R ! ! 4 ! R R R R R R R
-R R F R R R R # F R R ! ! ! ! R R R R R R R
-R R R G R R R R R # R R R R H R R R R J R R
-R R R R R R R R R R R R R R R R F R R R R R
-R R F R R R R J R R R G R R R R R R H R R R
-R R R R G R R R R R R R R R F R R R R R I R
+# # # # # # # # # # # # # # # # # # # # # #
+# # G # H # J # # # # # G # # # # # H # # #
+# # # # # # # # I # # # # # # # # H # # G #
+# # # # # # # # # # ! ! ! ! ` # # # I # # #
+# # H # % ! - 5 ! 4 ! 3 ! ! ! # # # # # # #
+# # # # # # # # # # # ! ! ! 5 # I # F # # #
+# # # # # H # # # # # ! ! 4 ! # # # # # # #
+# # F # # # # # F # # ! ! ! ! # # # # # # #
+# # # G # # # # # # # # # # H # # # # J # #
+# # # # # # # # # # # # # # # # F # # # # #
+# # F # # # # J # # # G # # # # # # H # # #
+# # # # G # # # # # # # # # F # # # # # I #
 
 R R R R R R R R R R R R R R R R R R R R R R
 R R R R R R R R R R R R R R R R R R R R R R

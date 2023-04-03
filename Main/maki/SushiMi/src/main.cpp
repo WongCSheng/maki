@@ -201,7 +201,12 @@ void Core::pseudomain::init() {
 
 	/*				loading how to play screens 			*/
 	Core::DeserializeAll("../Data/mainMenu/HowToPlayScene.json", CoreSystem->objfactory);
+	/*				loading Cutscene Frames							*/
 	Core::DeserializeAll("../Data/Cutscene/Cutscene_All.json", CoreSystem->objfactory);
+
+	/*				loading level indicator UIs							*/
+	Core::DeserializeAll("../Data/LevelIndicator/Indicator_All.json", CoreSystem->objfactory);
+
 
 
 	/*										 for level selection					*/

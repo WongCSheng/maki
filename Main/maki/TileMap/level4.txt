@@ -1,16 +1,16 @@
 22 12
-S S S S S D S S S S S S S S S S S S S S D S 
-S S @ S S S S S S S S @ D S S S S S S S S S 
-S S C S S ! ! ! ! S S C B B % 0 7 ! _ S S S 
-S S C S S ! / 7 ! S S S S S S S S ! ! S S S 
-S S ! @ S ! 7 ! ! 7 ! ! 2 ! ! ! ! ! ! S S S 
-S S C C S ! S d ! 7 ! ! 7 ! ! ! 7 . ! S S S 
-S ! D S S ! D ! 1 ! ! S S S 7 S ! ! ! S @ S 
-S ! S S S ! S ^ ! ! ! ! ! ! ! S ! ! ! C C S 
-S ! ! ! S ! S S C C S B B S 7 # ! * ! S S S 
-S S @ S S ! ! ! ! ! ! ! ! ! ! ! ! ! ! S D S 
-S S B C S S S S S S S S S B B B S S S @ S S 
-S S S S S S S S S S S D S S S S S S B B B S  
+# # # # # D # # # # # # # # # # # # # # D # 
+# # @ # # # # # # # # @ D # # # # # # # # # 
+# # C # # ! ! ! ! # # C B B % 0 7 ! _ # # # 
+# # C # # ! / 7 ! # # # # # # # # ! ! # # # 
+# # ! @ # ! 7 ! ! 7 ! ! 2 ! ! ! ! ! ! # # # 
+# # C C # ! # d ! 7 ! ! 7 ! ! ! 7 . ! # # # 
+# ! D # # ! D ! 1 ! ! # # # 7 # ! ! ! # @ # 
+# ! # # # ! # ^ ! ! ! ! ! ! ! # ! ! ! C C # 
+# ! ! ! # ! # # C C # B B # 7 # ! * ! # # # 
+# # @ # # ! ! ! ! ! ! ! ! ! ! ! ! ! ! # D # 
+# # B C # # # # # # # # # B B B # # # @ # # 
+# # # # # # # # # # # D # # # # # # B B B #  
     
 S S S S S S S S S S S S S S S S S S S S S S 
 S S ! S S S S S S S S S S S S S S S S S S S 
